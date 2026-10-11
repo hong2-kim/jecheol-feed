@@ -92,6 +92,7 @@ ul {{ margin: 4px 0; padding-left: 20px; }} a {{ color: #B4441A; word-break: bre
 </style></head><body>
 <h1>{esc(cfg['title'])}</h1>
 <p>{esc(cfg['description'])} <a href="feed.xml">RSS 주소</a></p>
+<p><small>마지막 갱신 {datetime.now(KST).strftime('%Y-%m-%d %H:%M')} · 글 {len(items)}개</small></p>
 {''.join(blocks)}
 </body></html>"""
 
