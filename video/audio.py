@@ -252,7 +252,9 @@ def build(mood, sfx, dur, path, ambience=()):
     """mood 가 "file:이름" 이면 audio/이름.wav 를 배경음악으로 써요.
     ambience 는 [[시작, 끝, 이름, 크기], ...] 로, 장면 밑에 까는 현장 소리예요."""
     n = int(SR * dur)
-    if mood.startswith("file:"):
+    if mood == "none":
+        music = np.zeros(n)
+    elif mood.startswith("file:"):
         music = loop_to(load_wav(mood[5:]), n).copy()
     else:
         music = MUSIC[mood](dur)[:n]

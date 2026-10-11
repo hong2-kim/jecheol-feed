@@ -124,7 +124,7 @@ def build_html(spec):
     accent = spec.get("accent") or ACCENTS.get(spec.get("kind", ""), "#FFB23E")
     scenes = spec["scenes"]
     ctx = {"cards": sum(1 for s in scenes if s["type"] == "card"), "card_no": 0, "brand": spec.get("brand")}
-    meta = {"music": "file:" + spec.get("music", "carefree"), "sfx": [], "ambience": spec.get("ambience", [])}
+    meta = {"music": "none", "sfx": [], "ambience": []}  # 노래와 효과음은 넣지 않아요. 올릴 때 인스타그램에서 고르면 돼요.
     css = (HERE / "base.css").read_text(encoding="utf-8").replace("FONT_DIR", (HERE / "fonts").as_uri())
     out = ['<!doctype html><html lang="ko"><head><meta charset="utf-8">', f"<style>{css}</style></head>",
            f'<body style="--ac:{accent}">']
@@ -144,7 +144,6 @@ def description(spec):
     lines = [spec["caption"].strip(), "", " ".join("#" + t for t in spec.get("tags", [])), ""]
     if spec.get("credits"):
         lines.append("사진 " + " / ".join(spec["credits"]))
-    lines.append('음악 "Carefree" Kevin MacLeod (incompetech.com), CC BY 3.0')
     return "\n".join(lines) + "\n"
 
 
