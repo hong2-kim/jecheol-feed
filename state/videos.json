@@ -1,127 +1,172 @@
 [
- {
-  "id": "2026-10-12-3-dinner",
-  "date": "2026-10-12",
-  "kind": "저녁",
-  "title": "비 오는 월요일, 무슨 술에 뭐 먹지? 조합 4가지",
-  "summary": "비 예보가 있는 월요일 저녁에 어울리는 안주와 술을 상황별로 네 가지 골랐어요. 술 종류까지 정해 드려요.",
-  "caption": "비 오는 월요일, 무슨 술에 뭐 먹지?\n\n1. 퇴근길 혼술: 어묵탕 × 데운 준마이 사케\n준마이는 쌀과 누룩만으로 빚은 사케예요. 따뜻하게 데우면 국물 안주와 잘 맞아요.\n2. 친구 모임: 막창구이 × 버번 하이볼\n버번은 옥수수를 주원료로 한 미국 위스키예요. 탄산수를 타면 기름진 안주가 덜 물려요.\n3. 데이트: 조개구이 × 소비뇽 블랑\n신맛이 또렷한 화이트 와인 품종이에요. 차갑게 식혀서 해산물과 함께해요.\n4. 월요일 회식: 수육 × 증류식 소주\n안동소주처럼 곡물을 발효해 증류한 소주예요. 얼음을 넣어 천천히 마셔요.\n\n오늘 서울은 비 예보가 있어요(강수 확률 74%, 낮 최고 25도). 술 조합은 추천일 뿐이에요. 지나친 음주는 건강에 해로워요.",
-  "tags": [
-   "오늘저녁메뉴",
-   "술안주추천",
-   "비오는날",
-   "사케",
-   "하이볼",
-   "화이트와인",
-   "증류식소주",
-   "어묵탕",
-   "막창",
-   "퇴근길"
-  ],
-  "sources": [
-   "https://open-meteo.com/ (서울 예보, 2026-10-12 확인)"
-  ],
-  "credits": [
-   "ⓒ한국관광공사 포토코리아-알렉스 분도, 김지영, 천준교, 황성훈"
-  ],
-  "url": "https://github.com/hong2-kim/jecheol-feed/releases/download/v2026-10-12/2026-10-12-3-dinner.mp4",
-  "seconds": 24.2,
-  "size_mb": 5.5
- },
- {
-  "id": "2026-10-12-2-news",
-  "date": "2026-10-12",
-  "kind": "소식",
-  "title": "10월 12일 오늘의 먹거리 소식 5",
-  "summary": "전어 소금구이, 일본 꽁치 예보, 홍콩 와인 축제, 독버섯 속설, 제주 방어축제 예고를 한 번에 정리했어요.",
-  "caption": "10월 12일, 오늘의 먹거리 소식 5가지예요.\n\n1. 가을 전어는 소금구이가 정석. 천일염만 뿌려 통째로 구워요.\n2. 일본 가을 꽁치는 올해 작고 적을 거라는 예보가 나왔어요.\n3. 홍콩 와인 앤 다인 페스티벌이 10월 29일부터 11월 1일까지 열려요.\n4. 하얗고 수수한 버섯도 독버섯일 수 있어요. 야생 버섯은 먹지 않는 게 안전해요.\n5. 제주 최남단방어축제가 11월 19일 개막 예정이에요.\n\n일정은 바뀔 수 있으니 가기 전에 공식 안내를 확인하세요.",
-  "tags": [
-   "오늘의먹거리소식",
-   "제철음식",
-   "전어",
-   "방어축제",
-   "홍콩여행",
-   "독버섯",
-   "10월제철음식",
-   "먹거리축제"
-  ],
-  "sources": [
-   "https://www.korea.kr/briefing/pressReleaseView.do?newsId=156776342",
-   "https://www.jfa.maff.go.jp/j/press/sigen/260728.html",
-   "https://www.korea.kr/briefing/pressReleaseView.do?newsId=156412682",
-   "http://bangeofestival.com/introduction"
-  ],
-  "credits": [
-   "ⓒ한국관광공사 포토코리아-박은경, 스튜디오 4cats",
-   "Paul Hsu (CC BY 2.0)",
-   "Wilfredor (CC0)",
-   "Ben DeRoy (Public domain) · Wikimedia Commons"
-  ],
-  "url": "https://github.com/hong2-kim/jecheol-feed/releases/download/v2026-10-12/2026-10-12-2-news.mp4",
-  "seconds": 27.8,
-  "size_mb": 10.8
- },
- {
-  "id": "2026-10-12-1-monthly",
-  "date": "2026-10-12",
-  "kind": "제철",
-  "title": "10월 여행 가면 이건 먹고 오세요, 제철 음식 5",
-  "summary": "10월에 맛이 오르는 제철 음식 다섯 가지를 여행지에서 먹기 좋은 메뉴로 골랐어요. 대하 소금구이, 수꽃게, 전어구이, 갈치, 추어탕이에요.",
-  "caption": "10월 여행 가면 이건 먹고 오세요. 이달의 제철 음식 5\n\n01 대하 소금구이 (충남 홍성·태안) 홍성 남당항 대하축제가 11월 8일까지 열려요.\n02 수꽃게 찜·꽃게탕 (서해) 봄엔 알이 찬 암꽃게, 가을엔 살이 단단한 수꽃게예요. 10월 중순부터 11월 초가 가장 좋다고 해요.\n03 전어 소금구이 (서해·남해 포구) 가을에 고소한 맛이 올라 소금구이나 회무침으로 먹어요.\n04 갈치 구이·조림 (제주) 여름 산란을 마치고 10월 전후로 기름이 올라요.\n05 추어탕 해양수산부가 올해 10월의 수산물로 미꾸라지를 골랐어요. 가을에 살이 올라요.\n\n가격과 영업시간은 가기 전에 확인하세요.",
-  "tags": [
-   "10월제철음식",
-   "제철음식",
-   "가을여행",
-   "대하구이",
-   "꽃게",
-   "전어",
-   "갈치조림",
-   "추어탕",
-   "먹거리여행",
-   "국내여행"
-  ],
-  "sources": [
-   "https://www.hongseong.go.kr/prog/tursmCn/tour/sub03_03/view.do?cntNo=43",
-   "https://www.hankyung.com/article/2025082756631",
-   "https://www.korea.kr/briefing/pressReleaseView.do?newsId=156776342",
-   "https://www.incheon.go.kr/fish/FI020401/2097010",
-   "https://www.suhyupnews.co.kr/news/articleView.html?idxno=40660"
-  ],
-  "credits": [
-   "ⓒ한국관광공사 포토코리아-천준교, 박은경, 김지호, 이범수"
-  ],
-  "url": "https://github.com/hong2-kim/jecheol-feed/releases/download/v2026-10-12/2026-10-12-1-monthly.mp4",
-  "seconds": 27.8,
-  "size_mb": 7.1
- },
- {
-  "id": "2026-10-12-1-jecheol",
-  "date": "2026-10-12",
-  "kind": "제철",
-  "title": "대하 철, 어디로 갈래요?",
-  "summary": "가을 대하를 만나러 갈 만한 곳 네 군데와, 11월 8일까지 열리는 남당항 대하축제를 소개해요.",
-  "caption": "대하 철, 이번 주말 어디로 갈래요?\n\n01 소래포구 (인천 남동구) 지하철로 가는 포구\n02 노량진수산시장 (서울 동작구) 서울 한복판\n03 인천 연안부두 (인천 중구) 부두 옆 인천종합어시장\n04 홍성 남당항 (충남 홍성) 대하축제가 열리는 항구\n\n자연산 대하는 잡히면 금방 죽어서 얼음 위에 있어요. 수조에서 헤엄치는 새우는 대부분 양식 흰다리새우예요.\n\n홍성 남당항 대하축제는 11월 8일(일)까지 열려요. 가격과 운영 시간은 가기 전에 확인하세요.",
-  "tags": [
-   "대하",
-   "대하구이",
-   "제철음식",
-   "10월제철음식",
-   "소래포구",
-   "노량진수산시장",
-   "연안부두",
-   "남당항",
-   "남당항대하축제",
-   "주말나들이"
-  ],
-  "sources": [
-   "https://www.asiae.co.kr/article/2021103123212088818",
-   "https://www.hongseong.go.kr/prog/tursmCn/tour/sub03_03/view.do?cntNo=43"
-  ],
-  "credits": [
-   "ⓒ한국관광공사 포토코리아-천준교, 김지호, 최민희, 이범수"
-  ],
-  "url": "https://github.com/hong2-kim/jecheol-feed/releases/download/v2026-10-12/2026-10-12-1-jecheol.mp4",
-  "seconds": 34.2,
-  "size_mb": 17.9
- }
+  {
+    "id": "2026-10-12-5-world",
+    "date": "2026-10-12",
+    "kind": "세계",
+    "title": "10~11월 해외 간다면? 이 축제에선 이걸 드세요 5",
+    "summary": "10월 말부터 11월까지 열리는 세계의 음식·술 축제 다섯 곳을 날짜, 장소, 먹을 것과 함께 정리했어요.",
+    "caption": "10~11월 해외 간다면? 이 축제에선 이걸 드세요.\n\n01 일본 도쿄, 도쿄 라멘 페스타\n10월 30일(금)~11월 3일(화·공휴일), 고마자와 올림픽공원 중앙광장. 11~20시(마지막 날은 19시까지). 입장은 무료이고 라멘은 한 그릇 1,100엔이에요. 티켓을 사서 바꿔 먹어요. 전국에서 12개 가게가 와요. 고마자와다이가쿠역에서 걸어서 15분. 고마자와에서 여는 건 올해가 마지막이래요.\n\n02 홍콩, 와인 앤 다인 페스티벌\n10월 29일~11월 1일, 센트럴 하버프런트와 타마르 공원. 부스 340여 개에 약 30개 나라·지역의 와인과 음식이 나와요. 시음 패스 HK$258, 그랜드 와인 패스 HK$558. 첫날 19:30~자정, 30·31일 13시~새벽 1시, 마지막 날 13시~자정.\n\n03 멕시코, 죽은 자의 날\n11월 1~2일. 이때 먹는 빵이 '판 데 무에르토'예요. 둥근 빵 위에 뼈 모양을 얹고 설탕을 뿌려요. 오렌지꽃 향이 나요. 빵집에서는 9월부터 팔아요.\n\n04 이탈리아 페루자, 유로초콜릿\n11월 13~22일, 구시가지 전체(코르소 반누치, 이탈리아 광장 등). 입장 무료. 평일 10:00~19:30, 토요일 09:30~22:00, 일요일 09:00~20:00.\n\n05 프랑스, 보졸레 누보\n11월 19일(목). 해마다 11월 셋째 목요일에 그해 첫 햇와인이 나와요. 프랑스 밖의 와인 가게와 식당에서도 이날에 맞춰 내놓아요.\n\n지금 열리는 곳: 태국 푸껫 채식 축제(10월 10~18일).\n\n일정과 가격은 바뀔 수 있어요. 가기 전에 공식 안내를 확인하세요. 지나친 음주는 건강에 해로워요.",
+    "tags": [
+      "해외여행",
+      "세계축제",
+      "도쿄여행",
+      "라멘",
+      "홍콩여행",
+      "와인",
+      "죽은자의날",
+      "유로초콜릿",
+      "보졸레누보",
+      "먹거리여행"
+    ],
+    "sources": [
+      "https://ra-fes.com/",
+      "https://www.enjoytokyo.jp/event/919033/",
+      "https://news.rthk.hk/rthk/en/component/k2/1873027-20261007.htm",
+      "https://www.gob.mx/agricultura/articulos/pan-de-muerto-el-corazon-de-una-dulce-tradicion?idiom=es",
+      "https://ich.unesco.org/en/RL/indigenous-festivity-dedicated-to-the-dead-00054",
+      "https://www.eurochocolate.com/perugia2026/",
+      "https://www.lyonmag.com/article/154026/beaujolais-nouveau-2026-rendez-vous-le-19-novembre-pour-le-lancement-du-nouveau-millesime",
+      "https://www.tatnews.org/2026/10/tat-highlights-phuket-vegetarian-festival-2026-as-a-distinctive-cultural-experience/"
+    ],
+    "credits": [
+      "Elekes Andor (CC BY 4.0) · Wikimedia Commons",
+      "Gobierno CDMX (CC0) · Wikimedia Commons",
+      "Hajime NAKANO (CC BY 2.0) · Wikimedia Commons",
+      "Linda Tieu (CC BY 2.0) · Wikimedia Commons",
+      "Luis Carlos Diaz (CC BY 4.0) · Wikimedia Commons",
+      "Sarah Stierch (CC0) · Wikimedia Commons",
+      "Secretaría de Cultura  de la Ciudad de México (CC BY 2.0) · Wikimedia Commons",
+      "Syced (CC0) · Wikimedia Commons",
+      "Wilfredor (CC0) · Wikimedia Commons",
+      "kobakou (CC BY 2.0) · Wikimedia Commons"
+    ],
+    "url": "https://github.com/hong2-kim/jecheol-feed/releases/download/v2026-10-12/2026-10-12-5-world.mp4",
+    "seconds": 29.8,
+    "size_mb": 25.9
+  },
+  {
+    "id": "2026-10-12-3-dinner",
+    "date": "2026-10-12",
+    "kind": "저녁",
+    "title": "비 오는 월요일, 오늘 저녁 뭐 먹지? 4가지",
+    "summary": "비 예보가 있는 월요일 저녁에 가기 좋은 메뉴 네 가지를 많이 찾는 순서로 골랐어요. 곁들일 술도 함께 적었어요.",
+    "caption": "비 오는 월요일, 오늘 저녁 뭐 먹지?\n\n1. 월요일 회식: 삼겹살 × 소주\n2. 친구 모임: 닭갈비 × 맥주\n3. 퇴근길 한 끼: 감자탕 × 소주\n4. 데이트: 조개구이 × 소주 or 사케\n\n오늘 서울은 비 예보가 있어요(강수 확률 74%, 낮 최고 25도). 술 조합은 추천일 뿐이에요. 지나친 음주는 건강에 해로워요.",
+    "tags": [
+      "오늘저녁메뉴",
+      "저녁메뉴추천",
+      "비오는날",
+      "삼겹살",
+      "닭갈비",
+      "감자탕",
+      "조개구이",
+      "회식메뉴",
+      "퇴근길",
+      "술안주"
+    ],
+    "sources": [
+      "https://open-meteo.com/ (서울 예보, 2026-10-12 확인)"
+    ],
+    "credits": [
+      "ⓒ한국관광공사 포토코리아-토라이 리퍼블릭, 스튜디오 4cats, 프레임스튜디오, 천준교"
+    ],
+    "url": "https://github.com/hong2-kim/jecheol-feed/releases/download/v2026-10-12/2026-10-12-3-dinner.mp4",
+    "seconds": 24.2,
+    "size_mb": 6.9
+  },
+  {
+    "id": "2026-10-12-2-news",
+    "date": "2026-10-12",
+    "kind": "소식",
+    "title": "10월 12일 오늘의 먹거리 소식 5",
+    "summary": "전어 소금구이, 일본 꽁치 예보, 홍콩 와인 축제, 독버섯 속설, 제주 방어축제 예고를 한 번에 정리했어요.",
+    "caption": "10월 12일, 오늘의 먹거리 소식 5가지예요.\n\n1. 가을 전어는 소금구이가 정석. 천일염만 뿌려 통째로 구워요.\n2. 일본 가을 꽁치는 올해 작고 적을 거라는 예보가 나왔어요.\n3. 홍콩 와인 앤 다인 페스티벌이 10월 29일부터 11월 1일까지 열려요.\n4. 하얗고 수수한 버섯도 독버섯일 수 있어요. 야생 버섯은 먹지 않는 게 안전해요.\n5. 제주 최남단방어축제가 11월 19일 개막 예정이에요.\n\n일정은 바뀔 수 있으니 가기 전에 공식 안내를 확인하세요.",
+    "tags": [
+      "오늘의먹거리소식",
+      "제철음식",
+      "전어",
+      "방어축제",
+      "홍콩여행",
+      "독버섯",
+      "10월제철음식",
+      "먹거리축제"
+    ],
+    "sources": [
+      "https://www.korea.kr/briefing/pressReleaseView.do?newsId=156776342",
+      "https://www.jfa.maff.go.jp/j/press/sigen/260728.html",
+      "https://www.korea.kr/briefing/pressReleaseView.do?newsId=156412682",
+      "http://bangeofestival.com/introduction"
+    ],
+    "credits": [
+      "ⓒ한국관광공사 포토코리아-박은경, 스튜디오 4cats",
+      "Paul Hsu (CC BY 2.0)",
+      "Wilfredor (CC0)",
+      "Ben DeRoy (Public domain) · Wikimedia Commons"
+    ],
+    "url": "https://github.com/hong2-kim/jecheol-feed/releases/download/v2026-10-12/2026-10-12-2-news.mp4",
+    "seconds": 27.8,
+    "size_mb": 10.3
+  },
+  {
+    "id": "2026-10-12-1-monthly",
+    "date": "2026-10-12",
+    "kind": "제철",
+    "title": "10월 여행 가면 이건 먹고 오세요, 제철 음식 5 (언제까지 맛있을까)",
+    "summary": "10월에 맛이 오르는 제철 음식 다섯 가지와 언제부터 언제까지 맛있는지를 정리했어요. 대하, 수꽃게, 전어, 갈치, 낙지예요.",
+    "caption": "10월 여행 가면 이건 먹고 오세요. 이달의 제철 음식 5\n\n01 대하 소금구이 (충남 홍성·태안)\n제철은 9~11월, 10월이 절정이에요. 홍성 남당항 대하축제가 11월 8일까지 열려요.\n02 가을 수꽃게 찜·탕 (충남 태안·서해)\n가을 제철은 9~11월이에요. 10월 중순부터 11월 초가 가장 좋다고 해요. 봄에는 알이 찬 암꽃게, 가을에는 살이 단단한 수꽃게예요.\n03 전어 구이·회무침 (서해·남해 포구)\n8월 말부터 살이 오르고 9~10월에 고소한 맛이 절정이에요. 지금이 막바지예요.\n04 통갈치 조림·구이 (제주)\n9~10월 전후로 살이 찌고 기름이 올라 가장 맛있어요.\n05 낙지 탕탕이 (전남 목포)\n여름을 지나 서늘한 가을에 살이 올라요. 사진은 육회를 곁들인 한우 낙지 탕탕이예요.\n\n가격과 영업시간은 가기 전에 확인하세요.",
+    "tags": [
+      "10월제철음식",
+      "제철음식",
+      "가을여행",
+      "대하구이",
+      "꽃게",
+      "전어",
+      "갈치조림",
+      "낙지탕탕이",
+      "먹거리여행",
+      "국내여행"
+    ],
+    "sources": [
+      "https://www.hongseong.go.kr/prog/tursmCn/tour/sub03_03/view.do?cntNo=43",
+      "https://www.withbuyer.com/news/articleView.html?idxno=20702",
+      "https://www.hankyung.com/article/2025082756631",
+      "https://www.segye.com/newsView/20260906506680",
+      "https://www.korea.kr/news/policyNewsView.do?newsId=148853868"
+    ],
+    "credits": [
+      "ⓒ한국관광공사 포토코리아-천준교, 박은경, 김지호, 디엔에이스튜디오"
+    ],
+    "url": "https://github.com/hong2-kim/jecheol-feed/releases/download/v2026-10-12/2026-10-12-1-monthly.mp4",
+    "seconds": 28.8,
+    "size_mb": 7.2
+  },
+  {
+    "id": "2026-10-12-1-jecheol",
+    "date": "2026-10-12",
+    "kind": "제철",
+    "title": "대하 철, 어디로 갈래요?",
+    "summary": "가을 대하를 만나러 갈 만한 곳 네 군데와, 11월 8일까지 열리는 남당항 대하축제를 소개해요.",
+    "caption": "대하 철, 이번 주말 어디로 갈래요?\n\n01 소래포구 (인천 남동구) 지하철로 가는 포구\n02 노량진수산시장 (서울 동작구) 서울 한복판\n03 인천 연안부두 (인천 중구) 부두 옆 인천종합어시장\n04 홍성 남당항 (충남 홍성) 대하축제가 열리는 항구\n\n자연산 대하는 잡히면 금방 죽어서 얼음 위에 있어요. 수조에서 헤엄치는 새우는 대부분 양식 흰다리새우예요.\n\n홍성 남당항 대하축제는 11월 8일(일)까지 열려요. 가격과 운영 시간은 가기 전에 확인하세요.",
+    "tags": [
+      "대하",
+      "대하구이",
+      "제철음식",
+      "10월제철음식",
+      "소래포구",
+      "노량진수산시장",
+      "연안부두",
+      "남당항",
+      "남당항대하축제",
+      "주말나들이"
+    ],
+    "sources": [
+      "https://www.asiae.co.kr/article/2021103123212088818",
+      "https://www.hongseong.go.kr/prog/tursmCn/tour/sub03_03/view.do?cntNo=43"
+    ],
+    "credits": [
+      "ⓒ한국관광공사 포토코리아-천준교, 김지호, 최민희, 이범수"
+    ],
+    "url": "https://github.com/hong2-kim/jecheol-feed/releases/download/v2026-10-12/2026-10-12-1-jecheol.mp4",
+    "seconds": 34.2,
+    "size_mb": 17.3
+  }
 ]
