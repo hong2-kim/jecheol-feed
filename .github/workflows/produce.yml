@@ -29,6 +29,8 @@ jobs:
       url: ${{ steps.deploy.outputs.page_url }}
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: main # 앞선 작업이 저장한 기록까지 받아요
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
@@ -57,7 +59,7 @@ jobs:
       - name: 주소 기록하고 텔레그램으로 보내기
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
-          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID || secrets.TELEGRAM_CHAT_I }} # 이름이 한 글자 빠진 채 저장돼 있어도 읽어요
         run: python video/publish.py "${{ steps.day.outputs.day }}"
       - name: RSS 만들기
         run: python scripts/build_feed.py
