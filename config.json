@@ -1,0 +1,8 @@
+{
+  "title": "제철 릴스 소재",
+  "description": "한국과 해외의 제철음식, 음식 축제, 식품 안전 정보를 릴스 소재로 정리해 매일 올려요.",
+  "site_url": "https://hong2-kim.github.io/jecheol-feed",
+  "daily_target": 5,
+  "daily_minimum": 3,
+  "feed_max_items": 60
+}
