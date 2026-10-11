@@ -1,0 +1,33 @@
+# 매일 새벽 공식 기관 RSS의 새 글을 inbox 에 모아요.
+name: collect
+
+on:
+  schedule:
+    - cron: "0 20 * * *" # 매일 오전 5시(한국 시간)
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: repo-write
+  cancel-in-progress: false
+
+jobs:
+  collect:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: RSS 읽기
+        run: python scripts/fetch_sources.py
+      - name: 모은 글 저장
+        run: |
+          git config user.name "jecheol-feed"
+          git config user.email "actions@users.noreply.github.com"
+          git add inbox state logs
+          git diff --cached --quiet || git commit -m "새 글 수집"
+          git pull --rebase
+          git push

@@ -4,7 +4,7 @@
 
 ## 순서
 
-1. `python scripts/fetch_sources.py` 를 돌려 공식 기관 RSS의 새 글을 `inbox/오늘날짜.json` 에 모은다.
+1. `inbox/오늘날짜.json` 을 읽는다. 공식 기관 RSS의 새 글이 새벽에 자동으로 모여 있다. 파일이 없으면 `python scripts/fetch_sources.py` 를 돌려 보고, 실패해도 다음으로 넘어간다.
 2. `inbox`, `calendar.json`(제철·축제 후보), `sources.json`(공식 사이트)에서 오늘 낼 소재를 고른다.
 3. 고른 소재마다 공식 자료를 **직접 열어** 올해 기준으로 확인한다.
 4. 아래 형식의 JSON을 `items/오늘날짜/이름.json` 으로 저장한다.
