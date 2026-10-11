@@ -36,12 +36,12 @@ def main():
     chat = os.environ.get("TELEGRAM_CHAT_ID", "").strip()
 
     videos = read_json(ROOT / "state" / "videos.json", [])
-    known = {v["id"] for v in videos}
     for r in results:
         if r["ok"]:
             r["url"] = f"https://github.com/{REPO}/releases/download/v{day}/{r['file']}"
-            if r["id"] not in known:
-                videos.append({k: r.get(k) for k in ("id", "date", "kind", "title", "summary", "caption", "tags", "sources", "credits", "url", "seconds", "size_mb")})
+            # 같은 영상을 다시 만들면 제목과 글도 새것으로 바꿔요.
+            videos = [v for v in videos if v["id"] != r["id"]]
+            videos.append({k: r.get(k) for k in ("id", "date", "kind", "title", "summary", "caption", "tags", "sources", "credits", "url", "seconds", "size_mb")})
     videos.sort(key=lambda v: v["id"], reverse=True)
     write_json(ROOT / "state" / "videos.json", videos[:400])
 

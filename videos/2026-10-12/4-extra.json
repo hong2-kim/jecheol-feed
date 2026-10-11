@@ -1,0 +1,99 @@
+{
+ "kind": "추가",
+ "subject": "가을 수꽃게",
+ "title": "오늘의 제철음식은? 살이 꽉 찬 가을 수꽃게",
+ "summary": "가을 꽃게는 알이 아니라 살로 먹어요. 수꽃게는 10월 중순부터 11월 초가 가장 맛있다고 해요.",
+ "music": "carefree",
+ "scenes": [
+  {
+   "type": "cover",
+   "dur": 2.4,
+   "photo": {
+    "url": "https://tong.visitkorea.or.kr/cms2/website/37/3052837.jpg",
+    "pos": "60% 50%"
+   },
+   "kicker": "10월 12일",
+   "title": "오늘의\n제철음식은[[?]]",
+   "size": 132
+  },
+  {
+   "type": "cover",
+   "dur": 2.6,
+   "photo": {
+    "url": "https://tong.visitkorea.or.kr/cms2/website/39/1832939.jpg",
+    "pos": "50% 35%"
+   },
+   "kicker": "이겁니다",
+   "title": "[[꽃게]]!",
+   "size": 230
+  },
+  {
+   "type": "duo",
+   "dur": 4.8,
+   "photo_top": {
+    "url": "https://tong.visitkorea.or.kr/cms2/website/40/3052840.jpg",
+    "pos": "30% 50%"
+   },
+   "photo_bottom": {
+    "url": "https://tong.visitkorea.or.kr/cms2/website/68/2531068.jpg"
+   },
+   "chip_top": "봄엔 [[알이 찬 암꽃게]]",
+   "chip_bottom": "그럼 가을엔?",
+   "chip_bottom2": "살이 꽉 찬 수꽃게"
+  },
+  {
+   "type": "info",
+   "dur": 4.6,
+   "photo": {
+    "url": "https://tong.visitkorea.or.kr/cms2/website/68/2531068.jpg"
+   },
+   "photo_bottom": {
+    "url": "https://tong.visitkorea.or.kr/cms2/website/36/3052836.jpg"
+   },
+   "kicker": "가장 맛있을 때",
+   "title": "가을 수꽃게",
+   "big": "~11월 초",
+   "sub": "10월 중순부터 11월 초까지"
+  },
+  {
+   "type": "card",
+   "dur": 4.4,
+   "photo": {
+    "url": "https://tong.visitkorea.or.kr/cms2/website/36/3052836.jpg"
+   },
+   "chip": "이렇게 드세요",
+   "headline": "찜 · 꽃게탕\n[[게국지]]",
+   "line": "태안에 가면 게국지도 있어요"
+  },
+  {
+   "type": "cover",
+   "dur": 2.8,
+   "photo": {
+    "url": "https://tong.visitkorea.or.kr/cms2/website/38/3052838.jpg"
+   },
+   "kicker": "오늘 저녁",
+   "title": "[[꽃게]]\n어때요?",
+   "line": "저장해 두고 시장 갈 때 꺼내 보세요",
+   "size": 150
+  }
+ ],
+ "caption": "오늘의 제철음식은? 꽃게예요.\n\n봄에는 알이 가득 찬 암꽃게, 가을에는 살이 많고 단단한 수꽃게가 제철이에요. 바닷물이 차가워지면 꽃게가 겨울을 나려고 살을 채우기 때문이래요. 수꽃게는 10월 중순부터 11월 초까지가 가장 좋다고 해요.\n\n양념 없이 찜으로 먹거나 된장을 풀어 꽃게탕으로 끓여요. 태안에 가면 게국지도 있어요.\n\n한잔 곁들인다면 차갑게 식힌 드라이 화이트 와인이나 맑은 청주를 권해요. 술 조합은 추천일 뿐이에요. 지나친 음주는 건강에 해로워요.",
+ "tags": [
+  "오늘의제철음식",
+  "꽃게",
+  "수꽃게",
+  "가을꽃게",
+  "꽃게찜",
+  "꽃게탕",
+  "게국지",
+  "제철음식",
+  "태안맛집"
+ ],
+ "sources": [
+  "https://www.hankyung.com/article/2025082756631",
+  "https://www.incheon.go.kr/fish/FI020401/2097010"
+ ],
+ "credits": [
+  "ⓒ한국관광공사 포토코리아-천준교, 박은경, 김지호"
+ ]
+}

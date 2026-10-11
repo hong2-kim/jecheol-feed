@@ -1,79 +1,92 @@
 {
  "kind": "저녁",
- "title": "비 오는 월요일, 오늘 저녁 뭐 먹지?",
+ "subject": "비 오는 월요일 술 조합 (어묵탕·막창·조개구이·수육)",
+ "title": "비 오는 월요일, 무슨 술에 뭐 먹지? 조합 4가지",
+ "summary": "비 예보가 있는 월요일 저녁에 어울리는 안주와 술을 상황별로 네 가지 골랐어요. 술 종류까지 정해 드려요.",
  "brand": "10.12 저녁 메뉴",
  "music": "carefree",
- "summary": "비 예보가 있는 월요일 저녁에 어울리는 메뉴와 술 조합 세 가지를 골랐어요.",
  "scenes": [
   {
    "type": "cover",
    "dur": 3.0,
    "photo": {
-    "url": "https://tong.visitkorea.or.kr/cms2/website/66/2670666.jpg",
+    "url": "https://tong.visitkorea.or.kr/cms2/website/92/2707192.jpg",
+    "pos": "50% 40%"
+   },
+   "kicker": "10월 12일 월요일 · 비 소식",
+   "title": "오늘 저녁,\n[[무슨 술]]에\n뭐 먹지?",
+   "size": 116
+  },
+  {
+   "type": "card",
+   "dur": 4.6,
+   "photo": {
+    "url": "https://tong.visitkorea.or.kr/cms2/website/94/2707194.jpg",
     "pos": "50% 45%"
    },
-   "kicker": "10월 12일 월요일",
-   "title": "비 오는 날,\n오늘 저녁 [[뭐 먹지?]]",
-   "size": 112
+   "chip": "퇴근길 혼술",
+   "headline": "어묵탕 ×\n[[데운 준마이 사케]]",
+   "line": "비 오는 날엔 국물도 술도 따뜻하게"
   },
   {
    "type": "card",
-   "dur": 4.8,
+   "dur": 4.6,
    "photo": {
-    "url": "https://tong.visitkorea.or.kr/cms2/website/92/2538892.jpg"
-   },
-   "chip": "퇴근길 한잔",
-   "headline": "파전에\n막걸리",
-   "line": "빗소리 들리면 생각나는 조합"
-  },
-  {
-   "type": "card",
-   "dur": 4.8,
-   "photo": {
-    "url": "https://tong.visitkorea.or.kr/cms2/website/56/1940356.jpg"
-   },
-   "chip": "혼자 든든하게",
-   "headline": "뜨끈한\n칼국수 한 그릇",
-   "line": "쌀쌀한 저녁엔 국물이 먼저"
-  },
-  {
-   "type": "card",
-   "dur": 4.8,
-   "photo": {
-    "url": "https://tong.visitkorea.or.kr/cms2/website/34/3106234.jpg",
-    "pos": "50% 55%"
+    "url": "https://tong.visitkorea.or.kr/cms2/website/39/3047039.jpg"
    },
    "chip": "친구 모임",
-   "headline": "모둠전 한 접시,\n잔은 가볍게",
-   "line": "여럿이 나눠 먹기 좋아요"
+   "headline": "막창구이 ×\n[[버번 하이볼]]",
+   "line": "기름진 맛을 탄산이 씻어 줘요"
+  },
+  {
+   "type": "card",
+   "dur": 4.6,
+   "photo": {
+    "url": "https://tong.visitkorea.or.kr/cms2/website/34/3052834.jpg"
+   },
+   "chip": "데이트",
+   "headline": "조개구이 ×\n[[소비뇽 블랑]]",
+   "line": "산뜻한 화이트 와인을 차갑게"
+  },
+  {
+   "type": "card",
+   "dur": 4.6,
+   "photo": {
+    "url": "https://tong.visitkorea.or.kr/cms2/website/98/3567098.jpg"
+   },
+   "chip": "월요일 회식",
+   "headline": "수육 ×\n[[증류식 소주]]",
+   "line": "얼음 넣어 온더록으로 천천히"
   },
   {
    "type": "cover",
-   "dur": 3.0,
+   "dur": 2.8,
    "photo": {
-    "url": "https://tong.visitkorea.or.kr/cms2/website/92/2538892.jpg"
+    "url": "https://tong.visitkorea.or.kr/cms2/website/93/2707193.jpg",
+    "pos": "50% 40%"
    },
    "kicker": "오늘 저녁",
-   "title": "정하셨어요?",
+   "title": "[[몇 번]]으로\n갈래요?",
    "line": "저장해 두고 비 오는 날 꺼내 보세요"
   }
  ],
- "caption": "비 오는 월요일, 오늘 저녁 뭐 먹지?\n\n1. 퇴근길 한잔: 파전에 막걸리\n2. 혼자 든든하게: 뜨끈한 칼국수 한 그릇\n3. 친구 모임: 모둠전 한 접시, 잔은 가볍게\n\n오늘 서울은 비 예보가 있어요(강수 확률 74%, 낮 최고 25도). 술 조합은 추천일 뿐이에요. 지나친 음주는 건강에 해로워요.",
+ "caption": "비 오는 월요일, 무슨 술에 뭐 먹지?\n\n1. 퇴근길 혼술: 어묵탕 × 데운 준마이 사케\n준마이는 쌀과 누룩만으로 빚은 사케예요. 따뜻하게 데우면 국물 안주와 잘 맞아요.\n2. 친구 모임: 막창구이 × 버번 하이볼\n버번은 옥수수를 주원료로 한 미국 위스키예요. 탄산수를 타면 기름진 안주가 덜 물려요.\n3. 데이트: 조개구이 × 소비뇽 블랑\n신맛이 또렷한 화이트 와인 품종이에요. 차갑게 식혀서 해산물과 함께해요.\n4. 월요일 회식: 수육 × 증류식 소주\n안동소주처럼 곡물을 발효해 증류한 소주예요. 얼음을 넣어 천천히 마셔요.\n\n오늘 서울은 비 예보가 있어요(강수 확률 74%, 낮 최고 25도). 술 조합은 추천일 뿐이에요. 지나친 음주는 건강에 해로워요.",
  "tags": [
   "오늘저녁메뉴",
-  "저녁메뉴추천",
+  "술안주추천",
   "비오는날",
-  "파전",
-  "막걸리",
-  "칼국수",
-  "술안주",
+  "사케",
+  "하이볼",
+  "화이트와인",
+  "증류식소주",
+  "어묵탕",
+  "막창",
   "퇴근길"
  ],
  "sources": [
   "https://open-meteo.com/ (서울 예보, 2026-10-12 확인)"
  ],
  "credits": [
-  "ⓒ한국관광공사 포토코리아-알렉스 분도, IR 스튜디오, 이범수, 토라이 리퍼블릭"
- ],
- "subject": "비 오는 날 저녁"
+  "ⓒ한국관광공사 포토코리아-알렉스 분도, 김지영, 천준교, 황성훈"
+ ]
 }
