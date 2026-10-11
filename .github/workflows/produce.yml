@@ -1,0 +1,77 @@
+# 영상 설계도(videos/날짜/*.json)가 올라오면 영상을 만들어 공개하고 텔레그램으로 보내요.
+name: produce
+
+on:
+  push:
+    branches: [main]
+    paths: ["videos/**"]
+  workflow_dispatch:
+    inputs:
+      day:
+        description: "만들 날짜 (예: 2026-10-12). 비우면 오늘(한국 시간)"
+        required: false
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: repo-write
+  cancel-in-progress: false
+
+jobs:
+  produce:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: 도구 설치
+        run: |
+          pip install --quiet playwright imageio-ffmpeg numpy pillow requests
+          python -m playwright install --with-deps chromium
+      - name: 날짜 정하기
+        id: day
+        run: |
+          DAY="${{ github.event.inputs.day }}"
+          if [ -z "$DAY" ]; then DAY=$(TZ=Asia/Seoul date +%F); fi
+          if [ ! -d "videos/$DAY" ]; then DAY=$(ls videos | sort | tail -1); fi
+          echo "day=$DAY" >> "$GITHUB_OUTPUT"
+          echo "만들 날짜: $DAY"
+      - name: 영상 만들기
+        run: python video/produce.py "${{ steps.day.outputs.day }}"
+      - name: 영상 파일 올리기
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          DAY="${{ steps.day.outputs.day }}"
+          ls dist/*.mp4 >/dev/null 2>&1 || { echo "올릴 영상이 없어요"; exit 0; }
+          gh release view "v$DAY" >/dev/null 2>&1 || gh release create "v$DAY" --title "$DAY 영상" --notes "$DAY 에 만든 먹거리 릴스예요."
+          gh release upload "v$DAY" dist/*.mp4 --clobber
+      - name: 주소 기록하고 텔레그램으로 보내기
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: python video/publish.py "${{ steps.day.outputs.day }}"
+      - name: RSS 만들기
+        run: python scripts/build_feed.py
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: public
+      - id: deploy
+        uses: actions/deploy-pages@v4
+      - name: 기록 저장
+        if: always()
+        run: |
+          git config user.name "jecheol-feed"
+          git config user.email "actions@users.noreply.github.com"
+          git add state logs
+          git diff --cached --quiet || git commit -m "영상 기록 갱신"
+          git pull --rebase
+          git push

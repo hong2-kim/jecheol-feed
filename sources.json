@@ -1,29 +1,134 @@
 {
-  "note": "rss: 매일 자동으로 읽는 주소(2026-10-11에 열리는 것을 확인). pages: RSS가 없어 글을 쓸 때 직접 읽고 확인하는 공식 사이트.",
+  "note": "rss: 매일 읽는 공식 기관 주소. news: 구글 뉴스에서 최근 이틀 치를 찾을 검색어. pages: RSS가 없어 글을 쓸 때 직접 읽는 공식 사이트.",
   "rss": [
-    {"id": "mfds-notice", "name": "식품의약품안전처 공지·보도 (한국)", "url": "https://www.mfds.go.kr/www/rss/brd.do?brdId=ntc0021", "use": "식품 안전"},
-    {"id": "efsa", "name": "EFSA 유럽식품안전청", "url": "https://www.efsa.europa.eu/en/all/rss", "use": "식품 안전(유럽)"},
-    {"id": "cdc-food", "name": "미국 CDC 식품 안전", "url": "https://tools.cdc.gov/api/v2/resources/media/316422.rss", "use": "식품 안전(미국)"},
-    {"id": "maff-jp", "name": "일본 농림수산성 보도자료", "url": "https://www.maff.go.jp/j/press/rss.xml", "use": "해외 제철(일본)"},
-    {"id": "mhlw-jp", "name": "일본 후생노동성 새 소식", "url": "https://www.mhlw.go.jp/stf/news.rdf", "use": "식품 안전(일본)"},
-    {"id": "caa-jp", "name": "일본 소비자청", "url": "https://www.caa.go.jp/news.rss", "use": "식품 안전(일본)"},
-    {"id": "tat-th", "name": "태국관광청 뉴스룸", "url": "https://www.tatnews.org/feed/", "use": "해외 축제(동남아)"}
+    {
+      "id": "mfds-notice",
+      "name": "식품의약품안전처 공지·보도 (한국)",
+      "url": "https://www.mfds.go.kr/www/rss/brd.do?brdId=ntc0021",
+      "use": "식품 안전"
+    },
+    {
+      "id": "efsa",
+      "name": "EFSA 유럽식품안전청",
+      "url": "https://www.efsa.europa.eu/en/all/rss",
+      "use": "식품 안전(유럽)"
+    },
+    {
+      "id": "cdc-food",
+      "name": "미국 CDC 식품 안전",
+      "url": "https://tools.cdc.gov/api/v2/resources/media/316422.rss",
+      "use": "식품 안전(미국)"
+    },
+    {
+      "id": "maff-jp",
+      "name": "일본 농림수산성 보도자료",
+      "url": "https://www.maff.go.jp/j/press/rss.xml",
+      "use": "해외 제철(일본)"
+    },
+    {
+      "id": "mhlw-jp",
+      "name": "일본 후생노동성 새 소식",
+      "url": "https://www.mhlw.go.jp/stf/news.rdf",
+      "use": "식품 안전(일본)"
+    },
+    {
+      "id": "caa-jp",
+      "name": "일본 소비자청",
+      "url": "https://www.caa.go.jp/news.rss",
+      "use": "식품 안전(일본)"
+    },
+    {
+      "id": "tat-th",
+      "name": "태국관광청 뉴스룸",
+      "url": "https://www.tatnews.org/feed/",
+      "use": "해외 축제(동남아)"
+    }
   ],
   "pages": [
-    {"name": "해양수산부 보도자료 (이달의 수산물)", "url": "https://www.mof.go.kr", "use": "한국 제철"},
-    {"name": "농촌진흥청 농사로", "url": "https://www.nongsaro.go.kr", "use": "한국 제철"},
-    {"name": "농림축산식품부", "url": "https://www.mafra.go.kr", "use": "한국 제철"},
-    {"name": "국립수산과학원 (패류독소 속보)", "url": "https://www.nifs.go.kr", "use": "식품 안전"},
-    {"name": "질병관리청 (비브리오, 노로바이러스)", "url": "https://www.kdca.go.kr", "use": "식품 안전"},
-    {"name": "식품안전나라", "url": "https://www.foodsafetykorea.go.kr", "use": "식품 안전"},
-    {"name": "대한민국 구석구석 (한국관광공사 축제)", "url": "https://korean.visitkorea.or.kr", "use": "국내 축제"},
-    {"name": "더술닷컴 (전통주, aT)", "url": "https://thesool.com", "use": "술"},
-    {"name": "미국 FDA 식품", "url": "https://www.fda.gov/food", "use": "식품 안전(미국)"},
-    {"name": "미국 농무부 제철 농산물 안내", "url": "https://snaped.fns.usda.gov", "use": "해외 제철(미국)"},
-    {"name": "영국 식품기준청", "url": "https://www.food.gov.uk", "use": "식품 안전(유럽)"},
-    {"name": "일본정부관광국", "url": "https://www.japan.travel", "use": "해외 제철·축제(일본)"},
-    {"name": "독일와인협회", "url": "https://www.deutscheweine.de", "use": "해외 제철·술(독일)"},
-    {"name": "홍콩관광청", "url": "https://www.discoverhongkong.com", "use": "해외 축제"},
-    {"name": "싱가포르관광청", "url": "https://www.visitsingapore.com", "use": "해외 축제"}
+    {
+      "name": "해양수산부 보도자료 (이달의 수산물)",
+      "url": "https://www.mof.go.kr",
+      "use": "한국 제철"
+    },
+    {
+      "name": "농촌진흥청 농사로",
+      "url": "https://www.nongsaro.go.kr",
+      "use": "한국 제철"
+    },
+    {
+      "name": "농림축산식품부",
+      "url": "https://www.mafra.go.kr",
+      "use": "한국 제철"
+    },
+    {
+      "name": "국립수산과학원 (패류독소 속보)",
+      "url": "https://www.nifs.go.kr",
+      "use": "식품 안전"
+    },
+    {
+      "name": "질병관리청 (비브리오, 노로바이러스)",
+      "url": "https://www.kdca.go.kr",
+      "use": "식품 안전"
+    },
+    {
+      "name": "식품안전나라",
+      "url": "https://www.foodsafetykorea.go.kr",
+      "use": "식품 안전"
+    },
+    {
+      "name": "대한민국 구석구석 (한국관광공사 축제)",
+      "url": "https://korean.visitkorea.or.kr",
+      "use": "국내 축제"
+    },
+    {
+      "name": "더술닷컴 (전통주, aT)",
+      "url": "https://thesool.com",
+      "use": "술"
+    },
+    {
+      "name": "미국 FDA 식품",
+      "url": "https://www.fda.gov/food",
+      "use": "식품 안전(미국)"
+    },
+    {
+      "name": "미국 농무부 제철 농산물 안내",
+      "url": "https://snaped.fns.usda.gov",
+      "use": "해외 제철(미국)"
+    },
+    {
+      "name": "영국 식품기준청",
+      "url": "https://www.food.gov.uk",
+      "use": "식품 안전(유럽)"
+    },
+    {
+      "name": "일본정부관광국",
+      "url": "https://www.japan.travel",
+      "use": "해외 제철·축제(일본)"
+    },
+    {
+      "name": "독일와인협회",
+      "url": "https://www.deutscheweine.de",
+      "use": "해외 제철·술(독일)"
+    },
+    {
+      "name": "홍콩관광청",
+      "url": "https://www.discoverhongkong.com",
+      "use": "해외 축제"
+    },
+    {
+      "name": "싱가포르관광청",
+      "url": "https://www.visitsingapore.com",
+      "use": "해외 축제"
+    }
+  ],
+  "news": [
+    "제철 수산물",
+    "제철 농산물",
+    "먹거리 축제",
+    "식품 신제품 출시",
+    "외식 트렌드",
+    "편의점 신상 먹거리",
+    "농수산물 가격",
+    "식중독 주의"
   ]
 }

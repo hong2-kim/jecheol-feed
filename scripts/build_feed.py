@@ -46,12 +46,23 @@ def body_html(item):
     return "".join(parts)
 
 
-def build_rss(items, cfg):
+def video_html(v):
+    """영상 한 편의 제목, 핵심 내용, 게시글 문구, 해시태그, 출처."""
+    tags = " ".join("#" + x for x in (v.get("tags") or []))
+    srcs = "".join(f'<li><a href="{esc(s)}">{esc(s)}</a></li>' if str(s).startswith("http") else f"<li>{esc(s)}</li>" for s in (v.get("sources") or []))
+    credit = " / ".join(v.get("credits") or [])
+    return (f"<p><b>핵심 내용</b> {esc(v.get('summary') or '')}</p>"
+            f"<p><b>영상</b> <a href=\"{esc(v['url'])}\">내려받기·재생</a> ({v.get('seconds')}초)</p>"
+            f"<h3>게시글 문구</h3><p>{esc(v.get('caption') or '').replace(chr(10), '<br>')}</p>"
+            f"<p>{esc(tags)}</p><p>사진 {esc(credit)}</p><h3>출처</h3><ul>{srcs}</ul>")
+
+
+def build_rss(items, videos, cfg):
     site = cfg.get("site_url", "").rstrip("/")
     rss = ET.Element("rss", {"version": "2.0", "xmlns:atom": "http://www.w3.org/2005/Atom"})
     ch = ET.SubElement(rss, "channel")
     ET.SubElement(ch, "title").text = cfg["title"]
-    ET.SubElement(ch, "link").text = (site + "/") if site else items[0]["sources"][0]["url"]
+    ET.SubElement(ch, "link").text = (site + "/") if site else "https://github.com/"
     ET.SubElement(ch, "description").text = cfg["description"]
     ET.SubElement(ch, "language").text = "ko"
     ET.SubElement(ch, "lastBuildDate").text = format_datetime(datetime.now(KST))
@@ -68,11 +79,28 @@ def build_rss(items, cfg):
         ET.SubElement(el, "pubDate").text = format_datetime(datetime(y, m, d, 7, 0, tzinfo=KST))
         ET.SubElement(el, "source", {"url": item["sources"][0]["url"]}).text = item["sources"][0]["name"]
         ET.SubElement(el, "description").text = f"<h3>1. 릴스 제목</h3><p>{esc(item['title'])}</p>" + body_html(item)
+    for v in videos[:40]:
+        el = ET.SubElement(ch, "item")
+        ET.SubElement(el, "title").text = f"[영상] {v.get('title') or v['id']}"
+        ET.SubElement(el, "link").text = v["url"]
+        ET.SubElement(el, "guid", {"isPermaLink": "false"}).text = "video-" + v["id"]
+        ET.SubElement(el, "category").text = "영상"
+        y, m, d = map(int, v["date"].split("-"))
+        ET.SubElement(el, "pubDate").text = format_datetime(datetime(y, m, d, 7, 30, tzinfo=KST))
+        ET.SubElement(el, "enclosure", {"url": v["url"], "type": "video/mp4", "length": str(int((v.get("size_mb") or 0) * 1e6))})
+        ET.SubElement(el, "description").text = video_html(v)
     ET.indent(rss)
     return '<?xml version="1.0" encoding="UTF-8"?>\n' + ET.tostring(rss, encoding="unicode") + "\n"
 
 
-def build_page(items, cfg):
+def build_page(items, videos, cfg):
+    vids, last_day = [], None
+    for v in videos[:24]:
+        if v["date"] != last_day:
+            vids.append(f"<h2>{esc(v['date'])} 영상</h2>")
+            last_day = v["date"]
+        vids.append(f'<article id="video-{esc(v["id"])}"><h3 class="t">{esc(v.get("title") or v["id"])}</h3>'
+                    f'<video controls preload="none" playsinline src="{esc(v["url"])}"></video>{video_html(v)}</article>')
     blocks, last = [], None
     for item in items:
         if item["date"] != last:
@@ -88,11 +116,13 @@ body {{ font-family: "Noto Sans KR", "Malgun Gothic", sans-serif; margin: 0 auto
 h1 {{ font-size: 24px; }} h2 {{ margin-top: 36px; font-size: 18px; color: #7A6A58; }}
 article {{ background: #fff; border-radius: 14px; padding: 18px 20px; margin: 14px 0; }}
 article h3 {{ font-size: 14px; color: #B4441A; margin: 18px 0 4px; }} article h3.t {{ font-size: 20px; color: #231C15; margin: 0 0 6px; }}
+video {{ width: 100%; max-width: 360px; aspect-ratio: 9 / 16; border-radius: 12px; background: #000; display: block; margin: 8px 0; }}
 ul {{ margin: 4px 0; padding-left: 20px; }} a {{ color: #B4441A; word-break: break-all; }} small {{ color: #7A6A58; }}
 </style></head><body>
 <h1>{esc(cfg['title'])}</h1>
 <p>{esc(cfg['description'])} <a href="feed.xml">RSS 주소</a></p>
 <p><small>마지막 갱신 {datetime.now(KST).strftime('%Y-%m-%d %H:%M')} · 글 {len(items)}개</small></p>
+{''.join(vids)}
 {''.join(blocks)}
 </body></html>"""
 
@@ -100,16 +130,17 @@ ul {{ margin: 4px 0; padding-left: 20px; }} a {{ color: #B4441A; word-break: bre
 def main():
     cfg = read_json(ROOT / "config.json")
     items, problems = load_items()
+    videos = read_json(ROOT / "state" / "videos.json", []) or []
     for p in problems:
         print("확인 필요:", p)
         log_error("build_feed", p)
-    if not items:
+    if not items and not videos:
         sys.exit("내보낼 글이 없어요.")
     out = ROOT / "public"
     out.mkdir(exist_ok=True)
-    (out / "feed.xml").write_text(build_rss(items, cfg), encoding="utf-8")
-    (out / "index.html").write_text(build_page(items, cfg), encoding="utf-8")
-    print(f"피드를 만들었어요: 글 {len(items)}개, 문제 {len(problems)}건")
+    (out / "feed.xml").write_text(build_rss(items, videos, cfg), encoding="utf-8")
+    (out / "index.html").write_text(build_page(items, videos, cfg), encoding="utf-8")
+    print(f"피드를 만들었어요: 글 {len(items)}개, 영상 {len(videos)}개, 문제 {len(problems)}건")
 
 
 if __name__ == "__main__":

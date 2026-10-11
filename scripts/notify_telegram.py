@@ -91,22 +91,19 @@ def run():
     if not todo:
         print("새로 보낼 글이 없어요.")
         return
-    head = f"{today} 릴스 소재 {len(todo)}개예요."
+    e = html.escape
+    lines = [f"<b>{today} 먹거리 소식 글 {len(todo)}개</b>"]
     if len(sys.argv) == 1 and len(todays) < cfg.get("daily_minimum", 3):
-        head += " 확인된 내용이 모자라 억지로 채우지 않았어요."
-    api(token, "sendMessage", chat_id=chat_id, text=head)
-    failed = 0
+        lines.append("확인된 내용이 모자라 억지로 채우지 않았어요.")
     for item in todo:
-        try:
-            api(token, "sendMessage", chat_id=chat_id, text=message(item, site),
-                parse_mode="HTML", disable_web_page_preview="true")
-            sent.add(item["id"])
-        except Exception as e:
-            failed += 1
-            log_error(f"notify:{item['id']}", e)
-            print(f"못 보냈어요: {item['id']} ({e})")
+        mark = " (추가 확인 필요)" if item.get("unverified") else ""
+        lines.append(f"• [{e(item['category'])}] {e(item['title'])}{mark}")
+    if site:
+        lines.append(f'<a href="{site}/">전체 내용과 출처 보기</a>')
+    api(token, "sendMessage", chat_id=chat_id, text="\n".join(lines), parse_mode="HTML", disable_web_page_preview="true")
+    sent.update(item["id"] for item in todo)
     write_json(ROOT / "state" / "sent.json", sorted(sent))
-    print(f"보냈어요: {len(todo) - failed}개")
+    print(f"보냈어요: 소식 글 {len(todo)}개를 한 통으로")
 
 
 def main():

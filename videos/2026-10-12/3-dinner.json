@@ -1,0 +1,79 @@
+{
+ "kind": "저녁",
+ "title": "비 오는 월요일, 오늘 저녁 뭐 먹지?",
+ "brand": "10.12 저녁 메뉴",
+ "music": "carefree",
+ "summary": "비 예보가 있는 월요일 저녁에 어울리는 메뉴와 술 조합 세 가지를 골랐어요.",
+ "scenes": [
+  {
+   "type": "cover",
+   "dur": 3.0,
+   "photo": {
+    "url": "https://tong.visitkorea.or.kr/cms2/website/66/2670666.jpg",
+    "pos": "50% 45%"
+   },
+   "kicker": "10월 12일 월요일",
+   "title": "비 오는 날,\n오늘 저녁 [[뭐 먹지?]]",
+   "size": 112
+  },
+  {
+   "type": "card",
+   "dur": 4.8,
+   "photo": {
+    "url": "https://tong.visitkorea.or.kr/cms2/website/92/2538892.jpg"
+   },
+   "chip": "퇴근길 한잔",
+   "headline": "파전에\n막걸리",
+   "line": "빗소리 들리면 생각나는 조합"
+  },
+  {
+   "type": "card",
+   "dur": 4.8,
+   "photo": {
+    "url": "https://tong.visitkorea.or.kr/cms2/website/56/1940356.jpg"
+   },
+   "chip": "혼자 든든하게",
+   "headline": "뜨끈한\n칼국수 한 그릇",
+   "line": "쌀쌀한 저녁엔 국물이 먼저"
+  },
+  {
+   "type": "card",
+   "dur": 4.8,
+   "photo": {
+    "url": "https://tong.visitkorea.or.kr/cms2/website/34/3106234.jpg",
+    "pos": "50% 55%"
+   },
+   "chip": "친구 모임",
+   "headline": "모둠전 한 접시,\n잔은 가볍게",
+   "line": "여럿이 나눠 먹기 좋아요"
+  },
+  {
+   "type": "cover",
+   "dur": 3.0,
+   "photo": {
+    "url": "https://tong.visitkorea.or.kr/cms2/website/92/2538892.jpg"
+   },
+   "kicker": "오늘 저녁",
+   "title": "정하셨어요?",
+   "line": "저장해 두고 비 오는 날 꺼내 보세요"
+  }
+ ],
+ "caption": "비 오는 월요일, 오늘 저녁 뭐 먹지?\n\n1. 퇴근길 한잔: 파전에 막걸리\n2. 혼자 든든하게: 뜨끈한 칼국수 한 그릇\n3. 친구 모임: 모둠전 한 접시, 잔은 가볍게\n\n오늘 서울은 비 예보가 있어요(강수 확률 74%, 낮 최고 25도). 술 조합은 추천일 뿐이에요. 지나친 음주는 건강에 해로워요.",
+ "tags": [
+  "오늘저녁메뉴",
+  "저녁메뉴추천",
+  "비오는날",
+  "파전",
+  "막걸리",
+  "칼국수",
+  "술안주",
+  "퇴근길"
+ ],
+ "sources": [
+  "https://open-meteo.com/ (서울 예보, 2026-10-12 확인)"
+ ],
+ "credits": [
+  "ⓒ한국관광공사 포토코리아-알렉스 분도, IR 스튜디오, 이범수, 토라이 리퍼블릭"
+ ],
+ "subject": "비 오는 날 저녁"
+}

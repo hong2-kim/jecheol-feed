@@ -7,6 +7,8 @@
 - 실패한 곳: logs/errors.jsonl 에 남기고 나머지는 계속 읽어요.
   다음에 돌릴 때 다시 읽으니, 그동안 올라온 글도 함께 들어와요.
 """
+import json
+import urllib.parse
 import urllib.request
 from xml.etree import ElementTree as ET
 
@@ -62,6 +64,37 @@ def main():
             prev = health.get(src["id"], {})
             health[src["id"]] = {"last_ok": prev.get("last_ok"), "fails": prev.get("fails", 0) + 1, "last_error": str(e)[:200]}
             print(f"못 읽었어요: {src['name']} ({e})")
+    # 먹거리 뉴스 (구글 뉴스 검색 RSS, 최근 이틀)
+    for query in read_json(ROOT / "sources.json").get("news", []):
+        try:
+            url = "https://news.google.com/rss/search?" + urllib.parse.urlencode({"q": query + " when:2d", "hl": "ko", "gl": "KR", "ceid": "KR:ko"})
+            with urllib.request.urlopen(urllib.request.Request(url, headers=UA), timeout=30) as res:
+                entries = parse(res.read())[:8]
+            new = [e for e in entries if e["link"] not in seen]
+            for e in new:
+                seen.add(e["link"])
+                fresh.append({"source": "news", "source_name": "뉴스 검색: " + query, "use": "먹거리 소식", **e})
+            print(f"읽었어요: 뉴스 '{query}' (새 글 {len(new)}개)")
+        except Exception as e:
+            log_error(f"fetch:news:{query}", e)
+            print(f"못 읽었어요: 뉴스 '{query}' ({e})")
+
+    # 서울 날씨 (Open-Meteo). 저녁 메뉴를 고를 때 써요.
+    try:
+        url = ("https://api.open-meteo.com/v1/forecast?latitude=37.57&longitude=126.98&timezone=Asia%2FSeoul&forecast_days=2"
+               "&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_probability_max")
+        with urllib.request.urlopen(urllib.request.Request(url, headers=UA), timeout=30) as res:
+            daily = json.loads(res.read())["daily"]
+        write_json(ROOT / "inbox" / f"{today_kst()}-weather.json", {
+            "place": "서울", "source": "https://open-meteo.com/", "date": daily["time"][0],
+            "weather_code": daily["weather_code"][0], "max_c": daily["temperature_2m_max"][0], "min_c": daily["temperature_2m_min"][0],
+            "rain_chance_percent": daily["precipitation_probability_max"][0],
+            "note": "weather_code: 0 맑음, 1~3 구름, 45~48 안개, 51~67 비, 71~77 눈, 80~82 소나기, 95~ 뇌우"})
+        print("읽었어요: 서울 날씨")
+    except Exception as e:
+        log_error("fetch:weather", e)
+        print(f"못 읽었어요: 날씨 ({e})")
+
     write_json(ROOT / "state" / "seen_links.json", sorted(seen))
     write_json(ROOT / "state" / "source_health.json", health)
     if first_run:
