@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 """오늘 소재를 텔레그램 봇으로 보내요.
 
-  python scripts/notify_telegram.py            오늘 날짜 글
-  python scripts/notify_telegram.py 2026-10-12  그 날짜 글
+  python scripts/notify_telegram.py            오늘 글 (못 보낸 최근 3일 치도 함께)
+  python scripts/notify_telegram.py 2026-10-12  그 날짜 글만
 필요한 값(환경 변수):
   TELEGRAM_BOT_TOKEN  봇 토큰 (BotFather 가 준 것)
   TELEGRAM_CHAT_ID    받을 사람 번호. 비워 두면 봇에게 마지막으로 말을 건 사람에게 보내요.
@@ -12,10 +12,12 @@ import html
 import json
 import os
 import sys
+import urllib.error
 import urllib.parse
 import urllib.request
+from datetime import datetime, timedelta
 
-from common import ROOT, load_items, log_error, read_json, today_kst, write_json
+from common import KST, ROOT, load_items, log_error, read_json, today_kst, write_json
 
 
 def api(token, method, **params):
@@ -29,7 +31,7 @@ def find_chat_id(token):
         chat = (update.get("message") or {}).get("chat")
         if chat:
             return chat["id"]
-    sys.exit("받을 사람을 찾지 못했어요. 텔레그램에서 봇 대화방에 들어가 아무 말이나 한 번 보내 주세요.")
+    raise RuntimeError("받을 사람을 찾지 못했어요. 텔레그램에서 봇 대화방에 들어가 아무 말이나 한 번 보내 주세요.")
 
 
 def message(item, site):
@@ -54,39 +56,59 @@ def message(item, site):
     return "\n".join(lines)
 
 
-def main():
+def run():
     token = os.environ.get("TELEGRAM_BOT_TOKEN", "").strip()
     if not token:
-        sys.exit("TELEGRAM_BOT_TOKEN 이 없어요.")
-    day = sys.argv[1] if len(sys.argv) > 1 else today_kst()
+        raise RuntimeError("TELEGRAM_BOT_TOKEN 이 없어요. 깃허브 비밀 보관함에 넣었는지 확인해 주세요.")
     cfg = read_json(ROOT / "config.json")
     site = cfg.get("site_url", "").rstrip("/")
-    chat_id = os.environ.get("TELEGRAM_CHAT_ID", "").strip() or find_chat_id(token)
+    try:
+        chat_id = os.environ.get("TELEGRAM_CHAT_ID", "").strip() or find_chat_id(token)
+    except urllib.error.HTTPError as e:
+        if e.code in (401, 404):
+            raise RuntimeError("텔레그램이 토큰을 받아 주지 않아요. 토큰을 다시 복사해 넣어 주세요.") from e
+        raise
+    today = today_kst()
+    if len(sys.argv) > 1:
+        days = [sys.argv[1]]
+    else:
+        # 며칠 실패했다가 다시 돌아도 빠진 글을 보내도록 최근 3일을 함께 봐요.
+        base = datetime.now(KST)
+        days = [(base - timedelta(days=n)).strftime("%Y-%m-%d") for n in range(3)]
     sent = set(read_json(ROOT / "state" / "sent.json", []))
     items, _ = load_items()
-    todays = [i for i in items if i["date"] == day]
-    todo = [i for i in reversed(todays) if i["id"] not in sent]
-    if not todays:
-        log_error("notify", f"{day} 글이 없어요")
-        api(token, "sendMessage", chat_id=chat_id, text=f"{day} 소재를 만들지 못했어요. 다음 수집 때 다시 시도해요.")
-        sys.exit(1)
+    todays = [i for i in items if i["date"] == days[0]]
+    todo = [i for i in reversed(items) if i["date"] in days and i["id"] not in sent]
+    if not todays and not todo:
+        api(token, "sendMessage", chat_id=chat_id, text=f"{days[0]} 소재를 만들지 못했어요. 다음 수집 때 다시 시도해요.")
+        raise RuntimeError(f"{days[0]} 글이 없어요")
     if not todo:
         print("새로 보낼 글이 없어요.")
         return
-    head = f"{day} 릴스 소재 {len(todays)}개예요."
-    if len(todays) < cfg.get("daily_minimum", 3):
+    head = f"{today} 릴스 소재 {len(todo)}개예요."
+    if len(sys.argv) == 1 and len(todays) < cfg.get("daily_minimum", 3):
         head += " 확인된 내용이 모자라 억지로 채우지 않았어요."
     api(token, "sendMessage", chat_id=chat_id, text=head)
+    failed = 0
     for item in todo:
         try:
             api(token, "sendMessage", chat_id=chat_id, text=message(item, site),
                 parse_mode="HTML", disable_web_page_preview="true")
             sent.add(item["id"])
         except Exception as e:
+            failed += 1
             log_error(f"notify:{item['id']}", e)
             print(f"못 보냈어요: {item['id']} ({e})")
     write_json(ROOT / "state" / "sent.json", sorted(sent))
-    print(f"보냈어요: {len(todo)}개")
+    print(f"보냈어요: {len(todo) - failed}개")
+
+
+def main():
+    try:
+        run()
+    except Exception as e:
+        log_error("notify", e)
+        sys.exit(f"알림 실패: {e}")
 
 
 if __name__ == "__main__":
