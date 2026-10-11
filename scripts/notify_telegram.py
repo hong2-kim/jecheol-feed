@@ -62,8 +62,14 @@ def run():
         raise RuntimeError("TELEGRAM_BOT_TOKEN 이 없어요. 깃허브 비밀 보관함에 넣었는지 확인해 주세요.")
     cfg = read_json(ROOT / "config.json")
     site = cfg.get("site_url", "").rstrip("/")
+    chat_id = os.environ.get("TELEGRAM_CHAT_ID", "").strip()
     try:
-        chat_id = os.environ.get("TELEGRAM_CHAT_ID", "").strip() or find_chat_id(token)
+        if not chat_id:
+            # 텔레그램은 받은 말을 하루만 보관해요. 번호를 비밀 보관함에 넣어 두면 매번 찾지 않아도 돼요.
+            chat_id = find_chat_id(token)
+            api(token, "sendMessage", chat_id=chat_id, text=(
+                "연결됐어요. 알림이 끊기지 않게 아래 숫자를 깃허브 비밀 보관함에 넣어 주세요.\n"
+                f"Name: TELEGRAM_CHAT_ID\nSecret: {chat_id}"))
     except urllib.error.HTTPError as e:
         if e.code in (401, 404):
             raise RuntimeError("텔레그램이 토큰을 받아 주지 않아요. 토큰을 다시 복사해 넣어 주세요.") from e
