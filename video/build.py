@@ -3,7 +3,7 @@
 
 설계도는 장면(scenes)의 목록이에요. 장면 종류는 네 가지예요.
   cover  사진을 화면 가득 어둡게 깔고 큰 제목      (첫 장면, 마지막 장면)
-  card   위에 사진, 아래에 분류·제목·한 줄          (소식 모아보기)
+  card   사진을 화면 가득, 아래에 장소·제목·한두 줄   (소식, 메뉴, 음식 한 가지)
   duo    위아래 사진 두 장, 가운데에 번호·이름·설명  (장소 소개, 사진 비교)
   info   위에 사진, 아래에 큰 날짜나 숫자           (축제 일정)
 사진은 주소(url)로 적고, 만들 때 내려받아요.
@@ -16,7 +16,7 @@ import urllib.parse
 import urllib.request
 from pathlib import Path
 
-from PIL import Image
+from PIL import Image, ImageEnhance, ImageFilter
 
 HERE = Path(__file__).parent
 CACHE = HERE.parent / "build" / "photos"
@@ -33,22 +33,58 @@ def rich(text):
     return esc(text).replace("[[", '<span class="am">').replace("]]", "</span>")
 
 
+SIZES = {}  # 사진 주소 -> (가로, 세로)
+
+
+def grade(image):
+    """작은 사진은 선명하게 키우고 색과 윤기를 조금 살려요. 사진 속 내용은 바꾸지 않아요."""
+    w, h = image.size
+    if max(w, h) < 1900:
+        k = 1900 / max(w, h)
+        image = image.resize((round(w * k), round(h * k)), Image.LANCZOS)
+        image = image.filter(ImageFilter.UnsharpMask(radius=2.2, percent=70, threshold=2))
+    image.thumbnail((2200, 2200))
+    image = ImageEnhance.Color(image).enhance(1.14)
+    return ImageEnhance.Contrast(image).enhance(1.06)
+
+
 def fetch_photo(photo):
-    """사진을 내려받아 JPEG로 저장하고 (파일 주소, 위치)를 돌려줘요."""
+    """사진을 내려받아 보정한 뒤 JPEG로 저장하고 (파일 주소, 위치)를 돌려줘요."""
     if isinstance(photo, str):
         photo = {"url": photo}
     url = photo["url"]
     CACHE.mkdir(parents=True, exist_ok=True)
-    path = CACHE / (hashlib.sha1(url.encode()).hexdigest()[:16] + ".jpg")
+    path = CACHE / (hashlib.sha1(url.encode()).hexdigest()[:16] + "-g2.jpg")
     if not path.exists():
         safe = urllib.parse.quote(url, safe=":/?&=%+,;@()")
         data = urllib.request.urlopen(urllib.request.Request(safe, headers=UA), timeout=60).read()
         image = Image.open(io.BytesIO(data)).convert("RGB")
         if min(image.size) < 500:
             raise ValueError(f"사진이 너무 작아요 ({image.size[0]}x{image.size[1]}): {url}")
-        image.thumbnail((2200, 2200))
-        image.save(path, "JPEG", quality=92)
+        grade(image).save(path, "JPEG", quality=92)
+    if url not in SIZES:
+        with Image.open(path) as im:
+            SIZES[url] = im.size
     return path.as_uri(), photo.get("pos", "50% 50%")
+
+
+def backdrop(photo):
+    """같은 사진을 흐리고 어둡게 만든 바탕. 가로 사진 아래쪽 빈 곳을 채워요."""
+    url = photo["url"] if isinstance(photo, dict) else photo
+    src, _ = fetch_photo(photo)
+    path = CACHE / (hashlib.sha1(url.encode()).hexdigest()[:16] + "-blur.jpg")
+    if not path.exists():
+        with Image.open(CACHE / (hashlib.sha1(url.encode()).hexdigest()[:16] + "-g2.jpg")) as im:
+            small = im.convert("RGB").resize((108, 192), Image.BILINEAR).filter(ImageFilter.GaussianBlur(7))
+            ImageEnhance.Brightness(small).enhance(0.5).save(path, "JPEG", quality=88)
+    return path.as_uri()
+
+
+def is_tall(photo):
+    url = photo["url"] if isinstance(photo, dict) else photo
+    fetch_photo(photo)
+    w, h = SIZES[url]
+    return h >= w * 1.15
 
 
 def img(photo, dur, zoom_in=True, extra=""):
@@ -73,15 +109,12 @@ def scene_cover(s, i, ctx):
 
 
 def scene_card(s, i, ctx):
-    bars = ""
-    if ctx["cards"] > 1:
-        states = ["done" if k < ctx["card_no"] else "now" if k == ctx["card_no"] else "wait" for k in range(ctx["cards"])]
-        bars = f'<div class="bars" style="--dur:{s["dur"]}s">' + "".join(f'<i class="{st}"><b></b></i>' for st in states) + "</div>"
-        ctx["card_no"] += 1
-    brand = f'<div class="brand">{esc(ctx["brand"])}</div>' if ctx.get("brand") else ""
-    chip = f'<span class="chip a rise" style="--dl:.2s;--d:.4s">{esc(s["chip"])}</span>' if s.get("chip") else ""
+    """사진을 화면 가득 깔고 글은 아래쪽에 얹어요. 세로 사진은 전체, 가로 사진은 위 3/4 을 채워요."""
+    shape = "tall" if is_tall(s["photo"]) else "wide"
+    chip = rise("chip", s["chip"], .2) if s.get("chip") else ""
     return "card", (
-        f'<div class="pic">{img(s["photo"], s["dur"], i % 2 == 0)}</div>{bars}{brand}'
+        f'<div class="back"><img src="{backdrop(s["photo"])}"></div>'
+        f'<div class="pic {shape}">{img(s["photo"], s["dur"], i % 2 == 0)}</div><div class="shade"></div>'
         f'<div class="txt">{chip}{rise("hd", s["headline"], .32)}{rise("ln", s.get("line", ""), .6)}</div>'
     )
 
@@ -164,3 +197,6 @@ if __name__ == "__main__":
     spec = json.loads(Path(sys.argv[1]).read_text(encoding="utf-8"))
     page, dur, _ = build_html(spec)
     print(f"{dur:.1f}초, 장면 {len(spec['scenes'])}개")
+    for n, s in enumerate(spec["scenes"], 1):
+        if s["type"] == "card" and not is_tall(s["photo"]):
+            print(f"  장면 {n}: 가로 사진이에요. 같은 음식의 세로 사진이 있으면 그걸 쓰면 화면을 꽉 채워요.")

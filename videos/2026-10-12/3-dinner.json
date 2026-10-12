@@ -1,73 +1,75 @@
 {
  "kind": "저녁",
  "subject": "비 오는 월요일 저녁 (삼겹살·닭갈비·감자탕·조개구이)",
- "title": "비 오는 월요일, 오늘 저녁 뭐 먹지? 4가지",
- "summary": "비 예보가 있는 월요일 저녁에 가기 좋은 메뉴 네 가지를 많이 찾는 순서로 골랐어요. 곁들일 술도 함께 적었어요.",
- "brand": "10.12 저녁 메뉴",
+ "title": "비 오는 월요일, 오늘 저녁 뭐 먹지?",
+ "summary": "비 오는 월요일 저녁에 생각나는 메뉴 네 가지예요. 많이 찾는 순서로, 곁들일 술까지 골랐어요.",
  "scenes": [
   {
    "type": "cover",
    "dur": 3.0,
    "photo": {
-    "url": "https://tong.visitkorea.or.kr/cms2/website/27/3467227.jpg",
-    "pos": "50% 55%"
+    "url": "https://tong.visitkorea.or.kr/cms2/website/85/2670885.jpg",
+    "pos": "50% 70%"
    },
    "kicker": "10월 12일 월요일 · 비 소식",
-   "title": "오늘 저녁,\n[[뭐 먹지?]]",
-   "size": 132
+   "title": "비 오는데\n[[오늘 저녁]]\n뭐 먹지?",
+   "size": 124
   },
   {
    "type": "card",
-   "dur": 4.6,
+   "dur": 4.8,
    "photo": {
-    "url": "https://tong.visitkorea.or.kr/cms2/website/24/3467224.jpg"
+    "url": "https://tong.visitkorea.or.kr/cms2/website/87/2670887.jpg",
+    "pos": "50% 45%"
    },
-   "chip": "월요일 회식",
-   "headline": "삼겹살 ×\n[[소주]]",
-   "line": "비 오는 날 불판 앞이 제일 든든해요"
+   "chip": "월요일 회식엔",
+   "headline": "삼겹살에\n[[소주]]",
+   "line": "비 오는 날 불판 소리는 못 참죠\n첫 점은 소금만 찍어서"
   },
   {
    "type": "card",
-   "dur": 4.6,
+   "dur": 4.8,
    "photo": {
-    "url": "https://tong.visitkorea.or.kr/cms2/website/05/2824405.jpg"
+    "url": "https://tong.visitkorea.or.kr/cms2/website/97/3513397.jpg",
+    "pos": "50% 55%"
    },
-   "chip": "친구 모임",
-   "headline": "닭갈비 ×\n[[맥주]]",
-   "line": "매콤한 철판엔 시원한 맥주"
+   "chip": "친구랑 둘이서",
+   "headline": "닭갈비에\n[[맥주]]",
+   "line": "매콤한 거 한입, 맥주 한 모금\n볶음밥 배는 남겨 두세요"
   },
   {
    "type": "card",
-   "dur": 4.6,
+   "dur": 4.8,
    "photo": {
     "url": "https://tong.visitkorea.or.kr/cms2/website/71/1825971.jpg"
    },
-   "chip": "퇴근길 한 끼",
-   "headline": "감자탕 ×\n[[소주]]",
-   "line": "뜨끈한 국물에 밥까지 한 번에"
+   "chip": "퇴근길 혼자라면",
+   "headline": "감자탕에\n[[소주]]",
+   "line": "뼈 사이 살 발라 먹는 재미\n국물에 밥까지 말면 끝"
   },
   {
    "type": "card",
-   "dur": 4.6,
+   "dur": 4.8,
    "photo": {
     "url": "https://tong.visitkorea.or.kr/cms2/website/34/3052834.jpg"
    },
-   "chip": "데이트",
-   "headline": "조개구이 ×\n[[소주 or 사케]]",
-   "line": "구워 먹는 재미에 대화가 길어져요"
+   "chip": "데이트라면",
+   "headline": "조개구이에\n[[소주 or 사케]]",
+   "line": "입 벌어지면 국물부터 호로록\n굽다 보면 얘기가 길어져요"
   },
   {
    "type": "cover",
    "dur": 2.8,
    "photo": {
-    "url": "https://tong.visitkorea.or.kr/cms2/website/04/2824404.jpg"
+    "url": "https://tong.visitkorea.or.kr/cms2/website/98/3513398.jpg",
+    "pos": "50% 55%"
    },
    "kicker": "오늘 저녁",
    "title": "[[몇 번]]으로\n갈래요?",
-   "line": "저장해 두고 비 오는 날 꺼내 보세요"
+   "line": "저장해 두면 비 오는 날 또 써먹어요"
   }
  ],
- "caption": "비 오는 월요일, 오늘 저녁 뭐 먹지?\n\n1. 월요일 회식: 삼겹살 × 소주\n2. 친구 모임: 닭갈비 × 맥주\n3. 퇴근길 한 끼: 감자탕 × 소주\n4. 데이트: 조개구이 × 소주 or 사케\n\n오늘 서울은 비 예보가 있어요(강수 확률 74%, 낮 최고 25도). 술 조합은 추천일 뿐이에요. 지나친 음주는 건강에 해로워요.",
+ "caption": "비 오는데 오늘 저녁 뭐 먹지?\n\n1. 삼겹살에 소주\n비 오는 날 불판 소리는 못 참죠. 월요일 회식이면 고민할 것도 없어요.\n2. 닭갈비에 맥주\n매콤한 거 한입에 맥주 한 모금. 볶음밥 배는 꼭 남겨 두세요.\n3. 감자탕에 소주\n혼자 가도 눈치 안 보이는 메뉴예요. 뼈 사이 살 발라 먹고 국물에 밥 말면 끝.\n4. 조개구이에 소주 or 사케\n입 벌어지면 국물부터 호로록. 굽다 보면 얘기가 길어져서 데이트에 좋아요.\n\n여러분은 몇 번이에요? 댓글로 알려 주세요.\n\n오늘 서울은 비 예보가 있어요(강수 확률 74%). 술은 적당히, 지나친 음주는 건강에 해로워요.",
  "tags": [
   "오늘저녁메뉴",
   "저녁메뉴추천",
@@ -84,6 +86,6 @@
   "https://open-meteo.com/ (서울 예보, 2026-10-12 확인)"
  ],
  "credits": [
-  "ⓒ한국관광공사 포토코리아-토라이 리퍼블릭, 스튜디오 4cats, 프레임스튜디오, 천준교"
+  "ⓒ한국관광공사 포토코리아-알렉스 분도, 황성훈, 프레임스튜디오, 천준교"
  ]
 }

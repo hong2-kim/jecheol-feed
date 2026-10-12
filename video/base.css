@@ -26,21 +26,16 @@ body { background: #0E0B09; color: #fff; font-family: "Noto Sans KR", sans-serif
 .title { margin-top: 14px; font-weight: 900; font-size: 128px; line-height: 1.13; letter-spacing: -5px; white-space: pre-line; text-shadow: 0 6px 30px rgba(0,0,0,.5); }
 .cover .line { margin-top: 26px; font-weight: 700; font-size: 50px; letter-spacing: -1.5px; }
 
-/* 카드: 위에 사진, 아래에 글 */
-.card .pic { height: 1240px; }
-.card .pic::before { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 420px; z-index: 1; background: linear-gradient(180deg, rgba(14,11,9,.62), rgba(14,11,9,0)); }
-.card .pic::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 420px; background: linear-gradient(180deg, rgba(14,11,9,0), #0E0B09); }
-.bars { position: absolute; left: 60px; right: 60px; top: 236px; display: flex; gap: 12px; z-index: 2; }
-.bars i { flex: 1; height: 8px; border-radius: 4px; background: rgba(255,255,255,.35); overflow: hidden; }
-.bars i b { display: block; height: 100%; background: #fff; transform-origin: left center; }
-.bars i.now b { animation: bar var(--dur) linear both; }
-.bars i.wait b { transform: scaleX(0); }
-@keyframes bar { from { transform: scaleX(0); } to { transform: scaleX(1); } }
-.brand { position: absolute; left: 60px; top: 266px; z-index: 2; font-weight: 800; font-size: 34px; letter-spacing: -1px; text-shadow: 0 2px 10px rgba(0,0,0,.6); }
-.card .txt { position: absolute; left: 60px; right: 60px; top: 1125px; }
-.chip { display: inline-block; padding: 8px 24px 11px; border-radius: 999px; font-weight: 900; font-size: 38px; letter-spacing: -1px; color: #0E0B09; background: var(--ac); }
-.hd { margin-top: 22px; font-weight: 900; font-size: 104px; line-height: 1.16; letter-spacing: -4px; white-space: pre-line; }
-.ln { margin-top: 20px; font-weight: 600; font-size: 46px; line-height: 1.35; letter-spacing: -1.5px; color: #E6DCCB; }
+/* 카드: 사진을 화면 가득, 글은 아래에 얹기 */
+.card .back { position: absolute; inset: 0; }
+.card .back img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.card .pic.tall { height: 1920px; }
+.card .pic.wide { height: 1440px; -webkit-mask-image: linear-gradient(180deg, #000 80%, transparent 100%); mask-image: linear-gradient(180deg, #000 80%, transparent 100%); }
+.card .shade { position: absolute; left: 0; right: 0; bottom: 0; height: 1020px; background: linear-gradient(180deg, rgba(8,6,4,0) 0%, rgba(8,6,4,.5) 36%, rgba(8,6,4,.86) 66%, rgba(8,6,4,.94) 100%); }
+.card .txt { position: absolute; left: 64px; right: 150px; bottom: 340px; text-shadow: 0 3px 18px rgba(0,0,0,.55); }
+.chip { display: inline-block; padding: 6px 20px 10px; border-radius: 999px; background: rgba(8,6,4,.62); font-weight: 800; font-size: 40px; letter-spacing: -1px; color: var(--ac); text-shadow: none; }
+.hd { margin-top: 10px; font-weight: 900; font-size: 92px; line-height: 1.16; letter-spacing: -4px; white-space: pre-line; }
+.ln { margin-top: 20px; font-weight: 600; font-size: 48px; line-height: 1.38; letter-spacing: -1.5px; color: #fff; white-space: pre-line; }
 
 /* 두 컷: 위아래 사진 두 장, 가운데에 글 */
 .duo .pic { height: 960px; }
