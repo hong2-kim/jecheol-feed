@@ -301,6 +301,22 @@ def transition(kind, frames, i, scenes):
     return cycle[i % len(cycle)]
 
 
+SHORTEST, LONGEST = 10.0, 15.0  # 영상 전체 길이(초). 사용자가 정한 범위예요.
+
+
+def fit(scenes, tail):
+    """장면 길이를 고르게 늘이거나 줄여서 전체가 10~15초 안에 들게 해요."""
+    for s in scenes:
+        s.setdefault("dur", 2.4)
+    body = sum(s["dur"] for s in scenes)
+    target = min(max(body, SHORTEST - tail), LONGEST - tail)
+    if abs(target - body) > 0.01:
+        for s in scenes:
+            s["dur"] = round(s["dur"] * target / body, 2)
+    if min(s["dur"] for s in scenes) < 1.2:
+        raise ValueError(f"장면이 {len(scenes)}개라 15초 안에 다 보여 줄 수 없어요. 장면을 줄여 주세요.")
+
+
 def build_html(spec):
     """설계도를 한 장짜리 HTML로 만들어요. (HTML, 길이)"""
     accent = spec.get("accent") or ACCENTS.get(spec.get("kind", ""), "#FFB23E")
@@ -310,13 +326,14 @@ def build_html(spec):
     css = (HERE / "base.css").read_text(encoding="utf-8").replace("FONT_DIR", (HERE / "fonts").as_uri())
     out = ['<!doctype html><html lang="ko"><head><meta charset="utf-8">', f"<style>{css}</style></head>",
            f'<body style="--ac:{accent}">']
+    lines = credit_lines(spec)
+    tail = min(3.0, 2.0 + .25 * max(0, len(lines) - 2)) if lines else 0  # 맨 끝 사진 출처 장면의 길이
+    fit(scenes, tail)
     frames = []
     for i, s in enumerate(scenes):
-        s.setdefault("dur", 4.4)
         frames.append((*SCENES[s["type"]](s, i, ctx), s["dur"]))
-    lines = credit_lines(spec)
     if lines:  # 사진 출처는 게시글에 늘어놓지 않고 맨 끝 장면에 모아요
-        frames.append(("outro", scene_outro(lines), min(4.0, 2.4 + .25 * max(0, len(lines) - 2))))
+        frames.append(("outro", scene_outro(lines), tail))
     else:
         frames[-1] = (frames[-1][0], frames[-1][1] + signature(), frames[-1][2])
     how = [None] + [transition(spec.get("kind", ""), frames, i, scenes) for i in range(1, len(frames))]

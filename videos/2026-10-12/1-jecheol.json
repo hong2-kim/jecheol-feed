@@ -5,7 +5,7 @@
  "scenes": [
   {
    "type": "duo",
-   "dur": 3.6,
+   "dur": 1.4,
    "photo_top": {
     "url": "https://tong.visitkorea.or.kr/cms2/website/35/3052835.jpg"
    },
@@ -17,7 +17,7 @@
   },
   {
    "type": "duo",
-   "dur": 4.8,
+   "dur": 2.4,
    "photo_top": {
     "url": "https://tong.visitkorea.or.kr/cms2/website/22/2048322.jpg"
    },
@@ -30,7 +30,7 @@
   },
   {
    "type": "duo",
-   "dur": 4.2,
+   "dur": 2.0,
    "photo_top": {
     "url": "https://tong.visitkorea.or.kr/cms2/website/91/3037991.JPG",
     "pos": "50% 62%"
@@ -44,7 +44,7 @@
   },
   {
    "type": "duo",
-   "dur": 4.2,
+   "dur": 2.0,
    "photo_top": {
     "url": "https://tong.visitkorea.or.kr/cms2/website/12/1452812.jpg"
    },
@@ -58,7 +58,7 @@
   },
   {
    "type": "duo",
-   "dur": 4.2,
+   "dur": 2.0,
    "photo_top": {
     "url": "https://tong.visitkorea.or.kr/cms2/website/73/1940673.jpg"
    },
@@ -71,7 +71,7 @@
   },
   {
    "type": "duo",
-   "dur": 4.6,
+   "dur": 2.0,
    "photo_top": {
     "url": "https://tong.visitkorea.or.kr/cms2/website/73/2048273.jpg",
     "pos": "50% 35%"
@@ -85,7 +85,7 @@
   },
   {
    "type": "info",
-   "dur": 4.8,
+   "dur": 2.2,
    "photo": {
     "url": "https://tong.visitkorea.or.kr/cms2/website/61/2048361.jpg"
    },
@@ -96,18 +96,6 @@
    "title": "남당항 대하축제",
    "big": "~11.8",
    "sub": "11월 8일 일요일까지"
-  },
-  {
-   "type": "duo",
-   "dur": 3.8,
-   "photo_top": {
-    "url": "https://tong.visitkorea.or.kr/cms2/website/88/3036688.jpg"
-   },
-   "photo_bottom": {
-    "url": "https://tong.visitkorea.or.kr/cms2/website/11/2048311.jpg"
-   },
-   "title": "이번 주말,\n[[어디로]] 갈래요?",
-   "size": 118
   }
  ],
  "caption": "대하 철, 이번 주말 어디로 갈래요?\n\n01 소래포구 (인천 남동구) 지하철로 가는 포구\n02 노량진수산시장 (서울 동작구) 서울 한복판\n03 인천 연안부두 (인천 중구) 부두 옆 인천종합어시장\n04 홍성 남당항 (충남 홍성) 대하축제가 열리는 항구\n\n자연산 대하는 잡히면 금방 죽어서 얼음 위에 있어요. 수조에서 헤엄치는 새우는 대부분 양식 흰다리새우예요.\n\n홍성 남당항 대하축제는 11월 8일(일)까지 열려요. 가격과 운영 시간은 가기 전에 확인하세요.",

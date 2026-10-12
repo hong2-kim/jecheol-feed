@@ -30,8 +30,8 @@ SIZE = {"width": 1080, "height": 1920}
 def render(spec, name, browser):
     build.EXTRACT = True
     page_html, duration, meta = build.build_html(spec)
-    if not 12 <= duration <= 45:
-        raise ValueError(f"영상 길이가 {duration:.1f}초예요. 15~40초로 맞춰 주세요.")
+    if not 9.9 <= duration <= 15.1:
+        raise ValueError(f"영상 길이가 {duration:.1f}초예요. 10~15초로 맞춰 주세요.")
     work = ROOT / "build"
     work.mkdir(exist_ok=True)
     html_path = work / f"{name}.html"

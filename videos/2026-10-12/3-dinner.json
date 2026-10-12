@@ -6,7 +6,7 @@
  "scenes": [
   {
    "type": "cover",
-   "dur": 3.0,
+   "dur": 1.4,
    "photo": {
     "url": "https://tong.visitkorea.or.kr/cms2/website/85/2670885.jpg",
     "pos": "50% 70%"
@@ -17,56 +17,45 @@
   },
   {
    "type": "card",
-   "dur": 4.8,
+   "dur": 2.4,
    "photo": {
     "url": "https://tong.visitkorea.or.kr/cms2/website/87/2670887.jpg",
     "pos": "50% 45%"
    },
    "chip": "월요일 회식엔",
    "headline": "삼겹살에\n[[소주]]",
-   "line": "비 오는 날 불판 소리는 못 참죠\n첫 점은 소금만 찍어서"
+   "line": "비 오는 날 불판 소리는 못 참죠"
   },
   {
    "type": "card",
-   "dur": 4.8,
+   "dur": 2.4,
    "photo": {
     "url": "https://tong.visitkorea.or.kr/cms2/website/97/3513397.jpg",
     "pos": "50% 55%"
    },
    "chip": "친구랑 둘이서",
    "headline": "닭갈비에\n[[맥주]]",
-   "line": "매콤한 거 한입, 맥주 한 모금\n볶음밥 배는 남겨 두세요"
+   "line": "매콤한 거 한입, 맥주 한 모금"
   },
   {
    "type": "card",
-   "dur": 4.8,
+   "dur": 2.4,
    "photo": {
     "url": "https://tong.visitkorea.or.kr/cms2/website/71/1825971.jpg"
    },
    "chip": "퇴근길 혼자라면",
    "headline": "감자탕에\n[[소주]]",
-   "line": "뼈 사이 살 발라 먹는 재미\n국물에 밥까지 말면 끝"
+   "line": "뼈 사이 살 발라 먹는 재미"
   },
   {
    "type": "card",
-   "dur": 4.8,
+   "dur": 2.4,
    "photo": {
     "url": "https://tong.visitkorea.or.kr/cms2/website/34/3052834.jpg"
    },
    "chip": "데이트라면",
    "headline": "조개구이에\n[[소주 or 사케]]",
-   "line": "입 벌어지면 국물부터 호로록\n굽다 보면 얘기가 길어져요"
-  },
-  {
-   "type": "cover",
-   "dur": 2.8,
-   "photo": {
-    "url": "https://tong.visitkorea.or.kr/cms2/website/98/3513398.jpg",
-    "pos": "50% 55%"
-   },
-   "kicker": "오늘 저녁",
-   "title": "[[몇 번]]으로\n갈래요?",
-   "line": "저장해 두면 비 오는 날 또 써먹어요"
+   "line": "입 벌어지면 국물부터 호로록"
   }
  ],
  "caption": "비 오는데 오늘 저녁 뭐 먹지?\n\n1. 삼겹살에 소주\n비 오는 날 불판 소리는 못 참죠. 월요일 회식이면 고민할 것도 없어요.\n2. 닭갈비에 맥주\n매콤한 거 한입에 맥주 한 모금. 볶음밥 배는 꼭 남겨 두세요.\n3. 감자탕에 소주\n혼자 가도 눈치 안 보이는 메뉴예요. 뼈 사이 살 발라 먹고 국물에 밥 말면 끝.\n4. 조개구이에 소주 or 사케\n입 벌어지면 국물부터 호로록. 굽다 보면 얘기가 길어져서 데이트에 좋아요.\n\n여러분은 몇 번이에요? 댓글로 알려 주세요.\n\n오늘 서울은 비 예보가 있어요(강수 확률 74%). 술은 적당히, 지나친 음주는 건강에 해로워요.",

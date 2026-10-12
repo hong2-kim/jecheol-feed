@@ -6,7 +6,7 @@
  "scenes": [
   {
    "type": "cover",
-   "dur": 3.0,
+   "dur": 1.4,
    "photo": {
     "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Victoria%20Harbour%20skyscrapers.jpg?width=1600"
    },
@@ -16,7 +16,7 @@
   },
   {
    "type": "duo",
-   "dur": 4.8,
+   "dur": 2.2,
    "photo_top": {
     "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Tonkotsu%20ramen%20in%20Tokyo.jpg?width=1600"
    },
@@ -29,7 +29,7 @@
   },
   {
    "type": "duo",
-   "dur": 4.8,
+   "dur": 2.2,
    "photo_top": {
     "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Victoria%20Harbour%20skyscrapers.jpg?width=1600"
    },
@@ -42,7 +42,7 @@
   },
   {
    "type": "duo",
-   "dur": 4.8,
+   "dur": 2.2,
    "photo_top": {
     "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Gran%20Desfile%20del%20D%C3%ADa%20de%20Muertos%202033.jpg?width=1600"
    },
@@ -55,7 +55,7 @@
   },
   {
    "type": "duo",
-   "dur": 4.8,
+   "dur": 2.2,
    "photo_top": {
     "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Eurochocolate%202008.jpg?width=1600"
    },
@@ -68,7 +68,7 @@
   },
   {
    "type": "duo",
-   "dur": 4.8,
+   "dur": 2.2,
    "photo_top": {
     "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Beaujolais%20nouveau%202008.jpg?width=1600"
    },
@@ -78,16 +78,6 @@
    "no": "05 · 프랑스",
    "title": "보졸레 누보",
    "sub": "[[11.19]] 목요일 · 올해 첫 햇와인이 풀리는 날"
-  },
-  {
-   "type": "cover",
-   "dur": 2.8,
-   "photo": {
-    "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Ramen%202.jpg?width=1600"
-   },
-   "kicker": "이번 가을",
-   "title": "[[어디]]부터\n가 볼래요?",
-   "line": "저장해 두고 여행 갈 때 꺼내 보세요"
   }
  ],
  "caption": "10~11월 해외 간다면? 이 축제에선 이걸 드세요.\n\n01 일본 도쿄, 도쿄 라멘 페스타\n10월 30일(금)~11월 3일(화·공휴일), 고마자와 올림픽공원 중앙광장. 11~20시(마지막 날은 19시까지). 입장은 무료이고 라멘은 한 그릇 1,100엔이에요. 티켓을 사서 바꿔 먹어요. 전국에서 12개 가게가 와요. 고마자와다이가쿠역에서 걸어서 15분. 고마자와에서 여는 건 올해가 마지막이래요.\n\n02 홍콩, 와인 앤 다인 페스티벌\n10월 29일~11월 1일, 센트럴 하버프런트와 타마르 공원. 부스 340여 개에 약 30개 나라·지역의 와인과 음식이 나와요. 시음 패스 HK$258, 그랜드 와인 패스 HK$558. 첫날 19:30~자정, 30·31일 13시~새벽 1시, 마지막 날 13시~자정.\n\n03 멕시코, 죽은 자의 날\n11월 1~2일. 이때 먹는 빵이 '판 데 무에르토'예요. 둥근 빵 위에 뼈 모양을 얹고 설탕을 뿌려요. 오렌지꽃 향이 나요. 빵집에서는 9월부터 팔아요.\n\n04 이탈리아 페루자, 유로초콜릿\n11월 13~22일, 구시가지 전체(코르소 반누치, 이탈리아 광장 등). 입장 무료. 평일 10:00~19:30, 토요일 09:30~22:00, 일요일 09:00~20:00.\n\n05 프랑스, 보졸레 누보\n11월 19일(목). 해마다 11월 셋째 목요일에 그해 첫 햇와인이 나와요. 프랑스 밖의 와인 가게와 식당에서도 이날에 맞춰 내놓아요.\n\n지금 열리는 곳: 태국 푸껫 채식 축제(10월 10~18일).\n\n일정과 가격은 바뀔 수 있어요. 가기 전에 공식 안내를 확인하세요. 지나친 음주는 건강에 해로워요.",

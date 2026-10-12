@@ -5,7 +5,7 @@
  "scenes": [
   {
    "type": "cover",
-   "dur": 2.2,
+   "dur": 1.4,
    "photo": {
     "url": "https://tong.visitkorea.or.kr/cms2/website/37/1832937.jpg",
     "pos": "50% 42%"
@@ -15,7 +15,7 @@
   },
   {
    "type": "card",
-   "dur": 4.6,
+   "dur": 2.4,
    "photo": {
     "url": "https://tong.visitkorea.or.kr/cms2/website/37/1832937.jpg",
     "pos": "50% 42%"
@@ -26,7 +26,7 @@
   },
   {
    "type": "card",
-   "dur": 4.6,
+   "dur": 2.4,
    "photo": {
     "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Victoria%20Harbour%20skyscrapers.jpg?width=1600",
     "pos": "35% 50%"
@@ -37,7 +37,7 @@
   },
   {
    "type": "card",
-   "dur": 4.6,
+   "dur": 2.4,
    "photo": {
     "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Destroying%20Angel%2002.jpg?width=1600",
     "pos": "55% 40%"
@@ -48,23 +48,13 @@
   },
   {
    "type": "card",
-   "dur": 4.6,
+   "dur": 2.4,
    "photo": {
     "url": "https://tong.visitkorea.or.kr/cms2/website/64/2824964.jpg"
    },
    "chip": "예고 · 제주",
    "headline": "제주 방어축제\n11월 19일 개막 예정",
    "line": "모슬포항 · 날짜는 가기 전에 확인"
-  },
-  {
-   "type": "cover",
-   "dur": 2.6,
-   "photo": {
-    "url": "https://tong.visitkorea.or.kr/cms2/website/64/2824964.jpg"
-   },
-   "kicker": "내일 소식도",
-   "title": "저장해 두고\n골라 보세요",
-   "size": 112
   }
  ],
  "caption": "10월 12일, 오늘의 먹거리 소식 4가지예요.\n\n1. 가을 전어는 소금구이가 정석. 천일염만 뿌려 통째로 구워요.\n2. 홍콩 와인 앤 다인 페스티벌이 10월 29일부터 11월 1일까지 열려요.\n3. 하얗고 수수한 버섯도 독버섯일 수 있어요. 야생 버섯은 먹지 않는 게 안전해요.\n4. 제주 최남단방어축제가 11월 19일 개막 예정이에요.\n\n일정은 바뀔 수 있으니 가기 전에 공식 안내를 확인하세요.",
