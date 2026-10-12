@@ -10,5 +10,19 @@
     "sha256": "b2f84045a923d429019f6ec44353f5e8345ad4d81f262e203fe27569916e584f",
     "bytes": 345537,
     "msg_id": null
+  },
+  {
+    "id": "2026-10-12-172554790.mp4",
+    "type": "video",
+    "file": "https://github.com/hong2-kim/jecheol-feed/releases/download/myphotos/2026-10-12-172554790.mp4",
+    "note": "",
+    "date": "2026-10-12",
+    "used": [],
+    "tg_unique": "AgADJyQAAqXoaFY",
+    "sha256": "3556c6d8a3c9c5cb7e6f080eb236826f53a086b0cc9b474c7e37f712799dd063",
+    "bytes": 6229185,
+    "msg_id": 55,
+    "seconds": 7,
+    "thumb": "https://github.com/hong2-kim/jecheol-feed/releases/download/myphotos/2026-10-12-172554790.mp4.thumb.jpg"
   }
 ]
