@@ -1,0 +1,66 @@
+{
+ "kind": "저녁",
+ "subject": "비 오는 화요일 저녁 (김치찌개·제육·족발·부대찌개)",
+ "title": "비 오는 화요일, 오늘 저녁 뭐 먹지?",
+ "summary": "비 오는 화요일 저녁에 생각나는 메뉴 세 가지예요. 곁들일 술까지 골랐어요.",
+ "scenes": [
+  {
+   "type": "cover",
+   "dur": 1.4,
+   "photo": {
+    "url": "https://github.com/hong2-kim/jecheol-feed/releases/download/myphotos/2026-10-12-172554789.jpg",
+    "pos": "50% 60%"
+   },
+   "bright": true,
+   "kicker": "10월 13일 화요일 · 비 소식",
+   "title": "오늘 저녁,\n[[김치찌개 + 제육]]\n어때요?",
+   "size": 104
+  },
+  {
+   "type": "card",
+   "dur": 2.4,
+   "photo": {
+    "url": "https://github.com/hong2-kim/jecheol-feed/releases/download/myphotos/2026-10-12-172554789.jpg",
+    "pos": "85% 25%"
+   },
+   "chip": "퇴근길 둘이서",
+   "headline": "김치찌개·제육에\n[[소주]]",
+   "line": "보글보글 끓는 소리부터 반찬이에요"
+  },
+  {
+   "type": "card",
+   "dur": 2.4,
+   "photo": {
+    "url": "https://tong.visitkorea.or.kr/cms2/website/35/3047135.jpg",
+    "pos": "30% 55%"
+   },
+   "chip": "금요일 같은 화요일엔",
+   "headline": "족발에\n[[소주]]",
+   "line": "쫀득한 껍질에 마늘 한 점"
+  },
+  {
+   "type": "card",
+   "dur": 2.4,
+   "photo": {
+    "url": "https://tong.visitkorea.or.kr/cms2/website/75/2534275.jpg",
+    "pos": "50% 50%"
+   },
+   "chip": "비 오는 날엔",
+   "headline": "부대찌개에\n[[소주 or 맥주]]",
+   "line": "라면 사리는 마지막에 넣어요"
+  }
+ ],
+ "caption": "비 오는데 오늘 저녁 뭐 먹지?\n\n1. 김치찌개·제육볶음에 소주\n보글보글 끓는 찌개에 매콤한 제육을 상추에 싸 먹는 한 상이에요.\n2. 족발에 소주\n쫀득한 껍질에 마늘 한 점 올려 먹다 보면 시간 가는 줄 몰라요.\n3. 부대찌개에 소주 or 맥주\n얼큰한 국물에 라면 사리는 마지막에 넣어요.\n\n여러분은 몇 번이에요? 댓글로 알려 주세요.\n\n오늘 서울은 비 예보가 있어요(강수 확률 86%). 술 조합은 추천일 뿐이에요. 지나친 음주는 건강에 해로워요.",
+ "tags": [
+  "김치찌개",
+  "저녁메뉴추천",
+  "제육볶음",
+  "오늘뭐먹지"
+ ],
+ "sources": [
+  "https://open-meteo.com/ (서울 예보, 2026-10-13 확인)"
+ ],
+ "credits": [
+  "ⓒ한국관광공사 포토코리아-김효서, IR 스튜디오"
+ ]
+}

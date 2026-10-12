@@ -1,0 +1,66 @@
+{
+ "kind": "소식",
+ "subject": "2026-10-13 소식",
+ "title": "10월 13일 오늘의 먹거리 소식 3",
+ "summary": "목포항구축제, 남성역 냉수육 축제, 10월 이달의 수산물 멸치를 정리했어요.",
+ "scenes": [
+  {
+   "type": "cover",
+   "dur": 1.4,
+   "photo": {
+    "url": "https://tong.visitkorea.or.kr/cms2/website/29/2826829.jpg",
+    "pos": "50% 50%"
+   },
+   "kicker": "10월 13일",
+   "title": "이번 주말\n[[어디서 먹지]]?"
+  },
+  {
+   "type": "card",
+   "dur": 2.4,
+   "photo": {
+    "url": "https://tong.visitkorea.or.kr/cms2/website/29/2826829.jpg",
+    "pos": "50% 50%"
+   },
+   "chip": "축제 · 전남 목포",
+   "headline": "목포항구축제\n10월 16~18일",
+   "line": "개막날 홍어삼합 꼬치 무료로 나눠요"
+  },
+  {
+   "type": "card",
+   "dur": 2.4,
+   "photo": {
+    "url": "https://tong.visitkorea.or.kr/cms2/website/06/3567106.jpg",
+    "pos": "50% 55%"
+   },
+   "chip": "축제 · 서울 동작",
+   "headline": "잘~돼지 냉수육\n10월 23일",
+   "line": "남성역골목시장에서 하루 열려요"
+  },
+  {
+   "type": "card",
+   "dur": 2.4,
+   "photo": {
+    "url": "https://tong.visitkorea.or.kr/cms2/website/69/2928469.jpg",
+    "pos": "50% 50%"
+   },
+   "chip": "10월의 수산물",
+   "headline": "10월엔\n멸치 쌈밥",
+   "line": "남해안에선 매콤하게 조려 싸 먹어요"
+  }
+ ],
+ "caption": "10월 13일, 오늘의 먹거리 소식 3가지예요.\n\n1. 목포항구축제가 10월 16일부터 18일까지 목포항과 삼학도 일원에서 열려요. 입장은 무료고, 첫날 저녁 개막 행사에서 홍어삼합 꼬치를 무료로 나눠 준대요.\n2. 서울 동작구 남성역골목시장에서 10월 23일 '잘~돼지 냉수육 축제'가 열려요. 냉수육 먹거리존과 만들기 체험이 있어요.\n3. 해양수산부가 10월 이달의 수산물로 멸치(와 미꾸라지)를 골랐어요. 남해안에서는 생멸치를 매콤하게 조려 쌈 채소에 싸 먹는 멸치 쌈밥을 즐겨요.\n\n일정은 바뀔 수 있으니 가기 전에 공식 안내를 확인하세요. 여러분은 몇 번이 제일 끌려요?",
+ "tags": [
+  "목포항구축제",
+  "냉수육",
+  "멸치쌈밥",
+  "먹거리축제"
+ ],
+ "sources": [
+  "https://news.mtn.co.kr/news-detail/2026100716292179691",
+  "https://news.seoul.go.kr/economy/?p=574744",
+  "https://www.wikitree.co.kr/articles/1163250"
+ ],
+ "credits": [
+  "ⓒ한국관광공사 포토코리아-디엔에이스튜디오, 황성훈, 부산관광공사"
+ ]
+}
