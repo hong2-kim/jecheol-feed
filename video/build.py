@@ -161,6 +161,9 @@ def scene_cover(s, i, ctx):
     if s.get("line"):
         parts.append(rise("line", s["line"], .75))
     parts.append("</div>")
+    if s.get("bright") or s.get("video"):  # 직접 찍은 사진·동영상은 어둡게 덮지 않고 그대로 보여 줘요
+        parts.insert(1, '<div class="veil"></div>')
+        return "cover bright", "".join(parts)
     return "cover", "".join(parts)
 
 

@@ -17,6 +17,7 @@ from pathlib import Path
 import requests
 
 sys.path.insert(0, str(Path(__file__).parent.parent / "scripts"))
+import plan  # noqa: E402
 from common import log_error, read_json, write_json  # noqa: E402
 
 ROOT = Path(__file__).parent.parent
@@ -61,6 +62,12 @@ def main():
         head = f"{day} 영상 {len(ok)}개가 준비됐어요."
         if bad:
             head += f" 실패 {len(bad)}개: " + "; ".join(f"{b['id']} ({b['error'][:80]})" for b in bad)
+        mine = read_json(ROOT / "myphotos" / "index.json", []) or []
+        today = plan.used_on(mine, day)
+        if today:
+            head += "\n\n첫 장면에 보내 주신 " + ", ".join(f"'{e.get('note') or '이름 없음'}'" for e in today) + " 을(를) 썼어요."
+        if plan.waiting(mine):
+            head += "\n\n[다음 순서]\n" + "\n".join(plan.lines(mine))
         tg("sendMessage", token, data={"chat_id": chat, "text": head})
     for r in todo:
         text = (ROOT / "dist" / r["file"]).with_suffix(".txt").read_text(encoding="utf-8")

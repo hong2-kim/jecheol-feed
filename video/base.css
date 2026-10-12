@@ -23,6 +23,10 @@ body { background: #0E0B09; color: #fff; font-family: "Noto Sans KR", sans-serif
 .cover .pic { height: 1920px; }
 .cover .pic img { filter: brightness(.46); }
 .cover .mid { position: absolute; left: 70px; right: 70px; top: 660px; }
+/* 직접 찍은 자료가 첫 장면일 때: 사진은 밝게 두고 글 뒤만 살짝 어둡게 */
+.cover.bright .pic img { filter: brightness(.94); }
+.cover.bright .veil { position: absolute; left: 0; right: 0; top: 760px; height: 1160px; background: linear-gradient(180deg, rgba(8,6,4,0) 0%, rgba(8,6,4,.62) 30%, rgba(8,6,4,.84) 60%, rgba(8,6,4,.92) 100%); }
+.cover.bright .mid { top: 1010px; text-shadow: 0 3px 20px rgba(0,0,0,.6); }
 .kicker { font-weight: 900; font-size: 58px; letter-spacing: 0; color: var(--ac); }
 .title { margin-top: 14px; font-weight: 900; font-size: 128px; line-height: 1.13; letter-spacing: -5px; white-space: pre-line; text-shadow: 0 6px 30px rgba(0,0,0,.5); }
 .cover .line { margin-top: 26px; font-weight: 700; font-size: 50px; letter-spacing: -1.5px; }

@@ -6,6 +6,7 @@
   올렸어 1 3        번호를 골라 표시 (번호는 "올릴 것" 이라고 보내면 알려 줘요)
   안올렸어 2        잘못 표시한 것을 되돌리기
   올릴 것           아직 올렸다고 표시하지 않은 영상 목록
+  일정              보낸 사진·동영상을 어느 날짜에 쓸지 보기
   삭제 목록         지울 수 있는 파일 목록 다시 보기
   삭제 확인         마지막으로 보여 준 목록을 실제로 지우기
   삭제 취소         이번 목록은 지우지 않기 (7일 뒤 다시 물어봐요)
@@ -20,6 +21,7 @@ import re
 import urllib.request
 from datetime import datetime, timedelta
 
+import plan
 from common import KST, ROOT, log_error, read_json, today_kst, write_json
 
 REPO = os.environ.get("GITHUB_REPOSITORY", "hong2-kim/jecheol-feed")
@@ -255,9 +257,11 @@ def handle(text):
         return unmark(t)
     if bare.startswith("올렸어"):
         return mark(t)
+    if bare.startswith("일정") or bare.startswith("순서"):
+        return plan.lines(read_json(INDEX, []) or [])
     if bare.startswith("올릴것"):
         return to_post()
     if bare in ("도움말", "사용법", "/help", "/start"):
-        return ["이렇게 보내면 돼요.", "· 사진이나 동영상 + 음식 이름: 다음 영상에 써요", "· 올렸어: 인스타에 올린 영상 표시", "· 올릴 것: 아직 안 올린 영상 보기",
+        return ["이렇게 보내면 돼요.", "· 사진이나 동영상 + 음식 이름: 다음 영상에 써요", "· 올렸어: 인스타에 올린 영상 표시", "· 올릴 것: 아직 안 올린 영상 보기", "· 일정: 보낸 사진·동영상을 언제 쓸지 보기",
                 "· 삭제 목록: 지울 수 있는 파일 보기", "· 삭제 확인 / 삭제 취소"]
     return None

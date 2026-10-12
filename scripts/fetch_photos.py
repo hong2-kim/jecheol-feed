@@ -20,6 +20,7 @@ import urllib.request
 from datetime import datetime
 
 import cleanup
+import plan
 from common import KST, ROOT, log_error, read_json, write_json
 
 INCOMING = ROOT / "incoming"
@@ -181,7 +182,8 @@ def run():
             target["note"] = text[:200]
             named.append(target)
     write_json(state, {"next": offset})
-    if saved or named:
+    moved = plan.assign(index)  # 하루에 하나씩, 받은 순서대로 쓸 날짜를 정해요
+    if saved or named or moved:
         write_json(INDEX, index)
     late = [e for e in named if all(e is not s for s in saved)]  # 전에 받은 것에 이름만 나중에 온 경우
     saved = [("동영상 " if e["type"] == "video" else "사진 ") + (e.get("note") or "(이름 없음)") for e in saved]
@@ -190,7 +192,9 @@ def run():
         lines.append(f"{len(saved)}개 받았어요:\n" + "\n".join("· " + s for s in saved[:10]))
         if any("(이름 없음)" in s for s in saved):
             lines.append("음식 이름을 알려 주세요. 지금 이 대화방에 이름만 보내도 돼요. (예: 닭갈비, 춘천)")
-        lines.append("다음 영상을 만들 때 먼저 써요.")
+        lines += ["", *plan.lines(index)]
+    if moved and not saved:  # 쓰기로 한 날에 못 써서 날짜를 다시 잡은 경우
+        lines += ["쓸 날짜를 다시 잡았어요.", *plan.lines(index)]
     if late:
         lines.append("이름을 적어 뒀어요: " + ", ".join(e["note"] for e in late))
     if again:
