@@ -33,8 +33,8 @@
     ],
     "url": "https://github.com/hong2-kim/jecheol-feed/releases/download/v2026-10-12/2026-10-12-5-world.mp4",
     "seconds": 33.2,
-    "size_mb": 7.5,
-    "sha256": "5670da301c69d7554726733bbe03ae725ecf6a5591d8c39007b351ed72b8e03f"
+    "size_mb": 7.4,
+    "sha256": "e7c556a64e8e462ba8853c8d61c21ec967ce8f2211f3173f0f856472e0ae6bc7"
   },
   {
     "id": "2026-10-12-3-dinner",
@@ -58,16 +58,16 @@
     ],
     "url": "https://github.com/hong2-kim/jecheol-feed/releases/download/v2026-10-12/2026-10-12-3-dinner.mp4",
     "seconds": 27.4,
-    "size_mb": 4.1,
-    "sha256": "8356c8a4dd24a26704faf85c97ad06ff3b49024370158a6464fa91dc54a8df01"
+    "size_mb": 4.0,
+    "sha256": "72416b4710d36e385dedfc90365caf94a38b229e6b75f880fa4c9b0c26c94be8"
   },
   {
     "id": "2026-10-12-2-news",
     "date": "2026-10-12",
     "kind": "소식",
-    "title": "10월 12일 오늘의 먹거리 소식 5",
-    "summary": "전어 소금구이, 일본 꽁치 예보, 홍콩 와인 축제, 독버섯 속설, 제주 방어축제 예고를 한 번에 정리했어요.",
-    "caption": "10월 12일, 오늘의 먹거리 소식 5가지예요.\n\n1. 가을 전어는 소금구이가 정석. 천일염만 뿌려 통째로 구워요.\n2. 일본 가을 꽁치는 올해 작고 적을 거라는 예보가 나왔어요.\n3. 홍콩 와인 앤 다인 페스티벌이 10월 29일부터 11월 1일까지 열려요.\n4. 하얗고 수수한 버섯도 독버섯일 수 있어요. 야생 버섯은 먹지 않는 게 안전해요.\n5. 제주 최남단방어축제가 11월 19일 개막 예정이에요.\n\n일정은 바뀔 수 있으니 가기 전에 공식 안내를 확인하세요.",
+    "title": "10월 12일 오늘의 먹거리 소식 4",
+    "summary": "전어 소금구이, 홍콩 와인 축제, 독버섯 속설, 제주 방어축제 예고를 한 번에 정리했어요.",
+    "caption": "10월 12일, 오늘의 먹거리 소식 4가지예요.\n\n1. 가을 전어는 소금구이가 정석. 천일염만 뿌려 통째로 구워요.\n2. 홍콩 와인 앤 다인 페스티벌이 10월 29일부터 11월 1일까지 열려요.\n3. 하얗고 수수한 버섯도 독버섯일 수 있어요. 야생 버섯은 먹지 않는 게 안전해요.\n4. 제주 최남단방어축제가 11월 19일 개막 예정이에요.\n\n일정은 바뀔 수 있으니 가기 전에 공식 안내를 확인하세요.",
     "tags": [
       "10월제철음식",
       "전어",
@@ -77,18 +77,16 @@
     ],
     "sources": [
       "https://www.korea.kr/briefing/pressReleaseView.do?newsId=156776342",
-      "https://www.jfa.maff.go.jp/j/press/sigen/260728.html",
       "https://www.korea.kr/briefing/pressReleaseView.do?newsId=156412682",
       "http://bangeofestival.com/introduction"
     ],
     "credits": [
-      "ⓒ한국관광공사 포토코리아-박은경, 스튜디오 4cats",
-      "Paul Hsu from Tokyo (CC BY 2.0) · commons.wikimedia.org/?curid=2771837"
+      "ⓒ한국관광공사 포토코리아-박은경, 스튜디오 4cats"
     ],
     "url": "https://github.com/hong2-kim/jecheol-feed/releases/download/v2026-10-12/2026-10-12-2-news.mp4",
-    "seconds": 30.2,
-    "size_mb": 5.6,
-    "sha256": "4fc3adf453584842c0c782b034e1747807c2047615f937142d8ae434f5f13f7f"
+    "seconds": 25.6,
+    "size_mb": 4.6,
+    "sha256": "bf751763d3bec6f4cecf27468836f39d531f5d32287a42333bd4a9d14273e97b"
   },
   {
     "id": "2026-10-12-1-monthly",
