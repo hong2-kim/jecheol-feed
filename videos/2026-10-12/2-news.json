@@ -1,7 +1,7 @@
 {
  "kind": "소식",
- "title": "10월 12일 오늘의 먹거리 소식 5",
- "summary": "전어 소금구이, 일본 꽁치 예보, 홍콩 와인 축제, 독버섯 속설, 제주 방어축제 예고를 한 번에 정리했어요.",
+ "title": "10월 12일 오늘의 먹거리 소식 4",
+ "summary": "전어 소금구이, 홍콩 와인 축제, 독버섯 속설, 제주 방어축제 예고를 한 번에 정리했어요.",
  "scenes": [
   {
    "type": "cover",
@@ -11,7 +11,7 @@
     "pos": "50% 42%"
    },
    "kicker": "10월 12일",
-   "title": "오늘의\n먹거리 소식 5"
+   "title": "오늘의\n먹거리 소식 4"
   },
   {
    "type": "card",
@@ -23,17 +23,6 @@
    "chip": "한국 제철",
    "headline": "가을 전어는\n소금구이가 정석",
    "line": "천일염만 뿌려 통째로 구워요"
-  },
-  {
-   "type": "card",
-   "dur": 4.6,
-   "photo": {
-    "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Sanma%20shioyaki%20by%20Paul%20Hsu%20in%20Tokyo.jpg?width=1600",
-    "pos": "50% 60%"
-   },
-   "chip": "해외 제철 · 일본",
-   "headline": "일본 가을 꽁치,\n올해는 작고 적대요",
-   "line": "일본 수산청 예보, 작년보다 덜 온대요"
   },
   {
    "type": "card",
@@ -73,12 +62,12 @@
    "photo": {
     "url": "https://tong.visitkorea.or.kr/cms2/website/64/2824964.jpg"
    },
-   "kicker": "내일도 5가지",
+   "kicker": "내일 소식도",
    "title": "저장해 두고\n골라 보세요",
    "size": 112
   }
  ],
- "caption": "10월 12일, 오늘의 먹거리 소식 5가지예요.\n\n1. 가을 전어는 소금구이가 정석. 천일염만 뿌려 통째로 구워요.\n2. 일본 가을 꽁치는 올해 작고 적을 거라는 예보가 나왔어요.\n3. 홍콩 와인 앤 다인 페스티벌이 10월 29일부터 11월 1일까지 열려요.\n4. 하얗고 수수한 버섯도 독버섯일 수 있어요. 야생 버섯은 먹지 않는 게 안전해요.\n5. 제주 최남단방어축제가 11월 19일 개막 예정이에요.\n\n일정은 바뀔 수 있으니 가기 전에 공식 안내를 확인하세요.",
+ "caption": "10월 12일, 오늘의 먹거리 소식 4가지예요.\n\n1. 가을 전어는 소금구이가 정석. 천일염만 뿌려 통째로 구워요.\n2. 홍콩 와인 앤 다인 페스티벌이 10월 29일부터 11월 1일까지 열려요.\n3. 하얗고 수수한 버섯도 독버섯일 수 있어요. 야생 버섯은 먹지 않는 게 안전해요.\n4. 제주 최남단방어축제가 11월 19일 개막 예정이에요.\n\n일정은 바뀔 수 있으니 가기 전에 공식 안내를 확인하세요.",
  "tags": [
   "10월제철음식",
   "전어",
@@ -87,13 +76,11 @@
  ],
  "sources": [
   "https://www.korea.kr/briefing/pressReleaseView.do?newsId=156776342",
-  "https://www.jfa.maff.go.jp/j/press/sigen/260728.html",
   "https://www.korea.kr/briefing/pressReleaseView.do?newsId=156412682",
   "http://bangeofestival.com/introduction"
  ],
  "credits": [
-  "ⓒ한국관광공사 포토코리아-박은경, 스튜디오 4cats",
-  "Paul Hsu from Tokyo (CC BY 2.0) · commons.wikimedia.org/?curid=2771837"
+  "ⓒ한국관광공사 포토코리아-박은경, 스튜디오 4cats"
  ],
  "subject": "2026-10-12 소식"
 }
