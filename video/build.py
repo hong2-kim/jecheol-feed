@@ -215,16 +215,6 @@ def scene_info(s, i, ctx):
     )
 
 
-def signature(delay=1):
-    """마지막 장면에 넣는 계정 이름. config.json 의 account 를 써요. 지도 핀 모양과 함께 보여 줘요."""
-    name = json.loads((HERE.parent / "config.json").read_text(encoding="utf-8")).get("account")
-    if not name:
-        return ""
-    pin = ('<svg viewBox="0 0 200 250"><path d="M100 244C100 244 16 150 16 92a84 84 0 01168 0c0 58-84 152-84 152z" fill="var(--ac)"/>'
-           '<circle cx="100" cy="92" r="34" fill="#0E0B09"/></svg>')
-    return f'<div class="sig a rise" style="--dl:{delay}s;--d:.45s">{pin}{esc(name)}</div>'
-
-
 CREDIT = re.compile(r"^(?P<who>.+?)\s*\((?P<lic>[^()]*)\)(?:\s*·\s*(?P<link>.+))?$")
 FREE = ("CC0", "Public domain", "PDM")
 
@@ -270,15 +260,15 @@ OUTRO_PIN = ('<svg viewBox="0 0 200 250"><path d="M100 244C100 244 16 150 16 92a
 
 
 def scene_outro(lines):
-    """맨 끝 장면. 프로필 사진과 같은 지도 위에 계정 이름, 그 아래에 사진 출처를 작게(읽을 수 있는 크기로) 모아요."""
+    """맨 끝 장면. 프로필 사진과 같은 지도 위에 계정 이름. 사진 출처가 여러 줄이면 그 아래에 작게(읽을 수 있는 크기로) 모아요."""
     name = json.loads((HERE.parent / "config.json").read_text(encoding="utf-8")).get("account") or ""
     name = f"{esc(name[:2])}<b>{esc(name[2:])}</b>" if name.startswith("먹고") else esc(name)
     rows = "".join(f'<div class="src-l">{esc(big)}' + (f"<span>{esc(small)}</span>" if small else "") + "</div>" for big, small in lines)
     foot = ""
     if any("CC BY" in big for big, _ in lines):  # CC BY 는 고쳐 썼는지와 라이선스 주소도 알려야 해요
         foot = '<div class="src-f">사진은 잘라서 보정했어요 · creativecommons.org/licenses</div>'
-    return (f'{OUTRO_MAP}<div class="end"><div class="sig">{OUTRO_PIN}<span>{name}</span></div>'
-            f'<div class="src"><div class="src-h">사진 출처</div>{rows}{foot}</div></div>')
+    src = f'<div class="src"><div class="src-h">사진 출처</div>{rows}{foot}</div>' if lines else ""
+    return f'{OUTRO_MAP}<div class="end"><div class="sig">{OUTRO_PIN}<span>{name}</span></div>{src}</div>'
 
 
 SCENES = {"cover": scene_cover, "card": scene_card, "duo": scene_duo, "info": scene_info}
@@ -326,16 +316,15 @@ def build_html(spec):
     css = (HERE / "base.css").read_text(encoding="utf-8").replace("FONT_DIR", (HERE / "fonts").as_uri())
     out = ['<!doctype html><html lang="ko"><head><meta charset="utf-8">', f"<style>{css}</style></head>",
            f'<body style="--ac:{accent}">']
+    # 맨 끝에는 늘 계정 이름 장면이 붙어요. 사진 출처가 한 줄이면 게시글에 적고, 여러 줄이면 이 장면에 모아요.
     lines = credit_lines(spec)
-    tail = min(3.0, 2.0 + .25 * max(0, len(lines) - 2)) if lines else 0  # 맨 끝 사진 출처 장면의 길이
+    lines = lines if len(lines) > 1 else []
+    tail = min(3.0, 2.0 + .25 * max(0, len(lines) - 2)) if lines else 1.5
     fit(scenes, tail)
     frames = []
     for i, s in enumerate(scenes):
         frames.append((*SCENES[s["type"]](s, i, ctx), s["dur"]))
-    if lines:  # 사진 출처는 게시글에 늘어놓지 않고 맨 끝 장면에 모아요
-        frames.append(("outro", scene_outro(lines), tail))
-    else:
-        frames[-1] = (frames[-1][0], frames[-1][1] + signature(), frames[-1][2])
+    frames.append(("outro", scene_outro(lines), tail))
     how = [None] + [transition(spec.get("kind", ""), frames, i, scenes) for i in range(1, len(frames))]
     at = 0.0
     for i, (kind, body, dur) in enumerate(frames):
@@ -353,10 +342,19 @@ def build_html(spec):
 
 
 def description(spec):
-    """게시글에 넣을 글. 문구와 해시태그만 넣어요. 사진 출처는 영상 맨 끝 장면에 있어서 한 줄로만 알려요."""
+    """게시글에 넣을 글. 문구, 사진 출처 한 줄, 해시태그.
+
+    사진 출처가 한 줄이면 그대로 짧게 적고, 여러 줄이면 영상 맨 끝 장면에 모았다고만 알려요.
+    (한국관광공사 사진은 작가 이름까지가 정해진 표기라서 줄이지 않아요.)
+    """
     lines = [spec["caption"].strip(), ""]
-    if credit_lines(spec):
-        lines += ["사진 출처는 영상 마지막 장면에 정리했어요.", ""]
+    shown = credit_lines(spec)
+    if len(shown) == 1:
+        big, small = shown[0]
+        extra = f" · {small} · 잘라서 보정함" if "CC BY" in big else ""
+        lines += [f"📷 {big}{extra}", ""]
+    elif shown:
+        lines += ["📷 사진 출처는 영상 마지막 장면에 정리했어요.", ""]
     lines.append(" ".join("#" + t for t in hashtags(spec.get("tags"))))
     return "\n".join(lines) + "\n"
 
@@ -369,7 +367,8 @@ if __name__ == "__main__":
         print(f"  해시태그를 {len(spec.get('tags') or [])}개 적었어요. 4개만 골라 적어 주세요. (다섯 번째 계정 이름은 자동으로 붙어요)")
     print("  해시태그: " + " ".join("#" + t for t in hashtags(spec.get("tags"))))
     shown = credit_lines(spec)
-    print(f"  사진 출처: {len(shown)}줄이 맨 끝 장면에 자동으로 들어가요." if shown else "  사진 출처: 표시할 것이 없어요.")
+    where = "게시글에 한 줄로" if len(shown) == 1 else "맨 끝 장면에"
+    print(f"  사진 출처: {len(shown)}줄이 {where} 자동으로 들어가요." if shown else "  사진 출처: 표시할 것이 없어요.")
     for big, small in shown:
         if "CC BY" in big and "curid=" not in small:
             print(f"  '{big}' 에 원본 주소가 없어요. photos.py 가 알려 준 credit 을 그대로 적어 주세요.")
