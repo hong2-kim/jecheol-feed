@@ -11,6 +11,7 @@
 필요한 값(환경 변수): TELEGRAM_BOT_TOKEN, TELEGRAM_CHAT_ID
 """
 import hashlib
+import io
 import json
 import os
 import sys
@@ -40,6 +41,41 @@ def download(token, file_id):
         return res.read()
 
 
+def look(data):
+    """그림의 생김새를 숫자로 요약해요. 파일이 달라도 같은 그림이면 거의 같은 값이 나와요. (그림 도구가 없으면 None)"""
+    try:
+        from PIL import Image
+        px = list(Image.open(io.BytesIO(data)).convert("L").resize((17, 16)).getdata())
+    except Exception:
+        return None
+    bits = 0
+    for y in range(16):
+        for x in range(16):
+            bits = (bits << 1) | (px[y * 17 + x] > px[y * 17 + x + 1])
+    return f"{bits:064x}"
+
+
+def alike(a, b):
+    return bool(a and b) and bin(int(a, 16) ^ int(b, 16)).count("1") <= 12
+
+
+def status(entry):
+    """전에 받은 것이 지금 어떤 상태인지 한마디로."""
+    month, date = int(entry["date"][5:7]), int(entry["date"][8:10])
+    posted = {e["id"] for e in read_json(ROOT / "state" / "posted.json", []) or []}
+    used = [u.replace("/", "-", 1) for u in entry.get("used") or []]
+    if entry.get("deleted"):
+        state = "인스타에 올린 뒤 원본은 지웠어요"
+    elif any(u in posted for u in used):
+        state = "인스타에 올린 영상에 썼어요"
+    elif used:
+        state = f"{int(used[0][5:7])}월 {int(used[0][8:10])}일 영상에 썼어요"
+    else:
+        state = "아직 안 썼고 곧 쓸 거예요"
+    kind = "동영상" if entry.get("type") == "video" else "사진"
+    return f"{kind} '{entry.get('note') or '이름 없음'}' ({month}월 {date}일에 받음, {state})"
+
+
 def media(msg):
     """메시지에서 사진이나 동영상을 찾아요. 없으면 None."""
     if msg.get("photo"):
@@ -67,7 +103,7 @@ def run():
     updates = api(token, "getUpdates", offset=offset, timeout=0, allowed_updates='["message"]')
     index = read_json(INDEX, []) or []
     known = {e.get("tg_unique") for e in index} | {e.get("sha256") for e in index}
-    captions, saved, again, too_big, answers = {}, [], 0, 0, []
+    captions, saved, again, too_big, answers = {}, [], [], 0, []
     loose, named = [], []  # 따로 보낸 글 (받은 시각, 글), 그 글로 이름을 채운 항목
     for up in updates:  # 여러 개를 한꺼번에 보내면 글은 첫 번째에만 붙어요
         msg = up.get("message") or {}
@@ -96,7 +132,7 @@ def run():
             too_big += 1
             continue
         if tg.get("file_unique_id") in known:
-            again += 1
+            again.append(next(e for e in index if e.get("tg_unique") == tg["file_unique_id"]))
             continue
         try:
             data = download(token, tg["file_id"])
@@ -105,7 +141,21 @@ def run():
             continue
         digest = hashlib.sha256(data).hexdigest()
         if digest in known:
-            again += 1
+            again.append(next(e for e in index if e.get("sha256") == digest))
+            continue
+        # 파일은 달라도 같은 그림인지 봐요. 동영상은 미리보기 그림과 길이로 봐요.
+        thumb = (tg.get("thumbnail") or tg.get("thumb")) if found["type"] == "video" else None
+        thumb_data = None
+        if thumb:
+            try:
+                thumb_data = download(token, thumb["file_id"])
+            except Exception as e:
+                log_error("fetch_photos:thumb", type(e).__name__)
+        shape = look(thumb_data if found["type"] == "video" else data)
+        twin = next((e for e in index if e.get("type") == found["type"] and alike(e.get("look"), shape)
+                     and (found["type"] == "photo" or abs((e.get("seconds") or 0) - (tg.get("duration") or 0)) <= 1)), None)
+        if twin:
+            again.append(twin)
             continue
         day = datetime.fromtimestamp(msg.get("date", 0), KST).strftime("%Y-%m-%d")
         name = f"{day}-{up['update_id']}{found['ext']}"
@@ -114,16 +164,12 @@ def run():
         note = (msg.get("caption") or captions.get(msg.get("media_group_id")) or "").strip()
         entry = {"id": name, "type": found["type"], "file": BASE + name, "note": note, "date": day, "used": [],
                  "tg_unique": tg.get("file_unique_id"), "sha256": digest, "bytes": len(data), "msg_id": msg.get("message_id"),
-                 "at": msg.get("date", 0)}
+                 "at": msg.get("date", 0), "look": shape}
         if found["type"] == "video":
             entry["seconds"] = tg.get("duration")
-            thumb = tg.get("thumbnail") or tg.get("thumb")
-            if thumb:  # 어떤 영상인지 볼 수 있게 작은 미리보기 그림도 같이 둬요
-                try:
-                    (INCOMING / f"{name}.thumb.jpg").write_bytes(download(token, thumb["file_id"]))
-                    entry["thumb"] = BASE + f"{name}.thumb.jpg"
-                except Exception as e:
-                    log_error("fetch_photos:thumb", type(e).__name__)
+            if thumb_data:  # 어떤 영상인지 볼 수 있게 작은 미리보기 그림도 같이 둬요
+                (INCOMING / f"{name}.thumb.jpg").write_bytes(thumb_data)
+                entry["thumb"] = BASE + f"{name}.thumb.jpg"
         index.append(entry)
         known |= {entry["tg_unique"], digest}
         saved.append(entry)
@@ -148,7 +194,8 @@ def run():
     if late:
         lines.append("이름을 적어 뒀어요: " + ", ".join(e["note"] for e in late))
     if again:
-        lines.append(f"{again}개는 전에 받은 것과 같은 파일이라 다시 받지 않았어요.")
+        lines.append(f"중복이에요. {len(again)}개는 전에 보낸 것과 같아서 다시 받지 않았어요.")
+        lines += ["· " + status(e) for e in again[:10]]
     if too_big:
         lines.append(f"{too_big}개는 20MB가 넘어 받지 못했어요. 동영상은 10초 안쪽으로 짧게 보내 주세요.")
     if lines:
@@ -162,7 +209,7 @@ def run():
         offer = []
     if offer:
         api(token, "sendMessage", chat_id=chat, text="\n".join(offer)[:4000])
-    print(f"받은 것 {len(saved)}개, 같은 파일 {again}개, 너무 큰 것 {too_big}개")
+    print(f"받은 것 {len(saved)}개, 중복 {len(again)}개, 너무 큰 것 {too_big}개")
 
 
 def main():

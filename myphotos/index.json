@@ -9,7 +9,8 @@
     "tg_unique": null,
     "sha256": "b2f84045a923d429019f6ec44353f5e8345ad4d81f262e203fe27569916e584f",
     "bytes": 345537,
-    "msg_id": null
+    "msg_id": null,
+    "look": "871b16393e193330e480ecc0c23287310eb106dc26dd89995f9c1f0ebc43d090"
   },
   {
     "id": "2026-10-12-172554790.mp4",
@@ -23,6 +24,7 @@
     "bytes": 6229185,
     "msg_id": 55,
     "seconds": 7,
-    "thumb": "https://github.com/hong2-kim/jecheol-feed/releases/download/myphotos/2026-10-12-172554790.mp4.thumb.jpg"
+    "thumb": "https://github.com/hong2-kim/jecheol-feed/releases/download/myphotos/2026-10-12-172554790.mp4.thumb.jpg",
+    "look": "bc41f378424d92ce95a23f2336432e333693a4d39cba49be6bde31f33d830cdc"
   }
 ]

@@ -26,6 +26,8 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
+      - name: 그림 도구 설치
+        run: pip install --quiet pillow # 같은 그림인지 알아보는 데 써요
       - name: 사진 받기
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
