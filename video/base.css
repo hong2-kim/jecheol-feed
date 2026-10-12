@@ -17,6 +17,7 @@ body { background: #0E0B09; color: #fff; font-family: "Noto Sans KR", sans-serif
 .am { color: var(--ac); }
 .pic { position: absolute; left: 0; top: 0; width: 1080px; overflow: hidden; }
 .pic img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.pic img.vf { transform: scale(1.02); }
 
 /* 표지·마무리: 사진을 화면 가득, 어둡게 */
 .cover .pic { height: 1920px; }

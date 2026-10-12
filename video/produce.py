@@ -28,6 +28,7 @@ SIZE = {"width": 1080, "height": 1920}
 
 
 def render(spec, name, browser):
+    build.EXTRACT = True
     page_html, duration, meta = build.build_html(spec)
     if not 12 <= duration <= 45:
         raise ValueError(f"영상 길이가 {duration:.1f}초예요. 15~40초로 맞춰 주세요.")

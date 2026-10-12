@@ -6,7 +6,7 @@
   card   사진을 화면 가득, 아래에 장소·제목·한두 줄   (소식, 메뉴, 음식 한 가지)
   duo    위아래 사진 두 장, 가운데에 번호·이름·설명  (장소 소개, 사진 비교)
   info   위에 사진, 아래에 큰 날짜나 숫자           (축제 일정)
-사진은 주소(url)로 적고, 만들 때 내려받아요.
+사진은 주소(url)로 적고, 만들 때 내려받아요. cover 와 card 는 photo 대신 video 로 동영상도 넣을 수 있어요.
 """
 import hashlib
 import html
@@ -90,6 +90,59 @@ def is_tall(photo):
     return h >= w * 1.15
 
 
+EXTRACT = False  # 영상을 실제로 만들 때만 True. 설계도 확인만 할 때는 동영상을 풀지 않아요.
+FPS = 30
+
+
+def clip(video, dur):
+    """동영상을 내려받아 장면 길이만큼 낱장으로 풀어요. (첫 장 주소, 낱장 폴더 주소, 장수, 세로인지)"""
+    import subprocess
+
+    import imageio_ffmpeg
+
+    if isinstance(video, str):
+        video = {"url": video}
+    url, start = video["url"], float(video.get("from", 0))
+    key = hashlib.sha1(f"{url}|{start}|{dur}".encode()).hexdigest()[:16]
+    folder = CACHE.parent / "frames" / key
+    if not (folder / "00001.jpg").exists():
+        folder.mkdir(parents=True, exist_ok=True)
+        src = CACHE.parent / "clips" / (hashlib.sha1(url.encode()).hexdigest()[:16] + ".mp4")
+        if not src.exists():
+            src.parent.mkdir(parents=True, exist_ok=True)
+            if url.startswith("http"):
+                safe = urllib.parse.quote(url, safe=":/?&=%+,;@()")
+                src.write_bytes(urllib.request.urlopen(urllib.request.Request(safe, headers=UA), timeout=180).read())
+            else:
+                src.write_bytes((HERE.parent / url).read_bytes())
+        ff = imageio_ffmpeg.get_ffmpeg_exe()
+        first = folder / "first.jpg"
+        subprocess.run([ff, "-y", "-loglevel", "error", "-ss", str(start), "-i", str(src), "-frames:v", "1", "-q:v", "3", str(first)], check=True)
+        with Image.open(first) as im:
+            w, h = im.size
+        scale = "scale=1080:-2" if h >= w else "scale=-2:1080"
+        subprocess.run([ff, "-y", "-loglevel", "error", "-ss", str(start), "-i", str(src), "-t", f"{dur + 0.7:.2f}", "-an",
+                        "-vf", f"fps={FPS},{scale}", "-q:v", "3", str(folder / "%05d.jpg")], check=True)
+    count = len(list(folder.glob("[0-9]*.jpg")))
+    if count == 0:
+        raise ValueError(f"동영상에서 화면을 꺼내지 못했어요: {url}")
+    with Image.open(folder / "00001.jpg") as im:
+        w, h = im.size
+    return (folder / "00001.jpg").as_uri(), folder.as_uri(), count, h >= w * 1.15
+
+
+def moving(s, dur, zoom_in=True):
+    """장면의 바탕. 동영상이 있으면 동영상, 없으면 사진. (HTML, 흐린 바탕 주소, 세로인지)"""
+    if s.get("video") and EXTRACT:
+        first, folder, count, tall = clip(s["video"], dur)
+        pos = s["video"].get("pos", "50% 50%") if isinstance(s["video"], dict) else "50% 50%"
+        tag = f'<img class="vf" src="{first}" data-frames="{folder}" data-n="{count}" data-fps="{FPS}" style="object-position:{pos}">'
+        return tag, first, tall
+    if s.get("video"):  # 설계도 확인만 할 때는 동영상을 풀지 않아요
+        return "", "", True
+    return img(s["photo"], dur, zoom_in), backdrop(s["photo"]), is_tall(s["photo"])
+
+
 def img(photo, dur, zoom_in=True, extra=""):
     src, pos = fetch_photo(photo)
     s0, s1 = ("1.02", "1.12") if zoom_in else ("1.12", "1.02")
@@ -101,7 +154,7 @@ def rise(cls, text, delay, tag="div", style=""):
 
 
 def scene_cover(s, i, ctx):
-    parts = [f'<div class="pic">{img(s["photo"], s["dur"], i % 2 == 0)}</div>', '<div class="mid">']
+    parts = [f'<div class="pic">{moving(s, s["dur"], i % 2 == 0)[0]}</div>', '<div class="mid">']
     if s.get("kicker"):
         parts.append(rise("kicker", s["kicker"], .15))
     parts.append(rise("title", s["title"], .4, style=f'font-size:{s.get("size", 128)}px'))
@@ -112,12 +165,12 @@ def scene_cover(s, i, ctx):
 
 
 def scene_card(s, i, ctx):
-    """사진을 화면 가득 깔고 글은 아래쪽에 얹어요. 세로 사진은 전체, 가로 사진은 위 3/4 을 채워요."""
-    shape = "tall" if is_tall(s["photo"]) else "wide"
+    """사진이나 동영상을 화면 가득 깔고 글은 아래쪽에 얹어요. 세로면 전체, 가로면 위 3/4 을 채워요."""
+    tag, back, tall = moving(s, s["dur"], i % 2 == 0)
     chip = rise("chip", s["chip"], .2) if s.get("chip") else ""
     return "card", (
-        f'<div class="back"><img src="{backdrop(s["photo"])}"></div>'
-        f'<div class="pic {shape}">{img(s["photo"], s["dur"], i % 2 == 0)}</div><div class="shade"></div>'
+        f'<div class="back"><img src="{back}"></div>'
+        f'<div class="pic {"tall" if tall else "wide"}">{tag}</div><div class="shade"></div>'
         f'<div class="txt">{chip}{rise("hd", s["headline"], .32)}{rise("ln", s.get("line", ""), .6)}</div>'
     )
 
@@ -201,5 +254,7 @@ if __name__ == "__main__":
     page, dur, _ = build_html(spec)
     print(f"{dur:.1f}초, 장면 {len(spec['scenes'])}개")
     for n, s in enumerate(spec["scenes"], 1):
-        if s["type"] == "card" and not is_tall(s["photo"]):
+        if s.get("video"):
+            print(f"  장면 {n}: 동영상이에요. 영상을 만들 때 넣어요.")
+        elif s["type"] == "card" and not is_tall(s["photo"]):
             print(f"  장면 {n}: 가로 사진이에요. 같은 음식의 세로 사진이 있으면 그걸 쓰면 화면을 꽉 채워요.")

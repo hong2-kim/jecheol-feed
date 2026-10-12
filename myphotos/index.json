@@ -1,8 +1,14 @@
 [
   {
-    "file": "myphotos/2026-10-12-172554789.jpg",
+    "file": "https://github.com/hong2-kim/jecheol-feed/releases/download/myphotos/2026-10-12-172554789.jpg",
     "note": "영종도 한식 김치찌개/제육볶음",
     "date": "2026-10-12",
-    "used": []
+    "used": [],
+    "id": "2026-10-12-172554789.jpg",
+    "type": "photo",
+    "tg_unique": null,
+    "sha256": "b2f84045a923d429019f6ec44353f5e8345ad4d81f262e203fe27569916e584f",
+    "bytes": 345537,
+    "msg_id": null
   }
 ]

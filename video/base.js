@@ -33,7 +33,22 @@
   });
   window.DURATION = Math.max(...scenes.map((s) => s.at + s.dur));
 
+  // 동영상 장면은 낱장 사진을 시각에 맞춰 바꿔 끼워요.
+  const pad = (n) => String(n).padStart(5, "0");
   window.seek = (t) => {
+    const waits = [];
+    for (const s of scenes) {
+      for (const im of s.el.querySelectorAll("img.vf")) {
+        const local = Math.max(0, t - s.at);
+        const k = Math.min(parseInt(im.dataset.n, 10), Math.floor(local * parseFloat(im.dataset.fps)) + 1);
+        const src = `${im.dataset.frames}/${pad(k)}.jpg`;
+        if (t >= s.at - 0.1 && t < s.at + s.dur + s.out && im.dataset.cur !== src) {
+          im.dataset.cur = src;
+          im.src = src;
+          waits.push(im.decode().catch(() => {}));
+        }
+      }
+    }
     for (const s of scenes) {
       const local = t - s.at;
       const on = local >= 0 && local < s.dur + s.out;
@@ -44,6 +59,7 @@
         anim.currentTime = ms;
       }
     }
+    return Promise.all(waits);
   };
   window.seek(0);
 })();

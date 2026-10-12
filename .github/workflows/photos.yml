@@ -1,4 +1,4 @@
-# 텔레그램 봇 대화방에 보낸 사진을 3시간마다 받아 myphotos 폴더에 저장해요.
+# 텔레그램 봇 대화방에 보낸 사진과 동영상을 3시간마다 받아 보관함(릴리스 myphotos)에 올리고 기록해요.
 name: photos
 
 on:
@@ -28,12 +28,18 @@ jobs:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID || secrets.TELEGRAM_CHAT_I }}
         run: python scripts/fetch_photos.py
-      - name: 받은 사진 저장
-        if: always()
+      - name: 받은 파일을 보관함(릴리스)에 올리기
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          ls incoming/* >/dev/null 2>&1 || { echo "새로 받은 파일이 없어요"; exit 0; }
+          gh release view myphotos >/dev/null 2>&1 || gh release create myphotos --title "보낸 사진과 동영상" --notes "텔레그램으로 보낸 원본을 두는 곳이에요. 영상 제작에 쓰여요."
+          gh release upload myphotos incoming/* --clobber
+      - name: 받은 기록 저장
         run: |
           git config user.name "jecheol-feed"
           git config user.email "actions@users.noreply.github.com"
           git add myphotos state logs
-          git diff --cached --quiet || git commit -m "보낸 사진 받기"
+          git diff --cached --quiet || git commit -m "보낸 사진·동영상 받기"
           git pull --rebase
           git push
