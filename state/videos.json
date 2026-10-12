@@ -32,9 +32,9 @@
       "Secretaría de Cultura de la Ciudad de México (CC BY 2.0) · commons.wikimedia.org/?curid=140189125"
     ],
     "url": "https://github.com/hong2-kim/jecheol-feed/releases/download/v2026-10-12/2026-10-12-5-world.mp4",
-    "seconds": 33.2,
-    "size_mb": 7.4,
-    "sha256": "e7c556a64e8e462ba8853c8d61c21ec967ce8f2211f3173f0f856472e0ae6bc7"
+    "seconds": 15.0,
+    "size_mb": 5.5,
+    "sha256": "51e586dfe944e35efc10290d93b5cb489cf17ed9806781c88a4125533226d29b"
   },
   {
     "id": "2026-10-12-3-dinner",
@@ -57,9 +57,9 @@
       "ⓒ한국관광공사 포토코리아-알렉스 분도, 황성훈, 프레임스튜디오, 천준교"
     ],
     "url": "https://github.com/hong2-kim/jecheol-feed/releases/download/v2026-10-12/2026-10-12-3-dinner.mp4",
-    "seconds": 27.4,
-    "size_mb": 4.0,
-    "sha256": "72416b4710d36e385dedfc90365caf94a38b229e6b75f880fa4c9b0c26c94be8"
+    "seconds": 13.0,
+    "size_mb": 3.1,
+    "sha256": "fbdce99b97770997abfcd8cdabf8654445822eb95426b48ffde41f5aeeb8e3ce"
   },
   {
     "id": "2026-10-12-2-news",
@@ -84,9 +84,9 @@
       "ⓒ한국관광공사 포토코리아-박은경, 스튜디오 4cats"
     ],
     "url": "https://github.com/hong2-kim/jecheol-feed/releases/download/v2026-10-12/2026-10-12-2-news.mp4",
-    "seconds": 25.6,
-    "size_mb": 4.6,
-    "sha256": "bf751763d3bec6f4cecf27468836f39d531f5d32287a42333bd4a9d14273e97b"
+    "seconds": 13.0,
+    "size_mb": 3.7,
+    "sha256": "f7b0acfbc3aa9d0701a44a76c897b8bc1f71d931625f66d5bef1db04c4e0f575"
   },
   {
     "id": "2026-10-12-1-monthly",
@@ -113,9 +113,9 @@
       "ⓒ한국관광공사 포토코리아-천준교, 박은경, 김지호, 디엔에이스튜디오"
     ],
     "url": "https://github.com/hong2-kim/jecheol-feed/releases/download/v2026-10-12/2026-10-12-1-monthly.mp4",
-    "seconds": 32.2,
-    "size_mb": 4.9,
-    "sha256": "80c7d2ff69c55421a55fcb4ef88bd6e611087d3ebf81c29f93be4cfda2a53eb3"
+    "seconds": 14.4,
+    "size_mb": 3.6,
+    "sha256": "e10e83ad899a6de5788a0d955ef3f7610987dac875222e2202a6ba2ffeb3aebb"
   },
   {
     "id": "2026-10-12-1-jecheol",
@@ -139,8 +139,8 @@
       "ⓒ한국관광공사 포토코리아-천준교, 김지호, 최민희, 이범수"
     ],
     "url": "https://github.com/hong2-kim/jecheol-feed/releases/download/v2026-10-12/2026-10-12-1-jecheol.mp4",
-    "seconds": 36.6,
-    "size_mb": 8.4,
-    "sha256": "0c88edee07f11768bc0de7c2491057d3ca70c2c2daccaf01975766171b6b3c53"
+    "seconds": 15.0,
+    "size_mb": 6.9,
+    "sha256": "33f6b4ff6a3975a69c1fd583906f5f588616dd83f5a72038b25526ebc573b01d"
   }
 ]
