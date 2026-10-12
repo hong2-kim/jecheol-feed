@@ -72,12 +72,17 @@ def main():
     only = sys.argv[2] if len(sys.argv) > 2 else None
     specs = sorted((ROOT / "videos" / day).glob("*.json"))
     results = []
+    ledger = ROOT / "state" / "posted.json"
+    posted = {e["id"] for e in json.loads(ledger.read_text(encoding="utf-8"))} if ledger.exists() else set()
     with sync_playwright() as p:
         browser = p.chromium.launch()
         for path in specs:
             if only and path.stem != only:
                 continue
             name = f"{day}-{path.stem}"
+            if name in posted:
+                print(f"이미 인스타에 올린 영상이라 다시 만들지 않아요: {name}")
+                continue
             entry = {"id": name, "date": day, "file": f"{name}.mp4"}
             try:
                 spec = json.loads(path.read_text(encoding="utf-8"))

@@ -130,7 +130,7 @@ ul {{ margin: 4px 0; padding-left: 20px; }} a {{ color: #B4441A; word-break: bre
 def main():
     cfg = read_json(ROOT / "config.json")
     items, problems = load_items()
-    videos = read_json(ROOT / "state" / "videos.json", []) or []
+    videos = [v for v in (read_json(ROOT / "state" / "videos.json", []) or []) if not v.get("deleted")]  # 지운 영상은 빼요
     for p in problems:
         print("확인 필요:", p)
         log_error("build_feed", p)

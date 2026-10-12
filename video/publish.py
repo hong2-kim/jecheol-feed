@@ -8,6 +8,7 @@
 3. 텔레그램으로 영상과 게시글용 글을 보내요. 실패한 항목은 이유와 함께 알려요.
 영상 파일 올리기(릴리스)는 작업 파일에서 gh 명령으로 먼저 해 둬요.
 """
+import hashlib
 import json
 import os
 import sys
@@ -40,8 +41,12 @@ def main():
         if r["ok"]:
             r["url"] = f"https://github.com/{REPO}/releases/download/v{day}/{r['file']}"
             # 같은 영상을 다시 만들면 제목과 글도 새것으로 바꿔요.
+            old = next((v for v in videos if v["id"] == r["id"]), {})
             videos = [v for v in videos if v["id"] != r["id"]]
-            videos.append({k: r.get(k) for k in ("id", "date", "kind", "title", "summary", "caption", "tags", "sources", "credits", "url", "seconds", "size_mb")})
+            entry = {k: r.get(k) for k in ("id", "date", "kind", "title", "summary", "caption", "tags", "sources", "credits", "url", "seconds", "size_mb")}
+            entry["sha256"] = hashlib.sha256((ROOT / "dist" / r["file"]).read_bytes()).hexdigest()  # 같은 파일인지 알아보는 지문
+            entry.update({k: old[k] for k in ("posted", "deleted") if k in old})
+            videos.append(entry)
     videos.sort(key=lambda v: v["id"], reverse=True)
     write_json(ROOT / "state" / "videos.json", videos[:400])
 

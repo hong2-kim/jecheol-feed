@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""텔레그램 봇 대화방에 보낸 사진과 동영상을 받아요.
+"""텔레그램 봇 대화방에 보낸 사진과 동영상을 받고, 올렸어·삭제 확인 같은 말도 처리해요. (말은 cleanup.py 참고)
 
   python scripts/fetch_photos.py
 - 받은 파일은 incoming 폴더에 두고, 작업 파일이 깃허브 릴리스 "myphotos" 에 올려요.
@@ -18,6 +18,7 @@ import urllib.parse
 import urllib.request
 from datetime import datetime
 
+import cleanup
 from common import KST, ROOT, log_error, read_json, write_json
 
 INCOMING = ROOT / "incoming"
@@ -66,7 +67,7 @@ def run():
     updates = api(token, "getUpdates", offset=offset, timeout=0, allowed_updates='["message"]')
     index = read_json(INDEX, []) or []
     known = {e.get("tg_unique") for e in index} | {e.get("sha256") for e in index}
-    captions, saved, again, too_big = {}, [], 0, 0
+    captions, saved, again, too_big, answers = {}, [], 0, 0, []
     for up in updates:  # 여러 개를 한꺼번에 보내면 글은 첫 번째에만 붙어요
         msg = up.get("message") or {}
         if msg.get("media_group_id") and msg.get("caption"):
@@ -78,6 +79,14 @@ def run():
             continue
         found = media(msg)
         if not found:
+            if msg.get("text"):  # 올렸어, 삭제 확인 같은 말
+                try:
+                    answer = cleanup.handle(msg["text"])
+                except Exception as e:
+                    log_error("cleanup", f"{type(e).__name__}: {e}")
+                    answer = ["처리하다가 문제가 생겼어요. 아무것도 지우지 않았어요."]
+                if answer:
+                    answers.append("\n".join(answer))
             continue
         tg = found["tg"]
         if tg.get("file_size", 0) > MAX_BYTES:
@@ -129,6 +138,15 @@ def run():
         lines.append(f"{too_big}개는 20MB가 넘어 받지 못했어요. 동영상은 10초 안쪽으로 짧게 보내 주세요.")
     if lines:
         api(token, "sendMessage", chat_id=chat, text="\n".join(lines))
+    for answer in answers:
+        api(token, "sendMessage", chat_id=chat, text=answer[:4000])
+    try:  # 올린 지 7일이 지난 것이 새로 생기면 지울 목록을 먼저 보여 줘요
+        offer = cleanup.propose()
+    except Exception as e:
+        log_error("cleanup:propose", f"{type(e).__name__}: {e}")
+        offer = []
+    if offer:
+        api(token, "sendMessage", chat_id=chat, text="\n".join(offer)[:4000])
     print(f"받은 것 {len(saved)}개, 같은 파일 {again}개, 너무 큰 것 {too_big}개")
 
 

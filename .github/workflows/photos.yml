@@ -1,13 +1,16 @@
-# 텔레그램 봇 대화방에 보낸 사진과 동영상을 3시간마다 받아 보관함(릴리스 myphotos)에 올리고 기록해요.
+# 한 시간마다 텔레그램 봇 대화방을 확인해요.
+# - 보낸 사진과 동영상을 받아 보관함(릴리스 myphotos)에 올리고 기록해요.
+# - 올렸어, 삭제 확인 같은 말을 처리해요. (scripts/cleanup.py)
 name: photos
 
 on:
   schedule:
-    - cron: "10 2-23/3 * * *" # 3시간마다. 오전 5시 10분(한국 시간)에도 돌아서 6시 제작 전에 사진이 들어와요.
+    - cron: "10 * * * *" # 한 시간마다. 오전 5시 10분(한국 시간)에도 돌아서 6시 제작 전에 사진이 들어와요.
   workflow_dispatch:
 
 permissions:
   contents: write
+  actions: write
 
 concurrency:
   group: repo-write
@@ -27,6 +30,7 @@ jobs:
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID || secrets.TELEGRAM_CHAT_I }}
+          GITHUB_TOKEN: ${{ github.token }} # 삭제 확인을 받았을 때 보관함 파일을 지우는 데 써요
         run: python scripts/fetch_photos.py
       - name: 받은 파일을 보관함(릴리스)에 올리기
         env:
@@ -36,10 +40,17 @@ jobs:
           gh release view myphotos >/dev/null 2>&1 || gh release create myphotos --title "보낸 사진과 동영상" --notes "텔레그램으로 보낸 원본을 두는 곳이에요. 영상 제작에 쓰여요."
           gh release upload myphotos incoming/* --clobber
       - name: 받은 기록 저장
+        if: always()
+        env:
+          GH_TOKEN: ${{ github.token }}
         run: |
           git config user.name "jecheol-feed"
           git config user.email "actions@users.noreply.github.com"
           git add myphotos state logs
-          git diff --cached --quiet || git commit -m "보낸 사진·동영상 받기"
+          REBUILD=no
+          git diff --cached --name-only | grep -q "^state/videos.json$" && REBUILD=yes
+          git diff --cached --quiet || git commit -m "텔레그램 대화방 확인"
           git pull --rebase
           git push
+          # 올림·지움 표시가 바뀌었으면 RSS와 영상 페이지를 다시 만들어요
+          if [ "$REBUILD" = yes ]; then gh workflow run publish.yml --ref main; fi
