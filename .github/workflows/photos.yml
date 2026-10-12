@@ -1,0 +1,39 @@
+# 텔레그램 봇 대화방에 보낸 사진을 3시간마다 받아 myphotos 폴더에 저장해요.
+name: photos
+
+on:
+  schedule:
+    - cron: "10 2-23/3 * * *" # 3시간마다. 오전 5시 10분(한국 시간)에도 돌아서 6시 제작 전에 사진이 들어와요.
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: repo-write
+  cancel-in-progress: false
+
+jobs:
+  photos:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: 사진 받기
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID || secrets.TELEGRAM_CHAT_I }}
+        run: python scripts/fetch_photos.py
+      - name: 받은 사진 저장
+        if: always()
+        run: |
+          git config user.name "jecheol-feed"
+          git config user.email "actions@users.noreply.github.com"
+          git add myphotos state logs
+          git diff --cached --quiet || git commit -m "보낸 사진 받기"
+          git pull --rebase
+          git push

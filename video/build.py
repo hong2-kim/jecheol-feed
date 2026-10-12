@@ -16,7 +16,7 @@ import urllib.parse
 import urllib.request
 from pathlib import Path
 
-from PIL import Image, ImageEnhance, ImageFilter
+from PIL import Image, ImageEnhance, ImageFilter, ImageOps
 
 HERE = Path(__file__).parent
 CACHE = HERE.parent / "build" / "photos"
@@ -56,9 +56,12 @@ def fetch_photo(photo):
     CACHE.mkdir(parents=True, exist_ok=True)
     path = CACHE / (hashlib.sha1(url.encode()).hexdigest()[:16] + "-g2.jpg")
     if not path.exists():
-        safe = urllib.parse.quote(url, safe=":/?&=%+,;@()")
-        data = urllib.request.urlopen(urllib.request.Request(safe, headers=UA), timeout=60).read()
-        image = Image.open(io.BytesIO(data)).convert("RGB")
+        if url.startswith("http"):
+            safe = urllib.parse.quote(url, safe=":/?&=%+,;@()")
+            data = urllib.request.urlopen(urllib.request.Request(safe, headers=UA), timeout=60).read()
+        else:  # 사용자가 보낸 사진. 저장소 안의 경로예요 (myphotos/이름.jpg)
+            data = (HERE.parent / url).read_bytes()
+        image = ImageOps.exif_transpose(Image.open(io.BytesIO(data))).convert("RGB")
         if min(image.size) < 500:
             raise ValueError(f"사진이 너무 작아요 ({image.size[0]}x{image.size[1]}): {url}")
         grade(image).save(path, "JPEG", quality=92)
