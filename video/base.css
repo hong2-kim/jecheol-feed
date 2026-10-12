@@ -60,3 +60,7 @@ body { background: #0E0B09; color: #fff; font-family: "Noto Sans KR", sans-serif
 .info .pic.bot img { filter: brightness(.38); }
 .info .box { position: absolute; left: 70px; right: 70px; top: 1030px; }
 .huge { font-weight: 900; font-size: 170px; letter-spacing: -6px; line-height: 1.1; color: var(--ac); }
+
+/* 마지막 장면의 계정 이름 */
+.sig { position: absolute; left: 70px; top: 1300px; z-index: 5; display: flex; align-items: center; gap: 16px; padding: 16px 34px 20px 24px; border-radius: 999px; background: rgba(8,6,4,.74); font-weight: 900; font-size: 56px; letter-spacing: -2px; }
+.sig svg { width: 46px; height: 58px; flex: none; }

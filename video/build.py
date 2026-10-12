@@ -116,6 +116,16 @@ def scene_info(s, i, ctx):
     )
 
 
+def signature():
+    """마지막 장면에 넣는 계정 이름. config.json 의 account 를 써요. 지도 핀 모양과 함께 보여 줘요."""
+    name = json.loads((HERE.parent / "config.json").read_text(encoding="utf-8")).get("account")
+    if not name:
+        return ""
+    pin = ('<svg viewBox="0 0 200 250"><path d="M100 244C100 244 16 150 16 92a84 84 0 01168 0c0 58-84 152-84 152z" fill="var(--ac)"/>'
+           '<circle cx="100" cy="92" r="34" fill="#0E0B09"/></svg>')
+    return f'<div class="sig a rise" style="--dl:1s;--d:.45s">{pin}{esc(name)}</div>'
+
+
 SCENES = {"cover": scene_cover, "card": scene_card, "duo": scene_duo, "info": scene_info}
 
 
@@ -133,6 +143,8 @@ def build_html(spec):
         s.setdefault("dur", 4.4)
         kind, body = SCENES[s["type"]](s, i, ctx)
         last = i == len(scenes) - 1
+        if last:
+            body += signature()
         out.append(f'<section class="scene {kind}{" in-fade" if i else ""}" data-at="{at:.2f}" data-dur="{s["dur"]}" data-out="{0 if last else 0.3}">{body}</section>')
         at += s["dur"]
     out.append(f"<script>{(HERE / 'base.js').read_text(encoding='utf-8')}</script></body></html>")

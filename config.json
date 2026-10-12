@@ -4,5 +4,6 @@
   "site_url": "https://hong2-kim.github.io/jecheol-feed",
   "daily_target": 5,
   "daily_minimum": 3,
-  "feed_max_items": 60
+  "feed_max_items": 60,
+  "account": "먹고갈지도"
 }
