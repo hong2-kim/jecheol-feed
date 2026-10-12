@@ -68,6 +68,7 @@ def run():
     index = read_json(INDEX, []) or []
     known = {e.get("tg_unique") for e in index} | {e.get("sha256") for e in index}
     captions, saved, again, too_big, answers = {}, [], 0, 0, []
+    loose, named = [], []  # 따로 보낸 글 (받은 시각, 글), 그 글로 이름을 채운 항목
     for up in updates:  # 여러 개를 한꺼번에 보내면 글은 첫 번째에만 붙어요
         msg = up.get("message") or {}
         if msg.get("media_group_id") and msg.get("caption"):
@@ -87,6 +88,8 @@ def run():
                     answer = ["처리하다가 문제가 생겼어요. 아무것도 지우지 않았어요."]
                 if answer:
                     answers.append("\n".join(answer))
+                elif answer is None:  # 명령이 아닌 글은 방금 보낸 사진·동영상의 이름일 수 있어요
+                    loose.append((msg.get("date", 0), msg["text"].strip()))
             continue
         tg = found["tg"]
         if tg.get("file_size", 0) > MAX_BYTES:
@@ -110,7 +113,8 @@ def run():
         (INCOMING / name).write_bytes(data)
         note = (msg.get("caption") or captions.get(msg.get("media_group_id")) or "").strip()
         entry = {"id": name, "type": found["type"], "file": BASE + name, "note": note, "date": day, "used": [],
-                 "tg_unique": tg.get("file_unique_id"), "sha256": digest, "bytes": len(data), "msg_id": msg.get("message_id")}
+                 "tg_unique": tg.get("file_unique_id"), "sha256": digest, "bytes": len(data), "msg_id": msg.get("message_id"),
+                 "at": msg.get("date", 0)}
         if found["type"] == "video":
             entry["seconds"] = tg.get("duration")
             thumb = tg.get("thumbnail") or tg.get("thumb")
@@ -122,16 +126,27 @@ def run():
                     log_error("fetch_photos:thumb", type(e).__name__)
         index.append(entry)
         known |= {entry["tg_unique"], digest}
-        saved.append(("동영상 " if found["type"] == "video" else "사진 ") + (note or "(이름 없음)"))
+        saved.append(entry)
+    # 이름 없이 온 사진·동영상에, 앞뒤 10분 안에 따로 보낸 글을 이름으로 붙여요.
+    for at, text in loose:
+        blank = [e for e in index if not e.get("note") and not e.get("used") and not e.get("deleted") and abs(e.get("at", 0) - at) <= 600]
+        if blank:
+            target = min(blank, key=lambda e: abs(e.get("at", 0) - at))
+            target["note"] = text[:200]
+            named.append(target)
     write_json(state, {"next": offset})
-    if saved:
+    if saved or named:
         write_json(INDEX, index)
+    late = [e for e in named if all(e is not s for s in saved)]  # 전에 받은 것에 이름만 나중에 온 경우
+    saved = [("동영상 " if e["type"] == "video" else "사진 ") + (e.get("note") or "(이름 없음)") for e in saved]
     lines = []
     if saved:
         lines.append(f"{len(saved)}개 받았어요:\n" + "\n".join("· " + s for s in saved[:10]))
         if any("(이름 없음)" in s for s in saved):
-            lines.append("다음부터는 음식 이름을 같이 적어 주세요. (예: 닭갈비, 춘천)")
+            lines.append("음식 이름을 알려 주세요. 지금 이 대화방에 이름만 보내도 돼요. (예: 닭갈비, 춘천)")
         lines.append("다음 영상을 만들 때 먼저 써요.")
+    if late:
+        lines.append("이름을 적어 뒀어요: " + ", ".join(e["note"] for e in late))
     if again:
         lines.append(f"{again}개는 전에 받은 것과 같은 파일이라 다시 받지 않았어요.")
     if too_big:
