@@ -87,4 +87,4 @@ body { background: #0E0B09; color: #fff; font-family: "Noto Sans KR", sans-serif
 .src-h { font-weight: 700; font-size: 30px; color: rgba(255,255,255,.56); }
 .src-l { margin-top: 20px; font-weight: 500; font-size: 34px; line-height: 1.36; letter-spacing: -.8px; }
 .src-l span { display: block; font-size: 28px; letter-spacing: 0; color: rgba(255,255,255,.6); }
-.src-f { margin-top: 34px; font-size: 26px; line-height: 1.4; color: rgba(255,255,255,.54); }
+.src-f { margin-top: 30px; font-size: 26px; line-height: 1.4; white-space: nowrap; color: rgba(255,255,255,.54); }

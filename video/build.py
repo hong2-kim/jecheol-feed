@@ -276,7 +276,7 @@ def scene_outro(lines):
     rows = "".join(f'<div class="src-l">{esc(big)}' + (f"<span>{esc(small)}</span>" if small else "") + "</div>" for big, small in lines)
     foot = ""
     if any("CC BY" in big for big, _ in lines):  # CC BY 는 고쳐 썼는지와 라이선스 주소도 알려야 해요
-        foot = '<div class="src-f">사진은 화면에 맞게 자르고 보정했어요<br>라이선스 creativecommons.org/licenses</div>'
+        foot = '<div class="src-f">사진은 잘라서 보정했어요 · creativecommons.org/licenses</div>'
     return (f'{OUTRO_MAP}<div class="end"><div class="sig">{OUTRO_PIN}<span>{name}</span></div>'
             f'<div class="src"><div class="src-h">사진 출처</div>{rows}{foot}</div></div>')
 
