@@ -10,7 +10,7 @@ from datetime import datetime
 from email.utils import format_datetime
 from xml.etree import ElementTree as ET
 
-from common import KST, ROOT, load_items, log_error, read_json
+from common import KST, ROOT, hashtags, load_items, log_error, read_json
 
 
 def esc(text):
@@ -48,7 +48,7 @@ def body_html(item):
 
 def video_html(v):
     """영상 한 편의 제목, 핵심 내용, 게시글 문구, 해시태그, 출처."""
-    tags = " ".join("#" + x for x in (v.get("tags") or []))
+    tags = " ".join("#" + x for x in hashtags(v.get("tags")))
     srcs = "".join(f'<li><a href="{esc(s)}">{esc(s)}</a></li>' if str(s).startswith("http") else f"<li>{esc(s)}</li>" for s in (v.get("sources") or []))
     credit = " / ".join(v.get("credits") or [])
     return (f"<p><b>핵심 내용</b> {esc(v.get('summary') or '')}</p>"

@@ -12,6 +12,7 @@ import hashlib
 import html
 import io
 import json
+import sys
 import urllib.parse
 import urllib.request
 from pathlib import Path
@@ -19,6 +20,9 @@ from pathlib import Path
 from PIL import Image, ImageEnhance, ImageFilter, ImageOps
 
 HERE = Path(__file__).parent
+sys.path.insert(0, str(HERE.parent / "scripts"))
+from common import hashtags  # noqa: E402
+
 CACHE = HERE.parent / "build" / "photos"
 ACCENTS = {"제철": "#FFB23E", "소식": "#4FC3C8", "저녁": "#FF7A6B", "추가": "#B79CFF", "세계": "#8FD694"}
 UA = {"User-Agent": "jecheol-feed/1.0 (https://github.com/hong2-kim/jecheol-feed)"}
@@ -245,17 +249,19 @@ def build_html(spec):
 
 def description(spec):
     """게시글에 넣을 글. 제목, 핵심 내용, 문구, 해시태그, 사진·음악 표기, 출처."""
-    lines = [spec["caption"].strip(), "", " ".join("#" + t for t in spec.get("tags", [])), ""]
+    lines = [spec["caption"].strip(), "", " ".join("#" + t for t in hashtags(spec.get("tags"))), ""]
     if spec.get("credits"):
         lines.append("사진 " + " / ".join(spec["credits"]))
     return "\n".join(lines) + "\n"
 
 
 if __name__ == "__main__":
-    import sys
     spec = json.loads(Path(sys.argv[1]).read_text(encoding="utf-8"))
     page, dur, _ = build_html(spec)
     print(f"{dur:.1f}초, 장면 {len(spec['scenes'])}개")
+    if len(spec.get("tags") or []) != 4:
+        print(f"  해시태그를 {len(spec.get('tags') or [])}개 적었어요. 4개만 골라 적어 주세요. (다섯 번째 계정 이름은 자동으로 붙어요)")
+    print("  해시태그: " + " ".join("#" + t for t in hashtags(spec.get("tags"))))
     for n, s in enumerate(spec["scenes"], 1):
         if s.get("video"):
             print(f"  장면 {n}: 동영상이에요. 영상을 만들 때 넣어요.")

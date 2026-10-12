@@ -87,6 +87,7 @@ def main():
             try:
                 spec = json.loads(path.read_text(encoding="utf-8"))
                 entry.update({k: spec.get(k) for k in ("kind", "title", "summary", "caption", "tags", "sources", "credits")})
+                entry["tags"] = build.hashtags(spec.get("tags"))  # 인스타에 들어가는 5개만
                 out, duration = render(spec, name, browser)
                 entry.update({"ok": True, "seconds": round(duration, 1), "size_mb": round(out.stat().st_size / 1e6, 1)})
                 print(f"만들었어요: {out.name} ({duration:.1f}초)")

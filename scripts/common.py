@@ -38,6 +38,17 @@ def log_error(where, message):
         f.write(json.dumps(line, ensure_ascii=False) + "\n")
 
 
+def hashtags(tags):
+    """인스타그램은 해시태그가 5개까지만 들어가요. 고른 것 중 앞의 4개만 쓰고, 마지막은 계정 이름으로 해요."""
+    account = (read_json(ROOT / "config.json", {}) or {}).get("account") or "먹고갈지도"
+    picked = []
+    for tag in tags or []:
+        tag = str(tag).strip().lstrip("#").replace(" ", "")
+        if tag and tag != account and tag not in picked:
+            picked.append(tag)
+    return picked[:4] + [account]
+
+
 def dedupe_key(item):
     """같은 음식·축제의 같은 주제는 한 해에 한 번만 내요."""
     return f"{item['subject']}|{item['angle']}|{item['date'][:4]}".replace(" ", "")
