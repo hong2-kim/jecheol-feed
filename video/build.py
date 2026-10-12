@@ -148,10 +148,17 @@ def moving(s, dur, zoom_in=True):
     return img(s["photo"], dur, zoom_in), backdrop(s["photo"]), is_tall(s["photo"])
 
 
-def img(photo, dur, zoom_in=True, extra=""):
+MOVES = [True, "left", False, "right"]  # 장면마다 사진이 움직이는 방향을 바꿔요: 다가가기, 왼쪽으로, 물러나기, 오른쪽으로
+
+
+def img(photo, dur, move=True, extra=""):
     src, pos = fetch_photo(photo)
-    s0, s1 = ("1.02", "1.12") if zoom_in else ("1.12", "1.02")
-    return f'<img class="a kb" src="{src}" style="--d:{dur + .6}s;--s0:{s0};--s1:{s1};object-position:{pos};{extra}">'
+    if move in ("left", "right"):
+        x0, x1 = ("3.6%", "-3.6%") if move == "left" else ("-3.6%", "3.6%")
+        motion = f"--s0:1.15;--s1:1.15;--x0:{x0};--x1:{x1}"
+    else:
+        motion = "--s0:1.02;--s1:1.13" if move else "--s0:1.13;--s1:1.02"
+    return f'<img class="a kb" src="{src}" style="--d:{dur + .6}s;{motion};object-position:{pos};{extra}">'
 
 
 def rise(cls, text, delay, tag="div", style=""):
@@ -159,7 +166,7 @@ def rise(cls, text, delay, tag="div", style=""):
 
 
 def scene_cover(s, i, ctx):
-    parts = [f'<div class="pic">{moving(s, s["dur"], i % 2 == 0)[0]}</div>', '<div class="mid">']
+    parts = [f'<div class="pic">{moving(s, s["dur"], MOVES[i % 4])[0]}</div>', '<div class="mid">']
     if s.get("kicker"):
         parts.append(rise("kicker", s["kicker"], .15))
     parts.append(rise("title", s["title"], .4, style=f'font-size:{s.get("size", 128)}px'))
@@ -174,7 +181,7 @@ def scene_cover(s, i, ctx):
 
 def scene_card(s, i, ctx):
     """사진이나 동영상을 화면 가득 깔고 글은 아래쪽에 얹어요. 세로면 전체, 가로면 위 3/4 을 채워요."""
-    tag, back, tall = moving(s, s["dur"], i % 2 == 0)
+    tag, back, tall = moving(s, s["dur"], MOVES[i % 4])
     chip = rise("chip", s["chip"], .2) if s.get("chip") else ""
     return "card", (
         f'<div class="back"><img src="{back}"></div>'
@@ -184,8 +191,9 @@ def scene_card(s, i, ctx):
 
 
 def scene_duo(s, i, ctx):
-    parts = [f'<div class="pic">{img(s["photo_top"], s["dur"], True)}</div>',
-             f'<div class="pic bot">{img(s["photo_bottom"], s["dur"], False)}</div>']
+    top, bottom = ("left", False) if i % 2 else (True, "right")
+    parts = [f'<div class="pic">{img(s["photo_top"], s["dur"], top)}</div>',
+             f'<div class="pic bot">{img(s["photo_bottom"], s["dur"], bottom)}</div>']
     if s.get("title"):
         parts.append('<div class="seam"></div><div class="mid">')
         if s.get("no"):
@@ -195,7 +203,7 @@ def scene_duo(s, i, ctx):
             parts.append(rise("sub", s["sub"], .6))
         parts.append("</div>")
     if s.get("chip_top"):
-        parts.append(rise("tagchip", s["chip_top"], .45, style="top:150px;"))
+        parts.append(rise("tagchip", s["chip_top"], .45, style="top:300px;"))
     if s.get("chip_bottom"):
         parts.append(rise("tagchip", s["chip_bottom"], 1.9, style="top:1090px;"))
     if s.get("chip_bottom2"):
@@ -260,6 +268,23 @@ def scene_outro(lines):
 
 SCENES = {"cover": scene_cover, "card": scene_card, "duo": scene_duo, "info": scene_info}
 
+# 장면이 넘어가는 방법 (base.css 의 in-이름, out-이름). 영상 종류마다 다르게 섞어요.
+TRANSITION = 0.5
+EASE = "cubic-bezier(.76,0,.24,1)"
+CYCLE = {"저녁": ["push"], "소식": ["deal", "push"], "제철": ["push", "wipe"], "세계": ["wipe", "push"]}
+
+
+def transition(kind, frames, i, scenes):
+    """앞 장면에서 i번째 장면으로 넘어가는 방법을 골라요."""
+    if frames[i][0] == "outro":
+        return "fade"
+    if scenes[i].get("in") in ("push", "deal", "wipe", "zoom", "fade"):
+        return scenes[i]["in"]
+    if i == 1 or frames[i][0].startswith("cover"):  # 첫 장면 다음과 마무리 장면은 앞으로 당겨 들어와요
+        return "zoom"
+    cycle = CYCLE.get(kind, ["push"])
+    return cycle[i % len(cycle)]
+
 
 def build_html(spec):
     """설계도를 한 장짜리 HTML로 만들어요. (HTML, 길이)"""
@@ -279,10 +304,17 @@ def build_html(spec):
         frames.append(("outro", scene_outro(lines), min(4.0, 2.4 + .25 * max(0, len(lines) - 2))))
     else:
         frames[-1] = (frames[-1][0], frames[-1][1] + signature(), frames[-1][2])
+    how = [None] + [transition(spec.get("kind", ""), frames, i, scenes) for i in range(1, len(frames))]
     at = 0.0
     for i, (kind, body, dur) in enumerate(frames):
         last = i == len(frames) - 1
-        out.append(f'<section class="scene {kind}{" in-fade" if i else ""}" data-at="{at:.2f}" data-dur="{dur}" data-out="{0 if last else 0.3}">{body}</section>')
+        moves = []
+        if i:  # 들어올 때
+            moves.append(f"in-{how[i]} {TRANSITION}s {EASE} both")
+        if not last:  # 다음 장면이 들어올 때 함께 나가요
+            moves.append(f"out-{how[i + 1]} {TRANSITION}s {EASE} {dur}s forwards")
+        style = f' style="animation:{", ".join(moves)}"' if moves else ""
+        out.append(f'<section class="scene {kind}" data-at="{at:.2f}" data-dur="{dur}" data-out="{0 if last else TRANSITION}"{style}>{body}</section>')
         at += dur
     out.append(f"<script>{(HERE / 'base.js').read_text(encoding='utf-8')}</script></body></html>")
     return "\n".join(out), at, meta
