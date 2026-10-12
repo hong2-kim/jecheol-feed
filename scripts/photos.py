@@ -57,9 +57,11 @@ def commons(query):
             continue
         name = p["title"].split(":", 1)[1]
         who = re.sub(r"<[^>]+>", "", m.get("Artist", {}).get("value", "")).strip()[:50]
+        free = lic in ("CC0", "Public domain")
         print(json.dumps({"url": "https://commons.wikimedia.org/wiki/Special:FilePath/" + urllib.parse.quote(name) + "?width=1600",
                           "title": name, "size": f"{ii['width']}x{ii['height']}", "license": lic,
-                          "credit": f"{who} ({lic}) · Wikimedia Commons"}, ensure_ascii=False))
+                          "credit": "" if free else f"{who} ({lic}) · commons.wikimedia.org/?curid={p['pageid']}",
+                          "note": "출처 표시가 필요 없어요" if free else "저작자·라이선스·주소를 표시해야 해요"}, ensure_ascii=False))
 
 
 def festival(start):

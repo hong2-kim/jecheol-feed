@@ -64,3 +64,13 @@ body { background: #0E0B09; color: #fff; font-family: "Noto Sans KR", sans-serif
 /* 마지막 장면의 계정 이름 */
 .sig { position: absolute; left: 70px; top: 1300px; z-index: 5; display: flex; align-items: center; gap: 16px; padding: 16px 34px 20px 24px; border-radius: 999px; background: rgba(8,6,4,.74); font-weight: 900; font-size: 56px; letter-spacing: -2px; }
 .sig svg { width: 46px; height: 58px; flex: none; }
+
+/* 맨 끝 장면: 계정 이름과 사진 출처. 출처는 눈에 덜 띄게, 하지만 휴대폰에서 읽히는 크기로 */
+.outro .end { position: absolute; left: 90px; right: 90px; top: 0; height: 1560px; display: flex; flex-direction: column; justify-content: center; }
+.outro .sig { position: static; align-self: flex-start; padding: 0; background: none; gap: 22px; font-size: 92px; letter-spacing: -3px; }
+.outro .sig svg { width: 68px; height: 85px; }
+.src { margin-top: 60px; padding-top: 44px; border-top: 2px solid rgba(255,255,255,.16); color: rgba(255,255,255,.74); }
+.src-h { font-weight: 700; font-size: 30px; color: rgba(255,255,255,.46); }
+.src-l { margin-top: 20px; font-weight: 500; font-size: 34px; line-height: 1.36; letter-spacing: -.8px; }
+.src-l span { display: block; font-size: 28px; letter-spacing: 0; color: rgba(255,255,255,.5); }
+.src-f { margin-top: 34px; font-size: 26px; line-height: 1.4; color: rgba(255,255,255,.44); }

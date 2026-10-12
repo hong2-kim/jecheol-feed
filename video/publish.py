@@ -77,7 +77,7 @@ def main():
                                              "width": 1080, "height": 1920}, files={"video": (r["file"], f, "video/mp4")})
             body = f"{r.get('title')}\n\n[게시글에 넣을 글]\n{text}\n[내려받기]\n{r['url']}"
             if r.get("sources"):
-                body += "\n\n[출처]\n" + "\n".join(r["sources"])
+                body += "\n\n[확인한 자료] 게시글에는 안 넣어도 돼요\n" + "\n".join(r["sources"])
             tg("sendMessage", token, data={"chat_id": chat, "text": body[:4000], "disable_web_page_preview": "true"})
             sent.add(r["id"])
         except Exception as e:
