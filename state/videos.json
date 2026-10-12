@@ -34,7 +34,7 @@
     "url": "https://github.com/hong2-kim/jecheol-feed/releases/download/v2026-10-12/2026-10-12-5-world.mp4",
     "seconds": 15.0,
     "size_mb": 5.5,
-    "sha256": "51e586dfe944e35efc10290d93b5cb489cf17ed9806781c88a4125533226d29b"
+    "sha256": "4e2c52325241bb42ece429c3f93ed0eb739a35c462cf8f3365f971153fbacb51"
   },
   {
     "id": "2026-10-12-3-dinner",
@@ -57,9 +57,9 @@
       "ⓒ한국관광공사 포토코리아-알렉스 분도, 황성훈, 프레임스튜디오, 천준교"
     ],
     "url": "https://github.com/hong2-kim/jecheol-feed/releases/download/v2026-10-12/2026-10-12-3-dinner.mp4",
-    "seconds": 13.0,
+    "seconds": 12.5,
     "size_mb": 3.1,
-    "sha256": "fbdce99b97770997abfcd8cdabf8654445822eb95426b48ffde41f5aeeb8e3ce"
+    "sha256": "e78a529e461cf895f2c44b88f224d387633846e770e973ce7e4c96747de4cf57"
   },
   {
     "id": "2026-10-12-2-news",
@@ -84,9 +84,9 @@
       "ⓒ한국관광공사 포토코리아-박은경, 스튜디오 4cats"
     ],
     "url": "https://github.com/hong2-kim/jecheol-feed/releases/download/v2026-10-12/2026-10-12-2-news.mp4",
-    "seconds": 13.0,
+    "seconds": 12.5,
     "size_mb": 3.7,
-    "sha256": "f7b0acfbc3aa9d0701a44a76c897b8bc1f71d931625f66d5bef1db04c4e0f575"
+    "sha256": "a8f70deed4a0fa5f79f7d231c4e7a96b096189f3e5f2ecfc549babc968636cdc"
   },
   {
     "id": "2026-10-12-1-monthly",
@@ -113,9 +113,9 @@
       "ⓒ한국관광공사 포토코리아-천준교, 박은경, 김지호, 디엔에이스튜디오"
     ],
     "url": "https://github.com/hong2-kim/jecheol-feed/releases/download/v2026-10-12/2026-10-12-1-monthly.mp4",
-    "seconds": 14.4,
+    "seconds": 13.9,
     "size_mb": 3.6,
-    "sha256": "e10e83ad899a6de5788a0d955ef3f7610987dac875222e2202a6ba2ffeb3aebb"
+    "sha256": "9ae02eb7686588648c512a395a3771c2addadc5ae5bbae99476192ce1c39dd15"
   },
   {
     "id": "2026-10-12-1-jecheol",
@@ -141,6 +141,6 @@
     "url": "https://github.com/hong2-kim/jecheol-feed/releases/download/v2026-10-12/2026-10-12-1-jecheol.mp4",
     "seconds": 15.0,
     "size_mb": 6.9,
-    "sha256": "33f6b4ff6a3975a69c1fd583906f5f588616dd83f5a72038b25526ebc573b01d"
+    "sha256": "6f9d987c422741cd21490560b4606079aee1dbbf3b0af8640557519c4594d1cf"
   }
 ]
