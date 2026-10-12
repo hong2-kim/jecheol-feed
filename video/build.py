@@ -136,7 +136,7 @@ def clip(video, dur):
     return (folder / "00001.jpg").as_uri(), folder.as_uri(), count, h >= w * 1.15
 
 
-def moving(s, dur, zoom_in=True):
+def moving(s, dur):
     """장면의 바탕. 동영상이 있으면 동영상, 없으면 사진. (HTML, 흐린 바탕 주소, 세로인지)"""
     if s.get("video") and EXTRACT:
         first, folder, count, tall = clip(s["video"], dur)
@@ -145,28 +145,23 @@ def moving(s, dur, zoom_in=True):
         return tag, first, tall
     if s.get("video"):  # 설계도 확인만 할 때는 동영상을 풀지 않아요
         return "", "", True
-    return img(s["photo"], dur, zoom_in), backdrop(s["photo"]), is_tall(s["photo"])
+    return img(s["photo"]), backdrop(s["photo"]), is_tall(s["photo"])
 
 
-MOVES = [True, "left", False, "right"]  # 장면마다 사진이 움직이는 방향을 바꿔요: 다가가기, 왼쪽으로, 물러나기, 오른쪽으로
-
-
-def img(photo, dur, move=True, extra=""):
+def img(photo):
+    """사진 한 장. 장면이 넘어가기 전까지는 움직이지 않고 그대로 있어요."""
     src, pos = fetch_photo(photo)
-    if move in ("left", "right"):
-        x0, x1 = ("3.6%", "-3.6%") if move == "left" else ("-3.6%", "3.6%")
-        motion = f"--s0:1.15;--s1:1.15;--x0:{x0};--x1:{x1}"
-    else:
-        motion = "--s0:1.02;--s1:1.13" if move else "--s0:1.13;--s1:1.02"
-    return f'<img class="a kb" src="{src}" style="--d:{dur + .6}s;{motion};object-position:{pos};{extra}">'
+    return f'<img src="{src}" style="object-position:{pos}">'
 
 
 def rise(cls, text, delay, tag="div", style=""):
-    return f'<{tag} class="{cls} a rise" style="--dl:{delay}s;--d:.45s;{style}">{rich(text)}</{tag}>'
+    """글 한 덩이. 장면이 들어오는 동안 차례로 자리 잡고(0.5초 안), 그 뒤로는 움직이지 않아요."""
+    delay = round(min(delay, .6) * .35, 2)
+    return f'<{tag} class="{cls} a rise" style="--dl:{delay}s;--d:.3s;{style}">{rich(text)}</{tag}>'
 
 
 def scene_cover(s, i, ctx):
-    parts = [f'<div class="pic">{moving(s, s["dur"], MOVES[i % 4])[0]}</div>', '<div class="mid">']
+    parts = [f'<div class="pic">{moving(s, s["dur"])[0]}</div>', '<div class="mid">']
     if s.get("kicker"):
         parts.append(rise("kicker", s["kicker"], .15))
     parts.append(rise("title", s["title"], .4, style=f'font-size:{s.get("size", 128)}px'))
@@ -181,7 +176,7 @@ def scene_cover(s, i, ctx):
 
 def scene_card(s, i, ctx):
     """사진이나 동영상을 화면 가득 깔고 글은 아래쪽에 얹어요. 세로면 전체, 가로면 위 3/4 을 채워요."""
-    tag, back, tall = moving(s, s["dur"], MOVES[i % 4])
+    tag, back, tall = moving(s, s["dur"])
     chip = rise("chip", s["chip"], .2) if s.get("chip") else ""
     return "card", (
         f'<div class="back"><img src="{back}"></div>'
@@ -191,9 +186,8 @@ def scene_card(s, i, ctx):
 
 
 def scene_duo(s, i, ctx):
-    top, bottom = ("left", False) if i % 2 else (True, "right")
-    parts = [f'<div class="pic">{img(s["photo_top"], s["dur"], top)}</div>',
-             f'<div class="pic bot">{img(s["photo_bottom"], s["dur"], bottom)}</div>']
+    parts = [f'<div class="pic">{img(s["photo_top"])}</div>',
+             f'<div class="pic bot">{img(s["photo_bottom"])}</div>']
     if s.get("title"):
         parts.append('<div class="seam"></div><div class="mid">')
         if s.get("no"):
@@ -214,7 +208,7 @@ def scene_duo(s, i, ctx):
 def scene_info(s, i, ctx):
     bottom = s.get("photo_bottom", s["photo"])
     return "info", (
-        f'<div class="pic">{img(s["photo"], s["dur"], False)}</div><div class="pic bot">{img(bottom, s["dur"], True)}</div>'
+        f'<div class="pic">{img(s["photo"])}</div><div class="pic bot">{img(bottom)}</div>'
         f'<div class="box">{rise("kicker", s.get("kicker", ""), .3, style="font-size:48px;")}'
         f'{rise("big", s["title"], .5, style="font-size:104px;margin-top:10px;")}'
         f'{rise("huge", s["big"], .9)}{rise("sub", s.get("sub", ""), 1.2, style="margin-top:0;")}</div>'
@@ -256,20 +250,41 @@ def credit_lines(spec):
     return out
 
 
+# 끝 장면의 바탕. 인스타 프로필 사진(insta-profile/make.py 의 밤 지도)과 같은 색과 모양이에요.
+OUTRO_MAP = """<svg class="map" viewBox="0 0 1080 1920">
+<rect width="1080" height="1920" fill="#17130F"/>
+<path d="M-40 1610C180 1550 300 1710 520 1670S900 1550 1120 1630V1960H-40z" fill="#0F1A22"/>
+<path d="M700 -20h260v330H640z" fill="#1B2418"/><path d="M-20 250h230l-60 300H-20z" fill="#1B2418"/><path d="M850 1060h270v300H790z" fill="#1B2418"/>
+<g fill="none" stroke="#2B251E" stroke-linecap="round">
+<path d="M-40 640L1120 500" stroke-width="46"/><path d="M330 -40L500 1960" stroke-width="46"/>
+<path d="M-40 1040L1120 960" stroke-width="26"/><path d="M780 -40L880 1960" stroke-width="26"/>
+<path d="M-40 300L1120 170" stroke-width="16"/><path d="M120 -40L220 1960" stroke-width="16"/>
+<path d="M560 -40L690 1960" stroke-width="16"/><path d="M-40 1400L1120 1440" stroke-width="16"/><path d="M-40 840L1120 770" stroke-width="16"/>
+</g>
+<path d="M170 1860C300 1790 250 1680 410 1620S650 1540 610 1420" fill="none" stroke="#FFB23E" stroke-width="12" stroke-linecap="round" stroke-dasharray="2 34" opacity=".8"/>
+<rect width="1080" height="1920" fill="rgba(14,11,9,.42)"/></svg>"""
+OUTRO_PIN = ('<svg viewBox="0 0 200 250"><path d="M100 244C100 244 16 150 16 92a84 84 0 01168 0c0 58-84 152-84 152z" fill="#FFB23E"/>'
+             '<circle cx="100" cy="92" r="60" fill="#17130F"/>'
+             '<path d="M82 66c-5-7 5-11 0-19M100 62c-5-7 5-12 0-20M118 66c-5-7 5-11 0-19" fill="none" stroke="#FFB23E" stroke-width="6" stroke-linecap="round"/>'
+             '<path d="M62 84h76c0 26-16 42-38 42S62 110 62 84z" fill="#FFB23E"/><rect x="55" y="78" width="90" height="9" rx="4.5" fill="#FFB23E"/></svg>')
+
+
 def scene_outro(lines):
-    """맨 끝 장면. 계정 이름 아래에 사진 출처를 작게, 하지만 읽을 수 있는 크기로 모아요."""
+    """맨 끝 장면. 프로필 사진과 같은 지도 위에 계정 이름, 그 아래에 사진 출처를 작게(읽을 수 있는 크기로) 모아요."""
+    name = json.loads((HERE.parent / "config.json").read_text(encoding="utf-8")).get("account") or ""
+    name = f"{esc(name[:2])}<b>{esc(name[2:])}</b>" if name.startswith("먹고") else esc(name)
     rows = "".join(f'<div class="src-l">{esc(big)}' + (f"<span>{esc(small)}</span>" if small else "") + "</div>" for big, small in lines)
     foot = ""
     if any("CC BY" in big for big, _ in lines):  # CC BY 는 고쳐 썼는지와 라이선스 주소도 알려야 해요
         foot = '<div class="src-f">사진은 화면에 맞게 자르고 보정했어요<br>라이선스 creativecommons.org/licenses</div>'
-    return (f'<div class="end">{signature(.1)}<div class="src a rise" style="--dl:.3s;--d:.45s">'
-            f'<div class="src-h">사진 출처</div>{rows}{foot}</div></div>')
+    return (f'{OUTRO_MAP}<div class="end"><div class="sig">{OUTRO_PIN}<span>{name}</span></div>'
+            f'<div class="src"><div class="src-h">사진 출처</div>{rows}{foot}</div></div>')
 
 
 SCENES = {"cover": scene_cover, "card": scene_card, "duo": scene_duo, "info": scene_info}
 
 # 장면이 넘어가는 방법 (base.css 의 in-이름, out-이름). 영상 종류마다 다르게 섞어요.
-TRANSITION = 0.5
+TRANSITION = 0.3
 EASE = "cubic-bezier(.76,0,.24,1)"
 CYCLE = {"저녁": ["push"], "소식": ["deal", "push"], "제철": ["push", "wipe"], "세계": ["wipe", "push"]}
 
