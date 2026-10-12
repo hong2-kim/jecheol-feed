@@ -24,20 +24,17 @@
       "https://www.tatnews.org/2026/10/tat-highlights-phuket-vegetarian-festival-2026-as-a-distinctive-cultural-experience/"
     ],
     "credits": [
-      "Elekes Andor (CC BY 4.0) · Wikimedia Commons",
-      "Gobierno CDMX (CC0) · Wikimedia Commons",
-      "Hajime NAKANO (CC BY 2.0) · Wikimedia Commons",
-      "Linda Tieu (CC BY 2.0) · Wikimedia Commons",
-      "Luis Carlos Diaz (CC BY 4.0) · Wikimedia Commons",
-      "Sarah Stierch (CC0) · Wikimedia Commons",
-      "Secretaría de Cultura  de la Ciudad de México (CC BY 2.0) · Wikimedia Commons",
-      "Syced (CC0) · Wikimedia Commons",
-      "Wilfredor (CC0) · Wikimedia Commons",
-      "kobakou (CC BY 2.0) · Wikimedia Commons"
+      "Elekes Andor (CC BY 4.0) · commons.wikimedia.org/?curid=153443137",
+      "Hajime NAKANO (CC BY 2.0) · commons.wikimedia.org/?curid=5145567",
+      "kobakou (CC BY 2.0) · commons.wikimedia.org/?curid=14344168",
+      "Linda Tieu (CC BY 2.0) · commons.wikimedia.org/?curid=6492700",
+      "Luis Carlos Diaz (CC BY 4.0) · commons.wikimedia.org/?curid=146902372",
+      "Secretaría de Cultura de la Ciudad de México (CC BY 2.0) · commons.wikimedia.org/?curid=140189125"
     ],
     "url": "https://github.com/hong2-kim/jecheol-feed/releases/download/v2026-10-12/2026-10-12-5-world.mp4",
-    "seconds": 29.8,
-    "size_mb": 26.8
+    "seconds": 33.2,
+    "size_mb": 7.5,
+    "sha256": "5670da301c69d7554726733bbe03ae725ecf6a5591d8c39007b351ed72b8e03f"
   },
   {
     "id": "2026-10-12-3-dinner",
@@ -60,8 +57,9 @@
       "ⓒ한국관광공사 포토코리아-알렉스 분도, 황성훈, 프레임스튜디오, 천준교"
     ],
     "url": "https://github.com/hong2-kim/jecheol-feed/releases/download/v2026-10-12/2026-10-12-3-dinner.mp4",
-    "seconds": 25.0,
-    "size_mb": 9.1
+    "seconds": 27.4,
+    "size_mb": 4.1,
+    "sha256": "8356c8a4dd24a26704faf85c97ad06ff3b49024370158a6464fa91dc54a8df01"
   },
   {
     "id": "2026-10-12-2-news",
@@ -85,13 +83,12 @@
     ],
     "credits": [
       "ⓒ한국관광공사 포토코리아-박은경, 스튜디오 4cats",
-      "Paul Hsu (CC BY 2.0)",
-      "Wilfredor (CC0)",
-      "Ben DeRoy (Public domain) · Wikimedia Commons"
+      "Paul Hsu from Tokyo (CC BY 2.0) · commons.wikimedia.org/?curid=2771837"
     ],
     "url": "https://github.com/hong2-kim/jecheol-feed/releases/download/v2026-10-12/2026-10-12-2-news.mp4",
-    "seconds": 27.8,
-    "size_mb": 12.1
+    "seconds": 30.2,
+    "size_mb": 5.6,
+    "sha256": "4fc3adf453584842c0c782b034e1747807c2047615f937142d8ae434f5f13f7f"
   },
   {
     "id": "2026-10-12-1-monthly",
@@ -118,8 +115,9 @@
       "ⓒ한국관광공사 포토코리아-천준교, 박은경, 김지호, 디엔에이스튜디오"
     ],
     "url": "https://github.com/hong2-kim/jecheol-feed/releases/download/v2026-10-12/2026-10-12-1-monthly.mp4",
-    "seconds": 29.8,
-    "size_mb": 12.0
+    "seconds": 32.2,
+    "size_mb": 4.9,
+    "sha256": "80c7d2ff69c55421a55fcb4ef88bd6e611087d3ebf81c29f93be4cfda2a53eb3"
   },
   {
     "id": "2026-10-12-1-jecheol",
@@ -143,7 +141,8 @@
       "ⓒ한국관광공사 포토코리아-천준교, 김지호, 최민희, 이범수"
     ],
     "url": "https://github.com/hong2-kim/jecheol-feed/releases/download/v2026-10-12/2026-10-12-1-jecheol.mp4",
-    "seconds": 34.2,
-    "size_mb": 23.1
+    "seconds": 36.6,
+    "size_mb": 8.4,
+    "sha256": "0c88edee07f11768bc0de7c2491057d3ca70c2c2daccaf01975766171b6b3c53"
   }
 ]
