@@ -66,8 +66,12 @@ def check(post, name):
     count = lambda t: sum(1 for b in blocks if b["type"] == t)
     if count("photo") < 3:
         out.append("사진 자리(photo)가 3곳 이상 있어야 해요")
+    cfg = read_json(ROOT / "config.json", {}) or {}
+    names = cfg.get("blog_categories") or []
+    if post.get("category") and names and post["category"] not in names:
+        out.append(f"category 는 {names} 가운데 하나여야 해요 (네이버 블로그에 있는 카테고리 이름)")
     # 자동으로 올리기 시작한 날부터는 사람이 사진을 채우지 않으니, 추천 사진이 들어 있어야 해요.
-    auto = (read_json(ROOT / "config.json", {}) or {}).get("blog_publish") or {}
+    auto = cfg.get("blog_publish") or {}
     need = int(auto.get("photos_required", 3))
     if auto.get("on") and post["date"] >= auto.get("since", "") and sum(1 for b in blocks if b["type"] == "photo" and b.get("url")) < need:
         out.append(f"추천 사진(url)이 들어간 사진 자리가 {need}곳 이상 있어야 해요 (네이버에 자동으로 올라가요)")

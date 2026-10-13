@@ -7,6 +7,7 @@
   "feed_max_items": 60,
   "account": "먹고갈지도",
   "blog_days": ["월", "수", "금"],
+  "blog_categories": ["이달의 제철음식", "제철 축제·산지"],
   "blog_publish": {
     "on": true,
     "visibility": "public",
