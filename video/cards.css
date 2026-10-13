@@ -31,6 +31,16 @@ body { color: #fff; font-family: "Noto Sans KR", sans-serif; word-break: keep-al
 .nc .why { margin-top: 34px; padding: 4px 0 6px 26px; border-left: 6px solid var(--ac); }
 .nc .why div { font-weight: 600; line-height: 1.42; letter-spacing: -1.5px; color: rgba(255,255,255,.94); }
 
+/* 첫 장: 위쪽에 사진을 띠처럼 크게 보여 주고, 그 아래에 오늘 소식들을 궁금하게 던져요 */
+.nc.cv .ph { height: 660px; }
+.nc.cv .ph::after { background: linear-gradient(180deg, rgba(23,19,15,.7) 0%, rgba(23,19,15,0) 24%, rgba(23,19,15,0) 52%, rgba(23,19,15,.8) 84%, #17130F 100%); }
+.nc.cv .txt { bottom: 150px; }
+.nc.cv .hl { line-height: 1.14; letter-spacing: -5px; }
+.nc.cv .list { margin-top: 40px; list-style: none; }
+.nc.cv .list li { position: relative; padding: 13px 0 15px 34px; border-top: 2px solid rgba(255,255,255,.2); font-weight: 800; letter-spacing: -2px; }
+.nc.cv .list li::before { content: ""; position: absolute; left: 2px; top: 50%; width: 14px; height: 14px; margin-top: -6px; border-radius: 50%; background: var(--ac); }
+.nc .foot .go { color: var(--ac); font-size: 34px; letter-spacing: -.5px; }
+
 /* 맨 아래: 어디 자료인지와 몇 번째 장인지 */
 .nc .foot { position: absolute; left: 64px; right: 64px; bottom: 46px; display: flex; justify-content: space-between; align-items: baseline; font-weight: 500; font-size: 28px; letter-spacing: -.5px; color: rgba(255,255,255,.56); }
 .nc .foot b { font-weight: 800; color: rgba(255,255,255,.8); letter-spacing: 1px; }

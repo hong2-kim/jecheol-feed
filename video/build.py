@@ -383,6 +383,18 @@ def card_problems(spec):
     cards = spec.get("cards") or []
     if not CARD_MIN <= len(cards) <= CARD_MAX:
         must.append(f"카드가 {len(cards)}장이에요. {CARD_MIN}~{CARD_MAX}장으로 맞춰 주세요.")
+    cover = spec.get("cover") or {}
+    if not cover.get("title") or not cover.get("items"):
+        must.append("첫 장(cover)이 없어요. title(궁금하게 하는 한마디)과 items(소식마다 한 줄)를 적어 주세요.")
+    else:
+        if len(cover["title"].split("\n")) > 3:
+            must.append("첫 장: title 은 세 줄까지예요.")
+        if max(units(line) for line in cover["title"].split("\n")) > 11:
+            should.append("첫 장: title 이 길어 글자가 작아져요. 한 줄에 10자 안쪽으로 줄여 주세요.")
+        if len(cover["items"]) != len(cards):
+            should.append(f"첫 장: items 가 {len(cover['items'])}줄인데 소식은 {len(cards)}개예요. 소식마다 한 줄씩 적어 주세요.")
+        if any(units(line) > 17 for line in cover["items"]):
+            should.append("첫 장: items 한 줄이 길어 글자가 작아져요. 16자 안쪽으로 줄여 주세요.")
     for n, c in enumerate(cards, 1):
         for key, name in (("tag", "분류"), ("headline", "한 줄 소식"), ("why", "까닭"), ("src", "자료 이름")):
             if not c.get(key):
@@ -406,6 +418,25 @@ def card_problems(spec):
     return must, should
 
 
+def news_cover(cover, total, when, name):
+    """첫 장. 오늘 소식들을 궁금하게 던져요. 답은 다음 장부터 나와요."""
+    if cover.get("photo"):
+        src, pos = fetch_photo(cover["photo"])
+        top = f'<div class="ph"><img src="{src}" style="object-position:{pos}"></div>'
+    else:
+        top = f'<div class="ph">{NEWS_MAP}</div>'
+    size = min(fit_size(line, 58, 880) for line in cover["items"])
+    rows = "".join(f'<li style="font-size:{size}px">{rich(line)}</li>' for line in cover["items"])
+    return (
+        f'<section class="nc cv" id="c1">{top}'
+        f'<div class="mast"><div class="brand">{OUTRO_PIN}<span>{name}</span><i>뉴스</i></div><div class="when">{esc(when)}</div></div>'
+        f'<div class="txt"><span class="tag">오늘의 먹거리 뉴스 {total}</span>'
+        f'<div class="hl" style="font-size:{fit_size(cover["title"], 122, 950)}px">{rich(cover["title"])}</div>'
+        f'<ul class="list">{rows}</ul></div>'
+        f'<div class="foot"><span></span><b class="go">밀어서 확인하기 →</b></div></section>'
+    )
+
+
 def news_card(c, n, total, when, name):
     if c.get("photo"):
         src, pos = fetch_photo(c["photo"])
@@ -418,7 +449,7 @@ def news_card(c, n, total, when, name):
     size = min(fit_size(line, 44, 915) for line in why)
     rows = "".join(f'<div style="font-size:{size}px">{rich(line)}</div>' for line in why)
     return (
-        f'<section class="nc" id="c{n}">{top}'
+        f'<section class="nc" id="c{n + 1}">{top}'  # c1 은 첫 장(표지)이에요
         f'<div class="mast"><div class="brand">{OUTRO_PIN}<span>{name}</span><i>뉴스</i></div><div class="when">{esc(when)}</div></div>'
         f'<div class="txt"><span class="tag">{esc(c["tag"])}</span>'
         f'<div class="hl" style="font-size:{fit_size(c["headline"], 98, 950)}px">{rich(c["headline"])}</div>{fact}'
@@ -437,9 +468,11 @@ def build_cards(spec):
     name = f"{esc(name[:2])}<b>{esc(name[2:])}</b>" if name.startswith("먹고") else esc(name)
     css = (HERE / "cards.css").read_text(encoding="utf-8").replace("FONT_DIR", (HERE / "fonts").as_uri())
     cards = spec["cards"]
-    body = "".join(news_card(c, n, len(cards), spec.get("kicker", ""), name) for n, c in enumerate(cards, 1))
+    when = spec.get("kicker", "")
+    body = news_cover(spec["cover"], len(cards), when, name)
+    body += "".join(news_card(c, n, len(cards), when, name) for n, c in enumerate(cards, 1))
     page = f'<!doctype html><html lang="ko"><head><meta charset="utf-8"><style>{css}</style></head><body style="--ac:{accent}">{body}</body></html>'
-    return page, len(cards)
+    return page, len(cards) + 1
 
 
 def description(spec):
@@ -477,7 +510,7 @@ if __name__ == "__main__":
         if must:
             sys.exit(1)
         _, count = build_cards(spec)  # 사진이 받아지는지도 여기서 확인돼요
-        print(f"카드 뉴스 {count}장")
+        print(f"카드 뉴스 {count}장 (첫 장 1 + 소식 {count - 1})")
         if len(spec.get("tags") or []) != 4:
             print(f"  해시태그를 {len(spec.get('tags') or [])}개 적었어요. 4개만 골라 적어 주세요. (다섯 번째 계정 이름은 자동으로 붙어요)")
         print("  해시태그: " + " ".join("#" + t for t in hashtags(spec.get("tags"))))
