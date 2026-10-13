@@ -49,6 +49,12 @@ jobs:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID || secrets.TELEGRAM_CHAT_I }}
         run: python scripts/notify_blog.py
+      - name: 달마다 만드는 영상이 나왔는지 확인
+        if: always() && github.event_name == 'schedule' # 오전 8시 점검 때만. 1~5일에 안 나온 것이 있으면 알려요
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID || secrets.TELEGRAM_CHAT_I }}
+        run: python scripts/check_monthly.py
       - name: 보낸 기록 저장
         if: always()
         run: |

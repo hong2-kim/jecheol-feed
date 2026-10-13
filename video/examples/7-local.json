@@ -1,0 +1,74 @@
+{
+ "kind": "지역",
+ "subject": "통영 먹거리",
+ "title": "통영 가면 뭐 먹지? 이것부터 드세요",
+ "summary": "통영에 가면 먹어 볼 것 세 가지와 구경할 곳 한 곳을 골랐어요. 충무김밥, 다찌 한 상, 꿀빵, 그리고 중앙전통시장이에요.",
+ "scenes": [
+  {
+   "type": "cover",
+   "dur": 2.0,
+   "photo": {
+    "url": "https://tong.visitkorea.or.kr/cms2/website/79/3479079.jpg"
+   },
+   "kicker": "맛을 찾아 떠나는 여행 · 경남 통영",
+   "title": "통영 가면 뭐 먹지?\n[[먹고갈지도]]에서\n골라 볼까?",
+   "size": 104
+  },
+  {
+   "type": "card",
+   "dur": 2.3,
+   "photo": {
+    "url": "https://tong.visitkorea.or.kr/cms2/website/62/1178462.jpg"
+   },
+   "chip": "01 · 뱃길에서 나온 김밥",
+   "headline": "충무김밥에\n[[오징어무침]]",
+   "line": "쉬지 말라고 반찬을 따로 쌌대요"
+  },
+  {
+   "type": "card",
+   "dur": 2.3,
+   "photo": {
+    "url": "https://tong.visitkorea.or.kr/cms2/website/28/2824928.jpg"
+   },
+   "chip": "02 · 통영식 술상",
+   "headline": "다찌\n[[한 상]]",
+   "line": "술을 시키면 안주는 주는 대로예요"
+  },
+  {
+   "type": "card",
+   "dur": 2.3,
+   "photo": {
+    "url": "https://tong.visitkorea.or.kr/cms2/website/09/2849209.jpg"
+   },
+   "chip": "03 · 걸으며 먹는 간식",
+   "headline": "통영\n[[꿀빵]]",
+   "line": "팥소 넣고 튀겨 시럽을 입혀요"
+  },
+  {
+   "type": "card",
+   "dur": 2.3,
+   "photo": {
+    "url": "https://tong.visitkorea.or.kr/cms2/website/36/1910636.jpg"
+   },
+   "chip": "04 · 중앙전통시장",
+   "headline": "시장 골목\n[[한 바퀴]]",
+   "line": "그날 나온 해산물 구경부터 해요"
+  }
+ ],
+ "caption": "통영 가면 뭐 먹지? 이것부터 드세요\n\n01 충무김밥\n속 없는 김밥에 오징어무침과 무김치를 따로 곁들여요. 여름 뱃길에서 김밥이 쉬지 않게 나눠 싼 데서 시작됐다고 해요.\n02 다찌 한 상\n술을 시키면 안주는 주인이 주는 대로 나오는 통영의 술집 문화예요. 그날 시장에 나온 해산물에 따라 상이 달라져요. 이름이 어디서 왔는지는 통영 사람들도 잘 모른대요.\n03 꿀빵\n팥소를 넣은 빵을 튀겨서 시럽을 바르고 깨를 뿌려요. 들고 다니며 먹기 좋아요.\n04 중앙전통시장\n먹기 전에 시장 골목부터 한 바퀴 돌아보세요.\n\n그리고 지금부터는 굴이에요. 남해안 생굴은 10월부터 나오기 시작하고, 김장철 햇굴의 70%쯤이 통영에서 나요.\n\n여러분은 통영에서 뭐가 제일 생각나요?\n술은 추천일 뿐이에요. 지나친 음주는 건강에 해로워요.",
+ "tags": [
+  "통영여행",
+  "충무김밥",
+  "통영꿀빵",
+  "국내여행"
+ ],
+ "sources": [
+  "https://encykorea.aks.ac.kr/Article/E0079939",
+  "https://pressian.com/pages/articles/130594",
+  "https://www.segye.com/newsView/20130314006304",
+  "https://www.imaeil.com/page/view/2024112016061556838"
+ ],
+ "credits": [
+  "ⓒ한국관광공사 포토코리아-김지호, 스튜디오 4cats, 송재근, 이범수"
+ ]
+}
