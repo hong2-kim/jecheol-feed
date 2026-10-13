@@ -86,6 +86,11 @@ def run():
     todays = [i for i in items if i["date"] == days[0]]
     todo = [i for i in reversed(items) if i["date"] in days and i["id"] not in sent]
     if not todays and not todo:
+        # 그날 글은 아침 6시에 만들어져요. 그 전에 규칙이나 프로그램을 고쳐 올려도 이 작업이 도는데,
+        # 그때는 글이 없는 게 당연해요. 오전 8시 점검(schedule) 때만 "못 만들었다"고 알려요.
+        if os.environ.get("GITHUB_EVENT_NAME") != "schedule":
+            print(f"{days[0]} 글이 아직 없어요. 아침 점검 때가 아니라 알리지 않아요.")
+            return
         api(token, "sendMessage", chat_id=chat_id, text=f"{days[0]} 소재를 만들지 못했어요. 다음 수집 때 다시 시도해요.")
         raise RuntimeError(f"{days[0]} 글이 없어요")
     if not todo:
