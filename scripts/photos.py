@@ -3,10 +3,11 @@
 
   python scripts/photos.py tour 대하구이          한국관광공사 포토코리아 사진 (공공누리 1유형)
   python scripts/photos.py commons "sanma shioyaki"  위키미디어 공용 사진 (CC0·퍼블릭 도메인·CC BY 만)
+  python scripts/photos.py pexels "grilled pork belly"  Pexels 무료 사진 (블로그 글에만 써요. 영어로 찾아야 잘 나와요)
   python scripts/photos.py festival 20261012      그날 이후 열리는 축제 (한국관광공사, 공식 일정)
   python scripts/photos.py get <주소> <저장할 파일>   사진을 내려받아 직접 눈으로 확인할 때
 
-tour, festival 은 환경 변수 TOUR_API_KEY 가 있어야 해요. 결과는 한 줄에 하나씩 JSON으로 나와요.
+tour, festival 은 환경 변수 TOUR_API_KEY, pexels 는 PEXELS_API_KEY 가 있어야 해요. 결과는 한 줄에 하나씩 JSON으로 나와요.
 """
 import json
 import os
@@ -64,6 +65,22 @@ def commons(query):
                           "note": "출처 표시가 필요 없어요" if free else "저작자·라이선스·주소를 표시해야 해요"}, ensure_ascii=False))
 
 
+def pexels(query):
+    """Pexels 는 누구나 무료로 쓸 수 있고 AI로 만든 그림은 받지 않아요. API로 찾은 사진은 찍은 사람과 Pexels 를 적어 줘요."""
+    key = os.environ.get("PEXELS_API_KEY", "").strip()
+    if not key:
+        sys.exit("PEXELS_API_KEY 가 없어요. Pexels 사진은 찾을 수 없어요. 다른 곳에서 찾아 주세요.")
+    url = "https://api.pexels.com/v1/search?" + urllib.parse.urlencode({"query": query, "per_page": 20})
+    req = urllib.request.Request(url, headers={**UA, "Authorization": key})
+    data = json.loads(urllib.request.urlopen(req, timeout=40).read())
+    print(json.dumps({"keyword": query, "total": data.get("total_results", 0)}, ensure_ascii=False))
+    for p in data.get("photos", []):
+        if p.get("width", 0) < 1200:
+            continue
+        print(json.dumps({"url": p["src"]["large2x"], "title": p.get("alt") or "", "size": f"{p['width']}x{p['height']}",
+                          "license": "Pexels", "page": p["url"], "credit": f"사진: {p['photographer']} / Pexels"}, ensure_ascii=False))
+
+
 def festival(start):
     total, items = tour_call("KorService2", "searchFestival2", eventStartDate=start, arrange="A", numOfRows=100)
     print(json.dumps({"from": start, "total": total}, ensure_ascii=False))
@@ -80,6 +97,8 @@ def main():
         tour(arg)
     elif cmd == "commons":
         commons(arg)
+    elif cmd == "pexels":
+        pexels(arg)
     elif cmd == "festival":
         festival(arg)
     elif cmd == "get":
