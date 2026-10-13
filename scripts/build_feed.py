@@ -2,7 +2,7 @@
 """items 폴더의 글로 RSS 2.0 피드와 읽기용 페이지를 만들어요.
 
   python scripts/build_feed.py
-만드는 것: public/feed.xml, public/index.html
+만드는 것: public/feed.xml, public/index.html, public/blog/*.html (블로그 초안, build_blog.py)
 """
 import html
 import sys
@@ -10,6 +10,7 @@ from datetime import datetime
 from email.utils import format_datetime
 from xml.etree import ElementTree as ET
 
+import build_blog
 from common import KST, ROOT, hashtags, load_items, log_error, read_json
 
 
@@ -93,7 +94,12 @@ def build_rss(items, videos, cfg):
     return '<?xml version="1.0" encoding="UTF-8"?>\n' + ET.tostring(rss, encoding="unicode") + "\n"
 
 
-def build_page(items, videos, cfg):
+def build_page(items, videos, cfg, posts=()):
+    # 블로그 초안은 제목과 주소만 보여요. 본문은 네이버에 올릴 글이라 RSS에는 넣지 않아요.
+    drafts = ""
+    if posts:
+        drafts = "<h2>네이버 블로그 초안</h2><article><ul>" + "".join(
+            f'<li>{esc(p["date"])} · <a href="blog/{esc(p["id"])}.html">{esc(p["title"])}</a></li>' for p in posts[:12]) + "</ul></article>"
     vids, last_day = [], None
     for v in videos[:24]:
         if v["date"] != last_day:
@@ -122,6 +128,7 @@ ul {{ margin: 4px 0; padding-left: 20px; }} a {{ color: #B4441A; word-break: bre
 <h1>{esc(cfg['title'])}</h1>
 <p>{esc(cfg['description'])} <a href="feed.xml">RSS 주소</a></p>
 <p><small>마지막 갱신 {datetime.now(KST).strftime('%Y-%m-%d %H:%M')} · 글 {len(items)}개</small></p>
+{drafts}
 {''.join(vids)}
 {''.join(blocks)}
 </body></html>"""
@@ -131,16 +138,18 @@ def main():
     cfg = read_json(ROOT / "config.json")
     items, problems = load_items()
     videos = [v for v in (read_json(ROOT / "state" / "videos.json", []) or []) if not v.get("deleted")]  # 지운 영상은 빼요
+    out = ROOT / "public"
+    out.mkdir(exist_ok=True)
+    posts, blog_problems = build_blog.build(out)
+    problems += blog_problems
     for p in problems:
         print("확인 필요:", p)
         log_error("build_feed", p)
     if not items and not videos:
         sys.exit("내보낼 글이 없어요.")
-    out = ROOT / "public"
-    out.mkdir(exist_ok=True)
     (out / "feed.xml").write_text(build_rss(items, videos, cfg), encoding="utf-8")
-    (out / "index.html").write_text(build_page(items, videos, cfg), encoding="utf-8")
-    print(f"피드를 만들었어요: 글 {len(items)}개, 영상 {len(videos)}개, 문제 {len(problems)}건")
+    (out / "index.html").write_text(build_page(items, videos, cfg, posts), encoding="utf-8")
+    print(f"피드를 만들었어요: 글 {len(items)}개, 영상 {len(videos)}개, 블로그 초안 {len(posts)}개, 문제 {len(problems)}건")
 
 
 if __name__ == "__main__":
