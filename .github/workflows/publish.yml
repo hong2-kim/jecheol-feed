@@ -4,7 +4,7 @@ name: publish
 on:
   push:
     branches: [main]
-    paths: ["items/**", "blog/**", "config.json", "scripts/**"]
+    paths: ["items/**", "blog/**", "config.json", "scripts/**", "state/blog_posted.json"] # 마지막 것은 네이버에 올린 기록 (이 컴퓨터가 올려요)
   schedule:
     - cron: "0 23 * * *" # 매일 오전 8시(한국 시간). 그날 글이 없으면 실패를 알려요.
   workflow_dispatch:

@@ -10,7 +10,7 @@ import json
 import re
 import sys
 
-from common import ROOT, log_error
+from common import ROOT, log_error, read_json
 
 REQUIRED = ["id", "date", "subject", "keyword", "title", "tags", "blocks", "checked"]
 TYPES = ["p", "h2", "h3", "ul", "summary", "quote", "table", "photo", "exp", "source", "faq"]
@@ -66,6 +66,11 @@ def check(post, name):
     count = lambda t: sum(1 for b in blocks if b["type"] == t)
     if count("photo") < 3:
         out.append("사진 자리(photo)가 3곳 이상 있어야 해요")
+    # 자동으로 올리기 시작한 날부터는 사람이 사진을 채우지 않으니, 추천 사진이 들어 있어야 해요.
+    auto = (read_json(ROOT / "config.json", {}) or {}).get("blog_publish") or {}
+    need = int(auto.get("photos_required", 3))
+    if auto.get("on") and post["date"] >= auto.get("since", "") and sum(1 for b in blocks if b["type"] == "photo" and b.get("url")) < need:
+        out.append(f"추천 사진(url)이 들어간 사진 자리가 {need}곳 이상 있어야 해요 (네이버에 자동으로 올라가요)")
     if count("summary") != 1:
         out.append("핵심 요약(summary)은 하나만 있어야 해요")
     if count("table") < 1:
