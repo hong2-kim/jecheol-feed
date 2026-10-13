@@ -251,8 +251,8 @@ OUTRO_MAP = """<svg class="map" viewBox="0 0 1080 1920">
 <path d="M-40 300L1120 170" stroke-width="16"/><path d="M120 -40L220 1960" stroke-width="16"/>
 <path d="M560 -40L690 1960" stroke-width="16"/><path d="M-40 1400L1120 1440" stroke-width="16"/><path d="M-40 840L1120 770" stroke-width="16"/>
 </g>
-<path d="M170 1860C300 1790 250 1680 410 1620S650 1540 610 1420" fill="none" stroke="#FFB23E" stroke-width="12" stroke-linecap="round" stroke-dasharray="2 34" opacity=".8"/>
-<rect width="1080" height="1920" fill="rgba(14,11,9,.42)"/></svg>"""
+<rect width="1080" height="1920" fill="rgba(14,11,9,.42)"/>
+<path d="M170 1860C300 1790 250 1700 410 1650S650 1590 610 1500C580 1420 250 1450 170 1340S132 1180 132 ROUTE_END" fill="none" stroke="#FFB23E" stroke-width="12" stroke-linecap="round" stroke-dasharray="2 34" opacity=".85"/></svg>"""
 OUTRO_PIN = ('<svg viewBox="0 0 200 250"><path d="M100 244C100 244 16 150 16 92a84 84 0 01168 0c0 58-84 152-84 152z" fill="#FFB23E"/>'
              '<circle cx="100" cy="92" r="60" fill="#17130F"/>'
              '<path d="M82 66c-5-7 5-11 0-19M100 62c-5-7 5-12 0-20M118 66c-5-7 5-11 0-19" fill="none" stroke="#FFB23E" stroke-width="6" stroke-linecap="round"/>'
@@ -260,7 +260,12 @@ OUTRO_PIN = ('<svg viewBox="0 0 200 250"><path d="M100 244C100 244 16 150 16 92a
 
 
 def scene_outro(lines):
-    """맨 끝 장면. 프로필 사진과 같은 지도 위에 계정 이름. 사진 출처가 여러 줄이면 그 아래에 작게(읽을 수 있는 크기로) 모아요."""
+    """맨 끝 장면. 프로필 사진과 같은 지도 위에 계정 이름. 사진 출처가 여러 줄이면 그 아래에 작게(읽을 수 있는 크기로) 모아요.
+
+    점선 길은 화면 아래에서 출발해 이름 옆 핀까지 끊기지 않고 이어져요. (유튜브용 끝 장면과 같은 모양)
+    """
+    top = 240 if lines else 730  # 이름의 위쪽 위치. 출처 목록이 있으면 위로 올려요
+    backdrop_map = OUTRO_MAP.replace("ROUTE_END", str(top + 115 + 42))  # 핀 끝 바로 아래까지
     name = json.loads((HERE.parent / "config.json").read_text(encoding="utf-8")).get("account") or ""
     name = f"{esc(name[:2])}<b>{esc(name[2:])}</b>" if name.startswith("먹고") else esc(name)
     rows = "".join(f'<div class="src-l">{esc(big)}' + (f"<span>{esc(small)}</span>" if small else "") + "</div>" for big, small in lines)
@@ -268,7 +273,7 @@ def scene_outro(lines):
     if any("CC BY" in big for big, _ in lines):  # CC BY 는 고쳐 썼는지와 라이선스 주소도 알려야 해요
         foot = '<div class="src-f">사진은 잘라서 보정했어요 · creativecommons.org/licenses</div>'
     src = f'<div class="src"><div class="src-h">사진 출처</div>{rows}{foot}</div>' if lines else ""
-    return f'{OUTRO_MAP}<div class="end"><div class="sig">{OUTRO_PIN}<span>{name}</span></div>{src}</div>'
+    return f'{backdrop_map}<div class="end" style="top:{top}px"><div class="sig">{OUTRO_PIN}<span>{name}</span></div>{src}</div>'
 
 
 SCENES = {"cover": scene_cover, "card": scene_card, "duo": scene_duo, "info": scene_info}

@@ -80,10 +80,11 @@ body { background: #0E0B09; color: #fff; font-family: "Noto Sans KR", sans-serif
 .outro { background: #17130F; }
 .outro .map { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; }
 .outro .sig b { color: #FFB23E; font-weight: 900; }
-.outro .end { position: absolute; left: 90px; right: 90px; top: 0; height: 1560px; display: flex; flex-direction: column; justify-content: center; }
-.outro .sig { position: static; align-self: flex-start; padding: 0; background: none; gap: 22px; font-size: 104px; letter-spacing: -4px; text-shadow: 0 0 22px #17130F, 0 0 22px #17130F; }
+.outro .end { position: absolute; left: 90px; right: 90px; }
+.outro .sig { position: static; padding: 0; background: none; gap: 22px; font-size: 104px; line-height: 1.2; letter-spacing: -4px; text-shadow: 0 0 22px #17130F, 0 0 22px #17130F; }
 .outro .sig svg { width: 84px; height: 105px; }
-.src { margin-top: 60px; padding-top: 44px; border-top: 2px solid rgba(255,255,255,.2); color: rgba(255,255,255,.82); text-shadow: 0 0 14px #17130F, 0 0 14px #17130F; }
+/* 출처 목록은 점선 길(왼쪽 가장자리)을 가리지 않게 안쪽으로 들여요 */
+.src { margin: 46px 0 0 90px; padding-top: 40px; border-top: 2px solid rgba(255,255,255,.2); color: rgba(255,255,255,.82); text-shadow: 0 0 14px #17130F, 0 0 14px #17130F; }
 .src-h { font-weight: 700; font-size: 30px; color: rgba(255,255,255,.56); }
 .src-l { margin-top: 20px; font-weight: 500; font-size: 34px; line-height: 1.36; letter-spacing: -.8px; }
 .src-l span { display: block; font-size: 28px; letter-spacing: 0; color: rgba(255,255,255,.6); }
