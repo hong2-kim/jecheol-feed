@@ -7,7 +7,7 @@
   "feed_max_items": 60,
   "account": "먹고갈지도",
   "blog_days": ["월", "수", "금"],
-  "blog_categories": ["이달의 제철음식", "제철 축제·산지"],
+  "blog_categories": ["오늘의 먹거리", "맛의 이야기", "맛을 찾아 떠나는 여행", "맛의 축제"],
   "blog_publish": {
     "on": true,
     "visibility": "public",
