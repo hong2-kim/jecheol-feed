@@ -10,6 +10,7 @@
 import json
 import urllib.parse
 import urllib.request
+from email.utils import parsedate_to_datetime
 from xml.etree import ElementTree as ET
 
 from common import ROOT, log_error, read_json, today_kst, write_json
@@ -42,6 +43,14 @@ def parse(xml_bytes):
     return out
 
 
+def when(entry):
+    """기사가 나온 때(초). 날짜를 읽지 못하면 가장 오래된 것으로 쳐요."""
+    try:
+        return parsedate_to_datetime(entry["date"]).timestamp()
+    except Exception:
+        return 0.0
+
+
 def main():
     sources = read_json(ROOT / "sources.json")["rss"]
     seen = set(read_json(ROOT / "state" / "seen_links.json", []))
@@ -69,7 +78,7 @@ def main():
         try:
             url = "https://news.google.com/rss/search?" + urllib.parse.urlencode({"q": query + " when:2d", "hl": "ko", "gl": "KR", "ceid": "KR:ko"})
             with urllib.request.urlopen(urllib.request.Request(url, headers=UA), timeout=30) as res:
-                entries = parse(res.read())[:8]
+                entries = sorted(parse(res.read()), key=when, reverse=True)[:8]  # 가장 새 기사부터
             new = [e for e in entries if e["link"] not in seen]
             for e in new:
                 seen.add(e["link"])
