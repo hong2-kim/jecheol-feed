@@ -1,0 +1,65 @@
+{
+ "kind": "저녁",
+ "subject": "쌀쌀한 수요일 저녁 (쭈꾸미 샤브샤브·삼겹살·곱창)",
+ "title": "쌀쌀한 수요일, 오늘 저녁 뭐 먹지?",
+ "summary": "쌀쌀한 수요일 저녁에 생각나는 메뉴 세 가지예요. 곁들일 술까지 골랐어요.",
+ "scenes": [
+  {
+   "type": "cover",
+   "dur": 2.0,
+   "video": {
+    "url": "https://github.com/hong2-kim/jecheol-feed/releases/download/myphotos/2026-10-12-172554790.mp4",
+    "from": 0
+   },
+   "kicker": "10월 14일 수요일",
+   "title": "수요일인데 뭐 먹지?\n[[먹고갈지도]]에서\n골라 볼까?",
+   "size": 104
+  },
+  {
+   "type": "card",
+   "dur": 2.4,
+   "video": {
+    "url": "https://github.com/hong2-kim/jecheol-feed/releases/download/myphotos/2026-10-12-172554790.mp4",
+    "from": 2.0
+   },
+   "chip": "쌀쌀한 저녁엔",
+   "headline": "쭈꾸미 샤브샤브에\n[[소주]]",
+   "line": "살짝만 데쳐야 야들야들해요"
+  },
+  {
+   "type": "card",
+   "dur": 2.4,
+   "photo": {
+    "url": "https://tong.visitkorea.or.kr/cms2/website/21/3467221.jpg",
+    "pos": "50% 55%"
+   },
+   "chip": "퇴근길 둘이서",
+   "headline": "삼겹살에\n[[소주 or 맥주]]",
+   "line": "노릇하게 구워 쌈 싸 먹어요"
+  },
+  {
+   "type": "card",
+   "dur": 2.4,
+   "photo": {
+    "url": "https://tong.visitkorea.or.kr/cms2/website/35/3047035.jpg",
+    "pos": "50% 60%"
+   },
+   "chip": "수요일 회식엔",
+   "headline": "곱창에\n[[소주]]",
+   "line": "불판 위 지글지글 소리부터요"
+  }
+ ],
+ "caption": "수요일인데 오늘 저녁 뭐 먹지?\n\n1. 쭈꾸미 샤브샤브에 소주\n보글보글 끓는 국물에 쭈꾸미를 살짝만 데쳐 먹어요.\n2. 삼겹살에 소주 or 맥주\n노릇하게 구운 삼겹살을 쌈에 싸 먹는 한 끼예요.\n3. 곱창에 소주\n불판 위에서 지글지글 구워 먹는 맛이에요.\n\n여러분은 몇 번이에요? 댓글로 알려 주세요.\n\n오늘 서울은 구름이 많고 비 예보는 없어요(최저 9도, 최고 17도). 술 조합은 추천일 뿐이에요. 지나친 음주는 건강에 해로워요.",
+ "tags": [
+  "쭈꾸미샤브샤브",
+  "저녁메뉴추천",
+  "삼겹살",
+  "오늘뭐먹지"
+ ],
+ "sources": [
+  "https://open-meteo.com/ (서울 예보, 2026-10-14 확인)"
+ ],
+ "credits": [
+  "ⓒ한국관광공사 포토코리아-토라이 리퍼블릭, 김지영"
+ ]
+}

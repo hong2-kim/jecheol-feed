@@ -1,0 +1,66 @@
+{
+ "kind": "발견",
+ "subject": "과메기 · 원조는 청어",
+ "title": "과메기 원조는 꽁치가 아니라 청어예요",
+ "summary": "과메기는 원래 청어로 만들었고, 1960년대 이후 청어가 줄면서 꽁치로 바뀌었다고 해요. 구룡포의 겨울 해풍에 말려요.",
+ "scenes": [
+  {
+   "type": "cover",
+   "dur": 2.0,
+   "photo": {
+    "url": "https://tong.visitkorea.or.kr/cms2/website/28/1224328.jpg",
+    "pos": "50% 50%"
+   },
+   "kicker": "오늘의 한 가지 · 과메기",
+   "title": "과메기 원조는\n[[꽁치 말고\n청어]]",
+   "size": 112
+  },
+  {
+   "type": "card",
+   "dur": 2.3,
+   "photo": {
+    "url": "https://tong.visitkorea.or.kr/cms2/website/20/1224320.jpg",
+    "pos": "50% 50%"
+   },
+   "chip": "이름의 뜻",
+   "headline": "관목어가\n[[과메기]]가 됐대요",
+   "line": "눈을 꿰어 말려서 불렀대요"
+  },
+  {
+   "type": "card",
+   "dur": 2.3,
+   "photo": {
+    "url": "https://tong.visitkorea.or.kr/cms2/website/29/1224329.jpg",
+    "pos": "50% 50%"
+   },
+   "chip": "언제부터",
+   "headline": "1960년대부터\n[[꽁치로 바뀌었어요]]",
+   "line": "청어가 잡히지 않아서래요"
+  },
+  {
+   "type": "card",
+   "dur": 2.3,
+   "photo": {
+    "url": "https://tong.visitkorea.or.kr/cms2/website/85/681185.jpg",
+    "pos": "50% 50%"
+   },
+   "chip": "어디서",
+   "headline": "구룡포 해풍에\n[[말려요]]",
+   "line": "겨울 바닷바람이 만들어요"
+  }
+ ],
+ "caption": "과메기, 원래는 청어로 만들었다는 거 아셨어요?\n\n청어를 꿰어 말린 데서 관목어라 불렀고, 포항 말로 목을 메기라 하면서 관메기, 과메기가 됐다고 전해져요. 1960년대 이후 청어가 잡히지 않자 꽁치로 바뀌었고, 지금 시장에 있는 건 대부분 꽁치 과메기예요. 구룡포의 겨울 바닷바람에 말려서 만들어요.\n\n여러분은 청어 과메기, 먹어 보셨어요?\n\n더 자세한 이야기는 프로필 링크의 블로그에 있어요.",
+ "tags": [
+  "과메기",
+  "청어과메기",
+  "구룡포",
+  "겨울제철음식"
+ ],
+ "sources": [
+  "https://www.edaily.co.kr/news/read?newsId=02050006609597864&mediaCodeNo=257",
+  "https://www.kyongbuk.co.kr/news/articleView.html?idxno=2089875"
+ ],
+ "credits": [
+  "ⓒ한국관광공사 포토코리아-이범수, 김지호"
+ ]
+}
