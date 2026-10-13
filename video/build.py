@@ -160,11 +160,14 @@ def rise(cls, text, delay, tag="div", style=""):
     return f'<{tag} class="{cls} a rise" style="--dl:{delay}s;--d:.3s;{style}">{rich(text)}</{tag}>'
 
 
+def units(line):
+    """글 한 줄이 차지하는 칸 수. (한글 1, 띄어쓰기 0.3, 영문·숫자·기호 0.55 칸으로 어림해요)"""
+    line = line.replace("[[", "").replace("]]", "")
+    return sum(.3 if c == " " else .55 if ord(c) < 128 else 1 for c in line)
+
+
 def fit_size(text, size, room=930):
-    """가장 긴 줄이 화면 폭을 넘지 않게 글자 크기를 줄여요. (한글 1, 띄어쓰기 0.3, 영문·숫자·기호 0.55 칸으로 어림해요)"""
-    def units(line):
-        line = line.replace("[[", "").replace("]]", "")
-        return sum(.3 if c == " " else .55 if ord(c) < 128 else 1 for c in line)
+    """가장 긴 줄이 화면 폭을 넘지 않게 글자 크기를 줄여요."""
     longest = max(units(line) for line in text.split("\n")) or 1
     return min(size, int(room / longest / .95))
 
@@ -357,15 +360,103 @@ def build_html(spec):
     return "\n".join(out), at, meta
 
 
+# ── 카드 뉴스 ─────────────────────────────────────────────────────────
+# 먹거리 소식은 영상이 아니라 넘겨 보는 카드로 만들어요. 소식 하나가 한 장이에요.
+#   위: 계정 이름과 날짜, 사진   가운데: 분류, 한 줄 소식, 핵심 숫자   아래: 까닭(사실 한두 줄), 자료 이름
+CARD_MIN, CARD_MAX = 2, 5
+CARD_SIZE = {"width": 1080, "height": 1350}
+NEWS_MAP = OUTRO_MAP.replace('class="map"', 'preserveAspectRatio="xMidYMin slice"').replace("ROUTE_END", "1100")
+
+
+def is_cards(spec):
+    return spec.get("format") == "cards"
+
+
+def why_lines(card):
+    why = card.get("why") or []
+    return [why] if isinstance(why, str) else list(why)
+
+
+def card_problems(spec):
+    """카드 뉴스 설계도에서 고칠 곳을 찾아요. (꼭 고칠 것, 고치면 좋은 것)"""
+    must, should = [], []
+    cards = spec.get("cards") or []
+    if not CARD_MIN <= len(cards) <= CARD_MAX:
+        must.append(f"카드가 {len(cards)}장이에요. {CARD_MIN}~{CARD_MAX}장으로 맞춰 주세요.")
+    for n, c in enumerate(cards, 1):
+        for key, name in (("tag", "분류"), ("headline", "한 줄 소식"), ("why", "까닭"), ("src", "자료 이름")):
+            if not c.get(key):
+                must.append(f"카드 {n}: {name}({key})이 없어요.")
+        head = str(c.get("headline") or "").split("\n")
+        if len(head) > 2:
+            must.append(f"카드 {n}: 한 줄 소식은 두 줄까지예요.")
+        if max(units(line) for line in head) > 13:
+            should.append(f"카드 {n}: 한 줄 소식이 길어 글자가 작아져요. 한 줄에 12자 안쪽으로 줄여 주세요.")
+        why = why_lines(c)
+        if len(why) > 2:
+            must.append(f"카드 {n}: 까닭은 두 줄까지예요. 나머지는 게시글에 써 주세요.")
+        if any(units(line) > 22 for line in why):
+            should.append(f"카드 {n}: 까닭 한 줄이 길어 글자가 작아져요. 22자 안쪽으로 줄여 주세요.")
+        if c.get("fact") and units(c["fact"]) > 20:
+            should.append(f"카드 {n}: 핵심 숫자 줄이 길어요. 20자 안쪽으로 줄여 주세요.")
+        if not c.get("photo") and not c.get("big"):
+            should.append(f"카드 {n}: 사진이 없어요. 맞는 사진이 없으면 big 에 큰 숫자(예: -9%)를 적어 주세요.")
+    if "출처" not in (spec.get("caption") or ""):
+        must.append("게시글(caption) 끝에 '출처: 기관·매체 이름(날짜)' 줄을 적어 주세요. 카드에는 출처 장이 없어요.")
+    return must, should
+
+
+def news_card(c, n, total, when, name):
+    if c.get("photo"):
+        src, pos = fetch_photo(c["photo"])
+        top = f'<div class="ph"><img src="{src}" style="object-position:{pos}"></div>'
+    else:  # 맞는 사진이 없는 소식은 지도 바탕에 큰 숫자를 얹어요
+        big = f'<div class="bignum" style="font-size:{fit_size(c["big"], 230, 950)}px">{rich(c["big"])}</div>' if c.get("big") else ""
+        top = f'<div class="ph">{NEWS_MAP}</div>{big}'
+    fact = f'<div class="fact" style="font-size:{fit_size(c["fact"], 56, 950)}px">{rich(c["fact"])}</div>' if c.get("fact") else ""
+    why = why_lines(c)
+    size = min(fit_size(line, 44, 915) for line in why)
+    rows = "".join(f'<div style="font-size:{size}px">{rich(line)}</div>' for line in why)
+    return (
+        f'<section class="nc" id="c{n}">{top}'
+        f'<div class="mast"><div class="brand">{OUTRO_PIN}<span>{name}</span><i>뉴스</i></div><div class="when">{esc(when)}</div></div>'
+        f'<div class="txt"><span class="tag">{esc(c["tag"])}</span>'
+        f'<div class="hl" style="font-size:{fit_size(c["headline"], 98, 950)}px">{rich(c["headline"])}</div>{fact}'
+        f'<div class="why">{rows}</div></div>'
+        f'<div class="foot"><span>자료 {esc(c["src"])}</span><b>{n} / {total}</b></div></section>'
+    )
+
+
+def build_cards(spec):
+    """카드 뉴스 설계도를 한 쪽짜리 HTML로 만들어요. 카드는 #c1, #c2 … 로 위에서 아래로 놓여요. (HTML, 장수)"""
+    must, _ = card_problems(spec)
+    if must:
+        raise ValueError(" / ".join(must))
+    accent = spec.get("accent") or "#FFB23E"  # 프로필 사진의 핀과 같은 색
+    name = json.loads((HERE.parent / "config.json").read_text(encoding="utf-8")).get("account") or ""
+    name = f"{esc(name[:2])}<b>{esc(name[2:])}</b>" if name.startswith("먹고") else esc(name)
+    css = (HERE / "cards.css").read_text(encoding="utf-8").replace("FONT_DIR", (HERE / "fonts").as_uri())
+    cards = spec["cards"]
+    body = "".join(news_card(c, n, len(cards), spec.get("kicker", ""), name) for n, c in enumerate(cards, 1))
+    page = f'<!doctype html><html lang="ko"><head><meta charset="utf-8"><style>{css}</style></head><body style="--ac:{accent}">{body}</body></html>'
+    return page, len(cards)
+
+
 def description(spec):
     """게시글에 넣을 글. 문구, 사진 출처 한 줄, 해시태그.
 
     사진 출처가 한 줄이면 그대로 짧게 적고, 여러 줄이면 영상 맨 끝 장면에 모았다고만 알려요.
     (한국관광공사 사진은 작가 이름까지가 정해진 표기라서 줄이지 않아요.)
+    카드 뉴스에는 끝 장면이 없어서 사진 출처를 모두 게시글에 적어요.
     """
     lines = [spec["caption"].strip(), ""]
     shown = credit_lines(spec)
-    if len(shown) == 1:
+    if is_cards(spec):
+        for big, small in shown:
+            lines.append(f"📷 {big}" + (f" · {small} · 잘라서 보정함" if "CC BY" in big else ""))
+        if shown:
+            lines.append("")
+    elif len(shown) == 1:
         big, small = shown[0]
         extra = f" · {small} · 잘라서 보정함" if "CC BY" in big else ""
         lines += [f"📷 {big}{extra}", ""]
@@ -377,6 +468,22 @@ def description(spec):
 
 if __name__ == "__main__":
     spec = json.loads(Path(sys.argv[1]).read_text(encoding="utf-8"))
+    if is_cards(spec):
+        must, should = card_problems(spec)
+        for line in must:
+            print("  꼭 고쳐 주세요: " + line)
+        for line in should:
+            print("  " + line)
+        if must:
+            sys.exit(1)
+        _, count = build_cards(spec)  # 사진이 받아지는지도 여기서 확인돼요
+        print(f"카드 뉴스 {count}장")
+        if len(spec.get("tags") or []) != 4:
+            print(f"  해시태그를 {len(spec.get('tags') or [])}개 적었어요. 4개만 골라 적어 주세요. (다섯 번째 계정 이름은 자동으로 붙어요)")
+        print("  해시태그: " + " ".join("#" + t for t in hashtags(spec.get("tags"))))
+        shown = credit_lines(spec)
+        print(f"  사진 출처: {len(shown)}줄이 게시글에 자동으로 들어가요." if shown else "  사진 출처: 표시할 것이 없어요.")
+        sys.exit(0)
     page, dur, _ = build_html(spec)
     print(f"{dur:.1f}초, 장면 {len(spec['scenes'])}개")
     if len(spec.get("tags") or []) != 4:

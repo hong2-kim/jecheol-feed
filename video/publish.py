@@ -31,6 +31,19 @@ def tg(method, token, **kw):
     return r.json()["result"]
 
 
+def send_cards(token, chat, r):
+    """카드 뉴스 그림을 한 묶음(앨범)으로 보내요. 올릴 순서대로 놓여요."""
+    names = r["files"]
+    if len(names) == 1:
+        with open(ROOT / "dist" / names[0], "rb") as f:
+            tg("sendPhoto", token, data={"chat_id": chat, "caption": (r.get("title") or r["id"])[:900]}, files={"photo": (names[0], f, "image/jpeg")})
+        return
+    media = [{"type": "photo", "media": f"attach://p{n}"} for n in range(len(names))]
+    media[0]["caption"] = (r.get("title") or r["id"])[:900]
+    files = {f"p{n}": (name, (ROOT / "dist" / name).read_bytes(), "image/jpeg") for n, name in enumerate(names)}
+    tg("sendMediaGroup", token, data={"chat_id": chat, "media": json.dumps(media, ensure_ascii=False)}, files=files)
+
+
 def main():
     day = sys.argv[1]
     results = read_json(ROOT / "dist" / "results.json", [])
@@ -45,6 +58,8 @@ def main():
             old = next((v for v in videos if v["id"] == r["id"]), {})
             videos = [v for v in videos if v["id"] != r["id"]]
             entry = {k: r.get(k) for k in ("id", "date", "kind", "title", "summary", "caption", "tags", "sources", "credits", "url", "seconds", "size_mb")}
+            if r.get("format") == "cards":  # 카드 뉴스는 그림 여러 장이에요. url 은 첫 장이에요.
+                entry.update({"format": "cards", "files": r["files"], "urls": [f"https://github.com/{REPO}/releases/download/v{day}/{f}" for f in r["files"]]})
             entry["sha256"] = hashlib.sha256((ROOT / "dist" / r["file"]).read_bytes()).hexdigest()  # 같은 파일인지 알아보는 지문
             entry.update({k: old[k] for k in ("posted", "deleted") if k in old})
             videos.append(entry)
@@ -59,7 +74,8 @@ def main():
     bad = [r for r in results if not r["ok"]]
     todo = [r for r in ok if r["id"] not in sent]
     if todo or bad:
-        head = f"{day} 영상 {len(ok)}개가 준비됐어요."
+        cards = sum(1 for r in ok if r.get("format") == "cards")
+        head = f"{day} 영상 {len(ok) - cards}개" + (f", 카드 뉴스 {cards}개" if cards else "") + "가 준비됐어요."
         if bad:
             head += f" 실패 {len(bad)}개: " + "; ".join(f"{b['id']} ({b['error'][:80]})" for b in bad)
         mine = read_json(ROOT / "myphotos" / "index.json", []) or []
@@ -70,12 +86,18 @@ def main():
             head += "\n\n[다음 순서]\n" + "\n".join(plan.lines(mine))
         tg("sendMessage", token, data={"chat_id": chat, "text": head})
     for r in todo:
-        text = (ROOT / "dist" / r["file"]).with_suffix(".txt").read_text(encoding="utf-8")
+        text = (ROOT / "dist" / f"{r['id']}.txt").read_text(encoding="utf-8")
         try:
-            with open(ROOT / "dist" / r["file"], "rb") as f:
-                tg("sendVideo", token, data={"chat_id": chat, "caption": (r.get("title") or r["id"])[:900], "supports_streaming": "true",
-                                             "width": 1080, "height": 1920}, files={"video": (r["file"], f, "video/mp4")})
-            body = f"{r.get('title')}\n\n[게시글에 넣을 글]\n{text}\n[내려받기]\n{r['url']}"
+            if r.get("format") == "cards":
+                send_cards(token, chat, r)
+                links = "\n".join(f"https://github.com/{REPO}/releases/download/v{day}/{f}" for f in r["files"])
+                body = (f"[카드 뉴스] {r.get('title')}\n위 사진 {len(r['files'])}장을 순서대로 한 게시물에 올려 주세요.\n\n"
+                        f"[게시글에 넣을 글]\n{text}\n[원본 그림] 텔레그램 사진은 조금 작아져요. 또렷한 원본은 여기서 받아요\n{links}")
+            else:
+                with open(ROOT / "dist" / r["file"], "rb") as f:
+                    tg("sendVideo", token, data={"chat_id": chat, "caption": (r.get("title") or r["id"])[:900], "supports_streaming": "true",
+                                                 "width": 1080, "height": 1920}, files={"video": (r["file"], f, "video/mp4")})
+                body = f"{r.get('title')}\n\n[게시글에 넣을 글]\n{text}\n[내려받기]\n{r['url']}"
             if r.get("sources"):
                 body += "\n\n[확인한 자료] 게시글에는 안 넣어도 돼요\n" + "\n".join(r["sources"])
             tg("sendMessage", token, data={"chat_id": chat, "text": body[:4000], "disable_web_page_preview": "true"})

@@ -53,9 +53,10 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: |
           DAY="${{ steps.day.outputs.day }}"
-          ls dist/*.mp4 >/dev/null 2>&1 || { echo "올릴 영상이 없어요"; exit 0; }
-          gh release view "v$DAY" >/dev/null 2>&1 || gh release create "v$DAY" --title "$DAY 영상" --notes "$DAY 에 만든 먹거리 릴스예요."
-          gh release upload "v$DAY" dist/*.mp4 --clobber
+          FILES=$(ls dist/*.mp4 dist/*.jpg 2>/dev/null || true) # 영상과 카드 뉴스 그림
+          [ -n "$FILES" ] || { echo "올릴 영상이 없어요"; exit 0; }
+          gh release view "v$DAY" >/dev/null 2>&1 || gh release create "v$DAY" --title "$DAY 영상" --notes "$DAY 에 만든 먹거리 릴스와 카드 뉴스예요."
+          gh release upload "v$DAY" $FILES --clobber
       - name: 주소 기록하고 텔레그램으로 보내기
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}

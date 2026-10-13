@@ -52,8 +52,11 @@ def video_html(v):
     tags = " ".join("#" + x for x in hashtags(v.get("tags")))
     srcs = "".join(f'<li><a href="{esc(s)}">{esc(s)}</a></li>' if str(s).startswith("http") else f"<li>{esc(s)}</li>" for s in (v.get("sources") or []))
     credit = " / ".join(v.get("credits") or [])
-    return (f"<p><b>핵심 내용</b> {esc(v.get('summary') or '')}</p>"
-            f"<p><b>영상</b> <a href=\"{esc(v['url'])}\">내려받기·재생</a> ({v.get('seconds')}초)</p>"
+    if v.get("format") == "cards":  # 카드 뉴스는 그림 여러 장이에요
+        media = "<p><b>카드 뉴스</b> " + " · ".join(f'<a href="{esc(u)}">{n}장째</a>' for n, u in enumerate(v.get("urls") or [v["url"]], 1)) + "</p>"
+    else:
+        media = f"<p><b>영상</b> <a href=\"{esc(v['url'])}\">내려받기·재생</a> ({v.get('seconds')}초)</p>"
+    return (f"<p><b>핵심 내용</b> {esc(v.get('summary') or '')}</p>{media}"
             f"<h3>게시글 문구</h3><p>{esc(v.get('caption') or '').replace(chr(10), '<br>')}</p>"
             f"<p>{esc(tags)}</p><p>사진 {esc(credit)}</p><h3>출처</h3><ul>{srcs}</ul>")
 
@@ -82,13 +85,14 @@ def build_rss(items, videos, cfg):
         ET.SubElement(el, "description").text = f"<h3>1. 릴스 제목</h3><p>{esc(item['title'])}</p>" + body_html(item)
     for v in videos[:40]:
         el = ET.SubElement(ch, "item")
-        ET.SubElement(el, "title").text = f"[영상] {v.get('title') or v['id']}"
+        cards = v.get("format") == "cards"
+        ET.SubElement(el, "title").text = f"[{'카드 뉴스' if cards else '영상'}] {v.get('title') or v['id']}"
         ET.SubElement(el, "link").text = v["url"]
         ET.SubElement(el, "guid", {"isPermaLink": "false"}).text = "video-" + v["id"]
-        ET.SubElement(el, "category").text = "영상"
+        ET.SubElement(el, "category").text = "카드 뉴스" if cards else "영상"
         y, m, d = map(int, v["date"].split("-"))
         ET.SubElement(el, "pubDate").text = format_datetime(datetime(y, m, d, 7, 30, tzinfo=KST))
-        ET.SubElement(el, "enclosure", {"url": v["url"], "type": "video/mp4", "length": str(int((v.get("size_mb") or 0) * 1e6))})
+        ET.SubElement(el, "enclosure", {"url": v["url"], "type": "image/jpeg" if cards else "video/mp4", "length": str(int((v.get("size_mb") or 0) * 1e6))})
         ET.SubElement(el, "description").text = video_html(v)
     ET.indent(rss)
     return '<?xml version="1.0" encoding="UTF-8"?>\n' + ET.tostring(rss, encoding="unicode") + "\n"
@@ -105,8 +109,11 @@ def build_page(items, videos, cfg, posts=()):
         if v["date"] != last_day:
             vids.append(f"<h2>{esc(v['date'])} 영상</h2>")
             last_day = v["date"]
-        vids.append(f'<article id="video-{esc(v["id"])}"><h3 class="t">{esc(v.get("title") or v["id"])}</h3>'
-                    f'<video controls preload="none" playsinline src="{esc(v["url"])}"></video>{video_html(v)}</article>')
+        if v.get("format") == "cards":
+            show = '<div class="cards">' + "".join(f'<img loading="lazy" src="{esc(u)}" alt="카드 {n}">' for n, u in enumerate(v.get("urls") or [v["url"]], 1)) + "</div>"
+        else:
+            show = f'<video controls preload="none" playsinline src="{esc(v["url"])}"></video>'
+        vids.append(f'<article id="video-{esc(v["id"])}"><h3 class="t">{esc(v.get("title") or v["id"])}</h3>{show}{video_html(v)}</article>')
     blocks, last = [], None
     for item in items:
         if item["date"] != last:
@@ -123,6 +130,8 @@ h1 {{ font-size: 24px; }} h2 {{ margin-top: 36px; font-size: 18px; color: #7A6A5
 article {{ background: #fff; border-radius: 14px; padding: 18px 20px; margin: 14px 0; }}
 article h3 {{ font-size: 14px; color: #B4441A; margin: 18px 0 4px; }} article h3.t {{ font-size: 20px; color: #231C15; margin: 0 0 6px; }}
 video {{ width: 100%; max-width: 360px; aspect-ratio: 9 / 16; border-radius: 12px; background: #000; display: block; margin: 8px 0; }}
+.cards {{ display: flex; gap: 8px; overflow-x: auto; margin: 8px 0; }}
+.cards img {{ width: 240px; aspect-ratio: 4 / 5; border-radius: 12px; flex: none; }}
 ul {{ margin: 4px 0; padding-left: 20px; }} a {{ color: #B4441A; word-break: break-all; }} small {{ color: #7A6A58; }}
 </style></head><body>
 <h1>{esc(cfg['title'])}</h1>

@@ -66,7 +66,7 @@ def originals_of(video_id):
     path = ROOT / "videos" / video_id[:10] / f"{video_id[11:]}.json"
     spec = read_json(path, {}) or {}
     found = []
-    for scene in spec.get("scenes", []):
+    for scene in (spec.get("scenes") or []) + (spec.get("cards") or []):  # 카드 뉴스는 cards 에 사진이 있어요
         for key in ("photo", "photo_top", "photo_bottom", "video"):
             value = scene.get(key)
             url = value.get("url") if isinstance(value, dict) else value
@@ -108,7 +108,7 @@ def mark(text):
         subject, originals = originals_of(v["id"])
         ledger = [e for e in ledger if e["id"] != v["id"]]
         ledger.append({"id": v["id"], "title": v.get("title"), "subject": subject, "made": v["date"], "posted": today,
-                       "file": f"{v['id']}.mp4", "sha256": v.get("sha256"), "originals": originals})
+                       "file": (v.get("files") or [f"{v['id']}.mp4"])[0], "sha256": v.get("sha256"), "originals": originals})
     write_json(VIDEOS, videos)
     write_json(LEDGER, sorted(ledger, key=lambda e: e["id"]))
     state = read_json(STATE, {}) or {}
@@ -154,7 +154,8 @@ def eligible():
 
     for v in videos:
         if v["id"] in old and not v.get("deleted"):
-            add("완성 영상", "v" + v["date"], f"{v['id']}.mp4", v["id"])
+            for name in v.get("files") or [f"{v['id']}.mp4"]:  # 카드 뉴스는 그림 여러 장
+                add("완성 영상", "v" + v["date"], name, v["id"])
     for e in read_json(INDEX, []) or []:
         used = [u.replace("/", "-", 1) for u in e.get("used") or []]
         if used and not e.get("deleted") and all(u in old for u in used):

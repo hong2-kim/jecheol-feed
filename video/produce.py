@@ -5,6 +5,7 @@
   python video/produce.py 2026-10-12 news       이름이 news 인 것만
 
 만드는 것: dist/날짜-이름.mp4, dist/날짜-이름.txt(게시글용 글), dist/results.json(성공·실패 목록)
+카드 뉴스("format": "cards")는 영상 대신 그림으로 만들어요: dist/날짜-이름-1.jpg, -2.jpg …
 하나가 실패해도 나머지는 계속 만들고, 실패 이유는 logs/errors.jsonl 에 남겨요.
 """
 import json
@@ -67,6 +68,30 @@ def render(spec, name, browser):
     return out, duration
 
 
+def render_cards(spec, name, browser):
+    """카드 뉴스를 그림으로 만들어요. dist/날짜-이름-1.jpg, -2.jpg … (만든 파일 이름들)"""
+    page_html, count = build.build_cards(spec)
+    work = ROOT / "build"
+    work.mkdir(exist_ok=True)
+    html_path = work / f"{name}.html"
+    html_path.write_text(page_html, encoding="utf-8")
+    (ROOT / "dist").mkdir(exist_ok=True)
+    files = []
+    page = browser.new_page(viewport=build.CARD_SIZE)
+    try:
+        page.goto(html_path.as_uri())
+        page.evaluate("document.fonts.ready")
+        page.wait_for_function("[...document.images].every(i => i.complete && i.naturalWidth > 0)", timeout=30000)
+        for n in range(1, count + 1):
+            out = ROOT / "dist" / f"{name}-{n}.jpg"
+            page.locator(f"#c{n}").screenshot(path=str(out), type="jpeg", quality=95)
+            files.append(out.name)
+    finally:
+        page.close()
+    (ROOT / "dist" / f"{name}.txt").write_text(build.description(spec), encoding="utf-8")
+    return files
+
+
 def main():
     day = sys.argv[1]
     only = sys.argv[2] if len(sys.argv) > 2 else None
@@ -88,9 +113,15 @@ def main():
                 spec = json.loads(path.read_text(encoding="utf-8"))
                 entry.update({k: spec.get(k) for k in ("kind", "title", "summary", "caption", "tags", "sources", "credits")})
                 entry["tags"] = build.hashtags(spec.get("tags"))  # 인스타에 들어가는 5개만
-                out, duration = render(spec, name, browser)
-                entry.update({"ok": True, "seconds": round(duration, 1), "size_mb": round(out.stat().st_size / 1e6, 1)})
-                print(f"만들었어요: {out.name} ({duration:.1f}초)")
+                if build.is_cards(spec):
+                    files = render_cards(spec, name, browser)
+                    size = sum((ROOT / "dist" / f).stat().st_size for f in files)
+                    entry.update({"ok": True, "format": "cards", "file": files[0], "files": files, "size_mb": round(size / 1e6, 1)})
+                    print(f"만들었어요: {name} 카드 {len(files)}장")
+                else:
+                    out, duration = render(spec, name, browser)
+                    entry.update({"ok": True, "seconds": round(duration, 1), "size_mb": round(out.stat().st_size / 1e6, 1)})
+                    print(f"만들었어요: {out.name} ({duration:.1f}초)")
             except Exception as e:
                 entry.update({"ok": False, "error": str(e)[:300]})
                 log_error(f"video:{name}", e)
