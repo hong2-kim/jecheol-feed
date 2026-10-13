@@ -6,14 +6,14 @@
  "scenes": [
   {
    "type": "cover",
-   "dur": 1.4,
+   "dur": 2.0,
    "photo": {
     "url": "https://github.com/hong2-kim/jecheol-feed/releases/download/myphotos/2026-10-12-172554789.jpg",
     "pos": "50% 60%"
    },
    "bright": true,
-   "kicker": "10월 13일 화요일 · 비 소식",
-   "title": "오늘 저녁,\n[[김치찌개 + 제육]]\n어때요?",
+   "kicker": "10월 13일 화요일",
+   "title": "비 소식 있던데\n저녁은 [[먹고갈지도]]에서\n함 보까나~?",
    "size": 104
   },
   {

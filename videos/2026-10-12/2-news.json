@@ -5,13 +5,14 @@
  "scenes": [
   {
    "type": "cover",
-   "dur": 1.4,
+   "dur": 2.0,
    "photo": {
     "url": "https://tong.visitkorea.or.kr/cms2/website/37/1832937.jpg",
     "pos": "50% 42%"
    },
    "kicker": "10월 12일",
-   "title": "오늘의\n먹거리 소식 4"
+   "title": "오늘 먹거리 소식,\n[[먹고갈지도]]에서\n보고 갈까?",
+   "size": 104
   },
   {
    "type": "card",

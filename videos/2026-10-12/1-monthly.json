@@ -6,13 +6,13 @@
  "scenes": [
   {
    "type": "cover",
-   "dur": 1.4,
+   "dur": 2.0,
    "photo": {
     "url": "https://tong.visitkorea.or.kr/cms2/website/88/3036688.jpg"
    },
    "kicker": "10월 · 이달의 제철 5",
-   "title": "10월에 [[이건]]\n먹고 지나가야죠",
-   "size": 120
+   "title": "10월엔 뭐가 제철이지?\n[[먹고갈지도]]에서\n찾아볼까?",
+   "size": 104
   },
   {
    "type": "card",

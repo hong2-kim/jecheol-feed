@@ -6,13 +6,13 @@
  "scenes": [
   {
    "type": "cover",
-   "dur": 1.4,
+   "dur": 2.0,
    "photo": {
     "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Victoria%20Harbour%20skyscrapers.jpg?width=1600"
    },
    "kicker": "10~11월 · 세계 먹거리 축제 5",
-   "title": "지금 해외 간다면\n[[이 축제]] 가 보세요",
-   "size": 112
+   "title": "이번 가을 해외 간다면?\n[[먹고갈지도]]에서\n먹을 곳 볼까?",
+   "size": 104
   },
   {
    "type": "duo",

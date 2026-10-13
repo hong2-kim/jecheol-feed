@@ -160,11 +160,20 @@ def rise(cls, text, delay, tag="div", style=""):
     return f'<{tag} class="{cls} a rise" style="--dl:{delay}s;--d:.3s;{style}">{rich(text)}</{tag}>'
 
 
+def fit_size(text, size, room=930):
+    """가장 긴 줄이 화면 폭을 넘지 않게 글자 크기를 줄여요. (한글 1, 띄어쓰기 0.3, 영문·숫자·기호 0.55 칸으로 어림해요)"""
+    def units(line):
+        line = line.replace("[[", "").replace("]]", "")
+        return sum(.3 if c == " " else .55 if ord(c) < 128 else 1 for c in line)
+    longest = max(units(line) for line in text.split("\n")) or 1
+    return min(size, int(room / longest / .95))
+
+
 def scene_cover(s, i, ctx):
     parts = [f'<div class="pic">{moving(s, s["dur"])[0]}</div>', '<div class="mid">']
     if s.get("kicker"):
         parts.append(rise("kicker", s["kicker"], .15))
-    parts.append(rise("title", s["title"], .4, style=f'font-size:{s.get("size", 128)}px'))
+    parts.append(rise("title", s["title"], .4, style=f'font-size:{fit_size(s["title"], s.get("size", 128))}px'))
     if s.get("line"):
         parts.append(rise("line", s["line"], .75))
     parts.append("</div>")
@@ -340,6 +349,8 @@ def build_html(spec):
         if not last:  # 다음 장면이 들어올 때 함께 나가요
             moves.append(f"out-{how[i + 1]} {TRANSITION}s {EASE} {dur}s forwards")
         style = f' style="animation:{", ".join(moves)}"' if moves else ""
+        if not i:
+            kind += " first"  # 첫 화면이 썸네일이 되므로 글이 처음부터 보이게 해요
         out.append(f'<section class="scene {kind}" data-at="{at:.2f}" data-dur="{dur}" data-out="{0 if last else TRANSITION}"{style}>{body}</section>')
         at += dur
     out.append(f"<script>{(HERE / 'base.js').read_text(encoding='utf-8')}</script></body></html>")
