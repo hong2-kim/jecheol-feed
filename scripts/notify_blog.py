@@ -26,7 +26,7 @@ def message(post, site, first, auto):
         "",
     ]
     if auto and not first:
-        lines.append("컴퓨터가 켜져 있으면 오전 중에 네이버에 자동으로 올라가요. 올라가면 주소를 다시 알려 드려요.")
+        lines.append("컴퓨터가 켜져 있으면 오후 1시쯤 네이버에 자동으로 올라가요. 올라가면 주소를 다시 알려 드려요.")
     else:
         lines.append(f"사진 자리 {left['photo']}곳 · 경험 자리 {left['exp']}곳 · 태그 {len(post['tags'])}개")
         lines.append("사진과 경험 한두 줄만 넣어 네이버에 올리면 돼요.")
