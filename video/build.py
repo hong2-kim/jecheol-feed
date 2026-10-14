@@ -533,6 +533,39 @@ def description(spec):
     return "\n".join(lines) + "\n"
 
 
+BLOG_URL = "https://blog.naver.com/hongbeom_404"
+
+
+def youtube_text(spec):
+    """유튜브 쇼츠에 넣을 (제목, 설명).
+
+    제목은 설계도의 yt_title(없으면 title)이에요. 유튜브는 100자까지라 넘치면 잘라요.
+    설명에는 인스타 게시글에 더해 사진 출처를 모두 적고(유튜브는 끝 장면 대신 설명란이 정해진 자리예요),
+    확인한 자료의 주소와 블로그 주소를 넣어요. 해시태그는 #Shorts 와 앞의 세 개만 써요.
+    """
+    title = " ".join(str(spec.get("yt_title") or spec.get("title") or "").split())
+    if len(title) > 100:
+        title = title[:99].rstrip() + "…"
+    caption = spec.get("caption", "").strip()
+    caption = caption.replace("프로필 링크의 블로그", f"네이버 블로그 '먹고갈지도'({BLOG_URL})")
+    lines = [caption, ""]
+    shown = credit_lines(spec)
+    if shown:
+        lines.append("사진")
+        for big, small in shown:
+            lines.append(f"📷 {big}" + (f" · {small} · 잘라서 보정함" if "CC BY" in big else ""))
+        lines.append("")
+    if spec.get("sources"):
+        lines.append("확인한 자료")
+        lines += [f"- {u}" for u in spec["sources"]]
+        lines.append("")
+    if BLOG_URL not in caption:
+        lines += [f"더 자세한 먹거리 이야기: {BLOG_URL}", ""]
+    tags = hashtags(spec.get("tags"))[:-1][:3]  # 마지막은 계정 이름이라 빼요
+    lines.append(" ".join(["#Shorts"] + ["#" + t for t in tags]))
+    return title, "\n".join(lines) + "\n"
+
+
 if __name__ == "__main__":
     spec = json.loads(Path(sys.argv[1]).read_text(encoding="utf-8"))
     if is_cards(spec):

@@ -9,6 +9,7 @@
 영상 파일 올리기(릴리스)는 작업 파일에서 gh 명령으로 먼저 해 둬요.
 """
 import hashlib
+import html
 import json
 import os
 import sys
@@ -49,6 +50,30 @@ def send_cards(token, chat, r):
     tg("sendMediaGroup", token, data={"chat_id": chat, "media": json.dumps(media, ensure_ascii=False)}, files=files)
 
 
+def send_youtube(token, chat, r, day):
+    """유튜브 쇼츠에 올릴 제목과 설명을 보내요. 제목과 설명은 눌러서 바로 복사할 수 있게 감싸요.
+    카드 뉴스는 쇼츠용 영상(카드를 넘겨 보는 세로 영상)을 먼저 보내요."""
+    if not r.get("yt_title"):
+        return
+    video = r.get("short") if r.get("format") == "cards" else r["file"]
+    if not video or not (ROOT / "dist" / video).exists():
+        return
+    if r.get("format") == "cards":
+        with open(ROOT / "dist" / video, "rb") as f:
+            tg("sendVideo", token, data={"chat_id": chat, "caption": f"[유튜브 쇼츠] {r.get('title')}"[:900], "supports_streaming": "true",
+                                         "width": 1080, "height": 1920}, files={"video": (video, f, "video/mp4")})
+    desc = r.get("yt_desc") or ""
+    if len(desc) > 3300:  # 텔레그램 글 한 개에 다 들어가게
+        desc = desc[:3300].rstrip() + "\n…"
+    url = f"https://github.com/{REPO}/releases/download/v{day}/{video}"
+    what = "위 카드 영상" if r.get("format") == "cards" else "위 영상"
+    text = (f"<b>[유튜브 쇼츠]</b> {what}을 쇼츠로 올려 주세요.\n\n"
+            f"<b>제목</b> (눌러서 복사)\n<code>{html.escape(r['yt_title'])}</code>\n\n"
+            f"<b>설명</b> (눌러서 복사)\n<pre>{html.escape(desc)}</pre>\n"
+            f"<b>내려받기</b>\n{html.escape(url)}")
+    tg("sendMessage", token, data={"chat_id": chat, "text": text, "parse_mode": "HTML", "disable_web_page_preview": "true"})
+
+
 def main():
     day = sys.argv[1]
     results = read_json(ROOT / "dist" / "results.json", [])
@@ -62,7 +87,7 @@ def main():
             # 같은 영상을 다시 만들면 제목과 글도 새것으로 바꿔요.
             old = next((v for v in videos if v["id"] == r["id"]), {})
             videos = [v for v in videos if v["id"] != r["id"]]
-            entry = {k: r.get(k) for k in ("id", "date", "kind", "title", "summary", "caption", "tags", "sources", "credits", "url", "seconds", "size_mb")}
+            entry = {k: r.get(k) for k in ("id", "date", "kind", "title", "summary", "caption", "tags", "sources", "credits", "url", "seconds", "size_mb", "yt_title")}
             if r.get("format") == "cards":  # 카드 뉴스는 그림 여러 장이에요. url 은 첫 장이에요.
                 entry.update({"format": "cards", "files": r["files"], "urls": [f"https://github.com/{REPO}/releases/download/v{day}/{f}" for f in r["files"]]})
             entry["sha256"] = hashlib.sha256((ROOT / "dist" / r["file"]).read_bytes()).hexdigest()  # 같은 파일인지 알아보는 지문
@@ -107,6 +132,11 @@ def main():
                 body += "\n\n[확인한 자료] 게시글에는 안 넣어도 돼요\n" + "\n".join(r["sources"])
             tg("sendMessage", token, data={"chat_id": chat, "text": body[:4000], "disable_web_page_preview": "true"})
             sent.add(r["id"])
+            try:  # 유튜브 안내가 안 가도 인스타 안내는 이미 갔으니 보낸 것으로 쳐요
+                send_youtube(token, chat, r, day)
+            except Exception as e:
+                log_error(f"youtube:{r['id']}", e)
+                print(f"유튜브 안내를 못 보냈어요: {r['id']} ({e})")
         except Exception as e:
             log_error(f"telegram:{r['id']}", e)
             print(f"못 보냈어요: {r['id']} ({e})")

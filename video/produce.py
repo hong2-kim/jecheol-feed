@@ -92,6 +92,39 @@ def render_cards(spec, name, browser):
     return files
 
 
+COVER_SEC, CARD_SEC, FADE_SEC = 3.0, 4.0, 0.4  # 카드 쇼츠: 첫 장, 소식 한 장, 넘어가는 시간
+
+
+def cards_short(files, name):
+    """카드 그림들을 넘겨 보는 세로 영상으로 이어요. 유튜브 쇼츠용이에요. (파일, 길이)
+
+    카드(1080×1350)를 가운데보다 조금 위에 두고(쇼츠는 아래쪽에 제목과 단추가 겹쳐요), 위아래 빈자리는 같은 카드를 흐리고 어둡게 깔아 채워요.
+    소리는 없지만 플레이어가 헷갈리지 않게 조용한 소리 줄을 넣어요.
+    """
+    durs = [COVER_SEC] + [CARD_SEC] * (len(files) - 1)
+    cmd = [imageio_ffmpeg.get_ffmpeg_exe(), "-y", "-loglevel", "error"]
+    for f, d in zip(files, durs):
+        cmd += ["-loop", "1", "-framerate", str(FPS), "-t", f"{d:.2f}", "-i", str(ROOT / "dist" / f)]
+    cmd += ["-f", "lavfi", "-i", "anullsrc=r=44100:cl=stereo"]
+    chain = []
+    for i in range(len(files)):
+        chain.append(f"[{i}:v]scale=1080:1350,setsar=1,split[f{i}][b{i}];"
+                     f"[b{i}]scale=1536:1920,crop=1080:1920,boxblur=28:2,eq=brightness=-0.22[g{i}];"
+                     f"[g{i}][f{i}]overlay=0:180:shortest=1,fps={FPS},format=yuv420p,settb=1/{FPS}[v{i}]")
+    last, at = "v0", 0.0
+    for i in range(1, len(files)):
+        at += durs[i - 1] - FADE_SEC
+        chain.append(f"[{last}][v{i}]xfade=transition=fade:duration={FADE_SEC}:offset={at:.2f}[x{i}]")
+        last = f"x{i}"
+    chain.append(f"[{last}]scale=in_range=pc:out_range=tv,format=yuv420p[out]")  # 이어 붙이면 색 형식이 바뀌어서 쇼츠가 읽는 형식으로 되돌려요
+    out = ROOT / "dist" / f"{name}-short.mp4"
+    cmd += ["-filter_complex", ";".join(chain), "-map", "[out]", "-map", f"{len(files)}:a",
+            "-c:v", "libx264", "-profile:v", "high", "-preset", "medium", "-crf", "21",
+            "-c:a", "aac", "-b:a", "128k", "-shortest", "-movflags", "+faststart", str(out)]
+    subprocess.run(cmd, check=True)
+    return out, sum(durs) - FADE_SEC * (len(files) - 1)
+
+
 def main():
     day = sys.argv[1]
     only = sys.argv[2] if len(sys.argv) > 2 else None
@@ -113,11 +146,19 @@ def main():
                 spec = json.loads(path.read_text(encoding="utf-8"))
                 entry.update({k: spec.get(k) for k in ("kind", "title", "summary", "caption", "tags", "sources", "credits")})
                 entry["tags"] = build.hashtags(spec.get("tags"))  # 인스타에 들어가는 5개만
+                entry["yt_title"], entry["yt_desc"] = build.youtube_text(spec)
                 if build.is_cards(spec):
                     files = render_cards(spec, name, browser)
                     size = sum((ROOT / "dist" / f).stat().st_size for f in files)
                     entry.update({"ok": True, "format": "cards", "file": files[0], "files": files, "size_mb": round(size / 1e6, 1)})
                     print(f"만들었어요: {name} 카드 {len(files)}장")
+                    try:  # 쇼츠 영상이 안 만들어져도 인스타용 카드는 그대로 보내요
+                        short, sec = cards_short(files, name)
+                        entry.update({"short": short.name, "short_seconds": round(sec, 1)})
+                        print(f"만들었어요: {short.name} ({sec:.1f}초, 유튜브 쇼츠용)")
+                    except Exception as e:
+                        log_error(f"short:{name}", e)
+                        print(f"쇼츠 영상을 만들지 못했어요: {name} — {e}")
                 else:
                     out, duration = render(spec, name, browser)
                     entry.update({"ok": True, "seconds": round(duration, 1), "size_mb": round(out.stat().st_size / 1e6, 1)})
