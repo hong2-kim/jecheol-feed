@@ -25,7 +25,7 @@ sys.path.insert(0, str(HERE.parent / "scripts"))
 from common import hashtags  # noqa: E402
 
 CACHE = HERE.parent / "build" / "photos"
-ACCENTS = {"제철": "#FFB23E", "소식": "#4FC3C8", "저녁": "#FF7A6B", "추가": "#B79CFF", "세계": "#8FD694"}
+ACCENTS = {"제철": "#FFB23E", "소식": "#4FC3C8", "저녁": "#FF7A6B", "추가": "#B79CFF", "세계": "#8FD694", "해외": "#7FB8FF"}
 UA = {"User-Agent": "jecheol-feed/1.0 (https://github.com/hong2-kim/jecheol-feed)"}
 
 
@@ -310,7 +310,7 @@ SCENES = {"cover": scene_cover, "card": scene_card, "duo": scene_duo, "info": sc
 # 장면이 넘어가는 방법 (base.css 의 in-이름, out-이름). 영상 종류마다 다르게 섞어요.
 TRANSITION = 0.3
 EASE = "cubic-bezier(.76,0,.24,1)"
-CYCLE = {"저녁": ["push"], "소식": ["deal", "push"], "제철": ["push", "wipe"], "세계": ["wipe", "push"]}
+CYCLE = {"저녁": ["push"], "소식": ["deal", "push"], "제철": ["push", "wipe"], "세계": ["wipe", "push"], "해외": ["wipe", "push"]}
 
 
 def transition(kind, frames, i, scenes):
