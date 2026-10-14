@@ -1,5 +1,69 @@
 [
   {
+    "id": "2026-10-15-1-sheet",
+    "date": "2026-10-15",
+    "kind": "제철",
+    "title": "10월 바다 제철 한 장 정리, 저장해 두세요",
+    "summary": "10월 제철 수산물 5가지의 먹는 법, 가장 맛있는 때, 공식 자료에 나온 영양 성분을 한 장에 모은 영상.",
+    "caption": "10월 바다 제철, 한 장으로 정리했어요. 장 보기 전에 저장해 두세요.\n대하 · 꽃게 · 전어 · 갈치 · 낙지 제철 시기와 영양\n\n대하: 10월이 제일 달아요. 고단백 저칼로리에 칼슘이 많아요.\n꽃게: 가을엔 살이 단단한 수꽃게. 필수아미노산과 칼슘이 많아요.\n전어: 9~10월 절정, 지금이 막바지. 뼈째 먹으면 칼슘이 많아요.\n갈치: 9~10월 전후로 기름이 올라요. 오메가-3와 칼슘이 많아요.\n낙지: 서늘해지면 살이 올라요. 무기질과 필수아미노산이 많아요.\n\n영양 정보는 해양수산부 '이달의 수산물' 자료에 나온 내용이에요.\n장 볼 때 꺼내 보게 저장해 두세요.",
+    "tags": [
+      "10월제철음식",
+      "제철수산물",
+      "장보기",
+      "대하",
+      "먹고갈지도"
+    ],
+    "sources": [
+      "https://www.hongseong.go.kr/prog/tursmCn/tour/sub03_03/view.do?cntNo=43",
+      "https://www.withbuyer.com/news/articleView.html?idxno=20702",
+      "https://www.hankyung.com/article/2025082756631",
+      "https://www.segye.com/newsView/20260906506680",
+      "https://www.korea.kr/news/policyNewsView.do?newsId=148853868",
+      "https://www.incheon.go.kr/fish/FI020401/13187",
+      "https://www.incheon.go.kr/fish/FI020401/13094",
+      "https://www.incheon.go.kr/fish/FI020401/2097010",
+      "https://www.incheon.go.kr/fish/FI020401/15052"
+    ],
+    "credits": [
+      "ⓒ한국관광공사 포토코리아-천준교, 박은경, 김지호, 디엔에이스튜디오"
+    ],
+    "url": "https://github.com/hong2-kim/jecheol-feed/releases/download/v2026-10-15/2026-10-15-1-sheet.mp4",
+    "seconds": 10.0,
+    "size_mb": 0.6,
+    "yt_title": "10월 제철 수산물 한 장 정리, 언제가 맛있고 뭐가 좋을까",
+    "sha256": "9afa201cb9643d8cfa77f54d186281009181cf3f84333d9c3f2c32a6a1d700ba"
+  },
+  {
+    "id": "2026-10-15-1-check",
+    "date": "2026-10-15",
+    "kind": "제철",
+    "title": "10월 바다 제철 5, 몇 개 먹어 봤어요?",
+    "summary": "10월에 제철인 바다 먹거리 5가지를 하나씩 짚어 보며 몇 개 먹어 봤는지 세어 보는 영상.",
+    "caption": "10월 바다 제철 5가지, 몇 개 먹어 봤어요?\n대하 · 꽃게 · 전어 · 갈치 · 낙지, 10월 제철 수산물\n\n1. 대하: 9~11월이 제철이고 10월이 제일 달아요. 소금구이로 많이 먹어요.\n2. 꽃게: 가을엔 살이 단단한 수꽃게예요. 찜이나 탕으로 즐겨요.\n3. 전어: 9~10월이 절정이라 지금이 막바지예요.\n4. 갈치: 9~10월 전후로 살이 찌고 기름이 올라요.\n5. 낙지: 여름을 지나 서늘해지면 살이 올라요.\n\n댓글에 숫자만 남겨 주세요. 다 먹어 봤다면 5!",
+    "tags": [
+      "10월제철음식",
+      "제철수산물",
+      "대하",
+      "꽃게",
+      "먹고갈지도"
+    ],
+    "sources": [
+      "https://www.hongseong.go.kr/prog/tursmCn/tour/sub03_03/view.do?cntNo=43",
+      "https://www.withbuyer.com/news/articleView.html?idxno=20702",
+      "https://www.hankyung.com/article/2025082756631",
+      "https://www.segye.com/newsView/20260906506680",
+      "https://www.korea.kr/news/policyNewsView.do?newsId=148853868"
+    ],
+    "credits": [
+      "ⓒ한국관광공사 포토코리아-천준교, 박은경, 김지호, 디엔에이스튜디오"
+    ],
+    "url": "https://github.com/hong2-kim/jecheol-feed/releases/download/v2026-10-15/2026-10-15-1-check.mp4",
+    "seconds": 10.5,
+    "size_mb": 0.7,
+    "yt_title": "10월 제철 수산물 5가지, 몇 개 먹어 봤어요? 대하 꽃게 전어 갈치 낙지",
+    "sha256": "755985418d123736bac9ac164b78193cb8255bbab50041b51746df66ea44d0ec"
+  },
+  {
     "id": "2026-10-14-4-find",
     "date": "2026-10-14",
     "kind": "발견",
