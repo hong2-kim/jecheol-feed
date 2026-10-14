@@ -1,0 +1,71 @@
+{
+  "kind": "제철",
+  "subject": "2026-10 제철 체크",
+  "title": "10월 바다 제철 5, 몇 개 먹어 봤어요?",
+  "yt_title": "10월 제철 수산물 5가지, 몇 개 먹어 봤어요? 대하 꽃게 전어 갈치 낙지",
+  "summary": "10월에 제철인 바다 먹거리 5가지를 하나씩 짚어 보며 몇 개 먹어 봤는지 세어 보는 영상.",
+  "scenes": [
+    {
+      "type": "check",
+      "dur": 9.0,
+      "kicker": "10월 바다 제철 5",
+      "title": "몇 개\n[[먹어 봤어요?]]",
+      "items": [
+        {
+          "name": "대하",
+          "photo": {
+            "url": "https://tong.visitkorea.or.kr/cms2/website/65/2048365.jpg"
+          },
+          "line": "11월까지 제철, [[10월이 제일 달아요]]"
+        },
+        {
+          "name": "꽃게",
+          "photo": {
+            "url": "https://tong.visitkorea.or.kr/cms2/website/38/3052838.jpg"
+          },
+          "line": "가을엔 [[알 말고 살]]이에요"
+        },
+        {
+          "name": "전어",
+          "photo": {
+            "url": "https://tong.visitkorea.or.kr/cms2/website/37/1832937.jpg"
+          },
+          "line": "9~10월 절정, [[지금이 막바지]]"
+        },
+        {
+          "name": "갈치",
+          "photo": {
+            "url": "https://tong.visitkorea.or.kr/cms2/website/28/2704228.jpg"
+          },
+          "line": "9~10월 전후로 [[기름이 올라요]]"
+        },
+        {
+          "name": "낙지",
+          "photo": {
+            "url": "https://tong.visitkorea.or.kr/cms2/website/65/2826865.jpg"
+          },
+          "line": "서늘해지면 [[살이 올라요]]"
+        }
+      ],
+      "end": "댓글에 숫자만 남겨 주세요",
+      "end_sub": "저장해 두고 하나씩 깨 보기"
+    }
+  ],
+  "caption": "10월 바다 제철 5가지, 몇 개 먹어 봤어요?\n대하 · 꽃게 · 전어 · 갈치 · 낙지, 10월 제철 수산물\n\n1. 대하: 9~11월이 제철이고 10월이 제일 달아요. 소금구이로 많이 먹어요.\n2. 꽃게: 가을엔 살이 단단한 수꽃게예요. 찜이나 탕으로 즐겨요.\n3. 전어: 9~10월이 절정이라 지금이 막바지예요.\n4. 갈치: 9~10월 전후로 살이 찌고 기름이 올라요.\n5. 낙지: 여름을 지나 서늘해지면 살이 올라요.\n\n댓글에 숫자만 남겨 주세요. 다 먹어 봤다면 5!",
+  "tags": [
+    "10월제철음식",
+    "제철수산물",
+    "대하",
+    "꽃게"
+  ],
+  "sources": [
+    "https://www.hongseong.go.kr/prog/tursmCn/tour/sub03_03/view.do?cntNo=43",
+    "https://www.withbuyer.com/news/articleView.html?idxno=20702",
+    "https://www.hankyung.com/article/2025082756631",
+    "https://www.segye.com/newsView/20260906506680",
+    "https://www.korea.kr/news/policyNewsView.do?newsId=148853868"
+  ],
+  "credits": [
+    "ⓒ한국관광공사 포토코리아-천준교, 박은경, 김지호, 디엔에이스튜디오"
+  ]
+}

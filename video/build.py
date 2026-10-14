@@ -244,6 +244,60 @@ def scene_info(s, i, ctx):
     )
 
 
+def scene_check(s, i, ctx):
+    """시안 B. "몇 개 먹어 봤어요?" 동그란 사진 3~6개에 차례로 체크가 켜지고, 그때마다 한 줄 정보가 바뀌어요.
+
+    첫 화면(썸네일)에서 제목과 사진이 다 보이고, 체크는 장면 길이에 맞춰 고르게 켜져요. 끝에는 댓글을 부르는 말.
+    {"type": "check", "kicker", "title", "items": [{"name", "photo", "line"}], "end", "end_sub"}
+    """
+    items, dur = s["items"], s["dur"]
+    n = len(items)
+    t0 = round(dur * .14, 2)
+    seg = (dur * .8 - t0) / n
+    at = [round(t0 + k * seg, 2) for k in range(n)]
+    cells = "".join(
+        f'<div class="it"><div class="c">{img(it["photo"])}<div class="on a" style="--dl:{at[k]}s;--d:.3s"></div></div>'
+        f'<b>{esc(it["name"])}</b><div class="ck a" style="--dl:{at[k]}s;--d:.35s">✓</div></div>'
+        for k, it in enumerate(items))
+    cnt = f'<span class="out1 a" style="--d:{t0}s">0 / {n}</span>' + "".join(
+        f'<span class="{"hold" if k == n - 1 else "flash"} a" style="--dl:{at[k]}s;--d:{.3 if k == n - 1 else round(seg, 2)}s">{k + 1} / {n}</span>'
+        for k in range(n))
+    say = "".join(
+        f'<div class="flash a" style="--dl:{at[k]}s;--d:{round(seg, 2)}s">{esc(it["name"])} · {rich(it.get("line", ""))}</div>'
+        for k, it in enumerate(items))
+    end_at = round(dur * .82, 2)
+    say += (f'<div class="end hold a" style="--dl:{end_at}s;--d:.4s"><b>{esc(s.get("end", "댓글에 숫자만 남겨 주세요"))}</b>'
+            f'<span>{esc(s.get("end_sub", "저장해 두고 하나씩 깨 보기"))}</span></div>')
+    head = f'<div class="head">{rise("kicker", s.get("kicker", ""), .1)}{rise("title", s["title"], .3)}</div>'
+    return "check", f'<div class="cnt">{cnt}</div>{head}<div class="grid">{cells}</div><div class="say">{say}</div>'
+
+
+def scene_sheet(s, i, ctx):
+    """시안 C. 저장하고 싶어지는 표 한 장. 줄이 하나씩 밝아지며 눈길을 이끌어요.
+
+    {"type": "sheet", "kicker", "title", "cols": [3개], "rows": [{"name", "sub", "photo", "when", "good"}], "note", "save"}
+    표는 쇼츠 오른쪽 단추 자리(화면 오른쪽 15%)에 걸리지 않게 왼쪽으로 붙여요.
+    """
+    rows, dur = s["rows"], s["dur"]
+    t0 = .6
+    seg = (dur - t0 - .3) / len(rows)
+    cols = s.get("cols") or ["이름", "언제가 제일", "몸에 좋은 것"]
+    head = "".join(f"<th>{esc(c)}</th>" for c in [""] + cols)
+    body = ""
+    for k, r in enumerate(rows):
+        hl = f'<span class="hl flash a" style="--dl:{round(t0 + k * seg, 2)}s;--d:{round(seg, 2)}s"></span>'
+        good = f'<td class="good">{hl}{rich(r.get("good", ""))}</td>'
+        body += (f'<tr><td>{hl}<div class="th">{img(r["photo"])}</div></td>'
+                 f'<td>{hl}<b>{esc(r["name"])}</b><i>{esc(r.get("sub", ""))}</i></td>'
+                 f'<td>{hl}{rich(r.get("when", ""))}</td>{good}</tr>')
+    note = f'<div class="note">{esc(s["note"])}</div>' if s.get("note") else ""
+    save = f'<div class="save">{esc(s.get("save", "저장해 두면 장 볼 때 편해요"))}</div>'
+    table = (f'<table><colgroup><col class="c1"><col class="c2"><col><col class="c4"></colgroup>'
+             f'<thead><tr>{head}</tr></thead><tbody>{body}</tbody></table>')
+    title = f'<div class="head">{rise("kicker", s.get("kicker", ""), .1)}{rise("title", s["title"], .3)}</div>'
+    return "sheet", title + f'<div class="box">{table}{note}{save}</div>'
+
+
 CREDIT = re.compile(r"^(?P<who>.+?)\s*\((?P<lic>[^()]*)\)(?:\s*·\s*(?P<link>.+))?$")
 FREE = ("CC0", "Public domain", "PDM")
 
@@ -305,7 +359,8 @@ def scene_outro(lines):
     return f'{backdrop_map}<div class="end" style="top:{top}px"><div class="sig">{OUTRO_PIN}<span>{name}</span></div>{src}</div>'
 
 
-SCENES = {"cover": scene_cover, "card": scene_card, "duo": scene_duo, "info": scene_info}
+SCENES = {"cover": scene_cover, "card": scene_card, "duo": scene_duo, "info": scene_info,
+          "check": scene_check, "sheet": scene_sheet}
 
 # 장면이 넘어가는 방법 (base.css 의 in-이름, out-이름). 영상 종류마다 다르게 섞어요.
 TRANSITION = 0.3

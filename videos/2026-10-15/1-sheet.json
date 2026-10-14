@@ -1,0 +1,90 @@
+{
+  "kind": "제철",
+  "subject": "2026-10 제철 한 장",
+  "title": "10월 바다 제철 한 장 정리, 저장해 두세요",
+  "yt_title": "10월 제철 수산물 한 장 정리, 언제가 맛있고 뭐가 좋을까",
+  "summary": "10월 제철 수산물 5가지의 먹는 법, 가장 맛있는 때, 공식 자료에 나온 영양 성분을 한 장에 모은 영상.",
+  "scenes": [
+    {
+      "type": "sheet",
+      "dur": 8.5,
+      "kicker": "장 보기 전에 저장",
+      "title": "[[10월 바다 제철]]\n한 장 정리",
+      "cols": [
+        "이름",
+        "언제가 제일",
+        "몸에 좋은 것"
+      ],
+      "rows": [
+        {
+          "name": "대하",
+          "sub": "소금구이",
+          "photo": {
+            "url": "https://tong.visitkorea.or.kr/cms2/website/65/2048365.jpg"
+          },
+          "when": "10월이\n제일 달아요",
+          "good": "고단백 저칼로리,\n칼슘이 많아요"
+        },
+        {
+          "name": "꽃게",
+          "sub": "찜·탕",
+          "photo": {
+            "url": "https://tong.visitkorea.or.kr/cms2/website/38/3052838.jpg"
+          },
+          "when": "가을엔\n알 말고 살",
+          "good": "필수아미노산·\n칼슘이 많아요"
+        },
+        {
+          "name": "전어",
+          "sub": "구이·회무침",
+          "photo": {
+            "url": "https://tong.visitkorea.or.kr/cms2/website/37/1832937.jpg"
+          },
+          "when": "9~10월 절정,\n지금 막바지",
+          "good": "뼈째 먹으면\n칼슘이 많아요"
+        },
+        {
+          "name": "갈치",
+          "sub": "조림·구이",
+          "photo": {
+            "url": "https://tong.visitkorea.or.kr/cms2/website/28/2704228.jpg"
+          },
+          "when": "9~10월 전후\n기름이 올라요",
+          "good": "오메가-3·\n칼슘이 많아요"
+        },
+        {
+          "name": "낙지",
+          "sub": "탕탕이",
+          "photo": {
+            "url": "https://tong.visitkorea.or.kr/cms2/website/65/2826865.jpg"
+          },
+          "when": "서늘해지면\n살이 올라요",
+          "good": "무기질·필수\n아미노산이 많아요"
+        }
+      ],
+      "note": "영양 정보: 해양수산부 이달의 수산물 자료",
+      "save": "저장해 두면 장 볼 때 편해요"
+    }
+  ],
+  "caption": "10월 바다 제철, 한 장으로 정리했어요. 장 보기 전에 저장해 두세요.\n대하 · 꽃게 · 전어 · 갈치 · 낙지 제철 시기와 영양\n\n대하: 10월이 제일 달아요. 고단백 저칼로리에 칼슘이 많아요.\n꽃게: 가을엔 살이 단단한 수꽃게. 필수아미노산과 칼슘이 많아요.\n전어: 9~10월 절정, 지금이 막바지. 뼈째 먹으면 칼슘이 많아요.\n갈치: 9~10월 전후로 기름이 올라요. 오메가-3와 칼슘이 많아요.\n낙지: 서늘해지면 살이 올라요. 무기질과 필수아미노산이 많아요.\n\n영양 정보는 해양수산부 '이달의 수산물' 자료에 나온 내용이에요.\n장 볼 때 꺼내 보게 저장해 두세요.",
+  "tags": [
+    "10월제철음식",
+    "제철수산물",
+    "장보기",
+    "대하"
+  ],
+  "sources": [
+    "https://www.hongseong.go.kr/prog/tursmCn/tour/sub03_03/view.do?cntNo=43",
+    "https://www.withbuyer.com/news/articleView.html?idxno=20702",
+    "https://www.hankyung.com/article/2025082756631",
+    "https://www.segye.com/newsView/20260906506680",
+    "https://www.korea.kr/news/policyNewsView.do?newsId=148853868",
+    "https://www.incheon.go.kr/fish/FI020401/13187",
+    "https://www.incheon.go.kr/fish/FI020401/13094",
+    "https://www.incheon.go.kr/fish/FI020401/2097010",
+    "https://www.incheon.go.kr/fish/FI020401/15052"
+  ],
+  "credits": [
+    "ⓒ한국관광공사 포토코리아-천준교, 박은경, 김지호, 디엔에이스튜디오"
+  ]
+}

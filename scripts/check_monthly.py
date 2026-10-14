@@ -14,7 +14,8 @@ from common import KST, ROOT, log_error, read_json
 from notify_telegram import api
 
 # 파일 이름 끝: (이름, 나오는 날)
-WANT = {"1-monthly": ("이달의 제철음식", 1), "5-world": ("세계의 음식·술 축제", 1), "9-abroad": ("해외 먹거리 트렌드", 2)}
+WANT = {"1-monthly": ("이달의 제철음식", 1), "5-world": ("세계의 음식·술 축제", 1), "1-check": ("제철 체크", 1),
+        "1-sheet": ("제철 한 장 정리", 1), "9-abroad": ("해외 먹거리 트렌드", 2)}
 
 
 def missing(now):
