@@ -142,3 +142,29 @@ body { background: #0E0B09; color: #fff; font-family: "Noto Sans KR", sans-serif
 .sheet td:first-child .hl { border-radius: 36px 0 0 36px; } .sheet td:last-child .hl { border-radius: 0 36px 36px 0; }
 .sheet .note { margin: 4px 24px 0; font-size: 28px; color: #8a7d6e; }
 .sheet .save { display: inline-block; margin: 30px 0 0 24px; padding: 14px 34px 18px; border-radius: 999px; background: #17130F; color: #F6F1E9; font-size: 38px; font-weight: 800; }
+
+.pop.a { animation-name: pop; animation-timing-function: cubic-bezier(.2,1.4,.4,1); }
+.first .pop { animation: none; }
+@keyframes pop { from { opacity: 0; transform: scale(.6); } to { opacity: 1; transform: none; } }
+
+/* 저녁 TOP 5(시안 A): 5위부터 거꾸로. 위에는 제목과 진행 막대가 늘 떠 있어요 */
+.rank .pic, .tease .pic { height: 1920px; }
+.rank .pic img.kb.a { animation-name: kb; animation-timing-function: linear; }
+@keyframes kb { from { transform: scale(1); } to { transform: scale(1.07); } }
+.rank .rk-shade, .tease .rk-shade { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(14,11,9,.74) 0%, rgba(14,11,9,.1) 24%, rgba(14,11,9,.38) 44%, rgba(14,11,9,.86) 68%, rgba(14,11,9,.93) 100%); }
+.tease .pic img { filter: blur(42px) brightness(.55); transform: scale(1.12); }
+.rk-top { position: absolute; left: 60px; right: 60px; top: 130px; text-align: center; z-index: 3; }
+.rk-top .k { display: inline-block; padding: 8px 30px 12px; border-radius: 999px; background: var(--ac); color: #17130F; font-size: 36px; font-weight: 900; }
+.rk-top h3 { margin-top: 16px; font-size: 92px; font-weight: 900; line-height: 1.12; letter-spacing: -3px; text-shadow: 0 6px 30px rgba(0,0,0,.6); white-space: pre-line; }
+.rk-top h3 .am { color: var(--ac); }
+.rk-top .dots { display: flex; justify-content: center; gap: 18px; margin-top: 26px; }
+.rk-top .dots span { width: 66px; height: 12px; border-radius: 6px; background: rgba(255,255,255,.28); }
+.rk-top .dots span.done { background: var(--ac); }
+.rk-no { position: absolute; left: 66px; top: 660px; font-size: 380px; font-weight: 900; line-height: .8; letter-spacing: -16px; color: var(--ac); text-shadow: 0 0 9px #17130F, 0 0 9px #17130F, 0 0 9px #17130F, 0 18px 78px rgba(0,0,0,.8); }
+.rk-no small { font-size: 112px; color: #fff; letter-spacing: 0; margin-left: 18px; text-shadow: 0 6px 30px rgba(0,0,0,.8); }
+.rk-name { position: absolute; left: 72px; right: 180px; top: 1000px; }
+.rk-name b { display: block; font-size: 124px; font-weight: 900; letter-spacing: -4px; line-height: 1.12; text-shadow: 0 6px 36px rgba(0,0,0,.7); }
+.rk-name .drink { display: inline-block; margin-top: 18px; padding: 8px 26px 12px; border-radius: 22px; background: rgba(255,255,255,.93); color: #17130F; font-size: 46px; font-weight: 900; }
+.rk-name .say { margin-top: 22px; font-size: 50px; font-weight: 700; letter-spacing: -1.5px; line-height: 1.35; text-shadow: 0 3px 22px rgba(0,0,0,.85); }
+.rk-note { position: absolute; left: 60px; right: 60px; top: 1430px; text-align: center; font-size: 32px; color: rgba(255,255,255,.72); z-index: 3; }
+.tease .big-q { position: absolute; left: 60px; right: 60px; top: 760px; text-align: center; font-size: 190px; font-weight: 900; line-height: 1.1; letter-spacing: -6px; color: var(--ac); white-space: pre-line; text-shadow: 0 12px 80px rgba(0,0,0,.7); }

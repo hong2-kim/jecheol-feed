@@ -37,15 +37,36 @@ def card_name(r):
     return "트렌드 카드" if r.get("kind") == "유행" else "카드 뉴스"
 
 
+# 설계도 파일 이름 -> (무슨 영상인지, 언제 나가는지). 텔레그램에서 찾기 쉽게 메시지마다 붙여요.
+LABELS = {
+    "2-news": ("카드 뉴스", "매일"), "3-dinner": ("저녁 TOP 5", "매일"), "4-find": ("발견형 · 오늘의 한 가지", "매일"),
+    "6-story": ("맛의 이야기", "화요일"), "7-local": ("지역의 먹거리", "목요일"), "8-trend": ("요즘 뜨는 메뉴 카드", "금요일"),
+    "1-monthly": ("이달의 제철", "달마다"), "5-world": ("세계 축제", "달마다"), "9-abroad": ("해외 먹거리 트렌드", "달마다"),
+    "1-check": ("제철 체크 · 몇 개 먹어 봤어요?", "달마다"), "1-sheet": ("제철 한 장 정리", "달마다"),
+}
+
+
+def label(r, where):
+    """[인스타 릴스 · 저녁 TOP 5 · 매일] 같은 이름표. where 는 "insta" 또는 "youtube"."""
+    stem = r["id"][11:]  # 2026-10-15-3-dinner -> 3-dinner
+    what, when = LABELS.get(stem, (r.get("title") or stem, ""))
+    if where == "youtube":
+        place = "유튜브 쇼츠"
+    else:
+        place = f"인스타 게시물(사진 {len(r['files'])}장)" if r.get("format") == "cards" else "인스타 릴스"
+    return f"[{place} · {what}" + (f" · {when}]" if when else "]")
+
+
 def send_cards(token, chat, r):
     """카드 뉴스 그림을 한 묶음(앨범)으로 보내요. 올릴 순서대로 놓여요."""
     names = r["files"]
+    title = f"{label(r, 'insta')}\n{r.get('title') or r['id']}"
     if len(names) == 1:
         with open(ROOT / "dist" / names[0], "rb") as f:
-            tg("sendPhoto", token, data={"chat_id": chat, "caption": (r.get("title") or r["id"])[:900]}, files={"photo": (names[0], f, "image/jpeg")})
+            tg("sendPhoto", token, data={"chat_id": chat, "caption": title[:900]}, files={"photo": (names[0], f, "image/jpeg")})
         return
     media = [{"type": "photo", "media": f"attach://p{n}"} for n in range(len(names))]
-    media[0]["caption"] = (r.get("title") or r["id"])[:900]
+    media[0]["caption"] = title[:900]
     files = {f"p{n}": (name, (ROOT / "dist" / name).read_bytes(), "image/jpeg") for n, name in enumerate(names)}
     tg("sendMediaGroup", token, data={"chat_id": chat, "media": json.dumps(media, ensure_ascii=False)}, files=files)
 
@@ -58,16 +79,15 @@ def send_youtube(token, chat, r, day):
     video = r.get("short") if r.get("format") == "cards" else r["file"]
     if not video or not (ROOT / "dist" / video).exists():
         return
-    if r.get("format") == "cards":
-        with open(ROOT / "dist" / video, "rb") as f:
-            tg("sendVideo", token, data={"chat_id": chat, "caption": f"[유튜브 쇼츠] {r.get('title')}"[:900], "supports_streaming": "true",
-                                         "width": 1080, "height": 1920}, files={"video": (video, f, "video/mp4")})
+    tag = label(r, "youtube")
+    with open(ROOT / "dist" / video, "rb") as f:  # 유튜브 묶음에서 바로 저장할 수 있게 영상도 다시 보내요
+        tg("sendVideo", token, data={"chat_id": chat, "caption": f"{tag}\n{r.get('yt_title') or r.get('title')}"[:900], "supports_streaming": "true",
+                                     "width": 1080, "height": 1920}, files={"video": (video, f, "video/mp4")})
     desc = r.get("yt_desc") or ""
     if len(desc) > 3300:  # 텔레그램 글 한 개에 다 들어가게
         desc = desc[:3300].rstrip() + "\n…"
     url = f"https://github.com/{REPO}/releases/download/v{day}/{video}"
-    what = "위 카드 영상" if r.get("format") == "cards" else "위 영상"
-    text = (f"<b>[유튜브 쇼츠]</b> {what}을 쇼츠로 올려 주세요.\n\n"
+    text = (f"<b>{html.escape(tag)}</b>\n위 영상을 쇼츠로 올려 주세요.\n\n"
             f"<b>제목</b> (눌러서 복사)\n<code>{html.escape(r['yt_title'])}</code>\n\n"
             f"<b>설명</b> (눌러서 복사)\n<pre>{html.escape(desc)}</pre>\n"
             f"<b>내려받기</b>\n{html.escape(url)}")
@@ -104,42 +124,54 @@ def main():
     bad = [r for r in results if not r["ok"]]
     todo = [r for r in ok if r["id"] not in sent]
     if todo or bad:
-        cards = [card_name(r) for r in ok if r.get("format") == "cards"]
-        head = f"{day} 영상 {len(ok) - len(cards)}개" + "".join(f", {name} {cards.count(name)}개" for name in dict.fromkeys(cards)) + "가 준비됐어요."
+        head = f"{day} 올릴 것이 준비됐어요."
+        if todo:
+            head += f"\n\n▶ 인스타 {len(todo)}개\n" + "\n".join(f"{n}. {label(r, 'insta')[1:-1]}" for n, r in enumerate(todo, 1))
+            yt = [r for r in todo if r.get("yt_title")]
+            if yt:
+                head += f"\n\n▶ 유튜브 쇼츠 {len(yt)}개\n" + "\n".join(f"{n}. {label(r, 'youtube')[1:-1]}" for n, r in enumerate(yt, 1))
+            head += "\n\n아래에 인스타 것을 먼저, 그다음 유튜브 쇼츠 것을 모아서 보내요."
         if bad:
-            head += f" 실패 {len(bad)}개: " + "; ".join(f"{b['id']} ({b['error'][:80]})" for b in bad)
+            head += f"\n\n실패 {len(bad)}개: " + "; ".join(f"{b['id']} ({b['error'][:80]})" for b in bad)
         mine = read_json(ROOT / "myphotos" / "index.json", []) or []
         today = plan.used_on(mine, day)
         if today:
-            head += "\n\n첫 장면에 보내 주신 " + ", ".join(f"'{e.get('note') or '이름 없음'}'" for e in today) + " 을(를) 썼어요."
+            head += "\n\n보내 주신 " + ", ".join(f"'{e.get('note') or '이름 없음'}'" for e in today) + " 을(를) 오늘 영상에 썼어요."
         if plan.waiting(mine):
             head += "\n\n[다음 순서]\n" + "\n".join(plan.lines(mine))
         tg("sendMessage", token, data={"chat_id": chat, "text": head})
+    if todo:
+        tg("sendMessage", token, data={"chat_id": chat, "text": "━━━━ 인스타 ━━━━"})
     for r in todo:
         text = (ROOT / "dist" / f"{r['id']}.txt").read_text(encoding="utf-8")
+        tag = label(r, "insta")
         try:
             if r.get("format") == "cards":
                 send_cards(token, chat, r)
                 links = "\n".join(f"https://github.com/{REPO}/releases/download/v{day}/{f}" for f in r["files"])
-                body = (f"[{card_name(r)}] {r.get('title')}\n위 사진 {len(r['files'])}장을 순서대로 한 게시물에 올려 주세요.\n\n"
+                body = (f"{tag}\n{r.get('title')}\n위 사진 {len(r['files'])}장을 순서대로 한 게시물에 올려 주세요.\n\n"
                         f"[게시글에 넣을 글]\n{text}\n[원본 그림] 텔레그램 사진은 조금 작아져요. 또렷한 원본은 여기서 받아요\n{links}")
             else:
                 with open(ROOT / "dist" / r["file"], "rb") as f:
-                    tg("sendVideo", token, data={"chat_id": chat, "caption": (r.get("title") or r["id"])[:900], "supports_streaming": "true",
+                    tg("sendVideo", token, data={"chat_id": chat, "caption": f"{tag}\n{r.get('title') or r['id']}"[:900], "supports_streaming": "true",
                                                  "width": 1080, "height": 1920}, files={"video": (r["file"], f, "video/mp4")})
-                body = f"{r.get('title')}\n\n[게시글에 넣을 글]\n{text}\n[내려받기]\n{r['url']}"
+                body = f"{tag}\n{r.get('title')}\n\n[게시글에 넣을 글]\n{text}\n[내려받기]\n{r['url']}"
             if r.get("sources"):
                 body += "\n\n[확인한 자료] 게시글에는 안 넣어도 돼요\n" + "\n".join(r["sources"])
             tg("sendMessage", token, data={"chat_id": chat, "text": body[:4000], "disable_web_page_preview": "true"})
             sent.add(r["id"])
-            try:  # 유튜브 안내가 안 가도 인스타 안내는 이미 갔으니 보낸 것으로 쳐요
-                send_youtube(token, chat, r, day)
-            except Exception as e:
-                log_error(f"youtube:{r['id']}", e)
-                print(f"유튜브 안내를 못 보냈어요: {r['id']} ({e})")
         except Exception as e:
             log_error(f"telegram:{r['id']}", e)
             print(f"못 보냈어요: {r['id']} ({e})")
+    yt = [r for r in todo if r["id"] in sent and r.get("yt_title")]
+    if yt:
+        tg("sendMessage", token, data={"chat_id": chat, "text": "━━━━ 유튜브 쇼츠 ━━━━"})
+    for r in yt:
+        try:  # 유튜브 안내가 안 가도 인스타 안내는 이미 갔으니 보낸 것으로 쳐요
+            send_youtube(token, chat, r, day)
+        except Exception as e:
+            log_error(f"youtube:{r['id']}", e)
+            print(f"유튜브 안내를 못 보냈어요: {r['id']} ({e})")
     write_json(ROOT / "state" / "sent_videos.json", sorted(sent))
     print(f"보냈어요: {len(todo)}개, 실패 알림 {len(bad)}개")
 

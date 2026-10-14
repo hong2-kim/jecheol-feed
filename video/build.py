@@ -244,6 +244,45 @@ def scene_info(s, i, ctx):
     )
 
 
+def rank_top(ctx, done):
+    """저녁 TOP 5 의 위쪽 제목과 진행 막대. 모든 장면에 같은 자리에 떠 있어요."""
+    top = ctx.get("top") or {}
+    total = ctx.get("ranks", 5)
+    dots = "".join(f'<span class="{"done" if k < done else ""}"></span>' for k in range(total))
+    kicker = f'<span class="k">{esc(top["kicker"])}</span>' if top.get("kicker") else ""
+    badge = top.get("badge") or f"TOP {total}"
+    title = rich(top.get("title", "오늘 저녁 뭐 먹지?") + "\n[[" + badge + "]]")
+    note = f'<div class="rk-note">{esc(ctx["rank_note"])}</div>' if ctx.get("rank_note") else ""
+    return f'<div class="rk-top">{kicker}<h3>{title}</h3><div class="dots">{dots}</div></div>{note}'
+
+
+def scene_rank(s, i, ctx):
+    """시안 A. 순위 하나. 사진을 화면 가득 깔고 큰 순위 숫자, 메뉴 이름, 술, 상황 한 줄.
+
+    {"type": "rank", "no": 5, "name": "곱창", "drink": "소주", "line": "불판 앞에 앉으면 끝", "photo": {...}}
+    사진은 세로로 잘라도 불판·접시가 통째로 보이는 것만 써요. 천천히 7%만 다가가요.
+    """
+    total = ctx.get("ranks", 5)
+    if s.get("video"):  # 사용자가 보낸 동영상은 그대로 움직이게 둬요
+        pic = f'<div class="pic">{moving(s, s["dur"])[0]}</div>'
+    else:
+        src, pos = fetch_photo(s["photo"])
+        pic = f'<div class="pic"><img class="kb a" src="{src}" style="object-position:{pos};--d:{s["dur"]}s"></div>'
+    name = (f'<div class="rk-name">{rise("", s["name"], .2, tag="b")}'
+            + (rise("drink", s["drink"], .35, tag="span") if s.get("drink") else "")
+            + (rise("say", s["line"], .5) if s.get("line") else "") + "</div>")
+    no = f'<div class="rk-no a pop" style="--d:.4s">{int(s["no"])}<small>위</small></div>'
+    return "rank", pic + '<div class="rk-shade"></div>' + rank_top(ctx, total - int(s["no"]) + 1) + no + name
+
+
+def scene_tease(s, i, ctx):
+    """시안 A. 흐린 사진 위에 "1위는?" 한마디. 첫 장면이면 썸네일이 되고, 1위 바로 앞이면 한 번 멈춰 궁금하게 해요."""
+    src, pos = fetch_photo(s["photo"])
+    done = ctx.get("ranks", 5) - 1 if i else 0
+    return "tease", (f'<div class="pic"><img src="{src}" style="object-position:{pos}"></div><div class="rk-shade"></div>'
+                     + rank_top(ctx, done) + f'<div class="big-q a pop" style="--d:.4s">{rich(s.get("text", "1위는?"))}</div>')
+
+
 def scene_check(s, i, ctx):
     """시안 B. "몇 개 먹어 봤어요?" 동그란 사진 3~6개에 차례로 체크가 켜지고, 그때마다 한 줄 정보가 바뀌어요.
 
@@ -360,7 +399,7 @@ def scene_outro(lines):
 
 
 SCENES = {"cover": scene_cover, "card": scene_card, "duo": scene_duo, "info": scene_info,
-          "check": scene_check, "sheet": scene_sheet}
+          "check": scene_check, "sheet": scene_sheet, "rank": scene_rank, "tease": scene_tease}
 
 # 장면이 넘어가는 방법 (base.css 의 in-이름, out-이름). 영상 종류마다 다르게 섞어요.
 TRANSITION = 0.3
@@ -392,7 +431,7 @@ def fit(scenes, tail):
     if abs(target - body) > 0.01:
         for s in scenes:
             s["dur"] = round(s["dur"] * target / body, 2)
-    if min(s["dur"] for s in scenes) < 1.2:
+    if min(s["dur"] for s in scenes if s["type"] != "tease") < 1.2:  # "1위는?" 같은 멈춤 장면은 짧아도 돼요
         raise ValueError(f"장면이 {len(scenes)}개라 15초 안에 다 보여 줄 수 없어요. 장면을 줄여 주세요.")
 
 
@@ -400,7 +439,8 @@ def build_html(spec):
     """설계도를 한 장짜리 HTML로 만들어요. (HTML, 길이)"""
     accent = spec.get("accent") or ACCENTS.get(spec.get("kind", ""), "#FFB23E")
     scenes = spec["scenes"]
-    ctx = {"cards": sum(1 for s in scenes if s["type"] == "card"), "card_no": 0, "brand": spec.get("brand")}
+    ctx = {"cards": sum(1 for s in scenes if s["type"] == "card"), "card_no": 0, "brand": spec.get("brand"),
+           "ranks": sum(1 for s in scenes if s["type"] == "rank") or 5, "top": spec.get("top"), "rank_note": spec.get("rank_note")}
     meta = {"music": "none", "sfx": [], "ambience": []}  # 노래와 효과음은 넣지 않아요. 올릴 때 인스타그램에서 고르면 돼요.
     css = (HERE / "base.css").read_text(encoding="utf-8").replace("FONT_DIR", (HERE / "fonts").as_uri())
     out = ['<!doctype html><html lang="ko"><head><meta charset="utf-8">', f"<style>{css}</style></head>",
