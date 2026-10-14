@@ -13,6 +13,8 @@ import sys
 from common import ROOT, log_error, read_json
 
 REQUIRED = ["id", "date", "subject", "keyword", "title", "tags", "blocks", "checked"]
+# 이날부터 쓴 초안은 짧은 글 규칙(1000~2000자, 소제목 3~5개, 요약·표·FAQ 선택)으로 검사한다
+SHORT_SINCE = "2026-10-15"
 TYPES = ["p", "h2", "h3", "ul", "summary", "quote", "table", "photo", "exp", "source", "faq"]
 
 
@@ -68,28 +70,38 @@ def check(post, name):
         out.append("사진 자리(photo)가 3곳 이상 있어야 해요")
     cfg = read_json(ROOT / "config.json", {}) or {}
     names = cfg.get("blog_categories") or []
-    if post.get("category") and names and post["category"] not in names:
+    # 카테고리를 바꾸기 전에 쓴 초안은 예전 이름 그대로 둔다
+    if post.get("category") and names and post["date"] >= SHORT_SINCE and post["category"] not in names:
         out.append(f"category 는 {names} 가운데 하나여야 해요 (네이버 블로그에 있는 카테고리 이름)")
     # 자동으로 올리기 시작한 날부터는 사람이 사진을 채우지 않으니, 추천 사진이 들어 있어야 해요.
     auto = cfg.get("blog_publish") or {}
     need = int(auto.get("photos_required", 3))
     if auto.get("on") and post["date"] >= auto.get("since", "") and sum(1 for b in blocks if b["type"] == "photo" and b.get("url")) < need:
         out.append(f"추천 사진(url)이 들어간 사진 자리가 {need}곳 이상 있어야 해요 (네이버에 자동으로 올라가요)")
-    if count("summary") != 1:
-        out.append("핵심 요약(summary)은 하나만 있어야 해요")
-    if count("table") < 1:
-        out.append("비교표(table)가 하나 이상 있어야 해요")
-    if not any(b["type"] == "faq" and len(b.get("items", [])) >= 3 for b in blocks):
-        out.append("자주 묻는 질문(faq)이 3개 이상 있어야 해요")
     heads = [b["text"] for b in blocks if b["type"] == "h2"]
-    if len(heads) < 4 or sum(h.rstrip().endswith("?") for h in heads) * 2 < len(heads):
-        out.append("소제목(h2)은 4개 이상, 절반 넘게 질문형(?)이어야 해요")
+    size = len("".join(plain(b) for b in blocks).replace(" ", ""))
+    if post["date"] >= SHORT_SINCE:
+        # 2026-10-14 사용자가 "길고 지루하다"고 해서 짧게 바꿨다. 요약·표·FAQ는 있어도 되고 없어도 된다.
+        if count("summary") > 1:
+            out.append("핵심 요약(summary)은 넣는다면 하나만 있어야 해요")
+        if len(heads) < 3 or len(heads) > 5 or sum(h.rstrip().endswith("?") for h in heads) * 2 < len(heads):
+            out.append("소제목(h2)은 3~5개, 절반 넘게 질문형(?)이어야 해요")
+        if not 1000 <= size <= 2000:
+            out.append(f"본문 길이가 맞지 않아요 ({size}자, 띄어쓰기 빼고 1000~2000자)")
+    else:
+        if count("summary") != 1:
+            out.append("핵심 요약(summary)은 하나만 있어야 해요")
+        if count("table") < 1:
+            out.append("비교표(table)가 하나 이상 있어야 해요")
+        if not any(b["type"] == "faq" and len(b.get("items", [])) >= 3 for b in blocks):
+            out.append("자주 묻는 질문(faq)이 3개 이상 있어야 해요")
+        if len(heads) < 4 or sum(h.rstrip().endswith("?") for h in heads) * 2 < len(heads):
+            out.append("소제목(h2)은 4개 이상, 절반 넘게 질문형(?)이어야 해요")
+        if size < 1800:
+            out.append(f"본문이 짧아요 ({size}자, 1800자 이상)")
     tags = post["tags"]
     if not 10 <= len(tags) <= 15 or any(" " in t or "#" in t for t in tags):
         out.append("태그는 10~15개, 띄어쓰기와 # 없이 적어요")
-    size = len("".join(plain(b) for b in blocks).replace(" ", ""))
-    if size < 1800:
-        out.append(f"본문이 짧아요 ({size}자, 1800자 이상)")
     links = [l.get("url", "") for b in blocks if b["type"] == "source" for l in b.get("links", [])]
     if len(set(links)) < 2 or not all(u.startswith("http") for u in links):
         out.append("출처(source)는 원문 링크로 2곳 이상 있어야 해요")
