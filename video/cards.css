@@ -15,6 +15,16 @@ body { color: #fff; font-family: "Noto Sans KR", sans-serif; word-break: keep-al
   background: linear-gradient(180deg, rgba(23,19,15,.72) 0%, rgba(23,19,15,0) 20%, rgba(23,19,15,0) 46%, rgba(23,19,15,.78) 76%, #17130F 100%); }
 .nc .bignum { position: absolute; left: 64px; right: 64px; top: 250px; font-weight: 900; font-size: 230px; line-height: 1; letter-spacing: -10px; color: var(--ac); text-shadow: 0 0 40px #17130F; }
 
+/* 상품 사진: 자르지 않고 하얀 사진 카드처럼 살짝 기울여 얹어요. 차분한 바탕은 그대로 두고 조금만 귀엽게 */
+.nc .pack { position: absolute; left: 50%; top: 150px; width: 640px; height: 520px; margin-left: -320px; padding: 26px; border-radius: 34px; background: #FFFDF8;
+  transform: rotate(-3deg); box-shadow: 0 26px 60px rgba(0,0,0,.55); display: flex; align-items: center; justify-content: center; }
+.nc .pack img { max-width: 100%; max-height: 100%; border-radius: 18px; }
+.nc .spark { position: absolute; left: 150px; top: 132px; width: 74px; height: 74px; color: var(--ac); transform: rotate(12deg); }
+/* 스티커 한마디: 사진 오른쪽 위에 붙여요 */
+.nc .note { position: absolute; right: 92px; top: 128px; padding: 8px 28px 13px; border-radius: 999px; background: var(--ac); color: #17130F;
+  font-weight: 900; font-size: 46px; letter-spacing: -1.5px; transform: rotate(6deg); box-shadow: 0 10px 26px rgba(0,0,0,.45); }
+.nc .note .am { color: #fff; }
+
 /* 맨 위: 누가 전하는 소식인지와 날짜 */
 .nc .mast { position: absolute; left: 56px; right: 56px; top: 46px; display: flex; align-items: center; justify-content: space-between; text-shadow: 0 2px 14px rgba(0,0,0,.6); }
 .nc .brand { display: flex; align-items: center; gap: 14px; font-weight: 900; font-size: 42px; letter-spacing: -1.5px; }

@@ -18,7 +18,7 @@ import urllib.parse
 import urllib.request
 from pathlib import Path
 
-from PIL import Image, ImageEnhance, ImageFilter, ImageOps
+from PIL import Image, ImageChops, ImageEnhance, ImageFilter, ImageOps
 
 HERE = Path(__file__).parent
 sys.path.insert(0, str(HERE.parent / "scripts"))
@@ -74,6 +74,23 @@ def fetch_photo(photo):
         with Image.open(path) as im:
             SIZES[url] = im.size
     return path.as_uri(), photo.get("pos", "50% 50%")
+
+
+def pack_photo(photo):
+    """상품 사진(회사가 나눠 준 포장 사진)은 자르지 않고 통째로 보여 줘요. 둘레의 흰 여백만 잘라 내요."""
+    url = photo["url"] if isinstance(photo, dict) else photo
+    fetch_photo(photo)
+    key = hashlib.sha1(url.encode()).hexdigest()[:16]
+    path = CACHE / (key + "-pack.jpg")
+    if not path.exists():
+        with Image.open(CACHE / (key + "-g2.jpg")) as im:
+            im = im.convert("RGB")
+            ink = ImageChops.difference(im, Image.new("RGB", im.size, "white")).convert("L").point(lambda v: 255 if v > 18 else 0)
+            box = ink.getbbox() or (0, 0, *im.size)
+            pad = round(max(im.size) * 0.02)
+            box = (max(box[0] - pad, 0), max(box[1] - pad, 0), min(box[2] + pad, im.width), min(box[3] + pad, im.height))
+            im.crop(box).save(path, "JPEG", quality=92)
+    return path.as_uri()
 
 
 def backdrop(photo):
@@ -418,6 +435,8 @@ def card_problems(spec):
             should.append(f"카드 {n}: 까닭 한 줄이 길어 글자가 작아져요. 22자 안쪽으로 줄여 주세요.")
         if c.get("fact") and units(c["fact"]) > 20:
             should.append(f"카드 {n}: 핵심 숫자 줄이 길어요. 20자 안쪽으로 줄여 주세요.")
+        if c.get("note") and units(c["note"]) > 9:
+            should.append(f"카드 {n}: 스티커 한마디(note)가 길어요. 8자 안쪽으로 줄여 주세요.")
         if not c.get("photo") and not c.get("big"):
             should.append(f"카드 {n}: 사진이 없어요. 맞는 사진이 없으면 big 에 큰 숫자(예: -9%)를 적어 주세요.")
     if "출처" not in (spec.get("caption") or ""):
@@ -444,8 +463,15 @@ def news_cover(cover, total, when, name, pill, label):
     )
 
 
+SPARK = ('<svg class="spark" viewBox="0 0 120 120"><g stroke="currentColor" stroke-width="9" stroke-linecap="round" fill="none">'
+         '<path d="M60 8v30"/><path d="M60 82v30"/><path d="M8 60h30"/><path d="M82 60h30"/></g></svg>')
+
+
 def news_card(c, n, total, when, name, pill):
-    if c.get("photo"):
+    note = f'<div class="note">{rich(c["note"])}</div>' if c.get("note") else ""  # 사진 위에 붙이는 스티커 한마디
+    if c.get("photo") and c["photo"].get("fit") == "pack":  # 상품 사진은 하얀 사진 카드처럼 살짝 기울여 얹어요
+        top = f'<div class="ph">{NEWS_MAP}</div><div class="pack"><img src="{pack_photo(c["photo"])}"></div>{SPARK}'
+    elif c.get("photo"):
         src, pos = fetch_photo(c["photo"])
         top = f'<div class="ph"><img src="{src}" style="object-position:{pos}"></div>'
     else:  # 맞는 사진이 없는 소식은 지도 바탕에 큰 숫자를 얹어요
@@ -456,7 +482,7 @@ def news_card(c, n, total, when, name, pill):
     size = min(fit_size(line, 44, 915) for line in why)
     rows = "".join(f'<div style="font-size:{size}px">{rich(line)}</div>' for line in why)
     return (
-        f'<section class="nc" id="c{n + 1}">{top}'  # c1 은 첫 장(표지)이에요
+        f'<section class="nc" id="c{n + 1}">{top}{note}'  # c1 은 첫 장(표지)이에요
         f'<div class="mast"><div class="brand">{OUTRO_PIN}<span>{name}</span><i>{pill}</i></div><div class="when">{esc(when)}</div></div>'
         f'<div class="txt"><span class="tag">{esc(c["tag"])}</span>'
         f'<div class="hl" style="font-size:{fit_size(c["headline"], 98, 950)}px">{rich(c["headline"])}</div>{fact}'
