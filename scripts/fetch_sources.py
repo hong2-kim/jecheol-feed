@@ -8,6 +8,7 @@
   다음에 돌릴 때 다시 읽으니, 그동안 올라온 글도 함께 들어와요.
 """
 import json
+import re
 import urllib.parse
 import urllib.request
 from email.utils import parsedate_to_datetime
@@ -51,6 +52,47 @@ def when(entry):
         return 0.0
 
 
+STOP = set("출시 개최 진행 오늘 올해 내일 신제품 선봬 선보여 공개 운영 시작 확대 강화 기념 이벤트 행사 관련 위해 통해 대한 가운데 지난 이번 최대 첫선".split())
+
+
+def words(title):
+    """기사 제목의 낱말 (끝의 ' - 매체' 는 빼요)."""
+    body = title.rsplit(" - ", 1)[0]
+    return {w for w in re.findall(r"[가-힣A-Za-z0-9]{2,}", body) if w not in STOP}
+
+
+def outlet(title):
+    return title.rsplit(" - ", 1)[1].strip() if " - " in title else ""
+
+
+def add_coverage(items):
+    """같은 소식을 몇 곳이 썼는지 세어 coverage 에 적어요. 여러 매체가 쓴 소식일수록 많은 사람이 보는 소식이에요."""
+    sets = [words(e["title"]) for e in items]
+    parent = list(range(len(items)))
+
+    def root(i):
+        while parent[i] != i:
+            parent[i] = parent[parent[i]]
+            i = parent[i]
+        return i
+
+    for i in range(len(items)):
+        for j in range(i + 1, len(items)):
+            a, b = sets[i], sets[j]
+            shared = len(a & b)
+            if shared >= 3 or (shared >= 2 and shared / max(1, len(a | b)) >= 0.3):
+                parent[root(i)] = root(j)
+    groups = {}
+    for i, e in enumerate(items):
+        groups.setdefault(root(i), set()).add(outlet(e["title"]) or e["link"])
+    for i, e in enumerate(items):
+        e["coverage"] = len(groups[root(i)])
+    top = sorted({root(i): items[i] for i in range(len(items))}.values(), key=lambda e: -e["coverage"])[:10]
+    for e in top:
+        if e["coverage"] > 1:
+            print(f"  여러 곳이 쓴 소식 ({e['coverage']}곳): {e['title'][:60]}")
+
+
 def main():
     sources = read_json(ROOT / "sources.json")["rss"]
     seen = set(read_json(ROOT / "state" / "seen_links.json", []))
@@ -78,7 +120,7 @@ def main():
         try:
             url = "https://news.google.com/rss/search?" + urllib.parse.urlencode({"q": query + " when:2d", "hl": "ko", "gl": "KR", "ceid": "KR:ko"})
             with urllib.request.urlopen(urllib.request.Request(url, headers=UA), timeout=30) as res:
-                entries = sorted(parse(res.read()), key=when, reverse=True)[:8]  # 가장 새 기사부터
+                entries = sorted(parse(res.read()), key=when, reverse=True)[:15]  # 가장 새 기사부터
             new = [e for e in entries if e["link"] not in seen]
             for e in new:
                 seen.add(e["link"])
@@ -87,6 +129,7 @@ def main():
         except Exception as e:
             log_error(f"fetch:news:{query}", e)
             print(f"못 읽었어요: 뉴스 '{query}' ({e})")
+    add_coverage([e for e in fresh if e["source"] == "news"])
 
     # 서울 날씨 (Open-Meteo). 저녁 메뉴를 고를 때 써요.
     try:
