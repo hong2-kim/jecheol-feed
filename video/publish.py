@@ -31,6 +31,11 @@ def tg(method, token, **kw):
     return r.json()["result"]
 
 
+def card_name(r):
+    """카드 묶음을 부르는 이름. 요즘 뜨는 메뉴(kind 유행)는 따로 불러요."""
+    return "트렌드 카드" if r.get("kind") == "유행" else "카드 뉴스"
+
+
 def send_cards(token, chat, r):
     """카드 뉴스 그림을 한 묶음(앨범)으로 보내요. 올릴 순서대로 놓여요."""
     names = r["files"]
@@ -74,8 +79,8 @@ def main():
     bad = [r for r in results if not r["ok"]]
     todo = [r for r in ok if r["id"] not in sent]
     if todo or bad:
-        cards = sum(1 for r in ok if r.get("format") == "cards")
-        head = f"{day} 영상 {len(ok) - cards}개" + (f", 카드 뉴스 {cards}개" if cards else "") + "가 준비됐어요."
+        cards = [card_name(r) for r in ok if r.get("format") == "cards"]
+        head = f"{day} 영상 {len(ok) - len(cards)}개" + "".join(f", {name} {cards.count(name)}개" for name in dict.fromkeys(cards)) + "가 준비됐어요."
         if bad:
             head += f" 실패 {len(bad)}개: " + "; ".join(f"{b['id']} ({b['error'][:80]})" for b in bad)
         mine = read_json(ROOT / "myphotos" / "index.json", []) or []
@@ -91,7 +96,7 @@ def main():
             if r.get("format") == "cards":
                 send_cards(token, chat, r)
                 links = "\n".join(f"https://github.com/{REPO}/releases/download/v{day}/{f}" for f in r["files"])
-                body = (f"[카드 뉴스] {r.get('title')}\n위 사진 {len(r['files'])}장을 순서대로 한 게시물에 올려 주세요.\n\n"
+                body = (f"[{card_name(r)}] {r.get('title')}\n위 사진 {len(r['files'])}장을 순서대로 한 게시물에 올려 주세요.\n\n"
                         f"[게시글에 넣을 글]\n{text}\n[원본 그림] 텔레그램 사진은 조금 작아져요. 또렷한 원본은 여기서 받아요\n{links}")
             else:
                 with open(ROOT / "dist" / r["file"], "rb") as f:

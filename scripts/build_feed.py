@@ -86,7 +86,7 @@ def build_rss(items, videos, cfg):
     for v in videos[:40]:
         el = ET.SubElement(ch, "item")
         cards = v.get("format") == "cards"
-        ET.SubElement(el, "title").text = f"[{'카드 뉴스' if cards else '영상'}] {v.get('title') or v['id']}"
+        ET.SubElement(el, "title").text = f"[{('트렌드 카드' if v.get('kind') == '유행' else '카드 뉴스') if cards else '영상'}] {v.get('title') or v['id']}"
         ET.SubElement(el, "link").text = v["url"]
         ET.SubElement(el, "guid", {"isPermaLink": "false"}).text = "video-" + v["id"]
         ET.SubElement(el, "category").text = "카드 뉴스" if cards else "영상"

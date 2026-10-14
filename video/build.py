@@ -366,10 +366,17 @@ def build_html(spec):
 CARD_MIN, CARD_MAX = 2, 5
 CARD_SIZE = {"width": 1080, "height": 1350}
 NEWS_MAP = OUTRO_MAP.replace('class="map"', 'preserveAspectRatio="xMidYMin slice"').replace("ROUTE_END", "1100")
+# 카드 묶음의 갈래: (계정 이름 옆 이름표, 첫 장에 붙는 말, 강조색). kind 로 골라요.
+NEWS_SERIES = ("뉴스", "오늘의 먹거리 뉴스", "#FFB23E")  # 강조색은 프로필 사진의 핀과 같은 색
+SERIES = {"유행": ("트렌드", "요즘 뜨는 메뉴", "#FF8FA8")}
 
 
 def is_cards(spec):
     return spec.get("format") == "cards"
+
+
+def series(spec):
+    return SERIES.get(spec.get("kind"), NEWS_SERIES)
 
 
 def why_lines(card):
@@ -418,7 +425,7 @@ def card_problems(spec):
     return must, should
 
 
-def news_cover(cover, total, when, name):
+def news_cover(cover, total, when, name, pill, label):
     """첫 장. 오늘 소식들을 궁금하게 던져요. 답은 다음 장부터 나와요."""
     if cover.get("photo"):
         src, pos = fetch_photo(cover["photo"])
@@ -429,15 +436,15 @@ def news_cover(cover, total, when, name):
     rows = "".join(f'<li style="font-size:{size}px">{rich(line)}</li>' for line in cover["items"])
     return (
         f'<section class="nc cv" id="c1">{top}'
-        f'<div class="mast"><div class="brand">{OUTRO_PIN}<span>{name}</span><i>뉴스</i></div><div class="when">{esc(when)}</div></div>'
-        f'<div class="txt"><span class="tag">오늘의 먹거리 뉴스 {total}</span>'
+        f'<div class="mast"><div class="brand">{OUTRO_PIN}<span>{name}</span><i>{pill}</i></div><div class="when">{esc(when)}</div></div>'
+        f'<div class="txt"><span class="tag">{label} {total}</span>'
         f'<div class="hl" style="font-size:{fit_size(cover["title"], 122, 950)}px">{rich(cover["title"])}</div>'
         f'<ul class="list">{rows}</ul></div>'
         f'<div class="foot"><span></span><b class="go">밀어서 확인하기 →</b></div></section>'
     )
 
 
-def news_card(c, n, total, when, name):
+def news_card(c, n, total, when, name, pill):
     if c.get("photo"):
         src, pos = fetch_photo(c["photo"])
         top = f'<div class="ph"><img src="{src}" style="object-position:{pos}"></div>'
@@ -450,7 +457,7 @@ def news_card(c, n, total, when, name):
     rows = "".join(f'<div style="font-size:{size}px">{rich(line)}</div>' for line in why)
     return (
         f'<section class="nc" id="c{n + 1}">{top}'  # c1 은 첫 장(표지)이에요
-        f'<div class="mast"><div class="brand">{OUTRO_PIN}<span>{name}</span><i>뉴스</i></div><div class="when">{esc(when)}</div></div>'
+        f'<div class="mast"><div class="brand">{OUTRO_PIN}<span>{name}</span><i>{pill}</i></div><div class="when">{esc(when)}</div></div>'
         f'<div class="txt"><span class="tag">{esc(c["tag"])}</span>'
         f'<div class="hl" style="font-size:{fit_size(c["headline"], 98, 950)}px">{rich(c["headline"])}</div>{fact}'
         f'<div class="why">{rows}</div></div>'
@@ -463,14 +470,15 @@ def build_cards(spec):
     must, _ = card_problems(spec)
     if must:
         raise ValueError(" / ".join(must))
-    accent = spec.get("accent") or "#FFB23E"  # 프로필 사진의 핀과 같은 색
+    pill, label, color = series(spec)
+    accent = spec.get("accent") or color
     name = json.loads((HERE.parent / "config.json").read_text(encoding="utf-8")).get("account") or ""
     name = f"{esc(name[:2])}<b>{esc(name[2:])}</b>" if name.startswith("먹고") else esc(name)
     css = (HERE / "cards.css").read_text(encoding="utf-8").replace("FONT_DIR", (HERE / "fonts").as_uri())
     cards = spec["cards"]
     when = spec.get("kicker", "")
-    body = news_cover(spec["cover"], len(cards), when, name)
-    body += "".join(news_card(c, n, len(cards), when, name) for n, c in enumerate(cards, 1))
+    body = news_cover(spec["cover"], len(cards), when, name, pill, label)
+    body += "".join(news_card(c, n, len(cards), when, name, pill) for n, c in enumerate(cards, 1))
     page = f'<!doctype html><html lang="ko"><head><meta charset="utf-8"><style>{css}</style></head><body style="--ac:{accent}">{body}</body></html>'
     return page, len(cards) + 1
 
