@@ -308,7 +308,7 @@ def scene_check(s, i, ctx):
     at = [round(t0 + k * seg, 2) for k in range(n)]
     cells = "".join(
         f'<div class="it"><div class="c">{img(it["photo"])}<div class="on a" style="--dl:{at[k]}s;--d:.3s"></div></div>'
-        f'<b>{esc(it["name"])}</b><div class="ck a" style="--dl:{at[k]}s;--d:.35s">✓</div></div>'
+        f'<b>{esc(it["name"])}</b><div class="ck a" style="--dl:{at[k]}s;--d:.35s">{k + 1}</div></div>'
         for k, it in enumerate(items))
     cnt = f'<span class="out1 a" style="--d:{t0}s">0 / {n}</span>' + "".join(
         f'<span class="{"hold" if k == n - 1 else "flash"} a" style="--dl:{at[k]}s;--d:{.3 if k == n - 1 else round(seg, 2)}s">{k + 1} / {n}</span>'
@@ -320,7 +320,8 @@ def scene_check(s, i, ctx):
     say += (f'<div class="end hold a" style="--dl:{end_at}s;--d:.4s"><b>{esc(s.get("end", "댓글에 숫자만 남겨 주세요"))}</b>'
             f'<span>{esc(s.get("end_sub", "저장해 두고 하나씩 깨 보기"))}</span></div>')
     head = f'<div class="head">{rise("kicker", s.get("kicker", ""), .1)}{rise("title", s["title"], .3)}</div>'
-    return "check", f'<div class="cnt">{cnt}</div>{head}<div class="grid">{cells}</div><div class="say">{say}</div>'
+    # 위쪽 "0 / 5" 세기는 빼고, 동그라미마다 체크 대신 차례 번호(1~5)가 켜져요 (2026-10-15 사용자가 정함: 체크가 잘 안 보임)
+    return "check", f'{head}<div class="grid">{cells}</div><div class="say">{say}</div>'
 
 
 def scene_sheet(s, i, ctx):

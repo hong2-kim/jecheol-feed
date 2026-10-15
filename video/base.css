@@ -186,3 +186,4 @@ body { background: #0E0B09; color: #fff; font-family: "Noto Sans KR", sans-serif
 .sheet td:first-child { padding: 0; }
 .sheet .th { width: 130px; height: 132px; border-radius: 36px 0 0 36px; }  /* 사진이 줄 왼쪽 끝까지 꽉 차게 */
 .sheet td:first-child .hl { border-radius: 36px 0 0 36px; }
+.check .ck { font-size: 58px; letter-spacing: -1px; box-shadow: 0 6px 18px rgba(0,0,0,.45); }
