@@ -342,7 +342,10 @@ def scene_sheet(s, i, ctx):
                  f'<td>{hl}<b>{esc(r["name"])}</b><i>{esc(r.get("sub", ""))}</i></td>'
                  f'<td>{hl}{rich(r.get("when", ""))}</td>{good}</tr>')
     note = f'<div class="note">{esc(s["note"])}</div>' if s.get("note") else ""
-    save = f'<div class="save">{esc(s.get("save", "저장해 두면 장 볼 때 편해요"))}</div>'
+    # 저장 안내: 배경 띠 없이 책갈피 그림과 글로만 (2026-10-15). save_style 은 icon(기본) 또는 line
+    mark = ('<svg viewBox="0 0 24 24"><path d="M6 3h12v18l-6-4.5L6 21z" fill="none" stroke="currentColor" stroke-width="2.4" '
+            'stroke-linejoin="round"/></svg>')
+    save = f'<div class="save {s.get("save_style", "icon")}">{mark}<span>{rich(s.get("save", "장 볼 때 꺼내 보게 [[저장]]해 두세요"))}</span></div>'
     table = (f'<table><colgroup><col class="c1"><col class="c2"><col><col class="c4"></colgroup>'
              f'<thead><tr>{head}</tr></thead><tbody>{body}</tbody></table>')
     title = f'<div class="head">{rise("kicker", s.get("kicker", ""), .1)}{rise("title", s["title"], .3)}</div>'
@@ -410,6 +413,44 @@ def scene_outro(lines):
     return f'{backdrop_map}<div class="end" style="top:{top}px"><div class="sig">{OUTRO_PIN}<span>{name}</span></div>{src}</div>'
 
 
+# 끝 장면 없이 같은 장면에 브랜드를 넣는 장면 종류와 기본 바탕. dark=검정 지도, paper=주황 핀의 종이 지도, green=초록 지도
+INLINE_BRAND = {"check": "dark", "sheet": "paper"}
+MAP_COLORS = {  # 프로필 사진(insta-profile/make.py)과 같은 색: 땅, 물, 공원, 길, 점선 길, 핀, 핀 안쪽, 이름 앞, 이름 뒤
+    "dark":  ("#17130F", "#0F1A22", "#1B2418", "#2B251E", "#FFB23E", "#FFB23E", "#17130F", "#FFFFFF", "#FFB23E"),
+    "paper": ("#F3EAD7", "#BFDDE6", "#D3E3B8", "#FFFFFF", "#E0582B", "#E0582B", "#FFFFFF", "#231C15", "#E0582B"),
+    "green": ("#DCEBCB", "#A9D5E8", "#BFDCA0", "#FFFDF5", "#D8432B", "#D8432B", "#FFFDF5", "#1F2A1A", "#D8432B"),
+}
+
+
+def brand_map(theme):
+    """장면 뒤에 옅게 까는 지도."""
+    land, water, park, road, route, *_ = MAP_COLORS[theme]
+    return (f'<svg class="bgmap" viewBox="0 0 1080 1920"><rect width="1080" height="1920" fill="{land}"/>'
+            f'<path d="M-40 1610C180 1550 300 1710 520 1670S900 1550 1120 1630V1960H-40z" fill="{water}"/>'
+            f'<path d="M700 -20h260v330H640z" fill="{park}"/><path d="M-20 250h230l-60 300H-20z" fill="{park}"/><path d="M850 1060h270v300H790z" fill="{park}"/>'
+            f'<g fill="none" stroke="{road}" stroke-linecap="round">'
+            '<path d="M-40 640L1120 500" stroke-width="46"/><path d="M330 -40L500 1960" stroke-width="46"/>'
+            '<path d="M-40 1040L1120 960" stroke-width="26"/><path d="M780 -40L880 1960" stroke-width="26"/>'
+            '<path d="M-40 300L1120 170" stroke-width="16"/><path d="M120 -40L220 1960" stroke-width="16"/>'
+            '<path d="M560 -40L690 1960" stroke-width="16"/><path d="M-40 1400L1120 1440" stroke-width="16"/><path d="M-40 840L1120 770" stroke-width="16"/></g>'
+            # 점선 길은 화면 아래에서 출발해 아래쪽 이름 옆 핀 끝까지 이어져요
+            f'<path d="M80 1980C200 1910 430 1890 440 1800S330 1700 302 1678" fill="none" stroke="{route}" stroke-width="19" stroke-linecap="round" stroke-dasharray="2 44"/></svg>')
+
+
+def brand_foot(theme, lines=()):
+    """화면 아래쪽의 핀과 계정 이름. 사진 출처가 여러 줄이면 그 아래에 작게."""
+    *_, pin, hole, fg, ac = MAP_COLORS[theme]
+    name = json.loads((HERE.parent / "config.json").read_text(encoding="utf-8")).get("account") or "먹고갈지도"
+    name = f"{esc(name[:2])}<b>{esc(name[2:])}</b>" if name.startswith("먹고") else esc(name)
+    icon = (f'<svg viewBox="0 0 200 250"><path d="M100 244C100 244 16 150 16 92a84 84 0 01168 0c0 58-84 152-84 152z" fill="{pin}"/>'
+            f'<circle cx="100" cy="92" r="60" fill="{hole}"/>'
+            f'<path d="M82 66c-5-7 5-11 0-19M100 62c-5-7 5-12 0-20M118 66c-5-7 5-11 0-19" fill="none" stroke="{pin}" stroke-width="6" stroke-linecap="round"/>'
+            f'<path d="M62 84h76c0 26-16 42-38 42S62 110 62 84z" fill="{pin}"/><rect x="55" y="78" width="90" height="9" rx="4.5" fill="{pin}"/></svg>')
+    src = "".join(f'<div>{esc(big)}' + (f" · {esc(small)}" if small else "") + "</div>" for big, small in lines)
+    return (f'<div class="brandfoot" style="color:{fg}"><div class="sig2">{icon}<span>{name}</span></div>'
+            + (f'<div class="bsrc">사진 {src}</div>' if src else "") + f'<style>.brandfoot .sig2 b{{color:{ac}}}</style></div>')
+
+
 SCENES = {"cover": scene_cover, "card": scene_card, "duo": scene_duo, "info": scene_info,
           "check": scene_check, "sheet": scene_sheet, "rank": scene_rank, "tease": scene_tease}
 
@@ -460,12 +501,20 @@ def build_html(spec):
     # 맨 끝에는 늘 계정 이름 장면이 붙어요. 사진 출처가 한 줄이면 게시글에 적고, 여러 줄이면 이 장면에 모아요.
     lines = credit_lines(spec)
     lines = lines if len(lines) > 1 else []
-    tail = min(3.0, 2.0 + .25 * max(0, len(lines) - 2)) if lines else 1.5
+    # 체크·한 장 정리는 끝 장면을 따로 붙이지 않아요. 같은 장면 뒤에 지도를 옅게 깔고 아래에 이름을 넣어요. (2026-10-15 사용자가 정함)
+    inline = all(s["type"] in INLINE_BRAND for s in scenes)
+    tail = 0 if inline else (min(3.0, 2.0 + .25 * max(0, len(lines) - 2)) if lines else 1.5)
     fit(scenes, tail)
     frames = []
     for i, s in enumerate(scenes):
-        frames.append((*SCENES[s["type"]](s, i, ctx), s["dur"]))
-    frames.append(("outro", scene_outro(lines), tail))
+        kind, body = SCENES[s["type"]](s, i, ctx)
+        if inline:
+            theme = spec.get("theme") or INLINE_BRAND[s["type"]]
+            body = brand_map(theme) + body + brand_foot(theme, lines)
+            kind += f" th-{theme}"
+        frames.append((kind, body, s["dur"]))
+    if not inline:
+        frames.append(("outro", scene_outro(lines), tail))
     how = [None] + [transition(spec.get("kind", ""), frames, i, scenes) for i in range(1, len(frames))]
     at = 0.0
     for i, (kind, body, dur) in enumerate(frames):

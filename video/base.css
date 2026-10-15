@@ -92,7 +92,7 @@ body { background: #0E0B09; color: #fff; font-family: "Noto Sans KR", sans-serif
 .src-f { margin-top: 30px; font-size: 26px; line-height: 1.4; white-space: nowrap; color: rgba(255,255,255,.54); }
 
 /* 체크(시안 B): "몇 개 먹어 봤어요?" 동그란 사진에 차례로 체크가 켜져요 */
-.check { background: radial-gradient(120% 80% at 50% 0%, #2a2018 0%, #17130F 60%); }
+.check { background: #17130F; }
 .check .head { position: absolute; left: 60px; right: 60px; top: 230px; text-align: center; }
 .check .head .kicker { font-size: 48px; }
 .check .head .title { margin-top: 10px; font-size: 112px; line-height: 1.18; letter-spacing: -4px; text-shadow: none; }
@@ -121,7 +121,7 @@ body { background: #0E0B09; color: #fff; font-family: "Noto Sans KR", sans-serif
 .check .say .end span { display: block; margin-top: 14px; font-size: 44px; color: #A89E92; font-weight: 700; }
 
 /* 한 장 정리(시안 C): 저장하고 싶어지는 표 한 장. 줄이 차례로 밝아져요 */
-.sheet { background: #F6F1E9; color: #17130F; }
+.sheet { background: #F3EAD7; color: #17130F; }
 .sheet .head { position: absolute; left: 60px; right: 60px; top: 150px; }
 .sheet .head .kicker { font-size: 40px; color: #B9741A; }
 .sheet .head .title { margin-top: 6px; font-size: 92px; line-height: 1.14; letter-spacing: -3.5px; text-shadow: none; }
@@ -141,7 +141,11 @@ body { background: #0E0B09; color: #fff; font-family: "Noto Sans KR", sans-serif
 .sheet tr .hl { position: absolute; inset: 0; background: rgba(255,178,62,.35); opacity: 0; pointer-events: none; }
 .sheet td:first-child .hl { border-radius: 36px 0 0 36px; } .sheet td:last-child .hl { border-radius: 0 36px 36px 0; }
 .sheet .note { margin: 4px 24px 0; font-size: 28px; color: #8a7d6e; }
-.sheet .save { display: inline-block; margin: 30px 0 0 24px; padding: 14px 34px 18px; border-radius: 999px; background: #17130F; color: #F6F1E9; font-size: 38px; font-weight: 800; }
+.sheet .save { display: flex; align-items: center; gap: 14px; margin: 34px 0 0 24px; font-size: 40px; font-weight: 800; color: #231C15; letter-spacing: -1px; }
+.sheet .save svg { width: 44px; height: 44px; flex: none; color: #E0582B; }
+.sheet .save .am { color: #E0582B; }
+/* line: 지도 점선 길처럼 위에 점선 한 줄, 그 아래 글 */
+.sheet .save.line { margin-top: 26px; padding-top: 26px; border-top: 6px dotted rgba(224,88,43,.55); width: 700px; }
 
 .pop.a { animation-name: pop; animation-timing-function: cubic-bezier(.2,1.4,.4,1); }
 .first .pop { animation: none; }
@@ -168,3 +172,17 @@ body { background: #0E0B09; color: #fff; font-family: "Noto Sans KR", sans-serif
 .rk-name .say { margin-top: 22px; font-size: 50px; font-weight: 700; letter-spacing: -1.5px; line-height: 1.35; text-shadow: 0 3px 22px rgba(0,0,0,.85); }
 .rk-note { position: absolute; left: 60px; right: 60px; top: 1430px; text-align: center; font-size: 32px; color: rgba(255,255,255,.72); z-index: 3; }
 .tease .big-q { position: absolute; left: 60px; right: 60px; top: 760px; text-align: center; font-size: 190px; font-weight: 900; line-height: 1.1; letter-spacing: -6px; color: var(--ac); white-space: pre-line; text-shadow: 0 12px 80px rgba(0,0,0,.7); }
+
+/* 끝 장면 없이: 장면 뒤에 옅은 지도, 아래에 이름 (2026-10-15) */
+.bgmap { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; opacity: .5; }
+.th-paper .bgmap { opacity: .55; }
+.brandfoot { position: absolute; left: 60px; right: 60px; top: 1560px; text-align: center; z-index: 4; }
+.brandfoot .sig2 { display: inline-flex; align-items: center; gap: 20px; font-size: 96px; font-weight: 900; letter-spacing: -3px; }
+.brandfoot .sig2 svg { width: 74px; height: 92px; flex: none; }
+.brandfoot .bsrc { margin-top: 12px; font-size: 26px; opacity: .7; line-height: 1.4; }
+.th-dark .head { top: 170px; } .th-dark .cnt { top: 80px; } .th-dark .grid { top: 530px; } .th-dark .say { top: 1268px; }
+.th-dark .it, .th-dark .it .c { width: 250px; } .th-dark .it .c { height: 250px; } .th-dark .it b { margin-top: 12px; }
+.th-paper .head { top: 120px; } .th-paper .box { top: 400px; }
+.sheet td:first-child { padding: 0; }
+.sheet .th { width: 130px; height: 132px; border-radius: 36px 0 0 36px; }  /* 사진이 줄 왼쪽 끝까지 꽉 차게 */
+.sheet td:first-child .hl { border-radius: 36px 0 0 36px; }
