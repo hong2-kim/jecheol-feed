@@ -701,34 +701,97 @@ def description(spec):
 BLOG_URL = "https://blog.naver.com/hongbeom_404"
 
 
-def youtube_text(spec):
-    """유튜브 쇼츠에 넣을 (제목, 설명).
+# 출처 주소 -> 매체·기관 이름. 유튜브 설명에는 주소 대신 이름만 짧게 적어요.
+OUTLETS = {
+    "yna.co.kr": "연합뉴스", "news1.kr": "뉴스1", "newsis.com": "뉴시스", "kbs.co.kr": "KBS", "imbc.com": "MBC", "sbs.co.kr": "SBS",
+    "jtbc.co.kr": "JTBC", "ytn.co.kr": "YTN", "chosun.com": "조선일보", "joongang.co.kr": "중앙일보", "donga.com": "동아일보",
+    "hani.co.kr": "한겨레", "khan.co.kr": "경향신문", "hankookilbo.com": "한국일보", "mk.co.kr": "매일경제", "hankyung.com": "한국경제",
+    "mt.co.kr": "머니투데이", "sedaily.com": "서울경제", "fnnews.com": "파이낸셜뉴스", "asiatoday.co.kr": "아시아투데이",
+    "segye.com": "세계일보", "edaily.co.kr": "이데일리", "kyongbuk.co.kr": "경북일보", "withbuyer.com": "위드바이어",
+    "korea.kr": "정책브리핑", "mof.go.kr": "해양수산부", "incheon.go.kr": "해양수산부 이달의 수산물", "kamis.or.kr": "aT",
+    "at.or.kr": "aT", "mafra.go.kr": "농림축산식품부", "mfds.go.kr": "식약처", "open-meteo.com": "Open-Meteo 날씨",
+    "visitkorea.or.kr": "한국관광공사", "nongshim.com": "농심", "hongseong.go.kr": "홍성군",
+    "kyeongin.com": "경인일보", "tenasia.co.kr": "텐아시아", "mtn.co.kr": "머니투데이방송", "heraldcorp.com": "헤럴드경제",
+    "nocutnews.co.kr": "노컷뉴스", "ohmynews.com": "오마이뉴스", "dt.co.kr": "디지털타임스", "etnews.com": "전자신문",
+    "insightkorea.co.kr": "인사이트코리아", "hankooki.com": "한국일보", "seoul.co.kr": "서울신문", "kmib.co.kr": "국민일보",
+}
 
-    제목은 설계도의 yt_title(없으면 title)이에요. 유튜브는 100자까지라 넘치면 잘라요.
-    설명에는 인스타 게시글에 더해 사진 출처를 모두 적고(유튜브는 끝 장면 대신 설명란이 정해진 자리예요),
-    확인한 자료의 주소와 블로그 주소를 넣어요. 해시태그는 #Shorts 와 앞의 세 개만 써요.
+
+def outlet(url):
+    host = urllib.parse.urlparse(url).netloc.lower().removeprefix("www.").removeprefix("m.")
+    return next((name for dom, name in OUTLETS.items() if host == dom or host.endswith("." + dom)), host)
+
+
+def youtube_text(spec):
+    """유튜브 쇼츠에 넣을 (제목, 설명). 설명은 짧게 (2026-10-15 사용자가 정한 꼴):
+
+    첫 줄(무슨 내용인지) / 둘째 줄(몇 가지인지) / 번호 목록 / ※ 알아 둘 말 / 📌 출처: 이름만 / 📷 사진 출처 / 물음 하나 / 해시태그 3개
+    설계도에 yt_title, yt_points(목록), yt_note(※ 줄)를 적으면 그걸 쓰고, 없으면 게시글과 장면에서 뽑아요.
     """
     title = " ".join(str(spec.get("yt_title") or spec.get("title") or "").split())
     if len(title) > 100:
         title = title[:99].rstrip() + "…"
-    caption = spec.get("caption", "").strip()
-    caption = caption.replace("프로필 링크의 블로그", f"네이버 블로그 '먹고갈지도'({BLOG_URL})")
-    lines = [caption, ""]
-    shown = credit_lines(spec)
+    lines = [x.strip() for x in spec.get("caption", "").strip().splitlines()]
+    first = next((x for x in lines if x), title)
+    # 목록: 설계도에 적은 것 > 카드 > 순위 > 카드 장면 > 체크·표
+    points = spec.get("yt_points")
+    if not points:
+        plain = lambda t: " ".join(str(t).replace("[[", "").replace("]]", "").split())
+        scenes = spec.get("scenes") or []
+        if spec.get("cards"):
+            points = [plain(c.get("headline", "")) for c in spec["cards"]]
+        elif any(x["type"] == "rank" for x in scenes):
+            ranks = sorted((x for x in scenes if x["type"] == "rank"), key=lambda x: x["no"])
+            points = [f'{x["name"]} · {x.get("drink", "")}'.rstrip(" ·") for x in ranks]
+        elif any(x["type"] == "card" for x in scenes):
+            points = [plain(x.get("headline", "")) for x in scenes if x["type"] == "card"]
+        else:
+            for x in scenes:
+                if x["type"] in ("check", "sheet"):
+                    points = [it["name"] for it in x.get("items") or x.get("rows") or []]
+    points = [p for p in (points or []) if p]
+    out = [first]
+    if len(points) > 1:
+        what = {"소식": "오늘의 먹거리 뉴스", "유행": "요즘 뜨는 메뉴", "저녁": "오늘 저녁 메뉴"}.get(spec.get("kind"), "")
+        if what:
+            out.append(f"{what} {len(points)}가지")
+        out.append("")
+        out += [f"{i}. {p}" for i, p in enumerate(points, 1)]
+    out.append("")
+    body = spec.get("caption", "")
+    note = spec.get("yt_note")
+    if not note and ("값은" in body or "가격" in body or spec.get("kind") in ("소식", "유행")):
+        note = "가격은 조사 시점과 판매 조건에 따라 달라질 수 있습니다."
+    if not note and "음주" in body:
+        note = "술 조합은 추천일 뿐이에요. 지나친 음주는 건강에 해로워요."
+    if note:
+        out.append(f"※ {note}")
+    names = []
+    m = re.search(r"출처\s*:\s*(.+)", body)
+    if m:  # 게시글 끝의 "출처: 매체(날짜), …" 에서 이름만
+        names = [re.sub(r"\(.*?\)", "", x).strip() for x in m.group(1).split(",")]
+    names += [outlet(u) for u in spec.get("sources") or []]
+    names = [n for n in dict.fromkeys(n for n in names if n and n != "한국관광공사")]
+    if names:
+        out.append("📌 출처: " + ", ".join(names[:6]))
+    shown = []
+    for big, small in credit_lines(spec):
+        if "한국관광공사" in big:
+            shown.append("한국관광공사 포토코리아")
+        elif "CC BY" in big:
+            shown.append(big + (f" ({small})" if small and "." in small else ""))  # CC BY 는 저작자·라이선스·원본을 줄이지 않아요
+        else:
+            shown.append(big)
+    if "vault:" in json.dumps(spec, ensure_ascii=False):
+        shown.append("직접 촬영")
     if shown:
-        lines.append("사진")
-        for big, small in shown:
-            lines.append(f"📷 {big}" + (f" · {small} · 잘라서 보정함" if "CC BY" in big else ""))
-        lines.append("")
-    if spec.get("sources"):
-        lines.append("확인한 자료")
-        lines += [f"- {u}" for u in spec["sources"]]
-        lines.append("")
-    if BLOG_URL not in caption:
-        lines += [f"더 자세한 먹거리 이야기: {BLOG_URL}", ""]
+        out.append("📷 사진 출처: " + ", ".join(dict.fromkeys(shown)))
+    ask = next((x for x in reversed(lines[1:]) if x.endswith("?") or x.endswith("요?") or "댓글" in x), "")
+    if ask:
+        out.append(ask)
     tags = hashtags(spec.get("tags"))[:-1][:3]  # 마지막은 계정 이름이라 빼요
-    lines.append(" ".join(["#Shorts"] + ["#" + t for t in tags]))
-    return title, "\n".join(lines) + "\n"
+    out.append(" ".join("#" + t for t in tags))
+    return title, "\n".join(out) + "\n"
 
 
 if __name__ == "__main__":
