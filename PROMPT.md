@@ -45,6 +45,8 @@
 
 ## 순서
 
+0. **`requests/오늘날짜.json` 이 있으면 먼저 읽는다.** 사용자가 대화에서 "내일 이것도 넣어 줘"라고 부탁한 것이다. `where` 에 적힌 영상(예: `2-news`)에 반드시 넣는다. `card` 가 채워져 있으면 이미 확인을 마친 것이니 그대로 쓰고(그날 더 새로운 숫자가 나왔으면 그것으로 고친다), `sources` 를 그 설계도의 `sources` 에 더한다. `note` 를 지킨다. 넣었으면 마지막 보고에 적는다.
+
 1. 한국 시간으로 오늘 날짜와 요일을 구한다. `TZ=Asia/Seoul date "+%F %A"`
 2. `videos/오늘날짜/2-news.json` 이 이미 있으면 아무것도 하지 않고 끝낸다.
 3. `inbox/오늘날짜.json`(공식 기관 새 글과 먹거리 뉴스), `inbox/오늘날짜-weather.json`(서울 날씨), `calendar.json`(소재 후보)을 읽는다. 없으면 `python scripts/fetch_sources.py` 를 돌려 본다.
