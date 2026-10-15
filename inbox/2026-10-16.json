@@ -1,0 +1,2881 @@
+[
+  {
+    "source": "mfds-notice",
+    "source_name": "식품의약품안전처 공지·보도 (한국)",
+    "use": "식품 안전",
+    "title": "[보도참고] 식약처, 특발성 폐섬유증 치료 희귀의약품 허가",
+    "link": "https://www.mfds.go.kr/brd/m_99/view.do?seq=50411",
+    "date": "Thu, 15 Oct 2026 22:31:58 GMT"
+  },
+  {
+    "source": "efsa",
+    "source_name": "EFSA 유럽식품안전청",
+    "use": "식품 안전(유럽)",
+    "title": "Overall conclusions on the application for approval of chitosan hydrochloride as a basic substance for extension of use in plant protection for oilseed rape crops and potatoes",
+    "link": "https://efsa.onlinelibrary.wiley.com/doi/10.2903/sp.efsa.2026.EN-10392",
+    "date": "Thu, 15 Oct 2026 16:28:03 +0200"
+  },
+  {
+    "source": "efsa",
+    "source_name": "EFSA 유럽식품안전청",
+    "use": "식품 안전(유럽)",
+    "title": "Surveillance of West Nile virus infections in humans and animals in Europe, monthly report – data submitted up to 7 October 2026",
+    "link": "https://www.efsa.europa.eu/en/efsajournal/pub/10410",
+    "date": "Thu, 15 Oct 2026 14:14:49 +0200"
+  },
+  {
+    "source": "efsa",
+    "source_name": "EFSA 유럽식품안전청",
+    "use": "식품 안전(유럽)",
+    "title": "Assessment of genetically modified maize Bt11 × MIR162 × MON 89034 × NK603 (application GMFF-2025-33624)",
+    "link": "https://efsa.onlinelibrary.wiley.com/doi/10.2903/j.efsa.2026.10364",
+    "date": "Thu, 15 Oct 2026 11:27:26 +0200"
+  },
+  {
+    "source": "efsa",
+    "source_name": "EFSA 유럽식품안전청",
+    "use": "식품 안전(유럽)",
+    "title": "Safety evaluation of the food enzyme endo-polygalacturonase from the non-genetically modified Rhizopus oryzae strain MC3-3-9",
+    "link": "https://efsa.onlinelibrary.wiley.com/doi/10.2903/j.efsa.2026.10333",
+    "date": "Thu, 15 Oct 2026 11:27:02 +0200"
+  },
+  {
+    "source": "efsa",
+    "source_name": "EFSA 유럽식품안전청",
+    "use": "식품 안전(유럽)",
+    "title": "Living labs driving transformative change via knowledge integration and inclusive governance",
+    "link": "https://www.efsa.europa.eu/en/funding-calls/living-labs-driving-transformative-change-knowledge-integration-and-inclusive",
+    "date": "Thu, 15 Oct 2026 09:46:41 +0200"
+  },
+  {
+    "source": "mhlw-jp",
+    "source_name": "일본 후생노동성 새 소식",
+    "use": "식품 안전(일본)",
+    "title": "上野厚生労働大臣　閣議後記者会見のお知らせ",
+    "link": "https://www.mhlw.go.jp/stf/newpage_76750.html",
+    "date": "2026-10-15T16:19:00+09:00"
+  },
+  {
+    "source": "mhlw-jp",
+    "source_name": "일본 후생노동성 새 소식",
+    "use": "식품 안전(일본)",
+    "title": "令和８年熊本地震に伴う産業雇用安定助成金の特例を実施します",
+    "link": "https://www.mhlw.go.jp/stf/newpage_76532.html",
+    "date": "2026-10-15T16:00:00+09:00"
+  },
+  {
+    "source": "mhlw-jp",
+    "source_name": "일본 후생노동성 새 소식",
+    "use": "식품 안전(일본)",
+    "title": "第37回厚生科学審議会予防接種・ワクチン分科会予防接種基本方針部会ワクチン評価に関する小委員会の開催について",
+    "link": "https://www.mhlw.go.jp/stf/newpage_76729.html",
+    "date": "2026-10-15T14:00:00+09:00"
+  },
+  {
+    "source": "mhlw-jp",
+    "source_name": "일본 후생노동성 새 소식",
+    "use": "식품 안전(일본)",
+    "title": "11月6日開催　健康的で持続可能な食環境戦略イニシアチブ　オープンフォーラム2026登壇者決定",
+    "link": "https://www.mhlw.go.jp/stf/newpage_76660.html",
+    "date": "2026-10-15T14:00:00+09:00"
+  },
+  {
+    "source": "mhlw-jp",
+    "source_name": "일본 후생노동성 새 소식",
+    "use": "식품 안전(일본)",
+    "title": "有料老人ホームにおける望ましいサービス提供のあり方に関する検討会（第９回）議事録",
+    "link": "https://www.mhlw.go.jp/stf/newpage_76739.html",
+    "date": "2026-10-15T13:46:00+09:00"
+  },
+  {
+    "source": "mhlw-jp",
+    "source_name": "일본 후생노동성 새 소식",
+    "use": "식품 안전(일본)",
+    "title": "厚生労働省本省係長級職員（一般職相当）採用選考 - 令和８年度第３期・第４期",
+    "link": "https://www.mhlw.go.jp/stf/newpage_33437.html",
+    "date": "2026-10-15T09:30:00+09:00"
+  },
+  {
+    "source": "mhlw-jp",
+    "source_name": "일본 후생노동성 새 소식",
+    "use": "식품 안전(일본)",
+    "title": "地域介護・福祉空間整備等施設整備交付金",
+    "link": "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/fukushi/shisetsu_seibi_00005.html",
+    "date": "2026-10-14T17:11:00+09:00"
+  },
+  {
+    "source": "mhlw-jp",
+    "source_name": "일본 후생노동성 새 소식",
+    "use": "식품 안전(일본)",
+    "title": "地域医療介護総合確保基金（介護施設等の整備に関する事業分）",
+    "link": "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/fukushi/shisetsu_seibi_00004.html",
+    "date": "2026-10-14T16:46:00+09:00"
+  },
+  {
+    "source": "mhlw-jp",
+    "source_name": "일본 후생노동성 새 소식",
+    "use": "식품 안전(일본)",
+    "title": "第10回労働政策審議会職業安定分科会地方連携部会　資料",
+    "link": "https://www.mhlw.go.jp/stf/newpage_76622.html",
+    "date": "2026-10-06T22:21:00+09:00"
+  },
+  {
+    "source": "mhlw-jp",
+    "source_name": "일본 후생노동성 새 소식",
+    "use": "식품 안전(일본)",
+    "title": "10月は造血幹細胞移植普及推進月間です。",
+    "link": "https://www.mhlw.go.jp/stf/htcp-topics-20261001.html",
+    "date": "2026-10-01T10:00:00+09:00"
+  },
+  {
+    "source": "caa-jp",
+    "source_name": "일본 소비자청",
+    "use": "식품 안전(일본)",
+    "title": "「職域」における「働く障がい者」向け消費者教育研修の実施について",
+    "link": "https://www.caa.go.jp/notice/entry/047776/",
+    "date": "2026-10-15T15:00:00+09:00"
+  },
+  {
+    "source": "caa-jp",
+    "source_name": "일본 소비자청",
+    "use": "식품 안전(일본)",
+    "title": "「令和8年度消費生活意識調査(第2回)」の結果について",
+    "link": "https://www.caa.go.jp/notice/entry/047773/",
+    "date": "2026-10-15T15:00:00+09:00"
+  },
+  {
+    "source": "tat-th",
+    "source_name": "태국관광청 뉴스룸",
+    "use": "해외 축제(동남아)",
+    "title": "TAT spotlights 2026 Nakhon Phanom Illuminated Boat Procession on the Mekong",
+    "link": "https://www.tatnews.org/2026/10/tat-spotlights-2026-nakhon-phanom-illuminated-boat-procession-on-the-mekong/",
+    "date": "Thu, 15 Oct 2026 06:30:00 +0000"
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 제철 수산물",
+    "use": "먹거리 소식",
+    "title": "‘우리 아이 식판은 더 건강하게, 우리 농어가는 더 든든하게’ 태안군, 관내 어린이집 18곳에 공공급식 DAY 운영 - 충남도민일보",
+    "link": "https://news.google.com/rss/articles/CBMiYEFVX3lxTFBWd1BuUFFDcHY1R3hpdk4xQ3dzUVFQcGdZcy1TQmlkZzA5TWswWWM2bWhiNUpsTzBSNzJteHI5emY5WVlYX1g1dm5yVmRPdEZOMlpweXpXSll6WHhyLVJ1bA?oc=5",
+    "date": "Thu, 15 Oct 2026 20:38:11 GMT",
+    "coverage": 1
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 제철 수산물",
+    "use": "먹거리 소식",
+    "title": "[똑똑한소비] 이마트, 쿠팡, 오아시스마켓, 홈플러스 익스프레스 - 에너지경제신문",
+    "link": "https://news.google.com/rss/articles/CBMiYkFVX3lxTE8xRnBrOVhISUxhS2lrM3h1SlRoMXRzQ0pkSURENTQ4UUJiSC11aHhOb19wd2RQOEVQd1lJU0R1Q1JBSFctRzAwbjJ5ejU0V2RxQlkwSnZ2eTdKRDlxcFhIcGNn?oc=5",
+    "date": "Thu, 15 Oct 2026 09:39:35 GMT",
+    "coverage": 1
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 제철 수산물",
+    "use": "먹거리 소식",
+    "title": "홈플러스 익스프레스, ‘맛잇쇼 푸드페스타’ 개최…신선식품·먹거리 할인 - 공감신문",
+    "link": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE43WFByTlVxUmI0dGJlZVVRRFc1cUxtYjhQN0stUmlSQ3pIUm1YTlYyUGhkdWVHNWdOVDIyMHpVZDB5SlRhVWxWNDQ2RXpWNHpOTU9zdVhjYTZHZTdCcXAyRFg1bThJWmxh?oc=5",
+    "date": "Thu, 15 Oct 2026 09:17:50 GMT",
+    "coverage": 9
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 제철 수산물",
+    "use": "먹거리 소식",
+    "title": "홈플러스 익스프레스, 신선식품 할인전 진행 - 메가경제",
+    "link": "https://news.google.com/rss/articles/CBMickFVX3lxTE5neDJnaU5xc19pQ0xUZmRXbi12YmlUVko3Z0piZUYzdThZSnVmQ1BkNEJIRVVhUlE2OEVzbldRd0RKal9NdWcxYkFzend6T2ROSWI2RlVsUXNENkNrWHFpSm1INFBJWDlLcnRHQVM4WDd0d9IBckFVX3lxTE5neDJnaU5xc19pQ0xUZmRXbi12YmlUVko3Z0piZUYzdThZSnVmQ1BkNEJIRVVhUlE2OEVzbldRd0RKal9NdWcxYkFzend6T2ROSWI2RlVsUXNENkNrWHFpSm1INFBJWDlLcnRHQVM4WDd0dw?oc=5",
+    "date": "Thu, 15 Oct 2026 08:23:00 GMT",
+    "coverage": 9
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 제철 수산물",
+    "use": "먹거리 소식",
+    "title": "지평선 신동진쌀(10kg) 29,900원 - 쿡앤셰프",
+    "link": "https://news.google.com/rss/articles/CBMiYkFVX3lxTFAtN2JmYUxMYVdSYWNTV19uX0Rxdld6TlNXTW42andpMEt4cUhHUzVpemNQYjI3WlFnamNGWHlobXo3UmpYc05KcnQxc1hUX1h6V2hoU2lBb3RhdGRDN2lxeVBn0gFaQVVfeXFMT1lmMUxOdzNaalJkMlBNbF8yWm9fVi05T0tpY0lNLWMwUmdIZGlWdzBrcF9DOGVZVmN3MlphZHJSbG1kOGxtcnJ0cXRLOHM3SE1KLW9JNEdUWDFB?oc=5",
+    "date": "Thu, 15 Oct 2026 07:05:11 GMT",
+    "coverage": 1
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 제철 수산물",
+    "use": "먹거리 소식",
+    "title": "홈플 익스프레스, 21일까지 '맛잇쇼 푸드페스타' 진행…주요 먹거리 할인 - 포인트데일리",
+    "link": "https://news.google.com/rss/articles/CBMicEFVX3lxTE5IbkNwYmc4WGtJQXhraHlDWmw4akJNX1VWSkgtdkF6VVZ4eHJFRVBFNzVjcnJQNG90SGs0dkROYnhXUkJsNVB2T2xZNU1kM1lBcmlvUXJjcEtybDU2YlZWdU1YdExtNi1vY1NwQUNzNnLSAXRBVV95cUxQS0dIWDhyNVFIbTljc3VVU01JWXZzSEpTQ3BaSlRsZVRnZUIyTVB5UmdiUm5yZUhSWWk5ZGFaY0lxYVh4dTFJQmNHMjNXUHhhYUV6Y2liV2tVVHJtM3pFaFR4aWVNbmNob3dkRUh6bHhJdU5BYw?oc=5",
+    "date": "Thu, 15 Oct 2026 06:59:50 GMT",
+    "coverage": 9
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 제철 수산물",
+    "use": "먹거리 소식",
+    "title": "“서울 한복판에 바다가 열린다”… 제9회 도심 속 바다축제, 24~25일 노량진 개최 - 어업in수산",
+    "link": "https://news.google.com/rss/articles/CBMib0FVX3lxTE9zR2ZqMVVpems2ckEwS3pVZ25tbEFOb05tV21HUjBSclBRTXRwMXc1dGNtOHlqSURjVW9wUHIybl9ZSG1qT3FQZjlyRE4wNU5JRi1FWVQ4RXRFdnVGd2pUSzI1cHdmaUJGM3VMZnVKSQ?oc=5",
+    "date": "Thu, 15 Oct 2026 05:40:38 GMT",
+    "coverage": 3
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 제철 수산물",
+    "use": "먹거리 소식",
+    "title": "홈플러스 익스프레스, 21일까지 ‘맛있쇼 푸드페스타’...신선식품 할인 행사 - 팝콘뉴스",
+    "link": "https://news.google.com/rss/articles/CBMickFVX3lxTE5IcWs5a0IzS3hDOWlqX2JjVUZaMjFZRm5OYXdqZTNKdFNUdkstVVlwSUhPQWIxZ2YydnE3VXRCeWJIYnBjMm1zNkVqMTd6dE4yMVhJUHRWVXpvTjF4V1pBX0lyS2ROXzVtckNua1V1UFBhd9IBckFVX3lxTE5IcWs5a0IzS3hDOWlqX2JjVUZaMjFZRm5OYXdqZTNKdFNUdkstVVlwSUhPQWIxZ2YydnE3VXRCeWJIYnBjMm1zNkVqMTd6dE4yMVhJUHRWVXpvTjF4V1pBX0lyS2ROXzVtckNua1V1UFBhdw?oc=5",
+    "date": "Thu, 15 Oct 2026 04:36:38 GMT",
+    "coverage": 9
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 제철 수산물",
+    "use": "먹거리 소식",
+    "title": "강진 마량놀토수산시장, 누적 방문객 4만 7천 명 돌파… 오는 31일 화려한 피날레 - 녹색경제신문",
+    "link": "https://news.google.com/rss/articles/CBMiaEFVX3lxTFBoVF9UN3BQbUVrQlNyUU1HUjgtRzRjNTdqdDVCQ1I4R3ZiY1M1YXZFV21TRElKTF9rdUVrQU9yMVA4SmV6S1l4SWtsdmc4anRGeU5aTjI1ckZsd21yaXFtbG85S0lmdnpD?oc=5",
+    "date": "Thu, 15 Oct 2026 04:35:35 GMT",
+    "coverage": 1
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 제철 수산물",
+    "use": "먹거리 소식",
+    "title": "홈플러스 익스프레스, 제철 농축수산물 특가…푸드페스타 개최 - 컨슈머타임스",
+    "link": "https://news.google.com/rss/articles/CBMiakFVX3lxTE96QXVsajNKVEplV3ZzRWJTdUwyVTliem9JX2lSSTJxUWI3NkJOVnNUSEE5VHl1MHpFSExGeEVKR0kySlZoYjF0eVZITWx2ejE4d2g0TmtfbkNLRnU3VkFfQ0JIZ2FicUZ6QlE?oc=5",
+    "date": "Thu, 15 Oct 2026 04:34:44 GMT",
+    "coverage": 9
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 제철 수산물",
+    "use": "먹거리 소식",
+    "title": "“한우 반값에 500원 과자까지”… 대형마트부터 동네 슈퍼까지 물가잡기 나서 - 뉴시안",
+    "link": "https://news.google.com/rss/articles/CBMibkFVX3lxTFBWc0NPaDl0UklaR1l6VHJJemRsRWtGalNXZ21FZHhOTXM2cy1zSkN6TUFEcGQ2QkdvaE5JeXBQVnhPWFgtczU3bjZsQzlvYlBMVmUyeHVXaGpSRHl5SU5oMFV2eVFqWmNhdjlBaU9R0gFuQVVfeXFMUFZzQ09oOXRSSVpHWXpUckl6ZGxFa0ZqU1dnbUVkeE5NczZzLXNKQ3pNQURwZDZCR29oTkl5cFBWeE9YWC1zNTduNmxDOW9iUExWZTJ4dVdoalJEeXlJTmgwVXZ5UWpaY2F2OUFpT1E?oc=5",
+    "date": "Thu, 15 Oct 2026 01:48:19 GMT",
+    "coverage": 1
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 제철 수산물",
+    "use": "먹거리 소식",
+    "title": "홈플러스 익스프레스, 21일까지 '푸드페스타'…신선식품 할인 - 전자신문",
+    "link": "https://news.google.com/rss/articles/CBMiTkFVX3lxTE5NR0tKY0tTSVJLMDhseERVZ2JiVUszT2p0aTJGR3VxdnV4cm5kWV9uWTFKUFZmM0hEZ3hmZWtGS0VWUU5zd3k5U2xBTE0yQQ?oc=5",
+    "date": "Thu, 15 Oct 2026 01:42:18 GMT",
+    "coverage": 9
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 제철 수산물",
+    "use": "먹거리 소식",
+    "title": "홈플러스 익스프레스, '맛있쇼 푸드페스타' 개최…신선식품 할인 확대 - 내외경제TV",
+    "link": "https://news.google.com/rss/articles/CBMia0FVX3lxTE1vaGk5T0xqRTVXQS0tYVd6U0FyYzNqaEx3a253V3ZCdnpndHMxajk1T3pVTkJyS25aRXNSRENpSzEtUzRoY1REelBIdnBHZ2VKRWdHZUk1V3VLVmxDTmtKcW9HMnl3alg2N0Rr?oc=5",
+    "date": "Thu, 15 Oct 2026 01:34:10 GMT",
+    "coverage": 9
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 제철 수산물",
+    "use": "먹거리 소식",
+    "title": "홈플러스 익스프레스, '맛있쇼 푸드페스타' 개막… 장바구니 물가 잡는다 - 뉴스드림",
+    "link": "https://news.google.com/rss/articles/CBMibkFVX3lxTFBtV3pwdVI1N2Nib0s1TEphS19tRkRuVC1zcEdXaER5bVFkNzROTEJRN1ZSXzhDRVdFNEJQTXhkWGJRSFpwYy13cGc1cWtUdFR5S2RmQXFHYWI0YllxZmJmZV8wZjByRmgzRXBLaENR0gFuQVVfeXFMUG1XenB1UjU3Y2JvSzVMSmFLX21GRG5ULXNwR1doRHltUWQ3NE5MQlE3VlJfOENFV0U0QlBNeGRYYlFIWnBjLXdwZzVxa1R0VHlLZGZBcUdhYjRiWXFmYmZlXzBmMHJGaDNFcEtoQ1E?oc=5",
+    "date": "Thu, 15 Oct 2026 01:24:30 GMT",
+    "coverage": 9
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 제철 수산물",
+    "use": "먹거리 소식",
+    "title": "홈플러스 익스프레스, 제철 먹거리 행사 - 라이센스뉴스",
+    "link": "https://news.google.com/rss/articles/CBMia0FVX3lxTFA5djBSWTRTQk5Ua3dsSENkR3NwRnlkMDFtSVZWdjB3S1VGYlk5VHJFSlBTSXQ0QklWczAxdnlZbWIzMDNIR25CdzFQdGx2c192SUo4aS1MamNuUjBXS25kdjlHQ0YtM2FpYkRz?oc=5",
+    "date": "Thu, 15 Oct 2026 01:22:26 GMT",
+    "coverage": 9
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 제철 농산물",
+    "use": "먹거리 소식",
+    "title": "예산장터 삼국축제 개막…로컬푸드 직매장서 농특산물 판매 - 국제뉴스",
+    "link": "https://news.google.com/rss/articles/CBMibkFVX3lxTE9JNS1CSHk5TnY3anB0S21XXy0tZEJ3YWM0azNqdFRVYU1EN1JxblRkdDZUbFQtY3NHQk5DRVFBUExZVm9HWThHdmd6akF3WFdyWGJUNWxfZGZoOGxoMG1sVDBzOGVWQ1VGU2hfYVZn?oc=5",
+    "date": "Thu, 15 Oct 2026 11:32:23 GMT",
+    "coverage": 1
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 제철 농산물",
+    "use": "먹거리 소식",
+    "title": "경기도, 먹거리광장서 농산물 체험 행사… 인증 제품 판매·문화공연 마련 - 로이슈",
+    "link": "https://news.google.com/rss/articles/CBMiekFVX3lxTE5MejA1QWJfajBXanZ0TzJLQnlEdzZtNUlSaHdYaTB3Rm1kV1FneFpkeUV0cHBEcW5seUV3cWh1SUM1WTdOcldhY2x3T0tMZVhWRmNFWXhOSzNlTm8zR1ZRODBqU3RERnNmWGdQVGx4NXVxWVBpcEFTbThR?oc=5",
+    "date": "Thu, 15 Oct 2026 11:13:51 GMT",
+    "coverage": 7
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 제철 농산물",
+    "use": "먹거리 소식",
+    "title": "경기도 먹거리광장에서 펼쳐지는 ‘맛난 만남’으로 초대합니다 - 경기청소년신문",
+    "link": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE9tTGRmM1F1MURfU0JsTnMxdXlrQnRxLTVfYjNEYVI2MUM1T2NyTFZCblFsZjAwWDZDQVc3WmJ5aVI1QmhhS1liTXExQzNzUGJTb0F3RWtFQTRPeGZPamVTM0VpNGdzS3RE?oc=5",
+    "date": "Thu, 15 Oct 2026 10:53:11 GMT",
+    "coverage": 7
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 제철 농산물",
+    "use": "먹거리 소식",
+    "title": "‘예산 로컬푸드 직매장’, 삼국축제서 농특산물 특별 판매와 시식 행사 진행 - 대전투데이",
+    "link": "https://news.google.com/rss/articles/CBMic0FVX3lxTE1MODFpVFNMdldkN3p2VTNoN045aU1NdUtQdWxyUmR6d3Vmd2NlWUUtMXJ5S21rNWVSMDE1Z1VlSUNrcW40U2N3S1VpbFZ5UzNKU3NpQjdxRjhWOUs0eWh6Y0IyUlVLSDV6aW1nMlh5cXQ4R3fSAXNBVV95cUxNTDgxaVRTTHZXZDd6dlUzaDdOOWlNTXVLUHVsclJkend1ZndjZVlFLTFyeUttazVlUjAxNWdVZUlDa3FuNFNjd0tVaWxWeVMzSlNzaUI3cUY4VjlLNHloemNCMlJVS0g1emltZzJYeXF0OEd3?oc=5",
+    "date": "Thu, 15 Oct 2026 07:33:49 GMT",
+    "coverage": 5
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 제철 농산물",
+    "use": "먹거리 소식",
+    "title": "예산군, 삼국축제서 지역 농특산물 알린다 - 충청뉴스라인",
+    "link": "https://news.google.com/rss/articles/CBMic0FVX3lxTE4wRGs1d1d2bnBKa3NHelJPeWhkTjR2c3BWa1ZLMTVJRUVzS1N6QmhjUXUxa3dGT09VbnBpTzE3UTBxODVnclBQUUNxS2lOOVhHa1hFN2U2OFkwbHVqd0ZmUGliQ242S3VPV0V2VmxPTzZwN3PSAXNBVV95cUxOMERrNXdXdm5wSmtzR3pST3loZE40dnNwVmtWSzE1SUVFc0tTekJoY1F1MWt3Rk9PVW5waU8xN1EwcTg1Z3JQUFFDcUtpTjlYR2tYRTdlNjhZMGx1andGZlBpYkNuNkt1T1dFdlZsT082cDdz?oc=5",
+    "date": "Thu, 15 Oct 2026 06:45:53 GMT",
+    "coverage": 5
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 제철 농산물",
+    "use": "먹거리 소식",
+    "title": "예산군, 학교급식에 지역농산물 더하고 계절근로자 행정 부담 던다 - 농수축산신문",
+    "link": "https://news.google.com/rss/articles/CBMibEFVX3lxTE96bFhoU2pCeWM5QXBkajhVeVo1NVFDdWtRVFRYQTJ3SEVnUjg5bVdXSzdKYi1Naks2RzFVZ096V29YRVg1TmJ5OW1lMlQ5VzdNOEkwaGRHeThOMUFfR18zOXh5X1NVTi1HNWRvOA?oc=5",
+    "date": "Thu, 15 Oct 2026 06:11:46 GMT",
+    "coverage": 1
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 제철 농산물",
+    "use": "먹거리 소식",
+    "title": "경기도농수산진흥원, 도래미마켓서 가을 제철과일 특별전 개최 - 부천저널",
+    "link": "https://news.google.com/rss/articles/CBMickFVX3lxTFBzaGRtZS1TZnlXVnNBRDFtYnlVNU5LSjhpclVjbEc0TUJ6c3ZONUhsNUMzWlFmUEVyRHYxM002THIwbXUxcmdGZTNtT045X3h4MG5TUm5qMjdIVzZtbUE5dHppS240TnJHRkx1SExFd0xuQdIBdkFVX3lxTE9fOHVsVkYtY0JXSGlSSWVoalJrMDREMDAzZWhZU3ozMEVSYXB6RGI1Yk9lOGowUnVsN0FObUhpZ0VUNlZUU0ZrQzhQNVhSYUJHdlZkRm5jZ3JmWXdJaktEQnNmYlJVbE5vZjVLYUlHcl80VTJXQkE?oc=5",
+    "date": "Thu, 15 Oct 2026 04:52:03 GMT",
+    "coverage": 3
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 제철 농산물",
+    "use": "먹거리 소식",
+    "title": "경기도, 24~25일 상상캠퍼스서 농산물 체험·판매 행사 개최 - 신아일보",
+    "link": "https://news.google.com/rss/articles/CBMicEFVX3lxTE1XeHVFMEs1Sm03dHRhNHBmS1hXVWQzS3cwTW1NVmF3NWoybml3UGxhU2RyU0V1dGJHdVNGMm9GMUVoSjNZYUZ5OUV5TWdDMFVkV1hROEx6b01FTkY2SnFzOGo2Yll4NHhodGJJVW9fX3o?oc=5",
+    "date": "Thu, 15 Oct 2026 04:02:14 GMT",
+    "coverage": 7
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 제철 농산물",
+    "use": "먹거리 소식",
+    "title": "경기도, 도민 참여형 로컬푸드 행사 ‘맛난 만남’ 개최 - 뉴스아이이에스",
+    "link": "https://news.google.com/rss/articles/CBMickFVX3lxTE9aYnctVHRzWV9nTWdmajJVMmNZdGVmVG1jR080cDdmcXVMRTdOOGJnemMtOUZhTDJONmdOMnp4S2R0UFU2VVJHM0RnNk5WVXY5Q1FzRWRSTkd0d2hiTVpiWElJQ3FRVFA5ZE42N2pEdXVfZ9IBckFVX3lxTE9aYnctVHRzWV9nTWdmajJVMmNZdGVmVG1jR080cDdmcXVMRTdOOGJnemMtOUZhTDJONmdOMnp4S2R0UFU2VVJHM0RnNk5WVXY5Q1FzRWRSTkd0d2hiTVpiWElJQ3FRVFA5ZE42N2pEdXVfZw?oc=5",
+    "date": "Thu, 15 Oct 2026 02:33:06 GMT",
+    "coverage": 7
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 제철 농산물",
+    "use": "먹거리 소식",
+    "title": "경기도, 24∼25일 로컬푸드 도민 참여 행사 ‘맛난 만남’ 개최 - 브릿지경제",
+    "link": "https://news.google.com/rss/articles/CBMiWkFVX3lxTFBJZTRGcmZnQWlnV21aWndkWmtvQVBrdjd6YWFIMUx1MUwybnJld3pWR1BDUkluWVdWNld5V0ZRRnd3T3R6UHUwa1dOYlQ4d3Z1ZDRCZERyOXN4Zw?oc=5",
+    "date": "Thu, 15 Oct 2026 01:50:00 GMT",
+    "coverage": 7
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 제철 농산물",
+    "use": "먹거리 소식",
+    "title": "충남 예산군, 삼국축제서 지역 농특산물 홍보…로컬푸드 특별판매 - 뉴스홈(newshome)",
+    "link": "https://news.google.com/rss/articles/CBMibkFVX3lxTE90Vl9JdWpSZThoVnhKSkhJS0VZUUZCWmhHQWs3ZWlEejNfd0hBSXZYWDZPYTdoUXIwdkZmUnFaN2haOGU4SU56a2RHUVFkYWdVaXB0cnhzZllGb3B1UjByQlRjcmFhVE1wa2Y5ZkdB?oc=5",
+    "date": "Thu, 15 Oct 2026 00:50:52 GMT",
+    "coverage": 5
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 제철 농산물",
+    "use": "먹거리 소식",
+    "title": "경기도 먹거리광장서 24~25일 로컬푸드 행사 ‘맛난 만남’ - 한국사회복지저널",
+    "link": "https://news.google.com/rss/articles/CBMia0FVX3lxTE41Ny1IMWp3OUpjdnJVck1KaWxNcWVNRFF0Z1JNX3RSY1laUG1rYnA4MTJ4UmM1SVZOb1VvX0J0aFFHVTBqU0tSeDRsM0psNkRKMERXMTg5UHlvd1RPbWU4OW00OFdSdlVWZEhJ?oc=5",
+    "date": "Thu, 15 Oct 2026 00:46:56 GMT",
+    "coverage": 7
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 제철 농산물",
+    "use": "먹거리 소식",
+    "title": "경기도, 먹거리광장서 도민 참여 행사 맛난 만남 개최 - 모닝투데이",
+    "link": "https://news.google.com/rss/articles/CBMiTEFVX3lxTE9ZZ0Ywc1RVcC1aS1JuX2E4c3V4cnB5eHBjeVFKckZvUl82X1I4SkVMOXRUMkpSOWUySF9icHNvZUVLcmpvck5IRHVpdFU?oc=5",
+    "date": "Thu, 15 Oct 2026 00:36:00 GMT",
+    "coverage": 7
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 제철 농산물",
+    "use": "먹거리 소식",
+    "title": "경기도, 농산물 직거래장터 열린다 - 국민투데이",
+    "link": "https://news.google.com/rss/articles/CBMiakFVX3lxTE8wYWgtQk5MY0dWSnNpeTRMczI5M2Rxb25mTUxMb3F6M3I0UGdMeTh1aEtuLW43WG56dlo0dVZaamp4MzR3cWVfRklybEs4bWxuczdNOHBMVUtrTnJDUVVra3R5R0RNZng1ZHc?oc=5",
+    "date": "Thu, 15 Oct 2026 00:32:46 GMT",
+    "coverage": 1
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 먹거리 축제",
+    "use": "먹거리 소식",
+    "title": "송파구, 17~18일 3개 상권서 가을 음식문화 축제 - 아시아경제",
+    "link": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE1JMnp0SHJwd1JTZjF5NndWWnRNSUZERDVHcTYtT2xoelU4N3BJaEVVeGhoRHItTXJQdTFraXNNZGZOSkhzTHlKc2FPVDZRNGlHVC1rU1BkempXN3VyX1BjSg?oc=5",
+    "date": "Thu, 15 Oct 2026 22:18:10 GMT",
+    "coverage": 1
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 먹거리 축제",
+    "use": "먹거리 소식",
+    "title": "[기획] 200년 발효의 맛, 30년 축제의 역사…강경포구에 가을이 익어간다 - 충청시사신문",
+    "link": "https://news.google.com/rss/articles/CBMia0FVX3lxTE44RzdURDlORDRlMEdEWG16Vkpkb1FpUndLbi1sTUROT0R5UVRCWWdiVWlrREtaVXI5aDZySDhXdS1JZ0owTDNobHp4V0ZIMFdDVG02SWxfakpoWlBRc0pOZW12VURHVmdiSy00?oc=5",
+    "date": "Thu, 15 Oct 2026 15:05:40 GMT",
+    "coverage": 1
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 먹거리 축제",
+    "use": "먹거리 소식",
+    "title": "2026 김천 김밥축제 23일부터 사흘간 개최…먹거리·공연·체험 풍성 - FT스포츠",
+    "link": "https://news.google.com/rss/articles/CBMiZkFVX3lxTFBycmplN3pOUHlteXBQUWRHRjduWGhvSHZvUm8tSE84NDRSVFVlZTM1Ml9QZTRiQUQtRGpENTNRWWNKaUxlNVdzYmQwUzFuTXduYlpvUVJISlc2WGlvbjZQY1NsY0gtdw?oc=5",
+    "date": "Thu, 15 Oct 2026 14:20:16 GMT",
+    "coverage": 11
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 먹거리 축제",
+    "use": "먹거리 소식",
+    "title": "'막걸리와 먹거리 한가득' 신영주번개시장 축제 16일 개막 - 국제뉴스",
+    "link": "https://news.google.com/rss/articles/CBMibkFVX3lxTE5VcjlwQlNnUVZvTU45S1gtWTNPeG51bjYzNFQ5a2ZhX3Nkem1QNUsxdzM2clpqdTZZdFc3SXJQMDNtM0pXSzJTSFM3cVJFcjdMY2hZckdTaEZ4aS1wVmlHX05pcXpaWTQyN3BBcUxn?oc=5",
+    "date": "Thu, 15 Oct 2026 11:58:08 GMT",
+    "coverage": 1
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 먹거리 축제",
+    "use": "먹거리 소식",
+    "title": "칠곡낙동강평화축제, 먹거리 부스 원산지 표시 적정성 논란 - 에너지경제신문",
+    "link": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE1fVkprR0czS292RG0wOFczQ2lHdzRBQkdmSUYxSjk3cGx6UzAxMmtvdHZzc0lxWk9IWGZBclYzLU03NEFUdTdJT3BiOE8zLXd5NkZRdzhyd3JjNk0?oc=5",
+    "date": "Thu, 15 Oct 2026 11:51:40 GMT",
+    "coverage": 1
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 먹거리 축제",
+    "use": "먹거리 소식",
+    "title": "[사진] 춘천막국수닭갈비축제, 먹거리부터 세계 문화 체험까지 즐길거리 가득 - 쿠키뉴스",
+    "link": "https://news.google.com/rss/articles/CBMiY0FVX3lxTFBVNXFOdVJjTGd4YXplcVN0Z0J5QnpOUWFqZGhkZjJFbXlnSVNMNVluNjZiZlBCV25jdERWYlRoalUwMTdaQnd1aEdYNDRNc3ZLMERqQmRCWHVabGRDSjFHR19BQQ?oc=5",
+    "date": "Thu, 15 Oct 2026 11:43:24 GMT",
+    "coverage": 1
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 먹거리 축제",
+    "use": "먹거리 소식",
+    "title": "가을 축제, ‘바가지’ 출입 금지 - 부산일보",
+    "link": "https://news.google.com/rss/articles/CBMidEFVX3lxTE8yUkk2ZFh2and1eEZxZkdYMHhFLTJ5aXpKOUtfMGYyTDVQUUlhcEp1NHBJczhaR1NUemhkTGJNd1NuN1hWcGhXZmdWb3NpYTByZG5kNXQyOUJNdjhxMW1XVThRTllVZjVDRFphYW15SXJqR2xa?oc=5",
+    "date": "Thu, 15 Oct 2026 09:33:57 GMT",
+    "coverage": 1
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 먹거리 축제",
+    "use": "먹거리 소식",
+    "title": "거제 먹거리·지속가능성 한자리에…31일 아주동서 축제 - 거제신문",
+    "link": "https://news.google.com/rss/articles/CBMibkFVX3lxTFBPRkhiTWJBQklKWmRpWllhSVduMUpNYUMzZldZcl84b3dkOF9UZXBKaS1FRVlic0Z5emFnN2lKUW9qSmhfZkxxYlBpVVBUQkVGbDc4bG0zSEV6dXZhOXQyYkU2UXRGZko4Z3M4bnBR?oc=5",
+    "date": "Thu, 15 Oct 2026 09:25:56 GMT",
+    "coverage": 6
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 먹거리 축제",
+    "use": "먹거리 소식",
+    "title": "영주시, 전통시장 먹거리 축제로 방문객 유입·소비 촉진 나선다 - 경북일보",
+    "link": "https://news.google.com/rss/articles/CBMib0FVX3lxTFBDUV9tUVBhZ2NnOVA5bXFyY0NzZllLLW9sV1VFOThONHF6Um5IaUdZVlV6VTRSdXBKTkF2SGRBekM4ZXE3M2JuM2hpWGZDX3RaZ0lRdFc5MWZLd1R3enNUVGpGOVh5ZEdVOWZQbnRMSQ?oc=5",
+    "date": "Thu, 15 Oct 2026 09:05:06 GMT",
+    "coverage": 1
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 먹거리 축제",
+    "use": "먹거리 소식",
+    "title": "예산군, 삼국축제서 로컬푸드 직매장 운영… 제철 농특산물 알린다 - 아산데일리",
+    "link": "https://news.google.com/rss/articles/CBMiU0FVX3lxTE5JUE5tbVI2MDY2QnJTTVhYN2hwRDJXN3ZUT3pDMHpQYlJDMEpOUHhnQ3JPNXl4Zm9IR2dXNDVCNmo1NlFqbi0xc0ZhY2tIZGxzUkhN?oc=5",
+    "date": "Thu, 15 Oct 2026 09:03:07 GMT",
+    "coverage": 5
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 먹거리 축제",
+    "use": "먹거리 소식",
+    "title": "청송군, 사과 활용한 차별화된 축제 먹거리 개발…지역 외식업체와 사과 소비 확대 나서 - NSP통신",
+    "link": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE1hN0NJSmdPZHB0TEhMck04V00xUzNIeGEtNFNFVjhwSEJiaFJaT19aMUF3OW0xMTJPSnNBOExJWlFvSE9pQUcxUkpiUkZXRXNiMThVd3l2SERvQV9DbG8zZQ?oc=5",
+    "date": "Thu, 15 Oct 2026 08:57:00 GMT",
+    "coverage": 5
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 먹거리 축제",
+    "use": "먹거리 소식",
+    "title": "목포 고하도서 24일 친환경 가을축제…먹거리 장터·공연에 전시관 무료 개방 - 베타뉴스",
+    "link": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE14NUlHaGRwbjhOVE5ZQTY5Zm1CelpUWUc1aXRNYzRTVThLekRieWV2QU1qby1mNzBhWmVTa2ZNN1JOUU9MLXVDUkJUV1dLejM5QktvRkJuN0o1Sjl0ZThHNzZWMlo?oc=5",
+    "date": "Thu, 15 Oct 2026 08:02:50 GMT",
+    "coverage": 1
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 먹거리 축제",
+    "use": "먹거리 소식",
+    "title": "춘천막국수닭갈비축제 이틀째 북적…아프리카 문화체험도 인기 - 연합뉴스",
+    "link": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE9lSFp2SHZXR0tHeFlUdGxvX0c2MGFweTRqOTU0eE91TzBjNmNvOE9BQlNlaFJ0UmtCRzNnRlYwcW9oaVdwYUJGYlVxWnhqSUlDal9kb0JrSFF1WlhsMm84ZNIBYEFVX3lxTE9lSFp2SHZXR0tHeFlUdGxvX0c2MGFweTRqOTU0eE91TzBjNmNvOE9BQlNlaFJ0UmtCRzNnRlYwcW9oaVdwYUJGYlVxWnhqSUlDal9kb0JrSFF1WlhsMm84ZA?oc=5",
+    "date": "Thu, 15 Oct 2026 07:12:10 GMT",
+    "coverage": 1
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 먹거리 축제",
+    "use": "먹거리 소식",
+    "title": "괴산군, ‘2026 괴산김장축제’ 11월 5일 개막…김장·먹거리·공연 풍성 - 뉴스티앤티",
+    "link": "https://news.google.com/rss/articles/CBMiakFVX3lxTE43TnVITERLaERrN2hFOXMwS3k0b2tFSkhuWllCU2lLN3VYb0tKRWM0SzBhdjlCbXloTUJXbnQ2d0lSa0ZaSGY0OTlSZzhRYmQ3UmRXYk4tODNBWWFzeUNaQm5abXNDalV2Znc?oc=5",
+    "date": "Thu, 15 Oct 2026 07:06:11 GMT",
+    "coverage": 11
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 먹거리 축제",
+    "use": "먹거리 소식",
+    "title": "서른 돌 봉화송이축제 개막…할인·먹거리로 소비 부담 낮춘다 - 경북일보",
+    "link": "https://news.google.com/rss/articles/CBMib0FVX3lxTE5Kc25TVFE1UGttRGZlM3pLN1FNTDl6dE5DMERVcjE3SXk3MkRRSVY3ZmM4Z1ctR1hnd0xGVmVtdFhhZkZwUms3WDcyLW9tVWp0MFBMb21jWl9WTnJ2bkJwZzRHYkNEZUh3ZWxNQnFrYw?oc=5",
+    "date": "Thu, 15 Oct 2026 07:04:36 GMT",
+    "coverage": 1
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 식품 신제품 출시",
+    "use": "먹거리 소식",
+    "title": "\"물없이 드세요\"…편의성에 승부 거는 제약사들 - 뉴시스",
+    "link": "https://news.google.com/rss/articles/CBMieEFVX3lxTFBIUzltZEUzeWZYRUZkTURlWFQxZld6WTdSQTg5OFB6MlQ0aWd4M3IyNk5nd3dXTzdHdjUwanY4UThKR3QzaHowdWZqa2pIYU50T01XbjdkUm5Ka1hpQ0ozWFBBY0JEWTlJdVJfOFpYSTFxbG9rWkhPSNIBeEFVX3lxTFBIUzltZEUzeWZYRUZkTURlWFQxZld6WTdSQTg5OFB6MlQ0aWd4M3IyNk5nd3dXTzdHdjUwanY4UThKR3QzaHowdWZqa2pIYU50T01XbjdkUm5Ka1hpQ0ozWFBBY0JEWTlJdVJfOFpYSTFxbG9rWkhPSA?oc=5",
+    "date": "Thu, 15 Oct 2026 21:01:00 GMT",
+    "coverage": 1
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 식품 신제품 출시",
+    "use": "먹거리 소식",
+    "title": "식음료업계, 해외시장 공략·신제품 확대…준법경영·사회공헌도 강화 - 웹이코노미",
+    "link": "https://news.google.com/rss/articles/CBMickFVX3lxTE1mZHExaUVZVU9OekpTeXBoVEtyakJxR3kzb19fSU1sTkdzZ1lvN1Fna3F4a3dIT2NmSE82YWc0UGJWRi1scEdDdFkydWNsdUlxdnlkWVJSZW1aN215MHlSOEVPYm81Q3JiRDNTWjM3OElfQQ?oc=5",
+    "date": "Thu, 15 Oct 2026 17:13:46 GMT",
+    "coverage": 1
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 식품 신제품 출시",
+    "use": "먹거리 소식",
+    "title": "제약사들 '환절기 공략법' 넓혀···감기약에서 뷰티까지 - 현대경제신문",
+    "link": "https://news.google.com/rss/articles/CBMia0FVX3lxTE1CTWR4ZVJQLW1hUUNIRHhQQnNFYXc0bUlHVDJLSk9IYmJrU3QxZG5DX0RnU1M4TE1QMTMxaGs5N2JjREQ2ejI0Wk9Rem5RbHpId0VIeEdrcldacDU4MnF6Z3FoTE43dXpsT0Nz0gFrQVVfeXFMTUJNZHhlUlAtbWFRQ0hEeFBCc0VhdzRtSUdUMktKT0hiYmtTdDFkbkNfRGdTUzhMTVAxMzFoazk3YmNERDZ6MjRaT1F6blFsekh3RUh4R2tyV1pwNTgycXpncWhMTjd1emxPQ3M?oc=5",
+    "date": "Thu, 15 Oct 2026 12:45:19 GMT",
+    "coverage": 1
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 식품 신제품 출시",
+    "use": "먹거리 소식",
+    "title": "“지역 농가 살리고 특색 맛 살리고”… 롯데마트, 강원 감자 품은 ‘해태 생생감자칩’ 출시 - 지이코노미",
+    "link": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE15YjZUakhyNGVPN2FiZ0t3WFFqQjJaSHJiVTV2V2RKcERMSUtyeGlVd2VtNS1kanJhR3N4VXNvOUtPNTVlYmltWDBtQ1AwbDBUUlo2cll5Q09UOXFENFNkZHdTOGVEUnM?oc=5",
+    "date": "Thu, 15 Oct 2026 07:26:21 GMT",
+    "coverage": 1
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 식품 신제품 출시",
+    "use": "먹거리 소식",
+    "title": "맛술도 죽도 저당…식품업계에 부는 저당 바람 - 중앙뉴스",
+    "link": "https://news.google.com/rss/articles/CBMibEFVX3lxTE12b3hCbVMxV0FrTnI1Z05XOTNXWWc4Y1lTVEFqT0t1SFJrZENjS1lQQ3dxSFNTaE0wWTg4bW4tMll1ZXp5M2haVGpjb2VJTFJwNHZYSHZGZFBUbVVuSWFMY1ZqcDRvNWo1bUpjONIBb0FVX3lxTE9Eb2I2QUgyZnBSaV8wREYzZ3Y1ZUJ4N1FKb2ppbWZXazNKWlRUMExVVVJtazZCbTFWRkxjOTlqTlNCcmIyRkx1U0FhX3RNN3pjdEZWYTB1dVpRNDdpU04yaGgxMVZYMWEzVVF3LTdpcw?oc=5",
+    "date": "Thu, 15 Oct 2026 07:20:04 GMT",
+    "coverage": 1
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 식품 신제품 출시",
+    "use": "먹거리 소식",
+    "title": "[오늘의유통] 롯데웰푸드·농심·빙그레·스타벅스, 한정판부터 신제품까지 - 토요경제",
+    "link": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE1iakllQnRvZnN6Zm13TGhmc216bFpZTkdyT0hPMlpNTUt4V0NCaElmS0x2QS1lVjdKaDgyb001QkhxVlFSWDFrVDhBWWozNE9idl9HY0FOcTFUd2psTUFnU9IBb0FVX3lxTE9VMTdIa2ppQnhWeE5lOE5UYkVBQzloZlhBYmNQMkJmRmdvRmV5Wl9aNWNGY0o5X3Eydm9qXzZWY09PNTBPelBzczQ1a1poTUQ1dVhWRllnbjBPejA1Y2VScE5zQmxEOVF3b0Jkb1E4cw?oc=5",
+    "date": "Thu, 15 Oct 2026 07:19:05 GMT",
+    "coverage": 1
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 식품 신제품 출시",
+    "use": "먹거리 소식",
+    "title": "빙그레, 파리 국제식품박람회 참가…바나나맛우유 유럽 첫선 - 나눔경제뉴스",
+    "link": "https://news.google.com/rss/articles/CBMibEFVX3lxTE9TUDdnRjE5TzZiSnpNNU9WRkJZdGo2QksyUlFuaDAzd2JUZmtQNUNLSzdNLVhRelhNRVUwVTE4VGFvQTQ5QTRsVGdjaC14U2Q5aVEtQmJvUHVYaVFVcTU2U09NZndWUDhFN0w0UQ?oc=5",
+    "date": "Thu, 15 Oct 2026 07:08:49 GMT",
+    "coverage": 1
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 식품 신제품 출시",
+    "use": "먹거리 소식",
+    "title": "맘스터치, '햄치즈휠렛버거' 재출시·신메뉴 '베이컨치폴레싸이버거' - KPI뉴스",
+    "link": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE9idmYzdlc3ZlpVOVhMVjRZNUQyaE1RbVpnbHBUak1LMnZZRkNrT3RZUTAtcGo1THRhVWROQ0dBdFdaeDFiU1lXT1dENU4xYlhrcUo2MW9UOA?oc=5",
+    "date": "Thu, 15 Oct 2026 07:01:49 GMT",
+    "coverage": 1
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 식품 신제품 출시",
+    "use": "먹거리 소식",
+    "title": "롯데하이마트, 로봇청소기 신제품 체험·할인 행사 진행 - KPI뉴스",
+    "link": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE9JWXJyRXRzMEVmY29LWmVpQ0FYdktWNmdBalZoTVQ0dU1vaUhGb2pwdzJVdjVvUUxzSkRIYmU3cWlHWVgyUkxBcWplajhBSWtFYTBDMFU3TQ?oc=5",
+    "date": "Thu, 15 Oct 2026 07:01:21 GMT",
+    "coverage": 1
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 식품 신제품 출시",
+    "use": "먹거리 소식",
+    "title": "[푸드·다이닝트렌드] 롯데웰푸드, 아이디어스와 두 번째 협업…인기 과자 굿즈 16종 선봬 外 - 베이비뉴스",
+    "link": "https://news.google.com/rss/articles/CBMibEFVX3lxTE54Q2dXQnJvWURNbjRrbEpKSzR4LUFISWRsU29nVG1RQTd2QTNvWFRzSGxVZUc3NUhvMVFFUjNjNkdYWV8tQVZaa2NqcVMwODlOdUpkY0FXSW5oamZ4NHZLOF9MWUg0djFOdjAwOQ?oc=5",
+    "date": "Thu, 15 Oct 2026 06:48:06 GMT",
+    "coverage": 1
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 식품 신제품 출시",
+    "use": "먹거리 소식",
+    "title": "켈로그, '브롤스타즈' 한정판 기획팩 10만 팩 재출시 - BBS불교방송",
+    "link": "https://news.google.com/rss/articles/CBMia0FVX3lxTE1tWGZQSms5UWExaVptdUVIb3JLaGs0MDRWeWRHOVh4bnZWa201QTZLalJRejI5WUJfcFFtOGxhNGQ0Vkx0TVRzTk9VX1hHWS1xVDdDaXcxRmhMYkJEREpQYUV1WUpxUENTV05Z?oc=5",
+    "date": "Thu, 15 Oct 2026 06:24:14 GMT",
+    "coverage": 1
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 식품 신제품 출시",
+    "use": "먹거리 소식",
+    "title": "문학상에 클래식·악기 후원까지…동서식품, 문화예술 나눔 지속 - 뉴스저널리즘",
+    "link": "https://news.google.com/rss/articles/CBMia0FVX3lxTE4tLWFZQ2RLY1lWUTV5NFlBMGFoQk02SG1vY0ZJOV8zdm1ZeUtmeE14eUp3bTRkMFNQRWFFTUlxNnduRkpiZjFfU3BUTDdyLWVrbjN2VzV0elJaLVQ1UkhwRTNHVDVycFFJdXBN?oc=5",
+    "date": "Thu, 15 Oct 2026 06:16:42 GMT",
+    "coverage": 1
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 식품 신제품 출시",
+    "use": "먹거리 소식",
+    "title": "옳곡, 갓 수확한 '햇땅콩 대잔치' 할인 프로모션 진행 - BBS불교방송",
+    "link": "https://news.google.com/rss/articles/CBMia0FVX3lxTE1haTgyZk9DRjBJQTJ5cHpTQkI2ejZjVjVpWkV3V3ZSVlREMGU5TEpGRERSc0Y2akxLOVJiVVNaRklHeVN4cnRLRjBSSWdRNEZycHg1czNCRGlNNmgydXN6eWtISEZxenFNcnpN?oc=5",
+    "date": "Thu, 15 Oct 2026 05:33:20 GMT",
+    "coverage": 1
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 식품 신제품 출시",
+    "use": "먹거리 소식",
+    "title": "[커피·음료 트렌드] 메가MGC커피, 캄보디아 1호점 프놈펜에 오픈 “동남아 시장 영토 확장” 外 - 베이비뉴스",
+    "link": "https://news.google.com/rss/articles/CBMibEFVX3lxTE5CWHlsRWVGcHZaanQyRVNXNzhXbzN6Yy0xT196YURDa2RIUFZKZ2RHQk1BTVVZNy10c3RVX1NscHpJMTg3Mmt3dkYyV0o2SEd0SnZuenVZdU41NndLLTliR0dmMk9fSzlqOENsSA?oc=5",
+    "date": "Thu, 15 Oct 2026 05:18:48 GMT",
+    "coverage": 1
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 식품 신제품 출시",
+    "use": "먹거리 소식",
+    "title": "[푸드·다이닝 트렌드] 소휘, 2년간 개발한 신제품 ‘스테디부스터 샐러드 구미’ 출시 外 - 베이비뉴스",
+    "link": "https://news.google.com/rss/articles/CBMibEFVX3lxTE5mOTNjMUMzLVhKXzNxMEVoMjJwRnZQalFfT2JQTTN5TWgtSTBUbVMtQlJmcTNlSU1tTmhnWFQxUWVKbTVSZWFsbE9FLWh4OVdteW1VVUVfVkJMckhzdVB2ajI2dDN4aFZxVkVqQQ?oc=5",
+    "date": "Thu, 15 Oct 2026 05:16:52 GMT",
+    "coverage": 1
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 외식 트렌드",
+    "use": "먹거리 소식",
+    "title": "동광산업과학고 김진서 학생, 재학 중 ‘국가기술자격 10관왕’ 달성… 학교 역대 최다 신기록:설악타임즈 - 설악타임즈",
+    "link": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE9jcGlzampadG1odEtGTEJUOGdGWU9fcXpUOHpnX04tRF9BbUtLQWo4N2RjSEJmWkJrZEcyQm5qY2wxNHFYRkhNZDRXdzNZaWw3RWdXS0lONExtUGVXOUI1SkpJSHLSAWRBVV95cUxPY3Bpc2pqWnRtaHRLRkxCVDhnRllPX3F6VDh6Z19OLURfQW1LS0FqODdkY0hCZlpCa2RHMkJuamNsMTRxWEZITWQ0V3czWWlsN0VnV0tJTjRMbVBlVzlCNUpKSUhy?oc=5",
+    "date": "Thu, 15 Oct 2026 17:10:07 GMT",
+    "coverage": 1
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 외식 트렌드",
+    "use": "먹거리 소식",
+    "title": "대구 남구 ‘찐맛집 20곳’ 영상으로 통했다…SNS 조회수 17만회 넘어 - 경북도민일보",
+    "link": "https://news.google.com/rss/articles/CBMiakFVX3lxTE5KSGw5RUdHaWQzeV8wOGtyQkZOUXktNGRYN0o0c2lYMVdta0VscTVLX1loUVlmSWJaTTdZVzdJbVVoODFJVUswZ1pqbEtqYlEtMUNGVGpsa0VuNlltTWhZMGdFcnlPZjZVZVE?oc=5",
+    "date": "Thu, 15 Oct 2026 09:51:00 GMT",
+    "coverage": 1
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 외식 트렌드",
+    "use": "먹거리 소식",
+    "title": "부안 특산물 활용 '음식문화대전'…복어 활용 별미 '대상 ' - LG헬로비전",
+    "link": "https://news.google.com/rss/articles/CBMidkFVX3lxTE8wZVBONTU5WnU2RDRUUXhSc0RGMXRvTmk3UWlBc2tpbmYxanlDV29SSXRWUmJrUUdLeU5HdmFKZWduZ1BWMEpnc2cweWdFNUxDejZHZ1JaZXFnVEU0clFGNkZ3Sy12NWtSV3RFYnNtZzh4NEJxbHfSAXZBVV95cUxPMGVQTjU1OVp1NkQ0VFF4UnNERjF0b05pN1FpQXNraW5mMWp5Q1dvUkl0VlJia1FHS3lOR3ZhSmVnbmdQVjBKZ3NnMHlnRTVMQ3o2R2dSWmVxZ1RFNHJRRjZGd0stdjVrUld0RWJzbWc4eDRCcWx3?oc=5",
+    "date": "Thu, 15 Oct 2026 09:37:54 GMT",
+    "coverage": 1
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 외식 트렌드",
+    "use": "먹거리 소식",
+    "title": "경남정보대 호텔제과제빵과 국제셰프대회 디저트 부문 대상 등 수상 - 머니투데이 - 머니투데이",
+    "link": "https://news.google.com/rss/articles/CBMib0FVX3lxTE1uMzJjc0R5LWtvcWZfbGhueEpJRGg4RUlINjFTeVZnd0tOMnhSRE9TdFlwZUVEdkM2Q3M1TGtyYU95SnlLck1KMENoM3JvcGpmWGRvZkpzbDAxcVh2eXNqZFRwdmlWOFpvQVVSWTVfQdIBb0FVX3lxTE1uMzJjc0R5LWtvcWZfbGhueEpJRGg4RUlINjFTeVZnd0tOMnhSRE9TdFlwZUVEdkM2Q3M1TGtyYU95SnlLck1KMENoM3JvcGpmWGRvZkpzbDAxcVh2eXNqZFRwdmlWOFpvQVVSWTVfQQ?oc=5",
+    "date": "Thu, 15 Oct 2026 08:08:06 GMT",
+    "coverage": 3
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 외식 트렌드",
+    "use": "먹거리 소식",
+    "title": "[솔로이코노미] 혼밥 시장은 커졌는데, 식당은 왜 여전히 '2인부터'일까 - 데일리팝",
+    "link": "https://news.google.com/rss/articles/CBMiakFVX3lxTFB0SWZOQTR6MlZJeDdQVkZuWHhWMnpyeTFIWld1bVViZ25hekFQY0l4bm9HdUI5UjNCdVZhT2tpeWtldHlUNDdOTE41aThaSFNFUVM0YW5zcmRJbzFkS0tudTdEQjkzS19Za1E?oc=5",
+    "date": "Thu, 15 Oct 2026 07:09:00 GMT",
+    "coverage": 1
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 외식 트렌드",
+    "use": "먹거리 소식",
+    "title": "경남정보대 호텔제과제빵과, 국제 셰프 대회 디저트 부문 최고상 석권 - 국제신문",
+    "link": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxPN3ZUWThpWXI5aXlCYTRheGw1OVdldm9laERTc3h4NG90WkNUNTJ5d0lLcGhhU1lnZ2ZtMTZMRTZYZl9BcW96TUxEdlloaDFCMkZEQnAxSDFXbWY0Z09palhRZ3RfVVc1YUpvR3lXcjVWNzh3eGktSWt4QVplWHJGa3NKVlMxVFJNcTV3?oc=5",
+    "date": "Thu, 15 Oct 2026 06:37:00 GMT",
+    "coverage": 3
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 외식 트렌드",
+    "use": "먹거리 소식",
+    "title": "\"저도 7분돼지김치찌개 주세요\"…K-BBQ 인기에 美 텍사스인들 줄세운다 - 뉴시스",
+    "link": "https://news.google.com/rss/articles/CBMieEFVX3lxTE84NFhPMTFkd0xFbTlqNGc2UWpreTJWYVNDNlRFcXhWcWY5R3hqakRXc0VkY3RLbUZhUHhvbFRCWFNLRUdQeE11dnliQUR3bWlycy15XzZOQ2JOazgwV2VZbFJjYUlCTjNERXBtM1VZMThKOTdpdjRUTtIBeEFVX3lxTE84NFhPMTFkd0xFbTlqNGc2UWpreTJWYVNDNlRFcXhWcWY5R3hqakRXc0VkY3RLbUZhUHhvbFRCWFNLRUdQeE11dnliQUR3bWlycy15XzZOQ2JOazgwV2VZbFJjYUlCTjNERXBtM1VZMThKOTdpdjRUTg?oc=5",
+    "date": "Thu, 15 Oct 2026 06:32:11 GMT",
+    "coverage": 1
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 외식 트렌드",
+    "use": "먹거리 소식",
+    "title": "용봉동 치킨, 외식 소비 트렌드 변화 속 맛과 가성비 갖춘 치킨 전문점 관심 - 뉴스N연합",
+    "link": "https://news.google.com/rss/articles/CBMiSkFVX3lxTFB1Qngza0ZVUGpnN1ZqT3hMeGhWYjZiaWtIOVp4dDUtRW9sREZrTG1jUU4tbW1LQUxPWHJ6bnNFRjVEX3FLR3FQU1Fn?oc=5",
+    "date": "Thu, 15 Oct 2026 06:24:32 GMT",
+    "coverage": 1
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 외식 트렌드",
+    "use": "먹거리 소식",
+    "title": "이제는 떡도 '색깔' 있어야 뜬다…유통·외식업계 상품화 경쟁 - 시사오늘",
+    "link": "https://news.google.com/rss/articles/CBMia0FVX3lxTE96MzNOSzF6dG42aVQ4UXVfdEZ0QnBWZDZRUGRiTVVZcVBycm5jN3dCbmsyNXI5T2xQQ2FHa1RLTFVQaFROT09HU05ZWFV1YzVrVUlmVEpQQ2NNLS1CSkNmejlrenVqZ1hidWlZ?oc=5",
+    "date": "Thu, 15 Oct 2026 06:08:40 GMT",
+    "coverage": 1
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 외식 트렌드",
+    "use": "먹거리 소식",
+    "title": "경남정보대, 국제 셰프 대회서 대상 등 4관왕 - 아주경제",
+    "link": "https://news.google.com/rss/articles/CBMiWEFVX3lxTE9qTnhELUlzZTJsVW5jczZwdm8xSG5YOS1rZlY3R05GSldqdTlyYU01X0hKWC1jSGFqMUxxLXVLbmlULVhtUWRnM0dXcTZ1U3BQWmk5amNFcTXSAVhBVV95cUxPak54RC1Jc2UybFVuY3M2cHZvMUhuWDkta2ZWN0dORkpXanU5cmFNNV9ISlgtY0hhajFMcS11S25pVC1YbVFkZzNHV3E2dVNwUFppOWpjRXE1?oc=5",
+    "date": "Thu, 15 Oct 2026 06:03:50 GMT",
+    "coverage": 3
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 외식 트렌드",
+    "use": "먹거리 소식",
+    "title": "카페의 경쟁자가 김밥집이 됐다…‘카페의 끼니 점유 전쟁’ - 중소기업신문",
+    "link": "https://news.google.com/rss/articles/CBMibkFVX3lxTE9YRjFhN0ViX0wwR0wtWnpsdm12REZXZHZXalJHbFVfQ3ZndUVIWldIOXZCcVFPVE1ZTlhDMmR3MTlDSUNPRFByNnhoZDdsZEU5VlBvYl9ZUnk0TUZ0ZTNaaHZoYWU3TkdBbm1CakJR?oc=5",
+    "date": "Thu, 15 Oct 2026 04:18:30 GMT",
+    "coverage": 1
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 외식 트렌드",
+    "use": "먹거리 소식",
+    "title": "[푸드·다이닝 트렌드] “내 손안의 작은 시집” 롯데웰푸드, 인기 시집 구절 담은 한정판 롯데껌 4종 선봬 外 - 베이비뉴스",
+    "link": "https://news.google.com/rss/articles/CBMibEFVX3lxTE44VF9jYkl6d2RWeTZBXzQyWE9xSU9nX1hvSWJJaWpqNkp5Nk9fMy1BRmlib1k2N01MbDNOLXd6emF2U29uTXE2bnA0MnhabGk2R0VLZnlSRUR2dEU0WjNVcGVpLTBFNG0yWGVBYw?oc=5",
+    "date": "Thu, 15 Oct 2026 02:43:00 GMT",
+    "coverage": 1
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 외식 트렌드",
+    "use": "먹거리 소식",
+    "title": "[글로벌 리포트] 2027 아시아 태평양의 미래 미식 트렌드는?! - 식품외식경영",
+    "link": "https://news.google.com/rss/articles/CBMiX0FVX3lxTFBqVXpTNXFfR0tpMS0yNlFOM2FObjJBWDV6MVFCbm5WOUJFVm9mT3NKWnQ4YUp1Njdad0FwUXJoNkd5c2xvYlQwdTJxQ1UzLWYySzRLaUhUSzBHVGZCSU44?oc=5",
+    "date": "Thu, 15 Oct 2026 00:00:01 GMT",
+    "coverage": 1
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 외식 트렌드",
+    "use": "먹거리 소식",
+    "title": "ABTA 휴가 습관 2026/27: 영국 여행 트렌드, 패키지 휴가 및 최고 목적지 - 뉴스 및 통계 - IndexBox",
+    "link": "https://news.google.com/rss/articles/CBMizwFBVV95cUxOeVo3OW1IVTNlN2E1bmZDYWMzci02dGJIMGJ2NlBRYV84VGdoMDRYenBiTFNfRmljd2Mta01jY2VVZ2FkcngxOExwSWd3d29kcUYtX3FzQkZRUGVhX0tUdVNBdEtQcEFKNU05Y25FTmNCaGRmQlM2Mkpvb3FHUnlHZmhJenc1TEwyTk1vRGJSXzdJTHlHcGluaENzYnFSZFNNaWRzTWNaWlRvLTRYZnV3ZDVOZGhiUTV4WXBCZE9teTJPbnYxSVdyY3JnUDRUZTg?oc=5",
+    "date": "Wed, 14 Oct 2026 15:10:58 GMT",
+    "coverage": 1
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 농수산물 가격",
+    "use": "먹거리 소식",
+    "title": "오늘 10월 15일 농산물 가격: 하루 종일 커피 가격 상승 - Laodong.vn",
+    "link": "https://news.google.com/rss/articles/CBMipgFBVV95cUxOWFlYOVVTWHd5RTRqVnRZVjhCNWgzSjBPRWRYZDAtR242VVRUd216Mi1sY0ZzSWVZTVlBQjNpeloySExiM3NjNUw2M1pxMHhSRHljSVlFalNaSnJMcGdOYno4aUo1eFRYeERQREUtQlo0cVZOOWZUN3hnZ1VQb2NRNkhaSDAzYzlfYnVaR3FSZHZnY1pmdXZpVkhhQ3duWE43TEQxMUdB?oc=5",
+    "date": "Thu, 15 Oct 2026 10:09:30 GMT",
+    "coverage": 3
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 농수산물 가격",
+    "use": "먹거리 소식",
+    "title": "가락시장 농산물 가격-2026년 10월15일 - 농민신문",
+    "link": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE40ODNON2I4dnFiNXZkT1o5Y1kzZzdFZlV6eWFWUkFPZ2dxVmxrZ051MDY3Ym00YjRJbnV6VENpRDJQSURYVGppeHAwd1dnbUttdGRxQzdVdktSZw?oc=5",
+    "date": "Thu, 15 Oct 2026 09:21:00 GMT",
+    "coverage": 3
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 농수산물 가격",
+    "use": "먹거리 소식",
+    "title": "[농담] 대통령은 유통혁신 외치는데…문 닫는 도매시장, 농민은 어디로 가나 - 머니투데이 - 머니투데이",
+    "link": "https://news.google.com/rss/articles/CBMicEFVX3lxTE5JbjJ1bEJhS1gyMVdfTTR6SC1LTlpJLXRKZ0wtSDA5b2tnSFdnVEFneU9hQXVNM255eUV0VDdmbGNyeWoxclFScUx3dDU4TVdJczhDOFRENnlROVVnSW9meXdmLWdZQk1mZEVJSGxsZnXSAXBBVV95cUxOSW4ydWxCYUtYMjFXX000ekgtS05aSS10SmdMLUgwOW9rZ0hXZ1RBZ3lPYUF1TTNueXlFdFQ3ZmxjcnlqMXJRUnFMd3Q1OE1XSXM4QzhURDZ5UTlVZ0lvZnl3Zi1nWUJNZmRFSUhsbGZ1?oc=5",
+    "date": "Thu, 15 Oct 2026 08:28:54 GMT",
+    "coverage": 1
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 농수산물 가격",
+    "use": "먹거리 소식",
+    "title": "농협, 청년여성농업인 판로 확대 앞장…“신선한 우리 농산물 직거래로 만나요” - 리드경제",
+    "link": "https://news.google.com/rss/articles/CBMicEFVX3lxTE1TQ0pGVm5CQ3lQamc4dEF1cVlZX1hKeVNIeE12Z3E1T0Frd2dTWllaZzJJYUZMdWVxVlMyN1NraGJPaDlRMXNJangxaHNfRUU2QzFfSHZreVFQMC12OEhUQUp1TDZmZWtvNU8xc3E1U24?oc=5",
+    "date": "Thu, 15 Oct 2026 08:11:58 GMT",
+    "coverage": 1
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 농수산물 가격",
+    "use": "먹거리 소식",
+    "title": "다양하고 독특하며 이국적인 농산물 덕분에 가을 과일 시장은 활기가 넘칩니다. - Vietnam.vn",
+    "link": "https://news.google.com/rss/articles/CBMikAFBVV95cUxOVjZfYk5KRHdjMG51aF9uMFR5Q3pFZDM2bUt3M21CNlR1a1hZWDhTMzZ6ay1VX2prLUFRUGltSVNuZ2Jhakl6eGpYTGUtbF85Z2hyXzR0RXNCTDYzLTZtLVdYcTAwQVRtdGdHZ1k5eGNUTXRqLUVMdE9oWHJyZHN2NHNxQW9kU0I1cm50ZkdyMzg?oc=5",
+    "date": "Thu, 15 Oct 2026 07:37:43 GMT",
+    "coverage": 1
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 농수산물 가격",
+    "use": "먹거리 소식",
+    "title": "오늘 10월 15일 농산물: 커피, 후추 가격 높은 수준 유지 - Laodong.vn",
+    "link": "https://news.google.com/rss/articles/CBMipAFBVV95cUxOTXl2VXVWdU9qV1ZfaDEzOGMwZ3BNRlJGNkJNTy1UVzNqVmtWMjJXeGV5S1AtMGw5MzFqeDBGMFBDclZENTdaUDJMV0hYcVdrbm0zZ09wTlZhekViTmdsYVpJUTdnWnV4R1VXYVZjZlZ5TW1PU2ttWU1UcThaMWFxSVAtTzBwTHgxdVN6MmtxQTRpZGUzRUxPZENlZ2VPYklYWVl2NQ?oc=5",
+    "date": "Thu, 15 Oct 2026 06:35:17 GMT",
+    "coverage": 3
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 농수산물 가격",
+    "use": "먹거리 소식",
+    "title": "[주간알뜰장보기] 이번 주는 '시금치·가지' 구매 타이밍! - SK브로드밴드 회사소개",
+    "link": "https://news.google.com/rss/articles/CBMicEFVX3lxTE9VT25BMjczeUFsMFo2RkZHcHY2MDhURzZGbGxQLThGZGc4bEJJZUo4SW4ySXEwS0NIUVFmM3FLT0stcGdDakZIQzQ1eHdNNDBKMmw5N1QtOWROeGpLVEpaS3lZbGZpOW1MRUpqU0ZBSVI?oc=5",
+    "date": "Thu, 15 Oct 2026 06:32:00 GMT",
+    "coverage": 1
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 농수산물 가격",
+    "use": "먹거리 소식",
+    "title": "[단독]'자산 711조' 농협·계열사 데이터 제각각…구축만 9년째, 통합시스템 없다 - 머니투데이 - 머니투데이",
+    "link": "https://news.google.com/rss/articles/CBMiekFVX3lxTE9QREc1QTJPQW5NaVhGVzJwU1pGZl9iWDhGaFpoVWdaYjZoVFczNHRmbElnbUJBLVVWS1hzLURXNUpxZmpDSDlBT2tESFRYTkxvRXIwMWYtOGZKZUV1MVAza29vNzB0bWRNRUxWelRYTWE1SUJIYm9vX0pn0gF6QVVfeXFMT1BERzVBMk9Bbk1pWEZXMnBTWkZmX2JYOEZoWmhVZ1piNmhUVzM0dGZsSWdtQkEtVVZLWHMtRFc1SnFmakNIOUFPa0RIVFhOTG9FcjAxZi04ZkplRXUxUDNrb283MHRtZE1FTFZ6VFhNYTVJQkhib29fSmc?oc=5",
+    "date": "Thu, 15 Oct 2026 06:04:41 GMT",
+    "coverage": 1
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 농수산물 가격",
+    "use": "먹거리 소식",
+    "title": "농협사료, 올해 가격 인상률 민간사료 앞질러 - BBS불교방송",
+    "link": "https://news.google.com/rss/articles/CBMia0FVX3lxTE1qYzdBV1FUeGFSVGVVdkZaM0p1cnYtTFNnT1FKYnZKTDAxZDJCOEFQb3RQSFBWbGhmMzI0VGJCWkpKYmZYVEpuYW5CQVNRQVU2ajJYOUhPZGJpZzA0U1FMbDVJazZKb095NTNv?oc=5",
+    "date": "Thu, 15 Oct 2026 05:50:04 GMT",
+    "coverage": 1
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 농수산물 가격",
+    "use": "먹거리 소식",
+    "title": "경기도농수산진흥원, 제철과일 특별전 개최 - 산경일보",
+    "link": "https://news.google.com/rss/articles/CBMicEFVX3lxTFAxdl9GOGZjSHBWdThVU1QtV1g0RUlFVmQzcFY0YTVvc3UySkhGc3JnRXNyUWFwbmNpMzdlSTBQYWpNdFBVZTB2d3lNUk84UUZjc09ZTjlubUdXUGx4VHluc1ZuMVdZOUx3TDJqQ0duSkk?oc=5",
+    "date": "Thu, 15 Oct 2026 05:16:17 GMT",
+    "coverage": 3
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 농수산물 가격",
+    "use": "먹거리 소식",
+    "title": "[2026년 10월15일(목)] 오이·호박·단감·상추·시금치·경락값 분석 - 농민신문",
+    "link": "https://news.google.com/rss/articles/CBMiWkFVX3lxTFAxbnBibnZDTHlZUXpoSzkyUWcySmlLbTR3T29UcEN0RTBxckpNZ3VQaFVVZElnNVpuVmRrWXl5cmNZWHUxVjZaaWtqSkdsd3R5bXpKd0NveDZEZw?oc=5",
+    "date": "Thu, 15 Oct 2026 04:56:00 GMT",
+    "coverage": 1
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 농수산물 가격",
+    "use": "먹거리 소식",
+    "title": "경기도농수산진흥원, 도래미마켓서 가을 제철과일 특별전 개최 - 부천저널",
+    "link": "https://news.google.com/rss/articles/CBMidkFVX3lxTE9fOHVsVkYtY0JXSGlSSWVoalJrMDREMDAzZWhZU3ozMEVSYXB6RGI1Yk9lOGowUnVsN0FObUhpZ0VUNlZUU0ZrQzhQNVhSYUJHdlZkRm5jZ3JmWXdJaktEQnNmYlJVbE5vZjVLYUlHcl80VTJXQkHSAXZBVV95cUxPXzh1bFZGLWNCV0hpUkllaGpSazA0RDAwM2VoWVN6MzBFUmFwekRiNWJPZThqMFJ1bDdBTm1IaWdFVDZWVFNGa0M4UDVYUmFCR3ZWZEZuY2dyZll3SWpLREJzZmJSVWxOb2Y1S2FJR3JfNFUyV0JB?oc=5",
+    "date": "Thu, 15 Oct 2026 04:52:03 GMT",
+    "coverage": 3
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 농수산물 가격",
+    "use": "먹거리 소식",
+    "title": "2026년 10월 15일 오늘 농산물 가격: 커피 가격은 상승세를 보이고 있으며, 후추 가격도 개선되고 있습니다. 중국의 무역 흑자는 거의 1조 달러에 달했습니다. - Vietnam.vn",
+    "link": "https://news.google.com/rss/articles/CBMi8gFBVV95cUxOcWRYRllndy1ZVmFCRVU5d3FtbVExdC1PeVhGRzd3SUk3b1NMY2JWUXdoM0syTTl3QVpWMWE1a3pwNm5vMjZyc1VRYU1sMHZkU1dnOVVxZ1dfZDJ3ZkdLQlZ6azdOVXItN1RzQ3JVXzVmS2hJMi1jMVV0aU0zV200eV9scF9LS3h1X1BFM3VLYWM5Nm5CT214Ul9IMEh3bEY0eWl3VHl3b0tHdW1LR19FTVJfc3BPSHQ4LVdHRHVQYTlDVmEyTlQwRFVPQVVBWllDOXFxd2x3RVRTc0cxZTdHdlZvLXhFTTZ1bnkxREd6Y3Jqdw?oc=5",
+    "date": "Thu, 15 Oct 2026 02:24:54 GMT",
+    "coverage": 3
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 농수산물 가격",
+    "use": "먹거리 소식",
+    "title": "전남광주 농업, 농산물 가격보다는 농가의 실질소득 - 전남인터넷신문",
+    "link": "https://news.google.com/rss/articles/CBMiXEFVX3lxTE9mSFFXOHFrU2k5QUxiTVU0TzlaS1B1WEY3X3NyYWhlZVltbVFyaEVvaEpQelV4Zk01M3pzNUdaRURMcFl1UUxBVC1DdTFKN2RlVk1lMFc4VGNMV0Nv?oc=5",
+    "date": "Wed, 14 Oct 2026 23:51:51 GMT",
+    "coverage": 1
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 식중독 주의",
+    "use": "먹거리 소식",
+    "title": "홍성군보건소, '가을·겨울철 식중독 주의… 손 씻기·익혀 먹기 생활화' 당부 - 엔디엔뉴스",
+    "link": "https://news.google.com/rss/articles/CBMickFVX3lxTFA2c1VyazRtUmZwN0JLQnl5cE5JbktRWEotVW00ZnQ5QnVYVU5Pbm9FYzJfcFAzV3M3LUpHeHNjMTdUNzVwRTEwRkRqUTlQRWZGMGl4dEJ3a1A4UnVZY0hJWHNIOGFaZF9TcGRmQ0ZiTmR4Z9IBckFVX3lxTFA2c1VyazRtUmZwN0JLQnl5cE5JbktRWEotVW00ZnQ5QnVYVU5Pbm9FYzJfcFAzV3M3LUpHeHNjMTdUNzVwRTEwRkRqUTlQRWZGMGl4dEJ3a1A4UnVZY0hJWHNIOGFaZF9TcGRmQ0ZiTmR4Zw?oc=5",
+    "date": "Thu, 15 Oct 2026 09:11:08 GMT",
+    "coverage": 1
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 식중독 주의",
+    "use": "먹거리 소식",
+    "title": "선선해진 날씨에도 식중독 주의해야 - 동양일보",
+    "link": "https://news.google.com/rss/articles/CBMia0FVX3lxTE1NVHotWXdQN2hIc1BNZDR4c1lVY3VnM0VlOUZYb3NyRUljWUVhSGRiOUlFYTRCYjU4M3NPbHF3d0NySFY5eDdUaFZZMk9mUTZBM01WRlhIYTdTd0hFR2k1VHBOQjhuV1JnemtF?oc=5",
+    "date": "Thu, 15 Oct 2026 04:11:17 GMT",
+    "coverage": 1
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 식중독 주의",
+    "use": "먹거리 소식",
+    "title": "안동시, 어린이집 급식소 합동 위생점검 - 안동뉴스",
+    "link": "https://news.google.com/rss/articles/CBMiY0FVX3lxTE9tY3E3cDFDcWU2bWlVT3FpbEJRbTJyWmhZWEc0NkRYTDk0WlhLTzlpVXhTRFBKX0pyWmtGN3lLN0VNdzd5dUZrbldRMGpHTlBsV05IWmtJSUFDS0VHeG5KTGJvYw?oc=5",
+    "date": "Wed, 14 Oct 2026 00:46:51 GMT",
+    "coverage": 1
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 장바구니 물가",
+    "use": "먹거리 소식",
+    "title": "[청경체] 뉴스는 호황…내 장바구니는 왜 불황? - EBS",
+    "link": "https://news.google.com/rss/articles/CBMie0FVX3lxTE91ODRmOExVV2YwRl9rZExfeTZpV3ZVbHljUTRUWUVqSkRSandaX1lEdDhwalZKODcwMzVxZm9kNUlTZkNiZi1QU3l5MThJdUFQWXFmM0ltTldwZHhsR1pNOXgzRHFaTTE5ZUxBV0N4UWpCX2s2ZEhYM0hWYw?oc=5",
+    "date": "Thu, 15 Oct 2026 18:09:53 GMT",
+    "coverage": 1
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 장바구니 물가",
+    "use": "먹거리 소식",
+    "title": "국민 위한 관세·면세 혜택이 일부 업체 배 불리는 사익으로 변질 > 뉴스 - 더코리아",
+    "link": "https://news.google.com/rss/articles/CBMicEFVX3lxTFBubHVFNjExTThTaEtteUdfckpHZ0RXVGYwV3pNVlpIa0VQcHFvTWE0OWVIWVhnczdZZExGN1VRanRlLXJNNmZ0U3lMeTE2RW5UbGRpZVdMX0FOekVGT2ItQkJIXzQtV01GVXhVMUd0WFQ?oc=5",
+    "date": "Thu, 15 Oct 2026 12:38:00 GMT",
+    "coverage": 4
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 장바구니 물가",
+    "use": "먹거리 소식",
+    "title": "안도걸, 국가데이터기본법 개혁과 장바구니 물가 통계 현실화 촉구 > 뉴스 - 더코리아",
+    "link": "https://news.google.com/rss/articles/CBMicEFVX3lxTE0teElaMHRCTEhvN2I0MExQTjhCUGc1M1NPR25oQVM1MHdWWHlXOUFlVXRULUVZc0JDdFgwQS1tNDZSZTkxQjRVMWQzTVNCMXFqQUMtYjJGbktSMGpnWHVkM3BHT1kwZmpXbFFuVVFHSEk?oc=5",
+    "date": "Thu, 15 Oct 2026 12:15:00 GMT",
+    "coverage": 1
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 장바구니 물가",
+    "use": "먹거리 소식",
+    "title": "안형준 \"밥상물가 별도 지수 검토…슈링크플레이션도 물량 기준 포착\" - 뉴시스",
+    "link": "https://news.google.com/rss/articles/CBMieEFVX3lxTE1oX3JUd2I4Qkl3enQ1YlJDNW5Fc2k5SzczekU1R0N4cUdrLVI0ek5FWG12WWdHY043WS1CeHVGYVlNMWZ6R0t0eWxCSXY0LUpBLWxqMXVMMmR2WUFjdWN1U0lrWGk2a2VUMEtPbDdXcVZjRHMxX0hFb9IBeEFVX3lxTE1oX3JUd2I4Qkl3enQ1YlJDNW5Fc2k5SzczekU1R0N4cUdrLVI0ek5FWG12WWdHY043WS1CeHVGYVlNMWZ6R0t0eWxCSXY0LUpBLWxqMXVMMmR2WUFjdWN1U0lrWGk2a2VUMEtPbDdXcVZjRHMxX0hFbw?oc=5",
+    "date": "Thu, 15 Oct 2026 09:27:05 GMT",
+    "coverage": 1
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 장바구니 물가",
+    "use": "먹거리 소식",
+    "title": "안도걸 의원 \"국민 위한 관세·면세 혜택, 일부 업체 이익으로 변질…제도개선 시급\" - 더팩트",
+    "link": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE1UUjg5ZXF0VHNadTg0eDhaeU1IM2NwMVIxbTlwWGxWbUxBYlFKSFhVTjNNWE92QWVtMjNyaTV5STdtM3lpSDBHNmdqOWN5d3VGeGZndHRn0gFWQVVfeXFMTVRSODllcXRUc1p1ODR4OFp5TUgzY3AxUjFtOXBYbFZtTEFiUUpIWFVOM01YT3ZBZW0yM3JpNXlJN20zeWlIMEc2Z2o5Y3l3dUZ4Zmd0dGc?oc=5",
+    "date": "Thu, 15 Oct 2026 07:31:00 GMT",
+    "coverage": 4
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 장바구니 물가",
+    "use": "먹거리 소식",
+    "title": "[2026국감] 특정업체 배만 불린 관세·면세 혜택...제도 허점 도마 - 스트레이트뉴스",
+    "link": "https://news.google.com/rss/articles/CBMid0FVX3lxTE1jdWxOVkZDVW9SQTYxdWxLVGVQWks2Q2ExMTl6bVduXzhCQVFyakFUamtZeXpvRzNFbTBLTFEwdkhEem5XZTVmazR2TmRXYU5qNXZiN2QzY1VMdUxLMGNPQk1tYzkyQ1ZlSzJaUjZiNjN0bmxEUjRF0gF3QVVfeXFMTWN1bE5WRkNVb1JBNjF1bEtUZVBaSzZDYTExOXptV25fOEJBUXJqQVRqa1l5em9HM0VtMEtMUTB2SER6bldlNWZrNHZOZFdhTmo1dmI3ZDNjVUx1TEswY09CTW1jOTJDVmVLMlpSNmI2M3RubERSNEU?oc=5",
+    "date": "Thu, 15 Oct 2026 07:26:43 GMT",
+    "coverage": 4
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 장바구니 물가",
+    "use": "먹거리 소식",
+    "title": "[2026 국감] 재경위, 관세 편법 악용부터 조사원 안전 방치까지 ‘뭇매’ - 세계비즈",
+    "link": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE9MU2stSHo0Wlp3dC05WUNWMUNpTldyRHdwbkIyejBkLTZfNkNEZ0c0alNoN1p5bzlsYXJMX0xPckVFbjFQNWhPYTBYdkxIbzdLZml0WTN5S0d2UQ?oc=5",
+    "date": "Thu, 15 Oct 2026 07:19:04 GMT",
+    "coverage": 1
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 장바구니 물가",
+    "use": "먹거리 소식",
+    "title": "전쟁·관세·AI가 만든 ‘3중 물가 파고’… 사면초가 빠진 美 장바구니 - 조선비즈 - Chosunbiz",
+    "link": "https://news.google.com/rss/articles/CBMingFBVV95cUxNMW43bGIweE9KWGZnMHREcW10MTJWUjFaV0JuQ3RqaDljX3RHM01qeGI5RFJxVnNVelkzMnVLeUVad3puQng2RkI2blR5N3pQRUtYcjVGMmZFaHhyRHFzWjM2UlljNXF0Nk5mektwYkRMaDhnZ0xtXzJLUXhHNXNoVnk3NktzdGFEeFJpTHU4a0s1aXlpQTJKRGJpMnBkZ9IBsgFBVV95cUxPVmtrdFB4VHFrRkNkZ055Smk3SWdZRUpyM3pUMVFSVFpXTjlhRzlCU3FiQldTSC1wWnpCLTU2R1RCTGM1UnRtXy1XQTE0d3R4ZDBjM21xbkVaXzhyVzY5WmRsR2Y5V0hBdkQ3UXNvWXVvMzVsTXU2MWFDREVsVGVfQmZYczZXaGZNa2JHUEJyRURYdE0ybjdYU1JmUk91MmpoR2hPTVFnQ3RrSEFkUUZlODlB?oc=5",
+    "date": "Thu, 15 Oct 2026 05:41:00 GMT",
+    "coverage": 1
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 장바구니 물가",
+    "use": "먹거리 소식",
+    "title": "할당관세 차단·검사 없는 마약단속 '어떻게'…관세청 국감서 쟁점 - 뉴시스",
+    "link": "https://news.google.com/rss/articles/CBMieEFVX3lxTE8tdk9UcWZ2dEgxbjRJa0dJck84YlNUd25wNjdkZ1VqSnJqTkJPQ1ItTjJqdGJsc1hxa1RLMXlWbTg0M0Nna0Z2NE9mVi01aG5hTER3bFhPV0Jfb01tYmt4aHVNV2NUaHMwNGtvNHQxOFJfQmp0WDlZZ9IBeEFVX3lxTE8tdk9UcWZ2dEgxbjRJa0dJck84YlNUd25wNjdkZ1VqSnJqTkJPQ1ItTjJqdGJsc1hxa1RLMXlWbTg0M0Nna0Z2NE9mVi01aG5hTER3bFhPV0Jfb01tYmt4aHVNV2NUaHMwNGtvNHQxOFJfQmp0WDlZZw?oc=5",
+    "date": "Thu, 15 Oct 2026 05:23:59 GMT",
+    "coverage": 1
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 장바구니 물가",
+    "use": "먹거리 소식",
+    "title": "美 9월 물가 3.7% 급등…휘발유 폭등에 연준 ‘10월 금리인상’ 급부상 : 국제 - 재경일보",
+    "link": "https://news.google.com/rss/articles/CBMiS0FVX3lxTE5idG4zM2NTRzhDWHpkTXNNZjQyMDNqN0JkVV9WNm1wUEFCZi1JMmp5UlpJQ0hKbmJZYlVac2ItZUxRNG5MMlZfQXZ2QQ?oc=5",
+    "date": "Thu, 15 Oct 2026 04:57:00 GMT",
+    "coverage": 1
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 장바구니 물가",
+    "use": "먹거리 소식",
+    "title": "고기 먹어야겠다…이마트서 오늘부터 최대 40% 할인하는 '고기' - 위키트리",
+    "link": "https://news.google.com/rss/articles/CBMiVkFVX3lxTFB6WHlCcFJqU1Awa0RLaElQM2ZIUlJ5b2V6NjVFVUowVlpsSEpFeFEyMDZfSXIzZ0kwQ3B6cDJQOWdlblhuWjhRQ1dPeTdBTm16LXVBN093?oc=5",
+    "date": "Thu, 15 Oct 2026 04:44:00 GMT",
+    "coverage": 1
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 장바구니 물가",
+    "use": "먹거리 소식",
+    "title": "\"연소득 1억4000만원도 빠듯\"…美중산층도 식비 '반토막' - 이데일리",
+    "link": "https://news.google.com/rss/articles/CBMigAFBVV95cUxQLVF6Y1k2RGR6cWRzbEZjdW5xN05BbWhRZTN4YnRNbzRTQk5UNW10UTVnem5xbEdhQ0JIS09XZnI1dktPRjg4eHVGdTdKenR1TXpoN2paR0xLVzVFREUzWkRLbGJWVWxPQktpVlhtYzJZSENSeHhMR25WajgyN0VXeA?oc=5",
+    "date": "Thu, 15 Oct 2026 03:54:18 GMT",
+    "coverage": 1
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 장바구니 물가",
+    "use": "먹거리 소식",
+    "title": "[`26국감-관세청] 물가 잡으랬더니 기업 배만 불렸다…할당관세 악용 5468억원 적발 - 세정일보",
+    "link": "https://news.google.com/rss/articles/CBMibEFVX3lxTE9ySmZnM0k5dmxaVU1SQ3Y0Sk9CRmVKdTZFR2gtS24yZURyVk8xN0tjejEwU3VZWHNfVFFGcTAxTzdyVlNnVFd0Q2lyeU96Qkx3c21LZ2UwLTNDbkNkajVLYjA1anRLWWJZbGUwRg?oc=5",
+    "date": "Thu, 15 Oct 2026 02:40:05 GMT",
+    "coverage": 1
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 장바구니 물가",
+    "use": "먹거리 소식",
+    "title": "식품·유통가, 가을 제철 먹거리·대규모 할인 및 신개념 브랜드 캠페인 ‘활기’ - 데일리팝",
+    "link": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE5PNndPZ21hcHgwVFJjWGRjU3o4REJHcmRJVVNGbXBmWjBiQU8wbkxaZzMxTFNEWDhkOXlHR3BPUUR2Y3JmTlU3TXdRVGdKWWtRX2tpaDF0MEZILWtCbWtXYWRoUW8xMHZP?oc=5",
+    "date": "Thu, 15 Oct 2026 02:07:00 GMT",
+    "coverage": 6
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 배추 무 가격",
+    "use": "먹거리 소식",
+    "title": "김장철 앞두고 배추값은 내렸는데 양념값은 상승세 - 강원일보",
+    "link": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE5TaWNqNk1naXVEOGdNd1ZYRkg3bjBaSldwZGpRMExrbFdiUExNTFlDQ2UzRTlZQlZ2d2pVYUpfU19ZSnBYaHJ1azdVZzc3dHlTTFJka3dNc2lZTEU?oc=5",
+    "date": "Thu, 15 Oct 2026 15:00:00 GMT",
+    "coverage": 1
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 배추 무 가격",
+    "use": "먹거리 소식",
+    "title": "일산 풍동 이플러스마트, ‘해남·평창 절임배추’ 사전예약…김장 부담 던다 - 뉴스로드",
+    "link": "https://news.google.com/rss/articles/CBMib0FVX3lxTE5fLUQzd1F5N2JEUEI2cVFoTUkwamJYX0piOHFBQWQ2WVdLUm93LVlSdEJMbmpqQWo1X0FiYmNZRFJFU2lTNnp0YUJJOTJLZjJhMFdjcW51WGtnYjFES1ppQ0podWllOEhJNE11MzdyZ9IBb0FVX3lxTE5fLUQzd1F5N2JEUEI2cVFoTUkwamJYX0piOHFBQWQ2WVdLUm93LVlSdEJMbmpqQWo1X0FiYmNZRFJFU2lTNnp0YUJJOTJLZjJhMFdjcW51WGtnYjFES1ppQ0podWllOEhJNE11MzdyZw?oc=5",
+    "date": "Wed, 14 Oct 2026 07:33:29 GMT",
+    "coverage": 1
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 배추 무 가격",
+    "use": "먹거리 소식",
+    "title": "김장철 준비 시작…절임배추 할인 판매 - 뉴스1",
+    "link": "https://news.google.com/rss/articles/CBMiS0FVX3lxTE1UekhmVXM5ZVNFMlJ4ZnEyUF9ROFBGVG9pbU52US13ZUtqQ2NpT29BX1BzUmlxUW82VHlXallTVTdsQVFXcHJkUzBVMA?oc=5",
+    "date": "Wed, 14 Oct 2026 05:26:54 GMT",
+    "coverage": 1
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 배추 무 가격",
+    "use": "먹거리 소식",
+    "title": "배민B마트, 김장용 절임배추 사전예약…5kg 1만4900원 - 나눔경제뉴스",
+    "link": "https://news.google.com/rss/articles/CBMibEFVX3lxTE1XUnVNdjRHeUhlXzduQ3J5TzlBWHBTanMyU2E5T1poYUpKUWZrQ2p1bXJhZEhwNzFtei1TR1FPQm5uUWxTMG9hQkliQWUtaGtaUEdvS2hHZkhvci1nNmE2MnlBVldBYWZiSThmZA?oc=5",
+    "date": "Wed, 14 Oct 2026 03:02:13 GMT",
+    "coverage": 1
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 배추 무 가격",
+    "use": "먹거리 소식",
+    "title": "“무거운 절임배추도 집 앞으로”…배민B마트, 김장철 사전예약 시작 - 매일일보",
+    "link": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE5HRnQ5NjF5Mi1BUXAxNHh0UzVNcDRpOENpV3JJZ3NValpHNnFQRWRST01UaWt6SkdDb3Z3WE1faU1RNUUzcVpibXcyUEViVnc4T3NIWVJYWl9zZGd4WmltVnU0Vkk?oc=5",
+    "date": "Wed, 14 Oct 2026 00:53:21 GMT",
+    "coverage": 1
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 배추 무 가격",
+    "use": "먹거리 소식",
+    "title": "배민B마트, 절임배추 사전 예약 첫 도입…김장도 퀵커머스로 - 더트래커",
+    "link": "https://news.google.com/rss/articles/CBMiWEFVX3lxTE03aENWdE81WjZiQjNFa0Fma1hSYlpQS1FBTHRZVm1VUmx5MXQyS2FaQ0ItbEptZlZjaERIQnR2MEhETF94cms2dXRhdkJYZEMyTkt6MnJmck0?oc=5",
+    "date": "Wed, 14 Oct 2026 00:48:53 GMT",
+    "coverage": 2
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 배추 무 가격",
+    "use": "먹거리 소식",
+    "title": "배민B마트 절임배추 예약…김장 배송일 토요일로 맞췄다 - ER 이코노믹리뷰",
+    "link": "https://news.google.com/rss/articles/CBMibEFVX3lxTE9PVExDd2hYVExUQl80NmxrVW5IaXExMWg3QjlMTzZIZzAyT1VPS2kxbWNWbHk1YnJfQVd0TGg0YWZ5andxZWloTTBRYWpDUEF3VkxkVUZsSUdjZEhBSjJvY1ZrUmN4RHFLYWxJcQ?oc=5",
+    "date": "Tue, 13 Oct 2026 23:47:55 GMT",
+    "coverage": 2
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 닭고기 치킨 가격",
+    "use": "먹거리 소식",
+    "title": "치킨 만난 나쵸·누룽지·김부각…마니커에프앤지, 신제품 3종 출시 - 뉴스1",
+    "link": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE84S0pDQVZoUmhxX094Mlp6TUJuNjRWX1psMDNhMmh6cERwZVRYT2s5UUVBT1dMcWVvVHM1d0x2SEtTOFJxVkNqMXVVSWZ5Unp4SnJ2TF9GWFJRWTRsdGNZ?oc=5",
+    "date": "Thu, 15 Oct 2026 00:18:27 GMT",
+    "coverage": 1
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 닭고기 치킨 가격",
+    "use": "먹거리 소식",
+    "title": "공정위, 치킨3사 담합조사...가격결정은 어떻게? - 한국아이닷컴",
+    "link": "https://news.google.com/rss/articles/CBMib0FVX3lxTE5uNzVSa3FrdVRXZkt1OHl3S3kycHdZYl9zcVJsaklvOFhEanE4TUtKd0hBQkVmSUJPaXl1MmktRnBMdVB3LXZsbnE5by1kSklNMzlhQ0tXRXZHQ0FVRXU5ZkRjNklScklZS2t0UjN6VdIBb0FVX3lxTE5uNzVSa3FrdVRXZkt1OHl3S3kycHdZYl9zcVJsaklvOFhEanE4TUtKd0hBQkVmSUJPaXl1MmktRnBMdVB3LXZsbnE5by1kSklNMzlhQ0tXRXZHQ0FVRXU5ZkRjNklScklZS2t0UjN6VQ?oc=5",
+    "date": "Tue, 13 Oct 2026 23:35:35 GMT",
+    "coverage": 1
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 삼겹살 돼지고기 가격",
+    "use": "먹거리 소식",
+    "title": "'삼겹살 굽기 자격증'을 아시나요 - 한국경제",
+    "link": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE9iOEttaU5oTFpwNjlLS0lnUVFhbHV0LVZqQUxLR3hyeWJybDBUekx0ckdRRnlHOWF2aGYwZUh3cEsxUFV1NmRZLUY0ekVyMDBrTGd3SzQ5dE1uZw?oc=5",
+    "date": "Thu, 15 Oct 2026 08:23:03 GMT",
+    "coverage": 1
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 삼겹살 돼지고기 가격",
+    "use": "먹거리 소식",
+    "title": "카지노 외형 재접속 후 확인해야 할 진행 상태 - Calgary Roughnecks",
+    "link": "https://news.google.com/rss/articles/CBMiggFBVV95cUxNUkFKOFgtUUdrNlNlajZqdV85b3pmWEN0WVFrTG40NUY1YlY0Q0hhT0llT1A4My1leE9XcG9GakFhSFN2elBVREE3M2JJd01rU3NYTUhmVm9BNnUwZGVmZzRfQzY1cG16ZElIWU9WR24tYmZEWk9DT094RUMwQXVKWHJB?oc=5",
+    "date": "Wed, 14 Oct 2026 18:17:08 GMT",
+    "coverage": 1
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 계란 가격",
+    "use": "먹거리 소식",
+    "title": "브라질산 계란 '800억원 낭비' 주장, 사실관계 따져보니…실제 수입비용 16억원 - 미디어써치",
+    "link": "https://news.google.com/rss/articles/CBMicEFVX3lxTE9obVRyWDVtV2l4a2RIMl92ZUpFM2M4eTlldGt1dGRjV254aHE3UFpqTDdaYV9EcklmVFl5czVXOTdiVGVGQjlhZTEweUx6STNsTWg1bV9JamdtVzFVNjdDVlphUWl0OUNER3NReHc1TWc?oc=5",
+    "date": "Thu, 15 Oct 2026 22:40:42 GMT",
+    "coverage": 10
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 계란 가격",
+    "use": "먹거리 소식",
+    "title": "나경원 \"커피 원가 120원 궤변 반복\"…이 대통령 ‘계란 계산법’ 정면 비판 - 뉴시스",
+    "link": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE1JSjZRUHlLYWhQYzNEU3JHS3BwQ3FpT1B6bFBtamNzWWpWTkVueGhBbWdDbV9haHk4RmF0OXVsWncxUnYtOGR2c3k5SmgwQ0I1cFU0djhBV192bVV6TkRicQ?oc=5",
+    "date": "Thu, 15 Oct 2026 22:40:00 GMT",
+    "coverage": 1
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 계란 가격",
+    "use": "먹거리 소식",
+    "title": "[농담] 달걀값보다 '모셔오는 값' 7배…'수입선 다변화'의 역설 - 머니투데이 - 머니투데이",
+    "link": "https://news.google.com/rss/articles/CBMicEFVX3lxTFBlSEFzSnY5QU4tSEdWaG5VUTFOWHA2Tk9aZktoQ3Y5YTMxYjdkT2dtQkNFSEhxSjRmV3JhZlpBakxwRXR1eTdQOV9EcjU2LUxFNUdjbmtUTWxGQTJ2dnZlY2gxeFBaUTFndGlUR2JJQ1HSAXBBVV95cUxQZUhBc0p2OUFOLUhHVmhuVVExTlhwNk5PWmZLaEN2OWEzMWI3ZE9nbUJDRUhIcUo0ZldyYWZaQWpMcEV0dXk3UDlfRHI1Ni1MRTVHY25rVE1sRkEydnZ2ZWNoMXhQWlExZ3RpVEdiSUNR?oc=5",
+    "date": "Thu, 15 Oct 2026 21:00:00 GMT",
+    "coverage": 1
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 계란 가격",
+    "use": "먹거리 소식",
+    "title": "이 대통령 \"브라질 정상회담 위해 계란 고가에 수입? 허위 사실\" - YTN",
+    "link": "https://news.google.com/rss/articles/CBMiXkFVX3lxTFBsTmtheTJaaExKWk1YX0x1cXRXd0R5QXJyWnVYZHFkN0VQSFBtcnNEUExWM1AzWDB0UEkxT2JxU3N6Z05RR2Ytbm1hTGdleVNhSndaOXpoOFNKSU1qMGc?oc=5",
+    "date": "Thu, 15 Oct 2026 15:18:00 GMT",
+    "coverage": 10
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 계란 가격",
+    "use": "먹거리 소식",
+    "title": "브라질 계란 800억 안썼다…李 \"16억에 불과\" 그런데 14억이 부대비용 - 매일신문",
+    "link": "https://news.google.com/rss/articles/CBMiYkFVX3lxTFBGSTBYbWxDVEpuWHhaQVU3VkVvTzh1czVjX3hlRy1tNVgxUkswdTE4VjI3Y1BRd1dfWHNYVjBYTHNKX09HRkJCZVRILU9GRDRTaDVDTWlBWTlXU3BrVTFPXzJB?oc=5",
+    "date": "Thu, 15 Oct 2026 13:50:13 GMT",
+    "coverage": 10
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 계란 가격",
+    "use": "먹거리 소식",
+    "title": "이 대통령, 장동혁 겨냥 “브라질 계란 수입에 800억 낭비?…허위사실” - 한겨레",
+    "link": "https://news.google.com/rss/articles/CBMia0FVX3lxTE5QUUFVaVBIRFZrRnMwendiNVFiNWNfa1BDS0Q0U3N1MVp6ZDNEaDhFQXZZbEREM2RrbzlvVWxpSWI1TWdfQUZvQW00bjhXdHlrRlNTcDhOelFiYlJsZHYxYzZnU1RMYi1qYkRv?oc=5",
+    "date": "Thu, 15 Oct 2026 11:13:00 GMT",
+    "coverage": 10
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 계란 가격",
+    "use": "먹거리 소식",
+    "title": "李대통령 “브라질 달걀 ‘혈세 800억 낭비’ 허위 사실…소량 시험 수입” - 세계비즈",
+    "link": "https://news.google.com/rss/articles/CBMiXEFVX3lxTFBHbnJvRnpFTV9VMmsyRnlzSGsxd1JmVzczV3hyWFRZaHBTS0o0WHNneFdKcFNBeVVCSmJobUVkaFBNeWl4Nlg4ZHpUc1d6Mjd2SWZxUmQtbm4zci1X?oc=5",
+    "date": "Thu, 15 Oct 2026 10:33:00 GMT",
+    "coverage": 10
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 계란 가격",
+    "use": "먹거리 소식",
+    "title": "계란 산지가격 하락세 뚜렷…소비자가격 반영은 더뎌 - 축산신문",
+    "link": "https://news.google.com/rss/articles/CBMiaEFVX3lxTFAwZEZBX3Jpb3RVYWZQTDgtTm95RHU2dVpKMGtwODRxQ29LdzlGanlGVmtqaGZfc1Y0c0lTYUhiSWR5WG9DWHFibVFzY2VQUmMtdi1aMVRLaXBoRlY5S3AzV3o3WHVIUWdy?oc=5",
+    "date": "Thu, 15 Oct 2026 10:10:42 GMT",
+    "coverage": 1
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 계란 가격",
+    "use": "먹거리 소식",
+    "title": "李대통령 \"브라질달걀 '800억 낭비' 허위사실…소량·시험 수입\" - https://spt.co.kr/",
+    "link": "https://news.google.com/rss/articles/CBMiXEFVX3lxTE5pNzlybXBHS1liTnk4bjZrZmRuN3JCaFFmcEcxOFk1NUFOTXhtR3BWaHY5dmRHSTdlWm9nR2J6ZDZFQ0FrY0M3NjJHbHg1MFFZaTVxM2xqMDJacVhm?oc=5",
+    "date": "Thu, 15 Oct 2026 09:38:48 GMT",
+    "coverage": 10
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 계란 가격",
+    "use": "먹거리 소식",
+    "title": "李대통령 브라질달걀 '800억 낭비' 허위사실…소량·시험 수입 - SBS Biz",
+    "link": "https://news.google.com/rss/articles/CBMiWEFVX3lxTE4tZmhES0VMVEVRWFZ3Z1hDM1AxcVk2MnBpdUtEUHdJYnBTajNWdGVQT3Z2UElnX3FYd3ZQNkVPalpIMHVvZVk5QmlyYmRTN21obHFpNWNkQ2zSAVhBVV95cUxOLWZoREtFTFRFUVhWd2dYQzNQMXFZNjJwaXVLRFB3SWJwU2ozVnRlUE92dlBJZ19xWHd2UDZFT2paSDB1b2VZOUJpcmJkUzdtaGxxaTVjZENs?oc=5",
+    "date": "Thu, 15 Oct 2026 09:35:00 GMT",
+    "coverage": 10
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 계란 가격",
+    "use": "먹거리 소식",
+    "title": "계란 한 판에 4.4만원… 정부는 왜 브라질산 수입에 16억을 썼나 - 세계일보",
+    "link": "https://news.google.com/rss/articles/CBMiWEFVX3lxTFBLbFRka1BWSnZzdV9oenphdUVHbmhGX1pSNUJFVkxFTnhScm50YzM3cGhrVzhVYkRXS2x3UjVsVml1ZzJhY0xGR2M4ZUFrZ2FJWERJTUhlVTTSAVRBVV95cUxPQ1JtdHVIcUkxaFV2UXNsWWtabVVoaElxX002dHdvRlhRZEt5S0hQVWhqOWtaYVJDZ3QxUGZnR3k5SGJ3YzRjVjhGOVJrc29nZlZEVDk?oc=5",
+    "date": "Thu, 15 Oct 2026 09:28:22 GMT",
+    "coverage": 1
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 계란 가격",
+    "use": "먹거리 소식",
+    "title": "7000원대까지 치솟은 계란값 - 세계일보",
+    "link": "https://news.google.com/rss/articles/CBMiWEFVX3lxTE5TVTBSWGtuWkMzSUl6cE02a0tMRTJXWTFaUmk3UWtTQmhleFpxQzVWZHJkejBhZ3ZyN2phRms2Sk1PNzI4ZU16R2NlMHhNWHl3cjQtMUNuX2TSAVRBVV95cUxQQ0loLW1SaG05azB5Q1o5SXJLVlZEVl91UzdGX0RRZWo2MEtfS0Z1ekViZWF5Mm5Gb1NxYThCWGJjTlE1VG5YMlpiMUpxTmxJRVB1cFI?oc=5",
+    "date": "Thu, 15 Oct 2026 09:27:28 GMT",
+    "coverage": 1
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 계란 가격",
+    "use": "먹거리 소식",
+    "title": "이 대통령 “브라질산 달걀, 공급난에 시험 수입…800억 낭비 주장 허위” - 브릿지경제",
+    "link": "https://news.google.com/rss/articles/CBMiWkFVX3lxTFBSRUxIVFBzYl9XSkNobUtlNklYVVRHTVVEQnVLbmk1NmM4R1JvTmJIY1pNSzBuT0hmLTU5OXVSNllCTUZ3S3FPbnBoZEtLZFlKb2hPZktUWFpzQQ?oc=5",
+    "date": "Thu, 15 Oct 2026 09:06:00 GMT",
+    "coverage": 10
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 계란 가격",
+    "use": "먹거리 소식",
+    "title": "‘개당 1464원’ 브라질 달걀 논란…李 “혈세 800억 낭비는 허위사실” - 매일경제",
+    "link": "https://news.google.com/rss/articles/CBMiRkFVX3lxTFBEZnZxanU1eWhKX21Oc1h6d1FlU0hMNkNlMWtEZnNIM0FROFN1ZDktZUpZV3N3ekZfMldOWEZKb3pfNjhaRXc?oc=5",
+    "date": "Thu, 15 Oct 2026 08:55:11 GMT",
+    "coverage": 10
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 계란 가격",
+    "use": "먹거리 소식",
+    "title": "李대통령 브라질산 계란 800억 낭비는 허위…실제 16억 - 아주경제",
+    "link": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE1QUGtZNmt3N1JLTlUtVjFKbktObldHbE9jVUFDQTdkSjdpcUxIUVl0OE54UlpEc3RmZjUxTzRjdGtpVHdBY1dON3NYbzl2WjFadGJLNkFZdmN1Z9IBWEFVX3lxTFBPYUVQN0J3bkRrWEtZRXpTejh0NHBqRkh0a1otNERSWFBwVXBqR00xbzNaSFowb09KUWN0ajdkTFdtTzVQbl9sWjhNcWtDMFd2ODYtemRLU0o?oc=5",
+    "date": "Thu, 15 Oct 2026 08:43:40 GMT",
+    "coverage": 10
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 과일 가격",
+    "use": "먹거리 소식",
+    "title": "비트코인(BTC) 급락, 진짜 범인은 '기름값'?...\"지금이 매수 기회\" - 코인리더스",
+    "link": "https://news.google.com/rss/articles/CBMiSkFVX3lxTE5TQ21CdEgzRngtWGNVZGg4Y291MEMwUjN3emxMaVoxTWtsMFo3SzFXN0VmSVBvcS1WREtNYk5YRTlaSWFsZUUxUEd3?oc=5",
+    "date": "Thu, 15 Oct 2026 21:30:00 GMT",
+    "coverage": 1
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 과일 가격",
+    "use": "먹거리 소식",
+    "title": "美 9월 생산자물가 전월 대비 1.3% 급등…4년 만에 최대 - 서울경제",
+    "link": "https://news.google.com/rss/articles/CBMiU0FVX3lxTFB1Y0w2ajI3QUVlVHVTbURQX3o5V3V4a2c1NURBemd3TzNjWG8zZnF0Xy0zbHQwU1Y0MDlOeXg1SUZUWi1TYkx3RS1jQkFTM0dLcy1N0gFTQVVfeXFMUHVjTDZqMjdBRWVUdVNtRFBfejlXdXhrZzU1REF6Z3dPM2NYbzNmcXRfLTNsdDBTVjQwOU55eDVJRlRaLVNiTHdFLWNCQVMzR0tzLU0?oc=5",
+    "date": "Thu, 15 Oct 2026 13:36:05 GMT",
+    "coverage": 1
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 과일 가격",
+    "use": "먹거리 소식",
+    "title": "냉해·고온 피해 배 수매…가격 낮아 이중고 - KBS 뉴스",
+    "link": "https://news.google.com/rss/articles/CBMiW0FVX3lxTFBidEhNRi12bFF5SzdJeWEtb1pSRVlwRlBxQ0VDMjlRc0tuaE1sbG9HLWtrUVJtUDQtaExTaGMxMW5SQi15V0c5Y28zSnpSa2dXMnZfUWMxcEtqZ1k?oc=5",
+    "date": "Thu, 15 Oct 2026 10:38:00 GMT",
+    "coverage": 1
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 과일 가격",
+    "use": "먹거리 소식",
+    "title": "\"가을 제철 별미 한가득\" 이마트 · 이마트 에브리데이, 먹거리 특가전 진행 - 경북도민일보",
+    "link": "https://news.google.com/rss/articles/CBMiakFVX3lxTE1TdlZlQ25SRE1iMVVpSHlEdmdvenFoWnhTLXVfSE9iVnIzTTh0UFJjQWVBaFdCckVwV2tEMGt5MXhYbU9mbkdWM1JMV2lHNk5HT1l2YURoS0ZOc0xvLTQzUVZOWUxCODhMTmc?oc=5",
+    "date": "Thu, 15 Oct 2026 09:55:57 GMT",
+    "coverage": 6
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 과일 가격",
+    "use": "먹거리 소식",
+    "title": "안도걸 국회의원“국민 위한 관세·면세 혜택, 일부 업체 이익으로 변질... 제도개선 시급” - 일등방송",
+    "link": "https://news.google.com/rss/articles/CBMiREFVX3lxTE5mUUJRbXRxYmxKZUlfVmNaTE03SExvU19xdUxxT3RGQWQ2VUdxMWxrWjI0Q1pxaEc5VDVVQTZBR09qa2NK?oc=5",
+    "date": "Thu, 15 Oct 2026 09:10:00 GMT",
+    "coverage": 4
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 과일 가격",
+    "use": "먹거리 소식",
+    "title": "악용되는 할당관세…관세청장 \"관련 부처와 대책 논의 중\" [관세청 국감] - 조세일보",
+    "link": "https://news.google.com/rss/articles/CBMidEFVX3lxTE1CVUIwS05CcHVuSV9ITUxjSzk4U0cyQlFTOTgzbm9jNklvckJPUEt3U1FOWWhacG14SGxwaHhmRmxROXp3OTAtRTFGS1p1MG9MeHh0OEhzRmVUOTRsRmJMWlc5MnVWX1VNUnMxb25rRUNKakdX?oc=5",
+    "date": "Thu, 15 Oct 2026 08:30:32 GMT",
+    "coverage": 1
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 과일 가격",
+    "use": "먹거리 소식",
+    "title": "태국: 심각한 노동력 부족으로 과일이 익어서 나무에서 떨어지도록 방치되고 있다. - Vietnam.vn",
+    "link": "https://news.google.com/rss/articles/CBMilgFBVV95cUxPMjg1UGRwOTA2SWRjNFVXR0UtS3plRzlteXlyV3B0N2JrbWlWTEdxMXJ5ZU4tY0ZFdWRqU01HN0dSN1lPeUlvWEZXWk9BZG8zeGV3MFBTQkFxSm9WbmliM1J3Zl8zLTFZWFZqS1I1NDRpaFFaVDFEVTFlU0ZxeEV6dzg5Q1c4cW03TzczN25YeXZfeUtJamc?oc=5",
+    "date": "Thu, 15 Oct 2026 06:28:18 GMT",
+    "coverage": 1
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 과일 가격",
+    "use": "먹거리 소식",
+    "title": "La Hien의 비수기 과일 시즌 - Vietnam.vn",
+    "link": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE16eHZqRDc2RjJ6OHdadEZFNENkWTA5bWlxRGx4QlE3bm5RODhXR2JWdjNhUHVnQTVFSWVBc2N2SHRNNEZONkFsYVlaak5IMGJyRjFxSHJWS1ZzSnl1ZGxaYg?oc=5",
+    "date": "Thu, 15 Oct 2026 05:17:21 GMT",
+    "coverage": 1
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 과일 가격",
+    "use": "먹거리 소식",
+    "title": "경기도농수산진흥원, ‘도래미마켓 제철과일 특별전’ 개최 - K채널",
+    "link": "https://news.google.com/rss/articles/CBMiakFVX3lxTFBJTTRJTG82amlTbGcxTEZsYlpEbnFpay1CUkRQV3lZb2Rmc3Znb1JrbHBTQ2U0WHBMME4ySjFqNld4ZGZWRDROclZBNTkwNVE2bUxQalNRT1U4ajJzeFRWcm1LWDR4R3lhUlE?oc=5",
+    "date": "Thu, 15 Oct 2026 05:13:15 GMT",
+    "coverage": 3
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 과일 가격",
+    "use": "먹거리 소식",
+    "title": "하루 시작 가격: 레몬 가격 두 배로 오르면서 슈퍼마켓들은 연말 시즌을 맞아 가격 안정을 위해 노력을 강화하고 있습니다. - Vietnam.vn",
+    "link": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxQVUFfcWxIejB5M01wRGFQcTRleFJNVEZwS1hMS1B4Z2RaZGxpQlVXeU53Z1NScGVDZ3piLXc1LWhDaVdoQ3UzZ0tZZEFydjNVOVhyVnY0V1FXMUdNYjZ6Wkx6clEyaXhiMUd2RDNFN2pGWm9qdExaSl96Tk9oYktncEdLV1RScVppQkpRaE1vNTJyTjFCZnZiNUZYRWRmdmRoRmczVzBkVDBuWGs?oc=5",
+    "date": "Thu, 15 Oct 2026 04:26:58 GMT",
+    "coverage": 1
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 대형마트 먹거리 할인",
+    "use": "먹거리 소식",
+    "title": "[굿모닝! 15일 유통가 소식] 롯데하이마트·이마트·배민·현대백화점·GS25 - 굿모닝경제",
+    "link": "https://news.google.com/rss/articles/CBMibEFVX3lxTE9WUTZQTVl4TDlsV0JoaHR6Ujd5b3NuekxJSnlQQTV4M0p6Y2h6SkpVODdxQnZraGpRWl9feDFkOVo1MWsxOUJyZ202NzJSM1M5ZWE3ZEVISmJDLWNmYndxM1BkX0lxVzA2SGFqaQ?oc=5",
+    "date": "Thu, 15 Oct 2026 05:44:03 GMT",
+    "coverage": 1
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 대형마트 먹거리 할인",
+    "use": "먹거리 소식",
+    "title": "[포토] “햇밤·키위 원하는 만큼 담으세요”… 이마트, 가을 먹거리 할인 행사 - 브릿지경제",
+    "link": "https://news.google.com/rss/articles/CBMiWkFVX3lxTFBjNmxWSGNCMFdYXzF0VlBTNjQ2LWFjVlFoN2U5cW9hVlVtM3R2T18zRHIxd2VxTTBMODhVNUhQcUZYS1BhdHV4Y1U0UW1ZQ2Y2d2hxU1g1LUw5UQ?oc=5",
+    "date": "Thu, 15 Oct 2026 04:51:00 GMT",
+    "coverage": 6
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 대형마트 먹거리 할인",
+    "use": "먹거리 소식",
+    "title": "'제철 먹거리 특가 vs. 가성비 PB'...이마트-롯데마트, 가을맞이 대규모 할인 '격돌' - 테크M",
+    "link": "https://news.google.com/rss/articles/CBMiakFVX3lxTE9sQnFsZVE0em4wdm9PaW5rSWNVM0U4dkJPVldHX29DNGVVaGlGMzdfV0ppZm9BbXJSRUxoRHQ5Rm1oZURpMmV0QnFkZ2hBTzJFMFRKS1U1YTgybGl2OEprMVY5MGxrR1ViWEHSAWpBVV95cUxPbEJxbGVRNHpuMHZvT2lua0ljVTNFOHZCT1ZXR19vQzRlVWhpRjM3X1dKaWZvQW1yUkVMaER0OUZtaGVEaTJldEJxZGdoQU8yRTBUSktVNWE4MmxpdjhKazFWOTBsa0dVYlhB?oc=5",
+    "date": "Thu, 15 Oct 2026 04:50:28 GMT",
+    "coverage": 6
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 대형마트 먹거리 할인",
+    "use": "먹거리 소식",
+    "title": "“한우 반값에 500원 과자까지”… 대형마트부터 동네 슈퍼까지 물가잡기 나서 - 뉴시안",
+    "link": "https://news.google.com/rss/articles/CBMia0FVX3lxTFBERnIxMHdMZXdfZDB6cUtXTWpSMWZxbVBBSnhyS05ORlVKYWlobW1yVExnYmdJV3RLN2hVU2tqVkxCTW5fV2NQOEVYaTUwM0t5aGlWWVh1ZXR3SE1IX2hrcjQtOXpsbmNzT05F0gFuQVVfeXFMUFZzQ09oOXRSSVpHWXpUckl6ZGxFa0ZqU1dnbUVkeE5NczZzLXNKQ3pNQURwZDZCR29oTkl5cFBWeE9YWC1zNTduNmxDOW9iUExWZTJ4dVdoalJEeXlJTmgwVXZ5UWpaY2F2OUFpT1E?oc=5",
+    "date": "Thu, 15 Oct 2026 01:11:30 GMT",
+    "coverage": 1
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 대형마트 먹거리 할인",
+    "use": "먹거리 소식",
+    "title": "[유통딜리버리] 신세계百ㆍ현대百ㆍ롯데마트ㆍ이마트ㆍ홈플러스익스프레스ㆍCUㆍGS25ㆍ세븐일레븐ㆍ이마트24ㆍSSG닷컴ㆍG마켓ㆍCJ온스타일ㆍ쿠팡 - 대한경제",
+    "link": "https://news.google.com/rss/articles/CBMidEFVX3lxTFB4aTZPQ0JsZWttMHlmSUpDRG9mbWFwc0ZwN0xWXzk3em1TU3I4TEJNMXc3enRUNnExNlprcERCc2VTXzd0VHlOZVhMZDhkSF92OUJtZFlCbFktWklWUnUzMWlFemdmWlNKY0dJaUxwbl9NTjN3?oc=5",
+    "date": "Thu, 15 Oct 2026 00:18:12 GMT",
+    "coverage": 1
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 대형마트 먹거리 할인",
+    "use": "먹거리 소식",
+    "title": "보너스 설명에서 놓치기 쉬운 바카라 400 출 예외 조건 - www.icaremn.com",
+    "link": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE43RW94U0VUeklKdGFKTHplbFJXaWNBNm05Vm8xVVZkNnlCZ3RYcng5ZC1uRS1uN2JSSTJQaGthUzFndDdNNW9YY3h3ZWlDZVUyUVJyZlZn?oc=5",
+    "date": "Thu, 15 Oct 2026 00:06:47 GMT",
+    "coverage": 1
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 대형마트 먹거리 할인",
+    "use": "먹거리 소식",
+    "title": "이마트·에브리데이, 제철 과일·수산물부터 간편식까지 할인 - 더퍼블릭",
+    "link": "https://news.google.com/rss/articles/CBMib0FVX3lxTE1BaS0zbjU2cHlRVHNFNEgzOFhPMDVNZld4ejFfb0oyaVJBbmQtZXVjZGVLVTdMVjhRUVhJQV8zLWNoQ1k4OFlLbzBpb05iQWtheFB4Y25YR3pheEpIdkR1TFBwR1ZuLU1LT1UwNzU4WdIBb0FVX3lxTE1BaS0zbjU2cHlRVHNFNEgzOFhPMDVNZld4ejFfb0oyaVJBbmQtZXVjZGVLVTdMVjhRUVhJQV8zLWNoQ1k4OFlLbzBpb05iQWtheFB4Y25YR3pheEpIdkR1TFBwR1ZuLU1LT1UwNzU4WQ?oc=5",
+    "date": "Wed, 14 Oct 2026 22:37:18 GMT",
+    "coverage": 6
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 외식 프랜차이즈 가격",
+    "use": "먹거리 소식",
+    "title": "[ 2026년 10월 16일(금) 프랜차이즈 뉴스 ] - Naver Blog",
+    "link": "https://news.google.com/rss/articles/CBMijgFBVV95cUxPeUJGb3l4V19IN05vS0duQ3FJR2dLdHB6c3VHck5uOER5UHZkUHR0a25rSmtMSi1qMUhNNmtkTGNYamNtS3dlbm5xQ0xjMkhxSjhRd0Vka3RlVmhMUWRoelNIa1FGZUxIYndPa0xheHkxR0lYS01PcW4yakNrbXFjSDFUYnhCNUZXQ1dfdGRB?oc=5",
+    "date": "Thu, 15 Oct 2026 10:42:36 GMT",
+    "coverage": 1
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 외식 프랜차이즈 가격",
+    "use": "먹거리 소식",
+    "title": "[ESG] “포장 바꾸고 상생 키우고”…다이닝브랜즈그룹의 ESG 경영 - 디지틀조선일보",
+    "link": "https://news.google.com/rss/articles/CBMie0FVX3lxTFBXeGdCekxScU1EWHZuMHQxdmhVNGEtLUFyMG9ydUFoeUhRZHVRclRDcHJkZ3lXR1ZwY29WRXA3QWdsS2tvc1pCblRwN19PYWNYeFROc0w0YW14RzFKcEZNY2o5bFFidE5xTW9mUkpGZnZpUVJUaWxUN0xvc9IBe0FVX3lxTFBXeGdCekxScU1EWHZuMHQxdmhVNGEtLUFyMG9ydUFoeUhRZHVRclRDcHJkZ3lXR1ZwY29WRXA3QWdsS2tvc1pCblRwN19PYWNYeFROc0w0YW14RzFKcEZNY2o5bFFidE5xTW9mUkpGZnZpUVJUaWxUN0xvcw?oc=5",
+    "date": "Thu, 15 Oct 2026 08:12:19 GMT",
+    "coverage": 1
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 외식 프랜차이즈 가격",
+    "use": "먹거리 소식",
+    "title": "[ 2026년 8월 12일(수) 프랜차이즈 뉴스 ] : 네이버 블로그 - Naver Blog",
+    "link": "https://news.google.com/rss/articles/CBMi-AFBVV95cUxNZDNTQVlBZHloaUltRzBGVVJsRy01M3M1RGJ6a2xSU0hUejFxcXo3VkVGa1c3eE94SjlFWU05QWtmeklqUGJtUi1HZml5eE5aY2Nqc1cwYV81aEV1WUN3OXBEY0FSNm0wWnNVRER6YlhxdXdYZEROVGp0S3dMQS1QOWZDUVVJN1lsZWFBaXB0Qm9lVUM1Z3hRdWJtVTMzY3l1UUpUQnhUbnVjSXRFdHprUGdaR19nNG80TnkwZTFqckNYdzVtS191dFR4ZnduUk45eVZTM2c2RHhPR1ZyNUJJRUlQbXNmX0s0MG9GR3hSMWxuTUdDS1NPNA?oc=5",
+    "date": "Wed, 14 Oct 2026 15:16:31 GMT",
+    "coverage": 1
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 외식 프랜차이즈 가격",
+    "use": "먹거리 소식",
+    "title": "[인물+] 재도약 채비 이디야커피, 문창기 회장 리더십 '주목' [ 신아일보 신현숙 기자 ] : 네이버 블로그 - Naver Blog",
+    "link": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE1rbk9SelRIdGJnYVJxNkp4LVpIc3Z1UVAtM3BfTmZGeFdmTTVQVFJDeHctb2JWN0t6QW9UeUttUUNFeWhQcWpGcmhkRkNpblFCcS1iR2Fn?oc=5",
+    "date": "Wed, 14 Oct 2026 05:02:03 GMT",
+    "coverage": 1
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 셰프 신메뉴",
+    "use": "먹거리 소식",
+    "title": "[인터뷰] “가성비 넘어 맛성비”…노브랜드버거의 3세대 도전 - 아시아투데이",
+    "link": "https://news.google.com/rss/articles/CBMibkFVX3lxTE9UNFEyRnhlR1BjQktDU2R4SzBBclk3SU02WTdjZFU5VVNGZFNHUHdZRWF5cm4zQTFtR0dvdlJRRDBDQ1B3MVI3NkRMTjQway1adDlhWUc3MkRZdU5uMzhmNWc1bEtoZHhaS0ROM2hn?oc=5",
+    "date": "Thu, 15 Oct 2026 09:00:57 GMT",
+    "coverage": 1
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 셰프 신메뉴",
+    "use": "먹거리 소식",
+    "title": "bhc 3연속 흥행 치킨 신화 재입증 - 뉴스클레임",
+    "link": "https://news.google.com/rss/articles/CBMidEFVX3lxTE9zbDNMcFFLcUZSZVlQVmRvQnRoY1p2bUpZZWZfNl9WTDQ1ak1xOEFYeERVY081c3NmS2t2ejcwanp2TlBUZnRqU0dxVUtOdlhjUTBleEM4TlFEdHdPMDJ0M2Y0QmNBUWluMWJtWVZZM3FFMkFa0gF0QVVfeXFMT3NsM0xwUUtxRlJlWVBWZG9CdGhjWnZtSlllZl82X1ZMNDVqTXE4QVh4RFVjTzVzc2ZLa3Z6NzBqenZOUFRmdGpTR3FVS052WGNRMGV4QzhOUUR0d08wMnQzZjRCY0FRaW4xYm1ZVlkzcUUyQVo?oc=5",
+    "date": "Thu, 15 Oct 2026 07:53:57 GMT",
+    "coverage": 1
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 셰프 신메뉴",
+    "use": "먹거리 소식",
+    "title": "[인터뷰] \"셰프 입맛이 정답은 아니었다\"…‘노브랜드버거’의 변신 - 미디어펜",
+    "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE44Rk1RRl9uSjhIRXJOckFTdnN6WmNGRnFSaXdWT0F0bE1wdTNkdEhJQ2N5WkhDSExaeEgyTnVlYnJkd0d6NkNZSTJ5aTJ0VlJ1ekExVtIBWEFVX3lxTFBET1F1TW9yVXktSXZ2cjQ5SnpKX3FiRFNaaklTLWRWSXB1YUJPekMtQWkycW02ZV9BbkVnNlFTWnB0YUVabmZKbHAyQzQ0OEhmYXBpNDBzVjU?oc=5",
+    "date": "Thu, 15 Oct 2026 07:47:22 GMT",
+    "coverage": 1
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 셰프 신메뉴",
+    "use": "먹거리 소식",
+    "title": "뚜레쥬르, 호박·흑임자·고구마 신메뉴 - 쿡앤셰프",
+    "link": "https://news.google.com/rss/articles/CBMiYkFVX3lxTFA1SmdXdlIzS21vZmpkSjdnYU0xcnNlZEtPak94T0QtLWFMRmRXQkxYdXVlTGlZM0pFTDdRRmNtaS1jeExVaGJLRXVuY2F5UFA3OTB3a1NjSEVSZWhheHJJQnJ30gFaQVVfeXFMT2lCa0JGWTFXSkM0eEZIUUt5OFVMZWEwUmxZWTFwd19US1dfZVJfUy0zWEVORHFkTVdZbFh1NlVELTUteVByYzVfeGJKZXptRFZvdlM5Y1dVMHNn?oc=5",
+    "date": "Thu, 15 Oct 2026 06:03:08 GMT",
+    "coverage": 1
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 셰프 신메뉴",
+    "use": "먹거리 소식",
+    "title": "[한입 직썰] “양고기 잡내는 잡고 풍미 살렸다”···윤남노표 써브웨이, 기대와 아쉬움 사이 - 직썰",
+    "link": "https://news.google.com/rss/articles/CBMiaEFVX3lxTFBkS3NOb0hpLUF4NGt4dE41WVAtTWdoS2NrUUF2MU5EdDdiM1VhbnpUZkdzZ1kwTmEzbjVnNnJCbTJEV0N5bnBhT0dxdXR3UFoxd0M2Z05pdGQzRFdNcXRPbzZGS0RVX2Rz0gFsQVVfeXFMUEsxeWVtWjA1T3pZRkNDend4TzY3WE5qUkpCdVRNMjlIWUtBbWhUb3lpQjVtTFZLQkNqRFV3NTZwcHJuMHlSOGtYV1ltdnp6dWJDTm9qTmVWWTJUYmk0eGtUcUVyQ3FHUV9lX1NL?oc=5",
+    "date": "Thu, 15 Oct 2026 05:30:00 GMT",
+    "coverage": 1
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 먹방 화제 음식",
+    "use": "먹거리 소식",
+    "title": "‘곤충 자판기→들쥐 먹방’까지…상식 파괴 여행으로 넷플릭스 TOP10 찍은 韓 예능 - MHN스포츠",
+    "link": "https://news.google.com/rss/articles/CBMiY0FVX3lxTFBvZDRaU1JoMzBuSUVyajBYOGdPQkNSY0ZTdnplTEZkbVZiU0RuT0lyWkxuUms2emFseWdjNGdYRzNjRzUwNjAzLVRna3hMTkZlWlJIaVlMdFJXWnpPTFhOLThQYw?oc=5",
+    "date": "Thu, 15 Oct 2026 13:28:33 GMT",
+    "coverage": 1
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 먹방 화제 음식",
+    "use": "먹거리 소식",
+    "title": "'먹방 챔피언' 6명의 사망 사건이 주는 경고 - Vietnam.vn",
+    "link": "https://news.google.com/rss/articles/CBMibkFVX3lxTE9FWFFNQjVPYV9aWE0wckEwc1dzV1NPM3lDZjh1SXIzbnFFSHRMZDNfZkxBTE1CN0VaMm04X3FXUTJkV2RXdU50YWRjNjMySVNJeFVmLXhOS1h3WW9HckRpRVZNLTlFTmFmRWgxYVZn?oc=5",
+    "date": "Thu, 15 Oct 2026 09:10:30 GMT",
+    "coverage": 1
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 먹방 화제 음식",
+    "use": "먹거리 소식",
+    "title": "['롱런' 스포테이너★] 박세리, 골프 영웅에서 친근한 '리치 언니'로 - OBS경인TV",
+    "link": "https://news.google.com/rss/articles/CBMibkFVX3lxTE1XeFc5M1Z5dW1DMDN0ZEJXVFNveHRoSHlXMEFmaWJuNGhpek1faTBXcXZwbExiNnRJSWFsMVNlSTEyTTNtUUluUmp1S3NQXzhPXzM3YXVTZHJfRXBYNzVRNk9VSTZWeDZFN2VJR1Jn?oc=5",
+    "date": "Thu, 15 Oct 2026 02:26:24 GMT",
+    "coverage": 1
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 해외 화제 음식",
+    "use": "먹거리 소식",
+    "title": "명란통계란·날치알묵은지...GS25, 차별화 김밥 흥행으로 매출 '쑥' - 싱글리스트",
+    "link": "https://news.google.com/rss/articles/CBMiZkFVX3lxTE9mMkpWR0c4WnpkSHF0MWdRcURpNl9ObE9hdGhBeUEwMHFhOEYxbXBPZ0dxOFVuNXBERjhqSHdCNXNzVjViQ3g3TU9KdXlKT196U2Y0SG5JVTROZFlDLXk3TjJVb0xRQQ?oc=5",
+    "date": "Thu, 15 Oct 2026 22:33:14 GMT",
+    "coverage": 1
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 디저트 유행 오픈런",
+    "use": "먹거리 소식",
+    "title": "[Consumer News] 피자설기부터 한정선까지 “떡도 이제 힙하게”…‘쫀득코어’ 열풍 - 매일경제",
+    "link": "https://news.google.com/rss/articles/CBMiRkFVX3lxTE5OX0czWXhfc3NiUUNPd3RWOVFEa1RBUVBoNm14SWIzcWxHZ0x6TG15YVBTMURmSmRHLWtkT2JaWjI4UVo5aVE?oc=5",
+    "date": "Thu, 15 Oct 2026 07:14:43 GMT",
+    "coverage": 1
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 디저트 유행 오픈런",
+    "use": "먹거리 소식",
+    "title": "“노숙하듯 13시간 기다려도 재미”…놀이가 된 ‘오픈런’ - 헤럴드경제",
+    "link": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE84OXNET0F0Uk02LXE1ZkhIVEpFSVZ5Y0dOWEFwR09HdEtPeVZvcnl0YXcyeHFRWVlEMWE3aXRwR2twN290RmVUeGU2Wmw1ZU5DZURNTm93?oc=5",
+    "date": "Thu, 15 Oct 2026 02:23:45 GMT",
+    "coverage": 1
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 편의점 디저트 판매량",
+    "use": "먹거리 소식",
+    "title": "오류 안내를 읽기 전에 알아둘 부산블록체인산업협회 기본 정보 - Calgary Roughnecks",
+    "link": "https://news.google.com/rss/articles/CBMidkFVX3lxTE1tT2RNWS1McU9tTFNvSEdsSVNZVkhiZ1pqZldVbnlVN1ZWSWVOSTJQWmxKWEVSVHZCcjFTUlhfUkFjRWpENUJpamhSZjlmYnhUQV83S0dKUUZVQmJVeWxVLXo4Mk9hNHNYY3NiZlQ2Ujd5dkRpMkE?oc=5",
+    "date": "Thu, 15 Oct 2026 10:24:12 GMT",
+    "coverage": 1
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 배달앱 인기 메뉴 주문",
+    "use": "먹거리 소식",
+    "title": "영화 보고 치킨 시켰다…부산국제영화제 기간 요기요 배달 주문↑ - 전자신문",
+    "link": "https://news.google.com/rss/articles/CBMiTkFVX3lxTFBZX0lWZURXbVpuNURLYzR3TWR0LWhiQTRRdWU1RHFxcllrZ1pWWmRhUUFaOTREcVp2M1JTRVFfbm41NFl3bXhncWV3eFZBZw?oc=5",
+    "date": "Thu, 15 Oct 2026 08:41:06 GMT",
+    "coverage": 1
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 배달앱 인기 메뉴 주문",
+    "use": "먹거리 소식",
+    "title": "배달앱 '타임세일' 경쟁 격화…점주들, 할인 부담에 '분통' - KPI뉴스",
+    "link": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE1nRUM2VGxWLVhUWkFUcmF0WE9HYmtXaWt6OVJrcWx0aXViRmpQVmRCTkJONUt5ZnpnYXp0d1FLN2M4UVNjRi1Ga0JZaXJRUVNpMnpmWHBjVQ?oc=5",
+    "date": "Thu, 15 Oct 2026 07:45:08 GMT",
+    "coverage": 1
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 배달앱 인기 메뉴 주문",
+    "use": "먹거리 소식",
+    "title": "오븐마루치킨, 콘 시즈닝 입힌 신메뉴 2종 선봬...배달앱 전용 반마리·반반반 메뉴도 - 하이뉴스",
+    "link": "https://news.google.com/rss/articles/CBMidkFVX3lxTE1JQXJHNmd5NWpKSWdoTzh6QU5CUkcyZDN3cENGeHRRMUl0bUpKNi1uNTVBQnB6akNvdGFNMWVfRjFFT1hxQkxvQ1gwaE1kSWpPN0h3ZGlscUt2cXhoQTUxUDZMN3QzRWJqdzgxTHg0RjRGUWVsZXc?oc=5",
+    "date": "Thu, 15 Oct 2026 06:29:42 GMT",
+    "coverage": 1
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 배달앱 인기 메뉴 주문",
+    "use": "먹거리 소식",
+    "title": "배달의민족 서울발레페스티벌 참여, 지역 맛집과 협업해 버거 세트 판매 - 비즈니스포스트",
+    "link": "https://news.google.com/rss/articles/CBMic0FVX3lxTE9OS3ROZVJmaHlSQkZOZVhKb1RvVUlYYTc1UG9SQUNCTzljV2hBM19xd1lmUmpwUlktMXJRVS0yNFotZVFxLW9GN1VPWm9Md2VjRUt0YkVJOFViU2RWRHpQSjNsZElHU0lpYmZQMFFDMzlOcW8?oc=5",
+    "date": "Thu, 15 Oct 2026 01:25:50 GMT",
+    "coverage": 1
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 배달앱 인기 메뉴 주문",
+    "use": "먹거리 소식",
+    "title": "쿠팡이츠도 '15분 할인' 참전…배민, 타임세일 전국 확대 - 뉴스1",
+    "link": "https://news.google.com/rss/articles/CBMiX0FVX3lxTFAxc096UzhiMjJVRklXVFI1TEZibWZRTThJNjRQUWNTdTJ6a3FsYnQ3UXlSUnRsaUFJLTl2R2NFRzR3MXVKdk0zOWZJUFVacER4N3ZWTV9HaUxQWXpjdzhv?oc=5",
+    "date": "Wed, 14 Oct 2026 21:10:00 GMT",
+    "coverage": 1
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 배달앱 인기 메뉴 주문",
+    "use": "먹거리 소식",
+    "title": "설빙, 전 품목 최대 50% 즉시적립... 방법·기간은? - 금강일보",
+    "link": "https://news.google.com/rss/articles/CBMiakFVX3lxTE44UmVXWlI5RTNNdEhHSmd4N2NGcEZNb3A0ZDlyNWpfdndSbjZaREhsWHItMHctTEZFYTNidWZHUV9rT0dJUGtFdEl4RUoxaENzR2F6UTJJc3AzSHNla0xabmRDb0pRVWEzZmc?oc=5",
+    "date": "Wed, 14 Oct 2026 00:46:16 GMT",
+    "coverage": 1
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 배달앱 인기 메뉴 주문",
+    "use": "먹거리 소식",
+    "title": "할인하면 손님은 늘었지만, 남는 건 줄어들었다 - 브런치",
+    "link": "https://news.google.com/rss/articles/CBMiUEFVX3lxTE9PaGp6TjBtYzdjVHpkSWtxV3JyZU8zWmZsNDgyVm0tLVdXVzlrNUZPSGp3bGstOHM1czZLWEREaDFiZ3NEMmR0djRIZ3p2ekly?oc=5",
+    "date": "Wed, 14 Oct 2026 00:19:09 GMT",
+    "coverage": 1
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 간편식 신제품 출시",
+    "use": "먹거리 소식",
+    "title": "동원홈푸드, '저당 맛술' 출시… 기본 조미료 시장으로 영토 확장 - 뉴스드림",
+    "link": "https://news.google.com/rss/articles/CBMibkFVX3lxTE53bWhkZzJCS0hYbG9oenRqQkpqVFhHdTlmRE50ZXhoZ05CdTlDSXp5S3Y0bjRxNm5ONllHd3psVmtDNU5EdmhtNVpPRTMtMGRyVDhGNDZuUEljUTBYdTg5TWl4aTdjeDd6NlRnRHJR0gFuQVVfeXFMTndtaGRnMkJLSFhsb2h6dGpCSmpUWEd1OWZETnRleGhnTkJ1OUNJenlLdjRuNHE2bk42WUd3emxWa0M1TkR2aG01Wk9FMy0wZHJUOEY0Nm5QSWNRMFh1ODlNaXhpN2N4N3o2VGdEclE?oc=5",
+    "date": "Thu, 15 Oct 2026 01:22:31 GMT",
+    "coverage": 2
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 간편식 신제품 출시",
+    "use": "먹거리 소식",
+    "title": "“아침밥으로 제격”···CU, ‘get모닝 꼬마김밥’ 누적 판매량 400만개 돌파 - 직썰",
+    "link": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE9IUWpicUZDWldGY09uOHVmUmxTNzhJNzFuMmd6cnVGMncyY2dBSFlaR2VYZUpTUEVuNGxQRTFadHE1R3J6dmwtbW1IVnMtMVFrTzRNUWc0cUZkTzBfU25kNDZ1dzFpLW5S0gFsQVVfeXFMUHFUUVJVWEZsWWt1ck0wSWNGUzhfLUkzWU00RzQtOFc5RDhvQk56aFNTeGJoeUxJdEw0b0QtWmJ1d1ByU0xuendrcjU4U0h0NWU0YW10T3ZYQUtRSG1INWJZVnZzT1ZINHdTV18y?oc=5",
+    "date": "Thu, 15 Oct 2026 00:58:36 GMT",
+    "coverage": 2
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 간편식 신제품 출시",
+    "use": "먹거리 소식",
+    "title": "동원홈푸드, 저당 조미료 시장 공략…당류 2g ‘비비드키친 저당 맛술’ 선봬 - 스마트경제",
+    "link": "https://news.google.com/rss/articles/CBMicEFVX3lxTE9JVC1PUllDUmMxMEhoR0FaVDhsQkhyREg2VDNxb0ZIYWxaSW9HUEw4YTF6WmhwLWFqUjlRZFFqc0hTTlc1LWJ5eUFWRUFPMEg4OUctX0pwWFdrWU4tdEYxcHJEcGJUXzVOdEprcXg1N0s?oc=5",
+    "date": "Thu, 15 Oct 2026 00:29:45 GMT",
+    "coverage": 2
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 간편식 신제품 출시",
+    "use": "먹거리 소식",
+    "title": "CU, get모닝 꼬마김밥 400만 개 돌파… 아침 간편식 시장 강세 - https://www.2news.co.kr/",
+    "link": "https://news.google.com/rss/articles/CBMiaEFVX3lxTFAxRXBMY2l1UG9CenFCLUFfaEhOQy03UE1kSENtUFk1Y0Z4VVRkUGlaZHF1TEZUZFRRMFZHd1lzM0xtSDY3a080aUUyOTdVajd1TlJsX3Z1YnRRLUJxWWdRLXQ3MU1PZTBR?oc=5",
+    "date": "Wed, 14 Oct 2026 23:23:00 GMT",
+    "coverage": 2
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 간편식 신제품 출시",
+    "use": "먹거리 소식",
+    "title": "“햇밤 120톤·골드키위 200톤 푼다”…이마트, 가을 먹거리 특가전 - 전자신문",
+    "link": "https://news.google.com/rss/articles/CBMiTkFVX3lxTE1hVHNfZk5FSi0yYlF3YUdGNGVkTEg3Y2NYVDA0YlY4dzhJSS1GZjN0S3FzNHlWMW5mbG1YTkJfQy03NXlOMTJGZTQ4cHI4dw?oc=5",
+    "date": "Wed, 14 Oct 2026 21:00:00 GMT",
+    "coverage": 6
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 간편식 신제품 출시",
+    "use": "먹거리 소식",
+    "title": "쿠팡, 로켓프레시 미식 전문관 개설···800여개 상품 판매 - 뉴스프리존",
+    "link": "https://news.google.com/rss/articles/CBMid0FVX3lxTE5WRFBOSFhFd2dhM0tGdnZlem5zWWk4NFZWQzduNGhtSU0yRHVKMzc5czVFN1o4XzFXMjFnT0pkVXpYZmFzdHptdmh5enhWdEVIekttUmVwRkNkNy1VNDMxaVNFWUpvV1IwOTVLM1pKblMwcVZWRGVV0gF3QVVfeXFMTlZEUE5IWEV3Z2EzS0Z2dmV6bnNZaTg0VlZDN240aG1JTTJEdUozNzlzNUU3WjhfMVcyMWdPSmRVelhmYXN0em12aHl6eFZ0RUh6S21SZXBGQ2Q3LVU0MzFpU0VZSm9XUjA5NUszWkpuUzBxVlZEZVU?oc=5",
+    "date": "Wed, 14 Oct 2026 01:39:35 GMT",
+    "coverage": 1
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: SNS 화제 메뉴",
+    "use": "먹거리 소식",
+    "title": "[현장POP] 버거킹 이어 노브랜드도 '조식'…성수랩점서 조식 시장 첫 도전장 - 데일리팝",
+    "link": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE1SRWM1ZGhSTWRQRlRjZTBFcFlVRWRDMVRnQkFTa2MzVmUwWS1QbzZ6SzJKWmtBUXBEUkYySnp2UlhHY3lxLUJLVl9sX0tYY2paY2FEaXZETGFxcEd0cTh3cEJfcnB3TXBu?oc=5",
+    "date": "Thu, 15 Oct 2026 06:28:00 GMT",
+    "coverage": 1
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 음식 축제 개최",
+    "use": "먹거리 소식",
+    "title": "[나주시 소식] ‘제31회 남도음식문화큰잔치’가 개최 - 뉴스프리존",
+    "link": "https://news.google.com/rss/articles/CBMid0FVX3lxTFBBbmhjVHJmQWZqQWE3ZWlqWGUxdmFHcmJ0QkJfd3hXcXlzeVhIZnJuaU9lRjJmbzRuSXpkbW9WZC1IOWtJekpMa1JDNGY2YUdQbDhEOUduZjZ4NUM3RHg2TFVOZFlpTTREejJzVXlUQWdhU3NvT25B0gF3QVVfeXFMUEFuaGNUcmZBZmpBYTdlaWpYZTF2YUdyYnRCQl93eFdxeXN5WEhmcm5pT2VGMmZvNG5JemRtb1ZkLUg5a0l6SkxrUkM0ZjZhR1BsOEQ5R25mNng1QzdEeDZMVU5kWWlNNER6MnNVeVRBZ2FTc29PbkE?oc=5",
+    "date": "Thu, 15 Oct 2026 11:30:42 GMT",
+    "coverage": 1
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 음식 축제 개최",
+    "use": "먹거리 소식",
+    "title": "하노이 추석 축제 2026년 개최가 연기되었습니다. - Vietnam.vn",
+    "link": "https://news.google.com/rss/articles/CBMifEFVX3lxTE5leUJWX2RtNldaNWtXYTdvdGNRc0t1WC1RQTNGWjhWLXdLc2tYNkdseWhMNDlEYjdFdHd4NHRrcDlCU2QybE9Jc1FCZFhmamxMVG53NVhpa1RGQ2ZMSFRDYVVkOE81SDJ3WEpxSGNhbFZNWnhqNlJzR2RhUC0?oc=5",
+    "date": "Thu, 15 Oct 2026 11:22:36 GMT",
+    "coverage": 1
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 음식 축제 개최",
+    "use": "먹거리 소식",
+    "title": "꽝닌성은 11월 20일부터 24일까지 2026년 음식 축제를 개최할 예정입니다. - Vietnam.vn",
+    "link": "https://news.google.com/rss/articles/CBMijwFBVV95cUxOMElnWEZkdGFLYUN5QzNINnUtMFFIS0JFNm9MVE91Z1A0cVFsdmNPN0k5dG9wYzkxcFFveEl0Y0MtSUhqdWJtRkJhbkVJcmNyUm5KMWN5VlJYNGJkMW5FTndsN3ZETTdqRTVCY2MzdTZuYWNFOW9OaHhYeTVES2RqQmdoenFSblJpWkVfOTI4VQ?oc=5",
+    "date": "Thu, 15 Oct 2026 10:23:43 GMT",
+    "coverage": 1
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 음식 축제 개최",
+    "use": "먹거리 소식",
+    "title": "제6회 거제시 지속가능발전 페스티벌 & 로컬푸드 IN 거제, 10월 31일 개최 - 거제인터넷신문",
+    "link": "https://news.google.com/rss/articles/CBMiYkFVX3lxTE1YdE5RZVd1U0ZtUkR1dEtWejd3WGc0R1lycnh4TlR2N3IwT0NYUmZWWHdTQnEzX3gtUi0wclRqLWp0aFR1UXlHQjNyN2E1c1RXRV92d2FyVktFR25oSkE3REVB0gFmQVVfeXFMTUV5X2psRlIxeWNpOWZJMHFHUmtCc1hiTG91cTBoUDdCYlJRWF8yQXJlX1ZHMHl4MDc2TWVDQ3VvcHVBVjlSeDRRMjRFWmVHclBONkxhamktbzNuYzR2dmhRRXFoMjB3?oc=5",
+    "date": "Thu, 15 Oct 2026 09:38:16 GMT",
+    "coverage": 6
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 음식 축제 개최",
+    "use": "먹거리 소식",
+    "title": "까오퐁 면, 2026년 소수민족 문화체육축제 개최 - 푸토시 공식 관광정보페이지 - Vietnam.vn",
+    "link": "https://news.google.com/rss/articles/CBMi0gFBVV95cUxNNzhDaGVWNW5udFE5Vmh5NGtNS3dfWEt5eE1uUS02UVU3S3dFWjh6U1JZaU5WbkhIZktPT2FraHBPTGduUG1IV2VlalpDMEo4MnlaV3FUMmVZclZjemFNWHRRekM2MGU2LTVDcEQzcHRjVTNSWGFvclkzeFlxTk9fZ1lZWkg1RXFQbXZEUjIza003Zlllcm1qRFVtMVpjVy05OWxvZVBpbjlyREdpd0tQNnJiM20tMktmQUVkQjdUa25TczZFTi13bEVLRkNKTDN0OUE?oc=5",
+    "date": "Thu, 15 Oct 2026 08:25:48 GMT",
+    "coverage": 1
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 음식 축제 개최",
+    "use": "먹거리 소식",
+    "title": "제31회 남도음식문화큰잔치, 23일 나주 영산강정원서 개막 - 신아일보",
+    "link": "https://news.google.com/rss/articles/CBMicEFVX3lxTE1aSzJNc2VPWDl6WjFwTkV6LW56TElrS0d5SlRUQU1IV0w5dHV0RXRCYXhja1RBYk5yTUE4anlHOElxV3RKQjB2T01Vdlhwc1o2MU5qeU9UdW9RVmdna0xKdjdYcnA4NWRlV2YyT3ZDcXc?oc=5",
+    "date": "Thu, 15 Oct 2026 07:08:47 GMT",
+    "coverage": 6
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 음식 축제 개최",
+    "use": "먹거리 소식",
+    "title": "'2026 서울학생 통일 꿈이룸 페스타' 10월 도산공원서 개최…평화 메시지·북한 음식 체험 등 진행 - 금융계",
+    "link": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE5DX0ZwWmpGWW0tZVVVVGxZcEZycDF2ejNVdk9FRDdsXzk0c19Sb3dibnpBU2kwMGlndlp4dWlKVnpDREJ4VXF0LThuaFROZnI0TGZMWDNfejRsemtJQU5GVi1odGFKZmPSAWtBVV95cUxQZWhDZHpCcUZ1a2lCbTZDaGpleFQ5dTdPdGtwMGl1RmMyNDFOV29YQkF2Zm1sclgwMHRETWJ6QkZ2cTFraE1aNTdHNHJVVF9TRTZtUjFpc3lpRWpzTlJfd2twdnRjbzlSNmxnOA?oc=5",
+    "date": "Thu, 15 Oct 2026 05:45:07 GMT",
+    "coverage": 1
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 음식 축제 개최",
+    "use": "먹거리 소식",
+    "title": "한화손보, 웰니스 페스티벌 ‘웰니스 크루즈 한남’ 개최 - 한국보험신문",
+    "link": "https://news.google.com/rss/articles/CBMia0FVX3lxTE1IalVpVjVnWGctbFVXQkZsbGtNdFVhZWNoaVZzMXJKZXNxcWRjMHBVNTVrR0VNbUlHVVNEUFpqVExBYXktOE9jeDFoOVV6MUk2c2M0T2MxdUlGQUdpRnlpNWlJck9GMXMwRUpR0gFvQVVfeXFMTm1zdE42aFZ4S1hWYURtckg5c3QtZTNnSU1wMWg1cGVna1pSWHFhQUNobzFKNXdYdVVGVzRlTXBDc25RWXN5Sld4WUhjTTFody1oTzZPRTIyR1BoeFJYTS05akJLWks3TkFlaXctLWRZ?oc=5",
+    "date": "Thu, 15 Oct 2026 05:36:40 GMT",
+    "coverage": 1
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 음식 축제 개최",
+    "use": "먹거리 소식",
+    "title": "목포·청주·서울, 항구의 맛부터 세종대왕·새우젓 장터까지…10월 주말 1박2일 여행 3선 - 강릉뉴스",
+    "link": "https://news.google.com/rss/articles/CBMickFVX3lxTE9pMXpEeWFJNDI1SnJLZXNqZ01kTG1WQ3lfS2V3MmZkRDdPN3lTVWo0azh0dVR6cm13cUZ0TUlCY3ZwRE5MNjIybnFSeE56Xzk1a19QUmZJblF2M3pCWGx4bUkxMzNVRW5GR0lhR3V0d2NWUdIBckFVX3lxTE9pMXpEeWFJNDI1SnJLZXNqZ01kTG1WQ3lfS2V3MmZkRDdPN3lTVWo0azh0dVR6cm13cUZ0TUlCY3ZwRE5MNjIybnFSeE56Xzk1a19QUmZJblF2M3pCWGx4bUkxMzNVRW5GR0lhR3V0d2NWUQ?oc=5",
+    "date": "Thu, 15 Oct 2026 05:17:47 GMT",
+    "coverage": 1
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 음식 축제 개최",
+    "use": "먹거리 소식",
+    "title": "메밀꽃의 선명한 색깔은 뚜옌꽝의 문화유산 지역들을 하나로 연결해 줍니다. - Vietnam.vn",
+    "link": "https://news.google.com/rss/articles/CBMimAFBVV95cUxPNnJoV0xGZ2hwOUZlcjdPN3ZNT0tuVy1DaDlUQzBELUI2SldVRUpCYmllOFhTOXJObFVkamt3YXREZXYyVGdobmRCZjZsUDBVS2ZyaGJucF9XTWhpbU5VejBIOXBLSERmZk1SSFNNb01kX1FGY28tMl9zMEtLVGo3WF9vVjVwcnRrRWU2M25CSzlaOVdKTC1SWQ?oc=5",
+    "date": "Thu, 15 Oct 2026 04:29:02 GMT",
+    "coverage": 1
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 음식 축제 개최",
+    "use": "먹거리 소식",
+    "title": "27개 시군구 대표음식 한자리에…‘남도음식문화큰잔치’ 나주서 개막 > 뉴스 - 더코리아",
+    "link": "https://news.google.com/rss/articles/CBMiQ0FVX3lxTE92bDA4UWk4TWY5RzlZVDVMYnd6WElzelJQVTRtaV9Fa0xrREczVFRWai1XOUYwTWxkNml1MGpRZmFVeEU?oc=5",
+    "date": "Thu, 15 Oct 2026 03:13:00 GMT",
+    "coverage": 6
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 음식 축제 개최",
+    "use": "먹거리 소식",
+    "title": "동두천시, ‘2026 헬로 DDC 페스티벌’ 개최 - 전국도민일보",
+    "link": "https://news.google.com/rss/articles/CBMia0FVX3lxTE9MVFk2WEFtSUdrWFBxM3dIa2JxNGRPWDU5cDNRckczSGd4STRQcEhpekdncVFGa3NhN01PQlRyNDB5ZmlVZTc4TDJ5VTZMQUJEaUlWZ3lGQ3lmRGdDSU95SkRjbGV4Nkowb0Y40gFrQVVfeXFMT0xUWTZYQW1JR2tYUHEzd0hrYnE0ZE9YNTlwM1FyRzNIZ3hJNFBwSGl6R2dxUUZrc2E3TU9CVHI0MHlmaVVlNzhMMnlVNkxBQkRpSVZneUZDeWZEZ0NJT3lKRGNsZXg2SjBvRjg?oc=5",
+    "date": "Thu, 15 Oct 2026 01:48:55 GMT",
+    "coverage": 1
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 음식 축제 개최",
+    "use": "먹거리 소식",
+    "title": "한화손보, 한남동서 웰니스 문화축제 개최…30여개 브랜드 참여 - 서울타임즈뉴스",
+    "link": "https://news.google.com/rss/articles/CBMia0FVX3lxTE1qTk9ybl9WUWMxeENsMnM4emNrOUhwMnNUVklpR1BKWnlZWVp1NnQ3ay1jQWNTclJmb0RaWS13TDFOU0ktelZ1S0lIQjltNmtOaHVaM3ZRaHZuQVRleXZwQXBGM3dxb2psOFpN?oc=5",
+    "date": "Thu, 15 Oct 2026 00:30:01 GMT",
+    "coverage": 1
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 음식 축제 개최",
+    "use": "먹거리 소식",
+    "title": "운동부터 음식까지…한화손보, ‘웰니스 문화 축제’ 개최 - FETV",
+    "link": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE5aN1BNc2ZFT2g5TXAtbW5fRl9LSURWc0VxZ05OZkZFUU1YX1Rmc2pmWUMtQXhYd0pyLVh6VDQ2TVFtMHJiZGJUa2xHc1BoZWIzaldiaDVFcGJkSmxHakthYWNQLTBidXE1?oc=5",
+    "date": "Thu, 15 Oct 2026 00:07:35 GMT",
+    "coverage": 1
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 푸드 페스티벌",
+    "use": "먹거리 소식",
+    "title": "맛과 예술 결합한 순천 푸드앤아트페스티벌 열린다 - 헤럴드경제",
+    "link": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE5EcTVRcU55YXU5dm90alNOLWh4MGJaLVQyOEZ4T0gzbTB3MUREcV9RODRmS19BUkFTY19HMjZ6Q1gxZm9lUUhpRXZ6WEo5Q01Nd21BVG9R?oc=5",
+    "date": "Thu, 15 Oct 2026 09:02:18 GMT",
+    "coverage": 5
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 푸드 페스티벌",
+    "use": "먹거리 소식",
+    "title": "순천의 맛과 예술이 만나는 가을, ‘2026 순천 푸드앤아트페스티벌’ 16일 개막 - 내외통신",
+    "link": "https://news.google.com/rss/articles/CBMia0FVX3lxTE9qTHVWbXVtbkFZMlFfQm5pNFNyeVlmUjJVa3FRTGQ1MHQybV9PTXNGNkRaY2doQTBwWWlqUGZsclRuX1ZJcWVXbDJRa3BnTVdEbFBVdHozWTJRUm5zLTJzMHNSNV9nal9lVDVj?oc=5",
+    "date": "Thu, 15 Oct 2026 08:51:01 GMT",
+    "coverage": 5
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 푸드 페스티벌",
+    "use": "먹거리 소식",
+    "title": "거제시, 오는 31일 '지속가능발전 페스티벌' 로컬푸드 요리 17팀 경연 - 거제저널",
+    "link": "https://news.google.com/rss/articles/CBMic0FVX3lxTFBqWnVlMmk3WTlkNmtQWjZmQ2huNmxOLS1RLU5zYzhibEQzeGJGTnZzbEtkUGg0UVZaeWg4UmF2NXJUNjNVQU9xYjdYR1pTMC1Yc05STUtRU2tBZzhSTGpDaW42bEVKakxUMEgxZjU4UlRRY3M?oc=5",
+    "date": "Thu, 15 Oct 2026 08:27:45 GMT",
+    "coverage": 6
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 푸드 페스티벌",
+    "use": "먹거리 소식",
+    "title": "거제시 지속가능발전 페스티벌·로컬푸드 10월 31일 개최 - 새거제신문",
+    "link": "https://news.google.com/rss/articles/CBMia0FVX3lxTE00NVFsTWpVZ1cxM1NET0VSVDhDU0dmNUNmblpFci1TdXJKT1d0VXBiVjR2czlFQ0Y5M1FuUW5wN0xiU0QxdnBLUENYQXlwaDFmLU5xMTUtMjZVYXdvc0JadUJ1ZGVfS2FZR2pF?oc=5",
+    "date": "Thu, 15 Oct 2026 07:54:30 GMT",
+    "coverage": 6
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 푸드 페스티벌",
+    "use": "먹거리 소식",
+    "title": "순천시, ‘푸드앤아트페스티벌’ 16일 개막… 미식·예술 가득한 원도심 - 스포츠동아",
+    "link": "https://news.google.com/rss/articles/CBMickFVX3lxTE16OGhQRnltYkN3YkdlYjBpY21PaTlHaTNjODRYWk1KY212V3VTX3lSaWlBNTZpbkJRS284bmtPd1N5TGxaZjlNUU4yWC1pZk1xU3g3dmlEbU8xY19Ka00xakVPSzdUbEc1U2JWVm9GRVZPUQ?oc=5",
+    "date": "Thu, 15 Oct 2026 07:07:33 GMT",
+    "coverage": 5
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 푸드 페스티벌",
+    "use": "먹거리 소식",
+    "title": "구미 송정맛길 1.5㎞가 거대한 식탁으로···푸드페스티벌 17일 개막 - 대구신문",
+    "link": "https://news.google.com/rss/articles/CBMia0FVX3lxTE5sYXk0SXl1VktUb1ZXczdLN3hXdjNMS2llT282Tkg0dFhFVXNpdVlGU0U2N282c0szSEJNUlVPdXJXeHJ5WEwyT3JENkZ4RHFZcGVvQkZnV3ZLOFZnamJHWS1Ka2ctbmNXTWRJ?oc=5",
+    "date": "Thu, 15 Oct 2026 06:00:30 GMT",
+    "coverage": 1
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 푸드 페스티벌",
+    "use": "먹거리 소식",
+    "title": "'제18회 경상북도 식품 박람회', 10월 16일부터 18일까지 구미에서 열려 - 대구MBC",
+    "link": "https://news.google.com/rss/articles/CBMiTEFVX3lxTE1Fa2pDakRWRmdBQUxoWXl3N05YNjgya3RkYjAyMlJIS1diZ0d6eGxyWVlOTHVDMXVJZFpPQnFlSjFFdlVvNlQ4ejVWR3c?oc=5",
+    "date": "Thu, 15 Oct 2026 05:58:37 GMT",
+    "coverage": 1
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 푸드 페스티벌",
+    "use": "먹거리 소식",
+    "title": "순창장류축제 15일 화려한 개막… 세계인이 함께 즐기는 ‘K-푸드 축제’ 열린다 - 뉴스파이어",
+    "link": "https://news.google.com/rss/articles/CBMib0FVX3lxTE1TNTQ4ZXVWUGRwZko4YkJBWG1EcDF4anVVQlJuZFE5MU84b1RneTc5SXJraHZiOEFBNUNGUWxMRElOT2ttZE5BV3ZxZjhVLVJfZThyTzBfN2RSbmNGYmdHZ1dHLV9uWDVfQl9MVXVDWQ?oc=5",
+    "date": "Thu, 15 Oct 2026 04:56:43 GMT",
+    "coverage": 1
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 푸드 페스티벌",
+    "use": "먹거리 소식",
+    "title": "'제18회 미스터 금오대회' 개최...구미푸드페스티벌과 생활체육의 이색 만남 - 경북신문",
+    "link": "https://news.google.com/rss/articles/CBMiWEFVX3lxTFBnOGZvdWZtdGJQdlpuUThhTlQxNzhoN2F1ZlFJRW1fY211UXZiSWpvYnpvZVJEMHdpRmhRd2k4bFlYZmFQYWhyNjFnTmtsWE9USS1PdkRJNnk?oc=5",
+    "date": "Thu, 15 Oct 2026 04:42:42 GMT",
+    "coverage": 2
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 푸드 페스티벌",
+    "use": "먹거리 소식",
+    "title": "한호전, 해양수산 요리대회서 고등부·대학부 학생들 조리 실력 겨뤄 - 에너지경제신문",
+    "link": "https://news.google.com/rss/articles/CBMiW0FVX3lxTFBjOUlZOU9HWVVVWFN3dmdkV09nUlR4M1BxMTZzWVR0Q0JkUE5icF9Ud2NEd1RFVjYtdlM2S1lUS2xQemZHbnRmWXB5NU5yYVJqRnZkVFZzSEN2eHM?oc=5",
+    "date": "Thu, 15 Oct 2026 03:20:16 GMT",
+    "coverage": 1
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 푸드 페스티벌",
+    "use": "먹거리 소식",
+    "title": "미스터 금오대회 '구미푸드페스티벌' 메인 무대서 18일 개최 - 뉴스1",
+    "link": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE9rQnI1dW9qXy00VkRUcGhzYWt6NDNzcTZ3elZPWXJLYzR3QmZNekV5NEx4ZTJXb21NRDVfaTBDRWUzTmFMS1hnV19PdzJqdDhacElnUjhYalpsZGRjMlJR?oc=5",
+    "date": "Thu, 15 Oct 2026 01:06:39 GMT",
+    "coverage": 2
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 푸드 페스티벌",
+    "use": "먹거리 소식",
+    "title": "[이슈] 식품기업 전시, 외식업체는 판매…구미 '이色 푸드축제' 가볼까 - 오늘경제",
+    "link": "https://news.google.com/rss/articles/CBMic0FVX3lxTFBfYVBhZVdVc3dHT0hraVVkQTdtTFdVYW5oTUtPM1BCbkFZc1UzclBoV2xXSGpFVjlhX3hxeHBRbm82SThOWEUtQ1I2RFFMN203S1RMU2pzYjdnZ2xuelY5WVQ3RGhLYkdnZXB6c2VyUDY3b2s?oc=5",
+    "date": "Thu, 15 Oct 2026 00:47:00 GMT",
+    "coverage": 1
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 푸드 페스티벌",
+    "use": "먹거리 소식",
+    "title": "근육과 열정의 무대 ‘제18회 미스터 금오대회’…구미푸드페스티벌서 열린다 - 미디어디펜스",
+    "link": "https://news.google.com/rss/articles/CBMia0FVX3lxTE9aVXdyRGZrVFRoTWZzQzVHN0dQSjVfZEF2UEZSbHdqUjNqcDl3RVU3dXNCZW5GWTdmclFwUzJKdFZmVFctZGt3dUJWdUZEMU9KcnA3OVdxOUJEVmlOLXl3WjRNRG03aUtGakdF?oc=5",
+    "date": "Thu, 15 Oct 2026 00:37:09 GMT",
+    "coverage": 2
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 푸드 페스티벌",
+    "use": "먹거리 소식",
+    "title": "구미푸드페스티벌 무대서 근육미 겨룬다…18일 미스터 금오대회 - 경북매일",
+    "link": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE1SVlhLVUdTUG12NE14QVNneF9mRnA0WXYwTnpSeEVEZzIzS3l4RE04RURIQXJaVU80emJwVVMxZXNUQmFuYWVQNkZ2VmhlcUdQbG9fNUFnMmdhdw?oc=5",
+    "date": "Thu, 15 Oct 2026 00:19:00 GMT",
+    "coverage": 2
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 먹거리 장터 개최",
+    "use": "먹거리 소식",
+    "title": "공룡시장, ‘다시 돌아온 불금야시장’ 16일 개최 - 고성미래신문",
+    "link": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE5VQTVGdHVmMnAwd0RSNmh3NG9KNVU3RW5kSjdTWTNCM1ZWLWRuSkxWdExsWExNemhydWxXeHFFQ2FFTWV3VVhQaHhQZ01hLTRPUTlUQTg1STBKdzZnaVYyMW5Qenp2eDh1?oc=5",
+    "date": "Thu, 15 Oct 2026 19:37:09 GMT",
+    "coverage": 1
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 먹거리 장터 개최",
+    "use": "먹거리 소식",
+    "title": "광진구 '간뎃골 축제' 개최 … 2013년 이후 12번째를 맞이했다 - 서울동북신문",
+    "link": "https://news.google.com/rss/articles/CBMibEFVX3lxTE53Rkh4V2JBblpWZGhlUzY0V2J2SkxTdUxpSE5SWC1Fdy13SG40TmJYLWk1WjZTbWs2dU00dHYwb3VVRnp4Z3dpemxoTmVHblBpaEQ1SGp1LVpKUm1XanRWRFJVZEtFclVuVjY2Ug?oc=5",
+    "date": "Thu, 15 Oct 2026 12:45:41 GMT",
+    "coverage": 3
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 먹거리 장터 개최",
+    "use": "먹거리 소식",
+    "title": "전농동 떡전마을에 정이 넘친다…15일 주민축제 개최 - 동대문 이슈",
+    "link": "https://news.google.com/rss/articles/CBMiYkFVX3lxTE5yU3BhM0ZyTzJzaW1lOVZXdG5sd0NjZTRwOVkyUWZ5MXlEeFZNWFlqY3pFSmE3MVRySnduWFNPWnNnc1M5RFl6NjdtdUp3WmRfVXp1dWlSeVdSTGFRbGNvRzd3?oc=5",
+    "date": "Thu, 15 Oct 2026 10:45:00 GMT",
+    "coverage": 1
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 먹거리 장터 개최",
+    "use": "먹거리 소식",
+    "title": "국립호남권생물자원관, ‘고하도 썬셋마켓’ 개최…주민과 함께하는 친환경 가을축제 - 뉴스21 통신",
+    "link": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE9wSzktNDdkSGt4REYxOFh4WnJzcFhIUUNCNER0RjBvWkJGbEc2MENpTHo3bUFVa3JuWGFlZElGSUdySVVHZmpjY0l5X1NRcUtSZThvZzRR?oc=5",
+    "date": "Thu, 15 Oct 2026 10:02:24 GMT",
+    "coverage": 1
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 먹거리 장터 개최",
+    "use": "먹거리 소식",
+    "title": "용산구 남영동, 주민 150여 명과 '플레이그라운드' 마을축제 개최 - 잡포스트",
+    "link": "https://news.google.com/rss/articles/CBMibkFVX3lxTE1EZk9kZVJPZmNwV3FNUnBxRVoyX2pac2YwV01aRndMMTI4UHhEQjVQeFNwLUVDTEFJdlNXUVZJQTNEaFU0MDdzTjUwVUtsNzVzbVhsN09mWGo4dUdmZVhCcWNfNFpQMkVmNDBJT2x30gFyQVVfeXFMTkN2RnlYWlVJQXJnQ3FfQUhyUHFEcFF2SFA3NkpLZXhSNWVjRTQ1TGlpWFpxYm1fLXlES2JBRnp6NXNRblcxNTJULTNDZ3doakxDeVBGTjc4aUxuWXJINDBjWkxmR3NFS3A1c3ZwRlpIb1pB?oc=5",
+    "date": "Thu, 15 Oct 2026 06:37:38 GMT",
+    "coverage": 1
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 먹거리 장터 개최",
+    "use": "먹거리 소식",
+    "title": "포항 제철동, 바자회로 이웃사랑 나눔 실천 - 경북도민일보",
+    "link": "https://news.google.com/rss/articles/CBMiakFVX3lxTE9Bc1hlUDdacU55T296S1AzaUxiUDJ2WFBoOUdIQ0hOVW1ESXg5SUVUYV92TGVzVnhzZ1lXa25YeFNkdWQ0dzMyOHlDQXNJeDlxUGM4b2VLVkhZejJ3RHFWX0NyVG5ITnhUaHc?oc=5",
+    "date": "Thu, 15 Oct 2026 05:57:57 GMT",
+    "coverage": 1
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 먹거리 장터 개최",
+    "use": "먹거리 소식",
+    "title": "포항시 제철동 개발자문위, 행복나눔장터 한마음 바자회 개최 - 경북신문",
+    "link": "https://news.google.com/rss/articles/CBMiWEFVX3lxTE1aUTJHZmhqOHZMVF95WWJNX195b2dJVmZyeWhXSERtalI3YzUwN1NjSTNqM3JtU184THBIX0QyekR2UjdWZ1ctOWhnQjNVMFB6R2NtWjZJMHg?oc=5",
+    "date": "Thu, 15 Oct 2026 05:33:52 GMT",
+    "coverage": 1
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 먹거리 장터 개최",
+    "use": "먹거리 소식",
+    "title": "제2회 합천읍 핑크뮬리 가요제 및 바자회 성황리 개최… 노래와 나눔으로 하나 된 축제 - 도민연합뉴스",
+    "link": "https://news.google.com/rss/articles/CBMiakFVX3lxTE9VSTZmTlJKVVV4QjhBUVkzQmh2cndaU3g0WEFOcUNKUFd0R3A0c2E1VWsxc1AtSGJlTk9aQWVXaGlWUEtzRUF2eW96eDVLYm5RaU1IMk85NnpZREk0SXNzWEF3TWVHaTRERHc?oc=5",
+    "date": "Thu, 15 Oct 2026 04:24:51 GMT",
+    "coverage": 1
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 먹거리 장터 개최",
+    "use": "먹거리 소식",
+    "title": "제3회 연화장터 문화축제 강동면서 개최 - 서라벌신문",
+    "link": "https://news.google.com/rss/articles/CBMiUEFVX3lxTE55SW00SVRvTjRvTEt1RXJUdUg3WnIyOVVkRDVVYklMNlFFOGJZSjZ5ZnlsSXVHaTFqYndGcFBMeUdDSW1GSmlUSklUWlhSaVNK?oc=5",
+    "date": "Thu, 15 Oct 2026 02:59:20 GMT",
+    "coverage": 1
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 먹거리 장터 개최",
+    "use": "먹거리 소식",
+    "title": "청양군노인요양원, 가족과 함께하는 ‘청양장터’ 성황리 개최… 어르신 일상에 ‘활력’ - 웹이코노미",
+    "link": "https://news.google.com/rss/articles/CBMickFVX3lxTE85bzBQa1AwTDZ6SzBnMEhMaWRCU2daVWdWak4ydnlnd1VoUm12VERZY0ZWek5jWkVLSjVOYkZFUWR4cXpUSUZ6ZE9FN1Q0R3ZOeVN1NVljYTZSOHZhU1dYVFExVFBuX3ZnSVBkdkp4NmZHQQ?oc=5",
+    "date": "Thu, 15 Oct 2026 02:58:57 GMT",
+    "coverage": 2
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 먹거리 장터 개최",
+    "use": "먹거리 소식",
+    "title": "서울시 광진구, 꿈을 잇다 중곡을 잇다…‘제12회 간뎃골 축제’ 개최:경인투데이뉴스 - 경인투데이뉴스",
+    "link": "https://news.google.com/rss/articles/CBMiQ0FVX3lxTE5INHRjUVpHMzVzVmI1Y2daMzdncGt4aWVtLU1VMGFoYmtLXzdlUmJGMVZzQjFxejJOVk54Vm50cEE4MEnSAV9BVV95cUxOYlBjUE0tQ09jMjVQWGFvMlBWOWUzc1hSWjVJXzVKQXRHLW8wRHZmcWRZOUtRLWlEYUpBd3dRYXlveDhmYXkzMEQzRExnN2k3U2YwN0lnTlFOSE41TVJsYw?oc=5",
+    "date": "Thu, 15 Oct 2026 02:56:00 GMT",
+    "coverage": 3
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 먹거리 장터 개최",
+    "use": "먹거리 소식",
+    "title": "청양군노인요양원, ‘청양장터’ 개최…어르신·가족 화합의 장 마련 - 세종충청뉴스",
+    "link": "https://news.google.com/rss/articles/CBMia0FVX3lxTE9rbU11eGNwbzY0R0E4QzNjcUNxdHpIUzNqNUVCbWU4YkxBSlo2YjcydXhxWlJlRDAtYzR6aEc1MTNSM0piQm42Ym1TRFFxdHVITUwtWXh3TWs2bENtRUw5MTRPd2lodG5CT3hN0gFvQVVfeXFMT19WV29YSG5IVUxTTG9yNFVYcmFPV1kzNXZOS2ptbl9TTjZPOU5OWDdhRzg5TmtPallIbjNMRFhqNWlBbm1xUk5RZl9wQlZMY2VVWmRZX0ZmWVRpNWo1eWJKZXZ6dTBWT09MaHVaTmc4?oc=5",
+    "date": "Thu, 15 Oct 2026 02:32:35 GMT",
+    "coverage": 2
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 먹거리 장터 개최",
+    "use": "먹거리 소식",
+    "title": "영주 전통시장, 제4회 막걸리축제 16~17일 개최 - 웹이코노미",
+    "link": "https://news.google.com/rss/articles/CBMickFVX3lxTE4xMTBuVndiZEZNWTVqb0hBblZiWm9HU0pCeWZNeHZhVVF4ejRnMXVsUnRESHJCQ3lUanZ4TGRIN3ZvSmladlQxOWJiR1BLNkJLY1NmZS1wOWw0cnhMREpWc1R4Z3RxYXIxeEVvSnNobE5Mdw?oc=5",
+    "date": "Thu, 15 Oct 2026 02:19:13 GMT",
+    "coverage": 6
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 먹거리 장터 개최",
+    "use": "먹거리 소식",
+    "title": "광진구, 17일 중랑천서 '제12회 간뎃골 축제' 개최…주민 화합의 장 마련 - 잡포스트",
+    "link": "https://news.google.com/rss/articles/CBMickFVX3lxTE9ucmxvN3N3cVpfa1hEaGV0QTdqUkpOQUJRMDItUm1PWVYwOWZHVngwRHJ5a0NfS3QtWFF1YmlsaERvRGgyOUxBTmJBM0F2M1I4YXVSOFJqZDBUMnhBUllNOUtSOHNleC00SmxhN0NnTHdCd9IBckFVX3lxTE9ucmxvN3N3cVpfa1hEaGV0QTdqUkpOQUJRMDItUm1PWVYwOWZHVngwRHJ5a0NfS3QtWFF1YmlsaERvRGgyOUxBTmJBM0F2M1I4YXVSOFJqZDBUMnhBUllNOUtSOHNleC00SmxhN0NnTHdCdw?oc=5",
+    "date": "Thu, 15 Oct 2026 02:17:12 GMT",
+    "coverage": 3
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 야시장 개막",
+    "use": "먹거리 소식",
+    "title": "“경남 대표 야시장으로 가을밤 밝히는 낭만과 맛의 축제” 창원 명서시장, ‘제4회 호롱불 야시장’ 개막 - 세계뉴스통신",
+    "link": "https://news.google.com/rss/articles/CBMidEFVX3lxTE10RnQyOEw5YVk5bUVLdUFPVU1nQkgxSjlvMUZfUklPc21LbWwyQlVXeUx1VmJFZnVJRnpMd0paOUo5SzNOMDZlaFo0VHZhQXhGN0hyYnJkMXFFeG9hZi1xczB0VWRLejJZcWdlSFkxMW11bDRJ?oc=5",
+    "date": "Thu, 15 Oct 2026 20:55:19 GMT",
+    "coverage": 6
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 야시장 개막",
+    "use": "먹거리 소식",
+    "title": "경희대, 10월 16~18일 용인중앙시장서 '청년장: 용인시 경희대路' 타운 MICE 축제 개최 - 교수신문",
+    "link": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE41YXBpNkZ5MjItTGdSRzA4TFprSTBWNnBtMGdNQmwtN3RDMnZmWmlueDFKLWJyOHlBOUM2eGkxTG1Wa1YzUGY4WnNzMGswR1BHNFQ3dUMwRWRzbThpUWN4V3B3RUF0dmM?oc=5",
+    "date": "Thu, 15 Oct 2026 08:04:43 GMT",
+    "coverage": 5
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 야시장 개막",
+    "use": "먹거리 소식",
+    "title": "합천군, 17일 ′황매산 억새축제′ 개막…합천호 일원까지 즐길거리 풍성 - KPI뉴스",
+    "link": "https://news.google.com/rss/articles/CBMiU0FVX3lxTFBRT1U5M0JFVkZtN3N5NGhvT1Q2Tnp6TlJFSHRtSERBajlSUHkyM1MtUUVTM3hiaF9SSXBqaEk4Y3JDa1RhbkduYmp6MkgyRTUyY2Fv?oc=5",
+    "date": "Thu, 15 Oct 2026 07:23:49 GMT",
+    "coverage": 1
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 야시장 개막",
+    "use": "먹거리 소식",
+    "title": "경희대, 용인중앙시장서 타운 MICE 축제 개최… 지역 상권 활성화 나서 - 핀포인트뉴스",
+    "link": "https://news.google.com/rss/articles/CBMid0FVX3lxTFBVREgzcnF2Y1RMdnN6V1J6SkRCdzJpQXZlTXdoT0w2OUdabGIxNTBHaTVDUU1OSVAyMkl2eUFhY3ZfbThlZWFxSmZsNHpTTm1DQUl0UjItR0QxUjlKZTJvNGdKT2gwelQwRHZxQUJ4b3R0QkppU2dr0gF3QVVfeXFMUFVESDNycXZjVEx2c3pXUnpKREJ3MmlBdmVNd2hPTDY5R1psYjE1MEdpNUNRTU5JUDIySXZ5QWFjdl9tOGVlYXFKZmw0elNObUNBSXRSMi1HRDFSOUplMm80Z0pPaDB6VDBEdnFBQnhvdHRCSmlTZ2s?oc=5",
+    "date": "Thu, 15 Oct 2026 01:39:10 GMT",
+    "coverage": 5
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 야시장 개막",
+    "use": "먹거리 소식",
+    "title": "가을로 물드는 강원… 평창, 홍천, 원주, 횡성 등 지역 경제 활성화 '기대' - MTN 머니투데이방송",
+    "link": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE5od0RwVmk5TVJjVUp0X1YwdDRpcFh3eENFWWxZZ0dzdENDNC1LZjgxTmgtODJwX3BIMXVHSWlSbEJEWTlmQUhXUFpld2Jya0FzTTFCcUNjOTA1Y2c3NmZN?oc=5",
+    "date": "Thu, 15 Oct 2026 01:17:50 GMT",
+    "coverage": 1
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 야시장 개막",
+    "use": "먹거리 소식",
+    "title": "경희대, 용인시형 타운 마이스 축제 '청년장: 용인시 경희대路' 개최 - 뉴시스",
+    "link": "https://news.google.com/rss/articles/CBMieEFVX3lxTFBkeHo2WHpCcDJvU3FocnUwREN5VW9pZzg1eW1ZVThlMnVqSUhUUzdRQmtLRExEdTlnQVRZemZ3eXVKNE9BODRHNWpfd18tSEhTYWlaQ2lldzc2c0tKdVI4YXh4RnpRSEpCTURjR2RqbE9mMHZraFpaQ9IBeEFVX3lxTFBkeHo2WHpCcDJvU3FocnUwREN5VW9pZzg1eW1ZVThlMnVqSUhUUzdRQmtLRExEdTlnQVRZemZ3eXVKNE9BODRHNWpfd18tSEhTYWlaQ2lldzc2c0tKdVI4YXh4RnpRSEpCTURjR2RqbE9mMHZraFpaQw?oc=5",
+    "date": "Thu, 15 Oct 2026 01:17:12 GMT",
+    "coverage": 5
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 야시장 개막",
+    "use": "먹거리 소식",
+    "title": "제33회 부산자갈치축제 10월 15일 개막…송가인·해상 불꽃쇼 펼쳐진다 - 진주인터넷뉴스",
+    "link": "https://news.google.com/rss/articles/CBMid0FVX3lxTE0yd05qd255UzBnbEJJXzJsRlRYaGt4Tzd1RzloZm9fRzktMi0zQ1A2Ui1yVWJ4Q1VfNkNaU0s1d1lpQ3o0OThzQ3YzQlczcVNyQnU4MkxOSVo2T2ZtWkRpdFNLMnJ2UmIwNGtCNUY1VlZObGJjRUMw?oc=5",
+    "date": "Thu, 15 Oct 2026 01:09:24 GMT",
+    "coverage": 1
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 야시장 개막",
+    "use": "먹거리 소식",
+    "title": "'글로벌 미식축제' 춘천막국수닭갈비축제 개막 - 이뉴스투데이",
+    "link": "https://news.google.com/rss/articles/CBMidEFVX3lxTE9kN1BwV0hYcHdHMDBaX2R0N1RkeFF5eUFMcnllRGVsWE8tWHotem9mbjJVWUVnZTN1dUxnR2Ric2ZhVWxuZXFUMXVfc0QtdU5fWUFPYlpFZERnS0ZKV1paN0xfMlRXR01nZk9Jb3RKLTRPa1VK0gF0QVVfeXFMT2Q3UHBXSFhwd0cwMFpfZHQ3VGR4UXl5QUxyeWVEZWxYTy1Yei16b2ZuMlVZRWdlM3V1TGdHZGJzZmFVbG5lcVQxdV9zRC11Tl9ZQU9iWkVkRGdLRkpXWlo3TF8yVFdHTWdmT0lvdEotNE9rVUo?oc=5",
+    "date": "Thu, 15 Oct 2026 00:47:50 GMT",
+    "coverage": 1
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 야시장 개막",
+    "use": "먹거리 소식",
+    "title": "경희대, 용인중앙시장서 ‘타운 MICE 축제’ 개최 - 한국대학신문",
+    "link": "https://news.google.com/rss/articles/CBMiZkFVX3lxTE1FT1c2UldxTUp5U1FaNE1VUFdxZ0JHTjFSX0xTVFZLTkhFaXhXSFAyZThvakhJdWFwRnlsbXY4cU8yaXByeEdtYmJYMG5uNEgxeDdnZjBFMkMzTXpfME82V0dWajM3QQ?oc=5",
+    "date": "Thu, 15 Oct 2026 00:29:31 GMT",
+    "coverage": 5
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 야시장 개막",
+    "use": "먹거리 소식",
+    "title": "진주시, ‘2026 진주건축문화제’ 개막 - 진주인터넷뉴스",
+    "link": "https://news.google.com/rss/articles/CBMickFVX3lxTE9VTU04M1ZkSHVCTjc0bE4xeFRvMlFvdGlNcnJNOXJZSXRjTjNqUXV3d25UNVczUGtvZm5OVVdtT21zdk9iTDdYbkhCZnkxTzVjd3ZIbURJb3VPUE1aVmdTLXBKeHVTSElMdXllOG83a2xPZw?oc=5",
+    "date": "Wed, 14 Oct 2026 08:00:05 GMT",
+    "coverage": 1
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 야시장 개막",
+    "use": "먹거리 소식",
+    "title": "청양군, 전통시장과 함께하는 ‘별자리 문화 야시장’ 개최 - 중부시사신문",
+    "link": "https://news.google.com/rss/articles/CBMiY0FVX3lxTE0tVjFRR1FFZkdncW9UTHBWVzlGVFpMYVBJYU5BYzR4eHVuT2piSFEzaWlVRGpqUXBRLXlHWjJBODBsdk0yZzhaSWR2ak5ucEhoUlNSSlQ3WHlTZ1VEVzhvRVlZcw?oc=5",
+    "date": "Wed, 14 Oct 2026 00:10:02 GMT",
+    "coverage": 1
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 사찰음식",
+    "use": "먹거리 소식",
+    "title": "평택 수도사, 원효대사 문화예술제…개관 9주년 - 뉴스1",
+    "link": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE1XeUF0aC1rX241TnYyYmh4cUtycXBIc1dKMkJlZ3gxZGFjRlBhbFAzMm5pRzNhSDkzQ000YXNwR1hxZmNVbTRXVVVzMWZkeGh0czdpNUlveHZ0aHRLV01j?oc=5",
+    "date": "Thu, 15 Oct 2026 21:41:01 GMT",
+    "coverage": 1
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 사찰음식",
+    "use": "먹거리 소식",
+    "title": "남도음식문화큰잔치 나주서 23일 개막…27개 지역 대표음식 '한자리' - 한스경제",
+    "link": "https://news.google.com/rss/articles/CBMib0FVX3lxTFBvTmxiNlNySXE0aFlodkxpZVhka1Ezd09QMjJYRnBQc29HdWx3YmlldENtbTUwUUFlcXpCTVFWUU5xMnBacy1NVWxuU3BDd0ZsMmhVSWFoUC00dGltNnMySHZWUmRWd3dVc3JXWWZCc9IBb0FVX3lxTFBvTmxiNlNySXE0aFlodkxpZVhka1Ezd09QMjJYRnBQc29HdWx3YmlldENtbTUwUUFlcXpCTVFWUU5xMnBacy1NVWxuU3BDd0ZsMmhVSWFoUC00dGltNnMySHZWUmRWd3dVc3JXWWZCcw?oc=5",
+    "date": "Thu, 15 Oct 2026 12:28:26 GMT",
+    "coverage": 6
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 사찰음식",
+    "use": "먹거리 소식",
+    "title": "K-컬처의 새로운 얼굴, 프랑스에 뿌리내린 한국 불교문화 - 재외동포신문",
+    "link": "https://news.google.com/rss/articles/CBMibEFVX3lxTE51eUtoLXdFODBMd3ZTSFJSMWtsMTJVb0dId1U3cTRyUGIyaWN6TzZLLWtEMkxEUS1VeVBKUzhPTkNNTW9XODBZZUZhV0d3U3NET2lraVY3U1pYaGhkX1lNc1Q5bDE1M2JjcmFOUw?oc=5",
+    "date": "Thu, 15 Oct 2026 09:08:53 GMT",
+    "coverage": 1
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 사찰음식",
+    "use": "먹거리 소식",
+    "title": "템플스테이·사찰음식...‘프랑스에서 만난 한국’ - 불교신문",
+    "link": "https://news.google.com/rss/articles/CBMibEFVX3lxTE5ka2ZMR2JkbUJvbW9Ic0REVmhtVGpoNk96MmwxeFpqdXBnbGFia1lrMzFfSzZ0RmN3dmZFMWJ2V2Y5YTJUWkw4WmdxUkhlQXBtTkU5QXhOVXJjTklkRDQwVjBkQ3c3LVNtWUJZV9IBbEFVX3lxTE5ka2ZMR2JkbUJvbW9Ic0REVmhtVGpoNk96MmwxeFpqdXBnbGFia1lrMzFfSzZ0RmN3dmZFMWJ2V2Y5YTJUWkw4WmdxUkhlQXBtTkU5QXhOVXJjTklkRDQwVjBkQ3c3LVNtWUJZVw?oc=5",
+    "date": "Thu, 15 Oct 2026 07:43:41 GMT",
+    "coverage": 1
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 사찰음식",
+    "use": "먹거리 소식",
+    "title": "불교문화사업단, 프랑스서 사찰음식·선명상 전파‥한불 수교 140주년 기념 - BTN불교TV",
+    "link": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE5aZ0wtTjZmbnQzODg4OWthdWZ5N2Y0M3ZCdDBtMVdyOHFQcXBHUV9JNTdGTXQxUUQ3RkxRekJ6TVM3SjBEV2VIWkJsV2xBeXV3eWs0M3ZfV1V2eWZBT2R3YlBiamU1azDSAWtBVV95cUxOVDA5bDVxYlRCSWI3QmFsQ01aS3RUWHl0UEJLNUhnV2RnNnBNZWx3eW11SGlEWmRyeTNFN1V1Yi1jalppOVI1NWlOY2dZUHZvOFhYcFNJRmFiVE1JSExpemdWQnhwaERBbHBZdw?oc=5",
+    "date": "Thu, 15 Oct 2026 07:36:30 GMT",
+    "coverage": 1
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 사찰음식",
+    "use": "먹거리 소식",
+    "title": "나주서 남도 음식의 향연…23일 음식문화큰잔치 개막 - 뉴시스",
+    "link": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE4wOWFSQWV6enJDMk5hOThycm1MRGdreENXVk9fV1BFV2RHanRIS2pTUm9BN3A1VndIOWNiM3BxMl9ESmN1b19Ca29VZ1l5RGUtOHAwbVhxcEs1TlE2VG9UQdIBeEFVX3lxTFB4N1g3dnk4V3lhVy1vU0RmdDhBR2prMUROU0FxZk5HUXVHeW9MMmdTOTBiWkU2UFR6akl3WjJWMGwwRVNEU0pfNjRTQktzSkRLLVgxcU0xYzRtcG41emlNdjlMWkg5QURuREdKc25STDVpUlB1VVVZeA?oc=5",
+    "date": "Thu, 15 Oct 2026 05:56:59 GMT",
+    "coverage": 6
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 사찰음식",
+    "use": "먹거리 소식",
+    "title": "평택원효대사 문화예술제 및 한·중·일 사찰음식 작품전시회 - 불교닷컴",
+    "link": "https://news.google.com/rss/articles/CBMiakFVX3lxTFBKTmNZZjB0d1ZGaS1pNS1rWnhKbXhzbGJtYTBuNXRNRFIyYV9idXlIU1hYU1BWZVRnc2hGdElkQklON2E2cnp1QlF1U1l1LXJOSXk3Z2NmekFITGwtUE1EeDJWdFNWMTN5UWc?oc=5",
+    "date": "Thu, 15 Oct 2026 05:44:35 GMT",
+    "coverage": 2
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 사찰음식",
+    "use": "먹거리 소식",
+    "title": "남도음식문화큰잔치 23∼25일 나주서 열려 - 연합뉴스",
+    "link": "https://news.google.com/rss/articles/CBMiYEFVX3lxTFBXRVBLYVhqYlBreU5kTk5TLXk2RFBBdkZTdEtpd2tWb3BhYUpYWWRtVnZIblBxM29EWS1CdllHOFk5Vl9tS1E5VEE3VXhiUFlyeWVWVy1pQlFqamJyNEZqd9IBYEFVX3lxTFBXRVBLYVhqYlBreU5kTk5TLXk2RFBBdkZTdEtpd2tWb3BhYUpYWWRtVnZIblBxM29EWS1CdllHOFk5Vl9tS1E5VEE3VXhiUFlyeWVWVy1pQlFqamJyNEZqdw?oc=5",
+    "date": "Thu, 15 Oct 2026 05:11:35 GMT",
+    "coverage": 1
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 사찰음식",
+    "use": "먹거리 소식",
+    "title": "[패트롤] 나주시-보성군-담양군 - 에너지경제신문",
+    "link": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE5VOUVSaUJ3MmE4LWk1RFQ0WDNtNjczbFRpdDdOc2JsRmhUQzRLcmREeTVvVHdibHRqZ2Y5QW5KQWV1UGdyNHByTW9lWHhKeXYybDc3ZFBhMmtYbjg?oc=5",
+    "date": "Thu, 15 Oct 2026 05:05:34 GMT",
+    "coverage": 1
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 사찰음식",
+    "use": "먹거리 소식",
+    "title": "프랑스 파리서 발우공양·선명상 - 불교닷컴",
+    "link": "https://news.google.com/rss/articles/CBMiakFVX3lxTE8yUi01SFc0SVk4VDJMbG1sSUJCSUF3d1ZkTHJHV2NnMDR0aWhwazJycFVxVVB5MTBwdjVUZEIwWlhBcEIwbmNLTExvaV9fSEp3Nnd2YnVFZXVsWTBTMGl1bDFHZ1pnMVA4M2c?oc=5",
+    "date": "Thu, 15 Oct 2026 04:58:38 GMT",
+    "coverage": 1
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 사찰음식",
+    "use": "먹거리 소식",
+    "title": "남도음식문화큰잔치 23일 나주서 개막…27개 시군구 음식 한자리에 - 뉴스21 통신",
+    "link": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE90NUdlU0VKNzRzZDR5Z1ZTN3BDVnBzalh4VE1rbUhYMnFPclJfTmoyRmRjT09UcUpJQXZhajBmUU1MSnhxNlQtTjhfQzBHRF84cXhlbnRB?oc=5",
+    "date": "Thu, 15 Oct 2026 04:04:32 GMT",
+    "coverage": 6
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 사찰음식",
+    "use": "먹거리 소식",
+    "title": "평택원효대사 문화예술제 및 한.중.일 사찰음식 작품전시회 - 내외일보",
+    "link": "https://news.google.com/rss/articles/CBMib0FVX3lxTE1BaWk3dDBDeGltS3dRTVJEZ2JRSEVheFZWVUpFQi1WS3k1YllJU3ZCSnMyRWx0c3I2SEJ2ZzN5djdaNFFabE95OXVYWGR1QTd3UE1weVpaQUpnR2RZeVVGMkFFU1VfVHJyYWtNUkZQYw?oc=5",
+    "date": "Thu, 15 Oct 2026 03:21:52 GMT",
+    "coverage": 2
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 사찰음식",
+    "use": "먹거리 소식",
+    "title": "27개 시군구 대표음식 한자리에…‘남도음식문화큰잔치’ 나주서 개막 > 뉴스 - 더코리아",
+    "link": "https://news.google.com/rss/articles/CBMicEFVX3lxTFBZdHRBWGUyNTI0X0VpYXBtaXhOc25EUkptcnVybXBOU0dWcWVrSFFzdldMRmxNR05EU2loandyeFBIc05JbmpsQi1RN0dIbVFQWHNhcDdjbkhIR2lEYVNqc0NmVTRfcVF0Z2JpRjktbTA?oc=5",
+    "date": "Thu, 15 Oct 2026 03:13:00 GMT",
+    "coverage": 6
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 사찰음식",
+    "use": "먹거리 소식",
+    "title": "프랑스서 템플스테이·사찰음식 체험행사 열어 - 금강신문",
+    "link": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE1OczB1aWxDbktpZU5KbHpwR014S2ZvY1pmN1J5dnpmaTlPdUQ1cFZyd1lWb2ZEZXAwY0dMVGRDb3h3WncwbjBkUHJFRDB3ZGJNbUJSbzZzODNKZWc3NlR2dXRPcFcwbUXSAWtBVV95cUxPQVJPQzRKVlRVOU5URm85SGU1cUd0MTVpWnBnZjRmcXFBX25PRnZCajV1ZUZsVHhhQk5CQ0RMX0F5cVdUTFRPR2Jva2dEb1lmNi1kNmhBQ2JfRXpyOFJobWIxcVRyYW0xd0tMOA?oc=5",
+    "date": "Thu, 15 Oct 2026 03:12:24 GMT",
+    "coverage": 1
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 사찰음식",
+    "use": "먹거리 소식",
+    "title": "나주 영산강정원서 23일 남도음식 대잔치… 27개 시군구 맛 한자리에 모인다 - 한국뉴스코리아",
+    "link": "https://news.google.com/rss/articles/CBMiZkFVX3lxTE11cEVvM0hCcF9SZHRHLUZiTTBJaWZtNnkxOXNCYmtBTmhuRzg5Z2FKZEZMM3dLWVp6bzMtMDhYandxVDcyNVdiSWZrUnlnTnc0OTBuVmY0ZlhPSy1Oa09za3hrekNuZw?oc=5",
+    "date": "Thu, 15 Oct 2026 02:37:54 GMT",
+    "coverage": 6
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 로컬푸드 축제",
+    "use": "먹거리 소식",
+    "title": "낙동강변 가을 축제 개막…구포나루서 3일간 불꽃쇼·가요제 - https://www.localm.kr/",
+    "link": "https://news.google.com/rss/articles/CBMibEFVX3lxTE1EUml2N2hEYkJEcFk0aDRMUldSUEJNMDFEX05KN3JEVms1eGZXaFBhdzZlaGVIY3cxWWRVNjFUc3BIYlR6TmMwbGd1czBiQk8zMzNZRU16VU5QeDNVVDFlT1VPeUw1dFVqSFRHSA?oc=5",
+    "date": "Thu, 15 Oct 2026 22:02:00 GMT",
+    "coverage": 1
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 로컬푸드 축제",
+    "use": "먹거리 소식",
+    "title": "거제 식재료로 만든 17가지 요리…31일 아주동서 로컬푸드 축제 - 거제타임즈",
+    "link": "https://news.google.com/rss/articles/CBMicEFVX3lxTE9UamlhVVl4SVF4Mm43YW5YUkphVGc1dDY2MXRNbFNPa0xYbTNjZWlxTWNmRzAxMDRIT2x1bC1CS2gtNWpScnVnQU1pV1NRNENMNThiR0pBMVlMdHJMV2paQl8wS3hvdTJUdFdQc3R6NUg?oc=5",
+    "date": "Thu, 15 Oct 2026 10:54:51 GMT",
+    "coverage": 6
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 로컬푸드 축제",
+    "use": "먹거리 소식",
+    "title": "예산군 삼국축제서 지역 농특산물 홍보 - 충청신문",
+    "link": "https://news.google.com/rss/articles/CBMibkFVX3lxTE1OQ2pRd2RXUWJQQUxHdXBTbEZaVnY0OWlKUVRIWHBvWGQxM1BOZFFRODlwSW1ubXJLS0p4YmZkcDJkLUFvWUxGMldBZ1VfY1RhXzQtRmNTS2NPRkRRdER2bWE2YkFPWGFGcXZPZUh30gFuQVVfeXFMTU5DalF3ZFdRYlBBTEd1cFNsRlpWdjQ5aUpRVEhYcG9YZDEzUE5kUVE4OXBJbW5tcktLSnhiZmRwMmQtQW9ZTEYyV0FnVV9jVGFfNC1GY1NLY09GRFF0RHZtYTZiQU9YYUZxdk9lSHc?oc=5",
+    "date": "Thu, 15 Oct 2026 08:36:56 GMT",
+    "coverage": 5
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 로컬푸드 축제",
+    "use": "먹거리 소식",
+    "title": "제6회 거제시 지속가능발전 페스티벌 & 로컬푸드 IN 거제, 10월 31일 개최 - 거제뉴스광장",
+    "link": "https://news.google.com/rss/articles/CBMibkFVX3lxTE9fdWM4WjllVmw0VV93MDdpaUF1SmZOcl9fWkUxcnQ3cXU5dmlFS0pzb0x6eTZPTXd0aFdrbTEweUVLNXZ0WTdUeXlFZG1CZ1hiZDVob1J5R3RORFgyMVRvVzc3bHRlc21IV0VjZ2hR?oc=5",
+    "date": "Thu, 15 Oct 2026 07:51:33 GMT",
+    "coverage": 6
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 로컬푸드 축제",
+    "use": "먹거리 소식",
+    "title": "춘천막국수닭갈비축제 이틀째 북적…아프리카 문화체험도 인기 - 연합뉴스",
+    "link": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE9kZmJNUDFKSWZYWHdsdWJxcU9jbzNEUVpXN0ctaUtrNzFMNmZBNlhuNkZ6S0JLU1B0ZmI0TWduNlJrVjZoSmJGSllLR0NncmxJMW1UVV91RHhQYm_SAWBBVV95cUxPZUhadkh2V0dLR3hZVHRsb19HNjBhcHk0ajk1NHhPdU8wYzZjbzhPQUJTZWhSdFJrQkczZ0ZWMHFvaGlXcGFCRmJVcVp4aklJQ2pfZG9Ca0hRdVpYbDJvOGQ?oc=5",
+    "date": "Thu, 15 Oct 2026 07:12:10 GMT",
+    "coverage": 1
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 로컬푸드 축제",
+    "use": "먹거리 소식",
+    "title": "완주군, 트로트 가수 배아현 홍보대사 재위촉 - 완주전주신문",
+    "link": "https://news.google.com/rss/articles/CBMiT0FVX3lxTE5PVlVqbFo5NGdzNWY5NlZhRkMyakJlTjE2M2t1Ql9qUmRTc2sycDhua3p4Q09lUHo0aERVRFhsb3FvZWJ5Y3NIWmNoM3FRSVE?oc=5",
+    "date": "Thu, 15 Oct 2026 06:32:00 GMT",
+    "coverage": 1
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 로컬푸드 축제",
+    "use": "먹거리 소식",
+    "title": "진안고원푸드페스타, 전통시장까지 축제 무대 넓힌다 - 더펜뉴스",
+    "link": "https://news.google.com/rss/articles/CBMiY0FVX3lxTE85Z3pEMGdZRXEwUkpoZXRhQWRaaTVBVDhwYXZmVTJBRXByWnFPbFhqaGJkTzhqeVByeFVPTmZTMFRPTnlsOTZOYTNRbUl6aVJudlFLV2pWdGFCRFFVS1ExZjFuaw?oc=5",
+    "date": "Thu, 15 Oct 2026 04:47:44 GMT",
+    "coverage": 1
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 수산물 축제",
+    "use": "먹거리 소식",
+    "title": "동작구, 24~25일 노량진서 '제9회 도심 속 바다축제' - 아시아경제",
+    "link": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE94SlpLMnM5SndyR3NzVlVEMlV5VkpKUHhQb1ItZHpXbl85Y2Z5VVJzMmNzczBiSHJHUUNjU2Vud2ZPZW1LMFprSC00VHl3aUc1RTU1VlVhcHpjZk1RMG8tOQ?oc=5",
+    "date": "Thu, 15 Oct 2026 22:45:29 GMT",
+    "coverage": 3
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 수산물 축제",
+    "use": "먹거리 소식",
+    "title": "동작구, ‘도심 속 바다축제’ 개최…“인기가수 공연·생참치 해체 퍼포먼스 즐기세요” - 문화일보",
+    "link": "https://news.google.com/rss/articles/CBMiUEFVX3lxTE02NTdDNXZUUlpSdjdCcmc0NFRXNkl3dnZkVlhQbVdFZ0owMXMzcmZoZWtyNVFQS3M2UHR3LUlfX1Q3Uld4M0ZLUFlWUVFZekQ1?oc=5",
+    "date": "Thu, 15 Oct 2026 21:40:23 GMT",
+    "coverage": 3
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 수산물 축제",
+    "use": "먹거리 소식",
+    "title": "‘2026 강화도 새우젓 축제’ 성료...에스포컴퍼니 총괄 대행 - 더퍼블릭",
+    "link": "https://news.google.com/rss/articles/CBMib0FVX3lxTE1jRjhuSTIxMWNTV2VSTjlTWUJZNkFRemtWcmFTMmZFbG0waGFwN1VBVF9kbVRfcjQ5Qk9xTXhGUTJxVHRDNkpvMUhmV05MdFROdy1jeGRqTnpINW5MWGpGcFlFX3FSRGp0Ymp2czgwNNIBb0FVX3lxTE1jRjhuSTIxMWNTV2VSTjlTWUJZNkFRemtWcmFTMmZFbG0waGFwN1VBVF9kbVRfcjQ5Qk9xTXhGUTJxVHRDNkpvMUhmV05MdFROdy1jeGRqTnpINW5MWGpGcFlFX3FSRGp0Ymp2czgwNA?oc=5",
+    "date": "Thu, 15 Oct 2026 11:37:53 GMT",
+    "coverage": 1
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 수산물 축제",
+    "use": "먹거리 소식",
+    "title": "목포항구축제 16일 개막… 파시(波市) 만선의 활기·미식 선사 - 세계일보",
+    "link": "https://news.google.com/rss/articles/CBMiWEFVX3lxTE5IeGtmYnJkcUM2UVZUVEhadlhJYWJrRUJBeGo5UnlhaEhwb2RNWEFURWIyODE4b19XWFh2ZmdPSUZmLTBSLWZnU1oxX3VxYzRQMWNOXzlabmTSAVRBVV95cUxQSG1RR3JOYVRMbTRmQzNfWkd3WnBMM3p1WGZxX2tWcVRLZ1hCN2RlS0hhT2xabWNUNFJyNlhkZ1A5c1ZDakhRWUwwdkllX3hzdldManU?oc=5",
+    "date": "Thu, 15 Oct 2026 11:15:06 GMT",
+    "coverage": 5
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 수산물 축제",
+    "use": "먹거리 소식",
+    "title": "고흥군, 제9회 나로도 청정 수산물축제 안전점검 실시 > 뉴스 - 더코리아",
+    "link": "https://news.google.com/rss/articles/CBMicEFVX3lxTE1UeTJVTFE0SkUyaXU5WGNJcWxpT3AyZVBfd2Qwem9OMjFZd2xzNEN1T0RaZDM2UDFsR1pINzRPSjAxblVEUWdaTkRaSDE1QnJVY2xwSmtjN2xLUnVGWWxVWmIyLVp1dWRTTXZBSzhZX18?oc=5",
+    "date": "Thu, 15 Oct 2026 11:15:00 GMT",
+    "coverage": 2
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 수산물 축제",
+    "use": "먹거리 소식",
+    "title": "NETWORK KOREA 현장포토 보기 - 엔케이엔뉴스",
+    "link": "https://news.google.com/rss/articles/CBMiR0FVX3lxTE1RcXhFWXFHQ2dpRHlyMFV1bHpPWWp0OFlvQ3hsTTN4aTdLUFhVVFBRS2dIOWlpSDdhN1NRUFFyTW1YS0VNeHo4?oc=5",
+    "date": "Thu, 15 Oct 2026 08:45:05 GMT",
+    "coverage": 1
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 수산물 축제",
+    "use": "먹거리 소식",
+    "title": "노브레인·울랄라세션부터 수산물 경매까지…목포항구축제 16일 개막 - 진일보 | 전남일보",
+    "link": "https://news.google.com/rss/articles/CBMib0FVX3lxTE1DeHNwTzlTdXpsemZPOWMyYzktVTI3ZmtYa1RCMTBzVDNzSE45cEd3N3M2bkV2MlNIOUtMZ0J1ekplNTdTWWZ5dC15VW9NMUFka0trVzFFQkpBLVRHaUZoSTZSUFJib2tRSFhKdnRWWQ?oc=5",
+    "date": "Thu, 15 Oct 2026 07:30:00 GMT",
+    "coverage": 5
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 수산물 축제",
+    "use": "먹거리 소식",
+    "title": "아나고 맛보러 기장 칠암항으로...붕장어축제 16일 개막 - 아주경제",
+    "link": "https://news.google.com/rss/articles/CBMiWEFVX3lxTE5lNTIzT3lUOGZlMm9SZ085UjBMMHlxTEQ3N2RNWEdhZFJDaGhNWkttSVVwWThERFdsY2RsWXd3NmJIRHJBMVJXRWtXN3MwbmM3UlFQanF5ZHjSAVhBVV95cUxOZTUyM095VDhmZTJvUmdPOVIwTDB5cUxENzdkTVhHYWRSQ2hoTVpLbUlVcFk4RERXbGNkbFl3dzZiSERyQTFSV0VrVzdzMG5jN1JRUGpxeWR4?oc=5",
+    "date": "Thu, 15 Oct 2026 07:07:41 GMT",
+    "coverage": 1
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 수산물 축제",
+    "use": "먹거리 소식",
+    "title": "송가인도 뜬다… 부산자갈치축제 화려한 막 올라 - 금강일보",
+    "link": "https://news.google.com/rss/articles/CBMiakFVX3lxTE9ZZHI2bTl1VjJUOUt3bmVDV0lXUE9nQWpkR0NZTzBGdU15OFBvZWVzMDlDM2FRX1R6bUJyWkY0aDFFOU1TaGZvR3pnUUx2UUFlRlhUS2xqQ1RackZaeGlaT3h0dTdfVlBwNnc?oc=5",
+    "date": "Thu, 15 Oct 2026 06:53:19 GMT",
+    "coverage": 1
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 수산물 축제",
+    "use": "먹거리 소식",
+    "title": "'제9회 나로도 청정 수산물축제' 16일 개막…고흥군, 해안가·인파 안전 점검 - 보도자료 | 기사 - 더팩트",
+    "link": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE1LWVVPUzlibWhhUmZydWl4MEhfQ29mRzh5YTRnRkZxZnhpYnRxdlhRekU3cjBfNGthMy1YcC1hWUlWWldLX2VzczVNTGtRbmFtZElaRkczRnljTzc4ODlB?oc=5",
+    "date": "Thu, 15 Oct 2026 06:19:41 GMT",
+    "coverage": 2
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 수산물 축제",
+    "use": "먹거리 소식",
+    "title": "\"전국 최대 주산지\"…완주군, 이서 황토 향어축제 - 연합뉴스",
+    "link": "https://news.google.com/rss/articles/CBMiW0FVX3lxTFBqTTRFNTktc2tZUlFsRnRCTG9iTzBmQ1h4bnZ3V3FvTDllUmhkaWc5ZWppN09jMTRrUmtKeEhHWW5CbUViRTg0Nm9UUVIzUEJVYkRlYVNUZDBrajQ?oc=5",
+    "date": "Thu, 15 Oct 2026 06:16:00 GMT",
+    "coverage": 1
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 수산물 축제",
+    "use": "먹거리 소식",
+    "title": "수산자원공단, 자갈치 축제서 어린물고기 보호 ‘치어럽 캠페인’ - 데일리안",
+    "link": "https://news.google.com/rss/articles/CBMirgJBVV95cUxPUHRCZFlNN0UzM0pYZGtiRTZ0bVgxU2ZlMHUzcENnZlBEMzdaYUl2RVlPMXpRX3lHUTB3ZDBsTVlVMll0bWdNV1V5MW5xNHhBSVFmenp2VDE4VXhTNmJCR0hlUjdVTTNvQjlVNzlSTjl3YjBpaXVQeWw3MERvNkFYWU9pd2FDWnUySXVoUE14MThUOGVNVWRmOTV0VHJNQ3JDU3NVNnZlR3hnVGdSQkRpVnJYNkJBVWdCZDhQSVFQOG9YWllPcTVDbjNlcXN1eVlGamRWRHBCOXYtbzRGdl9kT2JIekg0al8tcXhUclVpS2I5WVZUSklVR3Qwc1N3ZFRjeWxmM2FNTWtGUWlqZGtmaHRybjJrSFJnQXR6QkRaX1FyS01hTUFYSElzNEgzdw?oc=5",
+    "date": "Thu, 15 Oct 2026 05:50:00 GMT",
+    "coverage": 3
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 수산물 축제",
+    "use": "먹거리 소식",
+    "title": "한국수산자원공단, 자갈치 축제서 관람객 대상 ‘치어럽 캠페인’ 실시 - 부산일보",
+    "link": "https://news.google.com/rss/articles/CBMidEFVX3lxTFAtc3lXSzg0a3NZUzhoTUU4MWpGRjVKT1pPamN4bXZRd0c1U3Y5dDMyU3BsdzN4ajVIYUVLT2N2SE1oOGdtRlpmMklIX0hlZnhZSGptN2REakpyTXVCSUJ1bURVV19kVElZaGpILVkzUFE0bmxX?oc=5",
+    "date": "Thu, 15 Oct 2026 05:38:46 GMT",
+    "coverage": 3
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 수산물 축제",
+    "use": "먹거리 소식",
+    "title": "수산자원공단, 15~18일 자갈치 축제서 어린물고기 보호 캠페인 - 뉴스1",
+    "link": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE04SFEwa2NZT1N6Q20xNVVhSV82cGFnQlpCaVEzYmR4eG00U1JHa0hoaGZWYWotTHA5dU9iNkZlbmU4QmdYRlJHTFRjUTJrV2luc3NyT2tvd09CQVhrUWU0?oc=5",
+    "date": "Thu, 15 Oct 2026 05:18:38 GMT",
+    "coverage": 3
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 빵 축제",
+    "use": "먹거리 소식",
+    "title": "성심당부터 동네 빵집까지···대전 빵집 120곳 한자리에 - 캠페인 인사이트",
+    "link": "https://news.google.com/rss/articles/CBMidEFVX3lxTE5RVmlHa3p2UjNzTzVBa2I5VEhINFh5WFFwMFNLaHhPVnM0NkNnV09rOWcyQnNZRmNOdFBQcjl0Mm9FT2c3RDExRk5HUnR5MkdCeFBXYUw4SXB6MnFDWGFvS3dpOF9IUlQ5TUV6ZFZudkk4OHRW?oc=5",
+    "date": "Thu, 15 Oct 2026 22:37:08 GMT",
+    "coverage": 9
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 빵 축제",
+    "use": "먹거리 소식",
+    "title": "대전 빵여행 쉼터 ‘트래블라운지 유성온천역’ 개소 - 공뉴스",
+    "link": "https://news.google.com/rss/articles/CBMibEFVX3lxTE10NnBiYkYtYW5CNFE2c2RjNmg3aFpUUlhvV3Jfa0RWY0ZDenlxYzNINW5ZREo2aDF6QW5UVnd0REVTTWRtenREZXZWcFZfS1VSaExnVThTM3dmalFHVW9PR3VmS1Y5bFpJekZZaQ?oc=5",
+    "date": "Thu, 15 Oct 2026 22:01:48 GMT",
+    "coverage": 1
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 빵 축제",
+    "use": "먹거리 소식",
+    "title": "전국 대표 빵축제 ‘천안 빵빵데이’ 17일 개막…동네빵집 53곳·세계 빵 집결 - 로컬투데이",
+    "link": "https://news.google.com/rss/articles/CBMicEFVX3lxTFBubHRxczdVN1JhT2RZcGVyYU0tTllrUmpKd3lTczMybkpWY0hYQ1RFLXlKZWdITGZvb2hQMktlbzI4TS11WHJzaUpJdGtPRHg0T3hzbW1JNUlzNnVVTkdFZnBDcjdSS3RrTWZzd1U1ZlU?oc=5",
+    "date": "Thu, 15 Oct 2026 20:59:28 GMT",
+    "coverage": 9
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 빵 축제",
+    "use": "먹거리 소식",
+    "title": "이번 주말 대전 빵축제서 ‘15m 대형 롤케이크’ 커팅식 - 동아일보",
+    "link": "https://news.google.com/rss/articles/CBMidkFVX3lxTFBYM0lLNjN5cWtOWTg3TkZuQTRVR0RSeGZjV3k5NExSd254c1RMNzJsSGl0YXYtbDc1S2VUUkJYWFgtSDFVWkZtNGFPbUxkaV8tcnZhdmg1NTBra1p6MUZSVUItWFV0YTFaRC1RLWVTOGFtMXhTYUHSAWZBVV95cUxNQmdONmlxSkZWZDR3blV2MnlLNDloWVBYVi1raWxrWUJFU25qUFVEckE2S250aU5uR2VFRXk0WDlvYVNQMERzMkw0OWNaMC0wR2hjckZIeDVOd0pZYkctbTZpVWFTOWc?oc=5",
+    "date": "Thu, 15 Oct 2026 19:30:00 GMT",
+    "coverage": 1
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 빵 축제",
+    "use": "먹거리 소식",
+    "title": "대전 빵축제 17~18일 개최…빵집 120곳 참여 - 뉴스인뉴스",
+    "link": "https://news.google.com/rss/articles/CBMibEFVX3lxTE5PUHVKM3NSWnhxLWZvdk1DYzZfRExXWmxZa2ktSWZ6QVNGcUFuVWRJOFdZaGg5bEhrdjhKVC1nbzFLVWFuYWhvN0ROLTlwemxKMXdENmZyZXd6dk9EaTB2VU8ycDFJXzRNQXJfVQ?oc=5",
+    "date": "Thu, 15 Oct 2026 15:50:05 GMT",
+    "coverage": 9
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 빵 축제",
+    "use": "먹거리 소식",
+    "title": "선선한 가을 날씨… 축제 즐기기 딱 좋네 - 조선일보",
+    "link": "https://news.google.com/rss/articles/CBMikAFBVV95cUxNMTRuU0dCcGJGMUl0c0t4X1F0c0Q3a01kbWpLU1owVGt6SXhybnFKcGpzbUFvQWhLYUl4UWVTUkduZEwzVDNjbXFQQUhSVXlCa1lrR1hyTF8tUHIzbDJhOEdJSFJkZTg1MS1Kc2lVaFNFdGFCM1lVV091eFJwMXF5Rm1iTy1OZ1NFQTZhSTA5bEQ?oc=5",
+    "date": "Thu, 15 Oct 2026 15:39:00 GMT",
+    "coverage": 1
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 빵 축제",
+    "use": "먹거리 소식",
+    "title": "[천안] 빵 하나로 도시를 굽는다…‘2026 빵빵데이 천안’ D-2 - 충청시사신문",
+    "link": "https://news.google.com/rss/articles/CBMia0FVX3lxTE5fSXdLamliWGFzNVZ1eEpRMmtER1dNbFQtUzdVMHQxSmtxQnU1NVkxYWZpRkhqUExxMmlaaTJQQWk5VTU4cVVZYlFaQTJBdE01VGppS0lwVnZTdzhkeDZJRzlvbjRaNUdXYU44?oc=5",
+    "date": "Thu, 15 Oct 2026 13:06:17 GMT",
+    "coverage": 9
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 빵 축제",
+    "use": "먹거리 소식",
+    "title": "[천안] ‘2026 빵빵데이 천안’ 17일 개막…동네빵집 53곳 총출동 - 현대경제",
+    "link": "https://news.google.com/rss/articles/CBMia0FVX3lxTE40eWhUMW9tLVh1Y21iQVJtR3lsTTRaWHQ2aFpyMllMQzNqTHNhM3Q5dGVRcVd0WUtadEVONUxrUUw1ZE8yQXk1M0ZZZWRpN2YyNUxvM211TVF2NC1xZVdSUW91aHRib2RxMUpF?oc=5",
+    "date": "Thu, 15 Oct 2026 12:27:05 GMT",
+    "coverage": 9
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 빵 축제",
+    "use": "먹거리 소식",
+    "title": "[충청신문 주말여행] 빵 굽는 대전, 국화 물드는 유성…대전빵축제·유성국화축제 - 충청신문",
+    "link": "https://news.google.com/rss/articles/CBMibkFVX3lxTE1pZ2g2NFRXUUdzTmVKWlUwYmkyaVdhamk0eHk5WjJMMGVpeklHc2gwUG5vWmpCVUEtczdTdzRvYmtTeDJQN3VyQU12dHUzU1BvSWpEbDlwaUVWa0VZMkpSRmZFQzFkZ1BGcVdPU0lB0gFuQVVfeXFMTWlnaDY0VFdRR3NOZUpaVTBiaTJpV2FqaTR4eTlaMkwwZWl6SUdzaDBQbm9aakJVQS1zN1N3NG9ia1N4MlA3dXJBTXZ0dTNTUG9JakRsOXBpRVZrRVkySlJGZkVDMWRnUEZxV09TSUE?oc=5",
+    "date": "Thu, 15 Oct 2026 09:51:46 GMT",
+    "coverage": 1
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 빵 축제",
+    "use": "먹거리 소식",
+    "title": "‘하슬랑 너무 귀여워요!’ 강릉 디지털 관광캐릭터 하슬랑, 축제 현장서 인기몰이 - 코리아타임뉴스",
+    "link": "https://news.google.com/rss/articles/CBMiakFVX3lxTFB0UkVlNXpSMVFHelp2Ym9NMTNnZ3dkaDNKNVMwaldoWUhlcktDYkZvVy12aDdQZ2o4cm5yY3k2MFRUOFBPYVJOa3VUNGdyUUMwNDhpWklRSllLN0UtUlgyekFHblI4b2pwM2c?oc=5",
+    "date": "Thu, 15 Oct 2026 09:11:21 GMT",
+    "coverage": 1
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 빵 축제",
+    "use": "먹거리 소식",
+    "title": "빵 축제의 즐거움, 야간관광으로 이어간다 - 다원뉴스",
+    "link": "https://news.google.com/rss/articles/CBMib0FVX3lxTE85eGxzazY3NmFJb2p6Y1I5eE56S1FqQl9odXF0azNjQ2VxQjBmMkQ0QU5EYm4tSHNFTzd3YW8taUdIR3Y3X1VTQkF5UWo4Y1VZb2o5dEZFU2NJX1dOQ0FYVlhiREVVMkFVeVA0eENJaw?oc=5",
+    "date": "Thu, 15 Oct 2026 09:08:00 GMT",
+    "coverage": 1
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 빵 축제",
+    "use": "먹거리 소식",
+    "title": "2026 대전 빵 축제 엑스포 과학 공원으로 자리 옮겨 개최 - 대전시티저널",
+    "link": "https://news.google.com/rss/articles/CBMiZkFVX3lxTE5aTjRzWUJhVGdLXzFDVkltRFNuejhWQXV3VFhIVmJmSEhNYklfZlM4UUR6NXZFdVBZZEZhRkxHX081ei03Y3kzczgtZ3JOMW5mT3FQNmVvX3owX05xd01SSENBeUk0dw?oc=5",
+    "date": "Thu, 15 Oct 2026 08:24:50 GMT",
+    "coverage": 9
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 빵 축제",
+    "use": "먹거리 소식",
+    "title": "\"성심당도 참여\"… 대전 빵축제 내일 개막 - 매일경제",
+    "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTFBoeHYwZ29PNzRPdUVrVTA3WXJZMkR6dV9td21uUE5ZYy1MWUdndEJtbXZELUtjZEZmM1NrakU4NnllN19BLUJIYzdQTFhFa3lMMHRqeA?oc=5",
+    "date": "Thu, 15 Oct 2026 08:17:35 GMT",
+    "coverage": 9
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 빵 축제",
+    "use": "먹거리 소식",
+    "title": "2026 대전빵축제' 17~18일 엑스포과학공원 일원서 열려…120개 지역 빵집 참여 - 충청게릴라뉴스",
+    "link": "https://news.google.com/rss/articles/CBMiZkFVX3lxTE4xMmh4RVBiUVU1endtSW8taW9oS2VMUUl2cUY3RVBaOUNlZnlWRHE0ODZiX2FFTUxvRDE5anMxeXluQzRnekJqNTlxekZVemtPdGJyQk5nWTV5RUUwRTgxRTRwN0gzUQ?oc=5",
+    "date": "Thu, 15 Oct 2026 08:01:25 GMT",
+    "coverage": 9
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 빵 축제",
+    "use": "먹거리 소식",
+    "title": "대전 빵집 120곳 한자리에…'2026 대전 빵 축제' 17일 개막 - 중도일보",
+    "link": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE5LY2YwX0FfU2EyeGpja3JFZjNibDFESkg4V0R0Y1VNeGdjYmtVbm1UTEJ2OUlGVktTaTB5bHEzSjF1b09xdUs4RDdVN2FVRktYdXg0cU80VXBBdVk1SHZnMlk3VEU?oc=5",
+    "date": "Thu, 15 Oct 2026 08:00:09 GMT",
+    "coverage": 9
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 전통주 축제",
+    "use": "먹거리 소식",
+    "title": "안동 북문시장, 막걸리·문화공연으로 가을 상권에 활력 더한다 - 경북일보",
+    "link": "https://news.google.com/rss/articles/CBMib0FVX3lxTE43WC0xZXZkZVMtZ0JyRTJNX2h3Zk9FaF8xUy03c1l6WVp5VTdXRXVqbTNORHh3RHBHR0doUmlZRUFWc0JSWkNYVDVJenp0Z1pDVEprNXdRd2haUGhGdjJ3RHJEbWpFTWRDeVI2SVE0MA?oc=5",
+    "date": "Thu, 15 Oct 2026 09:04:20 GMT",
+    "coverage": 1
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 전통주 축제",
+    "use": "먹거리 소식",
+    "title": "'막걸리 한잔에 가을밤 낭만 듬뿍'… 영주 전통시장, '제4회 막걸리축제' 개막 - 이로운넷",
+    "link": "https://news.google.com/rss/articles/CBMiZkFVX3lxTE5za3JpZlc2VFpVMEg3dk91UnRlRWdLRllDeDhQaDdxU3o1MU5KTDBiZlpOQnZ3VU1FQlh4SHV0OVlZNG5Hc2p2b0lsS2ZfNXpuZzRNUVBQRFMxQW4yNzAtbTd4SzczQQ?oc=5",
+    "date": "Thu, 15 Oct 2026 08:37:42 GMT",
+    "coverage": 6
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 전통주 축제",
+    "use": "먹거리 소식",
+    "title": "신영주번개시장·종합시장, ‘제4회 막걸리축제’ 연다 - 영주시민신문",
+    "link": "https://news.google.com/rss/articles/CBMiaEFVX3lxTFBUQ2NDQ2ZKQUlNbGU1RVFueEp4WHd5Mm1PU1lDOWh2anF3QUI4WTFfamhnTlI1MmtTX0VRZk5UOUxUTkZiYnYydktra0J4TFpfVlJWa1ZWVjE5WGdZcG5VbXRHazZpR1Zp?oc=5",
+    "date": "Thu, 15 Oct 2026 08:17:10 GMT",
+    "coverage": 1
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 전통주 축제",
+    "use": "먹거리 소식",
+    "title": "영주 전통시장에 막걸리·한우 축제 열린다…16일부터 이틀간 - 코리아이글뉴스",
+    "link": "https://news.google.com/rss/articles/CBMic0FVX3lxTE9aTWdBTTJhNlBiTno3R2dpRlIxNnFVUFA0YzRvM3ZuVFE1S3F5aE1UUEtjYUFZYnc4WUd0QjIyN2xEeDJWVUdJRFp4eE42ckFIT25NTzNOeVFWZ1MzN0VvelppeUtwbnpvQ1llb0xUdzgxXzg?oc=5",
+    "date": "Thu, 15 Oct 2026 05:49:00 GMT",
+    "coverage": 6
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 전통주 축제",
+    "use": "먹거리 소식",
+    "title": "2026 전주막걸리축제 10월 23~24일 개최…막걸리·전통안주·공연 한자리 - jinju.news",
+    "link": "https://news.google.com/rss/articles/CBMid0FVX3lxTFBWdDVHOUFwcXRSVUJoSFItS0JsQU5sOTcxN0stakZuQ2tDak1GN0hKZHpwSF9uXzVWLTQtZnhJeGhwdFNyeGltdkRXTVVJTnBVUm42Wklya1dLVFdkLV8zQy0xSEhqMDctUTRxQ1VwNmlXZnNLQTFR?oc=5",
+    "date": "Thu, 15 Oct 2026 02:40:36 GMT",
+    "coverage": 1
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 전통주 축제",
+    "use": "먹거리 소식",
+    "title": "막걸리 한 잔에 한우 한 점…영주 전통시장, 가을밤 맛과 흥으로 물든다 - 더팩트",
+    "link": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE5BbE5zN2RnY3JMV0xsWmpGSHJoLU0wWVZpbldvVkxWS0x3ZFZpa1lUNmp6WWxhSE1URWpUTUtwdVNFaG1mLTBTRVJoN2VoWnNqQURwVUp30gFWQVVfeXFMTkFsTnM3ZGdjckxXTGxaakZIcmgtTTBZVmluV29WTFZLTHdkVmlrWVQ2anpZbGFITVRFalRNS3B1U0VobWYtMFNFUmg3ZWhac2pBRHBVSnc?oc=5",
+    "date": "Thu, 15 Oct 2026 01:20:00 GMT",
+    "coverage": 6
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 전통주 축제",
+    "use": "먹거리 소식",
+    "title": "영주 전통시장에 맛과 흥이 넘친다…제4회 막걸리축제 개최 - 경북매일",
+    "link": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE5xaGxXVVcyS3doQmN4Q1lxZWNaRXBUZnZBU2FRMHZ4VUtUV3BVTmJ0Y2tNWWR0OEZBbjF2bFdHM3ZwVGlaZTRVbENzeHBCQ19CUFVwUHhZb1NKdw?oc=5",
+    "date": "Thu, 15 Oct 2026 00:16:00 GMT",
+    "coverage": 6
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 전통주 축제",
+    "use": "먹거리 소식",
+    "title": "동해시 송정막걸리축제 16일 개막, 동해역 일대서 이틀간 열려 - 강원지방신문",
+    "link": "https://news.google.com/rss/articles/CBMia0FVX3lxTE53SGlJcVNMeUZ0YlZNUEcya2lqYjNJeWNlbzBaVmVtLU5DeDVkdE1KR1BKNXAzS1FEek12dHFPRVJNdC16VlViOFJxbktjX1ZQdF9yOEhmTmFaMzlWT3ZPMDN4SThXTlVnSTBr0gFuQVVfeXFMTlEyU3Q0aVBKODByN1VDZjNYYVFFRVhVTHVjbXJaS19uNHVnVFB5enY1YUJyVlNodFdIRjVuOF9YOF9xd2lJZjF6bk5yak5ZWmVaY3R2aUpQVzNoeHZDX2dZemo1OFVzcGJ0SXZlckE?oc=5",
+    "date": "Wed, 14 Oct 2026 08:30:07 GMT",
+    "coverage": 1
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 김장 축제",
+    "use": "먹거리 소식",
+    "title": "2026괴산김장축제, 웃음과 흥겨움을 더해 ‘더 붉고 풍성하게’ - 세계뉴스통신",
+    "link": "https://news.google.com/rss/articles/CBMidEFVX3lxTE1IUS1GUTJTSkZVRHVZdXpZNjk4dXNxVnh1blNBenliaEZlMHJNNmVDMFFfSHFXbC1EQmhvZWd4TmxnYS14eExicWk2b1JsUnN0MTBocDhJMXZrQklEUE45OGwxN3dBajJOY2I0cHZ0eGlON19S?oc=5",
+    "date": "Thu, 15 Oct 2026 20:55:19 GMT",
+    "coverage": 2
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 김장 축제",
+    "use": "먹거리 소식",
+    "title": "괴산군, ‘2026 괴산김장축제’ 다음달 5일 개막···4일간 대장정 - 이뉴스투데이",
+    "link": "https://news.google.com/rss/articles/CBMidEFVX3lxTE1jYTNpUWw2SWdiclVjY29HZUZYWGNwX3ZsbUZiMWJUVDBUdHB3MWkyczdDYmZQYjJyRERoaWd3RzRMbTRzRnRrS0oxci11MHBoZ3lDRlNuRkt3VmRUWDF4OVlSVkszLXJaR2hraEJHdUpOXzZu0gF0QVVfeXFMTWNhM2lRbDZJZ2JyVWNjb0dlRlhYY3BfdmxtRmIxYlRUMFR0cHcxaTJzN0NiZlBiMnJERGhpZ3dHNExtNHNGdGtLSjFyLXUwcGhneUNGU25GS3dWZFRYMXg5WVJWSzMtclpHaGtoQkd1Sk5fNm4?oc=5",
+    "date": "Thu, 15 Oct 2026 12:18:58 GMT",
+    "coverage": 11
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 김장 축제",
+    "use": "먹거리 소식",
+    "title": "금강 노을 물드는 강경포구…30주년 젓갈축제 개막 - 더팩트",
+    "link": "https://news.google.com/rss/articles/CBMiVkFVX3lxTFBRc3ZLNVlXcHN4SFVVMkUzU0JRMzN4OTRCUUZKbnlCckVNLWhvd2pZTDZ2SXZJZGdvbHUxdWpSb3F4XzJDUUJiVEVYY0x0R3NkM1VSQXdn0gFWQVVfeXFMUFFzdks1WVdwc3hIVVUyRTNTQlEzM3g5NEJRRkpueUJyRU0taG93allMNnZJdklkZ29sdTF1alJvcXhfMkNRQmJURVhjTHRHc2QzVVJBd2c?oc=5",
+    "date": "Thu, 15 Oct 2026 10:39:00 GMT",
+    "coverage": 1
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 김장 축제",
+    "use": "먹거리 소식",
+    "title": "\"레드하게 세상을 버무리다\"…내달 5~8일 괴산김장축제 - 뉴시스",
+    "link": "https://news.google.com/rss/articles/CBMieEFVX3lxTE9nNEVsbjU3WE5OLXR4YkxpR2pIc3haQS1ybGcyZlRsdFN5VFNXQk1pOHk3UGZOdHdxNHlOVWZIdTVCWUV0eUdLbjdmZDFwbi1MWGZ2LXJwN1drWTRJMnhhUlFQRUE1dGdzbXozSGZaN21nZzJKTjhldNIBeEFVX3lxTE9nNEVsbjU3WE5OLXR4YkxpR2pIc3haQS1ybGcyZlRsdFN5VFNXQk1pOHk3UGZOdHdxNHlOVWZIdTVCWUV0eUdLbjdmZDFwbi1MWGZ2LXJwN1drWTRJMnhhUlFQRUE1dGdzbXozSGZaN21nZzJKTjhldA?oc=5",
+    "date": "Thu, 15 Oct 2026 07:45:52 GMT",
+    "coverage": 11
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 김장 축제",
+    "use": "먹거리 소식",
+    "title": "2026괴산김장축제, 웃음과 흥겨움을 더해 '더 붉고 풍성하게' - 뉴스신",
+    "link": "https://news.google.com/rss/articles/CBMickFVX3lxTE00OFRmcHB0clpKSjFQVEltMjJKZ3pmRUUwYjV0Xzc0WVo3eW9yNGxhWWw2ekUwZTJhWEVEMzRuZElCTnlaVzRWdjRhc2xxQXJQdnF1TnBObzR6Q2FwT0dFWjhLdWtNUWpRaEwwY0pzNVFEUdIBckFVX3lxTE00OFRmcHB0clpKSjFQVEltMjJKZ3pmRUUwYjV0Xzc0WVo3eW9yNGxhWWw2ekUwZTJhWEVEMzRuZElCTnlaVzRWdjRhc2xxQXJQdnF1TnBObzR6Q2FwT0dFWjhLdWtNUWpRaEwwY0pzNVFEUQ?oc=5",
+    "date": "Thu, 15 Oct 2026 06:49:03 GMT",
+    "coverage": 2
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 김장 축제",
+    "use": "먹거리 소식",
+    "title": "‘RED하게 세상을 버무리다’ 괴산김장축제 11월 5일 팡파르 - 아이뉴스24",
+    "link": "https://news.google.com/rss/articles/CBMiS0FVX3lxTE9IelRMTmF5YVVvanU3aEhWMjl0ZzRmUjhuaENZaklNUE4zb1JFc0JPNnphcFY1UVowV0NsaFdkMzhTOWlXZHlsZkphaw?oc=5",
+    "date": "Thu, 15 Oct 2026 04:39:09 GMT",
+    "coverage": 11
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 김장 축제",
+    "use": "먹거리 소식",
+    "title": "괴산김장축제 11월 5일 개막…창작 마당극·불꽃놀이 더해진다 - 한국사회복지저널",
+    "link": "https://news.google.com/rss/articles/CBMia0FVX3lxTE1TcGpjeG0yUlNKTVhZeXNIeFYwVm15YXQ1NmJaRVVJTWlVMGRVWHBQakRwMFlGR2Q3akxQWDIzdmMwX0ZjMlFfY1hlNGl1cW5WVUtTeDEtZkJzZ2dILXlFYUkwcEUyTndESGVn?oc=5",
+    "date": "Thu, 15 Oct 2026 03:14:46 GMT",
+    "coverage": 11
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 김장 축제",
+    "use": "먹거리 소식",
+    "title": "2026 괴산김장축제, 11월 5일 개막 ··· ‘RED하게 세상을 버무리다’ - 금강일보",
+    "link": "https://news.google.com/rss/articles/CBMiakFVX3lxTE1BQ1luenR0c2V0QlNQQUlTdGlLUHV4U3NjcTVqV0JBcFlTZnhYNXhqSGp5cmctc0t5UXVWNEJaSVYzX3BNOUtxYkF3b3Q2dndwNW5zVWZyWGcxUkJqSVJJN3pGQU0xRjIwRGc?oc=5",
+    "date": "Thu, 15 Oct 2026 02:51:06 GMT",
+    "coverage": 11
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 김장 축제",
+    "use": "먹거리 소식",
+    "title": "성심당 빵·괴산 배추엔 '알맹이' 있는데…주제 급조한 축제 혈세만 낭비 - 더쎈뉴스",
+    "link": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE4tU0p1ZDN1UjRDQUctQkE0d3lsTHdtQzBlWnV6MlhGd0dIZEdkWTZJTy1yWXhMM1FfM09YQWxaRERXM2otZkwyZ0ZRc01TSTE2RHl1NEpVYy0ySHQ5Q3F3Z192YXVHWHV5?oc=5",
+    "date": "Thu, 15 Oct 2026 02:49:49 GMT",
+    "coverage": 1
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 김장 축제",
+    "use": "먹거리 소식",
+    "title": "괴산김장축제 11월 5~8일 개최…마당극·코미디쇼 새로 선보인다 - 중부매일",
+    "link": "https://news.google.com/rss/articles/CBMibkFVX3lxTE41ajJTaHBEZjZPVG96amN6LWdrYzFYeVpHZXhsM0o2TzJDNTVhMUpveG9HN1BqTUEtY1I1bVhQNHlieVViODJyMnp5UGxsc0U3V3FheDhCTng3RlZPdlNvUXFiN3poci1URjZ6MWtR0gFuQVVfeXFMTjVqMlNocERmNk9Ub3pqY3otZ2tjMVh5WkdleGwzSjZPMkM1NWExSm94b0c3UGpNQS1jUjVtWFA0eWJ5VWI4MnIyenlQbGxzRTdXcWF4OEJOeDdGVk92U29RcWI3emhyLVRGNnoxa1E?oc=5",
+    "date": "Thu, 15 Oct 2026 02:49:27 GMT",
+    "coverage": 11
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 김장 축제",
+    "use": "먹거리 소식",
+    "title": "괴산 11월 5~8일 2026 괴산김장축제 - 중도일보",
+    "link": "https://news.google.com/rss/articles/CBMibEFVX3lxTE1JY0dEbHNCa1BETjUyVkF4Nk56eTgycmY1a3RPeW9zWXM5U3I5UWhzX0JDcjJ2T2ptQXlHc0RfajJGb1M2T0Z1WkhOeE54TGhlbENydGJweWVVOWx6ZjdWM2JidDZ0aENPaElkMg?oc=5",
+    "date": "Thu, 15 Oct 2026 01:35:24 GMT",
+    "coverage": 11
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 김장 축제",
+    "use": "먹거리 소식",
+    "title": "괴산김장축제 11월 5일 개막…김장 체험부터 콘서트까지 - 뉴스핌",
+    "link": "https://news.google.com/rss/articles/CBMiXEFVX3lxTE1SX19KbUlBSUhlNkdUNmNDZFQ1N3Z5NmV6US1rd2xLSDJwdnZkbkpjMWp0d250bTd5d1poakl2RFpPOHlSQVprMGNlaVFTRXdQanhqNWtOak5lN2RT?oc=5",
+    "date": "Thu, 15 Oct 2026 01:22:00 GMT",
+    "coverage": 11
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 김장 축제",
+    "use": "먹거리 소식",
+    "title": "2026괴산김장축제 11월 5일 개막… '창작 마당극' 등 신규 프로그램 선보인다 - 충북뉴스",
+    "link": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE9McDdJXzdzb0lfY3lCbGhlcEROV0I3ZXI4THdPMHVZTGZYZzFuZUdyaHhwZnlkU1NvemMyeHRjajlReFF5UFpURWx4eXo5V09CVzNOdTBrMTIybG1acjFQMW5jRmF4WDg?oc=5",
+    "date": "Thu, 15 Oct 2026 00:43:30 GMT",
+    "coverage": 11
+  },
+  {
+    "source": "news",
+    "source_name": "뉴스 검색: 김장 축제",
+    "use": "먹거리 소식",
+    "title": "'절임배추·청결고추 고장' 괴산서 내달 5∼8일 김장축제 - 연합뉴스",
+    "link": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE1PUjh5b2tTQ2Fwa3duT0owUk1ZZTFjY25GTTRpWGtsb2dJVkpLMVViazI2cmc0amY2Um5kT3ctUXpBd005MHdYNjlXb0Z5ZGVaLTZWb3g2OE1fRGPSAWBBVV95cUxOelZTR1JDU0twZGNHNzFVM1BSUVNCTmxQOGdxTzVHdlphUzVqNjBJU0drZWxvdzlzWFVRejBxb242RThGYTZpeHFCd2Rqekh2ZDl4dUtIV3l1SUdlT191UF8?oc=5",
+    "date": "Wed, 14 Oct 2026 23:58:41 GMT",
+    "coverage": 1
+  }
+]
