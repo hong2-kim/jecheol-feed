@@ -45,6 +45,9 @@ def read_source(url, timeout=60):
     """사진·동영상 파일을 읽어요. 인터넷 주소, 저장소 안 경로, 비공개 보관함(vault:) 모두 돼요."""
     if url.startswith("vault:"):
         import os
+        local = os.environ.get("VAULT_DIR", "").strip()  # 이 컴퓨터에서 만들 때: 받아 둔 보관함 폴더
+        if local and (Path(local) / url[len("vault:"):]).exists():
+            return (Path(local) / url[len("vault:"):]).read_bytes()
         token = os.environ.get("PHOTOS_TOKEN", "").strip()
         if not token:
             raise RuntimeError("PHOTOS_TOKEN 이 없어 비공개 보관함 사진을 읽을 수 없어요")
@@ -277,6 +280,11 @@ def scene_rank(s, i, ctx):
     total = ctx.get("ranks", 5)
     if s.get("video"):  # 사용자가 보낸 동영상은 그대로 움직이게 둬요
         pic = f'<div class="pic">{moving(s, s["dur"])[0]}</div>'
+    elif not is_tall(s["photo"]):
+        # 가로 사진은 잘라서 꽉 채우지 않고 통째로 보여 줘요(멀리서 본 느낌). 빈 곳은 같은 사진을 흐리게 깔아요. (2026-10-15 사용자: 너무 확대돼 보임)
+        src, pos = fetch_photo(s["photo"])
+        pic = (f'<div class="pic"><img src="{backdrop(s["photo"])}"></div>'
+               f'<div class="pic rk-wide"><img class="kb a" src="{src}" style="--d:{s["dur"]}s"></div>')
     else:
         src, pos = fetch_photo(s["photo"])
         pic = f'<div class="pic"><img class="kb a" src="{src}" style="object-position:{pos};--d:{s["dur"]}s"></div>'

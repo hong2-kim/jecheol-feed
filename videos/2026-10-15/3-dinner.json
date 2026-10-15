@@ -1,105 +1,103 @@
 {
- "kind": "저녁",
- "subject": "비 오는 목요일 저녁 TOP 5 (전·족발·보쌈·찜닭·대하)",
- "title": "비 소식 있는 목요일, 오늘 저녁 뭐 먹지? TOP 5",
- "yt_title": "비 오는 날 저녁 뭐 먹지? 메뉴 추천 TOP 5, 1위는 전",
- "summary": "비 예보가 있는 목요일 저녁에 당기는 메뉴 5가지를 5위부터 거꾸로 세어요.",
- "top": {
-  "kicker": "비 소식 있는 목요일",
-  "title": "오늘 저녁 뭐 먹지?",
-  "badge": "TOP 5"
- },
- "rank_note": "오늘 날씨에 맞춘 먹고갈지도 추천 순서예요",
- "scenes": [
-  {
-   "type": "tease",
-   "photo": {
-    "url": "https://github.com/hong2-kim/jecheol-feed/releases/download/myphotos/2026-10-14-172554793.jpg"
-   },
-   "text": "1위는\n뭘까?",
-   "dur": 1.3
+  "kind": "저녁",
+  "subject": "비 오는 목요일 저녁 TOP 5 (전·족발·보쌈·찜닭·대하)",
+  "title": "비 소식 있는 목요일, 오늘 저녁 뭐 먹지? TOP 5",
+  "yt_title": "비 오는 날 저녁 뭐 먹지? 메뉴 추천 TOP 5, 1위는 전",
+  "summary": "비 예보가 있는 목요일 저녁에 당기는 메뉴 5가지를 5위부터 거꾸로 세어요.",
+  "top": {
+    "kicker": "비 소식 있는 목요일",
+    "title": "오늘 저녁 뭐 먹지?",
+    "badge": "TOP 5"
   },
-  {
-   "type": "rank",
-   "no": 5,
-   "name": "대하 소금구이",
-   "drink": "소주 or 맥주",
-   "line": "소금 위에서 지글지글",
-   "photo": {
-    "url": "https://tong.visitkorea.or.kr/cms2/website/35/3052835.jpg",
-    "pos": "50% 50%"
-   },
-   "dur": 2.0
-  },
-  {
-   "type": "rank",
-   "no": 4,
-   "name": "안동찜닭",
-   "drink": "맥주",
-   "line": "당면부터 건져 먹어요",
-   "photo": {
-    "url": "https://tong.visitkorea.or.kr/cms2/website/07/2825907.jpg",
-    "pos": "50% 55%"
-   },
-   "dur": 2.0
-  },
-  {
-   "type": "rank",
-   "no": 3,
-   "name": "보쌈",
-   "drink": "소주",
-   "line": "김치 올려 한 쌈이면 끝",
-   "photo": {
-    "url": "https://tong.visitkorea.or.kr/cms2/website/45/2706945.jpg",
-    "pos": "50% 60%"
-   },
-   "dur": 2.0
-  },
-  {
-   "type": "rank",
-   "no": 2,
-   "name": "족발",
-   "drink": "소주 or 맥주",
-   "line": "야근 끝에 생각나는 맛",
-   "photo": {
-    "url": "https://tong.visitkorea.or.kr/cms2/website/35/3047135.jpg",
-    "pos": "50% 55%"
-   },
-   "dur": 2.0
-  },
-  {
-   "type": "tease",
-   "photo": {
-    "url": "https://github.com/hong2-kim/jecheol-feed/releases/download/myphotos/2026-10-14-172554793.jpg"
-   },
-   "text": "1위는?",
-   "dur": 0.8,
-   "in": "fade"
-  },
-  {
-   "type": "rank",
-   "no": 1,
-   "name": "전",
-   "drink": "막걸리",
-   "line": "비 소식엔 역시 전이죠",
-   "photo": {
-    "url": "https://github.com/hong2-kim/jecheol-feed/releases/download/myphotos/2026-10-14-172554793.jpg"
-   },
-   "dur": 2.4,
-   "in": "zoom"
-  }
- ],
- "caption": "비 소식 있는 목요일, 오늘 저녁 뭐 먹지?\n\n1위 전 · 막걸리 — 비 소식엔 역시 전이죠\n2위 족발 · 소주 or 맥주 — 야근 끝에 생각나는 맛\n3위 보쌈 · 소주 — 김치 올려 한 쌈이면 끝\n4위 안동찜닭 · 맥주 — 당면부터 건져 먹어요\n5위 대하 소금구이 · 소주 or 맥주 — 소금 위에서 지글지글\n\n여러분 오늘 1위는 뭐예요? 댓글로 알려 주세요.\n\n오늘 서울은 가랑비 예보가 있어요(비 올 확률 61%, 최저 11도, 최고 20도). 순서는 오늘 날씨에 맞춘 먹고갈지도 추천이에요. 술 조합은 추천일 뿐이에요. 지나친 음주는 건강에 해로워요.",
- "tags": [
-  "전",
-  "저녁메뉴추천",
-  "비오는날음식",
-  "오늘뭐먹지"
- ],
- "sources": [
-  "https://open-meteo.com/ (서울 예보, 2026-10-15 확인)"
- ],
- "credits": [
-  "ⓒ한국관광공사 포토코리아-천준교, 디엔에이스튜디오, 알렉스 분도, 김효서"
- ]
+  "rank_note": "오늘 날씨에 맞춘 먹고갈지도 추천 순서예요",
+  "scenes": [
+    {
+      "type": "tease",
+      "photo": {
+        "url": "vault:photos/u-2026-10-15-jeon.jpg"
+      },
+      "text": "1위는\n뭘까?",
+      "dur": 1.3
+    },
+    {
+      "type": "rank",
+      "no": 5,
+      "name": "대하 소금구이",
+      "drink": "소주 or 맥주",
+      "line": "소금 위에서 지글지글",
+      "photo": {
+        "url": "https://tong.visitkorea.or.kr/cms2/website/35/3052835.jpg",
+        "pos": "50% 50%"
+      },
+      "dur": 2.0
+    },
+    {
+      "type": "rank",
+      "no": 4,
+      "name": "닭갈비",
+      "drink": "맥주",
+      "line": "볶음밥까지가 한 끼예요",
+      "photo": {
+        "url": "vault:photos/u-2026-10-15-dakgalbi.jpg"
+      },
+      "dur": 2.0
+    },
+    {
+      "type": "rank",
+      "no": 3,
+      "name": "삼겹살",
+      "drink": "소주",
+      "line": "비 오는 날 불판 소리는 못 참죠",
+      "photo": {
+        "url": "vault:photos/u-2026-10-15-samgyeop.jpg"
+      },
+      "dur": 2.0
+    },
+    {
+      "type": "rank",
+      "no": 2,
+      "name": "족발",
+      "drink": "소주 or 맥주",
+      "line": "야근 끝에 생각나는 맛",
+      "photo": {
+        "url": "https://tong.visitkorea.or.kr/cms2/website/35/3047135.jpg",
+        "pos": "50% 55%"
+      },
+      "dur": 2.0
+    },
+    {
+      "type": "tease",
+      "photo": {
+        "url": "vault:photos/u-2026-10-15-jeon.jpg"
+      },
+      "text": "1위는?",
+      "dur": 0.8,
+      "in": "fade"
+    },
+    {
+      "type": "rank",
+      "no": 1,
+      "name": "전",
+      "drink": "막걸리",
+      "line": "비 소식엔 역시 전이죠",
+      "photo": {
+        "url": "vault:photos/u-2026-10-15-jeon.jpg"
+      },
+      "dur": 2.4,
+      "in": "zoom"
+    }
+  ],
+  "caption": "비 소식 있는 목요일, 오늘 저녁 뭐 먹지?\n\n1위 전 · 막걸리 — 비 소식엔 역시 전이죠\n2위 족발 · 소주 or 맥주 — 야근 끝에 생각나는 맛\n3위 삼겹살 · 소주 — 비 오는 날 불판 소리는 못 참죠\n4위 닭갈비 · 맥주 — 볶음밥까지가 한 끼예요\n5위 대하 소금구이 · 소주 or 맥주 — 소금 위에서 지글지글\n\n여러분 오늘 1위는 뭐예요? 댓글로 알려 주세요.\n\n오늘 서울은 가랑비 예보가 있어요(비 올 확률 61%, 최저 11도, 최고 20도). 순서는 오늘 날씨에 맞춘 먹고갈지도 추천이에요. 술 조합은 추천일 뿐이에요. 지나친 음주는 건강에 해로워요.",
+  "tags": [
+    "전",
+    "저녁메뉴추천",
+    "비오는날음식",
+    "오늘뭐먹지"
+  ],
+  "sources": [
+    "https://open-meteo.com/ (서울 예보, 2026-10-15 확인)"
+  ],
+  "credits": [
+    "ⓒ한국관광공사 포토코리아-천준교, 디엔에이스튜디오, 알렉스 분도, 김효서"
+  ]
 }
