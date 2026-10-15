@@ -58,7 +58,9 @@
   "file": "https://github.com/hong2-kim/jecheol-feed/releases/download/myphotos/2026-10-14-172554794.jpg",
   "note": "떡볶이",
   "date": "2026-10-14",
-  "used": [],
+  "used": [
+   "2026-10-16/3-dinner"
+  ],
   "tg_unique": "AQADeRVrG65dcVZ-",
   "sha256": "5aa78df0797e597ad87bc6c7cae34578ec89ad96709529c34738737b7430a165",
   "bytes": 129254,
