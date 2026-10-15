@@ -38,6 +38,26 @@ def rich(text):
     return esc(text).replace("[[", '<span class="am">').replace("]]", "</span>")
 
 
+VAULT = "hong2-kim/jecheol-photos"  # 사용자 사진 비공개 보관함. 설계도에는 "vault:photos/…jpg" 로 적어요.
+
+
+def read_source(url, timeout=60):
+    """사진·동영상 파일을 읽어요. 인터넷 주소, 저장소 안 경로, 비공개 보관함(vault:) 모두 돼요."""
+    if url.startswith("vault:"):
+        import os
+        token = os.environ.get("PHOTOS_TOKEN", "").strip()
+        if not token:
+            raise RuntimeError("PHOTOS_TOKEN 이 없어 비공개 보관함 사진을 읽을 수 없어요")
+        path = urllib.parse.quote(url[len("vault:"):])
+        req = urllib.request.Request(f"https://api.github.com/repos/{VAULT}/contents/{path}",
+                                     headers={**UA, "Authorization": f"Bearer {token}", "Accept": "application/vnd.github.raw"})
+        return urllib.request.urlopen(req, timeout=timeout).read()
+    if url.startswith("http"):
+        safe = urllib.parse.quote(url, safe=":/?&=%+,;@()")
+        return urllib.request.urlopen(urllib.request.Request(safe, headers=UA), timeout=timeout).read()
+    return (HERE.parent / url).read_bytes()  # 사용자가 보낸 사진. 저장소 안의 경로예요 (myphotos/이름.jpg)
+
+
 SIZES = {}  # 사진 주소 -> (가로, 세로)
 
 
@@ -61,11 +81,7 @@ def fetch_photo(photo):
     CACHE.mkdir(parents=True, exist_ok=True)
     path = CACHE / (hashlib.sha1(url.encode()).hexdigest()[:16] + "-g2.jpg")
     if not path.exists():
-        if url.startswith("http"):
-            safe = urllib.parse.quote(url, safe=":/?&=%+,;@()")
-            data = urllib.request.urlopen(urllib.request.Request(safe, headers=UA), timeout=60).read()
-        else:  # 사용자가 보낸 사진. 저장소 안의 경로예요 (myphotos/이름.jpg)
-            data = (HERE.parent / url).read_bytes()
+        data = read_source(url)
         image = ImageOps.exif_transpose(Image.open(io.BytesIO(data))).convert("RGB")
         if min(image.size) < 500:
             raise ValueError(f"사진이 너무 작아요 ({image.size[0]}x{image.size[1]}): {url}")
@@ -132,11 +148,7 @@ def clip(video, dur):
         src = CACHE.parent / "clips" / (hashlib.sha1(url.encode()).hexdigest()[:16] + ".mp4")
         if not src.exists():
             src.parent.mkdir(parents=True, exist_ok=True)
-            if url.startswith("http"):
-                safe = urllib.parse.quote(url, safe=":/?&=%+,;@()")
-                src.write_bytes(urllib.request.urlopen(urllib.request.Request(safe, headers=UA), timeout=180).read())
-            else:
-                src.write_bytes((HERE.parent / url).read_bytes())
+            src.write_bytes(read_source(url, timeout=180))
         ff = imageio_ffmpeg.get_ffmpeg_exe()
         first = folder / "first.jpg"
         subprocess.run([ff, "-y", "-loglevel", "error", "-ss", str(start), "-i", str(src), "-frames:v", "1", "-q:v", "3", str(first)], check=True)

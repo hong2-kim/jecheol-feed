@@ -47,6 +47,8 @@ jobs:
           echo "day=$DAY" >> "$GITHUB_OUTPUT"
           echo "만들 날짜: $DAY"
       - name: 영상 만들기
+        env:
+          PHOTOS_TOKEN: ${{ secrets.PHOTOS_TOKEN }} # 사용자 사진 비공개 보관함(jecheol-photos)을 읽는 열쇠
         run: python video/produce.py "${{ steps.day.outputs.day }}"
       - name: 영상 파일 올리기
         env:
