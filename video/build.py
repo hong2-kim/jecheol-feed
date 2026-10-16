@@ -883,6 +883,7 @@ def youtube_keywords(spec):
     keyword = " ".join(str(spec.get("yt_keyword") or "").split())
     related = _words(spec.get("yt_related"))
     tags = _words(spec.get("yt_tags")) or _words([keyword] + related)
+    tags = _words(["먹고갈지도"] + tags)  # 채널 이름은 늘 맨 앞에 (2026-10-16 사용자가 정함)
     tag_text = ""
     for t in tags:  # 유튜브 태그 칸은 모두 합쳐 500자까지라 넘치면 뒤의 것을 버려요
         if len(tag_text) + len(t) + 1 > 450:
@@ -905,7 +906,7 @@ def youtube_problems(spec):
         out.append(f"yt_related(연관 키워드)가 {len(k['related'])}개예요. 3~6개로 적어 주세요.")
     if not spec.get("yt_tags"):
         out.append("yt_tags(업로드 태그)가 없어요. 핵심·연관 키워드로 대신 채워요.")
-    elif len(spec["yt_tags"]) != len(k["tags"]):
+    elif len(_words(spec["yt_tags"])) != len(spec["yt_tags"]):
         out.append("yt_tags 에 겹치는 태그가 있어 뺐어요.")
     if not spec.get("yt_hashtags"):
         out.append("yt_hashtags(유튜브 해시태그)가 없어요. 인스타 해시태그 앞 3개를 대신 써요.")
