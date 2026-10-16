@@ -181,8 +181,86 @@ def munch(dur):
     return tr
 
 
-SONGS = {"brand-walk": walk, "brand-market": market, "brand-night": night, "brand-picnic": picnic, "brand-munch": munch}
-LENGTHS = {"brand-munch": 24.0}  # 카드 쇼츠(20초 남짓)에서도 중간에 끝 가락이 나오지 않게 길게 만들어요
+def supersaw(note, dur, width=0.012, k=6):
+    """여러 겹 톱니파를 조금씩 어긋나게 겹친 밝은 신스. 부드럽게 깎아 써요."""
+    n = int(SR * dur)
+    t = np.arange(n) / SR
+    f = hz(note)
+    x = sum((2 * ((f * (1 + d) * t + ph) % 1) - 1) for d, ph in zip((-width, -width / 2, 0, width / 2, width), (0, .3, .6, .1, .8)))
+    return smooth(x / 5, k) * env(n, 0.01, 0.08)
+
+
+def pump(n, beat, depth=0.65):
+    """박자마다 숨 쉬듯 줄었다 커지는 크기 (사이드체인 느낌)."""
+    t = (np.arange(n) / SR) % beat
+    return 1 - depth * np.exp(-t / (beat * 0.18))
+
+
+def horizon(dur):
+    """6. 밝은 지평선 — 처음부터 밝은 신스 화음과 반짝이는 아르페지오로 시작하는 신나는 전자음. (2026-10-16, 사용자가 'Vibrant Horizon - Hyperstring' 같은 곡을 원함)"""
+    beat = 60 / 120
+    n = int(SR * (dur + 2))
+    tr = np.zeros(n)
+    pad = np.zeros(n)
+    prog = [((60, 64, 67, 72), 48), ((55, 59, 62, 67), 43), ((57, 60, 64, 69), 45), ((53, 57, 60, 65), 41)]
+    arp = [0, 1, 2, 3, 2, 1, 2, 3]
+    t, bar = 0.0, 0
+    while t < dur - 4 * beat:
+        chord, root = prog[bar % 4]
+        for c in chord:
+            put(pad, t, supersaw(c, beat * 4), 0.10)
+        for s in range(8):
+            put(tr, t + s * beat / 2, pluck(chord[arp[s]] + 12, beat * .5, 0.95), 0.20)
+        for b in range(4):
+            put(tr, t + b * beat, bass(root, beat * .9), 0.34)
+            put(tr, t + b * beat + beat / 2, bass(root + 12, beat * .4), 0.18)
+            if bar or b >= 2:  # 첫 마디 앞 두 박은 신스만, 그다음 박자가 들어와요
+                put(tr, t + b * beat, kick(), 0.30)
+            put(tr, t + b * beat + beat / 2, hat(0.9), 0.07)
+        put(tr, t + beat, clap(), 0.12)
+        put(tr, t + 3 * beat, clap(), 0.12)
+        bar += 1
+        t += 4 * beat
+    tr += pad * pump(n, beat)
+    motif(tr, t, beat, lambda n_, d: pluck(n_ + 12, d, 0.9), 0.40)
+    motif(tr, t, beat, lambda n_, d: bell(n_ + 12, d), 0.16)
+    put(tr, t, bass(36, beat * 4), 0.4)
+    return tr
+
+
+def horizon_chill(dur):
+    """7. 노을 지평선 — 같은 밝은 결인데 조금 느리고 둥근 소리. 퓨처베이스처럼 화음이 숨 쉬듯 출렁여요. (2026-10-16)"""
+    beat = 60 / 100
+    n = int(SR * (dur + 2))
+    tr = np.zeros(n)
+    pad = np.zeros(n)
+    prog = [((57, 60, 64, 71), 45), ((53, 57, 60, 67), 41), ((60, 64, 67, 74), 48), ((55, 59, 62, 69), 43)]
+    lead = [[76, 79, 81, 79], [77, 76, 72, 74], [79, 81, 84, 83], [79, 74, 76, 74]]
+    t, bar = 0.0, 0
+    while t < dur - 4 * beat:
+        chord, root = prog[bar % 4]
+        for c in chord:
+            put(pad, t, supersaw(c, beat * 4, 0.008, 10), 0.13)
+        for s, note in enumerate(lead[bar % 4]):
+            put(tr, t + s * beat, bell(note, beat * 1.2), 0.11)
+            put(tr, t + s * beat + beat * .5, pluck(note - 12, beat * .4, 0.8), 0.10)
+        put(tr, t, bass(root, beat * 1.8), 0.36)
+        put(tr, t + 2.5 * beat, bass(root, beat * 1.2), 0.28)
+        put(tr, t, kick(), 0.30)
+        put(tr, t + 2.5 * beat, kick(), 0.22)
+        put(tr, t + 2 * beat, clap(), 0.13)
+        for h in range(8):
+            put(tr, t + h * beat / 2 + beat / 4, hat(0.7), 0.05)
+        bar += 1
+        t += 4 * beat
+    tr += pad * pump(n, beat, 0.75)
+    motif(tr, t, beat, lambda n_, d: bell(n_ + 12, d), 0.26)
+    put(tr, t, bass(36, beat * 4), 0.4)
+    return tr
+
+
+SONGS = {"brand-walk": walk, "brand-market": market, "brand-night": night, "brand-picnic": picnic, "brand-munch": munch, "brand-horizon": horizon, "brand-horizon-chill": horizon_chill}
+LENGTHS = {"brand-munch": 24.0, "brand-horizon": 24.0, "brand-horizon-chill": 24.0}  # 카드 쇼츠(20초 남짓)에서도 중간에 끝 가락이 나오지 않게 길게 만들어요
 
 
 def save(x, path):
