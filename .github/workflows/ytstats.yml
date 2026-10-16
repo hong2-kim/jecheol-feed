@@ -1,0 +1,42 @@
+# 매일 아침 유튜브 쇼츠 조회수를 모아 텔레그램으로 보내요. Claude 를 쓰지 않아요. (2026-10-16 사용자가 부탁함)
+name: ytstats
+
+on:
+  schedule:
+    - cron: "0 0 * * *" # 매일 오전 9시(한국 시간)
+  workflow_dispatch:
+  push: # 이 파일이나 프로그램을 고쳐 올리면 한 번 돌아서 바로 확인할 수 있어요
+    branches: [main]
+    paths:
+      - .github/workflows/ytstats.yml
+      - scripts/yt_stats.py
+
+permissions:
+  contents: write
+
+concurrency:
+  group: repo-write
+  cancel-in-progress: false
+
+jobs:
+  ytstats:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: 조회수 모아서 보내기
+        run: python scripts/yt_stats.py
+        env:
+          GOOGLE_TTS_API_KEY: ${{ secrets.GOOGLE_TTS_API_KEY }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID || secrets.TELEGRAM_CHAT_I }}
+      - name: 기록 저장
+        run: |
+          git config user.name "jecheol-feed"
+          git config user.email "actions@users.noreply.github.com"
+          git add state/yt_stats.json
+          git diff --cached --quiet || git commit -m "유튜브 조회수 기록"
+          git pull --rebase
+          git push

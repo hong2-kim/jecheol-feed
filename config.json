@@ -28,6 +28,7 @@
   "youtube": {
     "voice": "ko-KR-Wavenet-A",
     "speaking_rate": 1.3,
-    "note": "2026-10-15 사용자가 고름: WaveNet 여자 목소리, 1.25배와 1.35배 사이"
+    "note": "2026-10-15 사용자가 고름: WaveNet 여자 목소리, 1.25배와 1.35배 사이",
+    "handle": "@meokgomap"
   }
 }
