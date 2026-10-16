@@ -92,6 +92,11 @@ def send_youtube(token, chat, r, day):
             f"<b>설명</b> (눌러서 복사)\n<pre>{html.escape(desc)}</pre>\n"
             f"<b>내려받기</b>\n{html.escape(url)}")
     tg("sendMessage", token, data={"chat_id": chat, "text": text, "parse_mode": "HTML", "disable_web_page_preview": "true"})
+    thumb = r.get("thumb")
+    if thumb and (ROOT / "dist" / thumb).exists():  # 유튜브 '동영상에서 선택'은 장면을 못 고르니, 썸네일 그림을 파일로 보내요
+        with open(ROOT / "dist" / thumb, "rb") as f:
+            tg("sendDocument", token, data={"chat_id": chat, "caption": f"{tag} 썸네일\n유튜브 썸네일 '파일 업로드'에 넣어 주세요"},
+               files={"document": (thumb, f, "image/jpeg")})
 
 
 def main():

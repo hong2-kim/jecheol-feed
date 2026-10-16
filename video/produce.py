@@ -31,8 +31,16 @@ SIZE = {"width": 1080, "height": 1920}
 def render(spec, name, browser):
     build.EXTRACT = True
     page_html, duration, meta = build.build_html(spec)
-    if not 9.9 <= duration <= 15.1:
-        raise ValueError(f"영상 길이가 {duration:.1f}초예요. 10~15초로 맞춰 주세요.")
+    top = build.longest(spec)
+    if not 9.9 <= duration <= top + 0.1:
+        raise ValueError(f"영상 길이가 {duration:.1f}초예요. 10~{top:.0f}초로 맞춰 주세요.")
+    # 썸네일: 마지막 "1위는 뭘까?" 장면 (TOP 5 는 첫 화면이 상황극이라 따로 뽑아 둬요)
+    thumb_at, at = None, 0.0
+    for s in spec["scenes"]:
+        if s["type"] == "tease":
+            thumb_at = at + min(0.7, s["dur"] * 0.8)
+        at += s["dur"]
+    thumb_frame = round(thumb_at * FPS) if thumb_at is not None else None
     work = ROOT / "build"
     work.mkdir(exist_ok=True)
     html_path = work / f"{name}.html"
@@ -58,7 +66,10 @@ def render(spec, name, browser):
         )
         for i in range(round(duration * FPS)):
             page.evaluate("t => window.seek(t)", i / FPS)
-            ffmpeg.stdin.write(page.screenshot(type="jpeg", quality=92))
+            shot = page.screenshot(type="jpeg", quality=92)
+            ffmpeg.stdin.write(shot)
+            if i == thumb_frame:
+                (ROOT / "dist" / f"{name}-thumb.jpg").write_bytes(shot)
         ffmpeg.stdin.close()
         if ffmpeg.wait() != 0:
             raise RuntimeError("영상을 저장하지 못했어요 (ffmpeg 오류).")
@@ -166,6 +177,8 @@ def main():
                 else:
                     out, duration = render(spec, name, browser)
                     entry.update({"ok": True, "seconds": round(duration, 1), "size_mb": round(out.stat().st_size / 1e6, 1)})
+                    if (ROOT / "dist" / f"{name}-thumb.jpg").exists():
+                        entry["thumb"] = f"{name}-thumb.jpg"
                     print(f"만들었어요: {out.name} ({duration:.1f}초)")
             except Exception as e:
                 entry.update({"ok": False, "error": str(e)[:300]})

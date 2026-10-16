@@ -482,19 +482,24 @@ def transition(kind, frames, i, scenes):
 
 
 SHORTEST, LONGEST = 10.0, 15.0  # 영상 전체 길이(초). 사용자가 정한 범위예요.
+LONGEST_RANK = 20.0  # TOP 5 는 앞에 상황극 첫마디가 붙어서 20초까지 돼요 (2026-10-16 사용자가 정함)
 
 
-def fit(scenes, tail):
-    """장면 길이를 고르게 늘이거나 줄여서 전체가 10~15초 안에 들게 해요."""
+def longest(spec):
+    return LONGEST_RANK if any(s["type"] == "rank" for s in spec.get("scenes", [])) else LONGEST
+
+
+def fit(scenes, tail, top=LONGEST):
+    """장면 길이를 고르게 늘이거나 줄여서 전체가 10~15초(TOP 5 는 20초) 안에 들게 해요."""
     for s in scenes:
         s.setdefault("dur", 2.4)
     body = sum(s["dur"] for s in scenes)
-    target = min(max(body, SHORTEST - tail), LONGEST - tail)
+    target = min(max(body, SHORTEST - tail), top - tail)
     if abs(target - body) > 0.01:
         for s in scenes:
             s["dur"] = round(s["dur"] * target / body, 2)
     if min(s["dur"] for s in scenes if s["type"] != "tease") < 1.2:  # "1위는?" 같은 멈춤 장면은 짧아도 돼요
-        raise ValueError(f"장면이 {len(scenes)}개라 15초 안에 다 보여 줄 수 없어요. 장면을 줄여 주세요.")
+        raise ValueError(f"장면이 {len(scenes)}개라 {top:.0f}초 안에 다 보여 줄 수 없어요. 장면을 줄여 주세요.")
 
 
 # 먹고갈지도만의 노래(video/brand_music.py 로 만든 것). 영상 갈래마다 어울리는 곡을 골라요. (2026-10-16 사용자가 넣으라고 함)
@@ -524,7 +529,7 @@ def build_html(spec):
     # 체크·한 장 정리는 끝 장면을 따로 붙이지 않아요. 같은 장면 뒤에 지도를 옅게 깔고 아래에 이름을 넣어요. (2026-10-15 사용자가 정함)
     inline = all(s["type"] in INLINE_BRAND for s in scenes)
     tail = 0 if inline else (min(3.0, 2.0 + .25 * max(0, len(lines) - 2)) if lines else 1.5)
-    fit(scenes, tail)
+    fit(scenes, tail, longest(spec))
     frames = []
     for i, s in enumerate(scenes):
         kind, body = SCENES[s["type"]](s, i, ctx)
