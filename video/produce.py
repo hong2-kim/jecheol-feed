@@ -96,7 +96,7 @@ def render_cards(spec, name, browser):
 COVER_SEC, CARD_SEC, FADE_SEC = 3.0, 4.0, 0.4  # 카드 쇼츠: 첫 장, 소식 한 장, 넘어가는 시간
 
 
-def cards_short(files, name, kind="소식", music=None):
+def cards_short(files, name, spec):
     """카드 그림들을 넘겨 보는 세로 영상으로 이어요. 유튜브 쇼츠용이에요. (파일, 길이)
 
     카드(1080×1350)를 가운데보다 조금 위에 두고(쇼츠는 아래쪽에 제목과 단추가 겹쳐요), 위아래 빈자리는 같은 카드를 흐리고 어둡게 깔아 채워요.
@@ -109,7 +109,7 @@ def cards_short(files, name, kind="소식", music=None):
     total = sum(durs) - FADE_SEC * (len(files) - 1)
     wav = ROOT / "build" / f"{name}-short.wav"
     wav.parent.mkdir(exist_ok=True)
-    audio.build(build.song({"kind": kind, "music": music}), [], total, wav)
+    audio.build(build.song(spec), [], total, wav)
     cmd += ["-i", str(wav)]
     chain = []
     for i in range(len(files)):
@@ -149,6 +149,8 @@ def main():
             entry = {"id": name, "date": day, "file": f"{name}.mp4"}
             try:
                 spec = json.loads(path.read_text(encoding="utf-8"))
+                spec.update({"_day": day, "_name": path.stem})  # 오디오 보관함 곡을 날짜로 돌려 고를 때 써요
+                entry["music"] = build.track_info(spec)
                 entry.update({k: spec.get(k) for k in ("kind", "title", "summary", "caption", "tags", "sources", "credits")})
                 entry["tags"] = build.hashtags(spec.get("tags"))  # 인스타에 들어가는 5개만
                 entry["yt_title"], entry["yt_desc"] = build.youtube_text(spec)
@@ -160,7 +162,7 @@ def main():
                     entry.update({"ok": True, "format": "cards", "file": files[0], "files": files, "size_mb": round(size / 1e6, 1)})
                     print(f"만들었어요: {name} 카드 {len(files)}장")
                     try:  # 쇼츠 영상이 안 만들어져도 인스타용 카드는 그대로 보내요
-                        short, sec = cards_short(files, name, spec.get("kind", "소식"), spec.get("music"))
+                        short, sec = cards_short(files, name, spec)
                         entry.update({"short": short.name, "short_seconds": round(sec, 1)})
                         print(f"만들었어요: {short.name} ({sec:.1f}초, 유튜브 쇼츠용)")
                     except Exception as e:

@@ -531,7 +531,44 @@ SONGS = {"제철": "brand-picnic", "유행": "brand-munch", "저녁": "brand-cur
          "이야기": "brand-night", "소식": "brand-walk", "발견": "brand-sneak", "세계": "brand-walk", "해외": "brand-walk"}
 
 
+# 유튜브 오디오 보관함 곡 (2026-10-17 사용자가 골라 줌, 39곡). 곡 파일은 비공개 보관함 music/ 에 있고 목록은 video/music.json.
+# 영상 갈래마다 분위기 묶음에서 날짜로 돌려 가며 골라요. 같은 날 같은 묶음을 쓰는 영상끼리는 SLOT 만큼 떨어진 곡을 써요.
+LIBRARY = json.loads((HERE / "music.json").read_text(encoding="utf-8"))
+MOODS = {"저녁": "궁금", "발견": "궁금", "소식": "밝음", "유행": "밝음",
+         "제철": "따뜻", "지역": "따뜻", "이야기": "따뜻", "세계": "따뜻", "해외": "따뜻"}
+SLOT = {"3-dinner": 0, "4-find": 6, "2-news": 0, "8-trend": 7, "1-monthly": 0, "1-check": 4, "1-sheet": 8,
+        "5-world": 2, "6-story": 0, "7-local": 3, "9-abroad": 6}
+
+
+def pick_track(spec):
+    """그날 쓸 오디오 보관함 곡의 키. 설계도에 "music" 을 적었거나 날짜를 모르면 None (먹고갈지도 노래를 써요)."""
+    name = spec.get("music")
+    if name:
+        return name[4:] if name.startswith("lib:") else None
+    pool = LIBRARY["pools"].get(MOODS.get(spec.get("kind", ""), "따뜻"))
+    day = spec.get("_day")
+    if not pool or not day:
+        return None
+    from datetime import date
+    return pool[(date.fromisoformat(day).toordinal() + SLOT.get(spec.get("_name", ""), 0)) % len(pool)]
+
+
+def track_info(spec):
+    """그 영상에 깔리는 곡 정보(title, artist, license, credit). 먹고갈지도 노래면 None."""
+    key = pick_track(spec)
+    return {"key": key, **LIBRARY["tracks"][key]} if key in LIBRARY["tracks"] else None
+
+
+def music_line(spec):
+    """CC 곡이면 게시글·설명에 꼭 넣을 출처 줄. 아니면 빈 글."""
+    t = track_info(spec)
+    return f"🎵 {t['credit']}" if t and t.get("credit") else ""
+
+
 def song(spec):
+    key = pick_track(spec)
+    if key:
+        return f"lib:{key}"
     name = spec.get("music") or SONGS.get(spec.get("kind", ""), "brand-walk")
     return "none" if name == "none" else f"file:{name}"
 
@@ -767,6 +804,8 @@ def description(spec):
         lines += [f"📷 {big}{extra}", ""]
     elif shown:
         lines += ["📷 사진 출처는 영상 마지막 장면에 정리했어요.", ""]
+    if not is_cards(spec) and music_line(spec):  # 인스타 카드에는 음악이 없어요
+        lines += [music_line(spec), ""]
     lines.append(" ".join("#" + t for t in hashtags(spec.get("tags"))))
     return "\n".join(lines) + "\n"
 
@@ -859,6 +898,8 @@ def youtube_text(spec):
         shown.append("직접 촬영")
     if shown:
         out.append("📷 사진 출처: " + ", ".join(dict.fromkeys(shown)))
+    if music_line(spec):
+        out.append(music_line(spec))
     ask = next((x for x in reversed(lines[1:]) if x.endswith("?") or x.endswith("요?") or "댓글" in x), "")
     if ask:
         out.append(ask)

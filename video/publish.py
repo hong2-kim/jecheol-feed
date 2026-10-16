@@ -71,6 +71,17 @@ def send_cards(token, chat, r):
     tg("sendMediaGroup", token, data={"chat_id": chat, "media": json.dumps(media, ensure_ascii=False)}, files=files)
 
 
+def music_note(r, youtube=False):
+    """깔린 오디오 보관함 곡 안내. CC 곡이면 출처 줄을 꼭 같이 올려야 한다고 눈에 띄게 적어요. (2026-10-17 사용자가 부탁함)"""
+    m = r.get("music")
+    if not m:
+        return ""
+    where = "설명" if youtube else "게시글"
+    if m.get("credit"):
+        return f"⚠️ CC 필요 — 배경음악 '{m['title']}'({m['artist']})은 출처 표시가 꼭 필요해요. {where} 끝 🎵 줄을 지우지 말고 그대로 올려 주세요.\n\n"
+    return f"🎵 배경음악: {m['title']} - {m['artist']} (출처 표시 필요 없음)\n\n"
+
+
 def keywords_block(r):
     """핵심 키워드, 연관 키워드, 태그(눌러서 복사), 해시태그. 예전 결과에 없으면 비워요. (2026-10-16 사용자가 정함)"""
     out = ""
@@ -101,7 +112,7 @@ def send_youtube(token, chat, r, day):
     if len(desc) > 3300:  # 텔레그램 글 한 개에 다 들어가게
         desc = desc[:3300].rstrip() + "\n…"
     url = f"https://github.com/{REPO}/releases/download/v{day}/{video}"
-    text = (f"<b>{html.escape(tag)}</b>\n위 영상을 쇼츠로 올려 주세요.\n\n"
+    text = (f"<b>{html.escape(tag)}</b>\n위 영상을 쇼츠로 올려 주세요.\n\n{html.escape(music_note(r, youtube=True))}"
             f"<b>제목</b> (눌러서 복사)\n<code>{html.escape(r['yt_title'])}</code>\n\n"
             + keywords_block(r) +
             f"<b>설명</b> (눌러서 복사)\n<pre>{html.escape(desc)}</pre>\n"
@@ -170,7 +181,7 @@ def main():
                 with open(ROOT / "dist" / r["file"], "rb") as f:
                     tg("sendVideo", token, data={"chat_id": chat, "caption": f"{tag}\n{r.get('title') or r['id']}"[:900], "supports_streaming": "true",
                                                  "width": 1080, "height": 1920}, files={"video": (r["file"], f, "video/mp4")})
-                body = f"{tag}\n{r.get('title')}\n\n[게시글에 넣을 글]\n{text}\n[내려받기]\n{r['url']}"
+                body = f"{tag}\n{r.get('title')}\n\n{music_note(r)}[게시글에 넣을 글]\n{text}\n[내려받기]\n{r['url']}"
             if r.get("sources"):
                 body += "\n\n[확인한 자료] 게시글에는 안 넣어도 돼요\n" + "\n".join(r["sources"])
             tg("sendMessage", token, data={"chat_id": chat, "text": body[:4000], "disable_web_page_preview": "true"})

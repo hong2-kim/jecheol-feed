@@ -252,11 +252,44 @@ BRAND_LEVEL = 0.32
 LOUDER = {"brand-munch": 0.7}  # 먹는 소리가 들려야 하는 곡은 조금 크게
 
 
+LIB_RMS = 0.075  # 오디오 보관함 곡은 곡마다 크기가 달라서 평균 크기로 맞춰요 (예전 영상과 비슷한 크기)
+
+
+def load_lib(key):
+    """오디오 보관함 곡(비공개 보관함 music/키.ogg)을 읽어요. 처음 쓸 때 wav로 풀어 둬요."""
+    import subprocess
+
+    import imageio_ffmpeg
+
+    wav = Path(__file__).parent.parent / "build" / "audio" / f"lib-{key}.wav"
+    if not wav.exists():
+        import build as _build  # 비공개 보관함 읽기는 build 에 있어요
+        wav.parent.mkdir(parents=True, exist_ok=True)
+        ogg = wav.with_suffix(".ogg")
+        ogg.write_bytes(_build.read_source(f"vault:music/{key}.ogg"))
+        subprocess.run([imageio_ffmpeg.get_ffmpeg_exe(), "-y", "-loglevel", "error", "-i", str(ogg), "-ac", "2", "-ar", str(SR), str(wav)], check=True)
+        ogg.unlink()
+    with wave.open(str(wav), "rb") as w:
+        return np.frombuffer(w.readframes(w.getnframes()), dtype=np.int16).astype(np.float64).reshape(-1, 2).mean(axis=1) / 32768
+
+
 def build(mood, sfx, dur, path, ambience=()):
-    """mood 가 "file:이름" 이면 audio/이름.wav 를 배경음악으로 써요.
+    """mood 가 "file:이름" 이면 audio/이름.wav 를, "lib:키" 면 오디오 보관함 곡을 배경음악으로 써요.
     ambience 는 [[시작, 끝, 이름, 크기], ...] 로, 장면 밑에 까는 현장 소리예요."""
     n = int(SR * dur)
-    if mood == "none":
+    if mood.startswith("lib:"):
+        try:
+            song = load_lib(mood[4:])
+        except Exception as e:  # 보관함을 못 읽으면 먹고갈지도 노래로 대신해요
+            print(f"오디오 보관함 곡을 못 읽어 먹고갈지도 노래로 대신해요: {mood} ({e})")
+            mood = "file:brand-walk"
+    if mood.startswith("lib:"):
+        music = np.tile(song, n // len(song) + 1)[:n].copy()  # 곡의 처음부터 써요
+        music *= LIB_RMS / max(1e-9, np.sqrt(np.mean(music ** 2)))
+        music *= min(1.0, 0.95 / max(1e-9, np.abs(music).max()))
+        music[: int(SR * 0.05)] *= np.linspace(0, 1, int(SR * 0.05))
+        music[-int(SR * 1.6):] *= np.linspace(1, 0, int(SR * 1.6))
+    elif mood == "none":
         music = np.zeros(n)
     elif mood.startswith("file:brand-"):
         # 먹고갈지도 노래는 끝에 "먹고갈지도" 가락이 있어요. 영상이 끝날 때 그 가락이 나오게 곡의 뒷부분을 써요.
@@ -266,12 +299,13 @@ def build(mood, sfx, dur, path, ambience=()):
         music = loop_to(load_wav(mood[5:]), n).copy()
     else:
         music = MUSIC[mood](dur)[:n]
-    # 먹고갈지도 노래는 조용히 깔아요. 시끄럽지 않게 (2026-10-15 사용자가 정함)
-    level = LOUDER.get(mood[5:], BRAND_LEVEL) if mood.startswith("file:brand-") else 0.85
-    music *= level / max(1e-9, np.abs(music).max())
-    fade_in, fade_out = int(SR * 0.3), int(SR * (0.4 if mood.startswith("file:brand-") else 1.6))
-    music[:fade_in] *= np.linspace(0, 1, fade_in)
-    music[-fade_out:] *= np.linspace(1, 0, fade_out)
+    if not mood.startswith("lib:"):
+        # 먹고갈지도 노래는 조용히 깔아요. 시끄럽지 않게 (2026-10-15 사용자가 정함)
+        level = LOUDER.get(mood[5:], BRAND_LEVEL) if mood.startswith("file:brand-") else 0.85
+        music *= level / max(1e-9, np.abs(music).max())
+        fade_in, fade_out = int(SR * 0.3), int(SR * (0.4 if mood.startswith("file:brand-") else 1.6))
+        music[:fade_in] *= np.linspace(0, 1, fade_in)
+        music[-fade_out:] *= np.linspace(1, 0, fade_out)
     fx = np.zeros(n)
     for at, name in sfx:
         put(fx, at, SFX[name](), 0.55)
