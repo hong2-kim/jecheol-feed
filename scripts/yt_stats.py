@@ -22,7 +22,7 @@ from common import KST, ROOT, log_error, read_json, today_kst, write_json
 API = "https://www.googleapis.com/youtube/v3/"
 LEDGER = ROOT / "state" / "yt_stats.json"
 KINDS = {"저녁": "저녁 TOP 5", "발견": "발견형", "소식": "뉴스 카드", "유행": "트렌드", "제철": "제철",
-         "지역": "지역", "이야기": "이야기", "세계": "세계 축제", "해외": "해외 트렌드"}
+         "지역": "지역", "이야기": "이야기", "세계": "세계 축제", "해외": "해외 트렌드", "해설": "내레이션"}
 
 
 def key():

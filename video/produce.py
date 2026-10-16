@@ -39,7 +39,7 @@ def render(spec, name, browser):
     html_path = work / f"{name}.html"
     html_path.write_text(page_html, encoding="utf-8")
     wav = work / f"{name}.wav"
-    audio.build(meta["music"], meta["sfx"], duration, wav, meta["ambience"])
+    audio.build(meta["music"], meta["sfx"], duration, wav, meta["ambience"], meta.get("voice"))
 
     out = ROOT / "dist" / f"{name}.mp4"
     out.parent.mkdir(exist_ok=True)

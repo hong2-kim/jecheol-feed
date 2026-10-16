@@ -49,6 +49,7 @@ jobs:
       - name: 영상 만들기
         env:
           PHOTOS_TOKEN: ${{ secrets.PHOTOS_TOKEN }} # 사용자 사진 비공개 보관함(jecheol-photos)을 읽는 열쇠
+          GOOGLE_TTS_API_KEY: ${{ secrets.GOOGLE_TTS_API_KEY }} # 내레이션 쇼츠 목소리
         run: python video/produce.py "${{ steps.day.outputs.day }}"
       - name: 영상 파일 올리기
         env:

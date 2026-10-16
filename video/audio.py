@@ -321,9 +321,12 @@ def _score(rms, s, width, block, means, peak_mean, onset, last):
     return means[s] / peak_mean + 0.5 * steady + 0.25 * min(lead, 1.2) + 0.2 * onset[s] / (onset.max() + 1e-9) - 0.15 * s / max(1, last)
 
 
-def build(mood, sfx, dur, path, ambience=()):
+VOICE_BED = 0.35  # 내레이션이 있으면 배경음악을 이만큼으로 줄여요 (말이 또렷하게)
+
+
+def build(mood, sfx, dur, path, ambience=(), voice=None):
     """mood 가 "file:이름" 이면 audio/이름.wav 를, "lib:키" 면 오디오 보관함 곡을 배경음악으로 써요.
-    ambience 는 [[시작, 끝, 이름, 크기], ...] 로, 장면 밑에 까는 현장 소리예요."""
+    ambience 는 [[시작, 끝, 이름, 크기], ...] 로, 장면 밑에 까는 현장 소리예요. voice 는 내레이션 wav 경로예요."""
     n = int(SR * dur)
     if mood.startswith("lib:"):
         try:
@@ -366,7 +369,16 @@ def build(mood, sfx, dur, path, ambience=()):
         sound[:edge] *= np.linspace(0, 1, edge)
         sound[-edge:] *= np.linspace(1, 0, edge)
         put(fx, start, sound)
-    mix = np.tanh((music + fx) * 1.1) * 0.89
+    if voice:
+        with wave.open(str(voice), "rb") as w:
+            v = np.frombuffer(w.readframes(w.getnframes()), dtype=np.int16).astype(np.float64) / 32768
+            if w.getnchannels() == 2:
+                v = v.reshape(-1, 2).mean(axis=1)
+        v = np.pad(v, (0, max(0, n - len(v))))[:n]
+        v *= 0.8 / max(1e-9, np.abs(v).max())
+        mix = np.tanh((music * VOICE_BED + fx + v) * 1.0) * 0.95
+    else:
+        mix = np.tanh((music + fx) * 1.1) * 0.89
     pcm = (np.stack([mix, mix], axis=1) * 32767).astype(np.int16)
     with wave.open(str(path), "wb") as w:
         w.setnchannels(2)

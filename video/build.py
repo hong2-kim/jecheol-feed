@@ -507,7 +507,9 @@ LONGEST_SKIT = 20.0  # TOP 5 와 발견형은 앞에 상황극 첫마디가 붙�
 
 
 def longest(spec):
-    skit = spec.get("kind") == "발견" or any(s["type"] == "rank" for s in spec.get("scenes", []))
+    if spec.get("format") == "voice":  # 내레이션 쇼츠는 읽는 시간만큼 (59초까지)
+        return 59.0
+    skit =spec.get("kind") == "발견" or any(s["type"] == "rank" for s in spec.get("scenes", []))
     return LONGEST_SKIT if skit else LONGEST
 
 
@@ -534,9 +536,9 @@ SONGS = {"제철": "brand-picnic", "유행": "brand-munch", "저녁": "brand-cur
 # 유튜브 오디오 보관함 곡 (2026-10-17 사용자가 골라 줌, 39곡). 곡 파일은 비공개 보관함 music/ 에 있고 목록은 video/music.json.
 # 영상 갈래마다 분위기 묶음에서 날짜로 돌려 가며 골라요. 같은 날 같은 묶음을 쓰는 영상끼리는 SLOT 만큼 떨어진 곡을 써요.
 LIBRARY = json.loads((HERE / "music.json").read_text(encoding="utf-8"))
-MOODS = {"저녁": "궁금", "발견": "궁금", "소식": "밝음", "유행": "밝음",
+MOODS = {"저녁": "궁금", "발견": "궁금", "해설": "궁금", "소식": "밝음", "유행": "밝음",
          "제철": "따뜻", "지역": "따뜻", "이야기": "따뜻", "세계": "따뜻", "해외": "따뜻"}
-SLOT = {"3-dinner": 0, "4-find": 6, "2-news": 0, "8-trend": 7, "1-monthly": 0, "1-check": 4, "1-sheet": 8,
+SLOT = {"3-dinner": 0, "4-find": 6, "10-voice": 3, "2-news": 0, "8-trend": 7, "1-monthly": 0, "1-check": 4, "1-sheet": 8,
         "5-world": 2, "6-story": 0, "7-local": 3, "9-abroad": 6}
 
 
@@ -575,6 +577,9 @@ def song(spec):
 
 def build_html(spec):
     """설계도를 한 장짜리 HTML로 만들어요. (HTML, 길이)"""
+    if spec.get("format") == "voice":
+        import voice
+        return voice.build_voice(spec)
     accent = spec.get("accent") or ACCENTS.get(spec.get("kind", ""), "#FFB23E")
     scenes = spec["scenes"]
     ctx = {"cards": sum(1 for s in scenes if s["type"] == "card"), "card_no": 0, "brand": spec.get("brand"),
@@ -976,6 +981,21 @@ if __name__ == "__main__":
         print("  해시태그: " + " ".join("#" + t for t in hashtags(spec.get("tags"))))
         shown = credit_lines(spec)
         print(f"  사진 출처: {len(shown)}줄이 게시글에 자동으로 들어가요." if shown else "  사진 출처: 표시할 것이 없어요.")
+        for line in youtube_problems(spec):
+            print("  유튜브: " + line)
+        sys.exit(0)
+    if spec.get("format") == "voice":
+        import voice
+        must, should, guess = voice.problems(spec)
+        for line in must:
+            print("  꼭 고쳐 주세요: " + line)
+        for line in should:
+            print("  " + line)
+        if must:
+            sys.exit(1)
+        page, dur, meta = build_html(spec)  # 사진이 받아지는지, 키가 있으면 목소리까지 여기서 확인돼요
+        print(f"내레이션 쇼츠 {dur:.1f}초 (문장 {len(spec['lines'])}개, {'목소리로 잰 길이' if meta['voice'] else '어림한 길이'})")
+        print("  해시태그: " + " ".join("#" + t for t in hashtags(spec.get("tags"))))
         for line in youtube_problems(spec):
             print("  유튜브: " + line)
         sys.exit(0)
