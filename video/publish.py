@@ -71,6 +71,20 @@ def send_cards(token, chat, r):
     tg("sendMediaGroup", token, data={"chat_id": chat, "media": json.dumps(media, ensure_ascii=False)}, files=files)
 
 
+def keywords_block(r):
+    """핵심 키워드, 연관 키워드, 태그(눌러서 복사), 해시태그. 예전 결과에 없으면 비워요. (2026-10-16 사용자가 정함)"""
+    out = ""
+    if r.get("yt_keyword"):
+        out += f"<b>핵심 키워드</b>\n{html.escape(r['yt_keyword'])}\n\n"
+    if r.get("yt_related"):
+        out += f"<b>연관 키워드</b>\n{html.escape(' · '.join(r['yt_related']))}\n\n"
+    if r.get("yt_tags"):
+        out += f"<b>태그</b> (눌러서 복사 → 스튜디오 '태그' 칸에 붙여 넣기)\n<code>{html.escape(r['yt_tags'])}</code>\n\n"
+    if r.get("yt_hashtags"):
+        out += f"<b>해시태그</b> (설명 끝에 들어 있어요)\n{html.escape(' '.join('#' + t for t in r['yt_hashtags']))}\n\n"
+    return out
+
+
 def send_youtube(token, chat, r, day):
     """유튜브 쇼츠에 올릴 제목과 설명을 보내요. 제목과 설명은 눌러서 바로 복사할 수 있게 감싸요.
     카드 뉴스는 쇼츠용 영상(카드를 넘겨 보는 세로 영상)을 먼저 보내요."""
@@ -89,6 +103,7 @@ def send_youtube(token, chat, r, day):
     url = f"https://github.com/{REPO}/releases/download/v{day}/{video}"
     text = (f"<b>{html.escape(tag)}</b>\n위 영상을 쇼츠로 올려 주세요.\n\n"
             f"<b>제목</b> (눌러서 복사)\n<code>{html.escape(r['yt_title'])}</code>\n\n"
+            + keywords_block(r) +
             f"<b>설명</b> (눌러서 복사)\n<pre>{html.escape(desc)}</pre>\n"
             f"<b>내려받기</b>\n{html.escape(url)}")
     tg("sendMessage", token, data={"chat_id": chat, "text": text, "parse_mode": "HTML", "disable_web_page_preview": "true"})

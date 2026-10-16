@@ -805,7 +805,7 @@ def youtube_text(spec):
     if len(title) > 100:
         title = title[:99].rstrip() + "…"
     lines = [x.strip() for x in spec.get("caption", "").strip().splitlines()]
-    first = next((x for x in lines if x), title)
+    first = " ".join(str(spec.get("yt_lead") or "").split()) or next((x for x in lines if x), title)  # 설명 첫 줄: 핵심 키워드를 자연스럽게 넣은 한 줄
     # 목록: 설계도에 적은 것 > 카드 > 순위 > 카드 장면 > 체크·표
     points = spec.get("yt_points")
     if not points:
@@ -862,9 +862,59 @@ def youtube_text(spec):
     ask = next((x for x in reversed(lines[1:]) if x.endswith("?") or x.endswith("요?") or "댓글" in x), "")
     if ask:
         out.append(ask)
-    tags = hashtags(spec.get("tags"))[:-1][:3]  # 마지막은 계정 이름이라 빼요
-    out.append(" ".join("#" + t for t in tags))
+    out.append(" ".join("#" + t for t in youtube_keywords(spec)["hashtags"]))
     return title, "\n".join(out) + "\n"
+
+
+def _words(xs):
+    """띄어쓰기를 고르고, 비거나 겹치는 것(띄어쓰기만 다른 것 포함)을 빼요."""
+    out, seen = [], set()
+    for x in xs or []:
+        x = " ".join(str(x).replace("#", " ").split())
+        if x and x.replace(" ", "") not in seen:
+            seen.add(x.replace(" ", ""))
+            out.append(x)
+    return out
+
+
+def youtube_keywords(spec):
+    """유튜브 쇼츠 키워드 묶음 (2026-10-16 사용자가 정함, PROMPT.md "유튜브 키워드").
+    keyword(핵심 1개), related(연관 3~6개), tags(업로드 태그 목록), tag_text(태그 칸에 붙여 넣을 글), hashtags(설명 끝 해시태그)"""
+    keyword = " ".join(str(spec.get("yt_keyword") or "").split())
+    related = _words(spec.get("yt_related"))
+    tags = _words(spec.get("yt_tags")) or _words([keyword] + related)
+    tag_text = ""
+    for t in tags:  # 유튜브 태그 칸은 모두 합쳐 500자까지라 넘치면 뒤의 것을 버려요
+        if len(tag_text) + len(t) + 1 > 450:
+            break
+        tag_text = f"{tag_text},{t}" if tag_text else t
+    if spec.get("yt_hashtags"):
+        tags_h = [t.replace(" ", "") for t in _words(spec["yt_hashtags"])][:5]
+    else:
+        tags_h = hashtags(spec.get("tags"))[:-1][:3]  # 예전 설계도: 인스타 해시태그 앞 3개 (마지막은 계정 이름이라 빼요)
+    return {"keyword": keyword, "related": related, "tags": tags, "tag_text": tag_text, "hashtags": tags_h}
+
+
+def youtube_problems(spec):
+    """유튜브 키워드 규칙에 어긋나는 것을 알려 줘요."""
+    out = []
+    k = youtube_keywords(spec)
+    if not k["keyword"]:
+        out.append("yt_keyword(핵심 키워드 1개)가 없어요.")
+    if not 3 <= len(k["related"]) <= 6:
+        out.append(f"yt_related(연관 키워드)가 {len(k['related'])}개예요. 3~6개로 적어 주세요.")
+    if not spec.get("yt_tags"):
+        out.append("yt_tags(업로드 태그)가 없어요. 핵심·연관 키워드로 대신 채워요.")
+    elif len(spec["yt_tags"]) != len(k["tags"]):
+        out.append("yt_tags 에 겹치는 태그가 있어 뺐어요.")
+    if not spec.get("yt_hashtags"):
+        out.append("yt_hashtags(유튜브 해시태그)가 없어요. 인스타 해시태그 앞 3개를 대신 써요.")
+    title = str(spec.get("yt_title") or "").replace(" ", "")
+    if k["keyword"] and title and k["keyword"].replace(" ", "") not in title:
+        out.append(f"제목(yt_title)에 핵심 키워드 '{k['keyword']}' 가 그대로 들어 있지 않아요. 괜찮은지 한 번 더 보세요.")
+    if not spec.get("yt_lead"):
+        out.append("yt_lead(설명 첫 줄)가 없어요. 게시글 첫 줄을 대신 써요.")
+    return out
 
 
 if __name__ == "__main__":
@@ -884,12 +934,16 @@ if __name__ == "__main__":
         print("  해시태그: " + " ".join("#" + t for t in hashtags(spec.get("tags"))))
         shown = credit_lines(spec)
         print(f"  사진 출처: {len(shown)}줄이 게시글에 자동으로 들어가요." if shown else "  사진 출처: 표시할 것이 없어요.")
+        for line in youtube_problems(spec):
+            print("  유튜브: " + line)
         sys.exit(0)
     page, dur, _ = build_html(spec)
     print(f"{dur:.1f}초, 장면 {len(spec['scenes'])}개")
     if len(spec.get("tags") or []) != 4:
         print(f"  해시태그를 {len(spec.get('tags') or [])}개 적었어요. 4개만 골라 적어 주세요. (다섯 번째 계정 이름은 자동으로 붙어요)")
     print("  해시태그: " + " ".join("#" + t for t in hashtags(spec.get("tags"))))
+    for line in youtube_problems(spec):
+        print("  유튜브: " + line)
     shown = credit_lines(spec)
     where = "게시글에 한 줄로" if len(shown) == 1 else "맨 끝 장면에"
     print(f"  사진 출처: {len(shown)}줄이 {where} 자동으로 들어가요." if shown else "  사진 출처: 표시할 것이 없어요.")

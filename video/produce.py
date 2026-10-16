@@ -152,6 +152,8 @@ def main():
                 entry.update({k: spec.get(k) for k in ("kind", "title", "summary", "caption", "tags", "sources", "credits")})
                 entry["tags"] = build.hashtags(spec.get("tags"))  # 인스타에 들어가는 5개만
                 entry["yt_title"], entry["yt_desc"] = build.youtube_text(spec)
+                kw = build.youtube_keywords(spec)
+                entry.update({"yt_keyword": kw["keyword"], "yt_related": kw["related"], "yt_tags": kw["tag_text"], "yt_hashtags": kw["hashtags"]})
                 if build.is_cards(spec):
                     files = render_cards(spec, name, browser)
                     size = sum((ROOT / "dist" / f).stat().st_size for f in files)
