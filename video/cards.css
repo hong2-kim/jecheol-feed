@@ -54,3 +54,7 @@ body { color: #fff; font-family: "Noto Sans KR", sans-serif; word-break: keep-al
 /* 맨 아래: 어디 자료인지와 몇 번째 장인지 */
 .nc .foot { position: absolute; left: 64px; right: 64px; bottom: 46px; display: flex; justify-content: space-between; align-items: baseline; font-weight: 500; font-size: 28px; letter-spacing: -.5px; color: rgba(255,255,255,.56); }
 .nc .foot b { font-weight: 800; color: rgba(255,255,255,.8); letter-spacing: 1px; }
+
+/* 트렌드 카드: 몇 주차인지 크게, 아래에 매주 온다는 한마디 */
+.nc .tag.wk { font-size: 40px; padding: 7px 22px 11px; }
+.nc .foot .cta { color: #fff; font-weight: 800; font-size: 31px; }

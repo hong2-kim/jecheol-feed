@@ -626,8 +626,12 @@ def card_problems(spec):
     return must, should
 
 
-def news_cover(cover, total, when, name, pill, label):
-    """첫 장. 오늘 소식들을 궁금하게 던져요. 답은 다음 장부터 나와요."""
+WEEKLY_CTA = "늙크크 안 되게, 매주 금요일 유행 업데이트"  # 트렌드 카드 첫 장 아래 한마디 (2026-10-16 사용자가 정한 느낌)
+
+
+def news_cover(cover, total, when, name, pill, label, weekly=False):
+    """첫 장. 오늘 소식들을 궁금하게 던져요. 답은 다음 장부터 나와요.
+    weekly(트렌드 카드)면 이름표에 "10월 3주차 유행 업데이트"를 크게 쓰고, 아래에 매주 온다는 한마디를 붙여요."""
     if cover.get("photo"):
         src, pos = fetch_photo(cover["photo"])
         top = f'<div class="ph"><img src="{src}" style="object-position:{pos}"></div>'
@@ -638,10 +642,11 @@ def news_cover(cover, total, when, name, pill, label):
     return (
         f'<section class="nc cv" id="c1">{top}'
         f'<div class="mast"><div class="brand">{OUTRO_PIN}<span>{name}</span><i>{pill}</i></div><div class="when">{esc(when)}</div></div>'
-        f'<div class="txt"><span class="tag">{label} {total}</span>'
+        f'<div class="txt"><span class="tag{" wk" if weekly else ""}">{esc(when) + " 유행 업데이트" if weekly else f"{label} {total}"}</span>'
         f'<div class="hl" style="font-size:{fit_size(cover["title"], 122, 950)}px">{rich(cover["title"])}</div>'
         f'<ul class="list">{rows}</ul></div>'
-        f'<div class="foot"><span></span><b class="go">밀어서 확인하기 →</b></div></section>'
+        + (f'<div class="foot"><span class="cta">{WEEKLY_CTA}</span><b class="go">밀어서 →</b></div></section>' if weekly
+           else '<div class="foot"><span></span><b class="go">밀어서 확인하기 →</b></div></section>')
     )
 
 
@@ -685,7 +690,7 @@ def build_cards(spec):
     css = (HERE / "cards.css").read_text(encoding="utf-8").replace("FONT_DIR", (HERE / "fonts").as_uri())
     cards = spec["cards"]
     when = spec.get("kicker", "")
-    body = news_cover(spec["cover"], len(cards), when, name, pill, label)
+    body = news_cover(spec["cover"], len(cards), when, name, pill, label, weekly=spec.get("kind") == "유행")
     body += "".join(news_card(c, n, len(cards), when, name, pill) for n, c in enumerate(cards, 1))
     page = f'<!doctype html><html lang="ko"><head><meta charset="utf-8"><style>{css}</style></head><body style="--ac:{accent}">{body}</body></html>'
     return page, len(cards) + 1
