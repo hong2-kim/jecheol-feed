@@ -69,3 +69,6 @@ body { color: #fff; font-family: "Noto Sans KR", sans-serif; word-break: keep-al
 .nc .fl-it.run { color: var(--ac); }
 .nc .fl-it.run .runner { width: 170px; height: 140px; }
 .nc .fl-it.run span { color: var(--ac); }
+.nc .fl-it .tile { position: relative; }
+.nc .fl-it .tile.logo-fit img { object-fit: contain; padding: 18px; }
+.nc .fl-it .badge { position: absolute; left: 16px; bottom: 16px; padding: 6px 18px 10px; border-radius: 14px; background: #17130F; color: var(--ac); font-weight: 900; font-size: 44px; letter-spacing: -2px; }

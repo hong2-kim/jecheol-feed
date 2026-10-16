@@ -95,7 +95,13 @@ def fetch_photo(photo):
     path = CACHE / (key + "-g2.jpg")
     if not path.exists():
         data = read_source(url)
-        image = ImageOps.exif_transpose(Image.open(io.BytesIO(data))).convert("RGB")
+        image = ImageOps.exif_transpose(Image.open(io.BytesIO(data)))
+        if image.mode in ("RGBA", "LA", "P"):  # 바탕이 투명한 로고는 흰 바탕에 얹어요 (검게 나오지 않게)
+            image = image.convert("RGBA")
+            white = Image.new("RGBA", image.size, "white")
+            white.alpha_composite(image)
+            image = white
+        image = image.convert("RGB")
         if photo.get("crop"):
             image = image.crop(tuple(photo["crop"]))
             if min(image.size) < 900:  # 잘라 낸 조각이 작으면 키워요 (grade 가 한 번 더 선명하게 해요)
@@ -674,18 +680,25 @@ RUNNER = ('<svg class="runner" viewBox="0 0 120 100"><g fill="none" stroke="curr
           '<path d="M74 28 62 56"/><path d="M71 34 54 40 46 52"/><path d="M71 34 84 46 96 42"/>'
           '<path d="M62 56 76 70 72 92"/><path d="M62 56 52 74 36 76"/></g>'
           '<circle cx="80" cy="14" r="10" fill="currentColor"/></svg>')
+# 장바구니: 편의점·마트에서 많이 팔린 소식에 써요 (뛰는 사람은 줄 서기·오픈런 소식에)
+BASKET = ('<svg class="runner" viewBox="0 0 120 100"><g fill="none" stroke="currentColor" stroke-width="8" stroke-linecap="round" stroke-linejoin="round">'
+          '<path d="M6 50h14M2 64h12" stroke-width="6" opacity=".55"/>'
+          '<path d="M26 22h12l10 46h50l10-34H44"/><path d="M58 44h40" opacity=".6"/></g>'
+          '<circle cx="54" cy="84" r="8" fill="currentColor"/><circle cx="92" cy="84" r="8" fill="currentColor"/></svg>')
 
 
 def flow_html(f):
     """카드 위쪽에 [파는 곳 로고] → [뛰는 사람] → [그 음식 사진] 을 한 줄로 놓아요.
-    f = {"logo": 사진, "logo_label": "고디바 롯데월드몰", "run_label": "새벽 4~5시", "photo": 사진, "photo_label": "초콜릿 모찌"}"""
+    f = {"logo": 사진, "logo_label": "고디바 롯데월드몰", "run_label": "새벽 4~5시", "photo": 사진, "photo_label": "초콜릿 모찌"}
+    "mid": "basket" 이면 가운데가 장바구니(많이 팔린 소식), 없으면 뛰는 사람(줄 서기 소식). "badge" 는 음식 사진 위 숫자 딱지."""
     logo, _ = fetch_photo(f["logo"])
     food, pos = fetch_photo(f["photo"])
     item = lambda cls, inner, label: f'<div class="fl-it {cls}">{inner}<span>{esc(label)}</span></div>' if label else f'<div class="fl-it {cls}">{inner}</div>'
     return ('<div class="flow">'
-            + item("logo", f'<div class="tile"><img src="{logo}"></div>', f.get("logo_label"))
-            + item("run", RUNNER, f.get("run_label"))
-            + item("food", f'<div class="tile big"><img src="{food}" style="object-position:{pos}"></div>', f.get("photo_label"))
+            + item("logo", f'<div class="tile{" logo-fit" if f.get("logo_fit") else ""}"><img src="{logo}"></div>', f.get("logo_label"))
+            + item("run", BASKET if f.get("mid") == "basket" else RUNNER, f.get("run_label"))
+            + item("food", f'<div class="tile big"><img src="{food}" style="object-position:{pos}">'
+                   + (f'<b class="badge">{rich(f["badge"])}</b>' if f.get("badge") else "") + '</div>', f.get("photo_label"))
             + "</div>")
 
 

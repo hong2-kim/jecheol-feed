@@ -93,7 +93,7 @@
   },
   {
    "tag": "디저트",
-   "note": "냉장고 초코파이",
+   "note": "100만 개 순삭",
    "headline": "초코파이도\n[[냉장고로 갔어요]]",
    "fact": "생초코파이 누적 100만 개",
    "why": [
@@ -101,7 +101,21 @@
     "10월 1일 2탄을 60만 개 준비했어요"
    ],
    "src": "세계일보 · 10월 11일",
-   "big": "100만"
+   "flow": {
+    "logo": {
+     "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/7-Eleven_logo_2021.svg/960px-7-Eleven_logo_2021.svg.png"
+    },
+    "logo_fit": true,
+    "logo_label": "세븐일레븐",
+    "mid": "basket",
+    "run_label": "작년 12월부터",
+    "photo": {
+     "url": "https://prcdn.freetls.fastly.net/release_image/2360/2083/2360-2083-60f5ef4f52e77286403d52f48f99f7df-2255x2700.jpg",
+     "pos": "50% 68%"
+    },
+    "photo_label": "일본 롯데 생초코파이",
+    "badge": "100만 개"
+   }
   },
   {
    "tag": "신상",
