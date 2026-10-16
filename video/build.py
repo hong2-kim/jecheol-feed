@@ -669,10 +669,32 @@ SPARK = ('<svg class="spark" viewBox="0 0 120 120"><g stroke="currentColor" stro
          '<path d="M60 8v30"/><path d="M60 82v30"/><path d="M8 60h30"/><path d="M82 60h30"/></g></svg>')
 
 
+RUNNER = ('<svg class="runner" viewBox="0 0 120 100"><g fill="none" stroke="currentColor" stroke-width="9" stroke-linecap="round" stroke-linejoin="round">'
+          '<path d="M6 40h18M2 56h16M10 72h14" stroke-width="6" opacity=".55"/>'
+          '<path d="M74 28 62 56"/><path d="M71 34 54 40 46 52"/><path d="M71 34 84 46 96 42"/>'
+          '<path d="M62 56 76 70 72 92"/><path d="M62 56 52 74 36 76"/></g>'
+          '<circle cx="80" cy="14" r="10" fill="currentColor"/></svg>')
+
+
+def flow_html(f):
+    """카드 위쪽에 [파는 곳 로고] → [뛰는 사람] → [그 음식 사진] 을 한 줄로 놓아요.
+    f = {"logo": 사진, "logo_label": "고디바 롯데월드몰", "run_label": "새벽 4~5시", "photo": 사진, "photo_label": "초콜릿 모찌"}"""
+    logo, _ = fetch_photo(f["logo"])
+    food, pos = fetch_photo(f["photo"])
+    item = lambda cls, inner, label: f'<div class="fl-it {cls}">{inner}<span>{esc(label)}</span></div>' if label else f'<div class="fl-it {cls}">{inner}</div>'
+    return ('<div class="flow">'
+            + item("logo", f'<div class="tile"><img src="{logo}"></div>', f.get("logo_label"))
+            + item("run", RUNNER, f.get("run_label"))
+            + item("food", f'<div class="tile big"><img src="{food}" style="object-position:{pos}"></div>', f.get("photo_label"))
+            + "</div>")
+
+
 def news_card(c, n, total, when, name, pill):
     note = f'<div class="note">{rich(c["note"])}</div>' if c.get("note") else ""  # 사진 위에 붙이는 스티커 한마디
     if c.get("photo") and c["photo"].get("fit") == "pack":  # 상품 사진은 하얀 사진 카드처럼 살짝 기울여 얹어요
         top = f'<div class="ph">{NEWS_MAP}</div><div class="pack"><img src="{pack_photo(c["photo"])}"></div>{SPARK}'
+    elif c.get("flow"):  # 어디서 → 뛰어가서 → 무엇을: 파는 곳 로고, 뛰는 사람, 그 음식 사진 (2026-10-16 사용자가 정함)
+        top = f'<div class="ph">{NEWS_MAP}</div>' + flow_html(c["flow"])
     elif c.get("photo"):
         src, pos = fetch_photo(c["photo"])
         top = f'<div class="ph"><img src="{src}" style="object-position:{pos}"></div>'
