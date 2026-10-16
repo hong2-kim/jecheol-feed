@@ -1,0 +1,153 @@
+{
+ "kind": "저녁",
+ "subject": "토요일 저녁 TOP 5 (전어구이·조개구이·닭갈비·삼겹살·피자)",
+ "title": "토요일 저녁, 뭐 먹지? TOP 5",
+ "yt_title": "토요일 저녁 메뉴 추천 TOP 5, 약속 없는 날 1위는 피자ㅋㅋ",
+ "summary": "약속 없는 토요일 저녁에 당기는 메뉴 5가지를 5위부터 거꾸로 세어요.",
+ "top": {
+  "kicker": "토요일 저녁",
+  "title": "오늘 저녁 뭐 먹지?",
+  "badge": "TOP 5"
+ },
+ "rank_note": "오늘 요일과 날씨에 맞춘 먹고갈지도 추천 순서예요",
+ "scenes": [
+  {
+   "type": "cover",
+   "dur": 2.2,
+   "photo": {
+    "url": "https://tong.visitkorea.or.kr/cms2/website/21/3467221.jpg"
+   },
+   "kicker": "여러분",
+   "title": "약속 없는\n[[토요일 저녁]]\n뭐 먹을지 몰라\n헤맨 적 있나요?",
+   "size": 100
+  },
+  {
+   "type": "cover",
+   "dur": 2.0,
+   "photo": {
+    "url": "https://tong.visitkorea.or.kr/cms2/website/97/3513397.jpg"
+   },
+   "kicker": "제가 지금 그 상황이에요",
+   "title": "선선한 토요일인데\n[[메뉴를 못 골라서]]\n폰만 봐요",
+   "size": 100,
+   "in": "push"
+  },
+  {
+   "type": "cover",
+   "dur": 1.8,
+   "photo": {
+    "url": "https://tong.visitkorea.or.kr/cms2/website/37/1832937.jpg"
+   },
+   "kicker": "그래서 만들었어요",
+   "title": "토요일 저녁\n[[메뉴 TOP 5]]\n1위 인정?",
+   "size": 116
+  },
+  {
+   "type": "rank",
+   "no": 5,
+   "name": "전어구이",
+   "drink": "소주",
+   "line": "가을엔 뼈째 바삭하게 먹죠",
+   "photo": {
+    "url": "https://tong.visitkorea.or.kr/cms2/website/37/1832937.jpg",
+    "pos": "50% 50%"
+   },
+   "dur": 1.9
+  },
+  {
+   "type": "rank",
+   "no": 4,
+   "name": "조개구이",
+   "drink": "소주 or 맥주",
+   "line": "껍데기 열리면 먹을 때예요",
+   "photo": {
+    "url": "https://tong.visitkorea.or.kr/cms2/website/32/3052832.jpg",
+    "pos": "50% 50%"
+   },
+   "dur": 1.9
+  },
+  {
+   "type": "rank",
+   "no": 3,
+   "name": "닭갈비",
+   "drink": "맥주",
+   "line": "볶음밥까지가 한 끼예요",
+   "photo": {
+    "url": "https://tong.visitkorea.or.kr/cms2/website/97/3513397.jpg",
+    "pos": "50% 50%"
+   },
+   "dur": 1.9
+  },
+  {
+   "type": "rank",
+   "no": 2,
+   "name": "삼겹살",
+   "drink": "소주",
+   "line": "선선한 밤엔 불판 앞이 딱",
+   "photo": {
+    "url": "https://tong.visitkorea.or.kr/cms2/website/87/2670887.jpg",
+    "pos": "50% 50%"
+   },
+   "dur": 1.9
+  },
+  {
+   "type": "tease",
+   "photo": {
+    "url": "https://github.com/hong2-kim/jecheol-feed/releases/download/myphotos/2026-10-14-172554795.jpg"
+   },
+   "text": "1위는\n뭘까?",
+   "dur": 1.0,
+   "in": "fade"
+  },
+  {
+   "type": "rank",
+   "no": 1,
+   "name": "피자",
+   "drink": "맥주",
+   "line": "치즈 늘어나는 맛에 주말이죠",
+   "photo": {
+    "url": "https://github.com/hong2-kim/jecheol-feed/releases/download/myphotos/2026-10-14-172554795.jpg"
+   },
+   "dur": 2.4,
+   "in": "zoom"
+  }
+ ],
+ "caption": "약속 없는 토요일 저녁, 뭐 먹을지 못 골라서 만들었어요.\n\n1위 피자 · 맥주 — 치즈 늘어나는 맛에 주말이죠\n2위 삼겹살 · 소주 — 선선한 밤엔 불판 앞이 딱\n3위 닭갈비 · 맥주 — 볶음밥까지가 한 끼예요\n4위 조개구이 · 소주 or 맥주 — 껍데기 열리면 먹을 때예요\n5위 전어구이 · 소주 — 가을엔 뼈째 바삭하게 먹죠\n\n여러분 오늘 1위는 뭐예요? 댓글로 알려 주세요.\n\n오늘 서울은 구름이 끼고 최저 13도, 낮 최고 24도, 비 올 확률은 0%예요. 순서는 요일과 날씨에 맞춘 먹고갈지도 추천이에요. 술 조합은 추천일 뿐이에요. 지나친 음주는 건강에 해로워요.",
+ "tags": [
+  "피자",
+  "토요일저녁메뉴",
+  "저녁메뉴추천",
+  "오늘뭐먹지"
+ ],
+ "sources": [
+  "https://open-meteo.com/ (서울 예보, 2026-10-17 확인)"
+ ],
+ "credits": [
+  "ⓒ한국관광공사 포토코리아-알렉스 분도, 황성훈, 프레임스튜디오, 천준교, 토라이 리퍼블릭, 김지영, 이범수, 박은경, 김지호, 디엔에이스튜디오"
+ ],
+ "yt_keyword": "토요일 저녁메뉴",
+ "yt_related": [
+  "저녁 메뉴 추천",
+  "오늘 뭐 먹지",
+  "피자",
+  "삼겹살",
+  "닭갈비"
+ ],
+ "yt_tags": [
+  "토요일 저녁메뉴",
+  "저녁 메뉴 추천",
+  "오늘 뭐 먹지",
+  "주말 저녁 메뉴",
+  "피자",
+  "삼겹살",
+  "닭갈비",
+  "조개구이",
+  "전어구이"
+ ],
+ "yt_hashtags": [
+  "저녁메뉴추천",
+  "토요일",
+  "피자"
+ ],
+ "yt_lead": "토요일 저녁메뉴 고민될 때, 오늘 날씨에 맞춰 고른 TOP 5예요."
+}

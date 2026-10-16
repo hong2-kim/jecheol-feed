@@ -75,7 +75,9 @@
   "file": "https://github.com/hong2-kim/jecheol-feed/releases/download/myphotos/2026-10-14-172554795.jpg",
   "note": "피자",
   "date": "2026-10-14",
-  "used": [],
+  "used": [
+   "2026-10-17/3-dinner"
+  ],
   "tg_unique": "AQADehVrG65dcVZ-",
   "sha256": "d516f2b00dfe8b67a2af07756d6fb2e1249bb150c09fa86513cd6976e08430bb",
   "bytes": 201447,
