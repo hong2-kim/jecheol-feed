@@ -482,11 +482,12 @@ def transition(kind, frames, i, scenes):
 
 
 SHORTEST, LONGEST = 10.0, 15.0  # 영상 전체 길이(초). 사용자가 정한 범위예요.
-LONGEST_RANK = 20.0  # TOP 5 는 앞에 상황극 첫마디가 붙어서 20초까지 돼요 (2026-10-16 사용자가 정함)
+LONGEST_SKIT = 20.0  # TOP 5 와 발견형은 앞에 상황극 첫마디가 붙어서 20초까지 돼요 (2026-10-16 사용자가 정함)
 
 
 def longest(spec):
-    return LONGEST_RANK if any(s["type"] == "rank" for s in spec.get("scenes", [])) else LONGEST
+    skit = spec.get("kind") == "발견" or any(s["type"] == "rank" for s in spec.get("scenes", []))
+    return LONGEST_SKIT if skit else LONGEST
 
 
 def fit(scenes, tail, top=LONGEST):
