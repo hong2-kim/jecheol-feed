@@ -273,6 +273,54 @@ def load_lib(key):
         return np.frombuffer(w.readframes(w.getnframes()), dtype=np.int16).astype(np.float64).reshape(-1, 2).mean(axis=1) / 32768
 
 
+def best_start(song, n):
+    """곡에서 영상 길이(n)만큼 쓸 가장 좋은 구간의 시작 위치(샘플). (2026-10-17 사용자가 "구간은 알아서 잘 골라라"고 함)
+
+    잔잔한 도입부나 중간에 비는 곳(브레이크)보다, 곡의 본 가락이 꽉 차게 이어지는 구간을 골라요.
+    시작은 박자가 세게 들어오는 순간(어택)에 맞춰서 영상 첫 장면부터 바로 귀에 들어오게 해요.
+    곡 끝 2초는 피하고, 점수가 비슷하면 앞쪽을 골라요.
+    """
+    hop = int(SR * 0.05)
+    tail = int(SR * 2)
+    if len(song) < n + tail + hop:
+        return 0
+    frames = len(song) // hop
+    fr = song[: frames * hop].reshape(frames, hop)
+    rms = np.sqrt((fr ** 2).mean(axis=1))
+    edge = np.sqrt((np.diff(song[: frames * hop], prepend=0).reshape(frames, hop) ** 2).mean(axis=1))  # 높은 소리 쪽 세기
+    onset = np.maximum(np.diff(smooth(edge, 2), prepend=edge[0]), 0)
+    width = n // hop
+    last = (len(song) - n - tail) // hop
+    csum = np.concatenate([[0], np.cumsum(rms)])
+    means = (csum[width:] - csum[:-width])[: last + 1] / width
+    block = max(1, int(1.0 / 0.05))
+    peak_mean = means.max() + 1e-9
+    thresh = np.percentile(onset[: last + 1], 75)
+    typical = np.median(rms[: last + width]) + 1e-9
+    best, best_score = 0, -1e9
+    for strict in (True, False):  # 조건에 맞는 곳이 없으면 조건을 풀고 다시 찾아요
+        for s in range(0, last + 1):
+            if onset[s] < thresh or (s and onset[s] < onset[s - 1]) or (s + 1 < len(onset) and onset[s] < onset[s + 1]):
+                continue  # 박자가 세게 들어오는 순간에서만 시작해요
+            if strict and rms[s: s + block].mean() < 0.9 * typical:
+                continue  # 첫 1초가 곡의 보통 크기보다 작으면(조용한 틈) 시작하지 않아요
+            score = _score(rms, s, width, block, means, peak_mean, onset, last)
+            if score > best_score:
+                best, best_score = s, score
+        if best_score > -1e9:
+            break
+    return best * hop
+
+
+def _score(rms, s, width, block, means, peak_mean, onset, last):
+    """구간 점수: 꽉 찬 정도 + 중간에 비지 않음 + 첫 1초부터 소리가 참 + 세게 들어옴, 뒤쪽일수록 조금 깎아요."""
+    w = rms[s: s + width]
+    blocks = w[: len(w) // block * block].reshape(-1, block).mean(axis=1)
+    steady = blocks.min() / (w.mean() + 1e-9)  # 중간에 비는 곳이 있으면 낮아져요
+    lead = rms[s: s + block].mean() / (w.mean() + 1e-9)  # 첫 1초부터 소리가 차 있는지
+    return means[s] / peak_mean + 0.5 * steady + 0.25 * min(lead, 1.2) + 0.2 * onset[s] / (onset.max() + 1e-9) - 0.15 * s / max(1, last)
+
+
 def build(mood, sfx, dur, path, ambience=()):
     """mood 가 "file:이름" 이면 audio/이름.wav 를, "lib:키" 면 오디오 보관함 곡을 배경음악으로 써요.
     ambience 는 [[시작, 끝, 이름, 크기], ...] 로, 장면 밑에 까는 현장 소리예요."""
@@ -284,7 +332,8 @@ def build(mood, sfx, dur, path, ambience=()):
             print(f"오디오 보관함 곡을 못 읽어 먹고갈지도 노래로 대신해요: {mood} ({e})")
             mood = "file:brand-walk"
     if mood.startswith("lib:"):
-        music = np.tile(song, n // len(song) + 1)[:n].copy()  # 곡의 처음부터 써요
+        start = best_start(song, n)
+        music = np.tile(song[start:], n // max(1, len(song) - start) + 1)[:n].copy()  # 가장 좋은 구간부터 써요
         music *= LIB_RMS / max(1e-9, np.sqrt(np.mean(music ** 2)))
         music *= min(1.0, 0.95 / max(1e-9, np.abs(music).max()))
         music[: int(SR * 0.05)] *= np.linspace(0, 1, int(SR * 0.05))
