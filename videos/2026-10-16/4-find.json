@@ -1,64 +1,88 @@
 {
-  "kind": "발견",
-  "subject": "생초코파이 · 일본 냉장 초코파이",
-  "title": "초코파이가 냉장고에 들어갔어요",
-  "summary": "일본 롯데의 생초코파이는 냉장 디저트예요. 일본에서 2023년 9월 전국으로 넓혔고, 한국 세븐일레븐에서는 누적 100만 개가 팔렸어요.",
-  "scenes": [
-    {
-      "type": "cover",
-      "dur": 2.0,
-      "photo": {
-        "url": "https://prcdn.freetls.fastly.net/release_image/2360/2083/2360-2083-60f5ef4f52e77286403d52f48f99f7df-2255x2700.jpg",
-        "pos": "50% 50%"
-      },
-      "kicker": "오늘의 한 가지 · 생초코파이",
-      "title": "초코파이가\n[[냉장고에\n들어갔어요]]",
-      "size": 112
-    },
-    {
-      "type": "card",
-      "dur": 2.3,
-      "photo": {
-        "url": "https://prcdn.freetls.fastly.net/release_image/2360/2083/2360-2083-b9f7fc509d64ef03c96f1a48cdf9028b-2633x1945.jpg",
-        "pos": "50% 50%"
-      },
-      "chip": "무엇",
-      "headline": "일본 롯데의\n[[냉장 디저트]]",
-      "line": "'생' 크림이 든 초코파이예요"
-    },
-    {
-      "type": "card",
-      "dur": 2.3,
-      "photo": {
-        "url": "https://prcdn.freetls.fastly.net/release_image/2360/2083/2360-2083-2d5691f22f0fef7e75a7cd2d66646802-3900x3390.jpg",
-        "pos": "50% 50%"
-      },
-      "chip": "뭐가 달라",
-      "headline": "크림이 일반보다\n[[350%]]",
-      "line": "롯데가 밝힌 일반 초코파이 대비"
-    },
-    {
-      "type": "card",
-      "dur": 2.3,
-      "photo": {
-        "url": "https://prcdn.freetls.fastly.net/release_image/2360/2083/2360-2083-4a2612f135590bf5207fbcaa99d1f4a5-2593x1917.jpg",
-        "pos": "50% 50%"
-      },
-      "chip": "한국에서는",
-      "headline": "세븐일레븐에서\n[[100만 개]]",
-      "line": "지난해 12월부터 팔았어요"
-    }
-  ],
-  "caption": "초코파이가 냉장고에 들어갔다는 거, 아셨어요?\n\n일본 롯데의 생초코파이는 '생' 크림이 든 냉장 디저트예요. 일본에서는 2021년 11월 일부 지역에서 먼저 팔다가 2023년 9월 1일 홋카이도를 뺀 전국으로 넓혔어요. 롯데는 크림 양을 일반 초코파이의 350%로 만들었다고 밝혔어요. 한국에서는 세븐일레븐이 지난해 12월 처음 들여와 누적 100만 개가 팔렸고, 10월 1일부터 2탄을 한정으로 팔아요.\n\n여러분은 냉장 초코파이, 먹어 보셨어요?\n\n더 자세한 이야기는 프로필 링크의 블로그에 있어요.\n\n출처: 일본 롯데 보도자료(2023년 8월 29일), 세계일보(10월 11일)",
-  "tags": [
-    "생초코파이",
-    "일본디저트",
-    "편의점디저트",
-    "먹스타그램"
-  ],
-  "sources": [
-    "https://prtimes.jp/main/html/rd/p/000002083.000002360.html",
-    "https://www.segye.com/newsView/20261011503277"
-  ],
-  "credits": []
+ "kind": "발견",
+ "subject": "생초코파이 · 일본 냉장 초코파이",
+ "title": "초코파이가 냉장고에 들어갔어요",
+ "summary": "일본 롯데의 생초코파이는 냉장 디저트예요. 일본에서 2023년 9월 전국으로 넓혔고, 한국 세븐일레븐에서는 누적 100만 개가 팔렸어요.",
+ "scenes": [
+  {
+   "type": "cover",
+   "dur": 2.2,
+   "photo": {
+    "url": "https://prcdn.freetls.fastly.net/release_image/2360/2083/2360-2083-2d5691f22f0fef7e75a7cd2d66646802-3900x3390.jpg",
+    "pos": "50% 50%"
+   },
+   "kicker": "여러분",
+   "title": "편의점 갈 때마다\n[[품절이라]]\n허탕 친 적\n있나요?",
+   "size": 104
+  },
+  {
+   "type": "cover",
+   "dur": 2.0,
+   "photo": {
+    "url": "https://prcdn.freetls.fastly.net/release_image/2360/2083/2360-2083-4a2612f135590bf5207fbcaa99d1f4a5-2593x1917.jpg",
+    "pos": "50% 50%"
+   },
+   "kicker": "제가 지금 그 상황이에요",
+   "title": "100만 개 팔린\n[[그 초코파이]]\n또 놓쳤어요",
+   "size": 108,
+   "in": "push"
+  },
+  {
+   "type": "cover",
+   "dur": 2.0,
+   "photo": {
+    "url": "https://prcdn.freetls.fastly.net/release_image/2360/2083/2360-2083-60f5ef4f52e77286403d52f48f99f7df-2255x2700.jpg",
+    "pos": "50% 50%"
+   },
+   "kicker": "그래서 찾아봤어요 · 생초코파이",
+   "title": "초코파이\n[[냉장고 버전]]\n먹어 봤어?",
+   "size": 112
+  },
+  {
+   "type": "card",
+   "dur": 2.3,
+   "photo": {
+    "url": "https://prcdn.freetls.fastly.net/release_image/2360/2083/2360-2083-b9f7fc509d64ef03c96f1a48cdf9028b-2633x1945.jpg",
+    "pos": "50% 50%"
+   },
+   "chip": "무엇",
+   "headline": "일본 롯데의\n[[냉장 디저트]]",
+   "line": "'생' 크림이 든 초코파이예요"
+  },
+  {
+   "type": "card",
+   "dur": 2.3,
+   "photo": {
+    "url": "https://prcdn.freetls.fastly.net/release_image/2360/2083/2360-2083-2d5691f22f0fef7e75a7cd2d66646802-3900x3390.jpg",
+    "pos": "50% 50%"
+   },
+   "chip": "뭐가 달라",
+   "headline": "크림이 일반보다\n[[350%]]",
+   "line": "롯데가 밝힌 일반 초코파이 대비"
+  },
+  {
+   "type": "card",
+   "dur": 2.3,
+   "photo": {
+    "url": "https://prcdn.freetls.fastly.net/release_image/2360/2083/2360-2083-4a2612f135590bf5207fbcaa99d1f4a5-2593x1917.jpg",
+    "pos": "50% 50%"
+   },
+   "chip": "한국에서는",
+   "headline": "세븐일레븐에서\n[[100만 개]]",
+   "line": "지난해 12월부터 팔았어요"
+  }
+ ],
+ "caption": "편의점 갈 때마다 허탕 친 적 있나요? 요즘 난리 난 냉장 초코파이 얘기예요\n\n일본 롯데의 생초코파이는 '생' 크림이 든 냉장 디저트예요. 일본에서는 2021년 11월 일부 지역에서 먼저 팔다가 2023년 9월 1일 홋카이도를 뺀 전국으로 넓혔어요. 롯데는 크림 양을 일반 초코파이의 350%로 만들었다고 밝혔어요. 한국에서는 세븐일레븐이 지난해 12월 처음 들여와 누적 100만 개가 팔렸고, 10월 1일부터 2탄을 한정으로 팔아요.\n\n여러분은 냉장 초코파이, 먹어 보셨어요?\n\n더 자세한 이야기는 프로필 링크의 블로그에 있어요.\n\n출처: 일본 롯데 보도자료(2023년 8월 29일), 세계일보(10월 11일)",
+ "tags": [
+  "생초코파이",
+  "일본디저트",
+  "편의점디저트",
+  "먹스타그램"
+ ],
+ "sources": [
+  "https://prtimes.jp/main/html/rd/p/000002083.000002360.html",
+  "https://www.segye.com/newsView/20261011503277"
+ ],
+ "credits": [],
+ "yt_title": "요즘 편의점 난리 난 냉장 초코파이, 먹어 본 사람?ㅋㅋ"
 }

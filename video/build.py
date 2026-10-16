@@ -76,22 +76,37 @@ def grade(image):
     return ImageEnhance.Contrast(image).enhance(1.06)
 
 
+def photo_key(photo):
+    """사진마다 저장할 이름. 같은 주소라도 잘라 쓰는 곳(crop)이 다르면 다른 사진이에요."""
+    if isinstance(photo, str):
+        photo = {"url": photo}
+    raw = photo["url"] + (f'#crop={",".join(str(v) for v in photo["crop"])}' if photo.get("crop") else "")
+    return hashlib.sha1(raw.encode()).hexdigest()[:16]
+
+
 def fetch_photo(photo):
-    """사진을 내려받아 보정한 뒤 JPEG로 저장하고 (파일 주소, 위치)를 돌려줘요."""
+    """사진을 내려받아 보정한 뒤 JPEG로 저장하고 (파일 주소, 위치)를 돌려줘요.
+    "crop": [왼, 위, 오른, 아래] (원본 픽셀)을 적으면 그 부분만 잘라 써요. 상품 봉지 사진에서 조리된 음식만 쓸 때처럼요."""
     if isinstance(photo, str):
         photo = {"url": photo}
     url = photo["url"]
     CACHE.mkdir(parents=True, exist_ok=True)
-    path = CACHE / (hashlib.sha1(url.encode()).hexdigest()[:16] + "-g2.jpg")
+    key = photo_key(photo)
+    path = CACHE / (key + "-g2.jpg")
     if not path.exists():
         data = read_source(url)
         image = ImageOps.exif_transpose(Image.open(io.BytesIO(data))).convert("RGB")
+        if photo.get("crop"):
+            image = image.crop(tuple(photo["crop"]))
+            if min(image.size) < 900:  # 잘라 낸 조각이 작으면 키워요 (grade 가 한 번 더 선명하게 해요)
+                k = 900 / min(image.size)
+                image = image.resize((round(image.width * k), round(image.height * k)), Image.LANCZOS)
         if min(image.size) < 500:
             raise ValueError(f"사진이 너무 작아요 ({image.size[0]}x{image.size[1]}): {url}")
         grade(image).save(path, "JPEG", quality=92)
-    if url not in SIZES:
+    if key not in SIZES:
         with Image.open(path) as im:
-            SIZES[url] = im.size
+            SIZES[key] = im.size
     return path.as_uri(), photo.get("pos", "50% 50%")
 
 
@@ -99,7 +114,7 @@ def pack_photo(photo):
     """상품 사진(회사가 나눠 준 포장 사진)은 자르지 않고 통째로 보여 줘요. 둘레의 흰 여백만 잘라 내요."""
     url = photo["url"] if isinstance(photo, dict) else photo
     fetch_photo(photo)
-    key = hashlib.sha1(url.encode()).hexdigest()[:16]
+    key = photo_key(photo)
     path = CACHE / (key + "-pack.jpg")
     if not path.exists():
         with Image.open(CACHE / (key + "-g2.jpg")) as im:
@@ -116,9 +131,9 @@ def backdrop(photo):
     """같은 사진을 흐리고 어둡게 만든 바탕. 가로 사진 아래쪽 빈 곳을 채워요."""
     url = photo["url"] if isinstance(photo, dict) else photo
     src, _ = fetch_photo(photo)
-    path = CACHE / (hashlib.sha1(url.encode()).hexdigest()[:16] + "-blur.jpg")
+    path = CACHE / (photo_key(photo) + "-blur.jpg")
     if not path.exists():
-        with Image.open(CACHE / (hashlib.sha1(url.encode()).hexdigest()[:16] + "-g2.jpg")) as im:
+        with Image.open(CACHE / (photo_key(photo) + "-g2.jpg")) as im:
             small = im.convert("RGB").resize((108, 192), Image.BILINEAR).filter(ImageFilter.GaussianBlur(7))
             ImageEnhance.Brightness(small).enhance(0.5).save(path, "JPEG", quality=88)
     return path.as_uri()
@@ -127,7 +142,7 @@ def backdrop(photo):
 def is_tall(photo):
     url = photo["url"] if isinstance(photo, dict) else photo
     fetch_photo(photo)
-    w, h = SIZES[url]
+    w, h = SIZES[photo_key(photo)]
     return h >= w * 1.15
 
 
