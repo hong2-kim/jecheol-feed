@@ -92,6 +92,8 @@ def keywords_block(r):
         out += f"<b>연관 키워드</b>\n{html.escape(' · '.join(r['yt_related']))}\n\n"
     if r.get("yt_tags"):
         out += f"<b>태그</b> (눌러서 복사 → 스튜디오 '태그' 칸에 붙여 넣기)\n<code>{html.escape(r['yt_tags'])}</code>\n\n"
+    if r.get("pin"):
+        out += f"<b>고정 댓글</b> (올린 뒤 첫 댓글로 달고 고정, 눌러서 복사)\n<code>{html.escape(r['pin'])}</code>\n\n"
     if r.get("yt_hashtags"):
         out += f"<b>해시태그</b> (설명 끝에 들어 있어요)\n{html.escape(' '.join('#' + t for t in r['yt_hashtags']))}\n\n"
     return out
@@ -183,6 +185,8 @@ def main():
                     tg("sendVideo", token, data={"chat_id": chat, "caption": f"{tag}\n{r.get('title') or r['id']}"[:900], "supports_streaming": "true",
                                                  "width": 1080, "height": 1920}, files={"video": (r["file"], f, "video/mp4")})
                 body = f"{tag}\n{r.get('title')}\n\n{music_note(r)}[게시글에 넣을 글]\n{text}\n[내려받기]\n{r['url']}"
+                if r.get("pin"):  # 올린 뒤 고정할 댓글 (2026-10-17)
+                    body += f"\n\n[고정 댓글] 올린 뒤 첫 댓글로 달고 고정해 주세요\n{r['pin']}"
             if r.get("sources"):
                 body += "\n\n[확인한 자료] 게시글에는 안 넣어도 돼요\n" + "\n".join(r["sources"])
             tg("sendMessage", token, data={"chat_id": chat, "text": body[:4000], "disable_web_page_preview": "true"})

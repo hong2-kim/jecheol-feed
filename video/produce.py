@@ -151,7 +151,7 @@ def main():
                 spec = json.loads(path.read_text(encoding="utf-8"))
                 spec.update({"_day": day, "_name": path.stem})  # 오디오 보관함 곡을 날짜로 돌려 고를 때 써요
                 entry["music"] = build.track_info(spec)
-                entry.update({k: spec.get(k) for k in ("kind", "title", "summary", "caption", "tags", "sources", "credits")})
+                entry.update({k: spec.get(k) for k in ("kind", "title", "summary", "caption", "tags", "sources", "credits", "pin")})
                 entry["tags"] = build.hashtags(spec.get("tags"))  # 인스타에 들어가는 5개만
                 entry["yt_title"], entry["yt_desc"] = build.youtube_text(spec)
                 kw = build.youtube_keywords(spec)

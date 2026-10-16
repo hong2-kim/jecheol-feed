@@ -899,7 +899,7 @@ def youtube_text(spec):
             shown.append(big + (f" ({small})" if small and "." in small else ""))  # CC BY 는 저작자·라이선스·원본을 줄이지 않아요
         else:
             shown.append(big)
-    if "vault:" in json.dumps(spec, ensure_ascii=False):
+    if "vault:photos/" in json.dumps(spec, ensure_ascii=False):  # 사용자가 직접 찍은 사진(보관함 photos/)일 때만
         shown.append("직접 촬영")
     if shown:
         out.append("📷 사진 출처: " + ", ".join(dict.fromkeys(shown)))
