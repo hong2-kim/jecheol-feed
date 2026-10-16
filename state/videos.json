@@ -45,7 +45,7 @@
       "https://github.com/hong2-kim/jecheol-feed/releases/download/v2026-10-16/2026-10-16-8-trend-5.jpg",
       "https://github.com/hong2-kim/jecheol-feed/releases/download/v2026-10-16/2026-10-16-8-trend-6.jpg"
     ],
-    "sha256": "daeb13521c6401523999e1b9494ff32ccae7c1d279505f9a381e215cd0a903d3"
+    "sha256": "6a2b87642851eb0922692b65c6544ca12aaaa6010d8bb9456fff44237ae11235"
   },
   {
     "id": "2026-10-16-4-find",
@@ -68,9 +68,9 @@
     "credits": [],
     "url": "https://github.com/hong2-kim/jecheol-feed/releases/download/v2026-10-16/2026-10-16-4-find.mp4",
     "seconds": 10.4,
-    "size_mb": 1.8,
+    "size_mb": 2.0,
     "yt_title": "초코파이가 냉장고에 들어갔어요",
-    "sha256": "469e12fc8e14c1039765a6aad075cc80bff122c7e53f3845237d52825178eafd"
+    "sha256": "c44438e893b49c04be1701df7a14ebbbf479a76f745ea640219666ee189f9e5a"
   },
   {
     "id": "2026-10-16-3-dinner",
@@ -94,9 +94,9 @@
     ],
     "url": "https://github.com/hong2-kim/jecheol-feed/releases/download/v2026-10-16/2026-10-16-3-dinner.mp4",
     "seconds": 14.0,
-    "size_mb": 3.4,
+    "size_mb": 3.6,
     "yt_title": "불금 저녁 뭐 먹지? 메뉴 추천 TOP 5, 1위는 떡볶이",
-    "sha256": "8190ebea83362e4ad58688a51c45c41da37767b260230c2f527a5849029b4a9b"
+    "sha256": "33bb1323496fe8a8787f54b5a6150a1c75057aa366e0fb2f223a2d958aa224d5"
   },
   {
     "id": "2026-10-16-2-news",
