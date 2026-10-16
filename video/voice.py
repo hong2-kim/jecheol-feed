@@ -67,6 +67,20 @@ def tts(text):
     return x
 
 
+def spoken(line):
+    """목소리로 읽을 글. 자막(say)과 읽는 말이 달라야 하면 "read" 를 적어요.
+    "4~5시"를 "네 시에서 오 시"로 잘못 읽어서(2026-10-17), 범위(~)는 "4시에서 5시"처럼 풀어 읽혀요."""
+    import re
+    text = line.get("read") or line["say"]
+    text = text.replace("[[", "").replace("]]", "")
+    # 4~5시, 7,500~9,000원, 3~4개 → 4시에서 5시, 7,500원에서 9,000원, 3개에서 4개
+    text = re.sub(r"(\d[\d,.]*)\s*[~∼-]\s*(\d[\d,.]*)\s*(시|원|개|분|명|곳|도|%|kg|g|만 원|천 원)", r"\1\3에서 \2\3", text)
+    # 시각은 우리말 수로: 5시 → 다섯 시, 10시 → 열 시 (숫자로 두면 "오 시"처럼 읽을 때가 있어요)
+    hours = ["", "한", "두", "세", "네", "다섯", "여섯", "일곱", "여덟", "아홉", "열", "열한", "열두"]
+    text = re.sub(r"(?<![\d,.])(\d{1,2})\s*시(?![간작즌])", lambda m: f"{hours[int(m[1])]} 시" if 0 < int(m[1]) <= 12 else m[0], text)
+    return " ".join(text.split())
+
+
 def estimate(text):
     """키가 없을 때(설계도 확인만 할 때) 읽는 시간 어림. 1.3배 빠르기로 한 칸에 0.135초쯤."""
     from build import units
@@ -155,7 +169,7 @@ def build_voice(spec, work=None):
     import build as B
 
     lines = spec["lines"]
-    voices = [tts(" ".join(l["say"].replace("[[", "").replace("]]", "").split())) for l in lines]
+    voices = [tts(spoken(l)) for l in lines]
     real = all(v is not None for v in voices)
     durs = [(len(v) / SR if real else estimate(l["say"])) + GAP for v, l in zip(voices, lines)]
     body = sum(durs)
