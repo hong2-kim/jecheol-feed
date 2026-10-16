@@ -259,8 +259,68 @@ def horizon_chill(dur):
     return tr
 
 
-SONGS = {"brand-walk": walk, "brand-market": market, "brand-night": night, "brand-picnic": picnic, "brand-munch": munch, "brand-horizon": horizon, "brand-horizon-chill": horizon_chill}
-LENGTHS = {"brand-munch": 24.0, "brand-horizon": 24.0, "brand-horizon-chill": 24.0}  # 카드 쇼츠(20초 남짓)에서도 중간에 끝 가락이 나오지 않게 길게 만들어요
+def curious(dur):
+    """8. 궁금궁금 — 발끝으로 걷는 듯한 짧은 줄 튕김과 반음씩 기어오르는 베이스, 마디 끝에 "응?" 하고 올라가는 종소리.
+    단조로 궁금하게 끌다가 끝의 먹고갈지도 가락(장조)에서 풀려요. 1위를 밝히는 저녁 TOP 5에 어울려요. (2026-10-16 사용자가 궁금한 느낌을 원함)"""
+    beat = 60 / 112
+    tr = np.zeros(int(SR * (dur + 2)))
+    # 라단조: Am - Am - F - E. 베이스는 한 박씩 짧게 끊어 살금살금 걸어요.
+    walk_notes = [[45, 48, 52, 51], [45, 48, 52, 53], [41, 45, 48, 47], [40, 44, 47, 44]]
+    tops = [[69, 72, 76, 75], [69, 72, 76, 77], [65, 69, 72, 71], [64, 68, 71, 68]]
+    t, bar = 0.0, 0
+    while t < dur - 4 * beat:
+        for b in range(4):
+            put(tr, t + b * beat, bass(walk_notes[bar % 4][b], beat * .35), 0.48)
+            put(tr, t + b * beat + beat / 2, pluck(tops[bar % 4][b], beat * .3, 0.7), 0.24)  # 뒷박에 톡
+            put(tr, t + b * beat + beat / 2, hat(0.5), 0.05)
+        put(tr, t, kick(), 0.22)
+        if bar % 2:  # 두 마디마다 "응?" 하고 올라가는 종소리
+            put(tr, t + 3 * beat, bell(76, beat * .8), 0.10)
+            put(tr, t + 3.5 * beat, bell(81, beat * 1.2), 0.12)
+        bar += 1
+        t += 4 * beat
+    motif(tr, t, beat, lambda n, d: pluck(n + 12, d, 0.8), 0.40)
+    motif(tr, t, beat, lambda n, d: bell(n + 12, d), 0.16)
+    put(tr, t, bass(36, beat * 4), 0.4)
+    return tr
+
+
+def sneak(dur):
+    """9. 살금살금 — 궁금궁금과 같은 결. 마림바가 반음씩 내려가고, 손가락 튕기는 박수와 낮은 아코디언 화음이 깔려요.
+    "어? 이게 뭐지?" 하고 들여다보는 발견형에 어울려요. (2026-10-16)"""
+    beat = 60 / 100
+    tr = np.zeros(int(SR * (dur + 2)))
+    # 라단조: Am - Dm - E - Am
+    chords = [(57, 60, 64), (57, 62, 65), (56, 59, 64), (57, 60, 64)]
+    roots = [45, 38, 40, 45]
+    lines = [[76, None, 75, None, 74, None, 73, None], [77, None, 76, None, 74, None, 72, None],
+             [76, 71, 68, 71, 76, None, 80, None], [81, None, 76, 72, 69, None, None, None]]
+    t, bar = 0.0, 0
+    while t < dur - 4 * beat:
+        for n in chords[bar % 4]:
+            put(tr, t, reed(n - 12, beat * 3.5), 0.07)
+        for s, n in enumerate(lines[bar % 4]):
+            if n:
+                put(tr, t + s * beat / 2, marimba(n, beat * .6), 0.26)
+        put(tr, t, bass(roots[bar % 4], beat * .5), 0.45)
+        put(tr, t + 1.5 * beat, bass(roots[bar % 4] + 7, beat * .3), 0.30)
+        put(tr, t + 2 * beat, bass(roots[bar % 4], beat * .5), 0.40)
+        put(tr, t + beat, clap(), 0.09)  # 손가락 튕기기처럼 작게
+        put(tr, t + 3 * beat, clap(), 0.09)
+        if bar % 4 == 3:  # 네 마디 끝에 "응?"
+            put(tr, t + 3 * beat, bell(79, beat * .8), 0.10)
+            put(tr, t + 3.5 * beat, bell(84, beat * 1.2), 0.12)
+        bar += 1
+        t += 4 * beat
+    motif(tr, t, beat, marimba, 0.34)
+    motif(tr, t, beat, lambda n, d: bell(n + 12, d), 0.16)
+    put(tr, t, bass(36, beat * 4), 0.4)
+    return tr
+
+
+SONGS = {"brand-walk": walk, "brand-market": market, "brand-night": night, "brand-picnic": picnic, "brand-munch": munch, "brand-horizon": horizon, "brand-horizon-chill": horizon_chill,
+         "brand-curious": curious, "brand-sneak": sneak}
+LENGTHS = {"brand-munch": 24.0, "brand-horizon": 24.0, "brand-horizon-chill": 24.0, "brand-curious": 24.0, "brand-sneak": 24.0}  # 카드 쇼츠(20초 남짓)에서도 중간에 끝 가락이 나오지 않게 길게 만들어요
 
 
 def save(x, path):

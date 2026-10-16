@@ -526,8 +526,9 @@ def fit(scenes, tail, top=LONGEST):
 
 # 먹고갈지도만의 노래(video/brand_music.py 로 만든 것). 영상 갈래마다 어울리는 곡을 골라요. (2026-10-16 사용자가 넣으라고 함)
 # 설계도에 "music": "none" 을 적으면 노래 없이, "brand-walk" 처럼 적으면 그 곡으로 만들어요.
-SONGS = {"제철": "brand-picnic", "유행": "brand-munch", "저녁": "brand-market", "지역": "brand-market",
-         "이야기": "brand-night", "소식": "brand-walk", "발견": "brand-walk", "세계": "brand-walk", "해외": "brand-walk"}
+# 2026-10-16 사용자가 정함: 저녁 TOP 5는 궁금한 느낌(궁금궁금), 발견형도 비슷한 결(살금살금).
+SONGS = {"제철": "brand-picnic", "유행": "brand-munch", "저녁": "brand-curious", "지역": "brand-market",
+         "이야기": "brand-night", "소식": "brand-walk", "발견": "brand-sneak", "세계": "brand-walk", "해외": "brand-walk"}
 
 
 def song(spec):
