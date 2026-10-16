@@ -497,13 +497,24 @@ def fit(scenes, tail):
         raise ValueError(f"장면이 {len(scenes)}개라 15초 안에 다 보여 줄 수 없어요. 장면을 줄여 주세요.")
 
 
+# 먹고갈지도만의 노래(video/brand_music.py 로 만든 것). 영상 갈래마다 어울리는 곡을 골라요. (2026-10-16 사용자가 넣으라고 함)
+# 설계도에 "music": "none" 을 적으면 노래 없이, "brand-walk" 처럼 적으면 그 곡으로 만들어요.
+SONGS = {"제철": "brand-picnic", "유행": "brand-picnic", "저녁": "brand-market", "지역": "brand-market",
+         "이야기": "brand-night", "소식": "brand-walk", "발견": "brand-walk", "세계": "brand-walk", "해외": "brand-walk"}
+
+
+def song(spec):
+    name = spec.get("music") or SONGS.get(spec.get("kind", ""), "brand-walk")
+    return "none" if name == "none" else f"file:{name}"
+
+
 def build_html(spec):
     """설계도를 한 장짜리 HTML로 만들어요. (HTML, 길이)"""
     accent = spec.get("accent") or ACCENTS.get(spec.get("kind", ""), "#FFB23E")
     scenes = spec["scenes"]
     ctx = {"cards": sum(1 for s in scenes if s["type"] == "card"), "card_no": 0, "brand": spec.get("brand"),
            "ranks": sum(1 for s in scenes if s["type"] == "rank") or 5, "top": spec.get("top"), "rank_note": spec.get("rank_note")}
-    meta = {"music": "none", "sfx": [], "ambience": []}  # 노래와 효과음은 넣지 않아요. 올릴 때 인스타그램에서 고르면 돼요.
+    meta = {"music": song(spec), "sfx": [], "ambience": []}  # 먹고갈지도 노래를 조용히 깔아요. 효과음은 넣지 않아요.
     css = (HERE / "base.css").read_text(encoding="utf-8").replace("FONT_DIR", (HERE / "fonts").as_uri())
     out = ['<!doctype html><html lang="ko"><head><meta charset="utf-8">', f"<style>{css}</style></head>",
            f'<body style="--ac:{accent}">']

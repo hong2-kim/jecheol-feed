@@ -248,18 +248,26 @@ def loop_to(sound, n):
     return np.tile(sound, n // len(sound) + 1)[:n]
 
 
+BRAND_LEVEL = 0.32
+
+
 def build(mood, sfx, dur, path, ambience=()):
     """mood 가 "file:이름" 이면 audio/이름.wav 를 배경음악으로 써요.
     ambience 는 [[시작, 끝, 이름, 크기], ...] 로, 장면 밑에 까는 현장 소리예요."""
     n = int(SR * dur)
     if mood == "none":
         music = np.zeros(n)
+    elif mood.startswith("file:brand-"):
+        # 먹고갈지도 노래는 끝에 "먹고갈지도" 가락이 있어요. 영상이 끝날 때 그 가락이 나오게 곡의 뒷부분을 써요.
+        song = load_wav(mood[5:])
+        music = np.tile(song, n // len(song) + 1)[-n:].copy()  # 영상이 곡보다 길면 앞에 한 번 더 이어 붙여요
     elif mood.startswith("file:"):
         music = loop_to(load_wav(mood[5:]), n).copy()
     else:
         music = MUSIC[mood](dur)[:n]
-    music *= 0.85 / max(1e-9, np.abs(music).max())
-    fade_in, fade_out = int(SR * 0.3), int(SR * 1.6)
+    # 먹고갈지도 노래는 조용히 깔아요. 시끄럽지 않게 (2026-10-15 사용자가 정함)
+    music *= (BRAND_LEVEL if mood.startswith("file:brand-") else 0.85) / max(1e-9, np.abs(music).max())
+    fade_in, fade_out = int(SR * 0.3), int(SR * (0.4 if mood.startswith("file:brand-") else 1.6))
     music[:fade_in] *= np.linspace(0, 1, fade_in)
     music[-fade_out:] *= np.linspace(1, 0, fade_out)
     fx = np.zeros(n)

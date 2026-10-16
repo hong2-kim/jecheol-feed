@@ -95,17 +95,21 @@ def render_cards(spec, name, browser):
 COVER_SEC, CARD_SEC, FADE_SEC = 3.0, 4.0, 0.4  # 카드 쇼츠: 첫 장, 소식 한 장, 넘어가는 시간
 
 
-def cards_short(files, name):
+def cards_short(files, name, kind="소식", music=None):
     """카드 그림들을 넘겨 보는 세로 영상으로 이어요. 유튜브 쇼츠용이에요. (파일, 길이)
 
     카드(1080×1350)를 가운데보다 조금 위에 두고(쇼츠는 아래쪽에 제목과 단추가 겹쳐요), 위아래 빈자리는 같은 카드를 흐리고 어둡게 깔아 채워요.
-    소리는 없지만 플레이어가 헷갈리지 않게 조용한 소리 줄을 넣어요.
+    밑에는 먹고갈지도 노래를 조용히 깔아요. (2026-10-16)
     """
     durs = [COVER_SEC] + [CARD_SEC] * (len(files) - 1)
     cmd = [imageio_ffmpeg.get_ffmpeg_exe(), "-y", "-loglevel", "error"]
     for f, d in zip(files, durs):
         cmd += ["-loop", "1", "-framerate", str(FPS), "-t", f"{d:.2f}", "-i", str(ROOT / "dist" / f)]
-    cmd += ["-f", "lavfi", "-i", "anullsrc=r=44100:cl=stereo"]
+    total = sum(durs) - FADE_SEC * (len(files) - 1)
+    wav = ROOT / "build" / f"{name}-short.wav"
+    wav.parent.mkdir(exist_ok=True)
+    audio.build(build.song({"kind": kind, "music": music}), [], total, wav)
+    cmd += ["-i", str(wav)]
     chain = []
     for i in range(len(files)):
         chain.append(f"[{i}:v]scale=1080:1350,setsar=1,split[f{i}][b{i}];"
@@ -122,7 +126,7 @@ def cards_short(files, name):
             "-c:v", "libx264", "-profile:v", "high", "-preset", "medium", "-crf", "21",
             "-c:a", "aac", "-b:a", "128k", "-shortest", "-movflags", "+faststart", str(out)]
     subprocess.run(cmd, check=True)
-    return out, sum(durs) - FADE_SEC * (len(files) - 1)
+    return out, total
 
 
 def main():
@@ -153,7 +157,7 @@ def main():
                     entry.update({"ok": True, "format": "cards", "file": files[0], "files": files, "size_mb": round(size / 1e6, 1)})
                     print(f"만들었어요: {name} 카드 {len(files)}장")
                     try:  # 쇼츠 영상이 안 만들어져도 인스타용 카드는 그대로 보내요
-                        short, sec = cards_short(files, name)
+                        short, sec = cards_short(files, name, spec.get("kind", "소식"), spec.get("music"))
                         entry.update({"short": short.name, "short_seconds": round(sec, 1)})
                         print(f"만들었어요: {short.name} ({sec:.1f}초, 유튜브 쇼츠용)")
                     except Exception as e:
