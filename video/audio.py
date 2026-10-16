@@ -249,6 +249,7 @@ def loop_to(sound, n):
 
 
 BRAND_LEVEL = 0.32
+LOUDER = {"brand-munch": 0.7}  # 먹는 소리가 들려야 하는 곡은 조금 크게
 
 
 def build(mood, sfx, dur, path, ambience=()):
@@ -266,7 +267,8 @@ def build(mood, sfx, dur, path, ambience=()):
     else:
         music = MUSIC[mood](dur)[:n]
     # 먹고갈지도 노래는 조용히 깔아요. 시끄럽지 않게 (2026-10-15 사용자가 정함)
-    music *= (BRAND_LEVEL if mood.startswith("file:brand-") else 0.85) / max(1e-9, np.abs(music).max())
+    level = LOUDER.get(mood[5:], BRAND_LEVEL) if mood.startswith("file:brand-") else 0.85
+    music *= level / max(1e-9, np.abs(music).max())
     fade_in, fade_out = int(SR * 0.3), int(SR * (0.4 if mood.startswith("file:brand-") else 1.6))
     music[:fade_in] *= np.linspace(0, 1, fade_in)
     music[-fade_out:] *= np.linspace(1, 0, fade_out)

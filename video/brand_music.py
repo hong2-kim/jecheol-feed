@@ -13,7 +13,7 @@ from pathlib import Path
 import numpy as np
 
 sys.path.insert(0, str(Path(__file__).parent))
-from audio import SR, bass, bell, env, hat, hz, kick, pluck, put, reed, smooth  # noqa: E402
+from audio import SR, bass, bell, clap, env, hat, hz, kick, load_wav, pluck, put, reed, smooth  # noqa: E402
 
 HERE = Path(__file__).parent
 LEN = 16.0
@@ -144,7 +144,45 @@ def picnic(dur):
     return tr
 
 
-SONGS = {"brand-walk": walk, "brand-market": market, "brand-night": night, "brand-picnic": picnic}
+def munch(dur):
+    """5. 냠냠 박자 — 통통 튀는 줄 소리에 진짜 먹는 소리(짭짭짭, 바삭, 꿀꺽)를 박자에 맞춰 얹어요. 요즘 뜨는 메뉴에 어울려요. (2026-10-16)
+
+    먹는 소리는 audio/eat/ 에 잘라 둔 퍼블릭 도메인 녹음이에요(위키미디어 공용, 원래 pdsounds.org).
+    짭: "Chewing gum mouth open"(ezwa), 바삭: "Eating potato snacks"(russiandoll), 꿀꺽: "Swallowing gulp"(gregoryweir).
+    """
+    beat = 60 / 100
+    tr = np.zeros(int(SR * (dur + 2)))
+    chew = [load_wav(f"eat/chew{i}") for i in range(1, 5)]
+    crunch = [load_wav(f"eat/crunch{i}") for i in range(1, 5)]
+    riffs = [[72, 76, 79, 76, 77, 76, 74, 71], [72, 76, 79, 81, 79, 76, 74, 72]]
+    roots = [48, 53, 55, 48]
+    t, bar = 0.0, 0
+    while t < dur - 4 * beat:
+        for s, n in enumerate(riffs[bar % 2]):
+            if s not in (1, 2, 3):  # 짭짭짭 자리는 비워서 먹는 소리가 들리게 해요
+                put(tr, t + s * beat / 2, pluck(n, beat * .45, 0.9), 0.22)
+        put(tr, t, bass(roots[bar % 4], beat * .9), 0.30)
+        put(tr, t + 2 * beat, bass(roots[bar % 4] + 7, beat * .9), 0.24)
+        put(tr, t, kick(), 0.22)
+        put(tr, t + 2 * beat, kick(), 0.22)
+        put(tr, t + beat, clap(), 0.10)
+        put(tr, t + 3 * beat, clap(), 0.10)
+        for k, s in enumerate((1, 2, 3)):  # 짭 짭 짭
+            put(tr, t + s * beat / 2, chew[(bar + k) % 4], 1.0)
+        put(tr, t + 6 * beat / 2, crunch[bar % 4], 0.85)  # 바삭
+        if bar % 2:
+            put(tr, t + 7 * beat / 2, chew[(bar + 1) % 4], 0.6)
+        bar += 1
+        t += 4 * beat
+    put(tr, t - beat * .5, load_wav("eat/gulp"), 0.9)  # 꿀꺽, 그리고 먹고갈지도 가락
+    motif(tr, t, beat, lambda n, d: pluck(n + 12, d, 0.8), 0.40)
+    motif(tr, t, beat, lambda n, d: bell(n + 12, d), 0.14)
+    put(tr, t, bass(36, beat * 4), 0.4)
+    return tr
+
+
+SONGS = {"brand-walk": walk, "brand-market": market, "brand-night": night, "brand-picnic": picnic, "brand-munch": munch}
+LENGTHS = {"brand-munch": 24.0}  # 카드 쇼츠(20초 남짓)에서도 중간에 끝 가락이 나오지 않게 길게 만들어요
 
 
 def save(x, path):
@@ -157,7 +195,9 @@ def save(x, path):
 if __name__ == "__main__":
     (HERE / "audio").mkdir(exist_ok=True)
     for name, fn in SONGS.items():
-        x = fn(LEN)
+        if len(sys.argv) > 1 and name not in sys.argv[1:]:
+            continue
+        x = fn(LENGTHS.get(name, LEN))
         last = np.nonzero(np.abs(x) > 1e-4)[0][-1]
         save(x[: last + 1], HERE / "audio" / f"{name}.wav")
         print("만들었어요:", name, f"{(last + 1) / SR:.1f}초")
