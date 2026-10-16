@@ -110,12 +110,44 @@ CSS = """
 .vpic img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
 .vback { position: absolute; left: 0; right: 0; top: 1680px; bottom: 0; overflow: hidden; }
 .vback img { width: 100%; height: 100%; object-fit: cover; }
+.vpic.pack { background: #fff; }
+.vpic.pack img { object-fit: contain; padding: 34px 56px; }
 .vchip { position: absolute; left: 44px; top: 790px; padding: 8px 26px 14px; border-radius: 999px; background: #D8432B; color: #fff; font-weight: 900; font-size: 54px; letter-spacing: -1.5px; box-shadow: 0 6px 20px rgba(0,0,0,.35); }
 .vline { position: absolute; left: 0; right: 0; }
 """
 PIN = ('<svg viewBox="0 0 200 250"><path d="M100 244C100 244 16 150 16 92a84 84 0 01168 0c0 58-84 152-84 152z" fill="#D8432B"/>'
        '<circle cx="100" cy="92" r="60" fill="#FFFDF5"/><path d="M62 84h76c0 26-16 42-38 42S62 110 62 84z" fill="#D8432B"/>'
        '<rect x="55" y="78" width="90" height="9" rx="4.5" fill="#D8432B"/></svg>')
+
+
+def is_pack(B, photo):
+    """흰 바탕 상품·봉지 사진인지. 가장자리가 거의 흰색이면 자르지 않고 통째로 보여 줘요. (2026-10-17 봉지가 잘려 보인다고 함)
+    사진에 "fit": "contain"(통째로) / "cover"(꽉 채워 자름)를 적으면 그대로 따라요."""
+    if isinstance(photo, dict) and photo.get("fit") in ("contain", "cover"):
+        return photo["fit"] == "contain"
+    from PIL import Image
+    B.fetch_photo(photo)
+    with Image.open(B.CACHE / (B.photo_key(photo) + "-g2.jpg")) as im:
+        a = np.asarray(im.convert("L").resize((200, 200)), dtype=float)
+    edge = np.concatenate([a[:8].ravel(), a[-8:].ravel(), a[:, :8].ravel(), a[:, -8:].ravel()])
+    return (edge > 225).mean() > 0.6
+
+
+def pic_html(B, photo):
+    if is_pack(B, photo):
+        return f'<div class="vpic pack"><img src="{B.pack_photo(photo)}"></div>'
+    src, pos = B.fetch_photo(photo)
+    return f'<div class="vpic"><img src="{src}" style="object-position:{pos}"></div>'
+
+
+def line_photos(lines):
+    """문장마다 보여 줄 사진 목록. "photos": [...] 를 적으면 그 문장 안에서 차례로 바뀌어요. 없으면 앞 사진을 이어 써요."""
+    out, last = [], None
+    for l in lines:
+        ps = l.get("photos") or ([l["photo"]] if l.get("photo") else [last])
+        out.append(ps)
+        last = ps[-1]
+    return out
 
 
 def build_voice(spec, work=None):
@@ -140,15 +172,14 @@ def build_voice(spec, work=None):
            f'<section class="scene first" data-at="0" data-dur="{body:.2f}" data-out="0" style="z-index:900;pointer-events:none">'
            f'<div class="vhead"><div class="tag">{PIN}<span>{B.esc(name[:2])}<b>{B.esc(name[2:])}</b></span></div>'
            f'<div class="hl" style="font-size:{size}px">{B.rich(head)}</div></div></section>']
-    at, photo = 0.0, None
-    for i, (l, d) in enumerate(zip(lines, durs)):
-        photo = l.get("photo") or photo  # 사진이 없는 문장은 앞 사진을 그대로 써요
-        src, pos = B.fetch_photo(photo)
+    at = 0.0
+    for i, (l, d, photos) in enumerate(zip(lines, durs, line_photos(lines))):
         chip = f'<div class="vchip">{B.rich(l["chip"])}</div>' if l.get("chip") else ""
-        anim = ' style="animation:in-fade .12s ease both"' if i else ""
-        out.append(f'<section class="scene{" first" if not i else ""}" data-at="{at:.2f}" data-dur="{d:.2f}" data-out="0"{anim}>'
-                   f'<div class="vback"><img src="{B.backdrop(photo)}"></div>'
-                   f'<div class="vpic"><img src="{src}" style="object-position:{pos}"></div>{chip}</section>')
+        for k, photo in enumerate(photos):  # 한 문장에 사진이 여러 장이면 읽는 동안 고르게 나눠 바꿔요
+            pa, pd = at + d * k / len(photos), d / len(photos)
+            anim = ' style="animation:in-fade .12s ease both"' if (i or k) else ""
+            out.append(f'<section class="scene{" first" if not (i or k) else ""}" data-at="{pa:.2f}" data-dur="{pd:.2f}" data-out="0"{anim}>'
+                       f'<div class="vback"><img src="{B.backdrop(photo)}"></div>{pic_html(B, photo)}{chip}</section>')
         # 자막: 문장을 덩어리로 나눠 읽는 속도에 맞춰 차례로 바꿔요
         parts = chunks(l["say"])
         weights = [B.units(p) + 1 for p in parts]
@@ -192,10 +223,20 @@ def problems(spec):
     for n, l in enumerate(lines, 1):
         if not l.get("say"):
             must.append(f"{n}번 문장에 say 가 없어요.")
-        if n == 1 and not l.get("photo"):
+        if n == 1 and not (l.get("photo") or l.get("photos")):
             must.append("1번 문장에 photo 가 없어요.")
         if l.get("say") and B.units(l["say"]) > 42:
             should.append(f"{n}번 문장이 길어요({B.units(l['say']):.0f}칸). 두 문장으로 나누면 자막이 읽기 쉬워요.")
+    shown = line_photos(lines) if lines and (lines[0].get("photo") or lines[0].get("photos")) else []
+    keys = {json.dumps(p, sort_keys=True) for ps in shown for p in ps}
+    if shown and len(keys) < 8:
+        should.append(f"서로 다른 사진이 {len(keys)}장이에요. 8~12장이 좋아요(사진이 자주 바뀌어야 끝까지 봐요).")
+    run, prev = 0, None
+    for n, ps in enumerate(shown, 1):
+        run = run + 1 if len(ps) == 1 and ps[0] == prev else 1
+        prev = ps[-1]
+        if run == 3:
+            should.append(f"{n}번 문장까지 같은 사진이 3문장 이어져요. 2문장까지만 쓰고 바꿔 주세요.")
     total = sum(estimate(l.get("say", "")) + GAP for l in lines) + 1.6
     if total > LONGEST:
         must.append(f"읽는 데 {total:.0f}초쯤 걸려요. 59초 안으로 줄여 주세요.")
