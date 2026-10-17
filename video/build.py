@@ -201,6 +201,12 @@ def moving(s, dur):
     return img(s["photo"]), backdrop(s["photo"]), is_tall(s["photo"])
 
 
+def zoomed(photo):
+    """설계도에 "fit": "cover" 를 적은 사진만 화면을 꽉 채우게 잘라요. 나머지는 잘리지 않게 통째로 보여 줘요.
+    (2026-10-17 사용자가 정함: "확대 요청이 없으면 안 잘리게")"""
+    return isinstance(photo, dict) and photo.get("fit") == "cover"
+
+
 def img(photo):
     """사진 한 장. 장면이 넘어가기 전까지는 움직이지 않고 그대로 있어요."""
     src, pos = fetch_photo(photo)
@@ -226,7 +232,9 @@ def fit_size(text, size, room=930):
 
 
 def scene_cover(s, i, ctx):
-    parts = [f'<div class="pic">{moving(s, s["dur"])[0]}</div>', '<div class="mid">']
+    whole = not s.get("video") and not zoomed(s.get("photo"))
+    tag, back, _ = moving(s, s["dur"])
+    parts = [(f'<div class="back"><img src="{back}"></div>' if whole else "") + f'<div class="pic{" whole" if whole else ""}">{tag}</div>', '<div class="mid">']
     if s.get("kicker"):
         parts.append(rise("kicker", s["kicker"], .15))
     parts.append(rise("title", s["title"], .4, style=f'font-size:{fit_size(s["title"], s.get("size", 128))}px'))
@@ -245,7 +253,7 @@ def scene_card(s, i, ctx):
     chip = rise("chip", s["chip"], .2) if s.get("chip") else ""
     return "card", (
         f'<div class="back"><img src="{back}"></div>'
-        f'<div class="pic {"tall" if tall else "wide"}">{tag}</div><div class="shade"></div>'
+        f'<div class="pic {"tall" if tall else "wide"}{"" if s.get("video") or zoomed(s.get("photo")) else " whole"}">{tag}</div><div class="shade"></div>'
         f'<div class="txt">{chip}{rise("hd", s["headline"], .32)}{rise("ln", s.get("line", ""), .6)}</div>'
     )
 
@@ -301,11 +309,11 @@ def scene_rank(s, i, ctx):
     total = ctx.get("ranks", 5)
     if s.get("video"):  # 사용자가 보낸 동영상은 그대로 움직이게 둬요
         pic = f'<div class="pic">{moving(s, s["dur"])[0]}</div>'
-    elif not is_tall(s["photo"]):
+    elif not zoomed(s["photo"]):
         # 가로 사진은 잘라서 꽉 채우지 않고 통째로 보여 줘요(멀리서 본 느낌). 빈 곳은 같은 사진을 흐리게 깔아요. (2026-10-15 사용자: 너무 확대돼 보임)
         src, pos = fetch_photo(s["photo"])
         pic = (f'<div class="pic"><img src="{backdrop(s["photo"])}"></div>'
-               f'<div class="pic rk-wide"><img class="kb a" src="{src}" style="--d:{s["dur"]}s"></div>')
+               f'<div class="pic rk-wide{" rk-tall" if is_tall(s["photo"]) else ""}"><img class="kb a" src="{src}" style="--d:{s["dur"]}s"></div>')
     else:
         src, pos = fetch_photo(s["photo"])
         pic = f'<div class="pic"><img class="kb a" src="{src}" style="object-position:{pos};--d:{s["dur"]}s"></div>'

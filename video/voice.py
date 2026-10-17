@@ -124,6 +124,8 @@ CSS = """
 .vpic img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
 .vback { position: absolute; left: 0; right: 0; top: 1680px; bottom: 0; overflow: hidden; }
 .vback img { width: 100%; height: 100%; object-fit: cover; }
+.vpic.whole img { object-fit: contain; }
+.vpic.whole img.bg { object-fit: cover; }
 .vpic.pack { background: #fff; }
 .vpic.pack img { object-fit: contain; padding: 34px 56px; }
 .vchip { position: absolute; left: 44px; top: 790px; padding: 8px 26px 14px; border-radius: 999px; background: #D8432B; color: #fff; font-weight: 900; font-size: 54px; letter-spacing: -1.5px; box-shadow: 0 6px 20px rgba(0,0,0,.35); }
@@ -151,7 +153,10 @@ def pic_html(B, photo):
     if is_pack(B, photo):
         return f'<div class="vpic pack"><img src="{B.pack_photo(photo)}"></div>'
     src, pos = B.fetch_photo(photo)
-    return f'<div class="vpic"><img src="{src}" style="object-position:{pos}"></div>'
+    if B.zoomed(photo):  # "fit": "cover" 를 적었을 때만 칸을 꽉 채워 잘라요
+        return f'<div class="vpic"><img src="{src}" style="object-position:{pos}"></div>'
+    # 그 밖에는 잘리지 않게 통째로, 빈 곳은 같은 사진을 흐리게 (2026-10-17 사용자가 정함)
+    return f'<div class="vpic whole"><img class="bg" src="{B.backdrop(photo)}"><img src="{src}"></div>'
 
 
 def line_photos(lines):

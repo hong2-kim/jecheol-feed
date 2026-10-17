@@ -187,7 +187,14 @@ body { background: #0E0B09; color: #fff; font-family: "Noto Sans KR", sans-serif
 .sheet .th { width: 130px; height: 132px; border-radius: 36px 0 0 36px; }  /* 사진이 줄 왼쪽 끝까지 꽉 차게 */
 .sheet td:first-child .hl { border-radius: 36px 0 0 36px; }
 .check .ck { font-size: 58px; letter-spacing: -1px; box-shadow: 0 6px 18px rgba(0,0,0,.45); }
-.rank .pic.rk-wide { top: 390px; height: 960px; }
+.rank .pic.rk-wide { top: 440px; height: 910px; }
 .rank .pic.rk-wide img { object-fit: contain; object-position: 50% 30%; border-radius: 0; }
 .rank .pic.rk-wide img.kb.a { animation-name: kb2; }
 @keyframes kb2 { from { transform: scale(1); } to { transform: scale(1.03); } }
+
+/* 2026-10-17 사용자가 정함: 확대 요청("fit": "cover")이 없으면 사진을 자르지 않고 통째로. 빈 곳은 같은 사진을 흐리게 깔아요. */
+.rank .pic.rk-wide.rk-tall { top: 440px; height: 1060px; }
+.card .pic.whole img { object-fit: contain; object-position: 50% 40%; }
+.cover .back { position: absolute; inset: 0; }
+.cover .back img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; filter: brightness(.7); }
+.cover .pic.whole img { object-fit: contain; object-position: 50% 45%; }
