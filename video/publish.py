@@ -111,6 +111,10 @@ def send_youtube(token, chat, r, day):
     with open(ROOT / "dist" / video, "rb") as f:  # 유튜브 묶음에서 바로 저장할 수 있게 영상도 다시 보내요
         tg("sendVideo", token, data={"chat_id": chat, "caption": f"{tag}\n{r.get('yt_title') or r.get('title')}"[:900], "supports_streaming": "true",
                                      "width": 1080, "height": 1920}, files={"video": (video, f, "video/mp4")})
+    if r.get("thumb") and (ROOT / "dist" / r["thumb"]).exists():  # 큰 두 줄 제목 썸네일 (2026-10-17 사용자가 정함)
+        with open(ROOT / "dist" / r["thumb"], "rb") as f:
+            tg("sendPhoto", token, data={"chat_id": chat, "caption": "썸네일 — 영상 맨 앞 장면과 같아요. 올릴 때 썸네일 고르기에서 맨 앞(0초) 장면을 고르거나, "
+                                         "'썸네일 업로드'가 보이면 이 그림을 올려 주세요."}, files={"photo": (r["thumb"], f, "image/jpeg")})
     desc = r.get("yt_desc") or ""
     if len(desc) > 3300:  # 텔레그램 글 한 개에 다 들어가게
         desc = desc[:3300].rstrip() + "\n…"

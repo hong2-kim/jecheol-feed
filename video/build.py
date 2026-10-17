@@ -593,17 +593,21 @@ def build_html(spec):
     ctx = {"cards": sum(1 for s in scenes if s["type"] == "card"), "card_no": 0, "brand": spec.get("brand"),
            "ranks": sum(1 for s in scenes if s["type"] == "rank") or 5, "top": spec.get("top"), "rank_note": spec.get("rank_note")}
     meta = {"music": song(spec), "sfx": [], "ambience": []}  # 먹고갈지도 노래를 조용히 깔아요. 효과음은 넣지 않아요.
-    css = (HERE / "base.css").read_text(encoding="utf-8").replace("FONT_DIR", (HERE / "fonts").as_uri())
+    import thumb
+    css = (HERE / "base.css").read_text(encoding="utf-8") + thumb.CSS
+    css = css.replace("FONT_DIR", (HERE / "fonts").as_uri())
     out = ['<!doctype html><html lang="ko"><head><meta charset="utf-8">', f"<style>{css}</style></head>",
            f'<body style="--ac:{accent}">']
+    # "thumb" 이 있으면 맨 앞 0.9초를 썸네일 화면(큰 두 줄 제목 + 사진 한 장)으로 보여 줘요. (2026-10-17 사용자가 정함, thumb.py)
+    front = thumb.has(spec)
     # 맨 끝에는 늘 계정 이름 장면이 붙어요. 사진 출처가 한 줄이면 게시글에 적고, 여러 줄이면 이 장면에 모아요.
     lines = credit_lines(spec)
     lines = lines if len(lines) > 1 else []
     # 체크·한 장 정리는 끝 장면을 따로 붙이지 않아요. 같은 장면 뒤에 지도를 옅게 깔고 아래에 이름을 넣어요. (2026-10-15 사용자가 정함)
     inline = all(s["type"] in INLINE_BRAND for s in scenes)
     tail = 0 if inline else (min(3.0, 2.0 + .25 * max(0, len(lines) - 2)) if lines else 1.5)
-    fit(scenes, tail, longest(spec))
-    frames = []
+    fit(scenes, tail, longest(spec) - (thumb.THUMB_SEC if front else 0))
+    frames = [("thumb", thumb.body(spec), thumb.THUMB_SEC)] if front else []
     for i, s in enumerate(scenes):
         kind, body = SCENES[s["type"]](s, i, ctx)
         if inline:
@@ -613,7 +617,8 @@ def build_html(spec):
         frames.append((kind, body, s["dur"]))
     if not inline:
         frames.append(("outro", scene_outro(lines), tail))
-    how = [None] + [transition(spec.get("kind", ""), frames, i, scenes) for i in range(1, len(frames))]
+    order = ([{"type": "thumb", "in": "zoom"}] if front else []) + scenes
+    how = [None] + [transition(spec.get("kind", ""), frames, i, order) for i in range(1, len(frames))]
     at = 0.0
     for i, (kind, body, dur) in enumerate(frames):
         last = i == len(frames) - 1
@@ -991,6 +996,9 @@ if __name__ == "__main__":
         print(f"  사진 출처: {len(shown)}줄이 게시글에 자동으로 들어가요." if shown else "  사진 출처: 표시할 것이 없어요.")
         for line in youtube_problems(spec):
             print("  유튜브: " + line)
+        import thumb
+        for line in thumb.spec_problems(spec):
+            print("  썸네일: " + line)
         sys.exit(0)
     if spec.get("format") == "voice":
         import voice
@@ -1014,6 +1022,9 @@ if __name__ == "__main__":
     print("  해시태그: " + " ".join("#" + t for t in hashtags(spec.get("tags"))))
     for line in youtube_problems(spec):
         print("  유튜브: " + line)
+    import thumb
+    for line in thumb.spec_problems(spec):
+        print("  썸네일: " + line)
     shown = credit_lines(spec)
     where = "게시글에 한 줄로" if len(shown) == 1 else "맨 끝 장면에"
     print(f"  사진 출처: {len(shown)}줄이 {where} 자동으로 들어가요." if shown else "  사진 출처: 표시할 것이 없어요.")

@@ -21,6 +21,7 @@ sys.path.insert(0, str(Path(__file__).parent))
 sys.path.insert(0, str(Path(__file__).parent.parent / "scripts"))
 import audio  # noqa: E402
 import build  # noqa: E402
+import thumb  # noqa: E402
 from common import log_error  # noqa: E402
 
 ROOT = Path(__file__).parent.parent
@@ -93,16 +94,35 @@ def render_cards(spec, name, browser):
     return files
 
 
-COVER_SEC, CARD_SEC, FADE_SEC = 3.0, 4.0, 0.4  # 카드 쇼츠: 첫 장, 소식 한 장, 넘어가는 시간
+COVER_SEC, CARD_SEC, FADE_SEC, THUMB_SEC = 3.0, 4.0, 0.4, 1.2  # 카드 쇼츠: 첫 장, 소식 한 장, 넘어가는 시간, 맨 앞 썸네일
 
 
-def cards_short(files, name, spec):
+def render_thumb(spec, name, browser):
+    """썸네일 그림 한 장(dist/날짜-이름-thumb.jpg). 큰 두 줄 제목 + 사진 한 장이에요. (2026-10-17 사용자가 정함, thumb.py)"""
+    html_path = ROOT / "build" / f"{name}-thumb.html"
+    html_path.parent.mkdir(exist_ok=True)
+    html_path.write_text(thumb.page(spec), encoding="utf-8")
+    out = ROOT / "dist" / f"{name}-thumb.jpg"
+    out.parent.mkdir(exist_ok=True)
+    page = browser.new_page(viewport=SIZE)
+    try:
+        page.goto(html_path.as_uri())
+        page.evaluate("document.fonts.ready")
+        page.wait_for_function("[...document.images].every(i => i.complete && i.naturalWidth > 0)", timeout=30000)
+        page.screenshot(path=str(out), type="jpeg", quality=93)
+    finally:
+        page.close()
+    return out.name
+
+
+def cards_short(files, name, spec, front=None):
     """카드 그림들을 넘겨 보는 세로 영상으로 이어요. 유튜브 쇼츠용이에요. (파일, 길이)
 
     카드(1080×1350)를 가운데보다 조금 위에 두고(쇼츠는 아래쪽에 제목과 단추가 겹쳐요), 위아래 빈자리는 같은 카드를 흐리고 어둡게 깔아 채워요.
     밑에는 먹고갈지도 노래를 조용히 깔아요. (2026-10-16)
     """
-    durs = [COVER_SEC] + [CARD_SEC] * (len(files) - 1)
+    files = ([front] if front else []) + list(files)  # 맨 앞은 썸네일 화면(있으면)
+    durs = ([THUMB_SEC] if front else []) + [COVER_SEC] + [CARD_SEC] * (len(files) - 1 - bool(front))
     cmd = [imageio_ffmpeg.get_ffmpeg_exe(), "-y", "-loglevel", "error"]
     for f, d in zip(files, durs):
         cmd += ["-loop", "1", "-framerate", str(FPS), "-t", f"{d:.2f}", "-i", str(ROOT / "dist" / f)]
@@ -113,6 +133,9 @@ def cards_short(files, name, spec):
     cmd += ["-i", str(wav)]
     chain = []
     for i in range(len(files)):
+        if front and not i:  # 썸네일은 이미 세로 화면 크기예요
+            chain.append(f"[0:v]scale=1080:1920,setsar=1,fps={FPS},format=yuv420p,settb=1/{FPS}[v0]")
+            continue
         chain.append(f"[{i}:v]scale=1080:1350,setsar=1,split[f{i}][b{i}];"
                      f"[b{i}]scale=1536:1920,crop=1080:1920,boxblur=28:2,eq=brightness=-0.22[g{i}];"
                      f"[g{i}][f{i}]overlay=0:180:shortest=1,fps={FPS},format=yuv420p,settb=1/{FPS}[v{i}]")
@@ -156,13 +179,19 @@ def main():
                 entry["yt_title"], entry["yt_desc"] = build.youtube_text(spec)
                 kw = build.youtube_keywords(spec)
                 entry.update({"yt_keyword": kw["keyword"], "yt_related": kw["related"], "yt_tags": kw["tag_text"], "yt_hashtags": kw["hashtags"]})
+                if thumb.has(spec):
+                    try:  # 썸네일이 안 만들어져도 영상은 그대로 만들어요
+                        entry["thumb"] = render_thumb(spec, name, browser)
+                    except Exception as e:
+                        log_error(f"thumb:{name}", e)
+                        print(f"썸네일을 만들지 못했어요: {name} — {e}")
                 if build.is_cards(spec):
                     files = render_cards(spec, name, browser)
                     size = sum((ROOT / "dist" / f).stat().st_size for f in files)
                     entry.update({"ok": True, "format": "cards", "file": files[0], "files": files, "size_mb": round(size / 1e6, 1)})
                     print(f"만들었어요: {name} 카드 {len(files)}장")
                     try:  # 쇼츠 영상이 안 만들어져도 인스타용 카드는 그대로 보내요
-                        short, sec = cards_short(files, name, spec)
+                        short, sec = cards_short(files, name, spec, entry.get("thumb"))
                         entry.update({"short": short.name, "short_seconds": round(sec, 1)})
                         print(f"만들었어요: {short.name} ({sec:.1f}초, 유튜브 쇼츠용)")
                     except Exception as e:

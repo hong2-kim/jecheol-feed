@@ -110,25 +110,19 @@ def chunks(text):
 
 
 CSS = """
-.vhead { position: absolute; left: 0; right: 0; top: 0; height: 600px; background: #FFFDF5; z-index: 900; }
-.vhead .tag { position: absolute; left: 64px; top: 150px; display: flex; align-items: center; gap: 12px; font-weight: 900; font-size: 40px; color: #1F2A1A; letter-spacing: -1px; }
-.vhead .tag svg { width: 34px; height: 42px; }
-.vhead .tag b { color: #D8432B; }
-.vhead .hl { position: absolute; left: 50px; right: 50px; top: 222px; font-weight: 900; line-height: 1.1; letter-spacing: -6px; color: #1F2A1A; white-space: pre-line; text-align: center; }
-.vhead .hl .am { color: #D8432B; }
-.vsub { position: absolute; left: 0; right: 0; top: 600px; height: 150px; background: #fff; display: flex; align-items: center; justify-content: center;
-        border-top: 6px solid #1F2A1A; z-index: 1; }
+.vsub { position: absolute; left: 0; right: 0; top: 680px; height: 130px; background: #fff; display: flex; align-items: center; justify-content: center;
+        z-index: 1; }
 .vsub div { font-weight: 900; font-size: 70px; letter-spacing: -2.5px; color: #111; text-align: center; padding: 0 40px; }
 .vsub .am { color: #D8432B; }
-.vpic { position: absolute; left: 0; right: 0; top: 750px; height: 930px; overflow: hidden; background: #0E0B09; }
+.vpic { position: absolute; left: 0; right: 0; top: 810px; height: 890px; overflow: hidden; background: #0E0B09; }
 .vpic img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
-.vback { position: absolute; left: 0; right: 0; top: 1680px; bottom: 0; overflow: hidden; }
+.vback { position: absolute; left: 0; right: 0; top: 1700px; bottom: 0; overflow: hidden; }
 .vback img { width: 100%; height: 100%; object-fit: cover; }
 .vpic.whole img { object-fit: contain; }
 .vpic.whole img.bg { object-fit: cover; }
 .vpic.pack { background: #fff; }
 .vpic.pack img { object-fit: contain; padding: 34px 56px; }
-.vchip { position: absolute; left: 44px; top: 790px; padding: 8px 26px 14px; border-radius: 999px; background: #D8432B; color: #fff; font-weight: 900; font-size: 54px; letter-spacing: -1.5px; box-shadow: 0 6px 20px rgba(0,0,0,.35); }
+.vchip { position: absolute; left: 44px; top: 850px; padding: 8px 26px 14px; border-radius: 999px; background: #D8432B; color: #fff; font-weight: 900; font-size: 54px; letter-spacing: -1.5px; box-shadow: 0 6px 20px rgba(0,0,0,.35); }
 .vline { position: absolute; left: 0; right: 0; }
 """
 PIN = ('<svg viewBox="0 0 200 250"><path d="M100 244C100 244 16 150 16 92a84 84 0 01168 0c0 58-84 152-84 152z" fill="#D8432B"/>'
@@ -182,15 +176,14 @@ def build_voice(spec, work=None):
     credits = credits if len(credits) > 1 else []
     tail = 1.6
     css = (HERE / "base.css").read_text(encoding="utf-8").replace("FONT_DIR", (HERE / "fonts").as_uri())
+    import thumb
     head = spec.get("headline", spec.get("title", ""))
-    size = B.fit_size(head, 132, room=980)
     name = json.loads((ROOT / "config.json").read_text(encoding="utf-8")).get("account") or "먹고갈지도"
-    out = ['<!doctype html><html lang="ko"><head><meta charset="utf-8">', f"<style>{css}{CSS}</style></head>",
+    out = ['<!doctype html><html lang="ko"><head><meta charset="utf-8">', f"<style>{css}{CSS}{thumb.CSS.replace('FONT_DIR', (HERE / 'fonts').as_uri())}</style></head>",
            '<body style="--ac:#D8432B">',
-           # 위쪽 큰 제목은 영상 내내 그대로 있어요 (끝 장면에서만 사라져요)
+           # 위쪽 큰 제목은 영상 내내 그대로 있어요 (끝 장면에서만 사라져요). 첫 화면이 곧 썸네일이에요. (thumb.py)
            f'<section class="scene first" data-at="0" data-dur="{body:.2f}" data-out="0" style="z-index:900;pointer-events:none">'
-           f'<div class="vhead"><div class="tag">{PIN}<span>{B.esc(name[:2])}<b>{B.esc(name[2:])}</b></span></div>'
-           f'<div class="hl" style="font-size:{size}px">{B.rich(head)}</div></div></section>']
+           f'{thumb.head_html(head, name, (spec.get("thumb") or {}).get("color", thumb.AC))}</section>']
     at = 0.0
     for i, (l, d, photos) in enumerate(zip(lines, durs, line_photos(lines))):
         chip = f'<div class="vchip">{B.rich(l["chip"])}</div>' if l.get("chip") else ""
@@ -237,6 +230,9 @@ def problems(spec):
     lines = spec.get("lines") or []
     if not spec.get("headline"):
         must.append("headline(위쪽 고정 제목 두 줄)이 없어요.")
+    else:
+        import thumb
+        should += thumb.problems(spec["headline"], "제목")
     if not 8 <= len(lines) <= 18:
         should.append(f"문장이 {len(lines)}개예요. 10~16개가 좋아요.")
     for n, l in enumerate(lines, 1):
