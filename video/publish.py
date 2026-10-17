@@ -115,7 +115,7 @@ def send_youtube(token, chat, r, day):
     if len(desc) > 3300:  # 텔레그램 글 한 개에 다 들어가게
         desc = desc[:3300].rstrip() + "\n…"
     url = f"https://github.com/{REPO}/releases/download/v{day}/{video}"
-    text = (f"<b>{html.escape(tag)}</b>\n위 영상을 쇼츠로 올려 주세요.\n\n{html.escape(music_note(r, youtube=True))}"
+    text = (f"<b>{html.escape(tag)}</b>\n위 영상을 쇼츠로 올려 주세요. 썸네일은 맨 앞(0초) 장면을 고르면 큰 제목 화면이 돼요.\n\n{html.escape(music_note(r, youtube=True))}"
             f"<b>제목</b> (눌러서 복사)\n<code>{html.escape(r['yt_title'])}</code>\n\n"
             + keywords_block(r) +
             f"<b>설명</b> (눌러서 복사)\n<pre>{html.escape(desc)}</pre>\n"
