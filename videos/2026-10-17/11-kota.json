@@ -1,0 +1,168 @@
+{
+ "format": "voice",
+ "kind": "해설",
+ "subject": "코타키나발루 꼭 먹을 음식 5가지",
+ "title": "코타키나발루 가서 호텔 조식만 먹긴 아깝죠",
+ "yt_title": "코타키나발루 음식 꼭 먹을 5가지 + 해산물 바가지 피하는 법",
+ "headline": "코타키나발루\n꼭 먹을 5가지",
+ "lines": [
+  {
+   "say": "코타키나발루 가서 [[호텔 조식]]만 먹고 오면 진짜 아까워요.",
+   "photo": {
+    "url": "https://live.staticflickr.com/3249/3125030956_f1bf677407_b.jpg"
+   },
+   "chip": "끝까지 보면 해산물 바가지 피하는 법"
+  },
+  {
+   "say": "아침부터 밤까지 [[5가지]], 끝까지 보면 [[바가지]] 피하는 법도 알려 드려요.",
+   "photo": {
+    "url": "https://upload.wikimedia.org/wikipedia/commons/2/2c/The_Filipino_Market_in_Kota_Kinabalu%2C_fresh_fruit_and_vegetables.jpg"
+   },
+   "chip": "끝까지 보면 해산물 바가지 피하는 법"
+  },
+  {
+   "say": "아침엔 국물 없이 비벼 먹는 [[콘로우 미]].",
+   "photo": {
+    "url": "https://live.staticflickr.com/7475/16211331022_4faca8c0c2_b.jpg"
+   },
+   "chip": "① 아침 · 콘로우 미"
+  },
+  {
+   "say": "[[차슈]]를 올리는데, 돼지고기라 할랄 식당엔 없어요.",
+   "photo": {
+    "url": "https://live.staticflickr.com/2163/2603069477_fc3c3a588a_b.jpg"
+   }
+  },
+  {
+   "say": "점심엔 투아란 마을 이름을 딴 [[투아란 미]].",
+   "photo": {
+    "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Mee%20Goreng%20Tuaran%20bj.jpg?width=1600"
+   },
+   "chip": "② 점심 · 투아란 미"
+  },
+  {
+   "say": "[[달걀]]과 밀가루로 반죽한 면이라 쫄깃하고 고소해요.",
+   "photo": {
+    "url": "https://upload.wikimedia.org/wikipedia/commons/1/14/Mee_Tuaran.jpg"
+   }
+  },
+  {
+   "say": "원주민 카다잔두순의 [[히나바]]도 꼭 드셔 보세요.",
+   "photo": {
+    "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Hinava%20KIK.jpg?width=1600"
+   },
+   "chip": "③ 사바 전통 · 히나바"
+  },
+  {
+   "say": "날생선을 [[라임즙]]에 절인 사바식 회무침이에요."
+  },
+  {
+   "say": "저녁엔 돼지 뼈를 한약재에 푹 끓인 [[바쿠테]].",
+   "photo": {
+    "url": "https://live.staticflickr.com/7165/6572378693_31265bef9e_b.jpg"
+   },
+   "chip": "④ 저녁 · 바쿠테"
+  },
+  {
+   "say": "밤엔 필리피노 마켓 옆 [[야시장]]으로 가요.",
+   "photo": {
+    "url": "https://live.staticflickr.com/2950/15270302458_c2cc459e1f_b.jpg"
+   },
+   "chip": "⑤ 밤 · 야시장 해산물"
+  },
+  {
+   "say": "생선, 새우, 오징어를 [[골라서 가리키면]] 바로 구워 줘요.",
+   "photo": {
+    "url": "https://live.staticflickr.com/3249/3125030956_f1bf677407_b.jpg"
+   }
+  },
+  {
+   "say": "꿀팁! 해산물은 [[무게]]로 값을 매기는 곳이 많아요.",
+   "photo": {
+    "url": "https://live.staticflickr.com/2950/15270302458_c2cc459e1f_b.jpg"
+   },
+   "chip": "100g 값? 1kg 값? 먼저 확인"
+  },
+  {
+   "say": "주문 전에 [[100g]] 값인지 [[1kg]] 값인지 꼭 물어보세요.",
+   "read": "주문 전에 백 그램 값인지 일 킬로그램 값인지 꼭 물어보세요.",
+   "chip": "100g 값? 1kg 값? 먼저 확인"
+  },
+  {
+   "say": "일요일엔 아침 6시부터 [[가야 스트리트 선데이 마켓]]도 열려요.",
+   "photo": {
+    "url": "https://upload.wikimedia.org/wikipedia/commons/7/7d/Sunday_Morning_Market_in_Gaya_Street_on_November_24th%2C_2019.jpg"
+   }
+  },
+  {
+   "say": "여러분은 코타에서 뭐가 제일 맛있었어요? [[댓글]]로 알려 주세요.",
+   "photo": {
+    "url": "https://commons.wikimedia.org/wiki/Special:FilePath/View%20of%20the%20sunset%20from%20Le%20M%C3%A9ridien%20Hotel%2C%20Kota%20Kinabalu%20%2843%29.jpg?width=1600"
+   }
+  }
+ ],
+ "caption": "코타키나발루 가서 호텔 조식만 먹긴 아깝죠. 아침부터 밤까지 꼭 먹을 5가지예요.\n\n🌅 아침 · 콘로우 미 — 국물 없이 비벼 먹는 국수에 차슈 (돼지고기라 할랄 아님)\n🍜 점심 · 투아란 미 — 투아란 마을 이름을 딴 달걀면\n🐟 사바 전통 · 히나바 — 날생선을 라임즙에 절인 회무침\n🍲 저녁 · 바쿠테 — 한약재 국물에 끓인 돼지 뼈 탕\n🦐 밤 · 야시장 해산물 — 골라서 가리키면 바로 구워 줘요\n\n💡 해산물은 주문 전에 100g 값인지 1kg 값인지 꼭 물어보세요.\n📅 가야 스트리트 선데이 마켓은 일요일 아침 6시쯤부터 낮 1시쯤까지 열려요.\n\n여러분은 코타키나발루에서 뭐가 제일 맛있었어요?",
+ "pin": "💡 코타키나발루 먹거리 꿀팁\n해산물은 무게로 값을 매기는 곳이 많아요. 주문 전에 100g 값인지 1kg 값인지 꼭 물어보세요.\n콘로우 미·바쿠테는 돼지고기라 할랄 식당엔 없어요.\n가야 스트리트 선데이 마켓: 일요일 아침 6시쯤 ~ 낮 1시쯤",
+ "tags": [
+  "코타키나발루",
+  "코타키나발루여행",
+  "말레이시아여행",
+  "해외여행"
+ ],
+ "sources": [
+  "https://thesmartlocal.com/read/noodle-capital-sabah/",
+  "https://www.malaymail.com/news/eat/drink/2016/04/13/a-delicious-primer-to-the-many-noodle-dishes-found-in-sabah/1099207",
+  "https://en.wikipedia.org/wiki/Sabahan_cuisine",
+  "https://www.mysabah.com/wordpress/hinava/",
+  "https://www.mysabah.com/wordpress/?p=1025",
+  "https://chiefeater.com/chiefeaters/sinsuran-sang-nyuk-mee-breakfast",
+  "https://www.traveloka.com/en-sg/explore/activities/kota-kinabalu-markets-guide/48361",
+  "https://www.amazingborneo.com/travel/the-ultimate-guide-to-the-best-seafood-in-sabah",
+  "https://sabahtourism.com/article/gaya-street-the-sensational-weekend-street/",
+  "https://www.agoda.com/travel-guides/malaysia/kota-kinabalu/shopping-in-kota-kinabalu-top-malls-markets-where-to-buy-souvenirs/"
+ ],
+ "credits": [
+  "amanderson2 (CC BY 2.0) · flickr.com/photos/49399018@N00/3125030956",
+  "thienzieyung (CC BY 2.0) · flickr.com/photos/26978304@N08/16211331022",
+  "thienzieyung (CC BY 2.0) · flickr.com/photos/26978304@N08/2603069477",
+  "Jason Thien (CC BY 2.0) · commons.wikimedia.org/?curid=136400008",
+  "Rombituon (CC BY 4.0) · commons.wikimedia.org/?curid=142019965",
+  "profernity (CC BY 2.0) · flickr.com/photos/38766930@N05/6572378693",
+  "Disgwylfa (CC BY 2.0) · flickr.com/photos/24413864@N05/15270302458",
+  "Aliceinthealice (CC BY 4.0) · commons.wikimedia.org/?curid=148541962"
+ ],
+ "yt_keyword": "코타키나발루 음식",
+ "yt_related": [
+  "코타키나발루 먹거리",
+  "코타키나발루 여행 꿀팁",
+  "코타키나발루 해산물",
+  "코타키나발루 바쿠테",
+  "코타키나발루 야시장"
+ ],
+ "yt_tags": [
+  "코타키나발루 음식",
+  "코타키나발루 먹거리",
+  "코타키나발루 여행 꿀팁",
+  "코타키나발루 해산물",
+  "코타키나발루 바쿠테",
+  "코타키나발루 야시장",
+  "투아란 미",
+  "히나바",
+  "말레이시아 여행"
+ ],
+ "yt_hashtags": [
+  "코타키나발루",
+  "코타키나발루여행",
+  "말레이시아여행"
+ ],
+ "yt_lead": "코타키나발루 가면 아침부터 밤까지 꼭 먹을 5가지와 해산물 주문 꿀팁을 정리했어요.",
+ "yt_points": [
+  "아침: 콘로우 미",
+  "점심: 투아란 미",
+  "사바 전통: 히나바",
+  "저녁: 바쿠테",
+  "밤: 야시장 해산물 (주문 전 100g·1kg 값 확인)"
+ ],
+ "music": "lib:mr-turtle-the-green-orbs",
+ "note": "2026-10-17 사용자 요청으로 만든 코타키나발루 먹거리 개선판(내레이션). 사용자가 미리 보고 '지금 텔레그램으로 보내 줘'라고 함."
+}
