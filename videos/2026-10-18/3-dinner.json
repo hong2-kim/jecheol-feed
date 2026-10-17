@@ -1,0 +1,157 @@
+{
+ "kind": "저녁",
+ "subject": "일요일 저녁 TOP 5 (찜닭·해물탕·닭갈비·부대찌개·돈까스)",
+ "title": "비 오는 일요일 저녁, 뭐 먹지? TOP 5",
+ "yt_title": "비 오는 일요일 저녁 메뉴 추천 TOP 5, 1위 돈까스 인정?ㅋㅋ",
+ "summary": "비 오는 일요일 저녁에 당기는 메뉴 5가지를 5위부터 거꾸로 세어요.",
+ "top": {
+  "kicker": "비 오는 일요일",
+  "title": "오늘 저녁 뭐 먹지?",
+  "badge": "TOP 5"
+ },
+ "rank_note": "오늘 요일과 날씨에 맞춘 먹고갈지도 추천 순서예요",
+ "scenes": [
+  {
+   "type": "cover",
+   "dur": 2.2,
+   "photo": {
+    "url": "https://tong.visitkorea.or.kr/cms2/website/60/1081560.jpg"
+   },
+   "kicker": "여러분",
+   "title": "비 오는\n[[일요일 저녁]]\n뭐 먹을지 몰라\n헤맨 적 있나요?",
+   "size": 100
+  },
+  {
+   "type": "cover",
+   "dur": 2.0,
+   "photo": {
+    "url": "https://tong.visitkorea.or.kr/cms2/website/07/2825907.jpg"
+   },
+   "kicker": "제가 지금 그 상황이에요",
+   "title": "내일이 월요일인데\n[[메뉴를 못 골라서]]\n폰만 봐요",
+   "size": 100,
+   "in": "push"
+  },
+  {
+   "type": "cover",
+   "dur": 1.8,
+   "photo": {
+    "url": "https://tong.visitkorea.or.kr/cms2/website/71/2534271.jpg"
+   },
+   "kicker": "그래서 만들었어요",
+   "title": "비 오는 일요일\n[[저녁 TOP 5]]\n1위 인정?",
+   "size": 112
+  },
+  {
+   "type": "rank",
+   "no": 5,
+   "name": "찜닭",
+   "drink": "소주",
+   "line": "비 오는 날 당면부터 건져요",
+   "photo": {
+    "url": "https://tong.visitkorea.or.kr/cms2/website/07/2825907.jpg"
+   },
+   "dur": 1.9
+  },
+  {
+   "type": "rank",
+   "no": 4,
+   "name": "해물탕",
+   "drink": "소주",
+   "line": "비 오면 국물부터 한 숟갈",
+   "photo": {
+    "url": "https://tong.visitkorea.or.kr/cms2/website/60/1081560.jpg"
+   },
+   "dur": 1.9
+  },
+  {
+   "type": "rank",
+   "no": 3,
+   "name": "닭갈비",
+   "drink": "소주 or 맥주",
+   "line": "볶음밥까지가 한 끼예요",
+   "photo": {
+    "url": "vault:photos/u-2026-10-15-dakgalbi.jpg"
+   },
+   "dur": 1.9
+  },
+  {
+   "type": "rank",
+   "no": 2,
+   "name": "부대찌개",
+   "drink": "소주 or 맥주",
+   "line": "라면 사리까지가 한 세트",
+   "photo": {
+    "url": "https://tong.visitkorea.or.kr/cms2/website/71/2534271.jpg"
+   },
+   "dur": 1.9
+  },
+  {
+   "type": "tease",
+   "photo": {
+    "url": "https://github.com/hong2-kim/jecheol-feed/releases/download/myphotos/2026-10-14-172554796.jpg"
+   },
+   "text": "1위는\n뭘까?",
+   "dur": 1.0,
+   "in": "fade"
+  },
+  {
+   "type": "rank",
+   "no": 1,
+   "name": "돈까스",
+   "drink": "맥주",
+   "line": "바삭한 소리부터 이미 맛있어요",
+   "photo": {
+    "url": "https://github.com/hong2-kim/jecheol-feed/releases/download/myphotos/2026-10-14-172554796.jpg"
+   },
+   "dur": 2.4,
+   "in": "zoom"
+  }
+ ],
+ "thumb": {
+  "head": "비 오는 일요일\n저녁 TOP 5",
+  "sub": "1위는 [[바삭]]ㅋㅋ",
+  "photo": {
+   "url": "https://tong.visitkorea.or.kr/cms2/website/71/2534271.jpg"
+  }
+ },
+ "caption": "비 오는 일요일 저녁, 뭐 먹을지 못 골라서 만들었어요.\n\n1위 돈까스 · 맥주 — 바삭한 소리부터 이미 맛있어요\n2위 부대찌개 · 소주 or 맥주 — 라면 사리까지가 한 세트\n3위 닭갈비 · 소주 or 맥주 — 볶음밥까지가 한 끼예요\n4위 해물탕 · 소주 — 비 오면 국물부터 한 숟갈\n5위 찜닭 · 소주 — 비 오는 날 당면부터 건져요\n\n1위 돈까스는 제가 직접 찍은 사진이에요.\n\n여러분 오늘 1위는 뭐예요? 댓글로 알려 주세요.\n\n오늘 서울은 비가 오고 최저 15도, 낮 최고 21도, 비 올 확률은 100%예요. 순서는 요일과 날씨에 맞춘 먹고갈지도 추천이에요. 술 조합은 추천일 뿐이에요. 지나친 음주는 건강에 해로워요.",
+ "tags": [
+  "돈까스",
+  "일요일저녁메뉴",
+  "저녁메뉴추천",
+  "오늘뭐먹지"
+ ],
+ "sources": [
+  "https://open-meteo.com/ (서울 예보, 2026-10-18 확인)"
+ ],
+ "credits": [
+  "ⓒ한국관광공사 포토코리아-김지호, 디엔에이스튜디오, IR 스튜디오"
+ ],
+ "yt_keyword": "일요일 저녁메뉴",
+ "yt_related": [
+  "저녁 메뉴 추천",
+  "오늘 뭐 먹지",
+  "비 오는 날 음식",
+  "돈까스",
+  "부대찌개"
+ ],
+ "yt_tags": [
+  "일요일 저녁메뉴",
+  "저녁 메뉴 추천",
+  "오늘 뭐 먹지",
+  "비 오는 날 음식",
+  "주말 저녁 메뉴",
+  "돈까스",
+  "부대찌개",
+  "닭갈비",
+  "해물탕",
+  "찜닭"
+ ],
+ "yt_hashtags": [
+  "저녁메뉴추천",
+  "일요일",
+  "돈까스"
+ ],
+ "yt_lead": "비 오는 일요일 저녁메뉴 고민될 때, 오늘 날씨에 맞춰 고른 TOP 5예요."
+}

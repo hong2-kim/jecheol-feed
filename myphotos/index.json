@@ -92,7 +92,9 @@
   "file": "https://github.com/hong2-kim/jecheol-feed/releases/download/myphotos/2026-10-14-172554796.jpg",
   "note": "돈까스",
   "date": "2026-10-14",
-  "used": [],
+  "used": [
+   "2026-10-18/3-dinner"
+  ],
   "tg_unique": "AQADexVrG65dcVZ-",
   "sha256": "022f2538190ee6c93146ab2d1870a63a83681ed98aef43258d4dfc3a5bd5cb25",
   "bytes": 192026,
