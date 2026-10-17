@@ -17,7 +17,11 @@ from functools import lru_cache
 from pathlib import Path
 
 HERE = Path(__file__).parent
-FONT = HERE / "fonts" / "BlackHanSans-Regular.ttf"
+# 제목 글꼴: 머니그라피체 라운디드(토스). 2026-10-17 사용자가 시안 5개 중에서 고름(블랙한산스는 글자 구분이 안 된다고 함).
+# 수정·재배포 금지라 공개 저장소가 아니라 비공개 보관함(fonts/)에 두고, 만들 때 받아 build/fonts/ 에 둬요.
+# 보관함을 못 읽으면 저장소에 있는 블랙한산스로 대신해요.
+VAULT_FONT = "vault:fonts/Moneygraphy-Rounded.woff2"
+FALLBACK_FONT = HERE / "fonts" / "BlackHanSans-Regular.ttf"
 ROOM = 990          # 제목 한 줄이 쓸 수 있는 폭
 TOP, BOTTOM = 250, 650  # 제목이 들어가는 높이 (목록에서 잘리지 않는 곳)
 MAX_LINE = 9        # 한 줄 글자 수(띄어쓰기 포함). 넘으면 글자가 작아져요
@@ -25,16 +29,16 @@ BG, AC = "#1F2A1A", "#FFB23E"
 THUMB_SEC = 0.9
 
 CSS = """
-@font-face { font-family: "Black Han Sans"; src: url("FONT_DIR/BlackHanSans-Regular.ttf"); }
+@font-face { font-family: "Thumb Title"; src: url("THUMB_FONT"); }
 .bh { position: absolute; left: 0; right: 0; top: 0; height: 680px; background: var(--bh, #1F2A1A); z-index: 900; overflow: hidden; }
 .bh .tag { position: absolute; left: 0; right: 0; top: 104px; display: flex; justify-content: center; align-items: center; gap: 10px;
            font-weight: 900; font-size: 38px; color: #fff; opacity: .9; letter-spacing: -1px; }
 .bh .tag svg { width: 30px; height: 38px; }
 .bh .tag b { color: #FFB23E; }
-.bh .ln { position: absolute; left: 0; right: 0; text-align: center; white-space: nowrap; font-family: "Black Han Sans", "Noto Sans KR", sans-serif;
+.bh .ln { position: absolute; left: 0; right: 0; text-align: center; white-space: nowrap; font-family: "Thumb Title", "Noto Sans KR", sans-serif;
           line-height: 1; letter-spacing: -1px; color: #fff; z-index: 1; filter: drop-shadow(0 8px 0 rgba(0,0,0,.35)); }
 /* 테두리는 같은 글을 뒤에 한 벌 더 깔아서 그려요 (글자 위에 바로 그리면 획이 겹친 곳에 검은 줄이 생겨요) */
-.bh .ln::before { content: attr(data-t); position: absolute; left: 0; right: 0; top: 0; z-index: -1; color: #000; -webkit-text-stroke: 18px #000; }
+.bh .ln::before { content: attr(data-t); position: absolute; left: 0; right: 0; top: 0; z-index: -1; color: #000; -webkit-text-stroke: 12px #000; }
 .bh .ln.l2, .bh .ln .am { color: var(--hc, #FFB23E); }
 .bh .ln.l2 .am { color: #fff; }
 .bstrip { position: absolute; left: 0; right: 0; top: 680px; height: 130px; background: #fff; display: flex; align-items: center; justify-content: center; z-index: 901; }
@@ -52,9 +56,30 @@ PIN = ('<svg viewBox="0 0 200 250"><path d="M100 244C100 244 16 150 16 92a84 84 
 
 
 @lru_cache(maxsize=1)
+def font_file():
+    """제목 글꼴 파일 경로. 비공개 보관함에서 한 번 받아 build/fonts/ 에 둬요."""
+    cache = HERE.parent / "build" / "fonts" / VAULT_FONT.rsplit("/", 1)[1]
+    if not cache.exists():
+        try:
+            import build as B
+            data = B.read_source(VAULT_FONT)
+            cache.parent.mkdir(parents=True, exist_ok=True)
+            cache.write_bytes(data)
+        except Exception as e:
+            print(f"  썸네일 글꼴을 보관함에서 못 읽어 블랙한산스로 대신해요: {e}")
+            return FALLBACK_FONT
+    return cache
+
+
+def css():
+    """썸네일 CSS (글꼴 주소를 채운 것). FONT_DIR 은 부르는 쪽에서 채워요."""
+    return CSS.replace("THUMB_FONT", font_file().as_uri())
+
+
+@lru_cache(maxsize=1)
 def _font():
     from PIL import ImageFont
-    return ImageFont.truetype(str(FONT), 100)
+    return ImageFont.truetype(str(font_file()), 100)
 
 
 def width(line, size):
@@ -134,9 +159,9 @@ def body(spec):
 
 def page(spec):
     """썸네일 그림 한 장을 찍을 HTML."""
-    css = ((HERE / "base.css").read_text(encoding="utf-8") + CSS).replace("FONT_DIR", (HERE / "fonts").as_uri())
+    style = ((HERE / "base.css").read_text(encoding="utf-8") + css()).replace("FONT_DIR", (HERE / "fonts").as_uri())
     return ('<!doctype html><html lang="ko"><head><meta charset="utf-8">'
-            f'<style>{css}</style></head><body><section class="scene first" style="visibility:visible">{body(spec)}</section></body></html>')
+            f'<style>{style}</style></head><body><section class="scene first" style="visibility:visible">{body(spec)}</section></body></html>')
 
 
 def has(spec):

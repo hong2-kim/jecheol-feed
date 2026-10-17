@@ -594,7 +594,7 @@ def build_html(spec):
            "ranks": sum(1 for s in scenes if s["type"] == "rank") or 5, "top": spec.get("top"), "rank_note": spec.get("rank_note")}
     meta = {"music": song(spec), "sfx": [], "ambience": []}  # 먹고갈지도 노래를 조용히 깔아요. 효과음은 넣지 않아요.
     import thumb
-    css = (HERE / "base.css").read_text(encoding="utf-8") + thumb.CSS
+    css = (HERE / "base.css").read_text(encoding="utf-8") + thumb.css()
     css = css.replace("FONT_DIR", (HERE / "fonts").as_uri())
     out = ['<!doctype html><html lang="ko"><head><meta charset="utf-8">', f"<style>{css}</style></head>",
            f'<body style="--ac:{accent}">']

@@ -179,7 +179,7 @@ def build_voice(spec, work=None):
     import thumb
     head = spec.get("headline", spec.get("title", ""))
     name = json.loads((ROOT / "config.json").read_text(encoding="utf-8")).get("account") or "먹고갈지도"
-    out = ['<!doctype html><html lang="ko"><head><meta charset="utf-8">', f"<style>{css}{CSS}{thumb.CSS.replace('FONT_DIR', (HERE / 'fonts').as_uri())}</style></head>",
+    out = ['<!doctype html><html lang="ko"><head><meta charset="utf-8">', f"<style>{css}{CSS}{thumb.css().replace('FONT_DIR', (HERE / 'fonts').as_uri())}</style></head>",
            '<body style="--ac:#D8432B">',
            # 위쪽 큰 제목은 영상 내내 그대로 있어요 (끝 장면에서만 사라져요). 첫 화면이 곧 썸네일이에요. (thumb.py)
            f'<section class="scene first" data-at="0" data-dur="{body:.2f}" data-out="0" style="z-index:900;pointer-events:none">'
