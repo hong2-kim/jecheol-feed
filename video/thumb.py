@@ -27,6 +27,13 @@ TOP, BOTTOM = 250, 650  # 제목이 들어가는 높이 (목록에서 잘리지 
 MAX_LINE = 9        # 한 줄 글자 수(띄어쓰기 포함). 넘으면 글자가 작아져요
 BG, AC = "#1F2A1A", "#FFB23E"
 THUMB_SEC = 0.9
+# 먹고갈지도 로고 자리 (2026-10-17 사용자: "로고와 글씨는 넣어야 한다, 사람들이 막 쓰면 안 되니까")
+#   top: 제목 위에 핀 로고 + 먹고갈지도   stamp: 사진 오른쪽 아래 둥근 로고 도장
+#   strip: 흰 띠 왼쪽에 둥근 로고         bar: 사진 아래 이름 띠 + 사진 가운데 옅은 워터마크
+#   both: top + stamp
+BRAND = "top"
+LOGO = HERE / "logo-round.png"  # 프로필 사진(초록 지도)을 둥글게 자른 것
+TOP_BIG = 290  # 로고를 제목 위에 둘 때 제목이 시작하는 높이
 
 CSS = """
 @font-face { font-family: "Thumb Title"; src: url("THUMB_FONT"); }
@@ -35,6 +42,18 @@ CSS = """
            font-weight: 900; font-size: 38px; color: #fff; opacity: .9; letter-spacing: -1px; }
 .bh .tag svg { width: 30px; height: 38px; }
 .bh .tag b { color: #FFB23E; }
+.bh .tag.big { top: 182px; gap: 14px; font-size: 56px; opacity: 1; letter-spacing: -1.5px; }
+.bh .tag.big svg { width: 50px; height: 62px; }
+.bh .tag.big b { color: #FF6B4A; }
+.blogo { position: absolute; z-index: 905; border-radius: 50%; border: 6px solid #fff; box-shadow: 0 6px 18px rgba(0,0,0,.45); }
+.blogo.stamp { width: 210px; height: 210px; right: 28px; top: 1462px; }
+.blogo.strip { width: 112px; height: 112px; left: 24px; top: 689px; border-width: 4px; box-shadow: none; }
+.bstrip.logo div { padding-left: 160px; padding-right: 30px; }
+.bbar { position: absolute; left: 0; right: 0; top: 1596px; height: 104px; background: rgba(20,28,18,.9); z-index: 904; display: flex; align-items: center;
+        justify-content: center; gap: 14px; font-weight: 900; font-size: 54px; color: #fff; letter-spacing: -1.5px; }
+.bbar svg { width: 46px; height: 58px; } .bbar b { color: #FF6B4A; }
+.bwm { position: absolute; left: -100px; right: -100px; top: 1170px; text-align: center; z-index: 903; font-weight: 900; font-size: 140px;
+       color: rgba(255,255,255,.3); transform: rotate(-14deg); letter-spacing: -4px; white-space: nowrap; }
 .bh .ln { position: absolute; left: 0; right: 0; text-align: center; white-space: nowrap; font-family: "Thumb Title", "Noto Sans KR", sans-serif;
           line-height: 1; letter-spacing: -1px; color: #fff; z-index: 1; filter: drop-shadow(0 8px 0 rgba(0,0,0,.35)); }
 /* 테두리는 같은 글을 뒤에 한 벌 더 깔아서 그려요 (글자 위에 바로 그리면 획이 겹친 곳에 검은 줄이 생겨요) */
@@ -86,23 +105,37 @@ def width(line, size):
     return _font().getlength(line.replace("[[", "").replace("]]", "")) * size / 100
 
 
-def sizes(lines):
+PIN_BOWL = ('<svg viewBox="0 0 200 250"><path d="M100 244C100 244 16 150 16 92a84 84 0 01168 0c0 58-84 152-84 152z" fill="#D8432B"/>'
+            '<circle cx="100" cy="92" r="62" fill="#FFF8EC"/><path d="M60 96h80c0 26-17 40-40 40S60 122 60 96z" fill="#D8432B"/>'
+            '<rect x="54" y="90" width="92" height="10" rx="5" fill="#D8432B"/>'
+            '<path d="M82 52c-7 7 7 12 0 22M100 48c-7 7 7 12 0 22M118 52c-7 7 7 12 0 22" stroke="#D8432B" stroke-width="7" fill="none" stroke-linecap="round"/></svg>')
+
+
+def brand_name(name):
+    """핀 로고(김 나는 그릇) + 먹고(흰색)갈지도(빨강)."""
+    import build as B
+    return f'{PIN_BOWL}<span>{B.esc(name[:2])}<b>{B.esc(name[2:])}</b></span>'
+
+
+def sizes(lines, top=TOP):
     """줄마다 폭에 꽉 차는 글자 크기. 두 줄을 합쳐 제목 칸 높이를 넘지 않게 맞춰요."""
     cap = 230 if len(lines) == 1 else 190
     out = [min(cap, int(ROOM / max(width(l, 100) / 100, 1))) for l in lines]
     gap = 26 * (len(lines) - 1)
-    room = BOTTOM - TOP - gap
+    room = BOTTOM - top - gap
     if sum(out) > room:
         out = [int(s * room / sum(out)) for s in out]
     return out
 
 
-def head_html(text, name="먹고갈지도", hc=AC, bg=BG):
+def head_html(text, name="먹고갈지도", hc=AC, bg=BG, brand=None):
     import build as B
+    brand = brand or BRAND
+    top = TOP_BIG if brand in ("top", "both") else TOP
     lines = [l for l in text.split("\n") if l.strip()][:2]
-    ss = sizes(lines)
-    y = TOP + (BOTTOM - TOP - sum(ss) - 26 * (len(ss) - 1)) / 2
-    out = [f'<div class="bh" style="--hc:{hc};--bh:{bg}"><div class="tag">{PIN}<span>{B.esc(name[:2])}<b>{B.esc(name[2:])}</b></span></div>']
+    ss = sizes(lines, top)
+    y = top + (BOTTOM - top - sum(ss) - 26 * (len(ss) - 1)) / 2
+    out = [f'<div class="bh" style="--hc:{hc};--bh:{bg}"><div class="tag{" big" if brand in ("top", "both") else ""}">{brand_name(name)}</div>']
     for i, (l, s) in enumerate(zip(lines, ss)):
         two = i == 1 and "[[" not in text  # [[ ]] 가 없으면 둘째 줄 전체가 강조색
         plain = B.esc(l.replace("[[", "").replace("]]", ""))
@@ -153,8 +186,20 @@ def body(spec):
     name = json.loads((HERE.parent / "config.json").read_text(encoding="utf-8")).get("account") or "먹고갈지도"
     t = spec.get("thumb") or {}
     return (f'<div class="bback"><img src="{B.backdrop(photo)}"></div>{photo_html(B, photo)}'
-            + (f'<div class="bstrip"><div>{B.rich(sub)}</div></div>' if sub else '<div class="bstrip"></div>')
-            + head_html(head, name, t.get("color", AC)))
+            + f'<div class="bstrip{" logo" if BRAND == "strip" else ""}"><div>{B.rich(sub)}</div></div>'
+            + brand_marks(name) + head_html(head, name, t.get("color", AC)))
+
+
+def brand_marks(name, brand=None):
+    """사진·띠 위에 얹는 로고. (BRAND 가 top 이면 제목 위에 있어서 여기선 없어요)"""
+    brand = brand or BRAND
+    if brand in ("stamp", "both"):
+        return f'<img class="blogo stamp" src="{LOGO.as_uri()}">'
+    if brand == "strip":
+        return f'<img class="blogo strip" src="{LOGO.as_uri()}">'
+    if brand == "bar":
+        return f'<div class="bwm">{name} · {name}</div><div class="bbar">{brand_name(name)}</div>'
+    return ""
 
 
 def page(spec):
