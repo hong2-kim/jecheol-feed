@@ -43,7 +43,7 @@ LABELS = {
     "6-story": ("맛의 이야기", "화요일"), "7-local": ("지역의 먹거리", "목요일"), "8-trend": ("요즘 뜨는 메뉴 카드", "금요일"),
     "1-monthly": ("이달의 제철", "달마다"), "5-world": ("세계 축제", "달마다"), "9-abroad": ("해외 먹거리 트렌드", "달마다"),
     "1-check": ("제철 체크 · 몇 개 먹어 봤어요?", "달마다"), "1-sheet": ("제철 한 장 정리", "달마다"),
-    "10-voice": ("내레이션 쇼츠", "매일"),
+    "10-voice": ("내레이션 쇼츠", "매일"), "11-steps": ("넘겨 보는 해설", "정보성 주제"),
 }
 
 
@@ -101,21 +101,24 @@ def keywords_block(r):
 
 def send_youtube(token, chat, r, day):
     """유튜브 쇼츠에 올릴 제목과 설명을 보내요. 제목과 설명은 눌러서 바로 복사할 수 있게 감싸요.
-    카드 뉴스는 쇼츠용 영상(카드를 넘겨 보는 세로 영상)을 먼저 보내요."""
+    영상은 바로 위 인스타 것과 같은 파일이라 다시 보내지 않아요 (2026-10-18 사용자: 같은 영상이 두 번 와서 용량만 차지).
+    카드 묶음만 쇼츠용 영상(카드를 넘겨 보는 세로 영상)이 따로 있어서 그것만 보내요."""
     if not r.get("yt_title"):
         return
-    video = r.get("short") if r.get("format") == "cards" else r["file"]
+    cards = r.get("format") == "cards"
+    video = r.get("short") if cards else r["file"]
     if not video or not (ROOT / "dist" / video).exists():
         return
     tag = label(r, "youtube")
-    with open(ROOT / "dist" / video, "rb") as f:  # 유튜브 묶음에서 바로 저장할 수 있게 영상도 다시 보내요
-        tg("sendVideo", token, data={"chat_id": chat, "caption": f"{tag}\n{r.get('yt_title') or r.get('title')}"[:900], "supports_streaming": "true",
-                                     "width": 1080, "height": 1920}, files={"video": (video, f, "video/mp4")})
+    if cards:
+        with open(ROOT / "dist" / video, "rb") as f:
+            tg("sendVideo", token, data={"chat_id": chat, "caption": f"{tag}\n{r.get('yt_title') or r.get('title')}"[:900], "supports_streaming": "true",
+                                         "width": 1080, "height": 1920}, files={"video": (video, f, "video/mp4")})
     desc = r.get("yt_desc") or ""
     if len(desc) > 3300:  # 텔레그램 글 한 개에 다 들어가게
         desc = desc[:3300].rstrip() + "\n…"
     url = f"https://github.com/{REPO}/releases/download/v{day}/{video}"
-    text = (f"<b>{html.escape(tag)}</b>\n위 영상을 쇼츠로 올려 주세요. 썸네일은 맨 앞(0초) 장면을 고르면 큰 제목 화면이 돼요.\n\n{html.escape(music_note(r, youtube=True))}"
+    text = (f"<b>{html.escape(tag)}</b>\n{'위 영상' if cards else '바로 위 인스타 영상(같은 파일)'}을 쇼츠로 올려 주세요. 썸네일은 맨 앞(0초) 장면을 고르면 큰 제목 화면이 돼요.\n\n{html.escape(music_note(r, youtube=True))}"
             f"<b>제목</b> (눌러서 복사)\n<code>{html.escape(r['yt_title'])}</code>\n\n"
             + keywords_block(r) +
             f"<b>설명</b> (눌러서 복사)\n<pre>{html.escape(desc)}</pre>\n"
@@ -159,7 +162,7 @@ def main():
             yt = [r for r in todo if r.get("yt_title")]
             if yt:
                 head += f"\n\n▶ 유튜브 쇼츠 {len(yt)}개\n" + "\n".join(f"{n}. {label(r, 'youtube')[1:-1]}" for n, r in enumerate(yt, 1))
-            head += "\n\n아래에 인스타 것을 먼저, 그다음 유튜브 쇼츠 것을 모아서 보내요."
+            head += "\n\n영상은 하나씩만 보내요. 영상 바로 아래에 인스타 글, 그다음 유튜브 제목·설명이 이어져요."
         if bad:
             head += f"\n\n실패 {len(bad)}개: " + "; ".join(f"{b['id']} ({b['error'][:80]})" for b in bad)
         mine = read_json(ROOT / "myphotos" / "index.json", []) or []
@@ -169,9 +172,8 @@ def main():
         if plan.waiting(mine):
             head += "\n\n[다음 순서]\n" + "\n".join(plan.lines(mine))
         tg("sendMessage", token, data={"chat_id": chat, "text": head})
-    if todo:
-        tg("sendMessage", token, data={"chat_id": chat, "text": "━━━━ 인스타 ━━━━"})
-    for r in todo:
+    for r in todo:  # 항목마다: 영상(또는 카드) 한 번 → 인스타 글 → 유튜브 제목·설명
+        tg("sendMessage", token, data={"chat_id": chat, "text": f"━━━━ {LABELS.get(r['id'][11:], (r.get('title') or r['id'],))[0]} ━━━━"})
         text = (ROOT / "dist" / f"{r['id']}.txt").read_text(encoding="utf-8")
         tag = label(r, "insta")
         try:
@@ -194,10 +196,7 @@ def main():
         except Exception as e:
             log_error(f"telegram:{r['id']}", e)
             print(f"못 보냈어요: {r['id']} ({e})")
-    yt = [r for r in todo if r["id"] in sent and r.get("yt_title")]
-    if yt:
-        tg("sendMessage", token, data={"chat_id": chat, "text": "━━━━ 유튜브 쇼츠 ━━━━"})
-    for r in yt:
+            continue
         try:  # 유튜브 안내가 안 가도 인스타 안내는 이미 갔으니 보낸 것으로 쳐요
             send_youtube(token, chat, r, day)
         except Exception as e:

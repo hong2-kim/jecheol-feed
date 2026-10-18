@@ -301,11 +301,15 @@ def rank_top(ctx, done):
 
 
 def scene_rank(s, i, ctx):
-    """시안 A. 순위 하나. 사진을 화면 가득 깔고 큰 순위 숫자, 메뉴 이름, 술, 상황 한 줄.
+    """시안 A. 순위 하나. 사진을 화면 가득 깔고 큰 순위 숫자, 메뉴 이름, 상황 한 줄.
 
-    {"type": "rank", "no": 5, "name": "곱창", "drink": "소주", "line": "불판 앞에 앉으면 끝", "photo": {...}}
+    {"type": "rank", "no": 5, "name": "곱창", "line": "불판 앞에 앉으면 끝", "photo": {...}}
     사진은 세로로 잘라도 불판·접시가 통째로 보이는 것만 써요. 천천히 7%만 다가가요.
+    술(drink)은 2026-10-18 사용자가 빼자고 해서 화면에 넣지 않아요.
+    "vs" 를 적으면 먹는 방식이 갈리는 메뉴(부먹·찍먹 등)를 사진 두 장을 살짝 겹쳐 보여 주고 물어봐요(scene_vs).
     """
+    if s.get("vs"):
+        return scene_vs(s, i, ctx)
     total = ctx.get("ranks", 5)
     if s.get("video"):  # 사용자가 보낸 동영상은 그대로 움직이게 둬요
         pic = f'<div class="pic">{moving(s, s["dur"])[0]}</div>'
@@ -318,10 +322,34 @@ def scene_rank(s, i, ctx):
         src, pos = fetch_photo(s["photo"])
         pic = f'<div class="pic"><img class="kb a" src="{src}" style="object-position:{pos};--d:{s["dur"]}s"></div>'
     name = (f'<div class="rk-name">{rise("", s["name"], .2, tag="b")}'
-            + (rise("drink", s["drink"], .35, tag="span") if s.get("drink") else "")
             + (rise("say", s["line"], .5) if s.get("line") else "") + "</div>")
     no = f'<div class="rk-no a pop" style="--d:.4s">{int(s["no"])}<small>위</small></div>'
     return "rank", pic + '<div class="rk-shade"></div>' + rank_top(ctx, total - int(s["no"]) + 1) + no + name
+
+
+def scene_vs(s, i, ctx):
+    """먹는 방식이 갈리는 메뉴를 사진 두 장으로. 두 장이 살짝 겹쳐 기울어 있고, 가운데 VS, 아래에 "여러분은 무슨 파?" 물음.
+    (2026-10-18 사용자: 1위 돈까스에 소스가 없다, 부먹·찍먹 사진 두 장이 살짝 겹치고 "여러분은 무슨 파세요?" 물어보자)
+
+    {"type": "rank", "no": 1, "name": "돈까스", "line": "…", "photo": <부먹 사진, 흐린 바탕용>,
+     "vs": {"a": {"photo": {...}, "label": "부먹"}, "b": {"photo": {...}, "label": "찍먹"}, "ask": "여러분은
+[[부먹파]]? [[찍먹파]]?"}}
+    """
+    total = ctx.get("ranks", 5)
+    vs = s["vs"]
+    cards = ""
+    for k, side in enumerate(("a", "b")):
+        src, pos = fetch_photo(vs[side]["photo"])
+        cards += (f'<div class="vs-card vs-{side} a rise" style="--dl:{.05 + k * .12}s;--d:.35s">'
+                  f'<img src="{src}" style="object-position:{vs[side]["photo"].get("pos", pos) if isinstance(vs[side]["photo"], dict) else pos}">'
+                  f'<span class="vs-lab">{esc(vs[side]["label"])}</span></div>')
+    back = backdrop(vs["a"]["photo"])
+    no = f'<div class="rk-no vs-no a pop" style="--d:.4s">{int(s["no"])}<small>위</small></div>'
+    name = (f'<div class="rk-name vs-name">{rise("", s["name"], .2, tag="b")}'
+            + (rise("say", s["line"], .45) if s.get("line") else "") + "</div>")
+    ask = rise("vs-ask", vs.get("ask", "여러분은 무슨 파예요?"), .6) + rise("vs-sub", vs.get("sub", "댓글로 알려 주세요"), .75)
+    return "rank vs", (f'<div class="pic"><img src="{back}"></div><div class="rk-shade"></div>' + rank_top(ctx, total - int(s["no"]) + 1)
+                       + cards + '<div class="vs-mark a pop" style="--dl:.3s;--d:.3s">VS</div>' + no + name + ask)
 
 
 def scene_tease(s, i, ctx):
@@ -648,7 +676,8 @@ SERIES = {"유행": ("트렌드", "요즘 뜨는 메뉴", "#FF8FA8")}
 
 
 def is_cards(spec):
-    return spec.get("format") == "cards"
+    """그림 여러 장으로 올리는 것. 카드 뉴스와 넘겨 보는 해설(steps.py)이에요."""
+    return spec.get("format") in ("cards", "steps")
 
 
 def series(spec):
@@ -786,6 +815,9 @@ def news_card(c, n, total, when, name, pill):
 
 def build_cards(spec):
     """카드 뉴스 설계도를 한 쪽짜리 HTML로 만들어요. 카드는 #c1, #c2 … 로 위에서 아래로 놓여요. (HTML, 장수)"""
+    if spec.get("format") == "steps":  # 넘겨 보는 해설 (2026-10-18)
+        import steps
+        return steps.build_steps(spec)
     must, _ = card_problems(spec)
     if must:
         raise ValueError(" / ".join(must))
@@ -872,7 +904,7 @@ def youtube_text(spec):
             points = [plain(c.get("headline", "")) for c in spec["cards"]]
         elif any(x["type"] == "rank" for x in scenes):
             ranks = sorted((x for x in scenes if x["type"] == "rank"), key=lambda x: x["no"])
-            points = [f'{x["name"]} · {x.get("drink", "")}'.rstrip(" ·") for x in ranks]
+            points = [x["name"] for x in ranks]  # 술은 넣지 않아요 (2026-10-18)
         elif any(x["type"] == "card" for x in scenes):
             points = [plain(x.get("headline", "")) for x in scenes if x["type"] == "card"]
         else:
@@ -980,7 +1012,11 @@ def youtube_problems(spec):
 if __name__ == "__main__":
     spec = json.loads(Path(sys.argv[1]).read_text(encoding="utf-8"))
     if is_cards(spec):
-        must, should = card_problems(spec)
+        if spec.get("format") == "steps":
+            import steps
+            must, should = steps.problems(spec)
+        else:
+            must, should = card_problems(spec)
         for line in must:
             print("  꼭 고쳐 주세요: " + line)
         for line in should:
@@ -988,7 +1024,7 @@ if __name__ == "__main__":
         if must:
             sys.exit(1)
         _, count = build_cards(spec)  # 사진이 받아지는지도 여기서 확인돼요
-        print(f"카드 뉴스 {count}장 (첫 장 1 + 소식 {count - 1})")
+        print(f"넘겨 보는 해설 {count}장" if spec.get("format") == "steps" else f"카드 뉴스 {count}장 (첫 장 1 + 소식 {count - 1})")
         if len(spec.get("tags") or []) != 4:
             print(f"  해시태그를 {len(spec.get('tags') or [])}개 적었어요. 4개만 골라 적어 주세요. (다섯 번째 계정 이름은 자동으로 붙어요)")
         print("  해시태그: " + " ".join("#" + t for t in hashtags(spec.get("tags"))))

@@ -198,3 +198,28 @@ body { background: #0E0B09; color: #fff; font-family: "Noto Sans KR", sans-serif
 .cover .back { position: absolute; inset: 0; }
 .cover .back img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; filter: brightness(.7); }
 .cover .pic.whole img { object-fit: contain; object-position: 50% 45%; }
+
+/* 1위 VS: 먹는 방식이 갈리는 사진 두 장을 살짝 겹쳐요 (build.py scene_vs, 2026-10-18) */
+.rank.vs .rk-note { display: none; }
+.vs-card { position: absolute; width: 560px; height: 600px; border-radius: 30px; overflow: hidden; border: 12px solid #FFFDF8; background: #FFFDF8;
+  box-shadow: 0 24px 60px rgba(0,0,0,.6); }
+.vs-card img { width: 100%; height: 100%; object-fit: cover; border-radius: 18px; }
+.vs-card.vs-a { left: 46px; top: 470px; transform: rotate(-6deg); z-index: 1; }
+.vs-card.vs-b { left: 476px; top: 560px; transform: rotate(5deg); z-index: 2; }
+.vs-card.a.rise { animation-name: vsin; }
+.vs-a.a.rise { --r: -6deg; } .vs-b.a.rise { --r: 5deg; }
+@keyframes vsin { from { opacity: 0; transform: translateY(60px) rotate(var(--r)) scale(.92); } to { opacity: 1; transform: rotate(var(--r)); } }
+.vs-lab { position: absolute; left: 22px; bottom: 22px; padding: 8px 30px 14px; border-radius: 999px; background: var(--ac); color: #17130F;
+  font-size: 64px; font-weight: 900; letter-spacing: -2px; box-shadow: 0 8px 22px rgba(0,0,0,.45); }
+.vs-b .vs-lab { left: auto; right: 22px; background: #FFFDF8; }
+.vs-mark { position: absolute; left: 470px; top: 880px; width: 150px; height: 150px; border-radius: 50%; background: #17130F; border: 8px solid var(--ac);
+  color: var(--ac); font-size: 66px; font-weight: 900; display: flex; align-items: center; justify-content: center; z-index: 3; letter-spacing: -2px; }
+.rk-no.vs-no { top: 1215px; font-size: 230px; letter-spacing: -10px; }
+.rk-no.vs-no small { font-size: 80px; margin-left: 8px; }
+.rk-name.vs-name { left: 420px; right: 60px; top: 1200px; }
+.rk-name.vs-name b { font-size: 104px; }
+.rk-name.vs-name .say { margin-top: 8px; font-size: 44px; }
+.vs-ask { position: absolute; left: 60px; right: 60px; top: 1470px; text-align: center; font-size: 76px; font-weight: 900; line-height: 1.18; letter-spacing: -2.5px;
+  white-space: pre-line; text-shadow: 0 6px 30px rgba(0,0,0,.7); }
+.vs-ask .am { color: var(--ac); }
+.vs-sub { position: absolute; left: 60px; right: 60px; top: 1665px; text-align: center; font-size: 40px; font-weight: 700; color: rgba(255,255,255,.8); }

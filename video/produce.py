@@ -84,6 +84,7 @@ def render_cards(spec, name, browser):
         page.goto(html_path.as_uri())
         page.evaluate("document.fonts.ready")
         page.wait_for_function("[...document.images].every(i => i.complete && i.naturalWidth > 0)", timeout=30000)
+        page.evaluate("window.ready && window.ready()")  # 넘겨 보는 해설: 글꼴이 그려진 뒤 확대할 곳을 재요 (steps.py)
         for n in range(1, count + 1):
             out = ROOT / "dist" / f"{name}-{n}.jpg"
             page.locator(f"#c{n}").screenshot(path=str(out), type="jpeg", quality=95)
