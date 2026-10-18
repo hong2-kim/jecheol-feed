@@ -97,23 +97,23 @@
    "name": "돈까스",
    "line": "바삭한 소리부터 이미 맛있어요",
    "photo": {
-    "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Dongaseu%20(pixabay).jpg?width=1600",
-    "pos": "42% 72%"
+    "url": "vault:photos/u-2026-10-18-donkatsu-bumeok.jpg",
+    "pos": "45% 55%"
    },
    "dur": 3.4,
    "in": "zoom",
    "vs": {
     "a": {
      "photo": {
-      "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Dongaseu%20(pixabay).jpg?width=1600",
-      "pos": "42% 72%"
+      "url": "vault:photos/u-2026-10-18-donkatsu-bumeok.jpg",
+      "pos": "45% 55%"
      },
      "label": "부먹"
     },
     "b": {
      "photo": {
-      "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Tonkatsu%20003.jpg?width=1600",
-      "pos": "72% 50%"
+      "url": "vault:photos/u-2026-10-18-donkatsu-jjikmeok.jpg",
+      "pos": "50% 60%"
      },
      "label": "찍먹"
     },
@@ -128,7 +128,7 @@
    "url": "https://tong.visitkorea.or.kr/cms2/website/71/2534271.jpg"
   }
  },
- "caption": "비 오는 일요일 저녁, 뭐 먹을지 못 골라서 만들었어요.\n\n1위 돈까스 — 바삭한 소리부터 이미 맛있어요\n2위 부대찌개 — 라면 사리까지가 한 세트\n3위 닭갈비 — 볶음밥까지가 한 끼예요\n4위 해물탕 — 비 오면 국물부터 한 숟갈\n5위 찜닭 — 비 오는 날 당면부터 건져요\n\n근데 돈까스는 이것부터 정해야죠. 소스 부어 먹는 부먹파예요, 찍어 먹는 찍먹파예요? 댓글에 '부먹' '찍먹' 한 단어만 남겨 주세요ㅋㅋ\n\n'1위는 뭘까?' 장면의 돈까스는 제가 직접 찍은 사진이에요.\n\n오늘 서울은 비가 오고 최저 15도, 낮 최고 21도, 비 올 확률은 100%예요. 순서는 요일과 날씨에 맞춘 먹고갈지도 추천이에요.",
+ "caption": "비 오는 일요일 저녁, 뭐 먹을지 못 골라서 만들었어요.\n\n1위 돈까스 — 바삭한 소리부터 이미 맛있어요\n2위 부대찌개 — 라면 사리까지가 한 세트\n3위 닭갈비 — 볶음밥까지가 한 끼예요\n4위 해물탕 — 비 오면 국물부터 한 숟갈\n5위 찜닭 — 비 오는 날 당면부터 건져요\n\n근데 돈까스는 이것부터 정해야죠. 소스 부어 먹는 부먹파예요, 찍어 먹는 찍먹파예요? 댓글에 '부먹' '찍먹' 한 단어만 남겨 주세요ㅋㅋ\n\n1위 돈까스 사진(부먹·찍먹)은 모두 제가 직접 찍은 사진이에요.\n\n오늘 서울은 비가 오고 최저 15도, 낮 최고 21도, 비 올 확률은 100%예요. 순서는 요일과 날씨에 맞춘 먹고갈지도 추천이에요.",
  "tags": [
   "돈까스",
   "부먹찍먹",
