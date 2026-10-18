@@ -125,7 +125,9 @@
   "file": "https://github.com/hong2-kim/jecheol-feed/releases/download/myphotos/2026-10-14-172554798.jpg",
   "note": "뷔페",
   "date": "2026-10-14",
-  "used": [],
+  "used": [
+   "2026-10-19/3-dinner"
+  ],
   "tg_unique": "AQADfRVrG65dcVZ-",
   "sha256": "65896b04ddecf9de350203c7e086038cf3bff7ace5e923c925f1ad6a5672d4b8",
   "bytes": 178080,
