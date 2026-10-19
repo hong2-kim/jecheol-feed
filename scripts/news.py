@@ -7,6 +7,7 @@
   python3 scripts/news.py text <주소> [--chars 3500] [--images]       제목, 날짜, 본문 앞부분 (구글 뉴스 주소도 된다)
 
 - WebFetch 가 막힌 매체(연합뉴스, 조선비즈 등)도 text 로 열 수 있어요. 열지 못하면 한 줄로 알려 주고 끝나요.
+- 본문은 **사실 확인용**이에요. 숫자·날짜·까닭을 확인하는 데만 쓰고, 기사 문장을 카드·영상·블로그에 그대로 옮기지 않아요(PROMPT.md "사실 확인").
 - --images 는 기사에 실린 사진 주소(og:image 먼저)를 보여 줘요. 기자·통신사 사진은 쓰지 않는다는 규칙은 그대로예요.
 """
 import argparse
@@ -145,7 +146,7 @@ def text(url, chars=3500, images=False):
     title = _meta(page, "og:title") or html.unescape((re.search(r"(?is)<title[^>]*>(.*?)</title>", page) or [None, ""])[1]).strip()
     when = _meta(page, "article:published_time") or _meta(page, "og:regDate") or _meta(page, "pubdate")
     body = _body(page)
-    out = [f"URL {url}", f"제목 {title}"] + ([f"날짜 {when}"] if when else []) + ["", body[:chars] + (f" … [+{len(body) - chars}자]" if len(body) > chars else "")]
+    out = ["※ 사실 확인용이에요. 숫자·사실만 확인하고 기사 문장은 그대로 옮기지 않아요.", f"URL {url}", f"제목 {title}"] + ([f"날짜 {when}"] if when else []) + ["", body[:chars] + (f" … [+{len(body) - chars}자]" if len(body) > chars else "")]
     if images:
         pics = [_meta(page, "og:image")] + re.findall(r'<img[^>]+src=["\']([^"\']+\.(?:jpe?g|png|webp)[^"\']*)', page, re.I)
         seen = []
@@ -154,6 +155,7 @@ def text(url, chars=3500, images=False):
             if p and p not in seen and not re.search(r"logo|icon|banner|btn|ad[_/]", p, re.I):
                 seen.append(p)
         out.append("사진 " + json.dumps(seen[:10], ensure_ascii=False))
+        out.append("※ 기자·통신사가 찍은 사진은 쓰지 않아요. 회사가 배포한 사진만 \"7. 요즘 뜨는 메뉴\"의 회사 사진 규칙대로 써요.")
     return "\n".join(out)
 
 

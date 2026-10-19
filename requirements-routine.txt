@@ -1,5 +1,2 @@
-# 매일 실행(클라우드 루틴)이 쓰는 파이썬 패키지. scripts/setup_env.py 가 설치해요.
-# video/build.py 의 그림(Pillow)과 썸네일·내레이션(numpy). 영상 만들기(playwright 등)는 깃허브 자동 작업이 따로 설치해요.
-# 2026-10-19 에 Pillow 12.3, numpy 2.5 로 시험했어요. 아래 범위 안의 새 판도 받아요.
 pillow>=10.0,<14
 numpy>=1.26,<3
