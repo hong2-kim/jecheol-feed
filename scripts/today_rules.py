@@ -18,9 +18,11 @@ from datetime import date, datetime
 from common import KST, ROOT, read_json
 
 WEEK = "월화수목금토일"
+# 처음에 읽을 파일 / 그 차례에 읽을 파일. 늦게 쓰는 것을 늦게 읽으면, 그 앞의 턴마다 그 글이 맥락에 실리지 않아요.
 DAILY = [("rules/daily/cards.md", "카드 뉴스"), ("rules/daily/dinner.md", "저녁 TOP 5"),
-         ("rules/daily/shorts.md", "모든 쇼츠 공통"), ("rules/daily/voice.md", "내레이션 쇼츠"),
-         ("rules/daily/trend.md", "트렌드 후보 모으기"), ("rules/daily/items.md", "소식 글")]
+         ("rules/daily/shorts.md", "모든 쇼츠 공통"), ("rules/daily/voice.md", "내레이션 쇼츠")]
+DAILY_LATER = [("rules/daily/items.md", "순서 4번, 소식 글을 쓰기 직전"),
+               ("rules/daily/trend.md", "순서 5-1번, 트렌드 후보를 모으기 직전")]
 MONTHLY_DAY1 = ("1-monthly", "5-world", "1-check", "1-sheet")
 # 보류 중인 칸 (2026-10-19 사용자가 보류함, rules/_hold/README.md). 설계도에 들어가면 안 돼요.
 HELD_META = ("score", "total_checked", "total_with_guess", "target", "channel_ref")
@@ -40,30 +42,38 @@ def photos_today(day):
 
 
 def pick(day):
-    """(오늘 읽을 파일, 정했을 때 읽을 파일). 둘 다 (경로, 까닭) 목록이에요."""
+    """(처음에 읽을 파일, 그 차례에 읽을 파일, 정했을 때 읽을 파일). 모두 (경로, 까닭) 목록이에요."""
     wd = WEEK[day.weekday()]
-    must, maybe = list(DAILY), [("rules/when/steps.md", "그날 내레이션 대신 넘겨 보는 해설로 만들 때")]
+    now, later = list(DAILY), list(DAILY_LATER)
+    maybe = [("rules/when/cards-collection.md", "카드를 모음 카드로 만들기로 정했을 때"),
+             ("rules/when/steps.md", "그날 내레이션 대신 넘겨 보는 해설로 만들 때")]
+    greeting = ("rules/when/greeting-open.md", "말 거는 한마디로 여는 영상을 만드는 날")
     if wd in "월수금토일":
-        must.append(("rules/weekday/find.md", f"{wd}요일 발견형"))
+        now.append(("rules/weekday/find.md", f"{wd}요일 발견형"))
     else:
         maybe.append(("rules/weekday/find.md", "큰 이슈가 있어 발견형을 더 만들 때"))
     if wd == "화":
-        must.append(("rules/weekday/story.md", "화요일 맛의 이야기"))
+        now.append(("rules/weekday/story.md", "화요일 맛의 이야기"))
     if wd == "목":
-        must.append(("rules/weekday/local.md", "목요일 지역의 먹거리"))
+        now += [("rules/weekday/local.md", "목요일 지역의 먹거리"), greeting]
+    if wd == "금":
+        later.append(("rules/weekday/trend-friday.md", "금요일, 순서 5-1번에 8-trend 를 쓰기 직전"))
     blog_days = (read_json(ROOT / "config.json", {}) or {}).get("blog_days") or []
     if wd in blog_days:
-        must.append(("rules/weekday/blog.md", f"{wd}요일 블로그 초안"))
+        now.append(("rules/weekday/blog-topic.md", f"{wd}요일 블로그 초안의 쓰는 날·주제 (발견형과 같은 음식)"))
+        later.append(("rules/weekday/blog.md", "순서 6번, 블로그 초안을 쓰기 직전"))
         if wd == "토":
-            must.append(("rules/weekday/blog-saturday.md", "토요일 블로그 글"))
+            later.append(("rules/weekday/blog-saturday.md", "순서 6번, 토요일 블로그 글을 쓰기 직전"))
     missing = [n for n in MONTHLY_DAY1 if not made_this_month(day, n)]
     if day.day == 1 or missing:
-        must.append(("rules/monthly/day1.md", "매달 1일" if day.day == 1 else "이번 달에 아직 없는 것: " + ", ".join(missing)))
+        now.append(("rules/monthly/day1.md", "매달 1일" if day.day == 1 else "이번 달에 아직 없는 것: " + ", ".join(missing)))
+        if greeting not in now:
+            now.append(greeting)
     if day.day >= 2 and not made_this_month(day, "9-abroad"):
-        must.append(("rules/monthly/day2.md", "매달 2일" if day.day == 2 else "이번 달 9-abroad 가 아직 없음"))
+        now.append(("rules/monthly/day2.md", "매달 2일" if day.day == 2 else "이번 달 9-abroad 가 아직 없음"))
     if photos_today(day):
-        must.append(("rules/when/myphotos.md", "사용자가 보낸 사진·동영상을 오늘 씀"))
-    return must, maybe
+        now.append(("rules/when/myphotos.md", "사용자가 보낸 사진·동영상을 오늘 씀"))
+    return now, later, maybe
 
 
 def size(path):
@@ -104,10 +114,13 @@ def main():
         print(hits[0].read_text(encoding="utf-8"))
         return
     day = date.fromisoformat(a.day) if a.day else datetime.now(KST).date()
-    must, maybe = pick(day)
+    now, later, maybe = pick(day)
     print(f"{day.isoformat()} {WEEK[day.weekday()]}요일. PROMPT.md(공통 규칙)에 더해 아래 파일을 Read 로 끝까지 읽어요.")
-    print("오늘 읽을 파일:")
-    for path, why in must:
+    print("지금 읽을 파일:")
+    for path, why in now:
+        print(f"  {path}  ({why}, {size(path):,}자)")
+    print("그 차례에 읽을 파일 (그 일을 시작하기 직전에 꼭 읽는다):")
+    for path, why in later:
         print(f"  {path}  ({why}, {size(path):,}자)")
     print("정했을 때 읽을 파일:")
     for path, why in maybe:
