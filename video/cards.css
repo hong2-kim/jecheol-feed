@@ -112,3 +112,14 @@ body { color: #fff; font-family: "Noto Sans KR", sans-serif; word-break: keep-al
 .nc .dots i.on { width: 38px; border-radius: 7px; background: var(--ac); }
 .nc .ph.dim img { filter: brightness(.45); }
 .nc .foot .go-q { font-size: 38px; }
+
+/* TOP5형 카드 (2026-10-19 5단계): 사진을 크게, 순위·음식 이름·핵심 한 줄 */
+.nc.rk .ph { height: 960px; }
+.nc.rk .ph::after { background: linear-gradient(180deg, rgba(23,19,15,.7) 0%, rgba(23,19,15,0) 18%, rgba(23,19,15,0) 58%, rgba(23,19,15,.86) 84%, #17130F 100%); }
+.nc.rk .txt { bottom: 178px; }
+.nc.rk .rank { font-weight: 900; font-size: 64px; letter-spacing: -2px; color: #fff; text-shadow: 0 4px 24px rgba(0,0,0,.6); line-height: 1; }
+.nc.rk .rank b { font-size: 150px; color: var(--ac); letter-spacing: -6px; margin-right: 4px; }
+.nc.rk .hl { margin-top: 6px; }
+.nc.rk .ln { margin-top: 14px; font-weight: 700; letter-spacing: -1.5px; color: rgba(255,255,255,.94); text-shadow: 0 2px 12px rgba(0,0,0,.55); }
+.nc.rk .ask { margin-top: 22px; font-weight: 900; font-size: 44px; letter-spacing: -1.5px; color: var(--ac); }
+.nc .foot span { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 900px; }
