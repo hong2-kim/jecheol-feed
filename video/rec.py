@@ -315,13 +315,18 @@ def build_rec(spec, voices, speech, durs, starts, real):
     for n, (t, i, vis) in enumerate(events):
         end = events[n + 1][0] if n + 1 < len(events) else body
         d = end - t
-        if i < intro:  # 도입: 예전처럼 큰 제목(0~680) + 자막 띠(680~810) + 그 아래 장면
-            html = vis_html(B, vis, 810, 1110, d, note)
+        if vis.get("thumb"):  # 썸네일과 똑같은 첫 화면(큰 제목 + 흰 띠 + 사진)
+            html = thumb.body(spec)
+        elif i < intro:  # 도입: 예전처럼 큰 제목(0~680) + 자막 띠(680~810) + 그 아래 장면
+            strip = '<div class="bstrip"><div></div></div>' if any(v.get("thumb") for _, _, v in events) else ""  # 썸네일의 흰 띠를 그대로
+            html = vis_html(B, vis, 810, 1110, d, note) + strip
         else:
             html = vis_html(B, vis, BOX_TOP, BOX_H, d, note)
-        anim = ' style="animation:in-fade .12s ease both"' if n else ""
-        out.append(f'<section class="scene{" first" if not n else ""}" data-at="{t:.2f}" data-dur="{d:.2f}" data-out="0"{anim}>{html}</section>')
-        cuts.append({"at": round(t, 2), "dur": round(d, 2), "line": i + 1, "kind": next(k for k in ("photo", "video", "product", "set", "grid") if vis.get(k))})
+        fade = float(vis.get("fade", 0.12))  # 이 장면이 나타나는 데 걸리는 초. 앞 장면은 그동안 밑에 남아요
+        nxt = float(events[n + 1][2].get("fade", 0)) if n + 1 < len(events) else 0
+        anim = f' style="animation:in-fade {fade:.2f}s ease both"' if n else ""
+        out.append(f'<section class="scene{" first" if not n else ""}" data-at="{t:.2f}" data-dur="{d:.2f}" data-out="{nxt:.2f}"{anim}>{html}</section>')
+        cuts.append({"at": round(t, 2), "dur": round(d, 2), "line": i + 1, "kind": next((k for k in ("photo", "video", "product", "set", "grid", "thumb") if vis.get(k)), "?")})
     # 2) 제목: 도입 동안 크게, 그 뒤엔 위쪽 띠에 작게
     head = spec.get("headline", spec.get("title", ""))
     t_small = starts[intro] if intro < len(lines) else body
@@ -332,6 +337,8 @@ def build_rec(spec, voices, speech, durs, starts, real):
                f'<div class="rhead"><span class="rb">{B.esc(name)}</span><span class="rt">{B.esc(small)}</span></div></section>')
     # 3) 자막
     for s in subs:
+        if lines[s["line"]].get("nosub"):  # 제목이 곧 그 말일 때(썸네일과 같은 첫 화면) 자막을 따로 띄우지 않아요
+            continue
         c = V.who_of(spec, lines[s["line"]])
         tag = f'<span class="vwho" style="background:{c.get("color", "#333")}">{B.esc(c.get("label", s["who"]))}</span>' if c else ""
         y = 745 if s["line"] < intro else SUB_Y
