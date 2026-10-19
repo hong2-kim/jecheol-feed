@@ -1,0 +1,189 @@
+{
+  "note": "rss: 매일 읽는 공식 기관 주소. news: 구글 뉴스에서 최근 이틀 치를 찾을 검색어. pages: RSS가 없어 글을 쓸 때 직접 읽는 공식 사이트.",
+  "rss": [
+    {
+      "id": "mfds-notice",
+      "name": "식품의약품안전처 공지·보도 (한국)",
+      "url": "https://www.mfds.go.kr/www/rss/brd.do?brdId=ntc0021",
+      "use": "식품 안전"
+    },
+    {
+      "id": "efsa",
+      "name": "EFSA 유럽식품안전청",
+      "url": "https://www.efsa.europa.eu/en/all/rss",
+      "use": "식품 안전(유럽)"
+    },
+    {
+      "id": "cdc-food",
+      "name": "미국 CDC 식품 안전",
+      "url": "https://tools.cdc.gov/api/v2/resources/media/316422.rss",
+      "use": "식품 안전(미국)"
+    },
+    {
+      "id": "maff-jp",
+      "name": "일본 농림수산성 보도자료",
+      "url": "https://www.maff.go.jp/j/press/rss.xml",
+      "use": "해외 제철(일본)"
+    },
+    {
+      "id": "mhlw-jp",
+      "name": "일본 후생노동성 새 소식",
+      "url": "https://www.mhlw.go.jp/stf/news.rdf",
+      "use": "식품 안전(일본)"
+    },
+    {
+      "id": "caa-jp",
+      "name": "일본 소비자청",
+      "url": "https://www.caa.go.jp/news.rss",
+      "use": "식품 안전(일본)"
+    },
+    {
+      "id": "tat-th",
+      "name": "태국관광청 뉴스룸",
+      "url": "https://www.tatnews.org/feed/",
+      "use": "해외 축제(동남아)"
+    }
+  ],
+  "pages": [
+    {
+      "name": "해양수산부 보도자료 (이달의 수산물)",
+      "url": "https://www.mof.go.kr",
+      "use": "한국 제철"
+    },
+    {
+      "name": "농촌진흥청 농사로",
+      "url": "https://www.nongsaro.go.kr",
+      "use": "한국 제철"
+    },
+    {
+      "name": "농림축산식품부",
+      "url": "https://www.mafra.go.kr",
+      "use": "한국 제철"
+    },
+    {
+      "name": "국립수산과학원 (패류독소 속보)",
+      "url": "https://www.nifs.go.kr",
+      "use": "식품 안전"
+    },
+    {
+      "name": "질병관리청 (비브리오, 노로바이러스)",
+      "url": "https://www.kdca.go.kr",
+      "use": "식품 안전"
+    },
+    {
+      "name": "식품안전나라",
+      "url": "https://www.foodsafetykorea.go.kr",
+      "use": "식품 안전"
+    },
+    {
+      "name": "대한민국 구석구석 (한국관광공사 축제)",
+      "url": "https://korean.visitkorea.or.kr",
+      "use": "국내 축제"
+    },
+    {
+      "name": "aT 농산물유통정보 KAMIS (채소·과일·수산물 소매가격)",
+      "url": "https://www.kamis.or.kr",
+      "use": "먹거리 값"
+    },
+    {
+      "name": "축산물품질평가원 축산유통정보 (소·돼지·닭·계란 가격)",
+      "url": "https://www.ekapepia.com",
+      "use": "먹거리 값"
+    },
+    {
+      "name": "한국소비자원 참가격 (가공식품·외식 가격)",
+      "url": "https://www.price.go.kr",
+      "use": "먹거리 값"
+    },
+    {
+      "name": "더술닷컴 (전통주, aT)",
+      "url": "https://thesool.com",
+      "use": "술"
+    },
+    {
+      "name": "미국 FDA 식품",
+      "url": "https://www.fda.gov/food",
+      "use": "식품 안전(미국)"
+    },
+    {
+      "name": "미국 농무부 제철 농산물 안내",
+      "url": "https://snaped.fns.usda.gov",
+      "use": "해외 제철(미국)"
+    },
+    {
+      "name": "영국 식품기준청",
+      "url": "https://www.food.gov.uk",
+      "use": "식품 안전(유럽)"
+    },
+    {
+      "name": "일본정부관광국",
+      "url": "https://www.japan.travel",
+      "use": "해외 제철·축제(일본)"
+    },
+    {
+      "name": "독일와인협회",
+      "url": "https://www.deutscheweine.de",
+      "use": "해외 제철·술(독일)"
+    },
+    {
+      "name": "홍콩관광청",
+      "url": "https://www.discoverhongkong.com",
+      "use": "해외 축제"
+    },
+    {
+      "name": "싱가포르관광청",
+      "url": "https://www.visitsingapore.com",
+      "use": "해외 축제"
+    }
+  ],
+  "news": [
+    "제철 수산물",
+    "제철 농산물",
+    "먹거리 축제",
+    "식품 신제품 출시",
+    "외식 트렌드",
+    "편의점 신상 먹거리",
+    "농수산물 가격",
+    "식중독 주의",
+    "장바구니 물가",
+    "배추 무 가격",
+    "닭고기 치킨 가격",
+    "삼겹살 돼지고기 가격",
+    "계란 가격",
+    "과일 가격",
+    "대형마트 먹거리 할인",
+    "라면 과자 가격 인상",
+    "외식 프랜차이즈 가격",
+    "셰프 신메뉴",
+    "요리 예능 셰프 화제",
+    "먹방 화제 음식",
+    "품절 인기 먹거리",
+    "해외 화제 음식",
+    "디저트 유행 오픈런",
+    "편의점 디저트 판매량",
+    "배달앱 인기 메뉴 주문",
+    "간편식 신제품 출시",
+    "SNS 화제 메뉴",
+    "음식 축제 개최",
+    "푸드 페스티벌",
+    "먹거리 장터 개최",
+    "야시장 개막",
+    "사찰음식",
+    "로컬푸드 축제",
+    "수산물 축제",
+    "빵 축제",
+    "전통주 축제",
+    "김장 축제",
+    "혼술 트렌드",
+    "홈술 소비",
+    "주류 판매량 위스키 소주",
+    "1인 가구 식품 소비",
+    "식품 소비 트렌드 조사",
+    "직장인 점심값",
+    "편의점 도시락 판매",
+    "커피 소비량",
+    "식습관 연구 결과",
+    "초가공식품 연구",
+    "음식 건강 위험 연구"
+  ]
+}
