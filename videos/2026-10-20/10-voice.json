@@ -1,0 +1,145 @@
+{
+ "format": "voice",
+ "kind": "해설",
+ "subject": "서울 외식값 2026-09 (비빔밥·자장면·김치찌개·김밥)",
+ "title": "서울 비빔밥 한 그릇이 처음으로 1만 2천 원이 됐어요",
+ "yt_title": "비빔밥 가격 처음 1만 2천 원, 서울 외식 물가 자장면·김치찌개·김밥은?",
+ "headline": "비빔밥 처음으로\n[[1만 2천 원]]",
+ "summary": "한국소비자원 참가격 9월 서울 평균: 비빔밥 12,000원, 자장면 7,808원, 김치찌개 백반 8,846원, 김밥 3,923원.",
+ "lines": [
+  {
+   "say": "서울 비빔밥 한 그릇이 처음으로 [[1만 2천 원]]이 됐어요.",
+   "photo": {
+    "url": "https://tong.visitkorea.or.kr/cms2/website/61/3106461.jpg"
+   },
+   "chip": "비빔밥 1만 2천 원"
+  },
+  {
+   "say": "끝까지 보면 어떤 재료값이 제일 올랐는지도 알려 드려요.",
+   "photo": {
+    "url": "https://tong.visitkorea.or.kr/cms2/website/59/3106459.jpg"
+   },
+   "chip": "끝까지 보면 가장 오른 재료"
+  },
+  {
+   "say": "한국소비자원 참가격에 나온 지난 9월 서울 평균값이에요.",
+   "photo": {
+    "url": "https://tong.visitkorea.or.kr/cms2/website/63/3106463.jpg"
+   }
+  },
+  {
+   "say": "한 달 전보다 [[77원]] 올라서 1만 2천 원이 됐어요.",
+   "photo": {
+    "url": "https://tong.visitkorea.or.kr/cms2/website/63/3106463.jpg"
+   },
+   "chip": "+77원"
+  },
+  {
+   "say": "자장면 한 그릇은 서울 평균 [[7,808원]]이에요.",
+   "photo": {
+    "url": "https://tong.visitkorea.or.kr/cms2/website/68/2488468.jpg"
+   },
+   "chip": "자장면 7,808원"
+  },
+  {
+   "say": "이것도 한 달 새 [[77원]] 올랐어요. 8월엔 7,731원이었어요.",
+   "photo": {
+    "url": "https://tong.visitkorea.or.kr/cms2/website/67/2488467.jpg"
+   },
+   "chip": "+77원"
+  },
+  {
+   "say": "김치찌개 백반은 [[8,846원]]으로, 이것도 [[77원]] 올랐어요.",
+   "photo": {
+    "url": "https://tong.visitkorea.or.kr/cms2/website/40/2670640.jpg"
+   },
+   "chip": "김치찌개 8,846원"
+  },
+  {
+   "say": "김밥 한 줄은 [[3,923원]]으로 한 달 전과 같았어요.",
+   "photos": [
+    {
+     "url": "https://tong.visitkorea.or.kr/cms2/website/96/3467096.jpg"
+    },
+    {
+     "url": "https://tong.visitkorea.or.kr/cms2/website/97/3467097.jpg"
+    }
+   ],
+   "chip": "김밥 3,923원"
+  },
+  {
+   "say": "비빔밥은 밥에 계란, 고기, 채소까지 재료가 많이 들어가요.",
+   "photo": {
+    "url": "https://tong.visitkorea.or.kr/cms2/website/60/3106460.jpg"
+   }
+  },
+  {
+   "say": "기사는 농축산물 값이 오른 영향으로 풀이했어요.",
+   "photo": {
+    "url": "https://tong.visitkorea.or.kr/cms2/website/52/3106852.jpg"
+   }
+  },
+  {
+   "say": "9월 소비자물가를 보면 쌀은 1년 전보다 [[2.3%]] 올랐어요.",
+   "photo": {
+    "url": "https://tong.visitkorea.or.kr/cms2/website/52/3106852.jpg"
+   },
+   "chip": "쌀 2.3%"
+  },
+  {
+   "say": "국산 소고기는 [[6.6%]], 계란은 [[1.1%]] 올랐고요.",
+   "photo": {
+    "url": "https://tong.visitkorea.or.kr/cms2/website/58/3106458.jpg"
+   },
+   "chip": "소고기 6.6% · 계란 1.1%"
+  },
+  {
+   "say": "제일 많이 오른 재료는 버섯으로 [[12.5%]]였어요.",
+   "photo": {
+    "url": "https://tong.visitkorea.or.kr/cms2/website/59/3106459.jpg"
+   },
+   "chip": "버섯 12.5%"
+  },
+  {
+   "say": "여러분이 요즘 먹은 비빔밥은 얼마였어요? [[댓글]]로 알려 주세요.",
+   "photo": {
+    "url": "https://tong.visitkorea.or.kr/cms2/website/61/3106461.jpg"
+   }
+  }
+ ],
+ "caption": "서울 비빔밥 한 그릇이 처음으로 1만 2천 원이 됐대요.\n\n한국소비자원 참가격 자료로 지난 9월 서울 평균값을 보면 비빔밥은 1만 2천 원으로 한 달 전(1만 1,923원)보다 77원 올랐어요. 자장면은 7,808원, 김치찌개 백반은 8,846원으로 둘 다 한 달 전보다 77원씩 올랐고, 김밥 한 줄은 3,923원으로 그대로였어요.\n\n비빔밥은 재료가 많이 들어가서 농축산물 값이 오른 영향을 받은 것으로 풀이돼요. 9월 소비자물가를 보면 쌀은 1년 전보다 2.3%, 버섯은 12.5%, 국산 소고기는 6.6%, 계란은 1.1% 올랐어요.\n\n값은 조사한 달 서울 평균이라 가게마다, 지금과는 달라요.\n\n여러분이 요즘 먹은 비빔밥은 얼마였어요? 댓글로 알려 주세요.",
+ "tags": [
+  "비빔밥가격",
+  "외식물가",
+  "자장면",
+  "김치찌개"
+ ],
+ "sources": [
+  "https://www.yna.co.kr/view/AKR20261019159500030"
+ ],
+ "credits": [
+  "ⓒ한국관광공사 포토코리아-토라이 리퍼블릭, 김지호, 알렉스 분도"
+ ],
+ "yt_keyword": "비빔밥 가격",
+ "yt_related": [
+  "외식 물가",
+  "서울 비빔밥 가격",
+  "자장면 가격",
+  "김치찌개 백반 가격"
+ ],
+ "yt_tags": [
+  "비빔밥 가격",
+  "외식 물가",
+  "서울 비빔밥 가격",
+  "자장면 가격",
+  "김치찌개 백반",
+  "김밥 가격",
+  "참가격"
+ ],
+ "yt_hashtags": [
+  "비빔밥가격",
+  "외식물가",
+  "참가격"
+ ],
+ "yt_lead": "9월 서울 비빔밥 한 그릇 평균 가격이 처음으로 1만 2천 원이 됐어요."
+}

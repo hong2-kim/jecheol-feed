@@ -1,0 +1,262 @@
+{
+ "format": "voice",
+ "layout": "rec",
+ "kind": "저녁",
+ "subject": "화요일 저녁 (순대국밥·짬뽕·치킨·떡볶이)",
+ "title": "화요일 저녁, 아직 못 골랐어? 넷 중에 골라 줘",
+ "summary": "화요일 저녁에 당기는 메뉴 넷(순대국밥·짬뽕·치킨·떡볶이)을 당기는 것별로 골라 줘요.",
+ "headline": "화요일 저녁\n[[아직 못 골랐어?]]",
+ "small": "화요일 저녁, 이 중에 골라",
+ "intro": 7,
+ "length": [
+  15,
+  25
+ ],
+ "thumb": {
+  "head": "화요일 저녁\n[[아직 못 골랐어?]]",
+  "sub": "넷 중 [[하나만]] 골라",
+  "photo": {
+   "url": "https://tong.visitkorea.or.kr/cms2/website/64/3467264.jpg"
+  }
+ },
+ "yt_title": "화요일 저녁 아직도 못 골랐어? 순대국밥·짬뽕·치킨·떡볶이 중에 골라 줌ㅋㅋ",
+ "yt_keyword": "저녁 메뉴 추천",
+ "yt_related": [
+  "오늘 뭐 먹지",
+  "화요일 저녁 메뉴",
+  "순대국밥",
+  "짬뽕",
+  "떡볶이"
+ ],
+ "yt_tags": [
+  "저녁 메뉴 추천",
+  "오늘 뭐 먹지",
+  "화요일 저녁 메뉴",
+  "저녁 뭐 먹지",
+  "순대국밥",
+  "짬뽕",
+  "치킨",
+  "떡볶이"
+ ],
+ "yt_hashtags": [
+  "저녁메뉴추천",
+  "오늘뭐먹지",
+  "순대국밥"
+ ],
+ "yt_lead": "화요일 저녁 메뉴 고민될 때, 넷 중에 하나만 골라요.",
+ "caption": "화요일 저녁, 아직 못 골랐어요?\n\n밥이 당기면 순대국밥\n면이 당기면 짬뽕\n바삭한 게 당기면 치킨\n매콤달콤이 당기면 떡볶이\n\n넷 중에 오늘은 뭐예요? 댓글로 골라 주세요!",
+ "tags": [
+  "저녁메뉴추천",
+  "오늘뭐먹지",
+  "순대국밥",
+  "화요일저녁"
+ ],
+ "sources": [],
+ "credits": [
+  "ⓒ한국관광공사 포토코리아-알렉스 분도, 김지호, 토라이 리퍼블릭"
+ ],
+ "lines": [
+  {
+   "say": "화요일 저녁, 아직 못 골랐어?",
+   "nosub": true,
+   "show": {
+    "thumb": true
+   }
+  },
+  {
+   "say": "내가 골라 줄게. 자, 시작!",
+   "subs": [
+    "내가 골라 줄게.",
+    "자, 시작!"
+   ],
+   "show": {
+    "grid": [
+     {
+      "photo": {
+       "url": "https://tong.visitkorea.or.kr/cms2/website/28/2706728.jpg"
+      }
+     },
+     {
+      "photo": {
+       "url": "https://tong.visitkorea.or.kr/cms2/website/34/1942334.jpg"
+      }
+     },
+     {
+      "photo": {
+       "url": "https://tong.visitkorea.or.kr/cms2/website/64/3467264.jpg"
+      }
+     },
+     {
+      "photo": {
+       "url": "https://tong.visitkorea.or.kr/cms2/website/06/3467106.jpg"
+      }
+     }
+    ],
+    "dir": "2x2",
+    "own": true,
+    "fade": 0.45
+   }
+  },
+  {
+   "say": "밥이 당기면, 얼큰한 순대국밥.",
+   "subs": [
+    "밥이 당기면,",
+    "얼큰한 순대국밥."
+   ],
+   "show": {
+    "grid": [
+     {
+      "photo": {
+       "url": "https://tong.visitkorea.or.kr/cms2/website/28/2706728.jpg"
+      }
+     },
+     {
+      "photo": {
+       "url": "https://tong.visitkorea.or.kr/cms2/website/34/1942334.jpg"
+      }
+     },
+     {
+      "photo": {
+       "url": "https://tong.visitkorea.or.kr/cms2/website/64/3467264.jpg"
+      }
+     },
+     {
+      "photo": {
+       "url": "https://tong.visitkorea.or.kr/cms2/website/06/3467106.jpg"
+      }
+     }
+    ],
+    "dir": "2x2",
+    "own": true,
+    "hl": 0
+   }
+  },
+  {
+   "say": "면이 당기면, 짬뽕.",
+   "show": {
+    "grid": [
+     {
+      "photo": {
+       "url": "https://tong.visitkorea.or.kr/cms2/website/28/2706728.jpg"
+      }
+     },
+     {
+      "photo": {
+       "url": "https://tong.visitkorea.or.kr/cms2/website/34/1942334.jpg"
+      }
+     },
+     {
+      "photo": {
+       "url": "https://tong.visitkorea.or.kr/cms2/website/64/3467264.jpg"
+      }
+     },
+     {
+      "photo": {
+       "url": "https://tong.visitkorea.or.kr/cms2/website/06/3467106.jpg"
+      }
+     }
+    ],
+    "dir": "2x2",
+    "own": true,
+    "hl": 1
+   }
+  },
+  {
+   "say": "바삭한 게 당기면, 치킨.",
+   "show": {
+    "grid": [
+     {
+      "photo": {
+       "url": "https://tong.visitkorea.or.kr/cms2/website/28/2706728.jpg"
+      }
+     },
+     {
+      "photo": {
+       "url": "https://tong.visitkorea.or.kr/cms2/website/34/1942334.jpg"
+      }
+     },
+     {
+      "photo": {
+       "url": "https://tong.visitkorea.or.kr/cms2/website/64/3467264.jpg"
+      }
+     },
+     {
+      "photo": {
+       "url": "https://tong.visitkorea.or.kr/cms2/website/06/3467106.jpg"
+      }
+     }
+    ],
+    "dir": "2x2",
+    "own": true,
+    "hl": 2
+   }
+  },
+  {
+   "say": "매콤달콤이 당기면, 떡볶이.",
+   "subs": [
+    "매콤달콤이 당기면,",
+    "떡볶이."
+   ],
+   "show": {
+    "grid": [
+     {
+      "photo": {
+       "url": "https://tong.visitkorea.or.kr/cms2/website/28/2706728.jpg"
+      }
+     },
+     {
+      "photo": {
+       "url": "https://tong.visitkorea.or.kr/cms2/website/34/1942334.jpg"
+      }
+     },
+     {
+      "photo": {
+       "url": "https://tong.visitkorea.or.kr/cms2/website/64/3467264.jpg"
+      }
+     },
+     {
+      "photo": {
+       "url": "https://tong.visitkorea.or.kr/cms2/website/06/3467106.jpg"
+      }
+     }
+    ],
+    "dir": "2x2",
+    "own": true,
+    "hl": 3
+   }
+  },
+  {
+   "say": "넷 중에 오늘은 뭐야? 댓글로 골라 줘!",
+   "subs": [
+    "넷 중에 오늘은 뭐야?",
+    "댓글로 골라 줘!"
+   ],
+   "show": {
+    "grid": [
+     {
+      "photo": {
+       "url": "https://tong.visitkorea.or.kr/cms2/website/28/2706728.jpg"
+      }
+     },
+     {
+      "photo": {
+       "url": "https://tong.visitkorea.or.kr/cms2/website/34/1942334.jpg"
+      }
+     },
+     {
+      "photo": {
+       "url": "https://tong.visitkorea.or.kr/cms2/website/64/3467264.jpg"
+      }
+     },
+     {
+      "photo": {
+       "url": "https://tong.visitkorea.or.kr/cms2/website/06/3467106.jpg"
+      }
+     }
+    ],
+    "dir": "2x2",
+    "own": true
+   }
+  }
+ ]
+}
