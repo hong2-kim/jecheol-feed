@@ -123,8 +123,37 @@ def judge(note, extra):
     return "검토 필요", why, tags
 
 
+RIGHTS_OK = "확인"  # 직접 찍었거나 사용 권한이 확인된 것만 상업용(게시)으로 써요
+
+
+def rights_of(source_from, answer=""):
+    """(권리 상태, 까닭). 2026-10-19 사용자가 정함: 인스타그램에서 가져왔다는 것만으로 직접 찍은 사진으로 보지 않는다.
+    사용자가 _검토목록.csv 의 '내가 찍음' 칸에 '예'를 적으면 확인이 돼요."""
+    if answer.strip() in ("예", "네", "o", "O", "내가 찍음"):
+        return RIGHTS_OK, "사용자가 직접 찍었다고 확인(_검토목록.csv)"
+    if answer.strip() in ("아니오", "아니요", "x", "X"):
+        return "안 씀", "사용자가 직접 찍은 것이 아니라고 함 — 쓰지 않음"
+    if source_from == "텔레그램":
+        return RIGHTS_OK, "사용자가 식당에서 직접 찍어 텔레그램으로 보냄(rules/when/myphotos.md)"
+    if source_from == "대화":
+        return "미확인", "사용자가 대화로 보낸 사진 — 직접 찍었는지는 확인 전"
+    return "미확인", "인스타그램에서 옮긴 사진 — 직접 찍었는지·사용 권한이 있는지 확인 전"
+
+
+def answers(folder):
+    """사용자가 _검토목록.csv 에 적은 답 {보관함 주소: {"name": 음식 이름 확인, "mine": 내가 찍음}}."""
+    import csv
+    path = folder / "_검토목록.csv" if folder else None
+    if not path or not path.exists():
+        return {}
+    with open(path, encoding="utf-8-sig", newline="") as f:
+        return {r["보관함 주소"]: {"name": (r.get("음식 이름 확인") or "").strip(), "mine": (r.get("내가 찍음(예/아니오)") or "").strip()}
+                for r in csv.DictReader(f) if r.get("보관함 주소")}
+
+
 def catalog(out_dir=None):
     folder = photo_dir()
+    told = answers(folder)
     index = vault_index()
     by_sha = {}
     if folder:
@@ -140,15 +169,25 @@ def catalog(out_dir=None):
         local = by_sha.get(it.get("sha256"))
         # 내-음식-사진의 파일 이름(음식 이름)이 보관함 이름과 다르면 어느 쪽이 맞는지 모르니 검토로 둬요 (2026-10-19 52개)
         named = re.sub(r"_확인필요", "", re.sub(r"^\d+_", "", local.rsplit(".", 1)[0])) if local else ""
-        if named and _norm(named) != _norm(note):
+        ans = told.get(f"vault:{it['file']}", {})
+        if ans.get("name"):  # 사용자가 음식 이름을 알려 줬으면 그 이름으로, 이름 검토는 풀어요(사람이 보이는 것은 그대로)
+            note = {"보관함": note, "폴더": named}.get(ans["name"], ans["name"]).strip() or note
+            why = [w for w in why if not w.startswith("무슨 음식인지")]
+            status = "검토 필요" if why else "사용 가능"
+        elif named and _norm(named) != _norm(note):
             status, why = "검토 필요", why + [f"폴더 이름은 '{named}' — 보관함 이름과 달라 어느 쪽이 맞는지 사용자 확인"]
+        talked = (it.get("from") or "").startswith("사용자가") or it["id"].startswith("u-")
+        rights, rights_why = rights_of("대화" if talked else "인스타", ans.get("mine", ""))
         rows.append({
             "ref": f"vault:{it['file']}",  # 매일 실행(클라우드)에서 쓰는 주소
             "local": f"vault:내-음식-사진/{local}" if local else None,  # 이 컴퓨터에서 VAULT_DIR=상위 폴더로 만들 때
             "type": it.get("type"), "food": note, "food_local": named if named and _norm(named) != _norm(note) else "",
-            "group": group_of(note), "tags": tags, "source": 1, "from": it.get("from") or "사용자 인스타그램에서 옮김",
+            # 갈래는 사용자가 붙인 폴더 이름을 참고해 나눠요(이름이 확정된 것은 아니에요). 보관함 이름의 갈래는 group_alt
+            "group": group_of(named or note), "group_alt": group_of(note) if group_of(note) != group_of(named or note) else "",
+            "tags": tags, "source": 1, "from": it.get("from") or "사용자 인스타그램에서 옮김",
             "taken": it.get("taken") or "", "w": it.get("w"), "h": it.get("h"),
             "status": status, "why": why, "used": it.get("used") or [],
+            "rights": rights, "rights_why": rights_why,
             "pick": "사용자 지정" if "사용자가 지정" in (it.get("note") or "") else "",
         })
     # 텔레그램으로 보낸 사진·영상 (공개 저장소 myphotos/index.json, 매일 저녁 영상용으로 이미 정해진 것)
@@ -160,35 +199,68 @@ def catalog(out_dir=None):
             rows.append({"ref": it["file"], "local": None, "type": it.get("type"), "food": note, "group": group_of(note),
                          "tags": tags, "source": 1, "from": "사용자가 텔레그램으로 보냄", "taken": it.get("date", ""),
                          "status": "사용 끝" if it.get("used") else status, "why": why, "used": it.get("used") or [],
+                         "rights": RIGHTS_OK, "rights_why": rights_of("텔레그램")[1],
                          "pick": "", "plan": it.get("plan") or it.get("side")})
     missing = len(by_sha) - sum(1 for r in rows if r["local"])
     out_dir = Path(out_dir) if out_dir else folder
     if not out_dir:
         sys.exit("내-음식-사진 폴더를 못 찾았어요. MY_PHOTOS_DIR 을 적어 주세요.")
     meta = {"made": __import__("datetime").date.today().isoformat(),
-            "basis": "사용자 사진은 사용자가 자기 인스타그램에서 옮겨 준 것이라 '직접 찍은 사진'으로 다룬다(2026-10-15 사용자가 정함). "
-                     "한 장씩 촬영자를 확인한 것은 아니다. 얼굴이 보이는 사진은 보관함에 넣을 때 뺐다(보관함 README). "
-                     "status 는 목록의 표시(ask·careful·이름)로만 정한 것이고 사진을 다시 열어 본 것은 아니다.",
+            "basis": "status 는 내용(무슨 음식인지·사람이 보이는지·이름이 맞는지), rights 는 권리(직접 찍었는지·사용 권한). "
+                     "2026-10-19 사용자가 정함: 인스타그램에서 가져왔다는 것만으로 직접 찍은 사진으로 보지 않는다. "
+                     "직접 찍었거나 권한이 확인된 것(rights '확인')만 상업용 콘텐츠(게시)에 쓰고 나머지는 보류한다. "
+                     "폴더 파일 이름은 사용자가 붙인 이름이라 갈래를 나눌 때 참고하지만, 보관함 이름과 다르면 확정하지 않는다. "
+                     "status 는 목록의 표시(ask·careful·이름)로만 정한 것이고 사진을 다시 열어 본 것은 아니다. "
+                     "얼굴이 보이는 사진은 보관함에 넣을 때 뺐다(보관함 README).",
             "local_only": missing}
     data = {"meta": meta, "items": rows}
     (out_dir / "_목록.json").write_text(json.dumps(data, ensure_ascii=False, indent=1), encoding="utf-8")
     (out_dir / "_목록.md").write_text(summary_md(data), encoding="utf-8")
+    review_csv(rows, out_dir, told)
     c = Counter(r["status"] for r in rows)
-    print(f"{len(rows)}개 → {out_dir / '_목록.json'}  ({', '.join(f'{k} {v}' for k, v in c.most_common())})")
+    print(f"{len(rows)}개 → {out_dir / '_목록.json'}  (내용: {', '.join(f'{k} {v}' for k, v in c.most_common())})")
+    c = Counter(r["rights"] for r in rows)
+    print(f"  권리: {', '.join(f'{k} {v}' for k, v in c.most_common())} — '확인'만 게시용")
     if missing:
         print(f"보관함 목록에 없는 파일이 내-음식-사진에 {missing}개 있어요(목록에 넣지 않았어요).")
+
+
+def review_csv(rows, out_dir, told):
+    """_검토목록.csv — 파일번호·현재 이름·의심되는 이름·보류 이유. 내용 검토가 필요한 것이 먼저, 그다음 권리만 미확인인 것.
+    사용자는 '음식 이름 확인'(보관함 / 폴더 / 새 이름)과 '내가 찍음(예/아니오)' 칸만 채우면 돼요. 다시 만들어도 적은 답은 남아요."""
+    import csv
+
+    def num(r):
+        return r["local"].split("/", 1)[1].split("_", 1)[0] if r.get("local") else "-"
+    order = sorted([r for r in rows if r["status"] != "사용 끝"],
+                   key=lambda r: (r["status"] != "검토 필요", r["rights"] == RIGHTS_OK, num(r)))
+    with open(out_dir / "_검토목록.csv", "w", encoding="utf-8-sig", newline="") as f:
+        w = csv.writer(f)
+        w.writerow(["파일번호", "현재 이름(폴더)", "의심되는 이름(보관함)", "갈래", "종류", "내용 상태", "권리 상태", "보류 이유",
+                    "음식 이름 확인", "내가 찍음(예/아니오)", "보관함 주소"])
+        for r in order:
+            ans = told.get(r["ref"], {})
+            current = r.get("food_local") or (r["local"].split("/", 1)[1].split("_", 1)[1].rsplit(".", 1)[0] if r.get("local") else r["food"])
+            current = current.replace("_확인필요", "")
+            suspect = r["food"] if (_norm(r["food"]) != _norm(current) or "(?)" in r["food"]) else ""
+            reasons = r["why"] + ([r["rights_why"]] if r["rights"] != RIGHTS_OK else [])
+            w.writerow([num(r), current, suspect, r["group"] + (f" (보관함 이름이면 {r['group_alt']})" if r.get("group_alt") else ""), "영상" if r["type"] == "video" else "사진", r["status"], r["rights"],
+                        " / ".join(reasons), ans.get("name", ""), ans.get("mine", ""), r["ref"]])
 
 
 def summary_md(data):
     rows = data["items"]
     out = ["# 내 음식 사진·영상 목록 (자동으로 만든 것, 고치지 말고 `python scripts/media.py catalog` 로 다시 만들어요)", "",
            f"만든 날: {data['meta']['made']}", "", "> " + data["meta"]["basis"], "",
-           "| 갈래 | 사용 가능 | 검토 필요 | 영상 | 이미 씀 |", "|---|---|---|---|---|"]
+           "확인할 표: `_검토목록.csv`(엑셀로 열려요). '음식 이름 확인'에 보관함 / 폴더 / 새 이름, '내가 찍음'에 예 / 아니오를 적고 "
+           "`python scripts/media.py catalog` 를 다시 돌리면 반영돼요.", "",
+           "| 갈래 | 내용 사용 가능 | 내용 검토 필요 | 권리 확인(게시 가능) | 영상 | 이미 씀 |", "|---|---|---|---|---|---|"]
     groups = sorted({r["group"] for r in rows}, key=lambda g: [n for n, _ in GROUPS].index(g) if g in [n for n, _ in GROUPS] else 99)
     for g in groups:
         rs = [r for r in rows if r["group"] == g]
         ok = sum(1 for r in rs if r["status"].startswith("사용 가능"))
         out.append(f"| {g} | {ok} | {sum(1 for r in rs if r['status'] == '검토 필요')} | "
+                   f"{sum(1 for r in rs if r['rights'] == RIGHTS_OK and r['status'].startswith('사용 가능'))} | "
                    f"{sum(1 for r in rs if r['type'] == 'video')} | {sum(1 for r in rs if r['used'])} |")
     out += ["", "## 검토 필요한 것", ""]
     for r in rows:
@@ -199,7 +271,7 @@ def summary_md(data):
         out.append(f"### {g}")
         for r in rows:
             if r["group"] == g:
-                mark = "" if r["status"].startswith("사용 가능") else f" ⚠️{r['status']}"
+                mark = ("" if r["status"].startswith("사용 가능") else f" ⚠️{r['status']}") + ("" if r["rights"] == RIGHTS_OK else " 🔒권리 미확인")
                 used = f" (씀: {', '.join(r['used'])})" if r["used"] else ""
                 tags = f" [{', '.join(r['tags'])}]" if r["tags"] else ""
                 other = f" (폴더 이름: {r['food_local']})" if r.get("food_local") else ""
@@ -223,9 +295,9 @@ def find(word, show_all=False):
     hits = [r for r in data["items"] if word == r["group"] or word in r["food"] or word in (r.get("food_local") or "")]
     if not show_all:
         hits = [r for r in hits if r["status"].startswith("사용 가능")]
-    hits.sort(key=lambda r: (bool(r["used"]), r["pick"] != "사용자 지정", r["type"] != "video"))
+    hits.sort(key=lambda r: (r.get("rights") != RIGHTS_OK, bool(r["used"]), r["pick"] != "사용자 지정", r["type"] != "video"))
     for r in hits:
-        print(json.dumps({k: r[k] for k in ("food", "food_local", "group", "type", "status", "tags", "used", "ref", "local", "why")
+        print(json.dumps({k: r[k] for k in ("food", "food_local", "group", "type", "status", "rights", "tags", "used", "ref", "local", "why")
                           if r.get(k)}, ensure_ascii=False))
     if not hits:
         print(f"'{word}' 에 맞는 사용 가능한 사진이 없어요. 다음 순서: 한국관광공사(scripts/photos.py tour) → 자체 그래픽 카드.")
@@ -305,9 +377,14 @@ def check(spec):
             r = by_ref.get(url)
             if cat and url.startswith("vault:") and not r:
                 should.append(f"{where}: {url} 가 사진 목록에 없어요. 사용자가 준 사진인지 확인해 주세요.")
+            sample = bool(spec.get("sample"))  # 비공개 샘플은 만들 수는 있게 알림만 해요(게시는 안 돼요)
             if r and r["status"] == "검토 필요":
-                text = f"{where}: '{r['food']}' 사진은 검토 필요 — {' / '.join(r['why'])}"
-                (must if any("확실치 않음" in w or "이름이 없음" in w for w in r["why"]) else should).append(text)
+                text = f"{where}: '{r['food']}' 사진은 검토 필요 — {' / '.join(r['why'])}" + (" (샘플이라 알림만, 게시 불가)" if sample else "")
+                (must if not sample and any("확실치 않음" in w or "이름이 없음" in w or "폴더 이름" in w for w in r["why"])
+                 else should).append(text)
+            if r and r.get("rights") and r["rights"] != RIGHTS_OK:
+                text = f"{where}: '{r['food']}' — {r['rights_why']}. 게시용으로는 보류해요"
+                (should if sample else must).append(text + (" (샘플이라 알림만)" if sample else "."))
             if r and "술" in r["tags"] and spec.get("kind") in ("저녁", "저녁추천"):
                 must.append(f"{where}: '{r['food']}' 사진에 술이 나와요. 저녁 영상에는 술을 넣지 않아요(2026-10-18).")
         elif tier == 2:
