@@ -538,8 +538,11 @@ def transition(kind, frames, i, scenes):
     return cycle[i % len(cycle)]
 
 
-SHORTEST, LONGEST = 10.0, 15.0  # 영상 전체 길이(초). 사용자가 정한 범위예요.
-LONGEST_SKIT = 20.0  # TOP 5 와 발견형은 앞에 상황극 첫마디가 붙어서 20초까지 돼요 (2026-10-16 사용자가 정함)
+# 영상 전체 길이(초). 2026-10-19 사용자가 10~15초 일괄 제한을 없애고 갈래마다 정하기로 했어요.
+# 짧으면 SHORTEST 까지 늘이고, 갈래의 상한을 넘으면 줄여요. 상한은 채울 목표가 아니에요 (PROMPT.md "영상 길이").
+SHORTEST, LONGEST = 10.0, 20.0  # 일반 정보형
+LONGEST_SKIT = 25.0  # TOP 5 와 발견형은 앞에 상황극 첫마디가 붙어요
+SQUEEZE = 1.0  # 마지막으로 fit 이 장면 길이를 줄인 비율 (1.0 = 줄이지 않음)
 
 
 def longest(spec):
@@ -550,11 +553,13 @@ def longest(spec):
 
 
 def fit(scenes, tail, top=LONGEST):
-    """장면 길이를 고르게 늘이거나 줄여서 전체가 10~15초(TOP 5 는 20초) 안에 들게 해요."""
+    """장면 길이를 고르게 늘이거나 줄여서 전체가 10초~갈래의 상한(longest) 안에 들게 해요."""
     for s in scenes:
         s.setdefault("dur", 2.4)
+    global SQUEEZE
     body = sum(s["dur"] for s in scenes)
     target = min(max(body, SHORTEST - tail), top - tail)
+    SQUEEZE = min(1.0, target / body)  # 상한 때문에 줄인 비율. 장면을 빼지는 않고 고르게 빨라져요 (아래 __main__ 이 알려 줘요)
     if abs(target - body) > 0.01:
         for s in scenes:
             s["dur"] = round(s["dur"] * target / body, 2)
@@ -726,6 +731,11 @@ def card_problems(spec):
             should.append("pill(계정 옆 이름표)이 길어요. 4자 안쪽으로 줄여 주세요.")
         if cards and cards[-1].get("type") != "summary":
             should.append("이야기 카드는 마지막 장을 정리(type summary)로 끝내 주세요.")
+        # 실사 사진이 든 장(첫 장 포함, 정리 장 빼고)이 사진 없는 장(big·chart)보다 적지 않게 (2026-10-19)
+        pages = [cover] + [c for c in cards if c.get("type") != "summary"]
+        shown = sum(bool(p.get("photo") or any(s.get("photo") for s in p.get("sides") or [])) for p in pages)
+        if shown < len(pages) - shown:
+            should.append(f"사진 없는 장이 {len(pages) - shown}장, 사진 있는 장이 {shown}장이에요. 실제 사진이 든 장(사진 카드, compare 칸 사진)을 더 넣어 주세요.")
     elif not cover.get("title") or not cover.get("items"):
         must.append("첫 장(cover)이 없어요. title(궁금하게 하는 한마디)과 items(소식마다 한 줄)를 적어 주세요.")
     else:
@@ -1196,6 +1206,11 @@ if __name__ == "__main__":
         sys.exit(0)
     page, dur, _ = build_html(spec)
     print(f"{dur:.1f}초, 장면 {len(spec['scenes'])}개")
+    if SQUEEZE < 0.97:  # 장면은 빠지지 않지만 모두 빨라져 읽기 빠듯할 수 있어요
+        print(f"  길이: 적은 길이가 {longest(spec):.0f}초를 넘어 장면이 모두 {round((1 - SQUEEZE) * 100)}% 짧아졌어요. "
+              "덜 중요한 장면을 빼서 꼭 필요한 장면이 제 길이로 나오게 해 주세요.")
+    elif dur > longest(spec) - 3:  # 상한은 채울 목표가 아니에요 (보통 길이를 넘었을 때만 알려요)
+        print(f"  길이: 보통보다 길어요({longest(spec):.0f}초까지 돼요). 없어도 되는 장면이 있으면 빼 주세요.")
     if len(spec.get("tags") or []) != 4:
         print(f"  해시태그를 {len(spec.get('tags') or [])}개 적었어요. 4개만 골라 적어 주세요. (다섯 번째 계정 이름은 자동으로 붙어요)")
     print("  해시태그: " + " ".join("#" + t for t in hashtags(spec.get("tags"))))
