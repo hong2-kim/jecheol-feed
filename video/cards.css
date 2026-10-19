@@ -100,3 +100,15 @@ body { color: #fff; font-family: "Noto Sans KR", sans-serif; word-break: keep-al
 .nc.sm .list li { position: relative; padding: 16px 0 18px 40px; border-top: 2px solid rgba(255,255,255,.2); font-weight: 700; letter-spacing: -1.5px; line-height: 1.35; }
 .nc.sm .list li::before { content: ""; position: absolute; left: 2px; top: 34px; width: 16px; height: 16px; border-radius: 50%; background: var(--ac); }
 .nc.sm .ask { margin-top: 40px; font-weight: 900; font-size: 44px; letter-spacing: -1.5px; color: var(--ac); }
+
+/* 이야기 카드 잇기 (2026-10-19 5단계): 이 장이 답하는 물음(q), 다음 장 예고, 진행 점. 까닭 글자는 조금 크게 */
+.nc .why div { font-size: 48px; text-shadow: 0 2px 12px rgba(0,0,0,.55); }
+.nc .q { display: inline-block; margin-left: 14px; font-weight: 800; font-size: 36px; letter-spacing: -1px; color: rgba(255,255,255,.9); vertical-align: 4px; }
+.nc.st .txt { bottom: 178px; }
+.nc .next { position: absolute; left: 64px; right: 64px; bottom: 104px; display: flex; justify-content: space-between; align-items: center; }
+.nc .nx-q { font-weight: 900; font-size: 36px; letter-spacing: -1px; color: var(--ac); }
+.nc .dots { display: flex; gap: 10px; }
+.nc .dots i { width: 14px; height: 14px; border-radius: 50%; background: rgba(255,255,255,.3); }
+.nc .dots i.on { width: 38px; border-radius: 7px; background: var(--ac); }
+.nc .ph.dim img { filter: brightness(.45); }
+.nc .foot .go-q { font-size: 38px; }

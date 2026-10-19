@@ -62,6 +62,7 @@ def read_source(url, timeout=60):
 
 
 SIZES = {}  # 사진 주소 -> (가로, 세로)
+ORIG = {}  # 사진 주소 -> 키우기 전 원래 크기 (잘라 쓴 사진은 잘라 낸 조각의 크기). 흐린 사진을 찾을 때 써요.
 
 
 def grade(image):
@@ -104,15 +105,20 @@ def fetch_photo(photo):
         image = image.convert("RGB")
         if photo.get("crop"):
             image = image.crop(tuple(photo["crop"]))
+            (CACHE / (key + ".orig")).write_text("%d %d" % image.size)  # 키우기 전 조각 크기
             if min(image.size) < 900:  # 잘라 낸 조각이 작으면 키워요 (grade 가 한 번 더 선명하게 해요)
                 k = 900 / min(image.size)
                 image = image.resize((round(image.width * k), round(image.height * k)), Image.LANCZOS)
         if min(image.size) < 500:
             raise ValueError(f"사진이 너무 작아요 ({image.size[0]}x{image.size[1]}): {url}")
+        if not (CACHE / (key + ".orig")).exists():
+            (CACHE / (key + ".orig")).write_text("%d %d" % image.size)
         grade(image).save(path, "JPEG", quality=92)
     if key not in SIZES:
         with Image.open(path) as im:
             SIZES[key] = im.size
+    if key not in ORIG and (CACHE / (key + ".orig")).exists():
+        ORIG[key] = tuple(int(v) for v in (CACHE / (key + ".orig")).read_text().split())
     return path.as_uri(), photo.get("pos", "50% 50%")
 
 
@@ -731,11 +737,7 @@ def card_problems(spec):
             should.append("pill(계정 옆 이름표)이 길어요. 4자 안쪽으로 줄여 주세요.")
         if cards and cards[-1].get("type") != "summary":
             should.append("이야기 카드는 마지막 장을 정리(type summary)로 끝내 주세요.")
-        # 실사 사진이 든 장(첫 장 포함, 정리 장 빼고)이 사진 없는 장(big·chart)보다 적지 않게 (2026-10-19)
-        pages = [cover] + [c for c in cards if c.get("type") != "summary"]
-        shown = sum(bool(p.get("photo") or any(s.get("photo") for s in p.get("sides") or [])) for p in pages)
-        if shown < len(pages) - shown:
-            should.append(f"사진 없는 장이 {len(pages) - shown}장, 사진 있는 장이 {shown}장이에요. 실제 사진이 든 장(사진 카드, compare 칸 사진)을 더 넣어 주세요.")
+        # 실사 사진이 든 장이 사진 없는 장보다 적지 않은지는 사진을 받은 뒤 card_photo_problems 가 봐요 (2026-10-19 5단계)
     elif not cover.get("title") or not cover.get("items"):
         must.append("첫 장(cover)이 없어요. title(궁금하게 하는 한마디)과 items(소식마다 한 줄)를 적어 주세요.")
     else:
@@ -774,8 +776,94 @@ def card_problems(spec):
             should.append(f"카드 {n}: 스티커 한마디(note)가 길어요. 8자 안쪽으로 줄여 주세요.")
         if not kind and not c.get("photo") and not c.get("big"):
             should.append(f"카드 {n}: 사진이 없어요. 맞는 사진이 없으면 big 에 큰 숫자(예: -9%)를 적어 주세요.")
+        must.extend(density_problems(c, n))
+        if story and kind != "summary":  # 장마다 앞 장에서 이어지는 물음 (2026-10-19 5단계)
+            q = str(c.get("q") or "")
+            if not q:
+                should.append(f"카드 {n}: q(이 장이 답하는 물음)가 없어요. 앞 장 끝에 '다음 · 물음'으로 보여 줘서 넘기게 해요.")
+            elif units(q) > Q_MAX:
+                should.append(f"카드 {n}: q 가 길어요. {Q_MAX - 1}자 안쪽으로 줄여 주세요.")
     if "출처" not in (spec.get("caption") or ""):
         must.append("게시글(caption) 끝에 '출처: 기관·매체 이름(날짜)' 줄을 적어 주세요. 카드에는 출처 장이 없어요.")
+    return must, should
+
+
+# 한 장에 들어가는 글의 양 (2026-10-19 5단계: "카드마다 정보가 너무 많거나 글자가 작아지지 않게")
+#   글이 길면 fit_size 가 글자를 줄이는데, 휴대폰에서 읽히는 선 아래로 줄면 꼭 고치게 해요.
+HL_SIZE, WHY_SIZE, FACT_SIZE = 98, 48, 56  # 기본 글자 크기 (cards.css 와 news_card 가 같은 값을 써요)
+HL_MIN, WHY_MIN, FACT_MIN = 82, 40, 46     # 이보다 작아지면 꼭 고쳐요
+CARD_TEXT_MAX = 64                           # 한 장의 글(한 줄 소식 + 핵심 숫자 + 까닭) 칸 수 합
+Q_MAX = 15                                   # 이야기 카드의 물음(q) 한 줄
+
+
+def density_problems(c, n):
+    """한 장의 글이 너무 많거나 글자가 너무 작아지는지. (꼭 고칠 것 목록)"""
+    out = []
+    head = str(c.get("headline") or "")
+    if head and fit_size(head, HL_SIZE, 950) < HL_MIN:
+        out.append(f"카드 {n}: 한 줄 소식이 길어 글자가 {fit_size(head, HL_SIZE, 950)}px 로 작아져요. 한 줄 12자 안쪽으로 줄여 주세요.")
+    why = why_lines(c)
+    if why and min(fit_size(line, WHY_SIZE, 915) for line in why) < WHY_MIN:
+        out.append(f"카드 {n}: 까닭 줄이 길어 글자가 작아져요. 한 줄 20자 안쪽으로 줄이고 나머지는 게시글에 써 주세요.")
+    if c.get("fact") and fit_size(str(c["fact"]), FACT_SIZE, 950) < FACT_MIN:
+        out.append(f"카드 {n}: 핵심 숫자 줄이 길어 글자가 작아져요. 숫자 하나만 남겨 주세요.")
+    if c.get("type") != "summary":
+        total = sum(units(line) for line in head.split("\n")) + units(str(c.get("fact") or "")) + sum(units(line) for line in why)
+        if total > CARD_TEXT_MAX:
+            out.append(f"카드 {n}: 한 장에 글이 많아요(약 {total:.0f}칸, {CARD_TEXT_MAX}칸까지). 까닭을 한 줄로 줄이거나 다음 장으로 나눠 주세요.")
+    return out
+
+
+MIN_PHOTO = 600  # 원래 사진(잘라 쓴 조각)의 짧은 변. 이보다 작으면 키워도 흐려요
+
+
+def page_photos(spec):
+    """장마다 쓰는 실제 사진 목록: [(장 이름, 사진), …]. 첫 장, 사진 카드, 비교 칸, 흐름(flow)의 음식 사진까지요."""
+    out = []
+    if (spec.get("cover") or {}).get("photo"):
+        out.append(("첫 장", spec["cover"]["photo"]))
+    for n, c in enumerate(spec.get("cards") or [], 1):
+        if c.get("photo"):
+            out.append((f"카드 {n}", c["photo"]))
+        for s in c.get("sides") or []:
+            if s.get("photo"):
+                out.append((f"카드 {n}", s["photo"]))
+        if c.get("flow"):
+            out.append((f"카드 {n}", c["flow"]["photo"]))
+    return out
+
+
+def card_photo_problems(spec):
+    """사진이 받아진 뒤에 보는 것: 흐린 사진, 한 장 돌려쓰기, 실사 사진이 모자란지. (꼭 고칠 것, 고치면 좋은 것)
+    2026-10-19 5단계: "실사 사진을 먼저 쓰고, 사진이 부족하면 억지로 만들지 않는다"."""
+    must, should = [], []
+    if spec.get("format") != "cards":
+        return must, should
+    photos = page_photos(spec)
+    for where, p in photos:
+        fetch_photo(p)
+        size = ORIG.get(photo_key(p))
+        if size and min(size) < MIN_PHOTO:
+            must.append(f"{where}: 사진이 작아요({size[0]}x{size[1]}). 키우면 흐려 보여요. 더 큰 사진으로 바꾸거나 사진 없이(big) 만들어 주세요.")
+    seen, urls = {}, {}
+    for where, p in photos:
+        p = {"url": p} if isinstance(p, str) else p
+        seen.setdefault(photo_key(p), []).append(where)
+        urls.setdefault(p["url"], set()).add(photo_key(p))
+    for places in seen.values():
+        if len(set(places)) > 1 and not (len(places) == 2 and places[0] == "첫 장"):
+            should.append(f"같은 사진이 {', '.join(places)}에 나와요. 장마다 다른 사진을 써 주세요.")
+    for url, keys in urls.items():
+        if len(keys) >= 3:
+            must.append(f"사진 한 장을 {len(keys)}번 잘라 쓰고 있어요. 서로 다른 실제 사진을 찾고, 없으면 그 장을 빼 주세요.")
+    if not (spec.get("cover") or {}).get("photo"):
+        must.append("첫 장에 실제 사진이 없어요. 첫 장 제목에 쓴 음식의 사진을 넣어 주세요.")
+    distinct = {p["url"] if isinstance(p, dict) else p for _, p in photos}
+    pages = [spec.get("cover") or {}] + [c for c in spec.get("cards") or [] if c.get("type") != "summary"]
+    shown = sum(bool(p.get("photo") or p.get("flow") or any(s.get("photo") for s in p.get("sides") or [])) for p in pages)
+    if len(distinct) < 2 or shown < len(pages) - shown:
+        must.append(f"실제 사진이 {len(distinct)}장, 사진 든 장이 {shown}/{len(pages)}장이에요. 사진이 모자라면 카드를 억지로 채우지 말고 "
+                    "장 수를 줄이거나(이야기 카드는 3장까지), 모음 카드로 바꾸거나, 오늘은 카드 뉴스를 건너뛰어 주세요.")
     return must, should
 
 
@@ -811,7 +899,7 @@ def typed_problems(c, n, must, should):
 WEEKLY_CTA = "늙크크 안 되게, 매주 금요일 유행 업데이트"  # 트렌드 카드 첫 장 아래 한마디 (2026-10-16 사용자가 정한 느낌)
 
 
-def news_cover(cover, total, when, name, pill, label, weekly=False, story=False):
+def news_cover(cover, total, when, name, pill, label, weekly=False, story=False, first_q=None):
     """첫 장. 오늘 소식들을 궁금하게 던져요. 답은 다음 장부터 나와요.
     weekly(트렌드 카드)면 이름표에 "10월 3주차 유행 업데이트"를 크게 쓰고, 아래에 매주 온다는 한마디를 붙여요.
     story(이야기 카드)면 이름표는 cover.label(없으면 "오늘의 먹거리 이슈")이고, items 목록은 있을 때만 보여요."""
@@ -835,6 +923,7 @@ def news_cover(cover, total, when, name, pill, label, weekly=False, story=False)
         f'<div class="hl" style="font-size:{fit_size(cover["title"], 122, 950)}px">{rich(cover["title"])}</div>'
         f'{listing}</div>'
         + (f'<div class="foot"><span class="cta">{WEEKLY_CTA}</span><b class="go">밀어서 →</b></div></section>' if weekly
+           else f'<div class="foot"><span></span><b class="go go-q">{rich(first_q)} 밀어서 →</b></div></section>' if first_q
            else '<div class="foot"><span></span><b class="go">밀어서 확인하기 →</b></div></section>')
     )
 
@@ -909,13 +998,30 @@ def chart_html(c):
     return f'<div class="chart">{note}{rows}</div>'
 
 
-def summary_card(c, n, total, when, name, pill):
-    """마지막 정리 장: 한 줄 결론 + 알아 둘 것 1~3줄 + (있으면) 댓글 물음."""
+def summary_card(c, n, total, when, name, pill, story=False):
+    """마지막 정리 장: 한 줄 결론 + 알아 둘 것 1~3줄 + (있으면) 댓글 물음.
+    "photo" 가 있으면 지도 대신 그 사진을 위쪽에 흐리게 깔아요(이야기의 첫 음식으로 돌아와 마무리)."""
     points = c.get("points") or []
     size = min((fit_size(str(p), 52, 900) for p in points), default=52)
     rows = "".join(f'<li style="font-size:{size}px">{rich(p)}</li>' for p in points)
     ask = f'<div class="ask">{rich(c["ask"])}</div>' if c.get("ask") else ""
     foot = f'자료 {esc(c["src"])}' if c.get("src") else ""
+    if c.get("photo"):
+        src, pos = fetch_photo(c["photo"])
+        back = f'<div class="ph dim"><img src="{src}" style="object-position:{pos}"></div>'
+    else:
+        back = f'<div class="ph">{NEWS_MAP}</div>'
+    if story:
+        dots = "".join(f'<i class="{"on" if i == n else ""}"></i>' for i in range(1, total + 1))
+        return (
+            f'<section class="nc sm st" id="c{n + 1}">{back}'
+            f'<div class="mast"><div class="brand">{OUTRO_PIN}<span>{name}</span><i>{pill}</i></div><div class="when">{esc(when)}</div></div>'
+            f'<div class="txt"><span class="tag">{esc(c["tag"])}</span>'
+            f'<div class="hl" style="font-size:{fit_size(c["headline"], 98, 950)}px">{rich(c["headline"])}</div>'
+            f'<ul class="list">{rows}</ul>{ask}</div>'
+            f'<div class="next"><span></span><span class="dots">{dots}</span></div>'
+            f'<div class="foot"><span>{foot}</span><b></b></div></section>'
+        )
     return (
         f'<section class="nc sm" id="c{n + 1}"><div class="ph">{NEWS_MAP}</div>'
         f'<div class="mast"><div class="brand">{OUTRO_PIN}<span>{name}</span><i>{pill}</i></div><div class="when">{esc(when)}</div></div>'
@@ -926,9 +1032,20 @@ def summary_card(c, n, total, when, name, pill):
     )
 
 
-def news_card(c, n, total, when, name, pill):
+def story_bits(c, nxt, n, total):
+    """이야기 카드에서 장을 잇는 것 (2026-10-19 5단계): 이 장이 답하는 물음(q), 진행 점, 다음 장 예고.
+    (물음 줄 HTML, 다음 장 예고 HTML)"""
+    q = f'<span class="q">{rich(c["q"])}</span>' if c.get("q") else ""
+    dots = "".join(f'<i class="{"on" if i == n else ""}"></i>' for i in range(1, total + 1))
+    teaser = f'<span class="nx-q">다음 · {rich(nxt["q"])}</span>' if nxt and nxt.get("q") else (
+        '<span class="nx-q">다음 · 정리</span>' if nxt else "")
+    return q, f'<div class="next">{teaser}<span class="dots">{dots}</span></div>'
+
+
+def news_card(c, n, total, when, name, pill, nxt=None, story=False):
     if c.get("type") == "summary":
-        return summary_card(c, n, total, when, name, pill)
+        return summary_card(c, n, total, when, name, pill, story=story)
+    q, nexts = story_bits(c, nxt, n, total) if story else ("", "")
     note = f'<div class="note">{rich(c["note"])}</div>' if c.get("note") else ""  # 사진 위에 붙이는 스티커 한마디
     if c.get("type") == "compare":
         top = f'<div class="ph">{NEWS_MAP}</div>' + compare_html(c)
@@ -944,17 +1061,17 @@ def news_card(c, n, total, when, name, pill):
     else:  # 맞는 사진이 없는 소식은 지도 바탕에 큰 숫자를 얹어요
         big = f'<div class="bignum" style="font-size:{fit_size(c["big"], 230, 950)}px">{rich(c["big"])}</div>' if c.get("big") else ""
         top = f'<div class="ph">{NEWS_MAP}</div>{big}'
-    fact = f'<div class="fact" style="font-size:{fit_size(c["fact"], 56, 950)}px">{rich(c["fact"])}</div>' if c.get("fact") else ""
+    fact = f'<div class="fact" style="font-size:{fit_size(c["fact"], FACT_SIZE, 950)}px">{rich(c["fact"])}</div>' if c.get("fact") else ""
     why = why_lines(c)
-    size = min(fit_size(line, 44, 915) for line in why)
+    size = min(fit_size(line, WHY_SIZE, 915) for line in why)
     rows = "".join(f'<div style="font-size:{size}px">{rich(line)}</div>' for line in why)
     return (
-        f'<section class="nc" id="c{n + 1}">{top}{note}'  # c1 은 첫 장(표지)이에요
+        f'<section class="nc{" st" if story else ""}" id="c{n + 1}">{top}{note}'  # c1 은 첫 장(표지)이에요
         f'<div class="mast"><div class="brand">{OUTRO_PIN}<span>{name}</span><i>{pill}</i></div><div class="when">{esc(when)}</div></div>'
-        f'<div class="txt"><span class="tag">{esc(c["tag"])}</span>'
-        f'<div class="hl" style="font-size:{fit_size(c["headline"], 98, 950)}px">{rich(c["headline"])}</div>{fact}'
-        f'<div class="why">{rows}</div></div>'
-        f'<div class="foot"><span>자료 {esc(c["src"])}</span><b>{n} / {total}</b></div></section>'
+        f'<div class="txt"><span class="tag">{esc(c["tag"])}</span>{q}'
+        f'<div class="hl" style="font-size:{fit_size(c["headline"], HL_SIZE, 950)}px">{rich(c["headline"])}</div>{fact}'
+        f'<div class="why">{rows}</div></div>{nexts}'
+        f'<div class="foot"><span>자료 {esc(c["src"])}</span><b>{"" if story else f"{n} / {total}"}</b></div></section>'
     )
 
 
@@ -976,8 +1093,10 @@ def build_cards(spec):
     story = is_story(spec)
     if story:
         pill = esc(spec.get("pill") or STORY_PILL)
-    body = news_cover(spec["cover"], len(cards), when, name, pill, label, weekly=spec.get("kind") == "유행", story=story)
-    body += "".join(news_card(c, n, len(cards), when, name, pill) for n, c in enumerate(cards, 1))
+    body = news_cover(spec["cover"], len(cards), when, name, pill, label, weekly=spec.get("kind") == "유행", story=story,
+                      first_q=cards[0].get("q") if story and cards else None)
+    body += "".join(news_card(c, n, len(cards), when, name, pill, cards[n] if n < len(cards) else None, story)
+                    for n, c in enumerate(cards, 1))
     page = f'<!doctype html><html lang="ko"><head><meta charset="utf-8"><style>{css}</style></head><body style="--ac:{accent}">{body}</body></html>'
     return page, len(cards) + 1
 
@@ -1172,6 +1291,13 @@ if __name__ == "__main__":
         if must:
             sys.exit(1)
         _, count = build_cards(spec)  # 사진이 받아지는지도 여기서 확인돼요
+        must, should = card_photo_problems(spec)  # 흐린 사진, 한 장 돌려쓰기, 실사 사진 수 (2026-10-19 5단계)
+        for line in must:
+            print("  꼭 고쳐 주세요: " + line)
+        for line in should:
+            print("  " + line)
+        if must:
+            sys.exit(1)
         if spec.get("format") == "steps":
             print(f"넘겨 보는 해설 {count}장")
         elif is_story(spec):
