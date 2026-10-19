@@ -705,18 +705,28 @@ def is_story(spec):
     return spec.get("mode") == "story"
 
 
-# TOP5형 카드 ("mode": "top5", 2026-10-19 5단계): 음식 다섯 가지를 5위부터 1위까지 한 장씩.
-#   장마다 실제 사진을 크게, 순위·음식 이름·핵심 한 줄. 1위 장에는 댓글 물음(ask)을 붙일 수 있어요.
-TOP5_PILL, TOP5_LABEL = "TOP 5", "오늘의 TOP 5"
+# TOP5형 카드 ("mode": "top5", 2026-10-19 5단계): 음식 다섯 가지를 한 장씩. 장마다 실제 사진을 크게, 음식 이름·핵심 한 줄.
+#   "rank_type": "추천"(기본) — 우리가 고른 추천이에요. 순위처럼 보이지 않게 "추천 1~5"로 차례대로 적고 "N위·순위·랭킹"을 쓰지 않아요.
+#   "rank_type": "자료" — 판매량·조사 같은 실제 순위 자료가 있을 때만. "rank_src"(자료 이름 · 날짜)를 꼭 적고 5위부터 1위까지 거꾸로 세요.
+#   (2026-10-19 사용자가 정함: "실제 순위 데이터가 아닌 추천형이라면 순위 근거가 있는 것처럼 표현하지 않는다")
+TOP5_PILL = {"추천": "추천 5", "자료": "TOP 5"}
+TOP5_LABEL = {"추천": "오늘의 추천 5", "자료": "오늘의 TOP 5"}
+RANK_WORDS = re.compile(r"\d\s?위|순위|랭킹|1등|인정\?|가장 많이 팔린|제일 잘 팔린")
+DATED = re.compile(r"\d+월|\d{4}|\d+주|\d+일")
 
 
 def is_top5(spec):
     return spec.get("mode") == "top5"
 
 
+def rank_type(spec):
+    return "자료" if spec.get("rank_type") == "자료" else "추천"
+
+
 def top5_problems(spec, must, should):
     """TOP5형 카드에서 고칠 곳."""
     cards = spec.get("cards") or []
+    kind = rank_type(spec)
     if len(cards) != 5:
         must.append(f"TOP5형은 카드가 꼭 5장이에요. 지금 {len(cards)}장이에요.")
     cover = spec.get("cover") or {}
@@ -725,8 +735,24 @@ def top5_problems(spec, must, should):
     elif max(units(line) for line in cover["title"].split("\n")) > 11:
         should.append("첫 장: title 이 길어 글자가 작아져요. 한 줄에 10자 안쪽으로 줄여 주세요.")
     nos = [c.get("no") for c in cards]
-    if nos != sorted(nos, reverse=True) or set(nos) != set(range(1, len(cards) + 1)):
-        must.append("카드는 5위부터 1위까지 차례로 놓고, 장마다 no(순위 숫자)를 적어 주세요.")
+    if kind == "자료":
+        if nos != [5, 4, 3, 2, 1][:len(cards)] or set(nos) != set(range(1, len(cards) + 1)):
+            must.append("자료 순위 TOP5는 5위부터 1위까지 차례로 놓고, 장마다 no(순위 숫자)를 적어 주세요.")
+        if not spec.get("rank_src") or not DATED.search(str(spec["rank_src"])):
+            must.append("rank_type 이 자료인데 rank_src(순위를 낸 자료 이름 · 날짜)가 없어요. 실제 순위 자료가 없으면 rank_type 을 추천으로 바꿔 주세요.")
+        first = next((c for c in cards if c.get("no") == 1), None)
+        if first and cover.get("photo") and photo_key(first.get("photo") or {"url": ""}) == photo_key(cover["photo"]):
+            must.append("첫 장 사진이 1위 사진과 같아요. 답이 미리 보이니 다른 순위 사진을 써 주세요.")
+    else:
+        if nos != list(range(1, len(cards) + 1)):
+            must.append("추천 TOP5는 순위가 아니라 추천 다섯 가지예요. no 를 1부터 5까지 차례로 적어 주세요(거꾸로 세지 않아요).")
+        if not spec.get("rank_note"):
+            should.append("rank_note 에 무엇을 기준으로 고른 추천인지 한 줄 적어 주세요(예: 요일과 날씨에 맞춘 먹고갈지도 추천이에요).")
+        for where, text in shown_texts(spec) + [("게시글", spec.get("caption") or ""), ("제목", spec.get("title") or ""),
+                                                ("유튜브 제목", spec.get("yt_title") or "")]:
+            hit = RANK_WORDS.search(str(text).replace("[[", "").replace("]]", ""))
+            if hit:
+                must.append(f"{where}: '{hit.group()}' — 추천형인데 순위 자료가 있는 것처럼 보여요. '추천', '골라 봤어요', '마지막 추천'처럼 써 주세요.")
     for n, c in enumerate(cards, 1):
         for key, label in (("name", "음식 이름"), ("line", "핵심 한 줄"), ("photo", "실제 사진")):
             if not c.get(key):
@@ -737,9 +763,6 @@ def top5_problems(spec, must, should):
             must.append(f"카드 {n}: 핵심 한 줄이 길어요. 18자 안쪽으로 줄여 주세요.")
         if c.get("fact") and units(str(c["fact"])) > 20:
             should.append(f"카드 {n}: 핵심 숫자 줄이 길어요. 20자 안쪽으로 줄여 주세요.")
-    first = next((c for c in cards if c.get("no") == 1), None)
-    if first and cover.get("photo") and photo_key(first.get("photo") or {"url": ""}) == photo_key(cover["photo"]):
-        must.append("첫 장 사진이 1위 사진과 같아요. 답이 미리 보이니 2위 같은 다른 순위 사진을 써 주세요.")
 
 
 def why_lines(card):
@@ -815,7 +838,9 @@ def card_problems(spec):
         if c.get("note") and units(c["note"]) > 9:
             should.append(f"카드 {n}: 스티커 한마디(note)가 길어요. 8자 안쪽으로 줄여 주세요.")
         if not kind and not c.get("photo") and not c.get("big"):
-            should.append(f"카드 {n}: 사진이 없어요. 맞는 사진이 없으면 big 에 큰 숫자(예: -9%)를 적어 주세요.")
+            should.append(f"카드 {n}: 사진이 없어요. 맞는 사진이 없으면 big 에 큰 숫자(예: 9% ↓)를 적어 주세요.")
+        if not kind and c.get("big") and not c.get("photo"):
+            should.append(f"카드 {n}: 숫자 장에 사진이 없어요. 그 음식이 찍힌 사진을 photo 에 적으면 어둡게 깔리고 숫자가 위에 얹혀요.")
         must.extend(density_problems(c, n))
         if story and kind != "summary":  # 장마다 앞 장에서 이어지는 물음 (2026-10-19 5단계)
             q = str(c.get("q") or "")
@@ -850,7 +875,7 @@ def density_problems(c, n):
     if c.get("type") != "summary":
         total = sum(units(line) for line in head.split("\n")) + units(str(c.get("fact") or "")) + sum(units(line) for line in why)
         if total > CARD_TEXT_MAX:
-            out.append(f"카드 {n}: 한 장에 글이 많아요(약 {total:.0f}칸, {CARD_TEXT_MAX}칸까지). 까닭을 한 줄로 줄이거나 다음 장으로 나눠 주세요.")
+            out.append(f"카드 {n}: 한 장에 글이 많아요(약 {total:.1f}칸, {CARD_TEXT_MAX}칸까지). 까닭을 한 줄로 줄이거나 다음 장으로 나눠 주세요.")
     return out
 
 
@@ -881,7 +906,8 @@ def number_problems(spec):
     - 값은 20,269원처럼 쉼표로, 오르내림은 32.5% ↑ / 10.3% ↓ 처럼 숫자 뒤 화살표로 써요(문장에서는 올랐어요·내렸어요).
     (꼭 고칠 것, 고치면 좋은 것)"""
     must, should = [], []
-    texts = shown_texts(spec)
+    texts = shown_texts(spec) + [(k, str(spec.get(f) or "")) for k, f in
+                                 (("게시글", "caption"), ("제목", "title"), ("유튜브 제목", "yt_title"), ("유튜브 설명 첫 줄", "yt_lead"))]
     seen = {}
     for where, text in texts:
         for v in PCT.findall(text.replace("[[", "").replace("]]", "")):
@@ -899,6 +925,36 @@ def number_problems(spec):
         if SIGNED.search(plain):
             should.append(f"{where}: '{SIGNED.search(plain).group()}' → 부호 대신 10.3% ↓, 32.5% ↑ 처럼 숫자 뒤 화살표로 써 주세요.")
     return list(dict.fromkeys(must)), list(dict.fromkeys(should))
+
+
+WON = re.compile(r"\d[\d,]*\s?원")
+CHANGE = re.compile(r"\d+(?:\.\d+)?\s*%\s*[↑↓]|\d+(?:\.\d+)?\s*%\s*(?:올|내|뛰|떨어|싸|비싸|늘|줄|하락|상승|증가|감소)")
+BASIS = re.compile(r"작년|지난해|전년|직전|지난주|전주|평년|지난달|전월|한 달|이달 초|일주일|같은 기간|같은 날|대비|보다|\d+월 \d+주|\d+월(?:에는|엔|에|보다)")
+
+
+def basis_problems(spec):
+    """값·오르내림 숫자에 기준 기간과 출처가 있는지 (2026-10-19 5단계: "가격·증감률의 기준 기간과 출처 확인").
+    - 값(원)이나 % 가 있는 장은 src 에 자료 이름과 날짜(기준일)가 있어야 해요.
+    - 오르내림(32.5% ↑, 10% 내렸어요)이 있는 장은 무엇과 견준 것인지(작년 같은 날, 직전 주…)가 그 장 글이나 basis 칸에 있어야 해요.
+    정리 장(summary)은 앞 장의 기준을 따르니 보지 않아요. (꼭 고칠 것 목록)"""
+    out = []
+    for n, c in enumerate(spec.get("cards") or [], 1):
+        if c.get("type") == "summary":
+            continue
+        texts = [str(c.get(k) or "") for k in ("headline", "fact", "big", "line", "basis")] + why_lines(c)
+        texts += [str(s.get(k) or "") for s in c.get("sides") or [] for k in ("label", "value", "note")]
+        texts += [str(b.get("label") or "") for b in (c.get("chart") or {}).get("bars") or []] + [str((c.get("chart") or {}).get("note") or "")]
+        plain = " ".join(texts).replace("[[", "").replace("]]", "")
+        has_num = bool(PCT.search(plain) or WON.search(plain) or c.get("type") == "chart")
+        if has_num:
+            src = str(c.get("src") or (spec.get("rank_src") if is_top5(spec) else "") or "")
+            if not src:
+                out.append(f"카드 {n}: 값·% 가 있는데 src(자료 이름 · 기준 날짜)가 없어요.")
+            elif not DATED.search(src):
+                out.append(f"카드 {n}: src '{src}' 에 기준 날짜가 없어요. 'aT 농산물유통정보 · 10월 16일'처럼 언제 값인지 적어 주세요.")
+        if CHANGE.search(plain) and not BASIS.search(plain):
+            out.append(f"카드 {n}: 오르내림 숫자가 무엇과 견준 것인지 없어요. 글에 '작년보다'를 넣거나 basis 칸에 '작년 같은 날 대비'처럼 적어 주세요.")
+    return out
 
 
 MIN_PHOTO = 600  # 원래 사진(잘라 쓴 조각)의 짧은 변. 이보다 작으면 키워도 흐려요
@@ -1142,6 +1198,10 @@ def news_card(c, n, total, when, name, pill, nxt=None, story=False):
         top = f'<div class="ph">{NEWS_MAP}</div><div class="pack"><img src="{pack_photo(c["photo"])}"></div>{SPARK}'
     elif c.get("flow"):  # 어디서 → 뛰어가서 → 무엇을: 파는 곳 로고, 뛰는 사람, 그 음식 사진 (2026-10-16 사용자가 정함)
         top = f'<div class="ph">{NEWS_MAP}</div>' + flow_html(c["flow"])
+    elif c.get("big") and c.get("photo"):  # 숫자 강조 장: 그 음식 사진을 어둡게 깔고 큰 숫자를 얹어요 (2026-10-19 5단계)
+        src, pos = fetch_photo(c["photo"])
+        top = (f'<div class="ph numbg"><img src="{src}" style="object-position:{pos}"></div>'
+               f'<div class="bignum" style="font-size:{fit_size(c["big"], 230, 950)}px">{rich(c["big"])}</div>')
     elif c.get("photo"):
         src, pos = fetch_photo(c["photo"])
         top = f'<div class="ph"><img src="{src}" style="object-position:{pos}"></div>'
@@ -1149,6 +1209,7 @@ def news_card(c, n, total, when, name, pill, nxt=None, story=False):
         big = f'<div class="bignum" style="font-size:{fit_size(c["big"], 230, 950)}px">{rich(c["big"])}</div>' if c.get("big") else ""
         top = f'<div class="ph">{NEWS_MAP}</div>{big}'
     fact = f'<div class="fact" style="font-size:{fit_size(c["fact"], FACT_SIZE, 950)}px">{rich(c["fact"])}</div>' if c.get("fact") else ""
+    fact += f'<div class="bs">{esc(c["basis"])}</div>' if c.get("basis") else ""  # 숫자의 기준 (작년 같은 날 대비 등)
     why = why_lines(c)
     size = min(fit_size(line, WHY_SIZE, 915) for line in why)
     rows = "".join(f'<div style="font-size:{size}px">{rich(line)}</div>' for line in why)
@@ -1162,22 +1223,27 @@ def news_card(c, n, total, when, name, pill, nxt=None, story=False):
     )
 
 
-def top5_card(c, n, total, when, name, pill):
-    """TOP5형 한 장: 위쪽 큰 실제 사진 + 순위 + 음식 이름 + 핵심 한 줄 (+ 핵심 숫자, 1위면 댓글 물음)."""
+def top5_card(c, n, total, when, name, pill, kind="추천"):
+    """TOP5형 한 장: 위쪽 큰 실제 사진 + (추천 N 또는 N위) + 음식 이름 + 핵심 한 줄 (+ 핵심 숫자, 마지막 장이면 댓글 물음)."""
     src, pos = fetch_photo(c["photo"])
     fact = f'<div class="fact" style="font-size:{fit_size(c["fact"], FACT_SIZE, 950)}px">{rich(c["fact"])}</div>' if c.get("fact") else ""
+    fact += f'<div class="bs">{esc(c["basis"])}</div>' if c.get("basis") else ""
     ask = f'<div class="ask">{rich(c["ask"])}</div>' if c.get("ask") else ""
     dots = "".join(f'<i class="{"on" if i == n else ""}"></i>' for i in range(1, total + 1))
-    nxt = "" if c.get("no") == 1 else f"다음 · {int(c['no']) - 1}위"
+    no = int(c["no"])
+    if kind == "자료":
+        mark, nxt = f'<b>{no}</b>위', ("" if no == 1 else f"다음 · {no - 1}위")
+    else:  # 추천: 순위가 아니라 차례 번호예요
+        mark, nxt = f'<em>추천</em><b>{no}</b>', ("" if n == total else f"다음 · 추천 {no + 1}")
     return (
-        f'<section class="nc rk{" r1" if c.get("no") == 1 else ""}" id="c{n + 1}">'
+        f'<section class="nc rk" id="c{n + 1}">'
         f'<div class="ph"><img src="{src}" style="object-position:{pos}"></div>'
         f'<div class="mast"><div class="brand">{OUTRO_PIN}<span>{name}</span><i>{pill}</i></div><div class="when">{esc(when)}</div></div>'
-        f'<div class="txt"><div class="rank"><b>{int(c["no"])}</b>위</div>'
+        f'<div class="txt"><div class="rank">{mark}</div>'
         f'<div class="hl" style="font-size:{fit_size(c["name"], 120, 950)}px">{rich(c["name"])}</div>'
         f'<div class="ln" style="font-size:{fit_size(c["line"], 52, 950)}px">{rich(c["line"])}</div>{fact}{ask}</div>'
         f'<div class="next"><span class="nx-q">{nxt}</span><span class="dots">{dots}</span></div>'
-        f'<div class="foot"><span>{esc(c.get("src") or "")}</span><b></b></div></section>'
+        f'<div class="foot"><span>{esc(("자료 " + c["src"]) if c.get("src") else "")}</span><b></b></div></section>'
     )
 
 
@@ -1198,11 +1264,13 @@ def build_cards(spec):
     when = spec.get("kicker", "")
     story = is_story(spec)
     if is_top5(spec):  # TOP5형 (2026-10-19 5단계)
-        pill = esc(spec.get("pill") or TOP5_PILL)
-        cover = dict(spec["cover"], label=spec["cover"].get("label") or TOP5_LABEL)
-        body = news_cover(cover, len(cards), when, name, pill, label, story=True, first_q="5위부터",
-                          foot_note=spec.get("rank_note"))
-        body += "".join(top5_card(c, n, len(cards), when, name, pill) for n, c in enumerate(cards, 1))
+        kind = rank_type(spec)
+        pill = esc(spec.get("pill") or TOP5_PILL[kind])
+        cover = dict(spec["cover"], label=spec["cover"].get("label") or TOP5_LABEL[kind])
+        note = f'순위 자료 {spec["rank_src"]}' if kind == "자료" else spec.get("rank_note")
+        body = news_cover(cover, len(cards), when, name, pill, label, story=True, first_q="5위부터" if kind == "자료" else "다섯 가지",
+                          foot_note=note)
+        body += "".join(top5_card(c, n, len(cards), when, name, pill, kind) for n, c in enumerate(cards, 1))
         page = f'<!doctype html><html lang="ko"><head><meta charset="utf-8"><style>{css}</style></head><body style="--ac:{accent}">{body}</body></html>'
         return page, len(cards) + 1
     if story:
@@ -1408,7 +1476,7 @@ if __name__ == "__main__":
         must, should = card_photo_problems(spec)  # 흐린 사진, 한 장 돌려쓰기, 실사 사진 수 (2026-10-19 5단계)
         if spec.get("format") == "cards":
             m2, s2 = number_problems(spec)  # 제목·본문 숫자 표기 (2026-10-19 5단계)
-            must, should = must + m2, should + s2
+            must, should = must + m2 + basis_problems(spec), should + s2  # 값·증감률의 기준 기간과 출처
         for line in must:
             print("  꼭 고쳐 주세요: " + line)
         for line in should:
@@ -1420,7 +1488,7 @@ if __name__ == "__main__":
         elif is_story(spec):
             print(f"이야기 카드 {count}장 (첫 장 1 + 이어지는 장 {count - 1})")
         elif is_top5(spec):
-            print(f"TOP5형 카드 {count}장 (첫 장 1 + 5위~1위)")
+            print(f"TOP5형 카드 {count}장 (첫 장 1 + " + ("5위~1위, 순위 자료 " + str(spec.get("rank_src")) if rank_type(spec) == "자료" else "추천 1~5, 순위 아님") + ")")
         else:
             print(f"카드 뉴스 {count}장 (첫 장 1 + 소식 {count - 1})")
         if len(spec.get("tags") or []) != 4:

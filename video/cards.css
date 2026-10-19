@@ -123,3 +123,9 @@ body { color: #fff; font-family: "Noto Sans KR", sans-serif; word-break: keep-al
 .nc.rk .ln { margin-top: 14px; font-weight: 700; letter-spacing: -1.5px; color: rgba(255,255,255,.94); text-shadow: 0 2px 12px rgba(0,0,0,.55); }
 .nc.rk .ask { margin-top: 22px; font-weight: 900; font-size: 44px; letter-spacing: -1.5px; color: var(--ac); }
 .nc .foot span { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 900px; }
+.nc.rk .rank em { font-style: normal; font-size: 52px; margin-right: 12px; padding: 4px 16px 8px; border-radius: 10px; background: var(--ac); color: #17130F; vertical-align: 26px; text-shadow: none; }
+/* 숫자 강조 장: 그 음식 사진을 어둡게 깔고 큰 숫자를 얹어요 (2026-10-19 5단계) */
+.nc .ph.numbg img { filter: brightness(.6) saturate(1.1); }
+.nc .ph.numbg ~ .bignum { text-shadow: 0 4px 30px rgba(0,0,0,.85), 0 0 60px rgba(0,0,0,.6); }
+/* 숫자의 기준 (작년 같은 날 대비 등): 핵심 숫자 바로 아래 작게 */
+.nc .bs { margin-top: 8px; font-weight: 700; font-size: 32px; letter-spacing: -1px; color: rgba(255,255,255,.72); }
