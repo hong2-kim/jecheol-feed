@@ -230,11 +230,18 @@ def brand_marks(name, brand=None):
     return ""
 
 
+# 저녁 추천(layout rec)은 2026-10-20 확정한 시안의 썸네일 모양을 그대로 써요: 사진 칸 810~1700, 흰 띠 글자 58px.
+# 썸네일이 곧 영상 첫 화면이라 영상(rec.py)과 같은 모양이어야 해요. 다른 쇼츠는 5단계에서 넓힌 모양 그대로예요.
+KEEP_CSS = (".rkeep .bpic { height: 890px; } .rkeep .bpic img { object-position: 50% 50%; } "
+            ".rkeep .bstrip div { font-size: 58px !important; }")
+
+
 def page(spec):
     """썸네일 그림 한 장을 찍을 HTML."""
-    style = ((HERE / "base.css").read_text(encoding="utf-8") + css()).replace("FONT_DIR", (HERE / "fonts").as_uri())
+    style = ((HERE / "base.css").read_text(encoding="utf-8") + css() + KEEP_CSS).replace("FONT_DIR", (HERE / "fonts").as_uri())
+    keep = " rkeep" if spec.get("layout") == "rec" else ""
     return ('<!doctype html><html lang="ko"><head><meta charset="utf-8">'
-            f'<style>{style}</style></head><body><section class="scene first" style="visibility:visible">{body(spec)}</section></body></html>')
+            f'<style>{style}</style></head><body><section class="scene first{keep}" style="visibility:visible">{body(spec)}</section></body></html>')
 
 
 def has(spec):

@@ -315,8 +315,8 @@ def build_rec(spec, voices, speech, durs, starts, real):
     for n, (t, i, vis) in enumerate(events):
         end = events[n + 1][0] if n + 1 < len(events) else body
         d = end - t
-        if vis.get("thumb"):  # 썸네일과 똑같은 첫 화면(큰 제목 + 흰 띠 + 사진)
-            html = thumb.body(spec)
+        if vis.get("thumb"):  # 썸네일과 똑같은 첫 화면(큰 제목 + 흰 띠 + 사진). 모양은 thumb.KEEP_CSS(확정 시안)
+            html = f'<div class="rkeep">{thumb.body(spec)}</div><style>{thumb.KEEP_CSS}</style>'
         elif i < intro:  # 도입: 예전처럼 큰 제목(0~680) + 자막 띠(680~810) + 그 아래 장면
             strip = '<div class="bstrip"><div></div></div>' if any(v.get("thumb") for _, _, v in events) else ""  # 썸네일의 흰 띠를 그대로
             html = vis_html(B, vis, 810, 1110, d, note) + strip
