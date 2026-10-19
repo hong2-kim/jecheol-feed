@@ -18,6 +18,11 @@
   "photo_note": "사진은 예시예요" 를 적으면 사진·영상 장면 귀퉁이에 작게 보여요(실제 상품 사진이 아닐 때). 그 음식을 찍은 것이면 "own": true.
   "narrator": {"voice": ..., "rate": ...} 혼자 읽는 영상을 채널 목소리와 다른 목소리로 읽어요.
   "length": [20, 35] 로 목표 길이를, "facts": [...] 로 가격·시간 근거를 적어요(verify 가 대본 속 금액·시간과 맞춰 봐요).
+
+말투·소재 (2026-10-19 2차):
+  "talk": "v0" — video/talk.json 의 말투(문장 사이 간격). 문장에 "act": "react"·"answer"·"number"·"cut" 을 적으면 그만큼 붙여요.
+      적지 않으면 예전 그대로예요. 참고 영상을 본 뒤 talk.json 에 v1 을 더하고 "talk" 만 바꾸면 목소리만 다시 만들어져요.
+  "assets": [...] — 사진·영상의 출처·이용 조건(scripts/media.py check). 회사 상품 이미지는 허락(permission)이 없으면 막아요.
 """
 import re
 import base64
@@ -221,17 +226,42 @@ def who_of(spec, line):
     return (spec.get("cast") or {}).get(line.get("who") or "", {}) if line.get("who") else {}
 
 
+def talk_conf():
+    """video/talk.json — 목소리 목록(성별·느낌)과 말투(styles: 문장 사이 간격). 참고 영상을 본 뒤 v1 을 더해요."""
+    return json.loads((HERE / "talk.json").read_text(encoding="utf-8"))
+
+
+def talk_style(spec):
+    """설계도 "talk": "v0" 처럼 고른 말투. 적지 않으면 None → 예전 그대로(GAP·TURN)."""
+    if not spec.get("talk"):
+        return None
+    return talk_conf()["styles"].get(spec["talk"])
+
+
 def gaps(spec, lines):
-    """문장마다 다음 문장까지 쉼. 적은 값이 없으면 같은 사람은 GAP, 사람이 바뀌면 TURN."""
+    """문장마다 다음 문장까지 쉼. 적은 값이 없으면 같은 사람은 GAP, 사람이 바뀌면 TURN.
+    설계도에 "talk"(말투)를 적으면 그 값을 쓰고, 다음 문장에 "act"(react·answer·number·cut)가 있으면 그만큼 붙여요."""
+    style = talk_style(spec) or {}
+    same, turn, acts = style.get("same", GAP), style.get("turn", TURN), style.get("act") or {}
     out = []
     for i, l in enumerate(lines):
+        nxt = lines[i + 1] if i + 1 < len(lines) else {}
         if "gap" in l:
             out.append(max(-0.15, float(l["gap"])))
-        elif spec.get("cast") and i + 1 < len(lines) and lines[i + 1].get("who") != l.get("who"):
-            out.append(TURN)
+        elif style and nxt.get("act") in acts:
+            out.append(max(-0.15, float(acts[nxt["act"]])))
+        elif spec.get("cast") and nxt and nxt.get("who") != l.get("who"):
+            out.append(turn)
         else:
-            out.append(GAP)
+            out.append(same)
     return out
+
+
+def pair_of(spec):
+    """대화형 목소리 조합 "남+여"·"여+여"·"남+남". 목록에 없는 목소리는 "?"."""
+    voices = talk_conf()["voices"]
+    return "+".join(sorted((voices.get(c.get("voice"), {}).get("sex", "?") for c in (spec.get("cast") or {}).values()),
+                           key=lambda s: "남여?".index(s)))
 
 
 def segments(lines):
@@ -437,6 +467,8 @@ def problems(spec):
     if short and lines and lines[0].get("say") and estimate(lines[0]["say"]) > 2.6:
         should.append(f"첫 문장이 {estimate(lines[0]['say']):.1f}초쯤이에요. 1~2초 안에 상황이나 핵심이 들리게 줄여 주세요.")
     must += cast_problems(spec)
+    m, s = talk_problems(spec)
+    must, should = must + m, should + s
     if not spec.get("cast"):
         shown = line_photos(lines) if lines and (lines[0].get("photo") or lines[0].get("photos")) else []
         keys = {json.dumps(p, sort_keys=True) for ps in shown for p in ps}
@@ -458,7 +490,15 @@ def problems(spec):
         should.append(f"읽는 데 {total:.0f}초쯤이에요. {lo}~{hi}초가 되게 늘리면 좋아요.")
     # 가격·시간 확인은 저녁 추천처럼 근거(facts)를 적는 영상만 해요. 매일 내레이션 쇼츠(10-voice)는 지금 규칙 그대로예요.
     m, s = verify(spec) if (spec.get("facts") is not None or spec.get("kind") == "저녁추천") else ([], [])
-    return must + m, should + s, total
+    must, should = must + m, should + s
+    # 소재 출처·이용 조건 (2026-10-19 사용자가 정한 우선순위·회사 이미지 기준). 저녁 추천이나 "assets" 를 적은 영상만 봐요.
+    if spec.get("assets") is not None or spec.get("kind") == "저녁추천":
+        import sys
+        sys.path.insert(0, str(ROOT / "scripts"))
+        import media
+        m, s = media.check(spec)
+        must, should = must + m, should + s
+    return must, should, total
 
 
 def cast_problems(spec):
@@ -476,7 +516,25 @@ def cast_problems(spec):
             out.append(f"{n}번 문장의 who({l.get('who')})가 cast 에 없어요.")
     if len({l.get("who") for l in spec.get("lines") or []}) < 2:
         out.append("cast 를 적었는데 한 사람만 말해요. 혼자 읽는 영상이면 cast 를 빼요.")
+    if spec.get("narrator"):
+        out.append("cast(대화형)와 narrator(혼자 읽기)를 같이 적었어요. 하나만 골라요.")
     return out
+
+
+def talk_problems(spec):
+    """말투·목소리 목록 확인. (꼭 고칠 것, 보면 좋은 것)"""
+    must, should = [], []
+    conf = talk_conf()
+    if spec.get("talk") and spec["talk"] not in conf["styles"]:
+        must.append(f"talk '{spec['talk']}' 가 video/talk.json 의 styles 에 없어요.")
+    acts = set((talk_style(spec) or {}).get("act") or {})
+    for n, l in enumerate(spec.get("lines") or [], 1):
+        if l.get("act") and spec.get("talk") and l["act"] not in acts:
+            should.append(f"{n}번 문장의 act '{l['act']}' 는 말투 '{spec['talk']}' 에 없어요({', '.join(sorted(acts))}).")
+    for k, c in (spec.get("cast") or {}).items():
+        if c.get("voice") and c["voice"] not in conf["voices"]:
+            should.append(f"{k}({c.get('label', '')})의 목소리 {c['voice']} 가 video/talk.json voices 에 없어요. 성별·느낌을 적어 두면 조합을 돌려 쓰기 쉬워요.")
+    return must, should
 
 
 MONEY = re.compile(r"(?:(\d+)\s*만)?\s*(?:(\d+)\s*천)?\s*(\d[\d,]*)?\s*원")
