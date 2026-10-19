@@ -65,6 +65,15 @@ CSS = """
 .rgrid .c.pd { background: #fff; display: flex; flex-direction: column; align-items: center; padding-top: 110px; }
 .rgrid .c.pd img { position: static; width: 88%; height: 520px; object-fit: contain; }
 .rgrid .c.pd .lp { position: static; margin-top: 30px; background: none; color: #D8432B; font-size: 92px; padding: 0; }
+.rgrid.g4 { flex-wrap: wrap; }
+.rgrid.g4 .c { flex: 0 0 calc(50% - 3px); height: calc(50% - 3px); }
+.rgrid .c.dim img { filter: brightness(.38) saturate(.55); }
+.rgrid .c.dim .lb { opacity: .55; }
+.rgrid .c.on::after { content: ""; position: absolute; inset: 0; box-shadow: inset 0 0 0 12px #FFB23E; }
+.rgrid .c .lb { z-index: 2; }
+.rgrid .c.on img { animation: rzoom 2.4s ease-out both; }
+.rgrid .c.on .lb { background: #D8432B; font-size: 58px; }
+@keyframes rzoom { from { transform: scale(1); } to { transform: scale(1.07); } }
 .rwhite { position: absolute; left: 0; right: 0; bottom: 0; background: #fff; }
 .rgrid { position: absolute; left: 0; right: 0; display: flex; gap: 6px; background: #0E0B09; }
 .rgrid.col { flex-direction: column; }
@@ -225,7 +234,8 @@ def vis_html(B, vis, top, h, dur, note):
         out.append(f'<div class="rset{many}" style="top:{top}px;height:{1920 - top}px"><div class="items">{items}</div>{tot}{nt}{src}</div>')
     elif vis.get("grid"):
         cells = []
-        for c in vis["grid"]:
+        hl = vis.get("hl")  # 2×2 에서 지금 말하는 음식만 밝게(나머지는 어둡게)
+        for k, c in enumerate(vis["grid"]):
             if c.get("photo"):
                 src, pos = B.fetch_photo(c["photo"])
                 img = f'<img src="{src}" style="object-position:{pos}">'
@@ -233,14 +243,16 @@ def vis_html(B, vis, top, h, dur, note):
                 img = f'<img src="{product_img(B, c["img"])}" style="object-fit:contain;background:#fff">'
             if not c.get("photo"):  # 상품 칸: 이름표 · 상품 · 값을 위에서 아래로
                 img = f'<img src="{product_img(B, c["img"])}">'
-            cells.append(f'<div class="c{"" if c.get("photo") else " pd"}">{img}' + (f'<div class="lb">{B.esc(c["label"])}</div>' if c.get("label") else "")
+            mark = "" if hl is None else (" on" if k == hl else " dim")
+            cells.append(f'<div class="c{"" if c.get("photo") else " pd"}{mark}">{img}' + (f'<div class="lb">{B.esc(c["label"])}</div>' if c.get("label") else "")
                          + (f'<div class="lp">{B.esc(c["price"])}</div>' if c.get("price") else "") + "</div>")
         first = vis["grid"][0]
         if first.get("photo"):
             out.append(f'<div class="rbg" style="top:{top}px"><img src="{B.backdrop(first["photo"])}"></div>')
         else:
             out.append(f'<div class="rwhite" style="top:{top}px"></div>')
-        out.append(f'<div class="rgrid{" col" if vis.get("dir", "col") == "col" else ""}" style="top:{top}px;height:{h}px">{"".join(cells)}</div>')
+        kind = {"col": " col", "2x2": " g4"}.get(vis.get("dir", "col"), "")
+        out.append(f'<div class="rgrid{kind}" style="top:{top}px;height:{h}px">{"".join(cells)}</div>')
         if vis.get("board"):
             bd = vis["board"]
             rows = "".join(f'<div class="r" style="animation-delay:{0.15 + 0.18 * k:.2f}s"><span>{B.esc(a)}</span><b>{B.esc(b)}</b></div>'
