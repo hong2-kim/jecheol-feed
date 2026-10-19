@@ -338,6 +338,15 @@ def media_urls(spec):
             add(f"{n}번 문장", p)
         if l.get("video"):
             add(f"{n}번 문장 영상", l["video"])
+        # 추천 쇼츠(layout rec)의 장면: show / shows (사진·영상·상품·묶음·여러 칸)
+        for v in (l.get("shows") or []) + ([l["show"]] if l.get("show") else []):
+            if not v:
+                continue
+            for k in ("photo", "video"):
+                if v.get(k):
+                    add(f"{n}번 문장", v[k])
+            for it in ([v["product"]] if v.get("product") else []) + ((v.get("set") or {}).get("items") or []) + (v.get("grid") or []):
+                add(f"{n}번 문장", it.get("photo") or {"url": it.get("img")})
     for n, s in enumerate(spec.get("scenes") or [], 1):
         for k in ("photo", "video"):
             if s.get(k):
@@ -409,15 +418,20 @@ def check(spec):
                 must.append(f"{where}: 회사 상품 이미지의 기록이 빠졌어요({', '.join(lack)}). assets 에 적어요.")
             company = SOURCES["companies"].get(a.get("company", ""), SOURCES["companies"]["식품 제조사"])
             if not a.get("permission"):
-                must.append(f"{where}: {a.get('company', '회사')} 상품 이미지는 이용 허락이 확인되지 않았어요"
+                (should if spec.get("sample") else must).append(  # 비공개 샘플은 알림만(게시 전에는 허락이 있어야 해요)f"{where}: {a.get('company', '회사')} 상품 이미지는 이용 허락이 확인되지 않았어요"
                             f"({company['finding'][:60]}…). 자동 게시용이 아니라 '검토 대상'이에요. "
                             "자체 비교 카드나 사용자 사진으로 바꾸거나, 사용자가 받은 서면 허락을 permission 에 적어요.")
             if a.get("fact") and not any(f.get("id") == a["fact"] for f in spec.get("facts") or []):
                 must.append(f"{where}: 상품 이미지의 가격 근거 '{a['fact']}' 가 facts 에 없어요.")
         elif tier == 5:
             lic = str(assets.get(url, {}).get("license", ""))
-            if "wikimedia" in url and not re.search(r"CC0|퍼블릭|Public", lic, re.I):
-                should.append(f"{where}: 위키미디어 사진은 CC0·퍼블릭 도메인만 써요. assets 에 license 를 적어요.")
+            if "wikimedia" in url and re.search(r"BY-SA|SA ", lic):
+                must.append(f"{where}: CC BY-SA 사진은 쓰지 않아요(영상 전체에 같은 라이선스가 붙을 수 있어요).")
+            elif "wikimedia" in url and re.search(r"CC BY", lic):  # 2026-10-20: 조건(저작자·라이선스·원본·고쳤다는 표시)을 채우면 써요
+                if not any(str(c).startswith(str(assets.get(url, {}).get("credit", "?"))) for c in spec.get("credits") or []):
+                    must.append(f"{where}: CC BY 사진은 credits 에 저작자·라이선스·원본 주소를 그대로 적어요(assets 의 credit).")
+            elif "wikimedia" in url and not re.search(r"CC0|퍼블릭|Public", lic, re.I):
+                should.append(f"{where}: 위키미디어 사진의 license 를 assets 에 적어요(CC0·퍼블릭 도메인·CC BY).")
         elif url.startswith("http"):
             must.append(f"{where}: 출처를 모르는 사진이에요({url[:60]}). assets 에 출처와 이용 조건을 적거나 다른 사진으로 바꿔요.")
     texts = [spec.get(k, "") for k in ("headline", "title", "caption", "yt_title", "yt_lead", "yt_desc")]

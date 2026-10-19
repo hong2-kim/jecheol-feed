@@ -378,52 +378,70 @@ def build_voice(spec, work=None):
     tail = 1.6
     css = (HERE / "base.css").read_text(encoding="utf-8").replace("FONT_DIR", (HERE / "fonts").as_uri())
     import thumb
-    head = spec.get("headline", spec.get("title", ""))
-    name = json.loads((ROOT / "config.json").read_text(encoding="utf-8")).get("account") or "먹고갈지도"
-    out = ['<!doctype html><html lang="ko"><head><meta charset="utf-8">', f"<style>{css}{CSS}{thumb.css().replace('FONT_DIR', (HERE / 'fonts').as_uri())}</style></head>",
-           '<body style="--ac:#D8432B">',
-           # 위쪽 큰 제목은 영상 내내 그대로 있어요 (끝 장면에서만 사라져요). 첫 화면이 곧 썸네일이에요. (thumb.py)
-           f'<section class="scene first" data-at="0" data-dur="{body:.2f}" data-out="0" style="z-index:900;pointer-events:none">'
-           f'{thumb.head_html(head, name, (spec.get("thumb") or {}).get("color", thumb.AC))}</section>']
-    note = f'<div class="vnote">{B.esc(spec["photo_note"])}</div>' if spec.get("photo_note") else ""
-    last_photo = None
-    for n, (a, b, vis) in enumerate(segments(lines)):
-        at, d = starts[a], sum(durs[a:b])
-        chip = f'<div class="vchip">{B.rich(lines[a]["chip"])}</div>' if lines[a].get("chip") else ""
-        anim = ' style="animation:in-fade .12s ease both"' if n else ""
-        first = "" if n else " first"
-        if vis.get("card"):
-            beats = [starts[i] - at for i in range(a, b)]
-            out.append(f'<section class="scene{first}" data-at="{at:.2f}" data-dur="{d:.2f}" data-out="0"{anim}>{card_html(B, vis["card"], beats)}{chip}</section>')
-            continue
-        if vis.get("video"):
-            out.append(f'<section class="scene{first}" data-at="{at:.2f}" data-dur="{d:.2f}" data-out="0"{anim}>'
-                       f'<div class="vback dark"></div>{video_html(B, vis["video"], d)}{chip}{"" if vis["video"].get("own") else note}</section>')
-            continue
-        photos = vis.get("photos") or [last_photo]
-        d0 = durs[a]  # 사진이 여러 장이면 첫 문장 동안 고르게 나눠 바꾸고, 마지막 장은 묶음 끝까지 이어요
-        for k, photo in enumerate(photos):
-            pa = at + d0 * k / len(photos)
-            pd = d0 / len(photos) if k < len(photos) - 1 else at + d - pa
-            mark = "" if isinstance(photo, dict) and photo.get("own") else note  # "own": 그 음식을 찍은 사진이면 예시 표시를 안 해요
-            out.append(f'<section class="scene{first if not k else ""}" data-at="{pa:.2f}" data-dur="{pd:.2f}" data-out="0"{anim if (n or k) else ""}>'
-                       f'<div class="vback"><img src="{B.backdrop(photo)}"></div>{pic_html(B, photo)}{chip}{mark}</section>')
-        last_photo = photos[-1]
-    for i, l in enumerate(lines):
-        # 자막: 문장을 덩어리로 나눠 읽는 속도에 맞춰 차례로 바꿔요. 대화형은 말하는 사람 이름표와 색 띠를 붙여요
-        c = who_of(spec, l)
-        tag = f'<span class="vwho" style="background:{c.get("color", "#333")}">{B.esc(c.get("label", l["who"]))}</span>' if c else ""
-        bar = f' style="box-shadow:inset 18px 0 0 {c["color"]}"' if c.get("color") else ""
-        parts = chunks(l["say"], CHUNK - 2 if c else CHUNK)  # 이름표 자리만큼 한 번에 보여 줄 글을 줄여요
-        weights = [B.units(p) + 1 for p in parts]
-        t, said, d = starts[i], speech[i], durs[i]
-        for k, (p, w) in enumerate(zip(parts, weights)):
-            pd = said * w / sum(weights) + (max(0.0, d - said) if k == len(parts) - 1 else 0)
-            out.append(f'<section class="scene" data-at="{t:.2f}" data-dur="{max(pd, 0.05):.2f}" data-out="0" style="z-index:950">'
-                       f'<div class="vsub"{bar}>{tag}<div>{B.rich(p)}</div></div></section>')
-            t += pd
+    if spec.get("layout") == "rec":  # 추천 쇼츠 화면 (2026-10-20, video/rec.py)
+        import rec
+        css += rec.CSS
+        parts, cuts, sfx, subs = rec.build_rec(spec, voices, speech, durs, starts, real)
+        if any("CC BY" in str(c) for c in spec.get("credits") or []):  # CC BY 사진은 한 줄이어도 끝 장면에 출처를 적어요
+            credits = B.credit_lines(spec)
+        out = ['<!doctype html><html lang="ko"><head><meta charset="utf-8">',
+               f"<style>{css}{CSS}{thumb.css().replace('FONT_DIR', (HERE / 'fonts').as_uri())}{rec.CSS}</style></head>",
+               '<body style="--ac:#D8432B">'] + parts
+    else:
+        cuts = sfx = subs = None
+    if cuts is None:  # 예전 화면: 위쪽 큰 제목을 영상 내내 고정
+        head = spec.get("headline", spec.get("title", ""))
+        name = json.loads((ROOT / "config.json").read_text(encoding="utf-8")).get("account") or "먹고갈지도"
+        out = ['<!doctype html><html lang="ko"><head><meta charset="utf-8">', f"<style>{css}{CSS}{thumb.css().replace('FONT_DIR', (HERE / 'fonts').as_uri())}</style></head>",
+               '<body style="--ac:#D8432B">',
+               # 위쪽 큰 제목은 영상 내내 그대로 있어요 (끝 장면에서만 사라져요). 첫 화면이 곧 썸네일이에요. (thumb.py)
+               f'<section class="scene first" data-at="0" data-dur="{body:.2f}" data-out="0" style="z-index:900;pointer-events:none">'
+               f'{thumb.head_html(head, name, (spec.get("thumb") or {}).get("color", thumb.AC))}</section>']
+        note = f'<div class="vnote">{B.esc(spec["photo_note"])}</div>' if spec.get("photo_note") else ""
+        last_photo = None
+        for n, (a, b, vis) in enumerate(segments(lines)):
+            at, d = starts[a], sum(durs[a:b])
+            chip = f'<div class="vchip">{B.rich(lines[a]["chip"])}</div>' if lines[a].get("chip") else ""
+            anim = ' style="animation:in-fade .12s ease both"' if n else ""
+            first = "" if n else " first"
+            if vis.get("card"):
+                beats = [starts[i] - at for i in range(a, b)]
+                out.append(f'<section class="scene{first}" data-at="{at:.2f}" data-dur="{d:.2f}" data-out="0"{anim}>{card_html(B, vis["card"], beats)}{chip}</section>')
+                continue
+            if vis.get("video"):
+                out.append(f'<section class="scene{first}" data-at="{at:.2f}" data-dur="{d:.2f}" data-out="0"{anim}>'
+                           f'<div class="vback dark"></div>{video_html(B, vis["video"], d)}{chip}{"" if vis["video"].get("own") else note}</section>')
+                continue
+            photos = vis.get("photos") or [last_photo]
+            d0 = durs[a]  # 사진이 여러 장이면 첫 문장 동안 고르게 나눠 바꾸고, 마지막 장은 묶음 끝까지 이어요
+            for k, photo in enumerate(photos):
+                pa = at + d0 * k / len(photos)
+                pd = d0 / len(photos) if k < len(photos) - 1 else at + d - pa
+                mark = "" if isinstance(photo, dict) and photo.get("own") else note  # "own": 그 음식을 찍은 사진이면 예시 표시를 안 해요
+                out.append(f'<section class="scene{first if not k else ""}" data-at="{pa:.2f}" data-dur="{pd:.2f}" data-out="0"{anim if (n or k) else ""}>'
+                           f'<div class="vback"><img src="{B.backdrop(photo)}"></div>{pic_html(B, photo)}{chip}{mark}</section>')
+            last_photo = photos[-1]
+        for i, l in enumerate(lines):
+            # 자막: 문장을 덩어리로 나눠 읽는 속도에 맞춰 차례로 바꿔요. 대화형은 말하는 사람 이름표와 색 띠를 붙여요
+            c = who_of(spec, l)
+            tag = f'<span class="vwho" style="background:{c.get("color", "#333")}">{B.esc(c.get("label", l["who"]))}</span>' if c else ""
+            bar = f' style="box-shadow:inset 18px 0 0 {c["color"]}"' if c.get("color") else ""
+            parts = chunks(l["say"], CHUNK - 2 if c else CHUNK)  # 이름표 자리만큼 한 번에 보여 줄 글을 줄여요
+            weights = [B.units(p) + 1 for p in parts]
+            t, said, d = starts[i], speech[i], durs[i]
+            for k, (p, w) in enumerate(zip(parts, weights)):
+                pd = said * w / sum(weights) + (max(0.0, d - said) if k == len(parts) - 1 else 0)
+                out.append(f'<section class="scene" data-at="{t:.2f}" data-dur="{max(pd, 0.05):.2f}" data-out="0" style="z-index:950">'
+                           f'<div class="vsub"{bar}>{tag}<div>{B.rich(p)}</div></div></section>')
+                t += pd
+    outro = B.scene_outro(credits)
+    lics = sorted({m[1].lower() for c in spec.get("credits") or [] for m in [re.search(r"CC (BY(?:-SA)?) (\d\.\d)", str(c))] if m} |
+                  {f"{m[1].lower()}/{m[2]}" for c in spec.get("credits") or [] for m in [re.search(r"CC (BY(?:-SA)?) (\d\.\d)", str(c))] if m})
+    lics = [x for x in lics if "/" in x]
+    if cuts is not None and lics:  # 추천 쇼츠: CC BY 라이선스 주소를 정확히 (2026-10-20)
+        outro = outro.replace("creativecommons.org/licenses", " · ".join(f"creativecommons.org/licenses/{x}" for x in lics))
     out.append(f'<section class="scene outro" data-at="{body:.2f}" data-dur="{tail}" data-out="0" style="z-index:990;animation:in-fade .25s ease both">'
-               f'{B.scene_outro(credits)}</section>')
+               f'{outro}</section>')
     out.append(f"<script>{(HERE / 'base.js').read_text(encoding='utf-8')}</script></body></html>")
     total = body + tail
     voice_path = None
@@ -438,7 +456,9 @@ def build_voice(spec, work=None):
         pcm = (np.clip(track[: int(SR * total)], -1, 1) * 32767).astype(np.int16)
         with wave.open(str(voice_path), "wb") as w:
             w.setnchannels(1), w.setsampwidth(2), w.setframerate(SR), w.writeframes(pcm.tobytes())
-    meta = {"music": B.song(spec), "sfx": [], "ambience": [], "voice": str(voice_path) if voice_path else None}
+    meta = {"music": B.song(spec), "sfx": sfx or [], "ambience": [], "voice": str(voice_path) if voice_path else None}
+    if cuts is not None:
+        meta["rec"] = {"cuts": cuts, "subs": subs, "starts": starts, "durs": durs}
     return "\n".join(out), total, meta
 
 
@@ -460,7 +480,7 @@ def problems(spec):
     for n, l in enumerate(lines, 1):
         if not l.get("say"):
             must.append(f"{n}번 문장에 say 가 없어요.")
-        if n == 1 and not (l.get("photo") or l.get("photos") or l.get("video") or l.get("card")):
+        if n == 1 and spec.get("layout") != "rec" and not (l.get("photo") or l.get("photos") or l.get("video") or l.get("card")):
             must.append("1번 문장에 photo(또는 video·card)가 없어요.")
         if l.get("say") and B.units(l["say"]) > 42:
             should.append(f"{n}번 문장이 길어요({B.units(l['say']):.0f}칸). 두 문장으로 나누면 자막이 읽기 쉬워요.")
@@ -475,7 +495,11 @@ def problems(spec):
         if shown and len(keys) < 8 and not short:
             should.append(f"서로 다른 사진이 {len(keys)}장이에요. 8~12장이 좋아요(사진이 자주 바뀌어야 끝까지 봐요).")
     run = 0
-    for n, (a, b, vis) in enumerate(segments(lines)):
+    if spec.get("layout") == "rec":  # 추천 쇼츠는 장면을 자막 조각마다 따로 정해요 (rec.problems)
+        import rec
+        m, s = rec.problems(spec)
+        must, should = must + m, should + s
+    for n, (a, b, vis) in enumerate([] if spec.get("layout") == "rec" else segments(lines)):
         if b - a >= 3 and not vis.get("card"):
             should.append(f"{a + 1}~{b}번 문장 동안 같은 그림이 이어져요. 2문장까지만 쓰고 바꿔 주세요.")
         run = run + 1 if vis.get("photos") and not vis.get("video") else 0
