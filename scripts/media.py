@@ -146,7 +146,8 @@ def rights_of(source_from, answer="", told_on=""):
         return RIGHTS_OK, "사용자가 식당에서 직접 찍어 텔레그램으로 보냄(rules/when/myphotos.md)"
     if source_from == "대화":
         return "미확인", "사용자가 대화로 보낸 사진 — 직접 찍었는지는 확인 전"
-    return "미확인", "인스타그램에서 옮긴 사진 — 직접 찍었는지·사용 권한이 있는지 확인 전"
+    # 2026-10-20 사용자가 확인: 인스타그램에서 옮긴 421장도 모두 본인이 직접 찍었고 먹고갈지도 콘텐츠에 쓰도록 승인함
+    return RIGHTS_OK, "본인 직접 촬영·사용 승인(2026-10-20 사용자가 대화에서 확인, 인스타그램에서 옮긴 사진)"
 
 
 def answers(folder):
