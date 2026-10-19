@@ -7,6 +7,7 @@
   python scripts/media.py find 떡볶이          갈래 이름이나 음식 이름으로 쓸 만한 사진·영상을 찾아요(안 쓴 것, 쓸 수 있는 것 먼저).
   python scripts/media.py groups              갈래마다 몇 개인지.
   python scripts/media.py check 설계도.json    설계도에 쓴 사진·영상의 출처·이용 조건과 '협찬처럼 보이는 말'을 봐요.
+  python scripts/media.py public [videos폴더]  이미 만든 영상에 들어간 보관함 사진과 권리 상태를 모아요(_공개사용.md).
 
 목록은 공개 저장소가 아니라 내-음식-사진 폴더 안 _목록.json·_목록.md 에 둬요(사용자 사진 이름·내용이 들어 있어요).
 폴더에 있다는 것만으로 쓸 수 있다고 보지 않아요. 항목마다 status(사용 가능 / 검토 필요)와 그 까닭(why)을 적어요.
@@ -124,15 +125,23 @@ def judge(note, extra):
 
 
 RIGHTS_OK = "확인"  # 직접 찍었거나 사용 권한이 확인된 것만 상업용(게시)으로 써요
+# 사용자가 대화에서 직접 찍었다고 확인해 준 사진 {보관함 id: 확인한 날}. 대화로 보낸 7장만이고,
+# 인스타그램에서 옮긴 421장은 여기 넣지 않는다(사용자가 따로 확인, 2026-10-20 사용자가 정함).
+TOLD_MINE = {i: "2026-10-20" for i in (
+    "u-2026-10-15-jeon.jpg", "u-2026-10-15-samgyeop.jpg", "u-2026-10-15-kkotge.jpg", "u-2026-10-15-sannakji.jpg",
+    "u-2026-10-15-dakgalbi.jpg", "u-2026-10-15-shinemuscat.jpg", "u-2026-10-17-jogaejjim.jpg")}
 
 
-def rights_of(source_from, answer=""):
+def rights_of(source_from, answer="", told_on=""):
     """(권리 상태, 까닭). 2026-10-19 사용자가 정함: 인스타그램에서 가져왔다는 것만으로 직접 찍은 사진으로 보지 않는다.
-    사용자가 _검토목록.csv 의 '내가 찍음' 칸에 '예'를 적으면 확인이 돼요."""
-    if answer.strip() in ("예", "네", "o", "O", "내가 찍음"):
-        return RIGHTS_OK, "사용자가 직접 찍었다고 확인(_검토목록.csv)"
+    사용자가 _검토목록.csv 의 '내가 찍음' 칸에 '예'를 적거나 대화에서 확인해 주면(TOLD_MINE) 확인이 돼요.
+    검토표에 '아니오'를 적으면 대화 확인보다 앞서요."""
     if answer.strip() in ("아니오", "아니요", "x", "X"):
         return "안 씀", "사용자가 직접 찍은 것이 아니라고 함 — 쓰지 않음"
+    if told_on:
+        return RIGHTS_OK, f"본인 직접 촬영 확인({told_on} 사용자가 대화에서 확인)"
+    if answer.strip() in ("예", "네", "o", "O", "내가 찍음"):
+        return RIGHTS_OK, "사용자가 직접 찍었다고 확인(_검토목록.csv)"
     if source_from == "텔레그램":
         return RIGHTS_OK, "사용자가 식당에서 직접 찍어 텔레그램으로 보냄(rules/when/myphotos.md)"
     if source_from == "대화":
@@ -177,14 +186,14 @@ def catalog(out_dir=None):
         elif named and _norm(named) != _norm(note):
             status, why = "검토 필요", why + [f"폴더 이름은 '{named}' — 보관함 이름과 달라 어느 쪽이 맞는지 사용자 확인"]
         talked = (it.get("from") or "").startswith("사용자가") or it["id"].startswith("u-")
-        rights, rights_why = rights_of("대화" if talked else "인스타", ans.get("mine", ""))
+        rights, rights_why = rights_of("대화" if talked else "인스타", ans.get("mine", ""), TOLD_MINE.get(it["id"], ""))
         rows.append({
             "ref": f"vault:{it['file']}",  # 매일 실행(클라우드)에서 쓰는 주소
             "local": f"vault:내-음식-사진/{local}" if local else None,  # 이 컴퓨터에서 VAULT_DIR=상위 폴더로 만들 때
             "type": it.get("type"), "food": note, "food_local": named if named and _norm(named) != _norm(note) else "",
             # 갈래는 사용자가 붙인 폴더 이름을 참고해 나눠요(이름이 확정된 것은 아니에요). 보관함 이름의 갈래는 group_alt
             "group": group_of(named or note), "group_alt": group_of(note) if group_of(note) != group_of(named or note) else "",
-            "tags": tags, "source": 1, "from": it.get("from") or "사용자 인스타그램에서 옮김",
+            "tags": tags, "source": 1, "from": it.get("from") or ("사용자가 대화로 보냄" if talked else "사용자 인스타그램에서 옮김"),
             "taken": it.get("taken") or "", "w": it.get("w"), "h": it.get("h"),
             "status": status, "why": why, "used": it.get("used") or [],
             "rights": rights, "rights_why": rights_why,
@@ -422,8 +431,67 @@ def check(spec):
     return must, should
 
 
+def public(videos_dir=None):
+    """이미 만든 설계도(videos/날짜/*.json)에 들어간 보관함 사진과 그 권리 상태를 모아요. 유튜브에 올라간 것은
+    state/yt_stats.json 의 제목으로 찾아요. 결과는 내-음식-사진/_공개사용.md·.json (공개 저장소 밖). 읽기만 해요.
+    2026-10-20 사용자가 정함: 기존 공개 쇼츠에 쓴 권리 미확인 사진을 계속 구분해 둔다(영상은 지우거나 고치지 않음)."""
+    data = load_catalog()
+    if not data:
+        sys.exit("_목록.json 이 없어요. 먼저 python scripts/media.py catalog")
+    cat = {r["ref"]: r for r in data["items"]}
+    vdir = Path(videos_dir) if videos_dir else ROOT / "videos"
+    feed = vdir.parent
+    yt = json.loads((feed / "state" / "yt_stats.json").read_text(encoding="utf-8")).get("days", {}) if (feed / "state" / "yt_stats.json").exists() else {}
+    shorts = yt[max(yt)]["videos"] if yt else {}
+    rows = []
+    for f in sorted(vdir.glob("*/*.json")):
+        spec = json.loads(f.read_text(encoding="utf-8"))
+        refs = sorted({u for u in re.findall(r'"url":\s*"(vault:[^"]+)"', f.read_text(encoding="utf-8"))})
+        if not refs:
+            continue
+        day = f.parent.name
+        names = {spec.get("title"), spec.get("yt_title")} - {None}
+        # 유튜브 제목이 설계도 yt_title 의 앞부분만인 것도 있어요(뒤의 키워드를 빼고 올림)
+        hit = [(k, v) for k, v in shorts.items() if any(n == v["t"] or n.startswith(v["t"]) for n in names)]
+        how = "제목 같음"
+        if not hit and f.stem == "3-dinner":  # 제목을 바꿔 올린 저녁 영상은 그날 '저녁' 제목으로 찾아요
+            hit, how = [(k, v) for k, v in shorts.items() if v["at"][:10] == day and "저녁" in v["t"]], "그날 저녁 영상(추정)"
+        photos = []
+        for u in refs:
+            r = cat.get(u)
+            if r:
+                photos.append({"ref": u, "food": r["food"], "rights": r["rights"], "why": r["rights_why"]})
+            elif u.startswith("vault:photos/"):
+                photos.append({"ref": u, "food": "", "rights": "미확인", "why": "보관함 index.json 에 항목이 없음 — 어디서 온 사진인지 확인 전"})
+            else:
+                photos.append({"ref": u, "food": "", "rights": "사진 목록 밖", "why": "음식 사진이 아닌 보관함 자료(공지·그래픽 등) — 이 목록에서 판단하지 않음"})
+        bad = [p for p in photos if p["rights"] == "미확인"]
+        food = [p for p in photos if p["rights"] != "사진 목록 밖"]
+        state = "권리 미확인 사진 포함" if bad else "보관함 음식 사진 모두 확인" if food else "음식 사진 없음(목록 밖 자료만)"
+        rows.append({"spec": f"{day}/{f.stem}", "title": spec.get("yt_title") or spec.get("title"),
+                     "youtube": [{"id": k, "title": v["t"], "how": how} for k, v in hit],
+                     "state": state, "photos": photos})
+    out = photo_dir()
+    (out / "_공개사용.json").write_text(json.dumps({"made": __import__("datetime").date.today().isoformat(), "items": rows},
+                                                 ensure_ascii=False, indent=1), encoding="utf-8")
+    md = ["# 이미 만든 영상에 쓴 보관함 사진 (자동으로 만든 것, `python scripts/media.py public 설계도폴더` 로 다시 만들어요)", "",
+          "영상은 지우거나 고치지 않았어요. '미확인' 사진은 사용자가 확인할 때까지 그대로 미확인으로 둬요.", "",
+          "| 설계도 | 유튜브 | 상태 | 권리 미확인 사진 |", "|---|---|---|---|"]
+    for r in rows:
+        y = ", ".join(f"{v['id']} ({v['how']})" for v in r["youtube"]) or "못 찾음"
+        bad = "<br>".join(f"{p['food'] or p['ref']} — {p['why']}" for p in r["photos"] if p["rights"] == "미확인") or "-"
+        md.append(f"| {r['spec']} {r['title']} | {y} | {r['state']} | {bad} |")
+    (out / "_공개사용.md").write_text("\n".join(md) + "\n", encoding="utf-8")
+    for r in rows:
+        print(f"{r['spec']}: {r['state']} ({sum(p['rights'] == '미확인' for p in r['photos'])}장 미확인) · 유튜브 {len(r['youtube'])}편")
+    print(f"→ {out / '_공개사용.md'}")
+
+
 def main():
     cmd = sys.argv[1] if len(sys.argv) > 1 else ""
+    if cmd == "public":
+        public(sys.argv[2] if len(sys.argv) > 2 else None)
+        return
     if cmd == "catalog":
         catalog(sys.argv[2] if len(sys.argv) > 2 else None)
     elif cmd == "find" and len(sys.argv) > 2:
