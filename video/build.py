@@ -792,7 +792,7 @@ def card_problems(spec):
 #   글이 길면 fit_size 가 글자를 줄이는데, 휴대폰에서 읽히는 선 아래로 줄면 꼭 고치게 해요.
 HL_SIZE, WHY_SIZE, FACT_SIZE = 98, 48, 56  # 기본 글자 크기 (cards.css 와 news_card 가 같은 값을 써요)
 HL_MIN, WHY_MIN, FACT_MIN = 82, 40, 46     # 이보다 작아지면 꼭 고쳐요
-CARD_TEXT_MAX = 64                           # 한 장의 글(한 줄 소식 + 핵심 숫자 + 까닭) 칸 수 합
+CARD_TEXT_MAX = 68                           # 한 장의 글(한 줄 소식 + 핵심 숫자 + 까닭) 칸 수 합
 Q_MAX = 15                                   # 이야기 카드의 물음(q) 한 줄
 
 

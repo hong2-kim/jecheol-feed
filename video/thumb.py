@@ -179,6 +179,32 @@ def parts(spec):
     return t.get("head", ""), t.get("sub", ""), t.get("photo")
 
 
+STRIP_MIN, STRIP_MAX = 58, 74  # 흰 띠 글자 크기. 짧으면 크게 (2026-10-19 5단계: 띠 글이 작아 잘 안 읽혔어요)
+
+
+def strip_size(sub):
+    """흰 띠 한 줄이 띠 폭(1000px)에 들어가는 가장 큰 글자 크기. 짧을수록 커져요."""
+    import build as B
+    n = B.units(sub or "") or 1
+    return max(STRIP_MIN, min(STRIP_MAX, int(1000 / n / 1.02)))
+
+
+PIC_W, PIC_H = 1080, 890  # 사진 칸 (가로가 조금 긴 1.2:1)
+
+
+def photo_share(spec):
+    """썸네일에서 사진이 화면(1080x1920)의 몇 %를 차지하는지 (0~1). 잘리지 않게 넣으면 사진 칸(1.2:1)과
+    모양이 다를수록 작아져요: 3:2 가로 38%, 정사각 39%, 2:3 세로 25%, 16:9 가로 32%. 꽉 채우면(cover) 46%."""
+    import build as B
+    _, _, photo = parts(spec)
+    if not photo or B.zoomed(photo):
+        return PIC_W * PIC_H / (1080 * 1920)
+    B.fetch_photo(photo)
+    w, h = B.SIZES[B.photo_key(photo)]
+    k = min(PIC_W / w, PIC_H / h)
+    return (w * k) * (h * k) / (1080 * 1920)
+
+
 def body(spec):
     """썸네일 한 장면(머리 + 띠 + 사진)."""
     import build as B
@@ -186,7 +212,7 @@ def body(spec):
     name = json.loads((HERE.parent / "config.json").read_text(encoding="utf-8")).get("account") or "먹고갈지도"
     t = spec.get("thumb") or {}
     return (f'<div class="bback"><img src="{B.backdrop(photo)}"></div>{photo_html(B, photo)}'
-            + f'<div class="bstrip{" logo" if BRAND == "strip" else ""}"><div>{B.rich(sub)}</div></div>'
+            + f'<div class="bstrip{" logo" if BRAND == "strip" else ""}"><div style="font-size:{strip_size(sub)}px">{B.rich(sub)}</div></div>'
             + brand_marks(name) + head_html(head, name, t.get("color", AC)))
 
 
@@ -226,4 +252,9 @@ def spec_problems(spec):
         out.append("thumb.photo 가 없어요. 가장 먹음직스러운 사진 한 장을 적어 주세요.")
     if len((t.get("sub") or "").replace("[[", "").replace("]]", "")) > 16:
         out.append("thumb.sub 가 16자를 넘어요. 짧게 줄여 주세요.")
+    if t.get("photo"):
+        share = photo_share(spec)
+        if share < 0.34:  # 세로 사진, 아주 긴 가로 사진은 사진 칸 양옆·위아래가 크게 비어요
+            out.append(f"thumb.photo 가 사진 칸과 모양이 달라 화면의 {share:.0%}만 사진이에요(꽉 차면 46%). "
+                       "음식이 가운데 크게 있는 사진이면 \"fit\": \"cover\" 를 적어 꽉 채우고, 아니면 가로 3:2~4:3 사진으로 바꿔 주세요.")
     return out
