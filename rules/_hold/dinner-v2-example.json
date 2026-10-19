@@ -1,0 +1,267 @@
+{
+ "format": "voice",
+ "kind": "저녁",
+ "headline": "편의점 만 원\n[[야식 조합 2개]]",
+ "length": [
+  20,
+  35
+ ],
+ "budgets": [
+  10000
+ ],
+ "basis": "1인 기준. CU 홈페이지 상품 목록의 판매가(2026-10-19 확인), 1+1·2+1·카드 할인은 빼고 계산. 점포마다 없는 상품이 있을 수 있음. 음료 제외.",
+ "photo_note": "사진은 예시 · 실제 상품과 달라요",
+ "cast": {
+  "A": {
+   "voice": "ko-KR-Chirp3-HD-Puck",
+   "rate": 1.12,
+   "label": "준",
+   "color": "#2F7DD1"
+  },
+  "B": {
+   "voice": "ko-KR-Chirp3-HD-Leda",
+   "rate": 1.1,
+   "label": "하나",
+   "color": "#D8432B"
+  }
+ },
+ "facts": [
+  {
+   "id": "udon",
+   "what": "CJ)고메김치우동한그릇",
+   "value": 4500,
+   "unit": "원",
+   "src": "CU 홈페이지 상품 목록(간편식사·식품)",
+   "url": "https://cu.bgfretail.com/product/product.do",
+   "checked": "2026-10-19",
+   "status": "확인"
+  },
+  {
+   "id": "mandu",
+   "what": "CJ)비비고찐만두4입",
+   "value": 2000,
+   "unit": "원",
+   "src": "CU 홈페이지 상품 목록",
+   "url": "https://cu.bgfretail.com/product/product.do",
+   "checked": "2026-10-19",
+   "status": "확인"
+  },
+  {
+   "id": "leg",
+   "what": "득템)뉴통닭다리매콤",
+   "value": 3500,
+   "unit": "원",
+   "src": "CU 홈페이지 상품 목록",
+   "url": "https://cu.bgfretail.com/product/product.do",
+   "checked": "2026-10-19",
+   "status": "확인"
+  },
+  {
+   "id": "tteok",
+   "what": "PBICK)국물밀떡볶이컵",
+   "value": 2900,
+   "unit": "원",
+   "src": "CU 홈페이지 상품 목록",
+   "url": "https://cu.bgfretail.com/product/product.do",
+   "checked": "2026-10-19",
+   "status": "확인"
+  },
+  {
+   "id": "gimbap",
+   "what": "김)참치김밥",
+   "value": 3100,
+   "unit": "원",
+   "src": "CU 홈페이지 상품 목록",
+   "url": "https://cu.bgfretail.com/product/product.do",
+   "checked": "2026-10-19",
+   "status": "확인"
+  },
+  {
+   "id": "hotbar",
+   "what": "PBICK)핫바청양고추75g",
+   "value": 1500,
+   "unit": "원",
+   "src": "CU 홈페이지 상품 목록",
+   "url": "https://cu.bgfretail.com/product/product.do",
+   "checked": "2026-10-19",
+   "status": "확인"
+  }
+ ],
+ "lines": [
+  {
+   "who": "B",
+   "say": "편의점 만 원이면 야식 끝나.",
+   "photo": {
+    "url": "vault:내-음식-사진/291_떡볶이(삶은 달걀).jpg"
+   }
+  },
+  {
+   "who": "A",
+   "say": "진짜? 뭐 사는데?",
+   "gap": 0.08
+  },
+  {
+   "who": "B",
+   "say": "첫 번째, 국물 땡길 때.",
+   "card": {
+    "type": "price",
+    "title": "① [[국물]] 조합",
+    "sub": "1인 · CU 판매가",
+    "budget": 10000,
+    "total_beat": 2,
+    "total_after": 1.0,
+    "src": "CU 홈페이지 상품 목록 · 2026-10-19 확인 · 행사 할인 뺌",
+    "items": [
+     {
+      "name": "고메 김치우동",
+      "price": 4500,
+      "fact": "udon",
+      "beat": 1
+     },
+     {
+      "name": "비비고 찐만두 4입",
+      "price": 2000,
+      "fact": "mandu",
+      "beat": 1,
+      "after": 0.7
+     },
+     {
+      "name": "통닭다리 매콤",
+      "price": 3500,
+      "fact": "leg",
+      "beat": 2
+     }
+    ]
+   }
+  },
+  {
+   "who": "A",
+   "say": "김치우동에 찐만두 네 개."
+  },
+  {
+   "who": "B",
+   "say": "매콤한 닭다리 하나 더하면,"
+  },
+  {
+   "who": "A",
+   "say": "딱 만 원이네?",
+   "gap": 0.25
+  },
+  {
+   "who": "B",
+   "say": "우동 국물에 만두 찍어 먹는 맛이야.",
+   "photos": [
+    {
+     "url": "vault:내-음식-사진/194_돈가스와 우동.jpg",
+     "crop": [
+      0,
+      520,
+      1080,
+      1078
+     ]
+    },
+    {
+     "url": "vault:내-음식-사진/195_찐만두.jpg"
+    }
+   ]
+  },
+  {
+   "who": "A",
+   "say": "난 씹는 맛 파. 두 번째는 분식.",
+   "card": {
+    "type": "price",
+    "title": "② [[분식]] 조합",
+    "sub": "1인 · CU 판매가",
+    "budget": 10000,
+    "total_beat": 2,
+    "src": "CU 홈페이지 상품 목록 · 2026-10-19 확인 · 행사 할인 뺌",
+    "items": [
+     {
+      "name": "국물 밀떡볶이 컵",
+      "price": 2900,
+      "fact": "tteok",
+      "beat": 1
+     },
+     {
+      "name": "참치김밥",
+      "price": 3100,
+      "fact": "gimbap",
+      "beat": 1,
+      "after": 0.7
+     },
+     {
+      "name": "청양고추 핫바",
+      "price": 1500,
+      "fact": "hotbar",
+      "beat": 1,
+      "after": 1.4
+     }
+    ]
+   }
+  },
+  {
+   "who": "B",
+   "say": "떡볶이 컵에 참치김밥, 청양 핫바."
+  },
+  {
+   "who": "A",
+   "say": "7,500원. 2,500원이나 남아.",
+   "read": "칠천오백 원. 이천오백 원이나 남아."
+  },
+  {
+   "who": "B",
+   "say": "떡볶이 국물에 김밥 찍으면 끝이지.",
+   "photos": [
+    {
+     "url": "vault:내-음식-사진/103_떡볶이.jpg"
+    },
+    {
+     "url": "vault:내-음식-사진/241_라면과 김밥.jpg"
+    }
+   ]
+  },
+  {
+   "who": "A",
+   "say": "오늘은 국물이야, 분식이야?",
+   "card": {
+    "type": "pick",
+    "title": "오늘 밤은?",
+    "src": "가격은 CU 홈페이지 판매가 · 점포마다 없는 상품이 있을 수 있어요",
+    "rows": [
+     {
+      "if": "국물이 땡기면",
+      "then": "우동 · 만두 · 닭다리",
+      "beat": 0
+     },
+     {
+      "if": "씹는 맛이면",
+      "then": "떡볶이 · 김밥 · 핫바",
+      "beat": 0,
+      "after": 0.6
+     }
+    ]
+   }
+  },
+  {
+   "who": "B",
+   "say": "댓글로 골라 줘!"
+  }
+ ],
+ "thumb": {
+  "head": "편의점 만 원\n[[야식 조합 2개]]",
+  "sub": "남는 돈 [[2,500원]]",
+  "photo": {
+   "url": "vault:내-음식-사진/291_떡볶이(삶은 달걀).jpg"
+  }
+ },
+ "yt_title": "편의점 만 원으로 야식 해결, 조합 2개 골라 봤어",
+ "yt_keyword": "편의점 야식 조합",
+ "caption": "배달비 아까운 밤, 편의점 만 원 야식 조합 2개\n① 국물: 고메 김치우동 4,500 + 비비고 찐만두 4입 2,000 + 통닭다리 매콤 3,500 = 10,000원\n② 분식: 국물 밀떡볶이 컵 2,900 + 참치김밥 3,100 + 청양고추 핫바 1,500 = 7,500원\n가격: CU 홈페이지 판매가(2026-10-19 확인), 1+1·2+1 행사 뺌. 점포마다 없는 상품이 있을 수 있어요. 사진은 예시예요.\n오늘은 국물? 분식? 댓글에 한 단어로 남겨 주세요.",
+ "tags": [
+  "편의점야식",
+  "편의점조합",
+  "야식추천",
+  "오늘뭐먹지"
+ ],
+ "_note": "본보기(2026-10-19 샘플 B). 사진 주소는 사용자 사진 폴더 기준 예시이고, 실제로는 비공개 보관함 vault:photos/… 를 쓴다."
+}

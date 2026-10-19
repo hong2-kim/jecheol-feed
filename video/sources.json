@@ -1,0 +1,119 @@
+{
+  "_": "소재(사진·영상) 출처와 이용 조건. scripts/media.py check 가 설계도를 볼 때 쓴다. 2026-10-19 사용자가 우선순위를 정함: ① 사용자 사진·영상 ② 한국관광공사 ③ 편의점·마트·식품 회사 공식 상품 이미지(이용 조건이 확인될 때만). 조건은 바뀔 수 있으니 checked 날짜가 오래되면 다시 본다.",
+  "checked": "2026-10-19",
+  "tiers": {
+    "1": "사용자가 직접 찍은 사진·영상 (비공개 보관함 jecheol-photos, 내-음식-사진, 텔레그램으로 보낸 것)",
+    "2": "한국관광공사 (포토코리아 관광사진, 관광정보 이미지)",
+    "3": "편의점·마트·식품 회사 공식 상품 이미지",
+    "4": "자체 그래픽 (가격표·비교·순서·예산·고르기 카드)",
+    "5": "그 밖의 자유 이용 사진 (위키미디어 CC0·퍼블릭 도메인, Pexels)"
+  },
+  "hosts": [
+    {
+      "match": [
+        "tong.visitkorea.or.kr/cms2/website",
+        "phoko.visitkorea.or.kr"
+      ],
+      "tier": 2,
+      "name": "한국관광공사 포토코리아",
+      "license": "공공누리 1유형",
+      "credit": "ⓒ한국관광공사 포토코리아-촬영자",
+      "terms": "공공데이터포털 '한국관광공사_관광사진 정보_GW'(data.go.kr/data/15101914): 포토코리아 사진은 공공누리 1유형, 자유롭게 다운로드·활용 가능",
+      "rule": "출처 표시 필수(credits). 상업적 이용·자르기 가능. 사람이 크게 나온 사진은 초상권이 따로라 쓰지 않는다."
+    },
+    {
+      "match": [
+        "tong.visitkorea.or.kr/cms/resource"
+      ],
+      "tier": 2,
+      "name": "한국관광공사 관광정보(TourAPI) 이미지",
+      "license": "공공누리 1유형 또는 3유형(이미지마다 다름)",
+      "credit": "ⓒ한국관광공사",
+      "terms": "공공데이터포털 '한국관광공사_국문 관광정보 서비스_GW'(data.go.kr/data/15101578): 공공누리 1·3유형 이미지 제공, 명예훼손·인격권 침해 용도와 기업 CI·BI 이용 금지",
+      "rule": "이미지마다 유형을 확인해 assets 에 license 로 적는다. 3유형(변경 금지)은 잘라 쓰거나 글을 얹으면 안 되니 쇼츠에는 쓰지 않는다."
+    },
+    {
+      "match": [
+        "upload.wikimedia.org",
+        "commons.wikimedia.org/wiki/Special:FilePath"
+      ],
+      "tier": 5,
+      "name": "위키미디어 공용",
+      "license": "사진마다 다름",
+      "credit": "",
+      "rule": "CC0·퍼블릭 도메인은 표시 없이 쓴다. CC BY(BY-SA 빼고)는 조건을 채우면 쓴다: credits 에 저작자·라이선스·원본 주소, 끝 장면에 '잘라서 보정' 표시(2026-10-20 사용자: 무조건 제외하지 말 것). assets 에 license 를 적는다."
+    },
+    {
+      "match": [
+        "images.pexels.com",
+        "videos.pexels.com"
+      ],
+      "tier": 5,
+      "name": "Pexels",
+      "license": "Pexels 라이선스(출처 표시 의무 없음)",
+      "credit": "",
+      "rule": "사람 얼굴이 나오면 쓰지 않는다. 상표가 크게 보이면 쓰지 않는다."
+    }
+  ],
+  "companies": {
+    "_": "회사 공식 사진의 외부 재사용·상업적 이용 조건. 2026-10-19 각 공식 홈페이지를 직접 확인한 결과. 어느 곳도 일반 공개 이용 허락이 없다 → 서면 허락(permission)이 없으면 자동 게시에 쓰지 않는다. 보도자료 사진은 기사 보도용으로 배포한 것이라 쇼츠·블로그 재사용 허락으로 보지 않는다.",
+    "CU": {
+      "site": "https://cu.bgfretail.com",
+      "finding": "하단에 'COPYRIGHT © BGFretail ALL RIGHT RESERVED.'만 있고 이용약관·재사용 안내가 없음. 문의: 제휴/광고 문의",
+      "reuse": "불명",
+      "commercial": "불명",
+      "checked": "2026-10-19"
+    },
+    "GS25": {
+      "site": "https://gs25.gsretail.com",
+      "finding": "하단에 'Copyright ⓒGS Retail. All rights reserved.'만 있고 재사용 안내 없음",
+      "reuse": "불명",
+      "commercial": "불명",
+      "checked": "2026-10-19"
+    },
+    "세븐일레븐": {
+      "site": "https://www.7-eleven.co.kr",
+      "finding": "하단에 'COPYRIGHT 2014 KOREA SEVEN CO, LTD. All Rights Reserved.'만 있고 재사용 안내 없음",
+      "reuse": "불명",
+      "commercial": "불명",
+      "checked": "2026-10-19"
+    },
+    "이마트": {
+      "site": "https://emart.ssg.com",
+      "terms": "https://member.ssg.com/policies/terms.ssg?site=small",
+      "finding": "이용약관 제26조: 회사 저작물을 사전 승낙 없이 복제·송신·배포 등 영리 목적으로 이용 금지",
+      "reuse": "허락 필요",
+      "commercial": "허락 필요",
+      "checked": "2026-10-19"
+    },
+    "롯데마트": {
+      "site": "https://company.lottemart.com",
+      "terms": "https://company.lottemart.com/privacy/term.asp",
+      "finding": "이용약관 제16조: 회사 저작물을 사전 승낙 없이 복제·송신·배포 등 영리 목적으로 이용 금지",
+      "reuse": "허락 필요",
+      "commercial": "허락 필요",
+      "checked": "2026-10-19"
+    },
+    "식품 제조사": {
+      "finding": "회사마다 다름. 확인한 곳 없음. 홈페이지·보도자료마다 따로 본다.",
+      "reuse": "불명",
+      "commercial": "불명",
+      "checked": ""
+    }
+  },
+  "words": {
+    "_": "공식 제휴·협찬을 받은 것처럼 보이는 말. 실제로 협찬·제휴가 있을 때는 사용자가 정하고 'sponsored' 를 적는다(그때는 '유료 광고 포함' 표시가 따로 필요).",
+    "ban": [
+      "협찬",
+      "제공받",
+      "제공 받",
+      "공식 제휴",
+      "제휴",
+      "공식 파트너",
+      "파트너십",
+      "공식 추천",
+      "공식 홍보",
+      "브랜드 공식"
+    ]
+  }
+}

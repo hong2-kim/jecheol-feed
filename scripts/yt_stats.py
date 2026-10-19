@@ -21,7 +21,7 @@ from common import KST, ROOT, log_error, read_json, today_kst, write_json
 
 API = "https://www.googleapis.com/youtube/v3/"
 LEDGER = ROOT / "state" / "yt_stats.json"
-KINDS = {"저녁": "저녁 TOP 5", "발견": "발견형", "소식": "뉴스 카드", "유행": "트렌드", "제철": "제철",
+KINDS = {"저녁": "저녁 TOP 5", "저녁추천": "저녁 추천", "발견": "발견형", "소식": "뉴스 카드", "유행": "트렌드", "제철": "제철",
          "지역": "지역", "이야기": "이야기", "세계": "세계 축제", "해외": "해외 트렌드", "해설": "내레이션"}
 
 
@@ -64,7 +64,7 @@ def fetch(handle):
 def guess_kind(title, at, known):
     """유튜브 제목과 올린 날로 우리 영상 종류를 찾아요. 제목을 손으로 바꿔 올린 것도 비슷하면 찾아요."""
     day = datetime.fromisoformat(at.replace("Z", "+00:00")).astimezone(KST).date()
-    best, kind = 0.0, None
+    best, kind, top = 0.0, None, None
     for v in known:
         if not v.get("kind") or abs((datetime.strptime(v["date"], "%Y-%m-%d").date() - day).days) > 3:
             continue
@@ -72,8 +72,12 @@ def guess_kind(title, at, known):
             if name:
                 r = difflib.SequenceMatcher(None, title.replace(" ", ""), str(name).replace(" ", "")).ratio()
                 if r > best:
-                    best, kind = r, v["kind"]
+                    best, kind, top = r, v["kind"], v
     if best >= 0.35:
+        # 2026-10-20 저녁 영상을 TOP 5 에서 '저녁 추천'(한 화면 4칸)으로 바꿨어요. 예전 기록은 그대로 두고,
+        # 제목에 TOP 이 없는 저녁 영상만 '저녁 추천'으로 따로 보여요(kind 는 둘 다 '저녁').
+        if kind == "저녁" and not any("TOP" in str(top.get(k) or "").upper() for k in ("yt_title", "title")):
+            return "저녁추천"
         return kind
     low = title.lower().replace(" ", "")
     if "top5" in low and "저녁" in low:  # 저녁top5 처럼 짧게 바꿔 올린 제목

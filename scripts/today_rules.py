@@ -20,7 +20,7 @@ from common import KST, ROOT, read_json
 WEEK = "월화수목금토일"
 # 처음에 읽을 파일 / 그 차례에 읽을 파일. 늦게 쓰는 것을 늦게 읽으면, 그 앞의 턴마다 그 글이 맥락에 실리지 않아요.
 # trend.md 는 처음에 읽어요: 카드·저녁·발견형 제목의 "유행 음식 쇼츠 말투", 발견형·해외 트렌드의 근거·사진 규칙이 거기 있어요.
-DAILY = [("rules/daily/cards.md", "카드 뉴스"), ("rules/daily/dinner.md", "저녁 TOP 5"),
+DAILY = [("rules/daily/cards.md", "카드 뉴스"), ("rules/daily/dinner.md", "저녁 추천"),
          ("rules/daily/shorts.md", "모든 쇼츠 공통"), ("rules/daily/voice.md", "내레이션 쇼츠"),
          ("rules/daily/trend.md", "트렌드 후보, 유행 음식 쇼츠 말투, 유행 근거·회사 사진 규칙")]
 DAILY_LATER = [("rules/daily/items.md", "순서 4번, 소식 글을 쓰기 직전")]
