@@ -4,7 +4,8 @@
 2026-10-17 사용자가 정함: 벤치마킹 채널처럼 제목은 크고 한눈에 읽히게, 사진 하나가 중심, 다른 요소는 넣지 않는다.
   위 0~680   어두운 바탕에 두 줄 제목 (첫 줄 흰색, 둘째 줄 강조색, 검은 테두리)
   680~810    흰 띠에 작은 한 줄 (내레이션 쇼츠는 여기에 자막이 나와요)
-  810~1700   사진 한 장 (확대 요청이 없으면 잘리지 않게 통째로)
+  810~1920   사진 한 장 (확대 요청이 없으면 잘리지 않게 통째로, 위쪽에 붙여요)
+  2026-10-19 5단계: 사진 칸을 맨 아래까지 늘려 아래쪽 어두운 띠(1700~1920)를 없앴어요.
 유튜브 채널 목록은 위아래를 150px쯤, 인스타 격자(3:4)는 240px쯤 잘라 보여 줘서 제목은 250px 아래에 둬요.
 
 설계도에 이렇게 적어요.
@@ -63,8 +64,8 @@ CSS = """
 .bstrip { position: absolute; left: 0; right: 0; top: 680px; height: 130px; background: #fff; display: flex; align-items: center; justify-content: center; z-index: 901; }
 .bstrip div { font-weight: 900; font-size: 58px; letter-spacing: -2px; color: #111; text-align: center; padding: 0 40px; white-space: nowrap; }
 .bstrip .am { color: #D8432B; }
-.bpic { position: absolute; left: 0; right: 0; top: 810px; height: 890px; overflow: hidden; background: #0E0B09; }
-.bpic img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; }
+.bpic { position: absolute; left: 0; right: 0; top: 810px; height: 1110px; overflow: hidden; background: #0E0B09; }
+.bpic img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; object-position: 50% 0; }
 .bpic img.bg, .bpic.cover img { object-fit: cover; }
 .bpic.pack { background: #fff; } .bpic.pack img { padding: 30px 56px; }
 .bback { position: absolute; left: 0; right: 0; top: 1700px; bottom: 0; overflow: hidden; }
@@ -179,6 +180,33 @@ def parts(spec):
     return t.get("head", ""), t.get("sub", ""), t.get("photo")
 
 
+STRIP_MIN, STRIP_MAX = 58, 74  # 흰 띠 글자 크기. 짧으면 크게 (2026-10-19 5단계: 띠 글이 작아 잘 안 읽혔어요)
+
+
+def strip_size(sub):
+    """흰 띠 한 줄이 띠 폭(1000px)에 들어가는 가장 큰 글자 크기. 짧을수록 커져요."""
+    import build as B
+    n = B.units(sub or "") or 1
+    return max(STRIP_MIN, min(STRIP_MAX, int(1000 / n / 1.02)))
+
+
+PIC_W, PIC_H = 1080, 1110  # 사진 칸 (거의 정사각형)
+
+
+def photo_share(spec):
+    """사진 칸(1080x1110) 가운데 사진이 실제로 차는 몫 (0~1). 나머지는 같은 사진을 흐리게 깐 빈자리예요.
+    잘리지 않게 넣으면 칸과 모양이 다를수록 작아져요: 정사각 97%, 3:4 세로 77%, 4:3 가로 73%, 2:3 세로 69%, 3:2 가로 65%, 16:9 가로 55%.
+    꽉 채우면(fit cover) 100%."""
+    import build as B
+    _, _, photo = parts(spec)
+    if not photo or B.zoomed(photo):
+        return 1.0
+    B.fetch_photo(photo)
+    w, h = B.SIZES[B.photo_key(photo)]
+    k = min(PIC_W / w, PIC_H / h)
+    return (w * k) * (h * k) / (PIC_W * PIC_H)
+
+
 def body(spec):
     """썸네일 한 장면(머리 + 띠 + 사진)."""
     import build as B
@@ -186,7 +214,7 @@ def body(spec):
     name = json.loads((HERE.parent / "config.json").read_text(encoding="utf-8")).get("account") or "먹고갈지도"
     t = spec.get("thumb") or {}
     return (f'<div class="bback"><img src="{B.backdrop(photo)}"></div>{photo_html(B, photo)}'
-            + f'<div class="bstrip{" logo" if BRAND == "strip" else ""}"><div>{B.rich(sub)}</div></div>'
+            + f'<div class="bstrip{" logo" if BRAND == "strip" else ""}"><div style="font-size:{strip_size(sub)}px">{B.rich(sub)}</div></div>'
             + brand_marks(name) + head_html(head, name, t.get("color", AC)))
 
 
@@ -226,4 +254,9 @@ def spec_problems(spec):
         out.append("thumb.photo 가 없어요. 가장 먹음직스러운 사진 한 장을 적어 주세요.")
     if len((t.get("sub") or "").replace("[[", "").replace("]]", "")) > 16:
         out.append("thumb.sub 가 16자를 넘어요. 짧게 줄여 주세요.")
+    if t.get("photo"):
+        share = photo_share(spec)
+        if share < 0.72:  # 3:2 가로·2:3 세로 사진은 사진 칸의 3분의 1이 흐린 빈자리예요
+            out.append(f"thumb.photo 가 사진 칸(거의 정사각형)과 모양이 달라 칸의 {share:.0%}만 사진이고 나머지는 흐린 빈자리예요. "
+                       "음식이 가운데 크게 있는 사진이면 \"fit\": \"cover\" 를 적어 꽉 채우고, 아니면 정사각형·3:4 세로 사진으로 바꿔 주세요.")
     return out
