@@ -8,7 +8,8 @@
   기준 낱말과 견줘요. 없으면 건너뛰어요.
 - --coverage: 오늘 같은 소식을 쓴 매체 수(inbox 의 coverage). 처음 열리는 행사는 지난 기사가 없으니 이것으로 봐요.
 
-판정: 올림(관심 많음) / 보통(써도 되지만 맨 앞에 두지 않음) / 뺌(관심이 너무 없음)
+판정: 올림(관심 많음) / 보통(써도 되지만 맨 앞에 두지 않음) / 뺌(관심이 너무 없음) / 모름(기사 수도 못 읽음)
+맨 앞 줄에 검색량을 썼는지 늘 알려 줘요(키 없음 / 못 읽음 / 가져옴). 검색량 없이 낸 판정은 "근거": "추정" 이에요. (2026-10-18)
 """
 import argparse
 import json
@@ -51,6 +52,12 @@ def search_trend(names, today):
 
 
 def verdict(recent, before, coverage, trend):
+    if recent is None:  # 구글 뉴스가 막혀(429 등) 기사 수를 못 읽었어요. 오늘 매체 수로만 봐요
+        if coverage >= 5:
+            return "올림", "기사 수는 못 읽었지만 오늘 여러 매체가 다뤘어요"
+        if coverage >= 3:
+            return "보통", "기사 수는 못 읽었고 오늘 매체 수만 봤어요"
+        return "모름", "기사 수를 못 읽었고 오늘 다룬 매체도 적어요. 높게 치지 않아요"
     total = recent + before
     if trend is not None and trend["peak_vs_bench"] < 0.02 and coverage < 5:
         return "뺌", "지난 2년 검색이 거의 없어요"
@@ -72,15 +79,26 @@ def main():
     trends = None
     try:
         trends = search_trend(a.names, today)
+        status = "키 없음 (NAVER_CLIENT_ID, NAVER_CLIENT_SECRET). 기사 수로만 판단해요" if trends is None else "가져왔어요"
     except Exception as e:  # 검색량을 못 읽어도 뉴스로 판단해요
-        print(json.dumps({"검색량": f"못 읽었어요 ({str(e)[:80]})"}, ensure_ascii=False))
+        status = f"못 읽었어요 ({str(e)[:80]}). 기사 수로만 판단해요"
+    print(json.dumps({"검색량": status}, ensure_ascii=False))
     for n in a.names:
-        recent, before = news_count(n, y1, now), news_count(n, y2, y1)
+        try:
+            recent, before = news_count(n, y1, now), news_count(n, y2, y1)
+        except Exception as e:  # 구글 뉴스 요청 제한(429) 같은 때도 멈추지 않아요
+            recent = before = None
+            news_error = str(e)[:80]
         t = (trends or {}).get(n)
         v, why = verdict(recent, before, a.coverage, t)
-        row = {"이름": n, "지난1년_기사(최근한달제외)": recent, "그전1년_기사": before, "오늘_매체수": a.coverage, "판정": v, "까닭": why}
-        if before == 0 and recent <= 2:
+        row = {"이름": n, "지난1년_기사(최근한달제외)": recent, "그전1년_기사": before, "오늘_매체수": a.coverage, "판정": v, "까닭": why,
+               "근거": "확인" if t else "추정"}  # 검색량이 있어야 "확인"이에요. 기사 수만으로는 추정이에요
+        if recent is None:
+            row["참고"] = f"기사 수를 못 읽었어요 ({news_error})"
+        elif before == 0 and recent <= 2:
             row["참고"] = "처음 열리거나 새로 생긴 것일 수 있어요. 오늘 다룬 매체 수와 주최(지자체·관광공사 등)를 함께 봐요"
+        elif max(recent, before) >= 100:
+            row["참고"] = "기사가 한 해 100개를 넘어 더 세지 못했어요. 큰 주제끼리는 크기를 견주지 못해요"
         if t:
             row["검색량_기준대비"] = t
         print(json.dumps(row, ensure_ascii=False))

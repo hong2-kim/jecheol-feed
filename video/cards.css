@@ -72,3 +72,31 @@ body { color: #fff; font-family: "Noto Sans KR", sans-serif; word-break: keep-al
 .nc .fl-it .tile { position: relative; }
 .nc .fl-it .tile.logo-fit img { object-fit: contain; padding: 18px; }
 .nc .fl-it .badge { position: absolute; left: 16px; bottom: 16px; padding: 6px 18px 10px; border-radius: 14px; background: #17130F; color: var(--ac); font-weight: 900; font-size: 44px; letter-spacing: -2px; }
+
+/* 이야기 카드 (2026-10-18): 비교(compare) · 막대(chart) · 정리(summary). type 이 없는 카드는 위 규칙만 써요. */
+.nc .cmp { position: absolute; left: 56px; right: 56px; top: 170px; height: 460px; display: flex; align-items: stretch; justify-content: space-between; gap: 20px; }
+.nc .cm-it { flex: 1; min-width: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 16px; padding: 26px 18px;
+  border-radius: 34px; background: rgba(255,255,255,.07); border: 3px solid rgba(255,255,255,.14); text-align: center; }
+.nc .cm-it.hi { border-color: var(--ac); background: rgba(255,255,255,.11); }
+.nc .cm-lb { font-weight: 800; font-size: 40px; letter-spacing: -1.5px; color: rgba(255,255,255,.88); }
+.nc .cm-it img { width: 100%; height: 170px; object-fit: cover; border-radius: 22px; }
+.nc .cm-v { font-weight: 900; line-height: 1.05; letter-spacing: -4px; color: #fff; white-space: nowrap; }
+.nc .cm-it.hi .cm-v { color: var(--ac); }
+.nc .cm-n { font-style: normal; font-weight: 800; font-size: 40px; letter-spacing: -1px; color: var(--ac); }
+.nc .cm-mid { align-self: center; flex: none; font-weight: 900; font-size: 46px; color: var(--ac); }
+
+.nc .chart { position: absolute; left: 64px; right: 64px; top: 150px; height: 500px; display: flex; flex-direction: column; justify-content: center; gap: 22px; }
+.nc .ch-note { font-weight: 600; font-size: 28px; letter-spacing: -.5px; color: rgba(255,255,255,.62); text-align: right; }
+.nc .ch-row { display: grid; grid-template-columns: 240px 1fr 220px; align-items: center; gap: 22px; }
+.nc .ch-lb { font-weight: 800; font-size: 38px; letter-spacing: -1.5px; color: rgba(255,255,255,.9); text-align: right; white-space: nowrap; }
+.nc .ch-bar { height: 58px; border-radius: 14px; background: rgba(255,255,255,.08); overflow: hidden; }
+.nc .ch-bar i { display: block; height: 100%; border-radius: 14px; background: rgba(255,255,255,.42); }
+.nc .ch-row.hi .ch-bar i { background: var(--ac); }
+.nc .ch-v { font-weight: 900; font-size: 42px; letter-spacing: -1.5px; white-space: nowrap; }
+.nc .ch-row.hi .ch-v { color: var(--ac); }
+
+.nc.sm .txt { top: 250px; bottom: auto; }
+.nc.sm .list { margin-top: 44px; list-style: none; }
+.nc.sm .list li { position: relative; padding: 16px 0 18px 40px; border-top: 2px solid rgba(255,255,255,.2); font-weight: 700; letter-spacing: -1.5px; line-height: 1.35; }
+.nc.sm .list li::before { content: ""; position: absolute; left: 2px; top: 34px; width: 16px; height: 16px; border-radius: 50%; background: var(--ac); }
+.nc.sm .ask { margin-top: 40px; font-weight: 900; font-size: 44px; letter-spacing: -1.5px; color: var(--ac); }

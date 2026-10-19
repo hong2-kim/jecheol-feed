@@ -673,6 +673,12 @@ NEWS_MAP = OUTRO_MAP.replace('class="map"', 'preserveAspectRatio="xMidYMin slice
 # 카드 묶음의 갈래: (계정 이름 옆 이름표, 첫 장에 붙는 말, 강조색). kind 로 골라요.
 NEWS_SERIES = ("뉴스", "오늘의 먹거리 뉴스", "#FFB23E")  # 강조색은 프로필 사진의 핀과 같은 색
 SERIES = {"유행": ("트렌드", "요즘 뜨는 메뉴", "#FF8FA8")}
+# 이야기 카드 ("mode": "story", 2026-10-18 사용자가 정함): 이슈 하나를 여러 장으로 풀어요.
+#   첫 장(물음 하나) → 답·근거(비교 compare, 막대 chart, 사진·큰 숫자) → 까닭 → 정리(summary)
+# type 이 없는 카드는 예전과 똑같이 그려요.
+STORY_MIN, STORY_MAX = 3, 6
+STORY_PILL, STORY_LABEL = "이슈", "오늘의 먹거리 이슈"
+CARD_TYPES = ("compare", "chart", "summary")
 
 
 def is_cards(spec):
@@ -684,6 +690,10 @@ def series(spec):
     return SERIES.get(spec.get("kind"), NEWS_SERIES)
 
 
+def is_story(spec):
+    return spec.get("mode") == "story"
+
+
 def why_lines(card):
     why = card.get("why") or []
     return [why] if isinstance(why, str) else list(why)
@@ -693,10 +703,30 @@ def card_problems(spec):
     """카드 뉴스 설계도에서 고칠 곳을 찾아요. (꼭 고칠 것, 고치면 좋은 것)"""
     must, should = [], []
     cards = spec.get("cards") or []
-    if not CARD_MIN <= len(cards) <= CARD_MAX:
-        must.append(f"카드가 {len(cards)}장이에요. {CARD_MIN}~{CARD_MAX}장으로 맞춰 주세요.")
+    story = is_story(spec)
+    lo, hi = (STORY_MIN, STORY_MAX) if story else (CARD_MIN, CARD_MAX)
+    if not lo <= len(cards) <= hi:
+        must.append(f"카드가 {len(cards)}장이에요. {lo}~{hi}장으로 맞춰 주세요.")
     cover = spec.get("cover") or {}
-    if not cover.get("title") or not cover.get("items"):
+    if story:  # 이야기 카드: 첫 장은 물음 하나. items(목록)는 없어도 돼요
+        if not cover.get("title"):
+            must.append("첫 장(cover)에 title(물음 하나)을 적어 주세요.")
+        else:
+            if len(cover["title"].split("\n")) > 3:
+                must.append("첫 장: title 은 세 줄까지예요.")
+            if max(units(line) for line in cover["title"].split("\n")) > 11:
+                should.append("첫 장: title 이 길어 글자가 작아져요. 한 줄에 10자 안쪽으로 줄여 주세요.")
+        if len(cover.get("items") or []) > 3:
+            should.append("첫 장: 이야기 카드의 items 는 3줄까지만 보여요. 물음 하나에 집중해 주세요.")
+        if any(units(line) > 17 for line in cover.get("items") or []):
+            should.append("첫 장: items 한 줄이 길어 글자가 작아져요. 16자 안쪽으로 줄여 주세요.")
+        if units(str(cover.get("label") or "")) > 13:
+            should.append("첫 장: label 이 길어요. 12자 안쪽으로 줄여 주세요.")
+        if units(str(spec.get("pill") or "")) > 5:
+            should.append("pill(계정 옆 이름표)이 길어요. 4자 안쪽으로 줄여 주세요.")
+        if cards and cards[-1].get("type") != "summary":
+            should.append("이야기 카드는 마지막 장을 정리(type summary)로 끝내 주세요.")
+    elif not cover.get("title") or not cover.get("items"):
         must.append("첫 장(cover)이 없어요. title(궁금하게 하는 한마디)과 items(소식마다 한 줄)를 적어 주세요.")
     else:
         if len(cover["title"].split("\n")) > 3:
@@ -708,9 +738,16 @@ def card_problems(spec):
         if any(units(line) > 17 for line in cover["items"]):
             should.append("첫 장: items 한 줄이 길어 글자가 작아져요. 16자 안쪽으로 줄여 주세요.")
     for n, c in enumerate(cards, 1):
-        for key, name in (("tag", "분류"), ("headline", "한 줄 소식"), ("why", "까닭"), ("src", "자료 이름")):
+        kind = c.get("type")
+        if kind is not None and kind not in CARD_TYPES:
+            must.append(f"카드 {n}: 모르는 꼴(type '{kind}')이에요. 빼거나 {', '.join(CARD_TYPES)} 가운데 하나로 적어 주세요.")
+            continue
+        need = (("tag", "분류"), ("headline", "한 줄 소식")) + (() if kind == "summary" else (("why", "까닭"), ("src", "자료 이름")))
+        for key, name in need:
             if not c.get(key):
                 must.append(f"카드 {n}: {name}({key})이 없어요.")
+        if kind:
+            typed_problems(c, n, must, should)
         head = str(c.get("headline") or "").split("\n")
         if len(head) > 2:
             must.append(f"카드 {n}: 한 줄 소식은 두 줄까지예요.")
@@ -725,32 +762,68 @@ def card_problems(spec):
             should.append(f"카드 {n}: 핵심 숫자 줄이 길어요. 20자 안쪽으로 줄여 주세요.")
         if c.get("note") and units(c["note"]) > 9:
             should.append(f"카드 {n}: 스티커 한마디(note)가 길어요. 8자 안쪽으로 줄여 주세요.")
-        if not c.get("photo") and not c.get("big"):
+        if not kind and not c.get("photo") and not c.get("big"):
             should.append(f"카드 {n}: 사진이 없어요. 맞는 사진이 없으면 big 에 큰 숫자(예: -9%)를 적어 주세요.")
     if "출처" not in (spec.get("caption") or ""):
         must.append("게시글(caption) 끝에 '출처: 기관·매체 이름(날짜)' 줄을 적어 주세요. 카드에는 출처 장이 없어요.")
     return must, should
 
 
+def typed_problems(c, n, must, should):
+    """이야기 카드의 비교(compare)·막대(chart)·정리(summary) 장을 살펴요."""
+    if c["type"] == "compare":
+        sides = c.get("sides") or []
+        if len(sides) != 2:
+            must.append(f"카드 {n}: 비교(compare)는 sides 가 꼭 2개예요.")
+        for s in sides:
+            if not s.get("label") or not s.get("value"):
+                must.append(f"카드 {n}: 비교 칸마다 label(무엇)과 value(값)를 적어 주세요.")
+            elif units(str(s["label"])) > 9 or units(str(s["value"])) > 9:
+                should.append(f"카드 {n}: 비교 칸의 label·value 는 8자 안쪽이 좋아요. 글자가 작아져요.")
+    elif c["type"] == "chart":
+        bars = (c.get("chart") or {}).get("bars") or []
+        if not 2 <= len(bars) <= 6:
+            must.append(f"카드 {n}: 막대(chart)는 bars 가 2~6개예요.")
+        for b in bars:
+            if not b.get("label") or isinstance(b.get("value"), bool) or not isinstance(b.get("value"), (int, float)) or b["value"] < 0:
+                must.append(f"카드 {n}: 막대마다 label 과 0 이상의 숫자 value 를 적어 주세요. (값은 확인한 자료의 숫자만)")
+                break
+        if any(units(str(b.get("label", ""))) > 7 for b in bars):
+            should.append(f"카드 {n}: 막대 이름(label)은 6자 안쪽이 좋아요.")
+    elif c["type"] == "summary":
+        points = c.get("points") or []
+        if not 1 <= len(points) <= 3:
+            must.append(f"카드 {n}: 정리(summary)는 points 가 1~3줄이에요.")
+        if any(units(str(p)) > 22 for p in points):
+            should.append(f"카드 {n}: 정리 한 줄이 길어 글자가 작아져요. 22자 안쪽으로 줄여 주세요.")
+
+
 WEEKLY_CTA = "늙크크 안 되게, 매주 금요일 유행 업데이트"  # 트렌드 카드 첫 장 아래 한마디 (2026-10-16 사용자가 정한 느낌)
 
 
-def news_cover(cover, total, when, name, pill, label, weekly=False):
+def news_cover(cover, total, when, name, pill, label, weekly=False, story=False):
     """첫 장. 오늘 소식들을 궁금하게 던져요. 답은 다음 장부터 나와요.
-    weekly(트렌드 카드)면 이름표에 "10월 3주차 유행 업데이트"를 크게 쓰고, 아래에 매주 온다는 한마디를 붙여요."""
+    weekly(트렌드 카드)면 이름표에 "10월 3주차 유행 업데이트"를 크게 쓰고, 아래에 매주 온다는 한마디를 붙여요.
+    story(이야기 카드)면 이름표는 cover.label(없으면 "오늘의 먹거리 이슈")이고, items 목록은 있을 때만 보여요."""
     if cover.get("photo"):
         src, pos = fetch_photo(cover["photo"])
         top = f'<div class="ph"><img src="{src}" style="object-position:{pos}"></div>'
     else:
         top = f'<div class="ph">{NEWS_MAP}</div>'
-    size = min(fit_size(line, 58, 880) for line in cover["items"])
-    rows = "".join(f'<li style="font-size:{size}px">{rich(line)}</li>' for line in cover["items"])
+    items = (cover.get("items") or [])[:3] if story else cover["items"]
+    size = min((fit_size(line, 58, 880) for line in items), default=58)
+    rows = "".join(f'<li style="font-size:{size}px">{rich(line)}</li>' for line in items)
+    if story:
+        tag = esc(cover.get("label") or STORY_LABEL)
+    else:
+        tag = esc(when) + " 유행 업데이트" if weekly else f"{label} {total}"
+    listing = f'<ul class="list">{rows}</ul>' if rows or not story else ""
     return (
         f'<section class="nc cv" id="c1">{top}'
         f'<div class="mast"><div class="brand">{OUTRO_PIN}<span>{name}</span><i>{pill}</i></div><div class="when">{esc(when)}</div></div>'
-        f'<div class="txt"><span class="tag{" wk" if weekly else ""}">{esc(when) + " 유행 업데이트" if weekly else f"{label} {total}"}</span>'
+        f'<div class="txt"><span class="tag{" wk" if weekly else ""}">{tag}</span>'
         f'<div class="hl" style="font-size:{fit_size(cover["title"], 122, 950)}px">{rich(cover["title"])}</div>'
-        f'<ul class="list">{rows}</ul></div>'
+        f'{listing}</div>'
         + (f'<div class="foot"><span class="cta">{WEEKLY_CTA}</span><b class="go">밀어서 →</b></div></section>' if weekly
            else '<div class="foot"><span></span><b class="go">밀어서 확인하기 →</b></div></section>')
     )
@@ -787,9 +860,71 @@ def flow_html(f):
             + "</div>")
 
 
+def number(v):
+    """막대 옆에 적는 값: 12321 -> 12,321 / 12.50 -> 12.5"""
+    return f"{v:,}" if isinstance(v, int) else f"{v:,.1f}".rstrip("0").rstrip(".")
+
+
+def compare_html(c):
+    """두 가지를 나란히: [무엇·사진·값·한마디] VS [무엇·사진·값·한마디]. "arrow": true 면 가운데가 → (전후 비교)."""
+    sides = c["sides"]
+    hi = c.get("hi", 1)  # 강조할 칸 (기본은 오른쪽)
+    size = min(fit_size(str(s["value"]), 104, 390) for s in sides)
+
+    def side(s, i):
+        pic = ""
+        if s.get("photo"):
+            src, pos = fetch_photo(s["photo"])
+            pic = f'<img src="{src}" style="object-position:{pos}">'
+        note = f'<i class="cm-n">{rich(s["note"])}</i>' if s.get("note") else ""
+        return (f'<div class="cm-it{" hi" if i == hi else ""}"><span class="cm-lb">{rich(s["label"])}</span>{pic}'
+                f'<b class="cm-v" style="font-size:{size}px">{rich(s["value"])}</b>{note}</div>')
+    mid = "→" if c.get("arrow") else "VS"
+    return f'<div class="cmp">{side(sides[0], 0)}<div class="cm-mid">{mid}</div>{side(sides[1], 1)}</div>'
+
+
+def chart_html(c):
+    """가로 막대 2~6개. 값은 확인한 자료의 숫자 그대로. "hi" 로 강조할 막대(기본은 마지막)를 골라요."""
+    ch = c["chart"]
+    bars = ch["bars"]
+    top = max(b["value"] for b in bars) or 1
+    hi = ch.get("hi", len(bars) - 1)
+    unit = esc(ch.get("unit", ""))
+    rows = "".join(
+        f'<div class="ch-row{" hi" if i == hi else ""}"><span class="ch-lb">{rich(b["label"])}</span>'
+        f'<div class="ch-bar"><i style="width:{max(3, round(b["value"] / top * 100))}%"></i></div>'
+        f'<b class="ch-v">{number(b["value"])}{unit}</b></div>'
+        for i, b in enumerate(bars))
+    note = f'<div class="ch-note">{rich(ch["note"])}</div>' if ch.get("note") else ""
+    return f'<div class="chart">{note}{rows}</div>'
+
+
+def summary_card(c, n, total, when, name, pill):
+    """마지막 정리 장: 한 줄 결론 + 알아 둘 것 1~3줄 + (있으면) 댓글 물음."""
+    points = c.get("points") or []
+    size = min((fit_size(str(p), 52, 900) for p in points), default=52)
+    rows = "".join(f'<li style="font-size:{size}px">{rich(p)}</li>' for p in points)
+    ask = f'<div class="ask">{rich(c["ask"])}</div>' if c.get("ask") else ""
+    foot = f'자료 {esc(c["src"])}' if c.get("src") else ""
+    return (
+        f'<section class="nc sm" id="c{n + 1}"><div class="ph">{NEWS_MAP}</div>'
+        f'<div class="mast"><div class="brand">{OUTRO_PIN}<span>{name}</span><i>{pill}</i></div><div class="when">{esc(when)}</div></div>'
+        f'<div class="txt"><span class="tag">{esc(c["tag"])}</span>'
+        f'<div class="hl" style="font-size:{fit_size(c["headline"], 98, 950)}px">{rich(c["headline"])}</div>'
+        f'<ul class="list">{rows}</ul>{ask}</div>'
+        f'<div class="foot"><span>{foot}</span><b>{n} / {total}</b></div></section>'
+    )
+
+
 def news_card(c, n, total, when, name, pill):
+    if c.get("type") == "summary":
+        return summary_card(c, n, total, when, name, pill)
     note = f'<div class="note">{rich(c["note"])}</div>' if c.get("note") else ""  # 사진 위에 붙이는 스티커 한마디
-    if c.get("photo") and c["photo"].get("fit") == "pack":  # 상품 사진은 하얀 사진 카드처럼 살짝 기울여 얹어요
+    if c.get("type") == "compare":
+        top = f'<div class="ph">{NEWS_MAP}</div>' + compare_html(c)
+    elif c.get("type") == "chart":
+        top = f'<div class="ph">{NEWS_MAP}</div>' + chart_html(c)
+    elif c.get("photo") and c["photo"].get("fit") == "pack":  # 상품 사진은 하얀 사진 카드처럼 살짝 기울여 얹어요
         top = f'<div class="ph">{NEWS_MAP}</div><div class="pack"><img src="{pack_photo(c["photo"])}"></div>{SPARK}'
     elif c.get("flow"):  # 어디서 → 뛰어가서 → 무엇을: 파는 곳 로고, 뛰는 사람, 그 음식 사진 (2026-10-16 사용자가 정함)
         top = f'<div class="ph">{NEWS_MAP}</div>' + flow_html(c["flow"])
@@ -828,7 +963,10 @@ def build_cards(spec):
     css = (HERE / "cards.css").read_text(encoding="utf-8").replace("FONT_DIR", (HERE / "fonts").as_uri())
     cards = spec["cards"]
     when = spec.get("kicker", "")
-    body = news_cover(spec["cover"], len(cards), when, name, pill, label, weekly=spec.get("kind") == "유행")
+    story = is_story(spec)
+    if story:
+        pill = esc(spec.get("pill") or STORY_PILL)
+    body = news_cover(spec["cover"], len(cards), when, name, pill, label, weekly=spec.get("kind") == "유행", story=story)
     body += "".join(news_card(c, n, len(cards), when, name, pill) for n, c in enumerate(cards, 1))
     page = f'<!doctype html><html lang="ko"><head><meta charset="utf-8"><style>{css}</style></head><body style="--ac:{accent}">{body}</body></html>'
     return page, len(cards) + 1
@@ -915,7 +1053,7 @@ def youtube_text(spec):
     out = [first]
     if len(points) > 1:
         what = {"소식": "오늘의 먹거리 뉴스", "유행": "요즘 뜨는 메뉴", "저녁": "오늘 저녁 메뉴"}.get(spec.get("kind"), "")
-        if what:
+        if what and not is_story(spec):  # 이야기 카드는 "N가지" 모음이 아니에요
             out.append(f"{what} {len(points)}가지")
         out.append("")
         out += [f"{i}. {p}" for i, p in enumerate(points, 1)]
@@ -1024,7 +1162,12 @@ if __name__ == "__main__":
         if must:
             sys.exit(1)
         _, count = build_cards(spec)  # 사진이 받아지는지도 여기서 확인돼요
-        print(f"넘겨 보는 해설 {count}장" if spec.get("format") == "steps" else f"카드 뉴스 {count}장 (첫 장 1 + 소식 {count - 1})")
+        if spec.get("format") == "steps":
+            print(f"넘겨 보는 해설 {count}장")
+        elif is_story(spec):
+            print(f"이야기 카드 {count}장 (첫 장 1 + 이어지는 장 {count - 1})")
+        else:
+            print(f"카드 뉴스 {count}장 (첫 장 1 + 소식 {count - 1})")
         if len(spec.get("tags") or []) != 4:
             print(f"  해시태그를 {len(spec.get('tags') or [])}개 적었어요. 4개만 골라 적어 주세요. (다섯 번째 계정 이름은 자동으로 붙어요)")
         print("  해시태그: " + " ".join("#" + t for t in hashtags(spec.get("tags"))))
