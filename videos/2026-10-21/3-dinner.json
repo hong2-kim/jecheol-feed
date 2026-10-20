@@ -1,0 +1,268 @@
+{
+ "format": "voice",
+ "layout": "rec",
+ "kind": "저녁",
+ "subject": "수요일 저녁 (감자탕·라면 전골·돈가스·모둠전)",
+ "title": "수요일 저녁, 이 중에 골라 줘! 넷 중에 하나만",
+ "summary": "쌀쌀하고 비 소식이 있는 수요일 저녁에 당기는 메뉴 넷(감자탕·라면 전골·돈가스·모둠전)을 당기는 것별로 골라 줘요.",
+ "headline": "수요일 저녁\n[[이 중에 골라 줘]]",
+ "small": "수요일 저녁, 이 중에 골라",
+ "intro": 7,
+ "length": [
+  15,
+  25
+ ],
+ "thumb": {
+  "head": "수요일 저녁\n[[이 중에 골라 줘]]",
+  "sub": "쌀쌀한 날 [[넷 중에]] 골라",
+  "photo": {
+   "url": "vault:photos/ig-17864124604031284.jpg"
+  }
+ },
+ "yt_title": "수요일 저녁 뭐 먹지? 감자탕·라면 전골·돈가스·모둠전 중에 골라 줌ㅋㅋ",
+ "yt_keyword": "저녁 메뉴 추천",
+ "yt_related": [
+  "오늘 뭐 먹지",
+  "수요일 저녁 메뉴",
+  "감자탕",
+  "라면 전골",
+  "비 오는 날 음식"
+ ],
+ "yt_tags": [
+  "저녁 메뉴 추천",
+  "오늘 뭐 먹지",
+  "수요일 저녁 메뉴",
+  "저녁 뭐 먹지",
+  "감자탕",
+  "라면 전골",
+  "돈가스",
+  "모둠전"
+ ],
+ "yt_hashtags": [
+  "저녁메뉴추천",
+  "오늘뭐먹지",
+  "감자탕"
+ ],
+ "yt_lead": "쌀쌀한 수요일 저녁 메뉴 고민될 때, 넷 중에 하나만 골라요.",
+ "caption": "수요일 저녁, 이 중에 골랐어요?\n\n국물이 당기면 감자탕\n면이 당기면 라면 전골\n바삭한 게 당기면 돈가스\n비 소식엔 모둠전\n\n넷 중에 오늘은 뭐예요? 댓글로 골라 주세요!",
+ "tags": [
+  "감자탕",
+  "저녁메뉴추천",
+  "오늘뭐먹지",
+  "수요일저녁"
+ ],
+ "sources": [],
+ "credits": [],
+ "lines": [
+  {
+   "say": "수요일 저녁, 이 중에 골라 줘!",
+   "nosub": true,
+   "show": {
+    "thumb": true
+   }
+  },
+  {
+   "say": "내가 골라 줄게. 자, 시작!",
+   "subs": [
+    "내가 골라 줄게.",
+    "자, 시작!"
+   ],
+   "show": {
+    "grid": [
+     {
+      "photo": {
+       "url": "vault:photos/ig-17864124604031284.jpg"
+      }
+     },
+     {
+      "photo": {
+       "url": "vault:photos/ig-17850243934102046.jpg"
+      }
+     },
+     {
+      "photo": {
+       "url": "vault:photos/ig-17927054485784520.jpg"
+      }
+     },
+     {
+      "photo": {
+       "url": "vault:photos/u-2026-10-15-jeon.jpg"
+      }
+     }
+    ],
+    "dir": "2x2",
+    "own": true,
+    "fade": 0.45
+   }
+  },
+  {
+   "say": "국물이 당기면, 칼칼한 감자탕.",
+   "subs": [
+    "국물이 당기면,",
+    "칼칼한 감자탕."
+   ],
+   "show": {
+    "grid": [
+     {
+      "photo": {
+       "url": "vault:photos/ig-17864124604031284.jpg"
+      }
+     },
+     {
+      "photo": {
+       "url": "vault:photos/ig-17850243934102046.jpg"
+      }
+     },
+     {
+      "photo": {
+       "url": "vault:photos/ig-17927054485784520.jpg"
+      }
+     },
+     {
+      "photo": {
+       "url": "vault:photos/u-2026-10-15-jeon.jpg"
+      }
+     }
+    ],
+    "dir": "2x2",
+    "own": true,
+    "hl": 0
+   }
+  },
+  {
+   "say": "면이 당기면, 얼큰한 라면 전골.",
+   "subs": [
+    "면이 당기면,",
+    "얼큰한 라면 전골."
+   ],
+   "show": {
+    "grid": [
+     {
+      "photo": {
+       "url": "vault:photos/ig-17864124604031284.jpg"
+      }
+     },
+     {
+      "photo": {
+       "url": "vault:photos/ig-17850243934102046.jpg"
+      }
+     },
+     {
+      "photo": {
+       "url": "vault:photos/ig-17927054485784520.jpg"
+      }
+     },
+     {
+      "photo": {
+       "url": "vault:photos/u-2026-10-15-jeon.jpg"
+      }
+     }
+    ],
+    "dir": "2x2",
+    "own": true,
+    "hl": 1
+   }
+  },
+  {
+   "say": "바삭한 게 당기면, 돈가스.",
+   "subs": [
+    "바삭한 게 당기면,",
+    "돈가스."
+   ],
+   "show": {
+    "grid": [
+     {
+      "photo": {
+       "url": "vault:photos/ig-17864124604031284.jpg"
+      }
+     },
+     {
+      "photo": {
+       "url": "vault:photos/ig-17850243934102046.jpg"
+      }
+     },
+     {
+      "photo": {
+       "url": "vault:photos/ig-17927054485784520.jpg"
+      }
+     },
+     {
+      "photo": {
+       "url": "vault:photos/u-2026-10-15-jeon.jpg"
+      }
+     }
+    ],
+    "dir": "2x2",
+    "own": true,
+    "hl": 2
+   }
+  },
+  {
+   "say": "비 소식엔, 고소한 모둠전.",
+   "subs": [
+    "비 소식엔,",
+    "고소한 모둠전."
+   ],
+   "show": {
+    "grid": [
+     {
+      "photo": {
+       "url": "vault:photos/ig-17864124604031284.jpg"
+      }
+     },
+     {
+      "photo": {
+       "url": "vault:photos/ig-17850243934102046.jpg"
+      }
+     },
+     {
+      "photo": {
+       "url": "vault:photos/ig-17927054485784520.jpg"
+      }
+     },
+     {
+      "photo": {
+       "url": "vault:photos/u-2026-10-15-jeon.jpg"
+      }
+     }
+    ],
+    "dir": "2x2",
+    "own": true,
+    "hl": 3
+   }
+  },
+  {
+   "say": "넷 중에 오늘은 뭐야? 댓글로 골라 줘!",
+   "subs": [
+    "넷 중에 오늘은 뭐야?",
+    "댓글로 골라 줘!"
+   ],
+   "show": {
+    "grid": [
+     {
+      "photo": {
+       "url": "vault:photos/ig-17864124604031284.jpg"
+      }
+     },
+     {
+      "photo": {
+       "url": "vault:photos/ig-17850243934102046.jpg"
+      }
+     },
+     {
+      "photo": {
+       "url": "vault:photos/ig-17927054485784520.jpg"
+      }
+     },
+     {
+      "photo": {
+       "url": "vault:photos/u-2026-10-15-jeon.jpg"
+      }
+     }
+    ],
+    "dir": "2x2",
+    "own": true
+   }
+  }
+ ]
+}
