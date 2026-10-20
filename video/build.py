@@ -48,6 +48,9 @@ def read_source(url, timeout=60):
         local = os.environ.get("VAULT_DIR", "").strip()  # 이 컴퓨터에서 만들 때: 받아 둔 보관함 폴더
         if local and (Path(local) / url[len("vault:"):]).exists():
             return (Path(local) / url[len("vault:"):]).read_bytes()
+        beside = HERE.parent.parent / "jecheol-photos" / url[len("vault:"):]  # 매일 실행(클라우드): 보관함이 옆 폴더에 받아져 있어요
+        if beside.exists():
+            return beside.read_bytes()
         token = os.environ.get("PHOTOS_TOKEN", "").strip()
         if not token:
             raise RuntimeError("PHOTOS_TOKEN 이 없어 비공개 보관함 사진을 읽을 수 없어요")

@@ -164,14 +164,14 @@
 ### 비공개 사진 보관함 (`jecheol-photos`, 사용자가 직접 찍은 사진 421개)
 
 사용자의 인스타그램에서 옮겨 온 음식 사진·동영상이 **비공개 저장소 `hong2-kim/jecheol-photos`** 에 있다. 이 저장소의 사진은 공개 저장소(`jecheol-feed`)에 복사하지 않는다.
-- 목록은 `jecheol-photos` 의 `index.json` 이다. 파일마다 `note`(무슨 음식인지), `taken`(찍은 달), `used`, 그리고 확실치 않으면 `ask: true`, 사람 손·몸이 보이면 `careful` 이 있다. 사진을 보려면 그 저장소를 받아 Read 로 연다.
+- 목록은 `jecheol-photos` 의 `index.json` 이다. 파일마다 `note`(무슨 음식인지), `taken`(찍은 달), `used`, 그리고 확실치 않으면 `ask: true`, 사람 손·몸이 보이면 `careful` 이 있다. 매일 실행에서는 이 저장소가 `jecheol-feed` 옆 폴더 `../jecheol-photos` 에 함께 받아져 있다(2026-10-20부터). 사진은 그 폴더에서 Read 로 열고, `video/build.py`·`scripts/media.py` 도 그 폴더를 바로 읽는다. 그 폴더가 없으면 보관함 사진 없이 만들고, 마지막 보고에 "보관함 폴더 없음"이라고 적는다.
 - **맞는 자리가 있으면 관광공사·위키미디어 사진보다 먼저 쓴다.** **사용자가 음식별로 지정한 사진이 있으면 그것을 먼저 쓴다**: 닭갈비 → `vault:photos/u-2026-10-15-dakgalbi.jpg`, 삼겹살 → `vault:photos/u-2026-10-15-samgyeop.jpg`, 조개찜 → `vault:photos/u-2026-10-17-jogaejjim.jpg` (2026-10-17 사용자가 정함. `index.json` 의 note 에도 적혀 있다). 직접 찍은 사진은 출처 줄이 필요 없다. 저녁 TOP 5 순위, 발견형, 지역의 먹거리, 블로그 사진 어디든 된다.
 - 설계도에는 `{"url": "vault:photos/파일이름.jpg"}` 로 적는다. 영상을 만드는 쪽이 `PHOTOS_TOKEN` 으로 읽는다. `credits` 에는 적지 않는다.
 - **`ask: true` 인 사진은 쓰지 않는다.** 사용자가 텔레그램으로 무슨 음식인지 알려 주면 `note` 를 고치고 `ask` 를 지운 뒤 쓴다.
 - `careful` 사진은 쓰기 전에 크게 열어 사람 얼굴이 조금도 보이지 않는지 다시 본다. 보이면 쓰지 않는다.
 - 동영상(mp4)은 소리를 뺀 것이다. 웬만하면 쓰지 않고, 쓸 때는 `video` 로 넣는다.
 - "제가 먹어 봤어요", "직접 다녀왔어요"라고 써도 된다. 다만 `note` 와 `taken` 에 있는 것까지만 쓴다. 맛 평가, 가게 이름, 지역(적혀 있지 않으면)은 지어내지 않는다. 몇 년 전 사진이면 지금 값이나 영업 정보로 쓰지 않는다.
-- 쓴 뒤 `jecheol-photos` 의 `index.json` 에서 그 항목의 `used` 에 `"2026-10-16/3-dinner"` 처럼 적고 그 저장소에 커밋한다. 같은 사진은 다시 쓰지 않는다.
+- 쓴 뒤 `jecheol-photos` 의 `index.json` 에서 그 항목의 `used` 에 `"2026-10-16/3-dinner"` 처럼 적고 그 저장소에 커밋한다(`../jecheol-photos` 에서 `index.json` 만 커밋해 그 저장소 `main` 에 push 한다. 사진 파일은 고치지 않는다). 같은 사진은 다시 쓰지 않는다.
 
 ## 해시태그
 

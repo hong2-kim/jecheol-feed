@@ -89,6 +89,9 @@ def vault_index():
     local = os.environ.get("VAULT_DIR", "").strip()
     if local and (Path(local) / "index.json").exists():
         return json.loads((Path(local) / "index.json").read_text(encoding="utf-8"))
+    beside = Path(__file__).resolve().parent.parent.parent / "jecheol-photos" / "index.json"  # 매일 실행(클라우드): 옆 폴더
+    if beside.exists():
+        return json.loads(beside.read_text(encoding="utf-8"))
     tmp = Path(tempfile.gettempdir()) / "jecheol-vault-index"
     if not (tmp / ".git").exists():
         subprocess.run(["git", "clone", "-q", "--depth", "1", "--filter=blob:none", "--no-checkout", VAULT_REPO, str(tmp)], check=True)
