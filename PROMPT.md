@@ -77,7 +77,8 @@
 1-1. `python3 scripts/today_rules.py` 를 돌리고, "지금 읽을 파일"을 모두 읽는다. "그 차례에 읽을 파일"은 아래 4번, 5-1번, 6번을 시작하기 직전에 읽는다(위 "오늘 읽을 규칙").
 1-2. `python3 scripts/setup_env.py` 로 파이썬 패키지(Pillow, numpy)를 준비한다. 이미 있으면 바로 끝난다. `pip install` 을 따로 쓰지 않는다(클라우드의 `pip` 과 `python3` 가 서로 다른 파이썬이다).
 2. `videos/오늘날짜/2-news.json` 이 이미 있으면 아무것도 하지 않고 끝낸다.
-3. `inbox/오늘날짜.json`(공식 기관 새 글과 먹거리 뉴스), `inbox/오늘날짜-weather.json`(서울 날씨), `calendar.json`(소재 후보)을 읽는다. 없으면 `python scripts/fetch_sources.py` 를 돌려 본다.
+3. **먼저 `python3 scripts/fetch_sources.py` 를 돌린다.** 오늘 파일이 이미 있어도 돌린다(새 글만 덧붙는다). 깃허브 수집 작업은 05시 예약이지만 실제로는 7~10시에 돌아서 이 시각에는 보통 오늘 파일이 없다. 그다음 `inbox/오늘날짜.json`(공식 기관 새 글과 먹거리 뉴스), `inbox/오늘날짜-weather.json`(서울 날씨), `calendar.json`(소재 후보)을 읽는다.
+   - **`inbox/어제날짜.json` 에서 `date` 가 어제 06:00(한국 시간) 뒤인 글도 함께 본다.** 깃허브 수집 작업이 어제 아침에 모은 글은 이미 본 글(`state/seen_links.json`)로 적혀 오늘 파일에 다시 들어오지 않는다. `date` 는 `Mon, 19 Oct 2026 22:16:00 GMT`(그리니치 시각, 9시간을 더하면 한국 시간)나 `2026-10-19T14:00:00+09:00` 꼴이다.
 4. 소식 글 5개를 `items/오늘날짜/` 에 쓴다. (아래 "소식 글")
 5. 오늘 만들 카드와 영상을 정하고(아래 "만드는 영상". 내레이션 쇼츠 주제는 카드·발견형 주제를 정한 뒤 마지막에 고른다, 4-2) 설계도를 `videos/오늘날짜/` 에 쓴다. 블로그 초안을 쓰는 날에는 블로그 글에서 다룰 음식을 먼저 정한다(그날의 발견형 영상이 같은 음식을 다룬다).
 5-0. 설계도마다 유튜브 키워드(`yt_keyword`, `yt_related`, `yt_tags`, `yt_hashtags`, `yt_lead`)를 그 영상 내용에 맞춰 정한다. 후보는 `python scripts/yt_suggest.py` 로 자동완성을 확인한다. (아래 "유튜브 키워드")
@@ -85,6 +86,8 @@
 6. 오늘이 블로그 초안을 쓰는 날이면 초안 1개를 `blog/` 에 쓴다. (아래 "네이버 블로그 초안". 영상과 소식 글을 다 쓴 뒤에 한다)
 7. `python scripts/build_feed.py` 로 글과 초안을 검사하고, 설계도마다 `python video/build.py videos/오늘날짜/파일.json` 을 돌려 사진이 받아지는지와 길이를 확인한다. (패키지는 1-2번에서 준비했다) 마지막으로 `python3 scripts/today_rules.py --check 오늘날짜` 로 보류 중인 칸이 설계도에 들어가지 않았는지 본다.
 8. `items/`, `videos/`, `blog/`, `trend/`, `ideas/`, `calendar.json`, `myphotos/index.json` 만 커밋하고 `main` 에 push 한다. 거부되면 `claude/` 가지에 push 한다. (예약 실행 안내문의 커밋 목록에 `blog/` 가 없어도 함께 넣는다)
+   - **`fetch_sources.py` 가 쓰는 수집 파일 다섯 개(`inbox/오늘날짜.json`, `inbox/오늘날짜-weather.json`, `state/seen_links.json`, `state/source_health.json`, `logs/errors.jsonl`)는 커밋하지 않는다.** 깃허브 수집 작업이 같은 파일을 올리므로, 함께 올리면 합치기가 충돌해 그날 영상이 만들어지지 않는다. 커밋하기 전에 아래 명령으로 이 다섯 파일만 되돌린다. 새로 생긴 오늘 inbox 두 파일은 지우고, 원래 있던 파일은 받은 때 상태로 돌리며, 다른 파일은 건드리지 않는다. 오늘 모은 글은 수집 작업이 다시 모아 올리고, 다음 날 3번에서 어제 파일로 본다. 끝날 때 커밋하라는 안내가 나와도 이 파일들은 올리지 않는다.
+     `git clean -fq -- inbox/오늘날짜.json inbox/오늘날짜-weather.json && git ls-files -m -- inbox/오늘날짜.json inbox/오늘날짜-weather.json state/seen_links.json state/source_health.json logs/errors.jsonl | xargs -r git checkout --`
 
 ## 만드는 영상
 
