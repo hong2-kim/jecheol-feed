@@ -107,19 +107,56 @@ def estimate(text):
     return 0.25 + units(text) * 0.135
 
 
+STRETCH = 1.25  # 자막 한 덩어리는 room 의 이만큼까지 늘려도 돼요 (글자를 그만큼 줄여요, sub_size)
+
+
 def chunks(text, room=CHUNK):
-    """자막을 한 번에 읽기 좋은 덩어리로 나눠요. 띄어쓰기 단위로 room(기본 CHUNK) 칸까지."""
+    """자막을 한 번에 읽기 좋은 덩어리로 나눠요. 한 줄에 들어가면 통째로, 길면 말이 끊기는 곳(쉼표·물음표 뒤)에서 고르게 나눠요.
+    2026-10-21 사용자가 "여러분은 어느 쪽 드셔 / 보셨어요?"처럼 띄엄띄엄 끊지 말고 이어 보여 달라고 함 (모든 먹고갈지도 영상)."""
     from build import units
-    out, cur = [], ""
-    for word in text.split():
-        trial = f"{cur} {word}".strip()
-        if cur and units(trial) > room:
-            out.append(cur)
-            cur = word
-        else:
-            cur = trial
-    if cur:
-        out.append(cur)
+    words = text.split()
+    if not words:
+        return []
+    top = room * STRETCH
+    w = [units(x) for x in words]
+
+    def size(i, j):  # words[i:j] 한 덩어리의 칸 수
+        return sum(w[i:j]) + 0.3 * (j - i - 1)
+
+    n = len(words)
+    inside, depth = [False], 0  # inside[j]: words[j-1] 뒤가 [[강조]] 안쪽인지
+    for x in words:
+        depth += x.count("[[") - x.count("]]")
+        inside.append(depth > 0)
+    k = max(1, -(-size(0, n) // top))  # 덩어리 수는 될 수 있는 대로 적게
+    while True:
+        goal = size(0, n) / k
+        # best[j] = words[:j] 를 몇 덩어리로 나눴을 때의 (덩어리 수, 벌점, 나눈 자리)
+        best = {0: (0, 0.0, [])}
+        for j in range(1, n + 1):
+            for i in range(j):
+                if i not in best or size(i, j) > top and j - i > 1:
+                    continue
+                cnt, cost, cuts = best[i]
+                piece = size(i, j)
+                end = words[j - 1].replace("]]", "")
+                cost2 = cost + (piece - goal) ** 2
+                if j < n and not re.search(r"[,.!?…~]$", end):
+                    cost2 += 6  # 쉼표·마침표 뒤가 아니면 덜 자연스러워요
+                if piece < 5:
+                    cost2 += 60  # "보셨어요?"처럼 짧게 떨어지는 조각은 피해요
+                if j < n and inside[j]:
+                    cost2 += 80  # [[강조]] 한가운데서는 끊지 않아요
+                cand = (cnt + 1, cost2, cuts + [j])
+                if cnt + 1 <= k and (j not in best or cand[:2] < best[j][:2]):
+                    best[j] = cand
+        if n in best:
+            break
+        k += 1
+    out, start = [], 0
+    for cut in best[n][2]:
+        out.append(" ".join(words[start:cut]))
+        start = cut
     # [[강조]] 가 덩어리 사이에서 끊기면 양쪽을 닫고 열어 줘요
     fixed, open_ = [], False
     for c in out:
@@ -127,6 +164,12 @@ def chunks(text, room=CHUNK):
         open_ = c.count("[[") > c.count("]]")
         fixed.append(c + ("]]" if open_ else ""))
     return fixed
+
+
+def sub_size(text, base=70, room=CHUNK):
+    """자막 글자 크기. room 칸이 넘는 덩어리는 한 줄에 들어가게 그만큼 줄여요."""
+    from build import units
+    return min(base, int(base * room / max(units(text), 1)))
 
 
 CSS = """
@@ -426,13 +469,14 @@ def build_voice(spec, work=None):
             c = who_of(spec, l)
             tag = f'<span class="vwho" style="background:{c.get("color", "#333")}">{B.esc(c.get("label", l["who"]))}</span>' if c else ""
             bar = f' style="box-shadow:inset 18px 0 0 {c["color"]}"' if c.get("color") else ""
-            parts = chunks(l["say"], CHUNK - 2 if c else CHUNK)  # 이름표 자리만큼 한 번에 보여 줄 글을 줄여요
+            room = CHUNK - 2 if c else CHUNK  # 이름표 자리만큼 한 번에 보여 줄 글을 줄여요
+            parts = chunks(l["say"], room)
             weights = [B.units(p) + 1 for p in parts]
             t, said, d = starts[i], speech[i], durs[i]
             for k, (p, w) in enumerate(zip(parts, weights)):
                 pd = said * w / sum(weights) + (max(0.0, d - said) if k == len(parts) - 1 else 0)
                 out.append(f'<section class="scene" data-at="{t:.2f}" data-dur="{max(pd, 0.05):.2f}" data-out="0" style="z-index:950">'
-                           f'<div class="vsub"{bar}>{tag}<div>{B.rich(p)}</div></div></section>')
+                           f'<div class="vsub"{bar}>{tag}<div style="font-size:{sub_size(p, 62 if c else 70, room)}px">{B.rich(p)}</div></div></section>')
                 t += pd
     outro = B.scene_outro(credits)
     lics = sorted({m[1].lower() for c in spec.get("credits") or [] for m in [re.search(r"CC (BY(?:-SA)?) (\d\.\d)", str(c))] if m} |

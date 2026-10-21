@@ -343,7 +343,7 @@ def build_rec(spec, voices, speech, durs, starts, real):
         tag = f'<span class="vwho" style="background:{c.get("color", "#333")}">{B.esc(c.get("label", s["who"]))}</span>' if c else ""
         y = 745 if s["line"] < intro else SUB_Y
         out.append(f'<section class="scene" data-at="{s["at"]:.2f}" data-dur="{max(0.05, s["end"] - s["at"]):.2f}" data-out="0">'
-                   f'<div class="rsub" style="top:{y - 60}px;height:120px">{tag}<div>{B.rich(s["text"])}</div></div></section>')
+                   f'<div class="rsub" style="top:{y - 60}px;height:120px">{tag}<div style="font-size:{V.sub_size(s['text'], 66)}px">{B.rich(s["text"])}</div></div></section>')
     return out, cuts, sfx, subs
 
 
