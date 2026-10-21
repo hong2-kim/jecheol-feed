@@ -89,6 +89,13 @@ def render_cards(spec, name, browser):
             out = ROOT / "dist" / f"{name}-{n}.jpg"
             page.locator(f"#c{n}").screenshot(path=str(out), type="jpeg", quality=95)
             files.append(out.name)
+        # 큰 제목 장(hero)은 쇼츠에서 가운데 자막이 내레이션 한 줄마다 바뀌어요. 줄마다 한 장씩 더 찍어 둬요 (날짜-이름-장-s줄.jpg)
+        for n, c in enumerate(spec.get("cards") or [], 2):
+            if c.get("type") != "hero":
+                continue
+            for k, line in enumerate(c.get("lines") or [], 1):
+                page.evaluate("([n, h]) => { document.querySelector(`#c${n} .hsay > div`).innerHTML = h; }", [n, build.rich(line["say"])])
+                page.locator(f"#c{n}").screenshot(path=str(ROOT / "dist" / f"{name}-{n}-s{k}.jpg"), type="jpeg", quality=95)
     finally:
         page.close()
     (ROOT / "dist" / f"{name}.txt").write_text(build.description(spec), encoding="utf-8")
@@ -116,35 +123,87 @@ def render_thumb(spec, name, browser):
     return out.name
 
 
+SAY_LEAD, SAY_TAIL, SAY_FADE = 0.25, 0.3, 0.08  # 내레이션 자막 장: 말 앞뒤 여유, 자막이 바뀔 때 겹치는 시간
+
+
+def card_segments(files, name, spec, front=None):
+    """쇼츠에 이어 붙일 장면 (파일, 길이, 앞 장면과 겹치는 시간) 과 내레이션 [(시작 초, 소리)].
+    "short_cover": false 면 첫 장(표지)을 쇼츠에서 빼요 (2026-10-21 사용자: 썸네일에 목록이 있어서 표지가 겹쳐요).
+    큰 제목 장(hero)에 lines 가 있으면 줄마다 목소리를 넣고, 그 줄 자막이 가운데에 나오는 그림으로 바꿔 가며 보여 줘요."""
+    import voice
+    segs, said, cards = [], [], spec.get("cards") or []
+    if front:
+        segs.append((front, THUMB_SEC, 0.0))
+    for i, f in enumerate(files):
+        if i == 0:
+            if spec.get("short_cover") is not False:
+                segs.append((f, COVER_SEC, FADE_SEC))
+            continue
+        c = cards[i - 1] if i - 1 < len(cards) else {}
+        if c.get("type") != "hero" or not c.get("lines"):
+            segs.append((f, CARD_SEC, FADE_SEC))
+            continue
+        for k, line in enumerate(c["lines"], 1):
+            sound = voice.tts(voice.spoken(line))
+            sec = len(sound) / voice.SR if sound is not None else voice.estimate(voice.spoken(line))
+            fade = FADE_SEC if k == 1 else SAY_FADE
+            lead = SAY_LEAD + (fade if k == 1 else 0)
+            start = sum(s[1] for s in segs) - sum(s[2] for s in segs[1:]) - (fade if segs else 0)
+            if sound is not None:
+                said.append((start + lead, sound))
+            segs.append((f"{name}-{i + 1}-s{k}.jpg", lead + sec + SAY_TAIL, fade if segs else 0.0))
+    return segs, said
+
+
+def narration(said, total, name):
+    """내레이션 소리를 영상 길이 하나로 이어 wav 로 둬요. 내레이션이 없으면 None."""
+    if not said:
+        return None
+    import wave
+    import numpy as np
+    import voice
+    track = np.zeros(int(voice.SR * total) + 1)
+    for at, sound in said:
+        a = int(at * voice.SR)
+        track[a:a + len(sound)] += sound[: max(0, len(track) - a)]
+    path = ROOT / "build" / f"{name}-say.wav"
+    with wave.open(str(path), "wb") as w:
+        w.setnchannels(1)
+        w.setsampwidth(2)
+        w.setframerate(voice.SR)
+        w.writeframes((np.clip(track, -1, 1) * 32767).astype(np.int16).tobytes())
+    return path
+
+
 def cards_short(files, name, spec, front=None):
     """카드 그림들을 넘겨 보는 세로 영상으로 이어요. 유튜브 쇼츠용이에요. (파일, 길이)
 
     카드(1080×1350)를 가운데보다 조금 위에 두고(쇼츠는 아래쪽에 제목과 단추가 겹쳐요), 위아래 빈자리는 같은 카드를 흐리고 어둡게 깔아 채워요.
     밑에는 먹고갈지도 노래를 조용히 깔아요. (2026-10-16)
     """
-    files = ([front] if front else []) + list(files)  # 맨 앞은 썸네일 화면(있으면)
-    durs = ([THUMB_SEC] if front else []) + [COVER_SEC] + [CARD_SEC] * (len(files) - 1 - bool(front))
+    segs, said = card_segments(files, name, spec, front)
+    files, durs, fades = [s[0] for s in segs], [s[1] for s in segs], [s[2] for s in segs]
     cmd = [imageio_ffmpeg.get_ffmpeg_exe(), "-y", "-loglevel", "error"]
     for f, d in zip(files, durs):
         cmd += ["-loop", "1", "-framerate", str(FPS), "-t", f"{d:.2f}", "-i", str(ROOT / "dist" / f)]
-    total = sum(durs) - FADE_SEC * (len(files) - 1)
+    total = sum(durs) - sum(fades[1:])
     wav = ROOT / "build" / f"{name}-short.wav"
     wav.parent.mkdir(exist_ok=True)
-    audio.build(build.song(spec), [], total, wav)
+    audio.build(build.song(spec), [], total, wav, voice=narration(said, total, name))
     cmd += ["-i", str(wav)]
     chain = []
     for i in range(len(files)):
-        if front and not i:  # 썸네일은 이미 세로 화면 크기예요
+        if front and files[i] == front:  # 썸네일은 이미 세로 화면 크기예요
             chain.append(f"[0:v]scale=1080:1920,setsar=1,fps={FPS},format=yuv420p,settb=1/{FPS}[v0]")
             continue
         chain.append(f"[{i}:v]scale=1080:1350,setsar=1,split[f{i}][b{i}];"
                      f"[b{i}]scale=1536:1920,crop=1080:1920,boxblur=28:2,eq=brightness=-0.22[g{i}];"
                      f"[g{i}][f{i}]overlay=0:180:shortest=1,fps={FPS},format=yuv420p,settb=1/{FPS}[v{i}]")
-    last, at = "v0", 0.0
+    last, at = "v0", durs[0]
     for i in range(1, len(files)):
-        at += durs[i - 1] - FADE_SEC
-        chain.append(f"[{last}][v{i}]xfade=transition=fade:duration={FADE_SEC}:offset={at:.2f}[x{i}]")
-        last = f"x{i}"
+        at -= fades[i]
+        chain.append(f"[{last}][v{i}]xfade=transition=fade:duration={fades[i]}:offset={at:.2f}[x{i}]")
+        last, at = f"x{i}", at + durs[i]
     chain.append(f"[{last}]scale=in_range=pc:out_range=tv,format=yuv420p[out]")  # 이어 붙이면 색 형식이 바뀌어서 쇼츠가 읽는 형식으로 되돌려요
     out = ROOT / "dist" / f"{name}-short.mp4"
     cmd += ["-filter_complex", ";".join(chain), "-map", "[out]", "-map", f"{len(files)}:a",

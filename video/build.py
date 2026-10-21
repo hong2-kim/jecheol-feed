@@ -692,7 +692,7 @@ SERIES = {"유행": ("트렌드", "요즘 뜨는 메뉴", "#FF8FA8")}
 # type 이 없는 카드는 예전과 똑같이 그려요.
 STORY_MIN, STORY_MAX = 3, 6
 STORY_PILL, STORY_LABEL = "이슈", "오늘의 먹거리 이슈"
-CARD_TYPES = ("compare", "chart", "summary")
+CARD_TYPES = ("compare", "chart", "summary", "hero")
 
 
 def is_cards(spec):
@@ -1015,6 +1015,16 @@ def card_photo_problems(spec):
 
 def typed_problems(c, n, must, should):
     """이야기 카드의 비교(compare)·막대(chart)·정리(summary) 장을 살펴요."""
+    if c["type"] == "hero":
+        if not c.get("photo"):
+            must.append(f"카드 {n}: 큰 제목 장(hero)에 사진(photo)이 없어요.")
+        if not c.get("lines"):
+            should.append(f"카드 {n}: 큰 제목 장(hero)에 내레이션(lines)이 없어요. 가운데 자막 자리가 비어 보여요.")
+        for line in c.get("lines") or []:
+            for row in str(line.get("say") or "").split("\n"):
+                if units(row) > HERO_SAY_MAX:
+                    should.append(f"카드 {n}: 내레이션 자막 한 줄이 길어요({row}). {HERO_SAY_MAX}칸 안쪽에서 줄을 바꿔 주세요.")
+        return
     if c["type"] == "compare":
         sides = c.get("sides") or []
         if len(sides) != 2:
@@ -1188,7 +1198,45 @@ def story_bits(c, nxt, n, total):
     return q, f'<div class="next">{teaser}<span class="dots">{dots}</span></div>'
 
 
+HERO_SAY_MAX = 18  # 큰 제목 장 가운데 자막 한 줄 칸 수
+HERO_ROOM = 1000   # 큰 제목 한 줄이 차지하는 폭 (화면 양 끝에서 40px 안쪽)
+
+
+def hero_head(line):
+    """큰 제목 한 줄. 화면 양 끝에 맞게 글자 크기를 정하고, 검은 테두리를 뒤에 한 벌 깔아요."""
+    import thumb
+    size = min(230, int(160 * HERO_ROOM / max(1.0, thumb.width(line, 160))))
+    plain = line.replace("[[", "").replace("]]", "")
+    return size, f'<span data-t="{esc(plain)}">{rich(line)}</span>'
+
+
+def hero_card(c, n, total, when, name, pill, say=None):
+    """큰 제목 장 (2026-10-21 사용자가 빅아치 시안으로 정함).
+    위: 빨간 띠(ribbon) + 화면 양 끝까지 큰 두 줄 제목 + 왼쪽에서 오른쪽으로 번지는 밑줄
+    가운데: 내레이션 자막 자리 (쇼츠에서는 lines 가 한 줄씩 바뀌어요. 그림 한 장일 때는 첫 줄)
+    아래: 양옆 끝까지 사진 + 날짜 띠(date)"""
+    src, _ = fetch_photo(c["photo"])
+    if say is None:
+        say = ((c.get("lines") or [{}])[0]).get("say", "")
+    heads, top = "", 180
+    for k, line in enumerate(str(c["headline"]).split("\n")):
+        size, body = hero_head(line)
+        heads += f'<div class="ht" style="top:{top}px;font-size:{size}px">{body}</div>'
+        top += round(size * 1.06)
+    rib = f'<div class="hrib">{rich(c["ribbon"])}</div>' if c.get("ribbon") else ""
+    date = f'<div class="hdate">{rich(c["date"])}</div>' if c.get("date") else ""
+    return (
+        f'<section class="nc hero" id="c{n + 1}">'
+        f'<div class="hpic"><img src="{src}"></div>'
+        f'<div class="mast"><div class="brand">{OUTRO_PIN}<span>{name}</span><i>{pill}</i></div><div class="when">{esc(when)}</div></div>'
+        f'{rib}{heads}<div class="hline" style="top:{top + 8}px"></div>'
+        f'<div class="hsay" style="top:{top + 30}px"><div>{rich(say)}</div></div>{date}</section>'
+    )
+
+
 def news_card(c, n, total, when, name, pill, nxt=None, story=False):
+    if c.get("type") == "hero":
+        return hero_card(c, n, total, when, name, pill)
     if c.get("type") == "summary":
         return summary_card(c, n, total, when, name, pill, story=story)
     q, nexts = story_bits(c, nxt, n, total) if story else ("", "")
@@ -1264,6 +1312,9 @@ def build_cards(spec):
     name = f"{esc(name[:2])}<b>{esc(name[2:])}</b>" if name.startswith("먹고") else esc(name)
     css = (HERE / "cards.css").read_text(encoding="utf-8").replace("FONT_DIR", (HERE / "fonts").as_uri())
     cards = spec["cards"]
+    if any(c.get("type") == "hero" for c in cards):  # 큰 제목 장은 썸네일과 같은 제목 글꼴을 써요
+        import thumb
+        css += thumb.css().replace("FONT_DIR", (HERE / "fonts").as_uri())
     when = spec.get("kicker", "")
     story = is_story(spec)
     if is_top5(spec):  # TOP5형 (2026-10-19 5단계)

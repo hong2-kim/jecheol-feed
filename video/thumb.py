@@ -67,8 +67,17 @@ CSS = """
 .bpic { position: absolute; left: 0; right: 0; top: 810px; height: 1110px; overflow: hidden; background: #0E0B09; }
 .bpic img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; object-position: 50% 0; }
 .bpic img.bg, .bpic.cover img { object-fit: cover; }
-.bpic.pack { background: #fff; } .bpic.pack img { padding: 30px 56px; }
+/* 흰 바탕 상품 사진은 위에 붙이면 아래가 텅 비어 보여서 가운데에 둬요 (2026-10-21 빅아치) */
+.bpic.pack { background: #fff; } .bpic.pack img { padding: 30px 56px; object-position: 50% 50%; }
 .bback { position: absolute; left: 0; right: 0; top: 1700px; bottom: 0; overflow: hidden; }
+/* 사진 아래 목록 (thumb.list). 사진은 띠 바로 아래에 통째로 붙고, 남은 아래 칸에 소식 목록이 들어가요 (2026-10-21 빅아치 소식 카드) */
+.blist { position: absolute; left: 0; right: 0; bottom: 0; z-index: 902; background: #1F2A1A; display: flex; align-items: center; padding: 0 70px; }
+.blist ul { width: 100%; list-style: none; }
+.blist li { position: relative; padding: 16px 0 18px 40px; border-top: 2px solid rgba(255,255,255,.2); font-weight: 800; letter-spacing: -2px; color: #fff; white-space: nowrap; }
+.blist li:first-child { border-top: 0; }
+.blist li::before { content: ""; position: absolute; left: 2px; top: 50%; width: 16px; height: 16px; margin-top: -7px; border-radius: 50%; background: #FFB23E; }
+.blist .am { color: #FFB23E; }
+.blist .btag { display: inline-block; margin-bottom: 12px; padding: 6px 22px 10px; border-radius: 10px; background: #FFB23E; color: #17130F; font-weight: 900; font-size: 44px; letter-spacing: -1px; }
 .bback img { width: 100%; height: 100%; object-fit: cover; filter: brightness(.6); }
 """
 PIN = ('<svg viewBox="0 0 200 250"><path d="M100 244C100 244 16 150 16 92a84 84 0 01168 0c0 58-84 152-84 152z" fill="#D8432B"/>'
@@ -213,9 +222,34 @@ def body(spec):
     head, sub, photo = parts(spec)
     name = json.loads((HERE.parent / "config.json").read_text(encoding="utf-8")).get("account") or "먹고갈지도"
     t = spec.get("thumb") or {}
+    if t.get("list"):
+        return (list_html(B, photo, t["list"], t.get("list_tag", ""))
+                + f'<div class="bstrip{" logo" if BRAND == "strip" else ""}"><div style="font-size:{strip_size(sub)}px">{B.rich(sub)}</div></div>'
+                + brand_marks(name) + head_html(head, name, t.get("color", AC)))
     return (f'<div class="bback"><img src="{B.backdrop(photo)}"></div>{photo_html(B, photo)}'
             + f'<div class="bstrip{" logo" if BRAND == "strip" else ""}"><div style="font-size:{strip_size(sub)}px">{B.rich(sub)}</div></div>'
             + brand_marks(name) + head_html(head, name, t.get("color", AC)))
+
+
+def list_html(B, photo, items, tag=""):
+    """사진을 흰 띠 바로 아래에 통째로(잘리지 않게) 붙이고, 남은 아래 칸에 목록을 넣어요. 소식 카드 첫 장의 목록과 같은 모양이에요.
+    "thumb": {"head": …, "sub": …, "photo": …, "list": ["[[빅아치]] 프랑스 1위였다?", …]}"""
+    from PIL import Image
+    import voice
+    pack = voice.is_pack(B, photo)
+    src = B.pack_photo(photo) if pack else B.fetch_photo(photo)[0]
+    path = B.CACHE / (B.photo_key(photo) + ("-pack.jpg" if pack else "-g2.jpg"))
+    with Image.open(path) as im:
+        w, h = im.size
+    padx, pady = (56, 30) if pack else (0, 0)
+    pic_h = min(round((PIC_W - 2 * padx) * h / w) + 2 * pady, 760)  # 목록 칸이 너무 좁아지지 않게 사진 칸은 760까지
+    size = min(min(B.fit_size(line, 64, 900) for line in items), 64)
+    rows = "".join(f'<li style="font-size:{size}px">{B.rich(line)}</li>' for line in items)
+    pic = (f'<div class="bpic{" pack" if pack else ""}" style="height:{pic_h}px">'
+           + (f'<img src="{src}">' if pack else f'<img class="bg" src="{B.backdrop(photo)}"><img src="{src}" style="object-position:50% 50%">')
+           + '</div>')
+    label = f'<span class="btag">{B.esc(tag)}</span>' if tag else ""
+    return pic + f'<div class="blist" style="top:{810 + pic_h}px"><div style="width:100%">{label}<ul>{rows}</ul></div></div>'
 
 
 def brand_marks(name, brand=None):
