@@ -820,7 +820,8 @@ def card_problems(spec):
         if kind is not None and kind not in CARD_TYPES:
             must.append(f"카드 {n}: 모르는 꼴(type '{kind}')이에요. 빼거나 {', '.join(CARD_TYPES)} 가운데 하나로 적어 주세요.")
             continue
-        need = (("tag", "분류"), ("headline", "한 줄 소식")) + (() if kind == "summary" else (("why", "까닭"), ("src", "자료 이름")))
+        need = (("tag", "분류"), ("headline", "한 줄 소식")) + (() if kind == "summary" else (("src", "자료 이름"),) if kind == "hero"
+                                                                else (("why", "까닭"), ("src", "자료 이름")))
         for key, name in need:
             if not c.get(key):
                 must.append(f"카드 {n}: {name}({key})이 없어요.")
@@ -1018,8 +1019,8 @@ def typed_problems(c, n, must, should):
     if c["type"] == "hero":
         if not c.get("photo"):
             must.append(f"카드 {n}: 큰 제목 장(hero)에 사진(photo)이 없어요.")
-        if not c.get("lines"):
-            should.append(f"카드 {n}: 큰 제목 장(hero)에 내레이션(lines)이 없어요. 가운데 자막 자리가 비어 보여요.")
+        if not c.get("say") and not c.get("lines"):
+            should.append(f"카드 {n}: 큰 제목 장(hero)에 가운데 한마디(say)가 없어요. 무엇이 몇 월 며칠에 어떻게 되는지 두 줄로 적어 주세요.")
         for line in c.get("lines") or []:
             for row in str(line.get("say") or "").split("\n"):
                 if units(row) > HERO_SAY_MAX:
