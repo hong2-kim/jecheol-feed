@@ -75,6 +75,11 @@ CSS = """
 .rgrid .c.on img { animation: rzoom 2.4s ease-out both; }
 .rgrid .c.on .lb { background: #D8432B; font-size: 58px; }
 @keyframes rzoom { from { transform: scale(1); } to { transform: scale(1.07); } }
+.rgrid .c .pz { position: absolute; inset: 0; animation: rpush var(--pd) ease-out both; animation-delay: var(--po); }
+.rgrid .c .pz img.fg { object-fit: contain; }
+.rgrid .c.on .pz img { animation: none; }
+.rkeep .bpic img { animation: rpush var(--pd) ease-out both; }
+@keyframes rpush { from { transform: scale(1); } to { transform: scale(var(--ps)); } }
 .rwhite { position: absolute; left: 0; right: 0; bottom: 0; background: #fff; }
 .rgrid { position: absolute; left: 0; right: 0; display: flex; gap: 6px; background: #0E0B09; }
 .rgrid.col { flex-direction: column; }
@@ -199,6 +204,22 @@ def _fit(B, photo):
     return "contain" if w / h > 1.3 else "cover"
 
 
+PUSH_THUMB = 1.12  # 첫 화면(썸네일과 같은 화면) 사진이 끝날 때까지 다가가는 크기
+
+
+def _cover_scale(B, photo, vis, h):
+    """칸 안에 통째로 보이는 크기에서 칸을 꽉 채우는 크기까지 몇 배인지."""
+    w_i, h_i = B.SIZES[B.photo_key(photo)]
+    n = len(vis["grid"])
+    if vis.get("dir") == "2x2":
+        cw, ch = (1080 - 6) / 2, (h - 6) / 2
+    elif vis.get("dir", "col") == "col":
+        cw, ch = 1080, (h - 6 * (n - 1)) / n
+    else:
+        cw, ch = (1080 - 6 * (n - 1)) / n, h
+    return max(cw / w_i, ch / h_i) / min(cw / w_i, ch / h_i)
+
+
 def vis_html(B, vis, top, h, dur, note):
     """장면 하나의 HTML (칸 위치 top, 높이 h)."""
     out = []
@@ -237,7 +258,12 @@ def vis_html(B, vis, top, h, dur, note):
         cells = []
         hl = vis.get("hl")  # 2×2 에서 지금 말하는 음식만 밝게(나머지는 어둡게)
         for k, c in enumerate(vis["grid"]):
-            if c.get("photo"):
+            if c.get("photo") and vis.get("_push"):  # 통째로 보이다가 천천히 다가가요 (2026-10-21 사용자)
+                src, pos = B.fetch_photo(c["photo"])
+                off, total = vis["_push"]
+                img = (f'<div class="pz" style="--pd:{total:.2f}s;--po:-{off:.2f}s;--ps:{_cover_scale(B, c["photo"], vis, h):.3f}">'
+                       f'<img src="{B.backdrop(c["photo"])}"><img class="fg" src="{src}"></div>')
+            elif c.get("photo"):
                 src, pos = B.fetch_photo(c["photo"])
                 img = f'<img src="{src}" style="object-position:{pos}">'
             else:
@@ -313,11 +339,16 @@ def build_rec(spec, voices, speech, durs, starts, real):
             events.sort(key=lambda e: e[0])
     out = []
     cuts = []
+    # 음식 사진 칸은 처음엔 통째로 보이다가 끝날 때까지 천천히 다가가요. 장면이 바뀌어도 이어지게 첫 칸 장면부터 시간을 재요 (2026-10-21 사용자)
+    g0 = next((t for t, _, v in events if v.get("grid") and any(c.get("photo") for c in v["grid"])), None)
     for n, (t, i, vis) in enumerate(events):
         end = events[n + 1][0] if n + 1 < len(events) else body
         d = end - t
+        if g0 is not None and vis.get("grid") and not spec.get("no_push"):
+            vis = {**vis, "_push": (t - g0, body - g0)}
         if vis.get("thumb"):  # 썸네일과 똑같은 첫 화면(큰 제목 + 흰 띠 + 사진). 모양은 thumb.KEEP_CSS(확정 시안)
-            html = f'<div class="rkeep">{thumb.body(spec)}</div><style>{thumb.KEEP_CSS}</style>'
+            push = "" if spec.get("no_push") else f' style="--pd:{d + 0.5:.2f}s;--ps:{PUSH_THUMB}"'
+            html = f'<div class="rkeep"{push}>{thumb.body(spec)}</div><style>{thumb.KEEP_CSS}</style>'
         elif i < intro:  # 도입: 예전처럼 큰 제목(0~680) + 자막 띠(680~810) + 그 아래 장면
             strip = '<div class="bstrip"><div></div></div>' if any(v.get("thumb") for _, _, v in events) else ""  # 썸네일의 흰 띠를 그대로
             html = vis_html(B, vis, 810, 1110, d, note) + strip
