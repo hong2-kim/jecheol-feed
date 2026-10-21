@@ -103,6 +103,7 @@ def render_cards(spec, name, browser):
 
 
 COVER_SEC, CARD_SEC, FADE_SEC, THUMB_SEC = 3.0, 4.0, 0.4, 1.2  # 카드 쇼츠: 첫 장, 소식 한 장, 넘어가는 시간, 맨 앞 썸네일
+THUMB_HOLD, THUMB_FADE = 3.0, 0.9  # 카드 쇼츠 맨 앞 썸네일: 머무는 시간, 다음 장으로 천천히 넘어가는 시간 (2026-10-21 사용자: 너무 빨라)
 
 
 def render_thumb(spec, name, browser):
@@ -152,6 +153,9 @@ def card_segments(files, name, spec, front=None):
             if sound is not None:
                 said.append((start + lead, sound))
             segs.append((f"{name}-{i + 1}-s{k}.jpg", lead + sec + SAY_TAIL, fade if segs else 0.0))
+    if front and len(segs) > 1:  # 썸네일은 조금 더 머물다 천천히 넘어가요
+        segs[0] = (front, THUMB_HOLD, 0.0)
+        segs[1] = (segs[1][0], segs[1][1] + THUMB_FADE - segs[1][2], THUMB_FADE)
     return segs, said
 
 

@@ -1200,6 +1200,7 @@ def story_bits(c, nxt, n, total):
 
 HERO_SAY_MAX = 18  # 큰 제목 장 가운데 자막 한 줄 칸 수
 HERO_ROOM = 1000   # 큰 제목 한 줄이 차지하는 폭 (화면 양 끝에서 40px 안쪽)
+HERO_ROW, HERO_FOOT = 50, 58  # 큰 제목 장 아래 정보 한 줄 높이, 맨 아래 자료 줄 자리
 
 
 def hero_head(line):
@@ -1213,11 +1214,11 @@ def hero_head(line):
 def hero_card(c, n, total, when, name, pill, say=None):
     """큰 제목 장 (2026-10-21 사용자가 빅아치 시안으로 정함).
     위: 빨간 띠(ribbon) + 화면 양 끝까지 큰 두 줄 제목 + 왼쪽에서 오른쪽으로 번지는 밑줄
-    가운데: 내레이션 자막 자리 (쇼츠에서는 lines 가 한 줄씩 바뀌어요. 그림 한 장일 때는 첫 줄)
-    아래: 양옆 끝까지 사진 + 날짜 띠(date)"""
+    가운데: 한마디(say). 내레이션(lines)이 있으면 쇼츠에서 한 줄씩 바뀌어요 (그림 한 장일 때는 첫 줄)
+    아래: 양옆 끝까지 사진 + 날짜 띠(date). rows(정보 줄)가 있으면 사진 아래에 줄 목록과 자료 줄을 붙여요."""
     src, _ = fetch_photo(c["photo"])
     if say is None:
-        say = ((c.get("lines") or [{}])[0]).get("say", "")
+        say = c.get("say") or ((c.get("lines") or [{}])[0]).get("say", "")
     heads, top = "", 180
     for k, line in enumerate(str(c["headline"]).split("\n")):
         size, body = hero_head(line)
@@ -1225,12 +1226,28 @@ def hero_card(c, n, total, when, name, pill, say=None):
         top += round(size * 1.06)
     rib = f'<div class="hrib">{rich(c["ribbon"])}</div>' if c.get("ribbon") else ""
     date = f'<div class="hdate">{rich(c["date"])}</div>' if c.get("date") else ""
+    rows, pic = c.get("rows") or [], ""
+    if rows:  # 사진은 한마디 아래부터 정보 줄 위까지 (2026-10-21 사용자: 내레이션은 길어서 빼고 정보 줄로)
+        rows_top = 1350 - HERO_FOOT - HERO_ROW * len(rows)
+        pic_top = top + 30 + 136
+        pic = f' style="top:{pic_top}px;bottom:auto;height:{rows_top - pic_top}px"'
+        items = "".join(f'<li><span><b>{esc(r["k"])}</b>{rich(r["v"])}</span></li>' for r in rows)
+        rows = (f'<ul class="hrows" style="top:{rows_top}px">{items}</ul>'
+                f'<div class="foot"><span>자료 {esc(c["src"])}</span><b>{n} / {total}</b></div>')
+    else:
+        rows = ""
+    if c.get("price") and rows:  # 값표: 사진 오른쪽 흐린 빈자리에 단품·세트·라지세트 (2026-10-21 사용자)
+        cells = "".join(f'<div><span>{esc(r["k"])}</span><b>{rich(r["v"])}</b></div>' for r in c["price"])
+        head = f'<em>{esc(c["price_title"])}</em>' if c.get("price_title") else ""  # 확정 전 값이면 "예상 가격"처럼 적어요
+        note = f'<i>{esc(c["price_note"])}</i>' if c.get("price_note") else ""
+        rows += f'<div class="hprice" style="top:{int(pic.split("top:")[1].split("px")[0]) + 10}px">{head}{cells}{note}</div>'
+    photo = (f'<div class="hpic fit"{pic}><img class="bg" src="{backdrop(c["photo"])}"><img src="{src}"></div>' if rows  # 칸이 낮아서 잘리지 않게 통째로
+             else f'<div class="hpic"><img src="{src}"></div>')
     return (
-        f'<section class="nc hero" id="c{n + 1}">'
-        f'<div class="hpic"><img src="{src}"></div>'
+        f'<section class="nc hero" id="c{n + 1}">{photo}'
         f'<div class="mast"><div class="brand">{OUTRO_PIN}<span>{name}</span><i>{pill}</i></div><div class="when">{esc(when)}</div></div>'
         f'{rib}{heads}<div class="hline" style="top:{top + 8}px"></div>'
-        f'<div class="hsay" style="top:{top + 30}px"><div>{rich(say)}</div></div>{date}</section>'
+        f'<div class="hsay" style="top:{top + 30}px"><div>{rich(say)}</div></div>{date}{rows}</section>'
     )
 
 
