@@ -1,0 +1,264 @@
+{
+ "format": "voice",
+ "layout": "rec",
+ "kind": "저녁",
+ "subject": "목요일 저녁 (부대찌개·삼겹살·닭갈비·칼국수)",
+ "title": "쌀쌀한 목요일, 저녁 골라 줄게! 넷 중에 하나만",
+ "summary": "아침 최저 4.4도로 쌀쌀한 목요일 저녁에 당기는 메뉴 넷(부대찌개·삼겹살·닭갈비·칼국수)을 당기는 것별로 골라 줘요.",
+ "headline": "쌀쌀한 목요일\n[[저녁 골라 줄게]]",
+ "small": "쌀쌀한 목요일, 저녁 골라 줄게",
+ "intro": 7,
+ "length": [
+  15,
+  25
+ ],
+ "thumb": {
+  "head": "쌀쌀한 목요일\n[[저녁 골라 줄게]]",
+  "sub": "넷 중 [[하나만]] 골라 줄게",
+  "photo": {
+   "url": "vault:photos/u-2026-10-15-dakgalbi.jpg"
+  }
+ },
+ "yt_title": "목요일 저녁 뭐 먹지? 부대찌개·삼겹살·닭갈비·칼국수 중에 골라 줄게",
+ "yt_keyword": "저녁 메뉴 추천",
+ "yt_related": [
+  "오늘 뭐 먹지",
+  "목요일 저녁 메뉴",
+  "부대찌개",
+  "닭갈비",
+  "쌀쌀한 날 음식"
+ ],
+ "yt_tags": [
+  "저녁 메뉴 추천",
+  "오늘 뭐 먹지",
+  "목요일 저녁 메뉴",
+  "저녁 뭐 먹지",
+  "부대찌개",
+  "삼겹살",
+  "닭갈비",
+  "칼국수"
+ ],
+ "yt_hashtags": [
+  "저녁메뉴추천",
+  "오늘뭐먹지",
+  "부대찌개"
+ ],
+ "yt_lead": "쌀쌀한 목요일 저녁 메뉴 고민될 때, 넷 중에 하나만 골라요.",
+ "caption": "목요일 저녁, 이 중에 골랐어요?\n\n국물이 당기면 부대찌개\n불맛이 당기면 숯불 삼겹살\n매콤한 게 당기면 닭갈비\n후루룩이 당기면 칼국수\n\n넷 중에 오늘 뭐 먹을래요? 댓글로 알려 주세요!",
+ "tags": [
+  "부대찌개",
+  "저녁메뉴추천",
+  "오늘뭐먹지",
+  "목요일저녁"
+ ],
+ "sources": [],
+ "credits": [],
+ "lines": [
+  {
+   "say": "쌀쌀한 목요일, 저녁 골라 줄게!",
+   "nosub": true,
+   "show": {
+    "thumb": true
+   }
+  },
+  {
+   "say": "자, 시작!",
+   "show": {
+    "grid": [
+     {
+      "photo": {
+       "url": "vault:photos/ig-17844737344153092.jpg"
+      }
+     },
+     {
+      "photo": {
+       "url": "vault:photos/ig-17859482692174995.jpg"
+      }
+     },
+     {
+      "photo": {
+       "url": "vault:photos/u-2026-10-15-dakgalbi.jpg"
+      }
+     },
+     {
+      "photo": {
+       "url": "vault:photos/ig-17911962443220544.jpg"
+      }
+     }
+    ],
+    "dir": "2x2",
+    "own": true,
+    "fade": 0.45
+   }
+  },
+  {
+   "say": "국물이 당기면, 얼큰한 부대찌개.",
+   "subs": [
+    "국물이 당기면,",
+    "얼큰한 부대찌개."
+   ],
+   "show": {
+    "grid": [
+     {
+      "photo": {
+       "url": "vault:photos/ig-17844737344153092.jpg"
+      }
+     },
+     {
+      "photo": {
+       "url": "vault:photos/ig-17859482692174995.jpg"
+      }
+     },
+     {
+      "photo": {
+       "url": "vault:photos/u-2026-10-15-dakgalbi.jpg"
+      }
+     },
+     {
+      "photo": {
+       "url": "vault:photos/ig-17911962443220544.jpg"
+      }
+     }
+    ],
+    "dir": "2x2",
+    "own": true,
+    "hl": 0
+   }
+  },
+  {
+   "say": "불맛이 당기면, 숯불 삼겹살.",
+   "subs": [
+    "불맛이 당기면,",
+    "숯불 삼겹살."
+   ],
+   "show": {
+    "grid": [
+     {
+      "photo": {
+       "url": "vault:photos/ig-17844737344153092.jpg"
+      }
+     },
+     {
+      "photo": {
+       "url": "vault:photos/ig-17859482692174995.jpg"
+      }
+     },
+     {
+      "photo": {
+       "url": "vault:photos/u-2026-10-15-dakgalbi.jpg"
+      }
+     },
+     {
+      "photo": {
+       "url": "vault:photos/ig-17911962443220544.jpg"
+      }
+     }
+    ],
+    "dir": "2x2",
+    "own": true,
+    "hl": 1
+   }
+  },
+  {
+   "say": "매콤한 게 당기면, 닭갈비.",
+   "subs": [
+    "매콤한 게 당기면,",
+    "닭갈비."
+   ],
+   "show": {
+    "grid": [
+     {
+      "photo": {
+       "url": "vault:photos/ig-17844737344153092.jpg"
+      }
+     },
+     {
+      "photo": {
+       "url": "vault:photos/ig-17859482692174995.jpg"
+      }
+     },
+     {
+      "photo": {
+       "url": "vault:photos/u-2026-10-15-dakgalbi.jpg"
+      }
+     },
+     {
+      "photo": {
+       "url": "vault:photos/ig-17911962443220544.jpg"
+      }
+     }
+    ],
+    "dir": "2x2",
+    "own": true,
+    "hl": 2
+   }
+  },
+  {
+   "say": "후루룩이 당기면, 따끈한 칼국수.",
+   "subs": [
+    "후루룩이 당기면,",
+    "따끈한 칼국수."
+   ],
+   "show": {
+    "grid": [
+     {
+      "photo": {
+       "url": "vault:photos/ig-17844737344153092.jpg"
+      }
+     },
+     {
+      "photo": {
+       "url": "vault:photos/ig-17859482692174995.jpg"
+      }
+     },
+     {
+      "photo": {
+       "url": "vault:photos/u-2026-10-15-dakgalbi.jpg"
+      }
+     },
+     {
+      "photo": {
+       "url": "vault:photos/ig-17911962443220544.jpg"
+      }
+     }
+    ],
+    "dir": "2x2",
+    "own": true,
+    "hl": 3
+   }
+  },
+  {
+   "say": "넷 중에 오늘 뭐 먹을래? 댓글로 알려 줘.",
+   "subs": [
+    "넷 중에 오늘 뭐 먹을래?",
+    "댓글로 알려 줘."
+   ],
+   "show": {
+    "grid": [
+     {
+      "photo": {
+       "url": "vault:photos/ig-17844737344153092.jpg"
+      }
+     },
+     {
+      "photo": {
+       "url": "vault:photos/ig-17859482692174995.jpg"
+      }
+     },
+     {
+      "photo": {
+       "url": "vault:photos/u-2026-10-15-dakgalbi.jpg"
+      }
+     },
+     {
+      "photo": {
+       "url": "vault:photos/ig-17911962443220544.jpg"
+      }
+     }
+    ],
+    "dir": "2x2",
+    "own": true
+   }
+  }
+ ]
+}
