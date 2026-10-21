@@ -32,6 +32,7 @@ CSS = """
 .rsub div { background: #fff; color: #111; font-weight: 900; font-size: 66px; letter-spacing: -2.5px; padding: 10px 34px 18px; border-radius: 22px;
             box-shadow: 0 8px 24px rgba(0,0,0,.35); text-align: center; line-height: 1.12; }
 .rsub div .am { color: #D8432B; }
+.rsub.flat div { background: none; box-shadow: none; border-radius: 0; padding: 0 0 8px; }
 .rsub span.vwho { flex: none; padding: 4px 22px 9px; border-radius: 999px; color: #fff; font-weight: 900; font-size: 40px; letter-spacing: -1px;
                   box-shadow: 0 6px 16px rgba(0,0,0,.35); }
 .rtag { position: absolute; left: 36px; display: flex; flex-direction: column; align-items: flex-start; gap: 12px; }
@@ -341,9 +342,9 @@ def build_rec(spec, voices, speech, durs, starts, real):
             continue
         c = V.who_of(spec, lines[s["line"]])
         tag = f'<span class="vwho" style="background:{c.get("color", "#333")}">{B.esc(c.get("label", s["who"]))}</span>' if c else ""
-        y = 745 if s["line"] < intro else SUB_Y
+        y = 745 if s["line"] < intro else SUB_Y  # 745 는 흰 띠 위라서 상자 없이 글자만 (2026-10-21 사용자: 테두리 빼)
         out.append(f'<section class="scene" data-at="{s["at"]:.2f}" data-dur="{max(0.05, s["end"] - s["at"]):.2f}" data-out="0">'
-                   f'<div class="rsub" style="top:{y - 60}px;height:120px">{tag}<div style="font-size:{V.sub_size(s['text'], 66)}px">{B.rich(s["text"])}</div></div></section>')
+                   f'<div class="rsub{" flat" if y == 745 else ""}" style="top:{y - 60}px;height:120px">{tag}<div style="font-size:{V.sub_size(s['text'], 66)}px">{B.rich(s["text"])}</div></div></section>')
     return out, cuts, sfx, subs
 
 
