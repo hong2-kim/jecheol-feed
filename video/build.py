@@ -646,9 +646,9 @@ def build_html(spec):
            f'<body style="--ac:{accent}">']
     # "thumb" 이 있으면 맨 앞 0.9초를 썸네일 화면(큰 두 줄 제목 + 사진 한 장)으로 보여 줘요. (2026-10-17 사용자가 정함, thumb.py)
     front = thumb.has(spec)
-    # 맨 끝에는 늘 계정 이름 장면이 붙어요. 사진 출처가 한 줄이면 게시글에 적고, 여러 줄이면 이 장면에 모아요.
-    lines = credit_lines(spec)
-    lines = lines if len(lines) > 1 else []
+    # 맨 끝에는 늘 계정 이름 장면이 붙어요. 사진 출처는 몇 줄이든 게시글에 적고 이 장면에는 넣지 않아요.
+    # (2026-10-22 사용자: "맨 뒷장에 출처 안 남기게". 로고만 가운데에)
+    lines = []
     # 체크·한 장 정리는 끝 장면을 따로 붙이지 않아요. 같은 장면 뒤에 지도를 옅게 깔고 아래에 이름을 넣어요. (2026-10-15 사용자가 정함)
     inline = all(s["type"] in INLINE_BRAND for s in scenes)
     tail = 0 if inline else (min(3.0, 2.0 + .25 * max(0, len(lines) - 2)) if lines else 1.5)
@@ -1368,17 +1368,10 @@ def description(spec):
     """
     lines = [spec["caption"].strip(), ""]
     shown = credit_lines(spec)
-    if is_cards(spec):
-        for big, small in shown:
-            lines.append(f"📷 {big}" + (f" · {small} · 잘라서 보정함" if "CC BY" in big else ""))
-        if shown:
-            lines.append("")
-    elif len(shown) == 1:
-        big, small = shown[0]
-        extra = f" · {small} · 잘라서 보정함" if "CC BY" in big else ""
-        lines += [f"📷 {big}{extra}", ""]
-    elif shown:
-        lines += ["📷 사진 출처는 영상 마지막 장면에 정리했어요.", ""]
+    for big, small in shown:  # 영상 끝 장면에는 출처를 넣지 않아서, 몇 줄이든 게시글에 모두 적어요 (2026-10-22)
+        lines.append(f"📷 {big}" + (f" · {small} · 잘라서 보정함" if "CC BY" in big else ""))
+    if shown:
+        lines.append("")
     if not is_cards(spec) and music_line(spec):  # 인스타 카드에는 음악이 없어요
         lines += [music_line(spec), ""]
     lines.append(" ".join("#" + t for t in hashtags(spec.get("tags"))))
@@ -1609,8 +1602,7 @@ if __name__ == "__main__":
     for line in thumb.spec_problems(spec):
         print("  썸네일: " + line)
     shown = credit_lines(spec)
-    where = "게시글에 한 줄로" if len(shown) == 1 else "맨 끝 장면에"
-    print(f"  사진 출처: {len(shown)}줄이 {where} 자동으로 들어가요." if shown else "  사진 출처: 표시할 것이 없어요.")
+    print(f"  사진 출처: {len(shown)}줄이 게시글에 자동으로 들어가요." if shown else "  사진 출처: 표시할 것이 없어요.")
     for big, small in shown:
         if "CC BY" in big and "curid=" not in small:
             print(f"  '{big}' 에 원본 주소가 없어요. photos.py 가 알려 준 credit 을 그대로 적어 주세요.")
