@@ -1388,12 +1388,13 @@ OUTLETS = {
     "hani.co.kr": "한겨레", "khan.co.kr": "경향신문", "hankookilbo.com": "한국일보", "mk.co.kr": "매일경제", "hankyung.com": "한국경제",
     "mt.co.kr": "머니투데이", "sedaily.com": "서울경제", "fnnews.com": "파이낸셜뉴스", "asiatoday.co.kr": "아시아투데이",
     "segye.com": "세계일보", "edaily.co.kr": "이데일리", "kyongbuk.co.kr": "경북일보", "withbuyer.com": "위드바이어",
-    "korea.kr": "정책브리핑", "mof.go.kr": "해양수산부", "incheon.go.kr": "해양수산부 이달의 수산물", "kamis.or.kr": "aT",
+    "korea.kr": "정책브리핑", "mof.go.kr": "해양수산부", "incheon.go.kr": "인천광역시", "kamis.or.kr": "aT",
     "at.or.kr": "aT", "mafra.go.kr": "농림축산식품부", "mfds.go.kr": "식약처", "open-meteo.com": "Open-Meteo 날씨",
     "visitkorea.or.kr": "한국관광공사", "nongshim.com": "농심", "hongseong.go.kr": "홍성군",
     "kyeongin.com": "경인일보", "tenasia.co.kr": "텐아시아", "mtn.co.kr": "머니투데이방송", "heraldcorp.com": "헤럴드경제",
     "nocutnews.co.kr": "노컷뉴스", "ohmynews.com": "오마이뉴스", "dt.co.kr": "디지털타임스", "etnews.com": "전자신문",
     "insightkorea.co.kr": "인사이트코리아", "hankooki.com": "한국일보", "seoul.co.kr": "서울신문", "kmib.co.kr": "국민일보",
+    "kyeonggi.com": "경기일보", "daum.net": "다음 뉴스", "bravo.etoday.co.kr": "브라보마이라이프", "etoday.co.kr": "이투데이",
 }
 
 

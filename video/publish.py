@@ -99,18 +99,29 @@ def keywords_block(r):
     return out
 
 
-def send_youtube(token, chat, r, day):
+def insta_on():
+    """인스타용(릴스·카드 게시물과 게시글)도 텔레그램으로 보낼지. config.json 의 telegram_insta.
+    (2026-10-22 사용자: "인스타용은 텔레그램에 보낼 때 빼 줘" → false, 유튜브 쇼츠만 가요)"""
+    return json.loads((ROOT / "config.json").read_text(encoding="utf-8")).get("telegram_insta", True)
+
+
+def has_youtube(r):
+    """유튜브 쇼츠로 보낼 영상이 있는지."""
+    video = r.get("short") if r.get("format") == "cards" else r.get("file")
+    return bool(r.get("yt_title") and video and (ROOT / "dist" / video).exists())
+
+
+def send_youtube(token, chat, r, day, alone=False):
     """유튜브 쇼츠에 올릴 제목과 설명을 보내요. 제목과 설명은 눌러서 바로 복사할 수 있게 감싸요.
     영상은 바로 위 인스타 것과 같은 파일이라 다시 보내지 않아요 (2026-10-18 사용자: 같은 영상이 두 번 와서 용량만 차지).
-    카드 묶음만 쇼츠용 영상(카드를 넘겨 보는 세로 영상)이 따로 있어서 그것만 보내요."""
-    if not r.get("yt_title"):
+    카드 묶음만 쇼츠용 영상(카드를 넘겨 보는 세로 영상)이 따로 있어서 그것만 보내요.
+    인스타용을 보내지 않을 때(alone)는 위에 영상이 없으니 영상도 여기서 보내요."""
+    if not has_youtube(r):
         return
     cards = r.get("format") == "cards"
     video = r.get("short") if cards else r["file"]
-    if not video or not (ROOT / "dist" / video).exists():
-        return
     tag = label(r, "youtube")
-    if cards:
+    if cards or alone:
         with open(ROOT / "dist" / video, "rb") as f:
             tg("sendVideo", token, data={"chat_id": chat, "caption": f"{tag}\n{r.get('yt_title') or r.get('title')}"[:900], "supports_streaming": "true",
                                          "width": 1080, "height": 1920}, files={"video": (video, f, "video/mp4")})
@@ -118,12 +129,36 @@ def send_youtube(token, chat, r, day):
     if len(desc) > 3300:  # 텔레그램 글 한 개에 다 들어가게
         desc = desc[:3300].rstrip() + "\n…"
     url = f"https://github.com/{REPO}/releases/download/v{day}/{video}"
-    text = (f"<b>{html.escape(tag)}</b>\n{'위 영상' if cards else '바로 위 인스타 영상(같은 파일)'}을 쇼츠로 올려 주세요. 썸네일은 맨 앞(0초) 장면을 고르면 큰 제목 화면이 돼요.\n\n{html.escape(music_note(r, youtube=True))}"
+    text = (f"<b>{html.escape(tag)}</b>\n{'위 영상' if cards or alone else '바로 위 인스타 영상(같은 파일)'}을 쇼츠로 올려 주세요. 썸네일은 맨 앞(0초) 장면을 고르면 큰 제목 화면이 돼요.\n\n{html.escape(music_note(r, youtube=True))}"
             f"<b>제목</b> (눌러서 복사)\n<code>{html.escape(r['yt_title'])}</code>\n\n"
             + keywords_block(r) +
             f"<b>설명</b> (눌러서 복사)\n<pre>{html.escape(desc)}</pre>\n"
             f"<b>내려받기</b>\n{html.escape(url)}")
+    more = "\n\n<b>확인한 자료</b> (설명에는 안 넣어도 돼요)\n" + html.escape("\n".join(r.get("sources") or []))
+    if alone and r.get("sources") and len(text) + len(more) <= 4000:  # 인스타 글과 함께 가던 확인한 자료. 글 한 개(4096자)에 들어갈 때만
+        text += more
     tg("sendMessage", token, data={"chat_id": chat, "text": text, "parse_mode": "HTML", "disable_web_page_preview": "true"})
+
+
+def send_shorts_only(token, chat, day, todo, bad, sent):
+    """인스타용을 빼고 유튜브 쇼츠만 보내요: 첫 안내 → 항목마다 구분 줄, 영상, 제목·설명."""
+    if not (todo or bad):
+        return
+    head = f"{day} 올릴 것이 준비됐어요."
+    if todo:
+        head += f"\n\n▶ 유튜브 쇼츠 {len(todo)}개\n" + "\n".join(f"{n}. {label(r, 'youtube')[1:-1]}" for n, r in enumerate(todo, 1))
+        head += "\n\n영상 바로 아래에 유튜브 제목·설명이 이어져요."
+    if bad:
+        head += f"\n\n실패 {len(bad)}개: " + "; ".join(f"{b['id']} ({b['error'][:80]})" for b in bad)
+    tg("sendMessage", token, data={"chat_id": chat, "text": head})
+    for r in todo:
+        tg("sendMessage", token, data={"chat_id": chat, "text": f"━━━━ {LABELS.get(r['id'][11:], (r.get('title') or r['id'],))[0]} ━━━━"})
+        try:
+            send_youtube(token, chat, r, day, alone=True)
+            sent.add(r["id"])
+        except Exception as e:
+            log_error(f"youtube:{r['id']}", e)
+            print(f"못 보냈어요: {r['id']} ({e})")
 
 
 def main():
@@ -155,6 +190,13 @@ def main():
     ok = [r for r in results if r["ok"]]
     bad = [r for r in results if not r["ok"]]
     todo = [r for r in ok if r["id"] not in sent]
+    if not insta_on():  # 유튜브 쇼츠만 보내요. 쇼츠가 없는(인스타 전용) 것은 보낸 것으로만 적어 둬요
+        sent |= {r["id"] for r in todo if not has_youtube(r)}
+        todo = [r for r in todo if has_youtube(r)]
+        send_shorts_only(token, chat, day, todo, bad, sent)
+        write_json(ROOT / "state" / "sent_videos.json", sorted(sent))
+        print(f"보냈어요(유튜브 쇼츠만): {len(todo)}개, 실패 알림 {len(bad)}개")
+        return
     if todo or bad:
         head = f"{day} 올릴 것이 준비됐어요."
         if todo:
