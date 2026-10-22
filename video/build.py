@@ -260,9 +260,13 @@ def scene_card(s, i, ctx):
     """사진이나 동영상을 화면 가득 깔고 글은 아래쪽에 얹어요. 세로면 전체, 가로면 위 3/4 을 채워요."""
     tag, back, tall = moving(s, s["dur"])
     chip = rise("chip", s["chip"], .2) if s.get("chip") else ""
+    inset = ""
+    if s.get("inset"):  # 장소 사진 위에 음식 사진 한 장을 작게 겹쳐요 (2026-10-22 차이나타운 + 짜장면)
+        src, pos = fetch_photo(s["inset"])
+        inset = f'<div class="inset a rise" style="--dl:.3s;--d:.3s"><img src="{src}" style="object-position:{pos}"></div>'
     return "card", (
         f'<div class="back"><img src="{back}"></div>'
-        f'<div class="pic {"tall" if tall else "wide"}{"" if s.get("video") or zoomed(s.get("photo")) else " whole"}">{tag}</div><div class="shade"></div>'
+        f'<div class="pic {"tall" if tall else "wide"}{"" if s.get("video") or zoomed(s.get("photo")) else " whole"}">{tag}</div>{inset}<div class="shade"></div>'
         f'<div class="txt">{chip}{rise("hd", s["headline"], .32)}{rise("ln", s.get("line", ""), .6)}</div>'
     )
 

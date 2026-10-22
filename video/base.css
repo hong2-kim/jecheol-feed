@@ -49,6 +49,8 @@ body { background: #0E0B09; color: #fff; font-family: "Noto Sans KR", sans-serif
 .card .pic.tall { height: 1920px; }
 .card .pic.wide { height: 1440px; -webkit-mask-image: linear-gradient(180deg, #000 80%, transparent 100%); mask-image: linear-gradient(180deg, #000 80%, transparent 100%); }
 .card .shade { position: absolute; left: 0; right: 0; bottom: 0; height: 1020px; background: linear-gradient(180deg, rgba(8,6,4,0) 0%, rgba(8,6,4,.5) 36%, rgba(8,6,4,.86) 66%, rgba(8,6,4,.94) 100%); }
+.card .inset { position: absolute; right: 56px; top: 820px; width: 480px; height: 320px; border: 8px solid #fff; border-radius: 22px; overflow: hidden; transform: rotate(3deg); box-shadow: 0 14px 40px rgba(0,0,0,.55); z-index: 2; }
+.card .inset img { width: 100%; height: 100%; object-fit: cover; }
 .card .txt { position: absolute; left: 64px; right: 150px; bottom: 340px; text-shadow: 0 3px 18px rgba(0,0,0,.55); }
 .chip { display: inline-block; padding: 6px 20px 10px; border-radius: 999px; background: rgba(8,6,4,.62); font-weight: 800; font-size: 40px; letter-spacing: -1px; color: var(--ac); text-shadow: none; }
 .hd { margin-top: 10px; font-weight: 900; font-size: 92px; line-height: 1.16; letter-spacing: -4px; white-space: pre-line; }
