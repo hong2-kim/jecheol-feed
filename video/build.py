@@ -1536,6 +1536,11 @@ if __name__ == "__main__":
         history.print_report(sys.argv[1])
     except Exception as e:
         print(f"  이력: 확인하지 못했어요 ({e})")
+    try:  # 사진이 글과 같은 대상인지, 써도 되는 사진인지, 지역 이름·범위 (2026-10-23 4단계, scripts/contentcheck.py). 알려 주기만 해요
+        import contentcheck
+        contentcheck.print_report(sys.argv[1])
+    except Exception as e:
+        print(f"  사진·지역: 확인하지 못했어요 ({e})")
     if is_cards(spec):
         if spec.get("format") == "steps":
             import steps
