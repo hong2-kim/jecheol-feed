@@ -19,10 +19,12 @@
 
 ## 인수인계 요약 (새 대화는 여기부터 읽는다, 2026-10-23 갱신)
 - **1~6단계 개선 프로젝트 완료.** 남은 것은 "운영 안정화"(실제 정기 실행 검증)뿐. 자세한 단계 기록은 아래.
-- **커밋**: 2단계 42d52ef · 3단계 bf988a9 · 4단계 1da8689 · 5단계 75a2f69 · 6단계(이 문서가 들어간 커밋, `git log -1 -- docs/improvement-progress.md`). 3~6단계는 `[skip ci]` 로 올려 push 로 도는 publish(텔레그램 알림)를 건너뜀.
+- **커밋**: 2단계 42d52ef · 3단계 bf988a9 · 4단계 1da8689 · 5단계 75a2f69 · 6단계 42ea906 (마지막 코드 반영. 그 뒤는 이 문서만 고침). 3~6단계는 `[skip ci]` 로 올려 push 로 도는 publish(텔레그램 알림)를 건너뜀.
 - **자동화 구조**: collect(05시 예약, 실제 08시쯤, `fetch_sources.py`) → 클라우드 루틴(06:02, `PROMPT.md`+`rules/`, 직접 fetch_sources 후 `--digest` 로 inbox 요약을 봄) → 설계도 push → produce(렌더) → `video/publish.py`(보내기 직전 `scripts/gate.py` 판정, 통과만 텔레그램) / publish(RSS·알림) / photos(매시 예약, GitHub 지연으로 3~5시간 간격) / ytstats(09시). 네이버 블로그는 이 컴퓨터의 예약 작업 "네이버 블로그 자동 발행"(13:00) → `scripts/auto-publish.cmd` → `scripts/auto-publish.mts`(저장소 밖) → `jecheol-feed/config.json` 의 `blog_publish.gate: true` 이면 `gate.py --json` 판정 뒤 발행.
 - **검수 구조**: `gate.py` = 형식(build.py·build_blog.py) + 중복·날짜(`history.py`) + 사진 일치·권리·지역(`contentcheck.py`) + 검수 시트 지문(`review_sheet.py`, 매일 실행의 Claude 가 시트를 열어 본 자동 기록 — 사람 승인 아님). 차단은 고쳐야 나감, 확인 필요는 `gate.py approve`(사람이 대화에서 "보내") 뒤 나감, 승인은 내용 지문이 같을 때만. 보류 기록 `state/review.json`, 상태 보기 `gate.py status 날짜`.
 - **회사 사진 정책**: 이용 조건이 확인된 사진만 게시용. 등록부 `sources.json` `photo_rights`(사용 가능 3: 관광공사 공공누리1·위키미디어 파일별·보관함 / 사용 불가 3: 언론사·판매 사이트·CJ뉴스룸(변형·상업 이용 금지) / 확인 필요 20: 나머지 회사·보도자료 배포처). 사진이 없으면 소식은 빼지 않고 사진 없는 장(카드 big, 영상은 지도 바탕).
+- **배포 확인(2026-10-23 19시)**: 42ea906 push 뒤 이 커밋으로 돈 Actions 없음, `sent*.json`·`blog_posted.json` 그대로(마지막 931cc7d). 블로그 예약 작업 Ready·다음 10-24 13:00, `gate: true`. 루틴 마지막 실행 10-23 06:04(변경 전), 다음 10-24 06:02. 변경 전 기준: 루틴 1회 약 20분·93~105턴.
+- **photos 지연 영향**: 매시 예약이지만 실제로는 3~6시간 간격(예: 10-23 03:28 → 10:25 → 16:22 KST). 그래서 05:10 실행이 06시 루틴 전에 꼭 돌지는 않는다 → 사용자가 새벽에 텔레그램으로 보낸 사진은 그날 루틴에 못 들어가고 다음 날 쓰일 수 있다. 실패는 아니고 GitHub 예약 지연. 새 작업은 만들지 않음(바꾸려면 별도 승인).
 - **운영 검증 완료 항목**: 없음(모의·사본·실제 렌더 시험만 완료). 확인된 운영 사실: 예약 작업 경로·설정 읽기, Actions 활성, 3~6단계 push 로 Actions·텔레그램 발송 없음.
 - **다음에 확인할 것**(2026-10-24 이후): ① 루틴 실행 기록(RemoteTrigger `get_run_log`)에서 `--digest` 사용·검수 시트 Read·`review.photo_sheet`/`shows`/`dates` 기록 여부 ② produce·publish 실행 결과, `state/review.json` 의 통과·보류 비율, 보류 알림 중복 여부, `sent_videos.json` ③ 13시 블로그 `data/auto-publish.log` 와 `state/blog_posted.json`(published/held) ④ collect 의 inbox 크기·갈래 ⑤ 첫날 확인 필요가 너무 많으면 원인(칸 누락인지 실제 문제인지)부터 본다.
 
