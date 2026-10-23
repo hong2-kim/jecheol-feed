@@ -816,7 +816,12 @@
       "checked": "2026-10-23",
       "status": "사용 가능",
       "recheck_days": 90,
-      "note": "공공누리 1유형인 사진만 photos.py 가 골라 줌. 다른 유형이 섞이면 그 사진 조건을 따른다"
+      "note": "공공누리 1유형인 사진만 photos.py 가 골라 줌. 다른 유형이 섞이면 그 사진 조건을 따른다",
+      "uses": {
+        "instagram": "허용",
+        "youtube": "허용",
+        "blog": "허용"
+      }
     },
     {
       "name": "위키미디어 공용",
@@ -832,7 +837,12 @@
       "checked": "2026-10-23",
       "status": "사용 가능",
       "recheck_days": 90,
-      "note": "사진마다 photos.py 가 알려 준 license 를 따른다"
+      "note": "사진마다 photos.py 가 알려 준 license 를 따른다",
+      "uses": {
+        "instagram": "파일별",
+        "youtube": "파일별",
+        "blog": "파일별"
+      }
     },
     {
       "name": "비공개 사진 보관함·저장소 자료(사용자 촬영)",
@@ -849,7 +859,12 @@
       "edit": "가능",
       "checked": "2026-10-23",
       "status": "사용 가능",
-      "recheck_days": 90
+      "recheck_days": 90,
+      "uses": {
+        "instagram": "허용",
+        "youtube": "허용",
+        "blog": "허용"
+      }
     },
     {
       "name": "BGF리테일(CU)",
@@ -864,7 +879,12 @@
       "checked": "미확인",
       "status": "확인 필요",
       "recheck_days": 90,
-      "note": "외부 SNS·영상·블로그 재사용 허용 여부를 아직 확인하지 않았다. 확인하면 terms_url·scope·credit·edit·checked 를 채우고 status 를 바꾼다"
+      "note": "외부 SNS·영상·블로그 재사용 허용 여부를 아직 확인하지 않았다. 확인하면 terms_url·scope·credit·edit·checked 를 채우고 status 를 바꾼다",
+      "uses": {
+        "instagram": "미확인",
+        "youtube": "미확인",
+        "blog": "미확인"
+      }
     },
     {
       "name": "GS리테일(GS25)",
@@ -879,7 +899,12 @@
       "checked": "미확인",
       "status": "확인 필요",
       "recheck_days": 90,
-      "note": "외부 SNS·영상·블로그 재사용 허용 여부를 아직 확인하지 않았다. 확인하면 terms_url·scope·credit·edit·checked 를 채우고 status 를 바꾼다"
+      "note": "외부 SNS·영상·블로그 재사용 허용 여부를 아직 확인하지 않았다. 확인하면 terms_url·scope·credit·edit·checked 를 채우고 status 를 바꾼다",
+      "uses": {
+        "instagram": "미확인",
+        "youtube": "미확인",
+        "blog": "미확인"
+      }
     },
     {
       "name": "세븐일레븐",
@@ -894,7 +919,12 @@
       "checked": "미확인",
       "status": "확인 필요",
       "recheck_days": 90,
-      "note": "외부 SNS·영상·블로그 재사용 허용 여부를 아직 확인하지 않았다. 확인하면 terms_url·scope·credit·edit·checked 를 채우고 status 를 바꾼다"
+      "note": "외부 SNS·영상·블로그 재사용 허용 여부를 아직 확인하지 않았다. 확인하면 terms_url·scope·credit·edit·checked 를 채우고 status 를 바꾼다",
+      "uses": {
+        "instagram": "미확인",
+        "youtube": "미확인",
+        "blog": "미확인"
+      }
     },
     {
       "name": "이마트24",
@@ -909,7 +939,12 @@
       "checked": "미확인",
       "status": "확인 필요",
       "recheck_days": 90,
-      "note": "외부 SNS·영상·블로그 재사용 허용 여부를 아직 확인하지 않았다. 확인하면 terms_url·scope·credit·edit·checked 를 채우고 status 를 바꾼다"
+      "note": "외부 SNS·영상·블로그 재사용 허용 여부를 아직 확인하지 않았다. 확인하면 terms_url·scope·credit·edit·checked 를 채우고 status 를 바꾼다",
+      "uses": {
+        "instagram": "미확인",
+        "youtube": "미확인",
+        "blog": "미확인"
+      }
     },
     {
       "name": "CJ제일제당",
@@ -924,7 +959,12 @@
       "checked": "미확인",
       "status": "확인 필요",
       "recheck_days": 90,
-      "note": "외부 SNS·영상·블로그 재사용 허용 여부를 아직 확인하지 않았다. 확인하면 terms_url·scope·credit·edit·checked 를 채우고 status 를 바꾼다"
+      "note": "외부 SNS·영상·블로그 재사용 허용 여부를 아직 확인하지 않았다. 확인하면 terms_url·scope·credit·edit·checked 를 채우고 status 를 바꾼다 (같은 그룹의 CJ뉴스룸은 변형·상업적 이용 금지였다. CJ제일제당 누리집 조건은 따로 확인하지 못함)",
+      "uses": {
+        "instagram": "미확인",
+        "youtube": "미확인",
+        "blog": "미확인"
+      }
     },
     {
       "name": "오뚜기",
@@ -939,7 +979,12 @@
       "checked": "미확인",
       "status": "확인 필요",
       "recheck_days": 90,
-      "note": "외부 SNS·영상·블로그 재사용 허용 여부를 아직 확인하지 않았다. 확인하면 terms_url·scope·credit·edit·checked 를 채우고 status 를 바꾼다"
+      "note": "외부 SNS·영상·블로그 재사용 허용 여부를 아직 확인하지 않았다. 확인하면 terms_url·scope·credit·edit·checked 를 채우고 status 를 바꾼다",
+      "uses": {
+        "instagram": "미확인",
+        "youtube": "미확인",
+        "blog": "미확인"
+      }
     },
     {
       "name": "농심",
@@ -954,7 +999,12 @@
       "checked": "미확인",
       "status": "확인 필요",
       "recheck_days": 90,
-      "note": "외부 SNS·영상·블로그 재사용 허용 여부를 아직 확인하지 않았다. 확인하면 terms_url·scope·credit·edit·checked 를 채우고 status 를 바꾼다"
+      "note": "외부 SNS·영상·블로그 재사용 허용 여부를 아직 확인하지 않았다. 확인하면 terms_url·scope·credit·edit·checked 를 채우고 status 를 바꾼다",
+      "uses": {
+        "instagram": "미확인",
+        "youtube": "미확인",
+        "blog": "미확인"
+      }
     },
     {
       "name": "대상",
@@ -969,7 +1019,12 @@
       "checked": "미확인",
       "status": "확인 필요",
       "recheck_days": 90,
-      "note": "외부 SNS·영상·블로그 재사용 허용 여부를 아직 확인하지 않았다. 확인하면 terms_url·scope·credit·edit·checked 를 채우고 status 를 바꾼다"
+      "note": "외부 SNS·영상·블로그 재사용 허용 여부를 아직 확인하지 않았다. 확인하면 terms_url·scope·credit·edit·checked 를 채우고 status 를 바꾼다",
+      "uses": {
+        "instagram": "미확인",
+        "youtube": "미확인",
+        "blog": "미확인"
+      }
     },
     {
       "name": "동원F&B",
@@ -984,7 +1039,12 @@
       "checked": "미확인",
       "status": "확인 필요",
       "recheck_days": 90,
-      "note": "외부 SNS·영상·블로그 재사용 허용 여부를 아직 확인하지 않았다. 확인하면 terms_url·scope·credit·edit·checked 를 채우고 status 를 바꾼다"
+      "note": "외부 SNS·영상·블로그 재사용 허용 여부를 아직 확인하지 않았다. 확인하면 terms_url·scope·credit·edit·checked 를 채우고 status 를 바꾼다",
+      "uses": {
+        "instagram": "미확인",
+        "youtube": "미확인",
+        "blog": "미확인"
+      }
     },
     {
       "name": "풀무원",
@@ -999,7 +1059,12 @@
       "checked": "미확인",
       "status": "확인 필요",
       "recheck_days": 90,
-      "note": "외부 SNS·영상·블로그 재사용 허용 여부를 아직 확인하지 않았다. 확인하면 terms_url·scope·credit·edit·checked 를 채우고 status 를 바꾼다"
+      "note": "외부 SNS·영상·블로그 재사용 허용 여부를 아직 확인하지 않았다. 확인하면 terms_url·scope·credit·edit·checked 를 채우고 status 를 바꾼다",
+      "uses": {
+        "instagram": "미확인",
+        "youtube": "미확인",
+        "blog": "미확인"
+      }
     },
     {
       "name": "하림",
@@ -1014,7 +1079,12 @@
       "checked": "미확인",
       "status": "확인 필요",
       "recheck_days": 90,
-      "note": "외부 SNS·영상·블로그 재사용 허용 여부를 아직 확인하지 않았다. 확인하면 terms_url·scope·credit·edit·checked 를 채우고 status 를 바꾼다"
+      "note": "외부 SNS·영상·블로그 재사용 허용 여부를 아직 확인하지 않았다. 확인하면 terms_url·scope·credit·edit·checked 를 채우고 status 를 바꾼다",
+      "uses": {
+        "instagram": "미확인",
+        "youtube": "미확인",
+        "blog": "미확인"
+      }
     },
     {
       "name": "맘스터치",
@@ -1029,7 +1099,12 @@
       "checked": "미확인",
       "status": "확인 필요",
       "recheck_days": 90,
-      "note": "외부 SNS·영상·블로그 재사용 허용 여부를 아직 확인하지 않았다. 확인하면 terms_url·scope·credit·edit·checked 를 채우고 status 를 바꾼다"
+      "note": "외부 SNS·영상·블로그 재사용 허용 여부를 아직 확인하지 않았다. 확인하면 terms_url·scope·credit·edit·checked 를 채우고 status 를 바꾼다",
+      "uses": {
+        "instagram": "미확인",
+        "youtube": "미확인",
+        "blog": "미확인"
+      }
     },
     {
       "name": "롯데리아(롯데GRS)",
@@ -1044,7 +1119,12 @@
       "checked": "미확인",
       "status": "확인 필요",
       "recheck_days": 90,
-      "note": "외부 SNS·영상·블로그 재사용 허용 여부를 아직 확인하지 않았다. 확인하면 terms_url·scope·credit·edit·checked 를 채우고 status 를 바꾼다"
+      "note": "외부 SNS·영상·블로그 재사용 허용 여부를 아직 확인하지 않았다. 확인하면 terms_url·scope·credit·edit·checked 를 채우고 status 를 바꾼다",
+      "uses": {
+        "instagram": "미확인",
+        "youtube": "미확인",
+        "blog": "미확인"
+      }
     },
     {
       "name": "맥도날드",
@@ -1059,7 +1139,12 @@
       "checked": "미확인",
       "status": "확인 필요",
       "recheck_days": 90,
-      "note": "외부 SNS·영상·블로그 재사용 허용 여부를 아직 확인하지 않았다. 확인하면 terms_url·scope·credit·edit·checked 를 채우고 status 를 바꾼다"
+      "note": "외부 SNS·영상·블로그 재사용 허용 여부를 아직 확인하지 않았다. 확인하면 terms_url·scope·credit·edit·checked 를 채우고 status 를 바꾼다",
+      "uses": {
+        "instagram": "미확인",
+        "youtube": "미확인",
+        "blog": "미확인"
+      }
     },
     {
       "name": "버거킹",
@@ -1074,7 +1159,12 @@
       "checked": "미확인",
       "status": "확인 필요",
       "recheck_days": 90,
-      "note": "외부 SNS·영상·블로그 재사용 허용 여부를 아직 확인하지 않았다. 확인하면 terms_url·scope·credit·edit·checked 를 채우고 status 를 바꾼다"
+      "note": "외부 SNS·영상·블로그 재사용 허용 여부를 아직 확인하지 않았다. 확인하면 terms_url·scope·credit·edit·checked 를 채우고 status 를 바꾼다",
+      "uses": {
+        "instagram": "미확인",
+        "youtube": "미확인",
+        "blog": "미확인"
+      }
     },
     {
       "name": "스타벅스",
@@ -1089,7 +1179,12 @@
       "checked": "미확인",
       "status": "확인 필요",
       "recheck_days": 90,
-      "note": "외부 SNS·영상·블로그 재사용 허용 여부를 아직 확인하지 않았다. 확인하면 terms_url·scope·credit·edit·checked 를 채우고 status 를 바꾼다"
+      "note": "외부 SNS·영상·블로그 재사용 허용 여부를 아직 확인하지 않았다. 확인하면 terms_url·scope·credit·edit·checked 를 채우고 status 를 바꾼다",
+      "uses": {
+        "instagram": "미확인",
+        "youtube": "미확인",
+        "blog": "미확인"
+      }
     },
     {
       "name": "투썸플레이스",
@@ -1104,7 +1199,12 @@
       "checked": "미확인",
       "status": "확인 필요",
       "recheck_days": 90,
-      "note": "외부 SNS·영상·블로그 재사용 허용 여부를 아직 확인하지 않았다. 확인하면 terms_url·scope·credit·edit·checked 를 채우고 status 를 바꾼다"
+      "note": "외부 SNS·영상·블로그 재사용 허용 여부를 아직 확인하지 않았다. 확인하면 terms_url·scope·credit·edit·checked 를 채우고 status 를 바꾼다",
+      "uses": {
+        "instagram": "미확인",
+        "youtube": "미확인",
+        "blog": "미확인"
+      }
     },
     {
       "name": "메가MGC커피",
@@ -1119,7 +1219,12 @@
       "checked": "미확인",
       "status": "확인 필요",
       "recheck_days": 90,
-      "note": "외부 SNS·영상·블로그 재사용 허용 여부를 아직 확인하지 않았다. 확인하면 terms_url·scope·credit·edit·checked 를 채우고 status 를 바꾼다"
+      "note": "외부 SNS·영상·블로그 재사용 허용 여부를 아직 확인하지 않았다. 확인하면 terms_url·scope·credit·edit·checked 를 채우고 status 를 바꾼다",
+      "uses": {
+        "instagram": "미확인",
+        "youtube": "미확인",
+        "blog": "미확인"
+      }
     },
     {
       "name": "CJ뉴스룸 (식품 글만)",
@@ -1127,14 +1232,19 @@
         "cjnews.cj.net"
       ],
       "photo_source": "회사 누리집·뉴스룸·보도자료",
-      "terms_url": "",
-      "scope": "",
-      "credit": "",
-      "edit": "",
-      "checked": "미확인",
-      "status": "확인 필요",
+      "terms_url": "https://cjnews.cj.net/채널cj-콘텐츠-이용안내/",
+      "scope": "언론 보도·학습·연구 목적 활용과 SNS 공유는 가능(출처 'CJ 뉴스룸'과 링크). 글·이미지·영상의 변형·가공 금지, 상업적 목적 사용 금지, 워터마크 이미지는 외부 제공 자료라 사용 제한",
+      "credit": "CJ 뉴스룸 + 링크",
+      "edit": "금지",
+      "checked": "2026-10-23",
+      "status": "사용 불가",
       "recheck_days": 90,
-      "note": "외부 SNS·영상·블로그 재사용 허용 여부를 아직 확인하지 않았다. 확인하면 terms_url·scope·credit·edit·checked 를 채우고 status 를 바꾼다"
+      "note": "우리 쓰임(카드·영상으로 자르고 얹음 = 변형, 수익화 예정 채널)은 허용 범위 밖. 쓰려면 news.room@cj.net 에 허가를 받아 사진마다 terms 칸에 적는다",
+      "uses": {
+        "instagram": "불가",
+        "youtube": "불가",
+        "blog": "불가"
+      }
     },
     {
       "name": "SPC 매거진",
@@ -1149,7 +1259,12 @@
       "checked": "미확인",
       "status": "확인 필요",
       "recheck_days": 90,
-      "note": "외부 SNS·영상·블로그 재사용 허용 여부를 아직 확인하지 않았다. 확인하면 terms_url·scope·credit·edit·checked 를 채우고 status 를 바꾼다"
+      "note": "외부 SNS·영상·블로그 재사용 허용 여부를 아직 확인하지 않았다. 확인하면 terms_url·scope·credit·edit·checked 를 채우고 status 를 바꾼다",
+      "uses": {
+        "instagram": "미확인",
+        "youtube": "미확인",
+        "blog": "미확인"
+      }
     },
     {
       "name": "보도자료 배포처(PR TIMES 등)",
@@ -1165,7 +1280,12 @@
       "checked": "미확인",
       "status": "확인 필요",
       "recheck_days": 90,
-      "note": "배포 사진이라도 재사용 범위는 회사마다 다르다"
+      "note": "배포 사진이라도 재사용 범위는 회사마다 다르다",
+      "uses": {
+        "instagram": "미확인",
+        "youtube": "미확인",
+        "blog": "미확인"
+      }
     },
     {
       "name": "언론사·통신사 사진",
@@ -1185,7 +1305,12 @@
       "checked": "미확인",
       "status": "사용 불가",
       "recheck_days": 90,
-      "note": "기자·통신사가 찍은 사진은 쓰지 않는다. 사진 설명이 '○○ 제공'이면 그 회사의 조건(위 회사 항목)을 따른다. 그 밖의 언론사 주소도 같다(contentcheck.py 의 PRESS)"
+      "note": "기자·통신사가 찍은 사진은 쓰지 않는다. 사진 설명이 '○○ 제공'이면 그 회사의 조건(위 회사 항목)을 따른다. 그 밖의 언론사 주소도 같다(contentcheck.py 의 PRESS)",
+      "uses": {
+        "instagram": "불가",
+        "youtube": "불가",
+        "blog": "불가"
+      }
     },
     {
       "name": "판매 사이트(오픈마켓·자사몰)",
@@ -1204,7 +1329,12 @@
       "checked": "미확인",
       "status": "사용 불가",
       "recheck_days": 90,
-      "note": "판매자 사진은 이용 허가가 없다. 그 밖의 쇼핑몰 주소도 같다(contentcheck.py 의 SHOP)"
+      "note": "판매자 사진은 이용 허가가 없다. 그 밖의 쇼핑몰 주소도 같다(contentcheck.py 의 SHOP)",
+      "uses": {
+        "instagram": "불가",
+        "youtube": "불가",
+        "blog": "불가"
+      }
     }
   ]
 }

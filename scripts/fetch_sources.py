@@ -214,5 +214,51 @@ def main():
     print(f"끝. 오늘 새로 모은 글 {len(fresh)}개")
 
 
+def digest(day, per=8):
+    """inbox 를 통째로 읽지 않도록 갈래별로 짧게(2026-10-23 6단계). 사흘 안의 글만, 같은 제목은 한 번, 여러 매체가 쓴 것·새것부터.
+    지난 60일 콘텐츠와 겹치는 글은 끝에 (지난 콘텐츠와 겹침: …) 를 붙여요(scripts/history.py). 주소는 적지 않으니 고른 글은 번호로 다시 찾아요."""
+    import history
+    items = []
+    for d in (day, (datetime.fromisoformat(day) - timedelta(days=1)).strftime("%Y-%m-%d")):
+        items += read_json(ROOT / "inbox" / f"{d}.json", []) or []
+    now = datetime.fromisoformat(day).replace(hour=23, tzinfo=KST).timestamp()
+    seen, groups = set(), {}
+    for n, e in enumerate(items):
+        t = e["title"].rsplit(" - ", 1)[0].strip()
+        age = (now - when(e)) / 86400 if when(e) else 9
+        if t in seen or age > 3:
+            continue
+        seen.add(t)
+        groups.setdefault(e.get("group") or e.get("use") or "기타", []).append((n, t, e))
+    past = history.load_history(datetime.fromisoformat(day).date())
+    out = [f"{day} inbox 요약 (사흘 안, 같은 제목 한 번). 번호는 python3 scripts/fetch_sources.py --show {day} 번호 로 주소를 봐요"]
+    for g, rows in sorted(groups.items(), key=lambda x: -len(x[1])):
+        rows.sort(key=lambda r: (-(r[2].get("coverage") or 1), -when(r[2])))
+        shown, picked = [], []
+        for r in rows:  # 같은 소식을 제목만 달리 쓴 기사는 하나만 (add_coverage 와 같은 기준)
+            w = words(r[1])
+            if any(len(w & x) >= 3 or (len(w & x) >= 2 and len(w & x) / max(1, len(w | x)) >= 0.3) for x in shown):
+                continue
+            shown.append(w)
+            picked.append(r)
+        out.append(f"\n## {g} (글 {len(rows)}건, 소식 {len(picked)}개)")
+        for n, t, e in picked[:per]:
+            hit = history.compare([history.unit("후보", day, "후보", t, t, t, [e["link"]], False)], past)
+            mark = f"  (지난 콘텐츠와 겹침: {hit[0].split('↔')[1].split(chr(39))[0].strip()})" if hit else ""
+            out.append(f"{n:4} [{e.get('coverage') or 1}곳] {e.get('published', '')[5:]} {t[:70]} <{(outlet(e['title']) or e.get('source_name', ''))[:12]}>{mark}")
+    return "\n".join(out)
+
+
 if __name__ == "__main__":
-    main()
+    if len(sys.argv) > 2 and sys.argv[1] == "--digest":  # python3 scripts/fetch_sources.py --digest 2026-10-24 [갈래마다 몇 건]
+        sys.stdout.reconfigure(encoding="utf-8")
+        print(digest(sys.argv[2], int(sys.argv[3]) if len(sys.argv) > 3 else 8))
+    elif len(sys.argv) > 3 and sys.argv[1] == "--show":  # python3 scripts/fetch_sources.py --show 2026-10-24 번호 [번호 …]
+        sys.stdout.reconfigure(encoding="utf-8")
+        day = sys.argv[2]
+        items = (read_json(ROOT / "inbox" / f"{day}.json", []) or []) + (read_json(ROOT / "inbox" / f"{(datetime.fromisoformat(day) - timedelta(days=1)).strftime('%Y-%m-%d')}.json", []) or [])
+        for n in sys.argv[3:]:
+            e = items[int(n)]
+            print(f"{n} | {e.get('published', e.get('date'))} | {e['title']} | {e['link']}")
+    else:
+        main()

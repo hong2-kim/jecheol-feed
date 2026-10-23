@@ -207,7 +207,12 @@ def moving(s, dur):
         return tag, first, tall
     if s.get("video"):  # 설계도 확인만 할 때는 동영상을 풀지 않아요
         return "", "", True
+    if not s.get("photo"):  # 맞는 사진이 없는 장면은 다른 음식 사진 대신 지도 바탕에 글만 (2026-10-23 6단계, PROMPT.md "사진은 내용을 정한 뒤에")
+        return NEWS_MAP, BLANK, True
     return img(s["photo"]), backdrop(s["photo"]), is_tall(s["photo"])
+
+
+BLANK = "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"  # 사진 없는 장면의 흐린 바탕 자리(투명 1px)
 
 
 def zoomed(photo):
@@ -1622,5 +1627,7 @@ if __name__ == "__main__":
     for n, s in enumerate(spec["scenes"], 1):
         if s.get("video"):
             print(f"  장면 {n}: 동영상이에요. 영상을 만들 때 넣어요.")
+        elif s["type"] == "card" and not s.get("photo"):
+            print(f"  장면 {n}: 사진 없는 장면이에요(지도 바탕에 글). 맞는 사진이 없을 때만 이렇게 써요.")
         elif s["type"] == "card" and not is_tall(s["photo"]):
             print(f"  장면 {n}: 가로 사진이에요. 같은 음식의 세로 사진이 있으면 그걸 쓰면 화면을 꽉 채워요.")
