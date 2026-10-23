@@ -1,0 +1,23 @@
+{
+  "2026-10-24-2-news": {
+    "verdict": "통과",
+    "hash": "6e719ac1db8d",
+    "approved": false,
+    "reasons": [],
+    "noticed": null
+  },
+  "2026-10-24-3-dinner": {
+    "verdict": "통과",
+    "hash": "e380850a3f9c",
+    "approved": false,
+    "reasons": [],
+    "noticed": null
+  },
+  "2026-10-24-4-find": {
+    "verdict": "통과",
+    "hash": "65a5e64eba92",
+    "approved": false,
+    "reasons": [],
+    "noticed": null
+  }
+}
