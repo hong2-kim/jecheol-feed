@@ -1530,6 +1530,12 @@ def youtube_problems(spec):
 
 if __name__ == "__main__":
     spec = json.loads(Path(sys.argv[1]).read_text(encoding="utf-8"))
+    try:  # 지난 콘텐츠와 겹치는지, 날짜가 맞는지 (2026-10-23 3단계, scripts/history.py). 알려 주기만 하고 막지는 않아요
+        sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "scripts"))
+        import history
+        history.print_report(sys.argv[1])
+    except Exception as e:
+        print(f"  이력: 확인하지 못했어요 ({e})")
     if is_cards(spec):
         if spec.get("format") == "steps":
             import steps
