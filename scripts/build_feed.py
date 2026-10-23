@@ -146,7 +146,7 @@ ul {{ margin: 4px 0; padding-left: 20px; }} a {{ color: #B4441A; word-break: bre
 def main():
     cfg = read_json(ROOT / "config.json")
     items, problems = load_items()
-    videos = [v for v in (read_json(ROOT / "state" / "videos.json", []) or []) if not v.get("deleted")]  # 지운 영상은 빼요
+    videos = [v for v in (read_json(ROOT / "state" / "videos.json", []) or []) if not v.get("deleted") and not v.get("held")]  # 지운 영상과 검수에 걸려 보류한 것은 빼요
     out = ROOT / "public"
     out.mkdir(exist_ok=True)
     posts, blog_problems = build_blog.build(out)

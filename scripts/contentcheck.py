@@ -91,7 +91,7 @@ def brands_in(text):
     return {b for b in BRANDS if re.search(rf"(?<![A-Za-z가-힣]){re.escape(b)}", text or "")}
 
 
-def host_kind(url, rights, terms=None, today="9999-12-31"):
+def host_kind(url, rights, terms=None, today="9999-12-31", platforms=("instagram", "youtube")):
     """사진 출처 갈래와 판단. (갈래, 문제 여부, 설명). 문제 여부가 참이면 조건이 확인되기 전에는 게시용으로 쓰지 않아요.
     2026-10-23 사용자가 정함: "공식 사진은 사용 조건을 확인한 후 활용한다". 판단 순서: 사진마다 적은 terms → sources.json 의 photo_rights → 주소 갈래."""
     r = rights or ""
@@ -104,6 +104,10 @@ def host_kind(url, rights, terms=None, today="9999-12-31"):
     if entry:
         status = entry.get("status")
         if status == "사용 가능":
+            uses = entry.get("uses") or {}
+            no = [pf for pf in platforms if uses.get(pf) in ("미확인", "불가")]
+            if no:  # 출처는 사용 가능이어도 이 쓰임(인스타·유튜브·블로그)이 허용되는지 모르면
+                return entry["name"], True, f"{entry['name']} 사진을 {'·'.join(no)}에 써도 되는지 확인하지 못했어요(확인 필요)"
             stale = stale_check(entry, today)
             return (entry["name"], True, f"이용 조건을 {entry.get('checked')}에 확인했는데 {entry.get('recheck_days')}일이 지났어요. 다시 확인해 주세요(확인 필요)") if stale else (entry["name"], False, "")
         if status == "사용 불가" and not (PRESS.search(url) and re.search(r"제공|사진\s*[=:]", r)):
@@ -161,19 +165,20 @@ def company_hosts():
     return _COMPANY
 
 
-def photo_lines(spec, day):
+def photo_lines(spec, day, platforms=("instagram", "youtube")):
     new_rule = day >= DATES_FROM
     # 그 콘텐츠가 이름으로 내세운 음식·상품(태그·유튜브 태그·핵심 키워드·주제). 글에 이 이름이 나오면 사진도 그것이어야 해요
     curated = words(" ".join(json.dumps(spec.get(k) or "", ensure_ascii=False) for k in ("tags", "yt_tags", "yt_keyword", "yt_related", "subject")))
-    curated -= {"먹고갈지도", "수출", "출시", "협업", "신메뉴", "신상"} | PLACES  # 나라·지역 이름은 사진에 찍힐 대상이 아니에요(지역 사진은 region 으로 봐요)
+    curated -= {"먹고갈지도", "수출", "출시", "협업", "신메뉴", "신상", "제철", "가을", "겨울", "여름", "봄", "디저트", "간식", "음식", "맛집",
+                "먹방", "추천", "가격", "할인", "편의점", "먹스타그램", "요즘", "유행"} | PLACES  # 나라·지역 이름은 사진에 찍힐 대상이 아니에요(지역 사진은 region 으로 봐요)
     out, seen_crop, by_url = [], {}, {}
     for where, text, p in items_of(spec):
         url = p["url"]
         shows, match, rights = p.get("shows", ""), p.get("match", ""), p.get("rights", "")
         # 1) 출처와 쓸 수 있는지
-        kind, bad, why = host_kind(url, rights, p.get("terms"), day)
-        if bad or why:
-            out.append(("사진 권리", f"{where}: {kind} — {why}", bad))
+        kind, bad, why = host_kind(url, rights, p.get("terms"), day, platforms)
+        if bad or why:  # 사용 불가 → 차단, 확인 필요 → 확인 (5단계 gate.py 가 이 등급으로 발송을 정해요)
+            out.append(("사진 권리", f"{where}: {kind} — {why}", "차단" if "(사용 불가)" in why else "확인" if bad else "참고"))
         # 2) 한 사진을 좌표로 여러 번 잘라 씀(맘스터치 사례)
         crop = tuple(p.get("crop") or ())
         by_url.setdefault(url, set()).add(crop)
@@ -181,35 +186,38 @@ def photo_lines(spec, day):
             seen_crop.setdefault((url, crop), []).append((where, words(text), shows))
         # 3) 사진이 글과 같은 대상인지 (shows·match 가 있어야 볼 수 있어요)
         if new_rule and not shows:
-            out.append(("사진 일치", f"{where}: shows(사진에 실제로 찍힌 것)가 없어요. 사진을 열어 보고 적어 주세요", True))
+            out.append(("사진 일치", f"{where}: shows(사진에 실제로 찍힌 것)가 없어요. 사진을 열어 보고 적어 주세요", "확인"))
         if new_rule and match not in MATCH:
-            out.append(("사진 일치", f"{where}: match 를 정확/같은 종류/분위기 가운데 하나로 적어 주세요", True))
+            out.append(("사진 일치", f"{where}: match 를 정확/같은 종류/분위기 가운데 하나로 적어 주세요", "확인"))
         if shows and match != "분위기":
             want = {w for w in words(text) if w in curated}
             have = words(shows) | {SYN.get(w.lower(), w) for w in words(shows)}
-            miss = sorted(w for w in want if w not in have and not any(w in h or h in w for h in have))
-            if miss:
-                out.append(("사진 일치", f"{where}: 글에 나온 이름 '{'·'.join(miss)}'이(가) 사진(shows: {shows[:30]})에 없어요. 그 대상이 찍힌 사진으로 바꾸거나 사진 없는 장으로", True))
+            seen_in = lambda w: w in have or any(w in h or h in w for h in have)
+            miss = sorted(w for w in want if not seen_in(w))
+            star = {w for w in marked_names(text) if w in curated}  # [[ ]] 로 내세운 이름은 꼭 사진에 있어야 해요
+            # 글에 나온 이름 가운데 사진에 하나도 없거나, [[ ]] 로 내세운 이름이 없을 때만 (재료 이름까지 다 찍혀야 하는 것은 아니에요)
+            if miss and (len(miss) == len(want) or any(not seen_in(w) for w in star)):
+                out.append(("사진 일치", f"{where}: 글에 나온 이름 '{'·'.join(miss)}'이(가) 사진(shows: {shows[:30]})에 없어요. 그 대상이 찍힌 사진으로 바꾸거나 사진 없는 장으로", "확인" if match == "정확" else "차단"))
         said, seen_ = set(re.findall(r"(\d+)차", text)), set(re.findall(r"(\d+)차", shows))
         if said and seen_ and not said & seen_:  # 1차 협업 이야기에 2차 신제품 사진 (맘스터치 사례)
-            out.append(("사진 일치", f"{where}: 글은 {'·'.join(sorted(said))}차인데 사진은 {'·'.join(sorted(seen_))}차 제품이에요", True))
+            out.append(("사진 일치", f"{where}: 글은 {'·'.join(sorted(said))}차인데 사진은 {'·'.join(sorted(seen_))}차 제품이에요", "차단"))
         for b in sorted(brands_in(text)):
             if match == "분위기" or not shows:
                 continue
             if match != "정확" or b not in shows:
-                out.append(("사진 일치", f"{where}: 글은 {b} 상품을 말하는데 사진은 그 상품이 아니에요(match {match or '없음'}, shows: {shows[:30]}). 다른 가게·다른 회사 같은 종류 사진으로 대신하지 않아요", True))
+                out.append(("사진 일치", f"{where}: 글은 {b} 상품을 말하는데 사진은 그 상품이 아니에요(match {match or '없음'}, shows: {shows[:30]}). 다른 가게·다른 회사 같은 종류 사진으로 대신하지 않아요", "차단"))
     for url, crops in by_url.items():
         crops.discard(())
         if len(crops) >= 2:
             noted = all(s for (u, c), lst in seen_crop.items() if u == url for (_, _, s) in lst)
             if not noted:
-                out.append(("사진 일치", f"한 사진({url[-45:]})을 좌표로 {len(crops)}번 잘라 썼어요. 여러 제품이 함께 찍힌 사진이면 잘라 낸 조각마다 직접 열어 보고 shows 에 무엇인지 적어 주세요(맘스터치 사례). 어느 것이 어느 제품인지 모르면 통째로 쓰거나 사진 없는 장으로", True))
+                out.append(("사진 일치", f"한 사진({url[-45:]})을 좌표로 {len(crops)}번 잘라 썼어요. 여러 제품이 함께 찍힌 사진이면 잘라 낸 조각마다 직접 열어 보고 shows 에 무엇인지 적어 주세요(맘스터치 사례). 어느 것이 어느 제품인지 모르면 통째로 쓰거나 사진 없는 장으로", "확인"))
     for (url, crop), lst in seen_crop.items():
         names = [n for _, n, _ in lst]
         differ = any(len(a & b) * 2 < max(len(a), len(b)) for i, a in enumerate(names) for b in names[i + 1:] if a and b)
         if len(lst) >= 2 and differ:  # 같은 조각을 쓴 자리끼리 글이 반도 안 겹치면 다른 대상을 말하는 것으로 봐요
             places = ", ".join(w for w, _, _ in lst)
-            out.append(("사진 일치", f"같은 잘린 조각 {list(crop)}이 서로 다른 대상을 말하는 자리 {places} 에 함께 쓰였어요. 한 조각은 한 대상만 보여 줘요", True))
+            out.append(("사진 일치", f"같은 잘린 조각 {list(crop)}이 서로 다른 대상을 말하는 자리 {places} 에 함께 쓰였어요. 한 조각은 한 대상만 보여 줘요", "차단"))
     return out
 
 
@@ -225,12 +233,12 @@ def region_lines(spec, day):
         bare = [m for m in re.finditer(re.escape(old), flat_head)
                 if not re.search(r"지금|현재|제물포구|영종구", flat_head[m.end():m.end() + 14]) and not flat_head[max(0, m.start() - 3):m.start()].endswith("옛 ")]
         if day >= since and bare:  # "인천 중구(지금은 제물포구)"·"옛 인천 중구"처럼 밝힌 것은 괜찮아요
-            out.append(("지역", f"'{old}'는 {since}부터 바뀐 이름이에요({now}, 근거: {law}). 지금 이름으로 쓰거나 '옛 {old.split()[-1]}'처럼 밝혀 주세요", True))
+            out.append(("지역", f"'{old}'는 {since}부터 바뀐 이름이에요({now}, 근거: {law}). 지금 이름으로 쓰거나 '옛 {old.split()[-1]}'처럼 밝혀 주세요", "차단"))
     reg = spec.get("region")
     local = spec.get("kind") == "지역"
     if not reg:
         if local and day >= DATES_FROM:
-            out.append(("지역", "region 칸이 없어요. 소개한 장소마다 공식 주소·지금 관할(구)·근거, 제목이 말하는 범위(title_scope), 먹거리마다 그 지역과의 관계(why·source)를 적어 주세요", True))
+            out.append(("지역", "region 칸이 없어요. 소개한 장소마다 공식 주소·지금 관할(구)·근거, 제목이 말하는 범위(title_scope), 먹거리마다 그 지역과의 관계(why·source)를 적어 주세요", "확인"))
         return out
     places = reg.get("places") or []
     admins = {p.get("admin", "") for p in places if p.get("admin")}
@@ -238,27 +246,51 @@ def region_lines(spec, day):
     scope = reg.get("title_scope", "")
     for p in places:
         if not (p.get("address") and p.get("source")):
-            out.append(("지역", f"{p.get('name', '?')}: 공식 주소(address)와 근거(source)가 없어요. 지자체·관광공사·법령 자료로 확인해 주세요", True))
+            out.append(("지역", f"{p.get('name', '?')}: 공식 주소(address)와 근거(source)가 없어요. 지자체·관광공사·법령 자료로 확인해 주세요", "확인"))
     if scope and gus and not any(g in scope for g in gus) and len(gus) == 1:
         g = next(iter(gus))
-        out.append(("지역", f"제목 범위는 '{scope}'인데 소개한 곳 {len(places)}곳이 모두 {g}예요. 제목을 '{scope} {g}'처럼 좁히거나 다른 구의 먹거리도 고르게 다뤄 주세요", True))
+        out.append(("지역", f"제목 범위는 '{scope}'인데 소개한 곳 {len(places)}곳이 모두 {g}예요. 제목을 '{scope} {g}'처럼 좁히거나 다른 구의 먹거리도 고르게 다뤄 주세요", "확인"))
     if scope and scope not in head:
-        out.append(("지역", f"title_scope '{scope}'가 제목·썸네일에 그대로 없어요. 제목이 실제 범위를 말하는지 확인해 주세요", False))
+        out.append(("지역", f"title_scope '{scope}'가 제목·썸네일에 그대로 없어요. 제목이 실제 범위를 말하는지 확인해 주세요", "참고"))
     for f in reg.get("foods") or []:
         if not (f.get("why") and f.get("source")):
-            out.append(("지역", f"{f.get('name', '?')}: 그 지역과 어떤 관계인지(why)와 근거(source)가 없어요. 거기서 판다는 것만으로 대표 음식이라고 쓰지 않아요", True))
+            out.append(("지역", f"{f.get('name', '?')}: 그 지역과 어떤 관계인지(why)와 근거(source)가 없어요. 거기서 판다는 것만으로 대표 음식이라고 쓰지 않아요", "참고"))
     return out
 
 
-def report_file(path):
+def blog_as_spec(post):
+    """블로그 초안을 설계도처럼 봐요: photo 블록마다 바로 앞 문단·제목을 그 사진의 글로 (2026-10-23 5단계)."""
+    lines, ctx = [], ""
+    for b in post.get("blocks") or []:
+        if b.get("type") in ("p", "h2", "h3"):
+            ctx = str(b.get("text") or "")
+        elif b.get("type") == "photo" and b.get("url"):
+            ph = {k: b[k] for k in ("url", "shows", "match", "rights", "terms", "crop") if k in b}
+            ph.setdefault("rights", b.get("credit") or "")
+            lines.append({"say": (b.get("desc") or "") + " " + ctx, "photo": ph})
+    return {"kind": "블로그", "title": post.get("title"), "subject": post.get("subject"), "tags": post.get("tags"),
+            "yt_keyword": post.get("keyword"), "lines": lines, "region": post.get("region")}
+
+
+def findings(path):
+    """(갈래, 등급, 내용) 목록. 등급: 차단 / 확인 / 참고. 설계도(videos/날짜/*.json)와 블로그 초안(blog/*.json) 모두."""
     path = Path(path).resolve()
     spec = json.loads(path.read_text(encoding="utf-8"))
-    day = path.parent.name if re.match(r"\d{4}-\d{2}-\d{2}$", path.parent.name) else "9999-12-31"
-    return [f"  {kind}: {msg}" for kind, msg, _ in photo_lines(spec, day) + region_lines(spec, day)]
+    platforms = ("instagram", "youtube")
+    if path.parent.name == "blog" or "blocks" in spec:
+        day = spec.get("date") or "9999-12-31"
+        spec, platforms = blog_as_spec(spec), ("blog",)
+    else:
+        day = path.parent.name if re.match(r"\d{4}-\d{2}-\d{2}$", path.parent.name) else "9999-12-31"
+    return photo_lines(spec, day, platforms) + region_lines(spec, day)
+
+
+def report_file(path):
+    return [f"  {kind}: {msg}" for kind, msg, _ in findings(path)]
 
 
 def print_report(path):
-    """build.py 가 설계도를 검사할 때 함께 불러요. 알려 주기만 하고 막지는 않아요(막는 것은 5단계)."""
+    """build.py 가 설계도를 검사할 때 함께 불러요. 알려 주기만 해요. 발송을 막는 것은 scripts/gate.py (5단계)."""
     for line in report_file(path):
         print(line)
 

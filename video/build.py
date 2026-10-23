@@ -1013,8 +1013,9 @@ def card_photo_problems(spec):
     pages = [spec.get("cover") or {}] + [c for c in spec.get("cards") or [] if c.get("type") != "summary"]
     shown = sum(bool(p.get("photo") or p.get("flow") or any(s.get("photo") for s in p.get("sides") or [])) for p in pages)
     if len(distinct) < 2 or shown < len(pages) - shown:
-        must.append(f"실제 사진이 {len(distinct)}장, 사진 든 장이 {shown}/{len(pages)}장이에요. 사진이 모자라면 카드를 억지로 채우지 말고 "
-                    "장 수를 줄이거나(이야기 카드는 3장까지), 모음 카드로 바꾸거나, 오늘은 카드 뉴스를 건너뛰어 주세요.")
+        # 2026-10-23 5단계: 사진이 없다는 이유로 소식을 버리지 않아요(이용 조건이 확인된 사진만 쓰니 사진 없는 장이 늘 수 있어요). 알림으로만 둬요
+        should.append(f"실제 사진이 {len(distinct)}장, 사진 든 장이 {shown}/{len(pages)}장이에요. 다른 음식 사진으로 채우지 말고, "
+                      "사진 없는 장은 확인된 숫자·날짜로 또렷하게 만들어 주세요. 그 음식이 찍힌 쓸 수 있는 사진이 있으면 넣어 주세요.")
     return must, should
 
 

@@ -5,7 +5,9 @@
 
 1. dist/results.json 을 읽어요.
 2. 성공한 영상의 내려받기 주소를 state/videos.json 에 적어요. (RSS가 이 파일을 읽어요)
-3. 텔레그램으로 영상과 게시글용 글을 보내요. 실패한 항목은 이유와 함께 알려요.
+3. 보내기 전 검수(scripts/gate.py): 통과한 것(또는 사용자가 승인한 '확인 필요')만 보내요. 걸린 것은 보내지 않고
+   까닭을 state/review.json 에 적고 한 번 알려요. 보낸 것으로 적지 않으니 고쳐서 다시 올리면 다시 검수해 보내요. (2026-10-23 5단계)
+4. 텔레그램으로 영상과 게시글용 글을 보내요. 실패한 항목은 이유와 함께 알려요.
 영상 파일 올리기(릴리스)는 작업 파일에서 gh 명령으로 먼저 해 둬요.
 """
 import hashlib
@@ -161,11 +163,81 @@ def send_shorts_only(token, chat, day, todo, bad, sent):
             print(f"못 보냈어요: {r['id']} ({e})")
 
 
+def gate_all(day, results):
+    """보내기 전 검수(scripts/gate.py). {id: 검수 결과}. 설계도가 없거나 검수를 못 하면 '확인 필요'로 봐요(통과로 치지 않아요). (2026-10-23 5단계)"""
+    import gate
+    out = {}
+    for r in results:
+        if not r.get("ok"):
+            continue
+        spec = ROOT / "videos" / day / (r["id"][len(day) + 1:] + ".json")
+        try:
+            out[r["id"]] = gate.evaluate(spec)
+        except Exception as e:
+            log_error(f"gate:{r['id']}", e)
+            out[r["id"]] = {"verdict": "확인 필요", "findings": [("검수 오류", "확인", f"검수를 하지 못했어요: {str(e)[:150]}")], "hash": "", "approved": False}
+    return out
+
+
+def gate_reasons(g):
+    import gate
+    return gate.reasons(g, 12)  # 차단 먼저
+
+
+def hold_notice(token, chat, day, held, review):
+    """보류한 것만 한 번 알려요. 같은 내용(같은 지문·같은 판정)으로 이미 알린 것은 다시 알리지 않아요."""
+    import gate
+    fresh = [(r, g) for r, g in held if (review.get(r["id"]) or {}).get("noticed") != f"{g['verdict']}:{g['hash']}"]
+    if not fresh or not (token and chat):
+        return
+    lines = [f"🛑 {day} 검수에 걸려 보내지 않은 것 {len(fresh)}개"]
+    for r, g in fresh:
+        lines.append(f"\n■ {LABELS.get(r['id'][11:], (r.get('title') or r['id'],))[0]} — {g['verdict']}")
+        lines += ["  " + x for x in gate.reasons(g)]
+    lines.append("\n고친 설계도를 다시 올리면 다시 검수해요. '확인 필요'는 보고 괜찮으면 Claude 에게 \"보내\"라고 하면 승인해 다시 보내요. '차단'은 고쳐야 나가요.")
+    tg("sendMessage", token, data={"chat_id": chat, "text": "\n".join(lines)[:4000], "disable_web_page_preview": "true"})
+    for r, g in fresh:
+        review[r["id"]]["noticed"] = f"{g['verdict']}:{g['hash']}"
+        name = LABELS.get(r['id'][11:], (r.get('title') or r['id'],))[0]
+        try:  # 문제가 걸린 자리를 빨간 테두리로 표시한 사진 검수 시트(제목·종류·날짜·까닭·출처)
+            import re
+            import review_sheet
+            marks = set(re.findall(r"((?:thumb|cover|scenes|lines|cards|top|slides|base)[\w\[\]\.]*?\.(?:photos?|inset|logo|photo_top|photo_bottom)(?:\[\d+\])?)",
+                                   " ".join(m for _, lv, m in g["findings"] if lv != "참고")))
+            what = "고쳐야 나가요(차단)" if g["verdict"] == "차단" else "보고 괜찮으면 승인하면 나가요(확인 필요)"
+            header = f"{r.get('title') or r['id']}\n{name} · {day} 발행 예정 · {what}\n" + "\n".join(gate.reasons(g, 5))
+            out = ROOT / "dist" / f"{r['id']}-photos.jpg"
+            review_sheet.spec_sheet(ROOT / "videos" / day / (r["id"][len(day) + 1:] + ".json"), out, marks, header)
+            with open(out, "rb") as f:
+                tg("sendPhoto", token, data={"chat_id": chat, "caption": f"사진 검수 시트 · {name} ({g['verdict']}) · 빨간 칸이 까닭이 걸린 자리"[:900]},
+                   files={"photo": (out.name, f, "image/jpeg")})
+        except Exception as e:
+            log_error(f"review_sheet:{r['id']}", e)
+        try:  # 완성된 결과물을 사람이 볼 수 있게 장면 모음 한 장(scripts/review_sheet.py --media)
+            import review_sheet
+            files = [ROOT / "dist" / f for f in (r.get("files") or [r["file"]])]
+            out = ROOT / "dist" / f"{r['id']}-review.jpg"
+            review_sheet.media_sheet([f for f in files if f.exists()], out)
+            with open(out, "rb") as f:
+                tg("sendPhoto", token, data={"chat_id": chat, "caption": f"검수용 장면 모음 · {r['id']} ({g['verdict']})"}, files={"photo": (out.name, f, "image/jpeg")})
+        except Exception as e:
+            log_error(f"review_sheet:{r['id']}", e)
+
+
 def main():
     day = sys.argv[1]
     results = read_json(ROOT / "dist" / "results.json", [])
     token = os.environ.get("TELEGRAM_BOT_TOKEN", "").strip()
     chat = os.environ.get("TELEGRAM_CHAT_ID", "").strip()
+
+    # 보내기 전 검수: 통과(또는 사용자가 승인한 확인 필요)만 보내고, 나머지는 보류해 까닭을 state/review.json 에 적어요
+    gates = gate_all(day, results)
+    review = read_json(ROOT / "state" / "review.json", {}) or {}
+    for rid, g in gates.items():
+        old = review.get(rid) or {}
+        review[rid] = {"verdict": g["verdict"], "hash": g["hash"], "approved": g.get("approved", False),
+                       "reasons": gate_reasons(g), "noticed": old.get("noticed")}
+    passed = {rid for rid, g in gates.items() if g["verdict"] == "통과"}
 
     videos = read_json(ROOT / "state" / "videos.json", [])
     for r in results:
@@ -179,17 +251,28 @@ def main():
                 entry.update({"format": "cards", "files": r["files"], "urls": [f"https://github.com/{REPO}/releases/download/v{day}/{f}" for f in r["files"]]})
             entry["sha256"] = hashlib.sha256((ROOT / "dist" / r["file"]).read_bytes()).hexdigest()  # 같은 파일인지 알아보는 지문
             entry.update({k: old[k] for k in ("posted", "deleted") if k in old})
+            if r["id"] not in passed:  # 보류한 것은 RSS·목록에 싣지 않아요(scripts/build_feed.py)
+                entry["held"] = gates.get(r["id"], {}).get("verdict", "확인 필요")
             videos.append(entry)
     videos.sort(key=lambda v: v["id"], reverse=True)
     write_json(ROOT / "state" / "videos.json", videos[:400])
 
-    if not (token and chat):
-        print("텔레그램 설정이 없어 알림은 건너뛰어요.")
-        return
     sent = set(read_json(ROOT / "state" / "sent_videos.json", []))
     ok = [r for r in results if r["ok"]]
     bad = [r for r in results if not r["ok"]]
-    todo = [r for r in ok if r["id"] not in sent]
+    held = [(r, gates[r["id"]]) for r in ok if r["id"] not in sent and r["id"] not in passed]
+    todo = [r for r in ok if r["id"] not in sent and r["id"] in passed]  # 보류한 것은 보낸 것으로 적지 않아요(고치면 다시 검수)
+    for r, g in held:
+        print(f"보류: {r['id']} — {g['verdict']}")
+    if not (token and chat):
+        write_json(ROOT / "state" / "review.json", review)
+        print("텔레그램 설정이 없어 알림은 건너뛰어요.")
+        return
+    try:
+        hold_notice(token, chat, day, held, review)
+    except Exception as e:
+        log_error("telegram:hold", e)
+    write_json(ROOT / "state" / "review.json", review)
     if not insta_on():  # 유튜브 쇼츠만 보내요. 쇼츠가 없는(인스타 전용) 것은 보낸 것으로만 적어 둬요
         sent |= {r["id"] for r in todo if not has_youtube(r)}
         todo = [r for r in todo if has_youtube(r)]

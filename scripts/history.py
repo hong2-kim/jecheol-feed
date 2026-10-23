@@ -179,9 +179,9 @@ def load_history(before, skip=None):
 
 def score(a, b, df):
     """겹친 정도와 까닭. 흔한 말은 덜 셉니다."""
-    def w(x):  # 지난 콘텐츠 여러 곳에 나온 말일수록 덜 셉니다
-        n = df.get(x, 0)
-        return 0 if n > 6 else 0.5 if n > 2 else 1
+    def w(x):  # 지난 콘텐츠 여러 곳에 나온 말일수록 덜 셉니다. 전체에서 차지하는 비율로 봐요(같은 소재를 자주 되풀이할수록 덜 잡히지 않게)
+        n, total = df.get(x, 0), max(df.get("__total__", 1), 1)
+        return 0 if n > max(6, total * 0.08) else 0.5 if n > max(2, total * 0.04) else 1
 
     why, s = [], 0.0
     shared_url = a["urls"] & b["urls"]
@@ -207,8 +207,14 @@ def score(a, b, df):
     return s, why, keys
 
 
+def same_monthly_set(a, b):
+    """'2026-10-15/1-check' 와 '2026-10-12/1-monthly' 처럼 같은 달의 달마다 만드는 제철 묶음인지."""
+    ma, mb = re.match(r"(\d{4}-\d{2})-\d{2}/1-", a), re.match(r"(\d{4}-\d{2})-\d{2}/1-", b)
+    return bool(ma and mb and ma.group(1) == mb.group(1))
+
+
 def compare(cands, history, followup=None):
-    df = {}
+    df = {"__total__": len(history)}
     for u in history:
         for x in u["words"]:
             df[x] = df.get(x, 0) + 1
@@ -216,6 +222,8 @@ def compare(cands, history, followup=None):
     for c in cands:
         hits = []
         for h in history:
+            if same_monthly_set(c["id"], h["id"]):
+                continue  # 매달 1일에 함께 만드는 이달의 제철 묶음(1-*)끼리는 일부러 같은 소재를 다뤄요
             dinner = c["kind"] == "저녁" or h["kind"] == "저녁"
             if dinner and c["kind"] != h["kind"]:
                 continue  # 저녁 추천은 정보가 아니라 고르기라 다른 콘텐츠와 견주지 않아요
@@ -230,8 +238,9 @@ def compare(cands, history, followup=None):
         for s, h, why in hits[:3]:
             ago = (date.fromisoformat(c["date"]) - date.fromisoformat(h["date"])).days
             new_nums = c["numbers"] - h["numbers"]
-            fu = followup and followup.get("of") and h["id"].startswith(str(followup["of"]).split("#")[0]) and (
-                "#" not in str(followup["of"]) or h["id"] == followup["of"])
+            ofs = (followup or {}).get("of") or []
+            ofs = ofs if isinstance(ofs, list) else [ofs]  # 여러 지난 콘텐츠의 후속일 수 있어요
+            fu = any(h["id"] == o or ("#" not in str(o) and h["id"].startswith(str(o))) for o in ofs)
             if fu:
                 verdict = f"후속편으로 적어 둠 ({followup.get('new', '무엇이 새로운지 비어 있음')})"
             elif new_nums and set(c["concepts"] & h["concepts"]) - {"출시", "값오름", "값내림"} and s >= 6:

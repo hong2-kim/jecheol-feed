@@ -24,7 +24,8 @@
     "on": true,
     "visibility": "public",
     "photos_required": 3,
-    "since": "2026-10-14"
+    "since": "2026-10-14",
+    "gate": true
   },
   "youtube": {
     "voice": "ko-KR-Wavenet-A",
