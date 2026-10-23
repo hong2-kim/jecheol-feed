@@ -1,0 +1,47 @@
+{
+ "date": "2026-10-24",
+ "checked": "2026-10-24",
+ "country": "일본",
+ "length_sec": 25,
+ "pairing": {
+  "drink": "",
+  "note": ""
+ },
+ "id": "2026-10-24-jp-lawson-butterscotch-burger",
+ "category": "예고",
+ "region": "도쿄·전국 로손",
+ "subject": "로손 버터스카치 버거",
+ "angle": "도쿄역에서만 팔던 디저트 버거가 전국 편의점에 와요",
+ "season": "10월 27일",
+ "title": "도쿄역 디저트 버거, 27일부터 일본 로손에서 팔아요",
+ "summary": [
+  "디저트 버거 브랜드 CAPTAIN SWEETS BURGER가 10월 27일 화요일부터 전국 로손 편의점(일부 매장 제외)에서 '버터스카치 버거(2개입)'를 독점 판매해요.",
+  "그동안 도쿄역에서만 살 수 있던 브랜드로, 누적 판매량 1천만 개를 넘었다고 해요.",
+  "쿠키 번 사이에 버터스카치 카라멜이 든 버터 초콜릿 층과 휘핑 초콜릿을 넣었어요."
+ ],
+ "facts": [
+  "브랜드 대표 제품은 치즈 초콜릿 버거예요.",
+  "일본 현지 판매라 한국 편의점에서는 사지 못해요."
+ ],
+ "script": {
+  "hook": "도쿄역에서만 팔던 버거가 편의점으로 와요",
+  "flow": "도쿄역 한정이던 브랜드|버터스카치 버거 2개입|10월 27일 로손 독점",
+  "closing": "일본 편의점 디저트, 어떤 게 궁금해요?"
+ },
+ "visuals": [
+  "디저트 버거"
+ ],
+ "cautions": [
+  "일본 안내 자료의 판매 정보라 일본 안에서만 해당돼요."
+ ],
+ "unverified": [
+  "값은 확인하지 못했어요."
+ ],
+ "sources": [
+  {
+   "name": "일본 안내 사이트 haveagood-holiday(10월 23일)",
+   "url": "https://www.haveagood-holiday.com/ko/articles/captain-sweets-burger-butterscotch-burger-lawson-2026",
+   "official": false
+  }
+ ]
+}

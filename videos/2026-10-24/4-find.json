@@ -1,0 +1,172 @@
+{
+ "kind": "발견",
+ "subject": "자가리코 · 일본 1위 감자스틱 국내 출시",
+ "title": "일본 1위 감자스틱이 한국에 왔어요",
+ "summary": "해태제과가 일본 가루비의 감자스틱 자가리코 사라다맛을 20일 국내에 처음 냈어요. 24일 성수동에서 거리 이벤트도 열려요.",
+ "scenes": [
+  {
+   "type": "cover",
+   "dur": 2.2,
+   "photo": {
+    "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Calbee%20Jagarico%20Salad%20in%20cup.jpg?width=1600",
+    "shows": "일본 판매 자가리코 사라다맛 과자(컵에 담긴 감자스틱)",
+    "match": "정확",
+    "rights": "위키미디어 공용 CC0(출처 표시 불필요) · 일본 판매 자가리코 사라다맛"
+   },
+   "kicker": "여러분",
+   "title": "일본 여행 가면\n[[꼭 사 오던]]\n과자 있나요?",
+   "size": 100
+  },
+  {
+   "type": "cover",
+   "dur": 2.0,
+   "photo": {
+    "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Calbee%20Jagarico%20Salad.jpg?width=1600",
+    "shows": "일본 판매 자가리코 사라다맛 과자(감자스틱, 당근·파슬리 점)",
+    "match": "정확",
+    "rights": "위키미디어 공용 CC0(출처 표시 불필요) · 일본 판매 자가리코 사라다맛"
+   },
+   "kicker": "제가 지금 그 상황이에요",
+   "title": "캐리어에\n[[넣던 그 과자]]\n한국에 왔대요",
+   "size": 100,
+   "in": "push"
+  },
+  {
+   "type": "cover",
+   "dur": 2.0,
+   "photo": {
+    "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Calbee%20Jagarico%20Salad%20in%20cup.jpg?width=1600",
+    "shows": "일본 판매 자가리코 사라다맛 과자(컵에 담긴 감자스틱)",
+    "match": "정확",
+    "rights": "위키미디어 공용 CC0(출처 표시 불필요) · 일본 판매 자가리코 사라다맛"
+   },
+   "kicker": "그래서 찾아봤어요 · 자가리코",
+   "title": "일본 1위\n[[감자스틱]]\n상륙",
+   "size": 112
+  },
+  {
+   "type": "card",
+   "dur": 2.4,
+   "photo": {
+    "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Calbee%20Jagarico%20Salad.jpg?width=1600",
+    "shows": "일본 판매 자가리코 사라다맛 과자(감자스틱, 당근·파슬리 점)",
+    "match": "정확",
+    "rights": "위키미디어 공용 CC0(출처 표시 불필요) · 일본 판매 자가리코 사라다맛"
+   },
+   "chip": "무엇",
+   "headline": "사라다맛\n[[감자 91%]]",
+   "line": "당근·파슬리로 감자샐러드 맛"
+  },
+  {
+   "type": "card",
+   "dur": 2.4,
+   "photo": {
+    "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Calbee%20Jagarico%20Salad%20in%20cup.jpg?width=1600",
+    "shows": "일본 판매 자가리코 사라다맛 과자(컵에 담긴 감자스틱)",
+    "match": "정확",
+    "rights": "위키미디어 공용 CC0(출처 표시 불필요) · 일본 판매 자가리코 사라다맛"
+   },
+   "chip": "어디서",
+   "headline": "대형마트·편의점\n[[20일부터]]",
+   "line": "국내에서 처음 파는 거예요"
+  },
+  {
+   "type": "card",
+   "dur": 2.6,
+   "photo": {
+    "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Calbee%20Jagarico%20Salad.jpg?width=1600",
+    "shows": "일본 판매 자가리코 사라다맛 과자(감자스틱, 당근·파슬리 점)",
+    "match": "정확",
+    "rights": "위키미디어 공용 CC0(출처 표시 불필요) · 일본 판매 자가리코 사라다맛"
+   },
+   "chip": "왜 들여왔나",
+   "headline": "일본 1995년\n[[시장 1위]]",
+   "line": "국내 감자스틱 시장은 29% 컸어요"
+  },
+  {
+   "type": "card",
+   "dur": 2.6,
+   "photo": {
+    "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Calbee%20Jagarico%20Salad%20in%20cup.jpg?width=1600",
+    "shows": "일본 판매 자가리코 사라다맛 과자(컵에 담긴 감자스틱)",
+    "match": "정확",
+    "rights": "위키미디어 공용 CC0(출처 표시 불필요) · 일본 판매 자가리코 사라다맛"
+   },
+   "chip": "오늘",
+   "headline": "성수동 거리 이벤트\n[[12~16시]]",
+   "line": "24일 기린 캐릭터 행진을 해요"
+  }
+ ],
+ "thumb": {
+  "head": "일본 1위\n[[감자스틱]] 상륙",
+  "sub": "[[10월 20일]]부터 국내 판매",
+  "photo": {
+   "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Calbee%20Jagarico%20Salad%20in%20cup.jpg?width=1600",
+   "shows": "일본 판매 자가리코 사라다맛 과자(컵에 담긴 감자스틱)",
+   "match": "정확",
+   "rights": "위키미디어 공용 CC0(출처 표시 불필요) · 일본 판매 자가리코 사라다맛",
+   "fit": "cover"
+  }
+ },
+ "caption": "일본 여행 가면 꼭 사 오던 과자, 있나요? 요즘 화제인 일본 감자스틱 자가리코 얘기예요\n\n해태제과가 일본 가루비의 감자스틱 '자가리코 사라다맛'을 10월 20일 국내에 처음 냈어요. 1995년 일본에서 나온 제품으로 일본 스낵 시장 1위 감자스틱이고, 감자 함량 91%에 스팀 공법으로 바삭하게 만들었대요. 사라다맛은 당근과 파슬리로 감자샐러드의 담백하고 짭짤한 맛을 낸 오리지널 맛이에요. 전국 대형마트와 편의점에서 팔아요.\n\n해태제과는 2011년 가루비와 합작법인 해태가루비를 세웠고 2012년 1월부터 문막공장에서 '자가비'를 만들어 팔고 있어요. 지난해 국내 감자스틱 시장이 전년보다 29% 넘게 커졌다고 회사가 밝혔어요. 오늘(24일) 낮 12시부터 4시까지 서울 성수동에서 출시 거리 이벤트도 열려요.\n\n더 자세한 이야기는 프로필 링크의 블로그에 있어요. 협찬이나 광고가 아니에요.\n\n여러분은 일본에서 사 오던 과자 중에 뭐가 제일 생각나요?\n\n출처: 연합뉴스(10월 20일)",
+ "tags": [
+  "자가리코",
+  "감자스틱",
+  "일본과자",
+  "편의점신상"
+ ],
+ "sources": [
+  "https://www.yna.co.kr/view/AKR20261020045300030"
+ ],
+ "credits": [],
+ "yt_title": "일본 1위 감자스틱 자가리코 한국 첫 출시, 일본에서 사 오던 그 과자 먹어 본 사람?ㅋㅋ",
+ "yt_keyword": "자가리코",
+ "yt_related": [
+  "자가리코 사라다맛",
+  "일본 감자스틱",
+  "해태 자가리코",
+  "자가비",
+  "일본 과자 한국 출시"
+ ],
+ "yt_tags": [
+  "자가리코",
+  "자가리코 사라다맛",
+  "일본 감자스틱",
+  "해태제과 자가리코",
+  "자가비",
+  "일본 과자 추천"
+ ],
+ "yt_hashtags": [
+  "자가리코",
+  "감자스틱",
+  "일본과자"
+ ],
+ "yt_lead": "일본 1위 감자스틱 자가리코 사라다맛이 10월 20일 국내에 처음 나왔어요.",
+ "followup": {
+  "of": "2026-10-23/8-trend#4",
+  "new": "24일 성수동 출시 이벤트와 자가비(2011년 합작, 2012년 생산)와의 관계"
+ },
+ "dates": {
+  "checked": "2026-10-24",
+  "sources": [
+   {
+    "url": "https://www.yna.co.kr/view/AKR20261020045300030",
+    "published": "2026-10-20",
+    "modified": "2026-10-20"
+   }
+  ],
+  "released": {
+   "name": "자가리코 사라다맛",
+   "date": "2026-10-20",
+   "state": "판매 중"
+  },
+  "event": {
+   "name": "자가리코 출시 성수동 거리 이벤트",
+   "start": "2026-10-24",
+   "end": "2026-10-24"
+  }
+ },
+ "review": {
+  "photo_sheet": "a48e3cef87b5"
+ }
+}
