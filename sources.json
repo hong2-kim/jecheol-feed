@@ -1,178 +1,804 @@
 {
-  "note": "rss: 매일 읽는 공식 기관 주소. news: 구글 뉴스에서 최근 이틀 치를 찾을 검색어. pages: RSS가 없어 글을 쓸 때 직접 읽는 공식 사이트.",
+  "note": "rss: 매일 읽는 RSS. news: 구글 뉴스에서 최근 이틀 치를 찾을 검색어({q, group}). pages: RSS가 없어 글을 쓸 때 직접 여는 공식 사이트. 정보원마다 area(조사 분야)·cycle(새 글 주기)·trust(믿을 정도: 공식/전문매체/언론/검색)·images(사진 쓰는 조건)·checked(마지막으로 열어 본 날)를 적는다. 기사·자료의 사실은 어디서 찾았든 확인해 쓸 수 있고, 사진은 images 조건을 따로 본다(PROMPT.md '뉴스 활용과 저작권'). 2026-10-23 2단계에서 넓혔다.",
   "rss": [
     {
       "id": "mfds-notice",
       "name": "식품의약품안전처 공지·보도 (한국)",
       "url": "https://www.mfds.go.kr/www/rss/brd.do?brdId=ntc0021",
-      "use": "식품 안전"
+      "use": "식품 안전",
+      "group": "공공·해외",
+      "area": "식품 안전·공식 발표",
+      "cycle": "수시",
+      "trust": "공식",
+      "images": "기관 사진은 공공누리 유형을 확인한 뒤에만",
+      "checked": "2026-10-23"
     },
     {
       "id": "efsa",
       "name": "EFSA 유럽식품안전청",
       "url": "https://www.efsa.europa.eu/en/all/rss",
-      "use": "식품 안전(유럽)"
+      "use": "식품 안전(유럽)",
+      "group": "공공·해외",
+      "area": "식품 안전·공식 발표",
+      "cycle": "수시",
+      "trust": "공식",
+      "images": "기관 사진은 공공누리 유형을 확인한 뒤에만",
+      "checked": "2026-10-23"
     },
     {
       "id": "cdc-food",
       "name": "미국 CDC 식품 안전",
       "url": "https://tools.cdc.gov/api/v2/resources/media/316422.rss",
-      "use": "식품 안전(미국)"
+      "use": "식품 안전(미국)",
+      "group": "공공·해외",
+      "area": "식품 안전·공식 발표",
+      "cycle": "수시",
+      "trust": "공식",
+      "images": "기관 사진은 공공누리 유형을 확인한 뒤에만",
+      "checked": "2026-10-23"
     },
     {
       "id": "maff-jp",
       "name": "일본 농림수산성 보도자료",
       "url": "https://www.maff.go.jp/j/press/rss.xml",
-      "use": "해외 제철(일본)"
+      "use": "해외 제철(일본)",
+      "group": "공공·해외",
+      "area": "식품 안전·공식 발표",
+      "cycle": "수시",
+      "trust": "공식",
+      "images": "기관 사진은 공공누리 유형을 확인한 뒤에만",
+      "checked": "2026-10-23"
     },
     {
       "id": "mhlw-jp",
       "name": "일본 후생노동성 새 소식",
       "url": "https://www.mhlw.go.jp/stf/news.rdf",
-      "use": "식품 안전(일본)"
+      "use": "식품 안전(일본)",
+      "group": "공공·해외",
+      "area": "식품 안전·공식 발표",
+      "cycle": "수시",
+      "trust": "공식",
+      "images": "기관 사진은 공공누리 유형을 확인한 뒤에만",
+      "checked": "2026-10-23"
     },
     {
       "id": "caa-jp",
       "name": "일본 소비자청",
       "url": "https://www.caa.go.jp/news.rss",
-      "use": "식품 안전(일본)"
+      "use": "식품 안전(일본)",
+      "group": "공공·해외",
+      "area": "식품 안전·공식 발표",
+      "cycle": "수시",
+      "trust": "공식",
+      "images": "기관 사진은 공공누리 유형을 확인한 뒤에만",
+      "checked": "2026-10-23"
     },
     {
       "id": "tat-th",
       "name": "태국관광청 뉴스룸",
       "url": "https://www.tatnews.org/feed/",
-      "use": "해외 축제(동남아)"
+      "use": "해외 축제(동남아)",
+      "group": "공공·해외",
+      "area": "식품 안전·공식 발표",
+      "cycle": "수시",
+      "trust": "공식",
+      "images": "기관 사진은 공공누리 유형을 확인한 뒤에만",
+      "checked": "2026-10-23"
+    },
+    {
+      "id": "thinkfood",
+      "name": "식품음료신문",
+      "url": "https://www.thinkfood.co.kr/rss/allArticle.xml",
+      "use": "식품 업계 소식",
+      "group": "식품 전문매체",
+      "max_age_days": 3,
+      "area": "식품기업 신제품·업계 동향·통계",
+      "cycle": "하루 수십 건",
+      "trust": "전문매체",
+      "images": "기사 사진은 쓰지 않는다. '○○ 제공' 회사 사진만 회사 사진 규칙대로",
+      "checked": "2026-10-23"
+    },
+    {
+      "id": "foodbank",
+      "name": "식품외식경제",
+      "url": "https://www.foodbank.co.kr/rss/allArticle.xml",
+      "use": "외식·프랜차이즈 소식",
+      "group": "식품 전문매체",
+      "max_age_days": 3,
+      "area": "외식·프랜차이즈·식품 업계",
+      "cycle": "하루 수십 건",
+      "trust": "전문매체",
+      "images": "기사 사진은 쓰지 않는다. '○○ 제공' 회사 사진만 회사 사진 규칙대로",
+      "checked": "2026-10-23"
+    },
+    {
+      "id": "foodnews",
+      "name": "식품저널 식품뉴스",
+      "url": "https://www.foodnews.co.kr/rss/allArticle.xml",
+      "use": "식품 정책·업계 소식",
+      "group": "식품 전문매체",
+      "max_age_days": 3,
+      "area": "식품 정책·안전·업계",
+      "cycle": "하루 수십 건",
+      "trust": "전문매체",
+      "images": "기사 사진은 쓰지 않는다. '○○ 제공' 회사 사진만 회사 사진 규칙대로",
+      "checked": "2026-10-23"
+    },
+    {
+      "id": "cj-newsroom",
+      "name": "CJ뉴스룸 (식품 글만)",
+      "url": "https://cjnews.cj.net/feed/",
+      "use": "식품기업 발표",
+      "group": "식품기업·프랜차이즈",
+      "max_age_days": 7,
+      "keywords": [
+        "제일제당",
+        "비비고",
+        "햇반",
+        "식품",
+        "푸드",
+        "프레시웨이",
+        "뚜레쥬르",
+        "빕스",
+        "만두",
+        "김치",
+        "간편식"
+      ],
+      "area": "CJ제일제당·CJ푸드빌 신제품·발표",
+      "cycle": "주 몇 건",
+      "trust": "공식",
+      "images": "회사 공식 사진(회사 사진 규칙)",
+      "checked": "2026-10-23"
+    },
+    {
+      "id": "spc-magazine",
+      "name": "SPC 매거진",
+      "url": "https://www.spcmagazine.com/feed/",
+      "use": "식품기업 발표",
+      "group": "식품기업·프랜차이즈",
+      "max_age_days": 7,
+      "area": "파리바게뜨·배스킨라빈스·던킨 신제품·발표",
+      "cycle": "주 몇 건",
+      "trust": "공식",
+      "images": "회사 공식 사진(회사 사진 규칙)",
+      "checked": "2026-10-23"
     }
   ],
   "pages": [
     {
       "name": "해양수산부 보도자료 (이달의 수산물)",
       "url": "https://www.mof.go.kr",
-      "use": "한국 제철"
+      "use": "한국 제철",
+      "trust": "공식",
+      "checked": "2026-10-13 이전",
+      "images": "기관·관광공사 사진은 PROMPT.md 사진 고르기대로"
     },
     {
       "name": "농촌진흥청 농사로",
       "url": "https://www.nongsaro.go.kr",
-      "use": "한국 제철"
+      "use": "한국 제철",
+      "trust": "공식",
+      "checked": "2026-10-13 이전",
+      "images": "기관·관광공사 사진은 PROMPT.md 사진 고르기대로"
     },
     {
       "name": "농림축산식품부",
       "url": "https://www.mafra.go.kr",
-      "use": "한국 제철"
+      "use": "한국 제철",
+      "trust": "공식",
+      "checked": "2026-10-13 이전",
+      "images": "기관·관광공사 사진은 PROMPT.md 사진 고르기대로"
     },
     {
       "name": "국립수산과학원 (패류독소 속보)",
       "url": "https://www.nifs.go.kr",
-      "use": "식품 안전"
+      "use": "식품 안전",
+      "trust": "공식",
+      "checked": "2026-10-13 이전",
+      "images": "기관·관광공사 사진은 PROMPT.md 사진 고르기대로"
     },
     {
       "name": "질병관리청 (비브리오, 노로바이러스)",
       "url": "https://www.kdca.go.kr",
-      "use": "식품 안전"
+      "use": "식품 안전",
+      "trust": "공식",
+      "checked": "2026-10-13 이전",
+      "images": "기관·관광공사 사진은 PROMPT.md 사진 고르기대로"
     },
     {
       "name": "식품안전나라",
       "url": "https://www.foodsafetykorea.go.kr",
-      "use": "식품 안전"
+      "use": "식품 안전",
+      "trust": "공식",
+      "checked": "2026-10-13 이전",
+      "images": "기관·관광공사 사진은 PROMPT.md 사진 고르기대로"
     },
     {
       "name": "대한민국 구석구석 (한국관광공사 축제)",
       "url": "https://korean.visitkorea.or.kr",
-      "use": "국내 축제"
+      "use": "국내 축제",
+      "trust": "공식",
+      "checked": "2026-10-13 이전",
+      "images": "기관·관광공사 사진은 PROMPT.md 사진 고르기대로"
     },
     {
       "name": "aT 농산물유통정보 KAMIS (채소·과일·수산물 소매가격)",
       "url": "https://www.kamis.or.kr",
-      "use": "먹거리 값"
+      "use": "먹거리 값",
+      "trust": "공식",
+      "checked": "2026-10-13 이전",
+      "images": "기관·관광공사 사진은 PROMPT.md 사진 고르기대로"
     },
     {
       "name": "축산물품질평가원 축산유통정보 (소·돼지·닭·계란 가격)",
       "url": "https://www.ekapepia.com",
-      "use": "먹거리 값"
+      "use": "먹거리 값",
+      "trust": "공식",
+      "checked": "2026-10-13 이전",
+      "images": "기관·관광공사 사진은 PROMPT.md 사진 고르기대로"
     },
     {
       "name": "한국소비자원 참가격 (가공식품·외식 가격)",
       "url": "https://www.price.go.kr",
-      "use": "먹거리 값"
+      "use": "먹거리 값",
+      "trust": "공식",
+      "checked": "2026-10-13 이전",
+      "images": "기관·관광공사 사진은 PROMPT.md 사진 고르기대로"
     },
     {
       "name": "더술닷컴 (전통주, aT)",
       "url": "https://thesool.com",
-      "use": "술"
+      "use": "술",
+      "trust": "공식",
+      "checked": "2026-10-13 이전",
+      "images": "기관·관광공사 사진은 PROMPT.md 사진 고르기대로"
     },
     {
       "name": "미국 FDA 식품",
       "url": "https://www.fda.gov/food",
-      "use": "식품 안전(미국)"
+      "use": "식품 안전(미국)",
+      "trust": "공식",
+      "checked": "2026-10-13 이전",
+      "images": "기관·관광공사 사진은 PROMPT.md 사진 고르기대로"
     },
     {
       "name": "미국 농무부 제철 농산물 안내",
       "url": "https://snaped.fns.usda.gov",
-      "use": "해외 제철(미국)"
+      "use": "해외 제철(미국)",
+      "trust": "공식",
+      "checked": "2026-10-13 이전",
+      "images": "기관·관광공사 사진은 PROMPT.md 사진 고르기대로"
     },
     {
       "name": "영국 식품기준청",
       "url": "https://www.food.gov.uk",
-      "use": "식품 안전(유럽)"
+      "use": "식품 안전(유럽)",
+      "trust": "공식",
+      "checked": "2026-10-13 이전",
+      "images": "기관·관광공사 사진은 PROMPT.md 사진 고르기대로"
     },
     {
       "name": "일본정부관광국",
       "url": "https://www.japan.travel",
-      "use": "해외 제철·축제(일본)"
+      "use": "해외 제철·축제(일본)",
+      "trust": "공식",
+      "checked": "2026-10-13 이전",
+      "images": "기관·관광공사 사진은 PROMPT.md 사진 고르기대로"
     },
     {
       "name": "독일와인협회",
       "url": "https://www.deutscheweine.de",
-      "use": "해외 제철·술(독일)"
+      "use": "해외 제철·술(독일)",
+      "trust": "공식",
+      "checked": "2026-10-13 이전",
+      "images": "기관·관광공사 사진은 PROMPT.md 사진 고르기대로"
     },
     {
       "name": "홍콩관광청",
       "url": "https://www.discoverhongkong.com",
-      "use": "해외 축제"
+      "use": "해외 축제",
+      "trust": "공식",
+      "checked": "2026-10-13 이전",
+      "images": "기관·관광공사 사진은 PROMPT.md 사진 고르기대로"
     },
     {
       "name": "싱가포르관광청",
       "url": "https://www.visitsingapore.com",
-      "use": "해외 축제"
+      "use": "해외 축제",
+      "trust": "공식",
+      "checked": "2026-10-13 이전",
+      "images": "기관·관광공사 사진은 PROMPT.md 사진 고르기대로"
+    },
+    {
+      "name": "BGF리테일(CU)",
+      "url": "https://www.bgfretail.com",
+      "use": "편의점",
+      "area": "CU 신상품·판매 기록 보도자료",
+      "cycle": "수시",
+      "trust": "공식",
+      "images": "회사 공식 사진(회사 사진 규칙)",
+      "checked": "2026-10-23"
+    },
+    {
+      "name": "GS리테일(GS25)",
+      "url": "https://www.gsretail.com",
+      "use": "편의점",
+      "area": "GS25 신상품·판매 기록 보도자료",
+      "cycle": "수시",
+      "trust": "공식",
+      "images": "회사 공식 사진(회사 사진 규칙)",
+      "checked": "2026-10-23"
+    },
+    {
+      "name": "세븐일레븐",
+      "url": "https://www.7-eleven.co.kr",
+      "use": "편의점",
+      "area": "신상품·행사",
+      "cycle": "수시",
+      "trust": "공식",
+      "images": "회사 공식 사진(회사 사진 규칙)",
+      "checked": "2026-10-23"
+    },
+    {
+      "name": "이마트24",
+      "url": "https://www.emart24.co.kr",
+      "use": "편의점",
+      "area": "신상품·행사",
+      "cycle": "수시",
+      "trust": "공식",
+      "images": "회사 공식 사진(회사 사진 규칙)",
+      "checked": "2026-10-23"
+    },
+    {
+      "name": "CJ제일제당",
+      "url": "https://www.cj.co.kr",
+      "use": "식품기업",
+      "area": "신제품·발표",
+      "cycle": "수시",
+      "trust": "공식",
+      "images": "회사 공식 사진(회사 사진 규칙)",
+      "checked": "2026-10-23"
+    },
+    {
+      "name": "오뚜기",
+      "url": "https://www.ottogi.co.kr",
+      "use": "식품기업",
+      "area": "신제품",
+      "cycle": "수시",
+      "trust": "공식",
+      "images": "회사 공식 사진(회사 사진 규칙)",
+      "checked": "2026-10-23"
+    },
+    {
+      "name": "농심",
+      "url": "https://www.nongshim.com",
+      "use": "식품기업",
+      "area": "신제품·가격",
+      "cycle": "수시",
+      "trust": "공식",
+      "images": "회사 공식 사진(회사 사진 규칙)",
+      "checked": "2026-10-23"
+    },
+    {
+      "name": "대상",
+      "url": "https://www.daesang.com",
+      "use": "식품기업",
+      "area": "신제품",
+      "cycle": "수시",
+      "trust": "공식",
+      "images": "회사 공식 사진(회사 사진 규칙)",
+      "checked": "2026-10-23"
+    },
+    {
+      "name": "동원F&B",
+      "url": "https://www.dongwonfnb.com",
+      "use": "식품기업",
+      "area": "신제품",
+      "cycle": "수시",
+      "trust": "공식",
+      "images": "회사 공식 사진(회사 사진 규칙)",
+      "checked": "2026-10-23"
+    },
+    {
+      "name": "풀무원",
+      "url": "https://www.pulmuone.co.kr",
+      "use": "식품기업",
+      "area": "신제품·건강식",
+      "cycle": "수시",
+      "trust": "공식",
+      "images": "회사 공식 사진(회사 사진 규칙)",
+      "checked": "2026-10-23"
+    },
+    {
+      "name": "하림",
+      "url": "https://www.harim.com",
+      "use": "식품기업",
+      "area": "신제품·닭고기",
+      "cycle": "수시",
+      "trust": "공식",
+      "images": "회사 공식 사진(회사 사진 규칙)",
+      "checked": "2026-10-23"
+    },
+    {
+      "name": "맘스터치",
+      "url": "https://www.momstouch.co.kr",
+      "use": "프랜차이즈",
+      "area": "신메뉴·가격",
+      "cycle": "수시",
+      "trust": "공식",
+      "images": "회사 공식 사진(회사 사진 규칙)",
+      "checked": "2026-10-23"
+    },
+    {
+      "name": "롯데리아(롯데GRS)",
+      "url": "https://www.lotteeatz.com",
+      "use": "프랜차이즈",
+      "area": "신메뉴·가격",
+      "cycle": "수시",
+      "trust": "공식",
+      "images": "회사 공식 사진(회사 사진 규칙)",
+      "checked": "2026-10-23"
+    },
+    {
+      "name": "맥도날드",
+      "url": "https://www.mcdonalds.co.kr",
+      "use": "프랜차이즈",
+      "area": "신메뉴·가격",
+      "cycle": "수시",
+      "trust": "공식",
+      "images": "회사 공식 사진(회사 사진 규칙)",
+      "checked": "2026-10-23"
+    },
+    {
+      "name": "버거킹",
+      "url": "https://www.burgerking.co.kr",
+      "use": "프랜차이즈",
+      "area": "신메뉴·가격",
+      "cycle": "수시",
+      "trust": "공식",
+      "images": "회사 공식 사진(회사 사진 규칙)",
+      "checked": "2026-10-23"
+    },
+    {
+      "name": "스타벅스",
+      "url": "https://www.starbucks.co.kr",
+      "use": "프랜차이즈",
+      "area": "시즌 음료·푸드",
+      "cycle": "수시",
+      "trust": "공식",
+      "images": "회사 공식 사진(회사 사진 규칙)",
+      "checked": "2026-10-23"
+    },
+    {
+      "name": "투썸플레이스",
+      "url": "https://www.twosome.co.kr",
+      "use": "프랜차이즈",
+      "area": "신메뉴",
+      "cycle": "수시",
+      "trust": "공식",
+      "images": "회사 공식 사진(회사 사진 규칙)",
+      "checked": "2026-10-23",
+      "note": "2026-10-23 자동 접속은 403(막힘). 기사로 확인"
+    },
+    {
+      "name": "메가MGC커피",
+      "url": "https://www.mega-mgccoffee.com",
+      "use": "프랜차이즈",
+      "area": "신메뉴",
+      "cycle": "수시",
+      "trust": "공식",
+      "images": "회사 공식 사진(회사 사진 규칙)",
+      "checked": "2026-10-23"
+    },
+    {
+      "name": "aT 식품산업통계정보(FIS)",
+      "url": "https://www.atfis.or.kr",
+      "use": "식품 시장 통계",
+      "area": "가공식품·외식·HMR 시장 통계",
+      "cycle": "수시",
+      "trust": "공식",
+      "images": "쓰지 않음(통계만)",
+      "checked": "2026-10-23"
+    },
+    {
+      "name": "aT KATI 농식품수출정보",
+      "url": "https://www.kati.net",
+      "use": "해외 식품 트렌드",
+      "area": "나라별 식품 트렌드·수출",
+      "cycle": "수시",
+      "trust": "공식",
+      "images": "쓰지 않음(사실만)",
+      "checked": "2026-10-23"
+    },
+    {
+      "name": "한국농촌경제연구원",
+      "url": "https://www.krei.re.kr",
+      "use": "식품 소비·전망",
+      "area": "농축산물 전망·소비 조사",
+      "cycle": "수시",
+      "trust": "공식",
+      "images": "쓰지 않음(통계만)",
+      "checked": "2026-10-23"
+    },
+    {
+      "name": "통계청 KOSIS",
+      "url": "https://kosis.kr",
+      "use": "물가·소비 통계",
+      "area": "외식·가공식품 소비자물가지수",
+      "cycle": "수시",
+      "trust": "공식",
+      "images": "쓰지 않음(통계만)",
+      "checked": "2026-10-23"
+    },
+    {
+      "name": "한국소비자원",
+      "url": "https://www.kca.go.kr",
+      "use": "소비자 조사",
+      "area": "식품 가격·품질 조사",
+      "cycle": "수시",
+      "trust": "공식",
+      "images": "쓰지 않음(사실만)",
+      "checked": "2026-10-23"
+    },
+    {
+      "name": "공공데이터포털",
+      "url": "https://www.data.go.kr",
+      "use": "공공 데이터",
+      "area": "식품·축제·가격 데이터",
+      "cycle": "수시",
+      "trust": "공식",
+      "images": "데이터마다 이용 조건 확인",
+      "checked": "2026-10-23"
     }
   ],
   "news": [
-    "제철 수산물",
-    "제철 농산물",
-    "먹거리 축제",
-    "식품 신제품 출시",
-    "외식 트렌드",
-    "편의점 신상 먹거리",
-    "농수산물 가격",
-    "식중독 주의",
-    "장바구니 물가",
-    "배추 무 가격",
-    "닭고기 치킨 가격",
-    "삼겹살 돼지고기 가격",
-    "계란 가격",
-    "과일 가격",
-    "대형마트 먹거리 할인",
-    "라면 과자 가격 인상",
-    "외식 프랜차이즈 가격",
-    "셰프 신메뉴",
-    "요리 예능 셰프 화제",
-    "먹방 화제 음식",
-    "품절 인기 먹거리",
-    "해외 화제 음식",
-    "디저트 유행 오픈런",
-    "편의점 디저트 판매량",
-    "배달앱 인기 메뉴 주문",
-    "간편식 신제품 출시",
-    "SNS 화제 메뉴",
-    "음식 축제 개최",
-    "푸드 페스티벌",
-    "먹거리 장터 개최",
-    "야시장 개막",
-    "사찰음식",
-    "로컬푸드 축제",
-    "수산물 축제",
-    "빵 축제",
-    "전통주 축제",
-    "김장 축제"
+    {
+      "q": "제철 수산물",
+      "group": "제철·장바구니"
+    },
+    {
+      "q": "제철 농산물",
+      "group": "제철·장바구니"
+    },
+    {
+      "q": "먹거리 축제",
+      "group": "축제·지역"
+    },
+    {
+      "q": "식품 신제품 출시",
+      "group": "식품기업·프랜차이즈"
+    },
+    {
+      "q": "외식 트렌드",
+      "group": "소비 트렌드"
+    },
+    {
+      "q": "편의점 신상 먹거리",
+      "group": "유통·편의점"
+    },
+    {
+      "q": "농수산물 가격",
+      "group": "제철·장바구니"
+    },
+    {
+      "q": "식중독 주의",
+      "group": "식품 안전"
+    },
+    {
+      "q": "장바구니 물가",
+      "group": "제철·장바구니"
+    },
+    {
+      "q": "배추 무 가격",
+      "group": "제철·장바구니"
+    },
+    {
+      "q": "닭고기 치킨 가격",
+      "group": "제철·장바구니"
+    },
+    {
+      "q": "삼겹살 돼지고기 가격",
+      "group": "제철·장바구니"
+    },
+    {
+      "q": "계란 가격",
+      "group": "제철·장바구니"
+    },
+    {
+      "q": "과일 가격",
+      "group": "제철·장바구니"
+    },
+    {
+      "q": "대형마트 먹거리 할인",
+      "group": "유통·편의점"
+    },
+    {
+      "q": "라면 과자 가격 인상",
+      "group": "제철·장바구니"
+    },
+    {
+      "q": "외식 프랜차이즈 가격",
+      "group": "식품기업·프랜차이즈"
+    },
+    {
+      "q": "셰프 신메뉴",
+      "group": "인물·방송"
+    },
+    {
+      "q": "요리 예능 셰프 화제",
+      "group": "인물·방송"
+    },
+    {
+      "q": "먹방 화제 음식",
+      "group": "인물·방송"
+    },
+    {
+      "q": "품절 인기 먹거리",
+      "group": "유통·편의점"
+    },
+    {
+      "q": "해외 화제 음식",
+      "group": "해외"
+    },
+    {
+      "q": "디저트 유행 오픈런",
+      "group": "소비 트렌드"
+    },
+    {
+      "q": "편의점 디저트 판매량",
+      "group": "유통·편의점"
+    },
+    {
+      "q": "배달앱 인기 메뉴 주문",
+      "group": "소비 트렌드"
+    },
+    {
+      "q": "간편식 신제품 출시",
+      "group": "소비 트렌드"
+    },
+    {
+      "q": "SNS 화제 메뉴",
+      "group": "소비 트렌드"
+    },
+    {
+      "q": "음식 축제 개최",
+      "group": "축제·지역"
+    },
+    {
+      "q": "푸드 페스티벌",
+      "group": "축제·지역"
+    },
+    {
+      "q": "먹거리 장터 개최",
+      "group": "축제·지역"
+    },
+    {
+      "q": "야시장 개막",
+      "group": "축제·지역"
+    },
+    {
+      "q": "사찰음식",
+      "group": "축제·지역"
+    },
+    {
+      "q": "로컬푸드 축제",
+      "group": "축제·지역"
+    },
+    {
+      "q": "수산물 축제",
+      "group": "축제·지역"
+    },
+    {
+      "q": "빵 축제",
+      "group": "축제·지역"
+    },
+    {
+      "q": "전통주 축제",
+      "group": "축제·지역"
+    },
+    {
+      "q": "김장 축제",
+      "group": "축제·지역"
+    },
+    {
+      "q": "\"CU\" 편의점 출시",
+      "group": "유통·편의점"
+    },
+    {
+      "q": "\"GS25\" 출시",
+      "group": "유통·편의점"
+    },
+    {
+      "q": "\"세븐일레븐\" 출시",
+      "group": "유통·편의점"
+    },
+    {
+      "q": "\"이마트24\" 출시 먹거리",
+      "group": "유통·편의점"
+    },
+    {
+      "q": "편의점 도시락 판매량",
+      "group": "유통·편의점"
+    },
+    {
+      "q": "이마트 OR 트레이더스 OR 롯데마트 OR 홈플러스 먹거리 행사",
+      "group": "유통·편의점"
+    },
+    {
+      "q": "코스트코 OR 컬리 OR 쿠팡 식품 인기",
+      "group": "유통·편의점"
+    },
+    {
+      "q": "CJ제일제당 OR 오뚜기 OR 농심 신제품",
+      "group": "식품기업·프랜차이즈"
+    },
+    {
+      "q": "대상 OR 동원F&B OR 풀무원 OR 하림 신제품",
+      "group": "식품기업·프랜차이즈"
+    },
+    {
+      "q": "파리바게뜨 OR SPC 신제품",
+      "group": "식품기업·프랜차이즈"
+    },
+    {
+      "q": "맘스터치 OR 롯데리아 OR 맥도날드 OR 버거킹 신메뉴",
+      "group": "식품기업·프랜차이즈"
+    },
+    {
+      "q": "스타벅스 OR 투썸플레이스 OR 메가커피 신메뉴",
+      "group": "식품기업·프랜차이즈"
+    },
+    {
+      "q": "흑백요리사 셰프",
+      "group": "인물·방송"
+    },
+    {
+      "q": "냉장고를 부탁해 셰프",
+      "group": "인물·방송"
+    },
+    {
+      "q": "셰프 협업 상품 출시",
+      "group": "인물·방송"
+    },
+    {
+      "q": "먹방 유튜버 음식",
+      "group": "인물·방송"
+    },
+    {
+      "q": "\"푸드 인플루언서\" OR \"먹방 유튜버\" 협업",
+      "group": "인물·방송"
+    },
+    {
+      "q": "가정간편식 OR HMR 매출",
+      "group": "소비 트렌드"
+    },
+    {
+      "q": "\"밀키트\" OR \"냉동식품\" 판매",
+      "group": "소비 트렌드"
+    },
+    {
+      "q": "\"1인 가구\" 식품 OR \"소용량\" 식품",
+      "group": "소비 트렌드"
+    },
+    {
+      "q": "고단백 OR 저당 식품 출시",
+      "group": "소비 트렌드"
+    },
+    {
+      "q": "외식 물가 OR 외식비 상승",
+      "group": "소비 트렌드"
+    },
+    {
+      "q": "식약처 회수 OR 판매 중단 식품",
+      "group": "식품 안전"
+    },
+    {
+      "q": "농식품부 OR aT 농산물 수급",
+      "group": "공공·해외"
+    },
+    {
+      "q": "소비자원 식품 가격 조사",
+      "group": "공공·해외"
+    }
   ]
 }

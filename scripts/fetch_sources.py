@@ -2,15 +2,20 @@
 """공식 기관 RSS를 읽어 새 글만 inbox 에 모아요.
 
   python scripts/fetch_sources.py
+  python scripts/fetch_sources.py --dry 결과.json   아무것도 저장하지 않고, 지금 모일 글을 모두(이미 본 글 포함) 결과.json 에 써요 (시험용)
 - 새 글: inbox/날짜.json
 - 이미 본 글: state/seen_links.json (다시 모으지 않아요)
 - 실패한 곳: logs/errors.jsonl 에 남기고 나머지는 계속 읽어요.
   다음에 돌릴 때 다시 읽으니, 그동안 올라온 글도 함께 들어와요.
+- 글마다 `group`(어느 갈래의 정보원인지)과 `published`(한국 시간 발행일)를 적어요. (2026-10-23 2단계)
 """
 import json
 import re
+import sys
+import time
 import urllib.parse
 import urllib.request
+from datetime import datetime, timedelta, timezone
 from email.utils import parsedate_to_datetime
 from xml.etree import ElementTree as ET
 
@@ -44,12 +49,33 @@ def parse(xml_bytes):
     return out
 
 
+KST = timezone(timedelta(hours=9))
+
+
 def when(entry):
-    """기사가 나온 때(초). 날짜를 읽지 못하면 가장 오래된 것으로 쳐요."""
+    """기사가 나온 때(초). 날짜를 읽지 못하면 가장 오래된 것으로 쳐요.
+    RSS 날짜는 'Mon, 19 Oct 2026 22:16:00 GMT' 꼴과 '2026-10-23 10:07:53'(한국 시간, 국내 매체) 꼴이 섞여 있어요."""
+    d = entry.get("date", "")
     try:
-        return parsedate_to_datetime(entry["date"]).timestamp()
+        return parsedate_to_datetime(d).timestamp()
+    except Exception:
+        pass
+    try:
+        t = datetime.fromisoformat(d.replace("Z", "+00:00"))
+        return (t if t.tzinfo else t.replace(tzinfo=KST)).timestamp()
     except Exception:
         return 0.0
+
+
+def published(entry):
+    """한국 시간 발행일 'YYYY-MM-DD HH:MM'. 읽지 못하면 빈칸."""
+    t = when(entry)
+    return datetime.fromtimestamp(t, KST).strftime("%Y-%m-%d %H:%M") if t else ""
+
+
+def query_of(item):
+    """sources.json 의 news 칸은 검색어 글자이거나 {"q": 검색어, "group": 갈래} 예요."""
+    return (item, "기타") if isinstance(item, str) else (item["q"], item.get("group", "기타"))
 
 
 STOP = set("출시 개최 진행 오늘 올해 내일 신제품 선봬 선보여 공개 운영 시작 확대 강화 기념 이벤트 행사 관련 위해 통해 대한 가운데 지난 이번 최대 첫선".split())
@@ -93,12 +119,26 @@ def add_coverage(items):
             print(f"  여러 곳이 쓴 소식 ({e['coverage']}곳): {e['title'][:60]}")
 
 
+def keep(src, e, now):
+    """RSS 한 곳에서 이 글을 모을지. keywords 가 있으면 제목에 그중 하나가 있어야 하고(회사 뉴스룸의 음식 아닌 글 거르기),
+    max_age_days 가 있으면 그보다 오래된 글은 모으지 않아요(새로 넣은 곳의 옛 글이 한꺼번에 들어오지 않게)."""
+    if src.get("keywords") and not any(k in e["title"] for k in src["keywords"]):
+        return False
+    if src.get("max_age_days"):
+        t = when(e)
+        return bool(t) and now - t <= src["max_age_days"] * 86400
+    return True
+
+
 def main():
-    sources = read_json(ROOT / "sources.json")["rss"]
-    seen = set(read_json(ROOT / "state" / "seen_links.json", []))
+    dry = sys.argv[2] if len(sys.argv) > 2 and sys.argv[1] == "--dry" else None
+    config = read_json(ROOT / "sources.json")
+    sources = config["rss"]
+    seen = set() if dry else set(read_json(ROOT / "state" / "seen_links.json", []))
     health = read_json(ROOT / "state" / "source_health.json", {})
-    first_run = not seen
+    first_run = not seen and not dry
     fresh = []
+    now = time.time()
     for src in sources:
         try:
             req = urllib.request.Request(src["url"], headers=UA)
@@ -107,16 +147,21 @@ def main():
             new = [e for e in entries if e["link"] not in seen]
             for e in new:
                 seen.add(e["link"])
-                fresh.append({"source": src["id"], "source_name": src["name"], "use": src["use"], **e})
+            new = [e for e in new if keep(src, e, now)]
+            for e in new:
+                fresh.append({"source": src["id"], "source_name": src["name"], "use": src["use"], "group": src.get("group", "공공·해외"),
+                              **e, "published": published(e)})
             health[src["id"]] = {"last_ok": today_kst(), "fails": 0}
             print(f"읽었어요: {src['name']} (새 글 {len(new)}개)")
         except Exception as e:
-            log_error(f"fetch:{src['id']}", e)
+            if not dry:
+                log_error(f"fetch:{src['id']}", e)
             prev = health.get(src["id"], {})
             health[src["id"]] = {"last_ok": prev.get("last_ok"), "fails": prev.get("fails", 0) + 1, "last_error": str(e)[:200]}
             print(f"못 읽었어요: {src['name']} ({e})")
     # 먹거리 뉴스 (구글 뉴스 검색 RSS, 최근 이틀)
-    for query in read_json(ROOT / "sources.json").get("news", []):
+    for item in config.get("news", []):
+        query, group = query_of(item)
         try:
             url = "https://news.google.com/rss/search?" + urllib.parse.urlencode({"q": query + " when:2d", "hl": "ko", "gl": "KR", "ceid": "KR:ko"})
             with urllib.request.urlopen(urllib.request.Request(url, headers=UA), timeout=30) as res:
@@ -124,12 +169,19 @@ def main():
             new = [e for e in entries if e["link"] not in seen]
             for e in new:
                 seen.add(e["link"])
-                fresh.append({"source": "news", "source_name": "뉴스 검색: " + query, "use": "먹거리 소식", **e})
+                fresh.append({"source": "news", "source_name": "뉴스 검색: " + query, "use": "먹거리 소식", "group": group,
+                              **e, "published": published(e)})
             print(f"읽었어요: 뉴스 '{query}' (새 글 {len(new)}개)")
         except Exception as e:
-            log_error(f"fetch:news:{query}", e)
+            if not dry:
+                log_error(f"fetch:news:{query}", e)
             print(f"못 읽었어요: 뉴스 '{query}' ({e})")
+        time.sleep(0.3)  # 검색어가 늘어 구글 뉴스 요청 제한(429)에 덜 걸리게
     add_coverage([e for e in fresh if e["source"] == "news"])
+    if dry:
+        write_json(dry, fresh)
+        print(f"시험 끝. 저장하지 않았어요. 모인 글 {len(fresh)}개 → {dry}")
+        return
 
     # 서울 날씨 (Open-Meteo). 저녁 메뉴를 고를 때 써요.
     try:

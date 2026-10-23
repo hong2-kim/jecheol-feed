@@ -138,6 +138,35 @@ def _body(page):
 
 UI_WORDS = re.compile(r"^(?:SNS ?기사보내기|스크롤 이동 상태바|URL ?공유|구독하기|기사 ?듣기|글자 ?크기|프린트|인쇄|카카오톡|페이스북)$")
 
+CREDIT = re.compile(r"[\[(（]?\s*(?:사진\s*[=:]\s*)?[^\[\]()<>\n]{0,20}?(?:제공|사진\s*[=:][^\[\]()<>\n]{1,20}|연합뉴스|뉴시스|뉴스1|기자)[^\[\]()<>\n]{0,20}[\])）]?")
+
+
+def credits(page):
+    """기사 사진에 붙은 출처 글(사진 설명, '○○ 제공', '사진=○○')과 대략의 판단. (2026-10-23 2단계)
+    회사가 낸 사진인지 기자·통신사가 찍은 사진인지 가르는 데 써요. 판단은 단서일 뿐이라 사진을 쓰기 전에 사진 설명을 직접 읽어요."""
+    caps = [_clean(c).replace("\n", " ") for c in re.findall(r"(?is)<figcaption[^>]*>(.*?)</figcaption>", page)]
+    caps += [html.unescape(m.group(0)).strip() for m in CREDIT.finditer(re.sub(r"<[^>]+>", "\n", page))
+             if re.search(r"[\[(（].*제공|사진\s*[=:]", m.group(0))]  # 괄호 속 '○○ 제공'·'사진=○○' 만 (본문의 '쿠폰 제공' 같은 말은 빼요)
+    seen = []
+    for c in caps:
+        c = re.sub(r"\s+", " ", c).strip()[:80]
+        if c and c not in seen:
+            seen.append(c)
+    joined = " ".join(seen)
+    company = re.search(r"제공|사진\s*[=:]\s*(?!연합|뉴시스|뉴스1)", joined)
+    press = re.search(r"연합뉴스|뉴시스|뉴스1|기자|[가-힣]DB\]", joined)
+    if re.search(r"AI\s*생성|AI로 (?:만든|생성)|생성형 AI", joined):
+        hint = "AI로 만든 그림이 있어요. 그 그림은 쓰지 않아요(실제 사진만 써요)"
+    elif company and press:
+        hint = "회사 제공 사진과 기자·언론사 사진이 섞여 있어요. 설명이 '○○ 제공'·'사진=회사'인 사진만 회사 사진 규칙대로 쓰고, 나머지는 쓰지 않아요"
+    elif company:
+        hint = "회사·기관이 낸 사진으로 보여요(제공 표시). 그 회사 제품·행사 사진이면 회사 사진 규칙대로 쓸 수 있어요"
+    elif press:
+        hint = "기자·언론사 사진으로 보여요. 쓰지 않아요"
+    else:
+        hint = "출처 표시를 못 찾았어요. 쓰지 않아요"
+    return seen[:6], hint
+
 
 def text(url, chars=3500, images=False):
     url = original_url(url)
@@ -145,8 +174,11 @@ def text(url, chars=3500, images=False):
     page = _decode(raw)
     title = _meta(page, "og:title") or html.unescape((re.search(r"(?is)<title[^>]*>(.*?)</title>", page) or [None, ""])[1]).strip()
     when = _meta(page, "article:published_time") or _meta(page, "og:regDate") or _meta(page, "pubdate")
+    modified = _meta(page, "article:modified_time")  # 발행일과 수정일은 달라요. 발행일을 기사 날짜로 써요
     body = _body(page)
-    out = ["※ 사실 확인용이에요. 숫자·사실만 확인하고 기사 문장은 그대로 옮기지 않아요.", f"URL {url}", f"제목 {title}"] + ([f"날짜 {when}"] if when else []) + ["", body[:chars] + (f" … [+{len(body) - chars}자]" if len(body) > chars else "")]
+    out = (["※ 사실 확인용이에요. 숫자·사실만 확인하고 기사 문장은 그대로 옮기지 않아요.", f"URL {url}", f"제목 {title}"]
+           + ([f"날짜 {when}"] if when else []) + ([f"수정 {modified}"] if modified and modified[:16] != when[:16] else [])
+           + ["", body[:chars] + (f" … [+{len(body) - chars}자]" if len(body) > chars else "")])
     if images:
         pics = [_meta(page, "og:image")] + re.findall(r'<img[^>]+src=["\']([^"\']+\.(?:jpe?g|png|webp)[^"\']*)', page, re.I)
         seen = []
@@ -155,7 +187,10 @@ def text(url, chars=3500, images=False):
             if p and p not in seen and not re.search(r"logo|icon|banner|btn|ad[_/]", p, re.I):
                 seen.append(p)
         out.append("사진 " + json.dumps(seen[:10], ensure_ascii=False))
-        out.append("※ 기자·통신사가 찍은 사진은 쓰지 않아요. 회사가 배포한 사진만 \"7. 요즘 뜨는 메뉴\"의 회사 사진 규칙대로 써요.")
+        caps, hint = credits(page)
+        out.append("사진 설명 " + json.dumps(caps, ensure_ascii=False))
+        out.append("사진 판단(단서) " + hint)
+        out.append("※ 기자·통신사가 찍은 사진은 쓰지 않아요. 회사가 배포한 사진만 \"7. 요즘 뜨는 메뉴\"의 회사 사진 규칙대로 써요. 사진을 못 쓰는 것과 기사 사실을 못 쓰는 것은 다른 일이에요.")
     return "\n".join(out)
 
 
