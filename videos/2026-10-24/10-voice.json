@@ -21,12 +21,12 @@
   "https://v.daum.net/v/1W6rEg6bvL"
  ],
  "credits": [
-  "Aranami (CC BY 2.0)",
+  "miyaiijima (CC BY 2.0)",
+  "Shene81 (CC BY 3.0)",
   "Misei sen (CC BY 4.0)",
-  "Karel Schmiedberger ml. (CC BY 3.0)",
+  "www.snack-nieuws.nl (CC BY 2.0)",
   "Guilhem Vellut (CC BY 2.0)",
   "Carlos ZGZ (CC BY 2.0)",
-  "Go Ikeda (CC BY 2.0)",
   "Horacio Cambeiro (CC BY 3.0)"
  ],
  "yt_keyword": "빅맥지수",
@@ -64,7 +64,7 @@
   {
    "say": "끝까지 보면 빅맥이 [[제일 싼 나라]]까지 알려 드려요.",
    "photo": {
-    "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Double%20Big%20Mac%20Meal%20at%20McDonald%27s%20%285116376216%29.jpg?width=1600",
+    "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Meal%20at%20a%20McDonald%27s%20restaurant%20at%20Melbourne%2020161224.jpg?width=1600",
     "fit": "cover"
    },
    "chip": "끝까지 보면 제일 싼 나라"
@@ -81,7 +81,8 @@
    "say": "일본은 [[500엔]], 7월 환율로 약 [[4,600원]]이에요.",
    "photos": [
     {
-     "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Big%20Mac%20in%20Japan%202018.jpg?width=1600"
+     "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Bic%20Mac.jpg?width=1600",
+     "fit": "cover"
     },
     {
      "url": "https://commons.wikimedia.org/wiki/Special:FilePath/McDonald%27s%20R14%20Inage.jpg?width=1600",
@@ -118,7 +119,7 @@
   {
    "say": "영국 잡지 [[이코노미스트]]는 1986년부터 이걸 견줘 왔어요.",
    "photo": {
-    "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Big%20Mac%20hamburger%20-%20Czech%20Republic.jpg?width=1600",
+    "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Big%20Mac%20%2834435640870%29.jpg?width=1600",
     "fit": "cover"
    },
    "chip": "빅맥지수 · 1986년부터"
@@ -230,8 +231,7 @@
   {
    "say": "빅맥지수로 보면 원화는 [[38%]], 엔화는 [[50%]] 낮게 매겨져 있어요.",
    "photo": {
-    "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Big%20Mac%202006-10-14.jpg?width=1600",
-    "fit": "cover"
+    "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Big%20Mac%20hamburger.jpg?width=1600"
    },
    "chip": "달러 견줘 원화 -38% · 엔화 -50%"
   },
@@ -258,9 +258,9 @@
   }
  },
  "review": {
-  "photo_sheet": "b71e4c16062f",
-  "approved": "2026-10-24 09:48",
-  "note": "사용자가 대화에서 '좋아, 이걸로 오늘 내레이션 쇼츠 보내 줘.' (2026-10-24 시안 확인 뒤)",
-  "hash": "0397d4f06588"
+  "photo_sheet": "69bad005b685",
+  "approved": "2026-10-24 10:47",
+  "note": "사용자가 대화에서 '좋아, v2로 다시 보내 줘.' (사진 4장 바꾼 시안 v2 확인 뒤)",
+  "hash": "1d5111343757"
  }
 }
