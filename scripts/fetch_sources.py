@@ -8,6 +8,7 @@
 - 실패한 곳: logs/errors.jsonl 에 남기고 나머지는 계속 읽어요.
   다음에 돌릴 때 다시 읽으니, 그동안 올라온 글도 함께 들어와요.
 - 글마다 `group`(어느 갈래의 정보원인지)과 `published`(한국 시간 발행일)를 적어요. (2026-10-23 2단계)
+- 뉴스 검색 글과 같은 소식의 뉴스와이어 보도자료가 있으면 `press` 에 그 주소를 적어요. 기사 사진은 못 쓰지만 그 보도자료 사진은 써요(2026-10-24).
 """
 import json
 import re
@@ -119,6 +120,26 @@ def add_coverage(items):
             print(f"  여러 곳이 쓴 소식 ({e['coverage']}곳): {e['title'][:60]}")
 
 
+def same_story(a, b):
+    """두 제목의 낱말이 같은 소식이라고 볼 만큼 겹치는지 (add_coverage 와 같은 기준)."""
+    shared = len(a & b)
+    return shared >= 3 or (shared >= 2 and shared / max(1, len(a | b)) >= 0.3)
+
+
+def add_press(items, pool):
+    """뉴스 검색 글마다 같은 소식의 뉴스와이어 보도자료를 찾아 press 에 적어요. pool 은 이번에 읽은 뉴스와이어 글 전부(이미 본 글 포함)."""
+    pool = [(words(p["title"]), p["link"].split("&sourceType")[0]) for p in pool]
+    hit = 0
+    for e in items:
+        w = words(e["title"])
+        link = next((l for pw, l in pool if same_story(w, pw)), None)
+        if link:
+            e["press"] = link
+            hit += 1
+    if hit:
+        print(f"  뉴스와이어 보도자료가 있는 소식: {hit}건 (press 칸)")
+
+
 def keep(src, e, now):
     """RSS 한 곳에서 이 글을 모을지. keywords 가 있으면 제목에 그중 하나가 있어야 하고(회사 뉴스룸의 음식 아닌 글 거르기),
     max_age_days 가 있으면 그보다 오래된 글은 모으지 않아요(새로 넣은 곳의 옛 글이 한꺼번에 들어오지 않게)."""
@@ -137,13 +158,15 @@ def main():
     seen = set() if dry else set(read_json(ROOT / "state" / "seen_links.json", []))
     health = read_json(ROOT / "state" / "source_health.json", {})
     first_run = not seen and not dry
-    fresh = []
+    fresh, press_pool = [], []
     now = time.time()
     for src in sources:
         try:
             req = urllib.request.Request(src["url"], headers=UA)
             with urllib.request.urlopen(req, timeout=30) as res:
                 entries = parse(res.read())
+            if src["id"].startswith("newswire"):
+                press_pool += entries
             new = [e for e in entries if e["link"] not in seen]
             for e in new:
                 seen.add(e["link"])
@@ -178,6 +201,7 @@ def main():
             print(f"못 읽었어요: 뉴스 '{query}' ({e})")
         time.sleep(0.3)  # 검색어가 늘어 구글 뉴스 요청 제한(429)에 덜 걸리게
     add_coverage([e for e in fresh if e["source"] == "news"])
+    add_press([e for e in fresh if e["source"] == "news"], press_pool)
     if dry:
         write_json(dry, fresh)
         print(f"시험 끝. 저장하지 않았어요. 모인 글 {len(fresh)}개 → {dry}")
@@ -245,7 +269,8 @@ def digest(day, per=8):
         for n, t, e in picked[:per]:
             hit = history.compare([history.unit("후보", day, "후보", t, t, t, [e["link"]], False)], past)
             mark = f"  (지난 콘텐츠와 겹침: {hit[0].split('↔')[1].split(chr(39))[0].strip()})" if hit else ""
-            out.append(f"{n:4} [{e.get('coverage') or 1}곳] {e.get('published', '')[5:]} {t[:70]} <{(outlet(e['title']) or e.get('source_name', ''))[:12]}>{mark}")
+            pr = "  (뉴스와이어 보도자료 있음)" if e.get("press") or e.get("source", "").startswith("newswire") else ""
+            out.append(f"{n:4} [{e.get('coverage') or 1}곳] {e.get('published', '')[5:]} {t[:70]} <{(outlet(e['title']) or e.get('source_name', ''))[:12]}>{pr}{mark}")
     return "\n".join(out)
 
 
@@ -259,6 +284,6 @@ if __name__ == "__main__":
         items = (read_json(ROOT / "inbox" / f"{day}.json", []) or []) + (read_json(ROOT / "inbox" / f"{(datetime.fromisoformat(day) - timedelta(days=1)).strftime('%Y-%m-%d')}.json", []) or [])
         for n in sys.argv[3:]:
             e = items[int(n)]
-            print(f"{n} | {e.get('published', e.get('date'))} | {e['title']} | {e['link']}")
+            print(f"{n} | {e.get('published', e.get('date'))} | {e['title']} | {e['link']}" + (f" | 보도자료 {e['press']}" if e.get("press") else ""))
     else:
         main()

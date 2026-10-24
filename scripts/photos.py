@@ -3,10 +3,11 @@
 
   python scripts/photos.py tour 대하구이          한국관광공사 포토코리아 사진 (공공누리 1유형)
   python scripts/photos.py commons "sanma shioyaki"  위키미디어 공용 사진 (CC0·퍼블릭 도메인·CC BY 만)
-  python scripts/photos.py pexels "grilled pork belly"  Pexels 무료 사진 (블로그 글에만 써요. 영어로 찾아야 잘 나와요)
+  python scripts/photos.py openverse "tteokbokki"  오픈버스(플리커·위키미디어 등) CC0·퍼블릭 도메인·CC BY 사진 (키 없이 돼요. 영어로 찾아야 잘 나와요, 2026-10-24)
+  python scripts/photos.py pexels "grilled pork belly"  Pexels 무료 사진 (인스타·쇼츠·블로그 모두 돼요. 영어로 찾아야 잘 나와요)
   python scripts/photos.py festival 20261012      그날 이후 열리는 축제 (한국관광공사, 공식 일정)
   python scripts/photos.py get <주소> <저장할 파일>   사진을 내려받아 직접 눈으로 확인할 때
-  python scripts/photos.py sheet tour 굴구이 15 /tmp/s.jpg   후보 여러 장을 번호를 붙여 한 장에 모아요 (commons 도 된다)
+  python scripts/photos.py sheet tour 굴구이 15 /tmp/s.jpg   후보 여러 장을 번호를 붙여 한 장에 모아요 (commons·openverse 도 된다)
 
 tour, festival 은 환경 변수 TOUR_API_KEY, pexels 는 PEXELS_API_KEY 가 있어야 해요. 결과는 한 줄에 하나씩 JSON으로 나와요.
 tour·commons 검색 결과는 임시 폴더에 6시간 저장해 같은 검색어를 다시 묻지 않아요. 내려받기는 scripts/web.py 로 해요
@@ -100,6 +101,33 @@ def commons_rows(query):
     return rows
 
 
+def openverse_rows(query):
+    """오픈버스는 플리커·위키미디어 등 여러 곳의 자유 이용 사진을 한꺼번에 찾아요. 상업적 이용과 수정이 되는 것 중
+    CC0·퍼블릭 도메인·CC BY 만 남겨요(CC BY-SA 는 우리 영상까지 같은 라이선스로 풀어야 해서 빼요)."""
+    url = "https://api.openverse.org/v1/images/?" + urllib.parse.urlencode({
+        "q": query, "license": "cc0,pdm,by", "page_size": 20, "mature": "false"})  # 키 없이는 20장까지(넘으면 401)
+    data = json.loads(get(url))
+    rows, today = [], time.strftime("%Y-%m-%d")
+    for r in data.get("results", []):
+        if (r.get("width") or 0) < 1000:
+            continue
+        lic = "CC0" if r["license"] == "cc0" else "Public domain" if r["license"] == "pdm" else f"CC BY {r.get('license_version') or ''}".strip()
+        free = r["license"] in ("cc0", "pdm")
+        who = (r.get("creator") or "작자 미상")[:50]
+        page = r.get("foreign_landing_url") or ""
+        rows.append({"url": r["url"], "title": (r.get("title") or "")[:80], "size": f"{r.get('width')}x{r.get('height')}",
+                     "license": lic, "from": r.get("source"),
+                     "credit": "" if free else f"{who} ({lic}) · {page.split('://', 1)[-1]}",
+                     "terms": {"url": r.get("license_url") or page, "checked": today, "scope": f"{lic}, 상업적 이용·수정 가능", "ok": True},
+                     "note": "출처 표시가 필요 없어요" if free else "저작자·라이선스·주소를 표시해야 해요(credit 그대로)"})
+    return rows
+
+
+def openverse(query):
+    for row in cached("openverse", query, openverse_rows):
+        print(json.dumps(row, ensure_ascii=False))
+
+
 def commons(query):
     for row in cached("commons", query, commons_rows):
         print(json.dumps(row, ensure_ascii=False))
@@ -147,7 +175,8 @@ def sheet(source, query, n=15, out=None):
     """검색 결과 n 장을 번호를 붙여 한 장에 모아요. 사진마다 따로 받고 따로 여는 일을 줄여요. 줄마다 번호와 사진 정보가 나와요."""
     from PIL import Image, ImageDraw, ImageFont, ImageOps
     CACHE.mkdir(exist_ok=True)
-    rows = (cached("tour", query, tour_rows)["rows"] if source == "tour" else cached("commons", query, commons_rows))[:n]
+    rows = (cached("tour", query, tour_rows)["rows"] if source == "tour"
+            else cached(source, query, openverse_rows if source == "openverse" else commons_rows))[:n]
     out = Path(out or CACHE / f"sheet-{source}-{hashlib.sha1(query.encode()).hexdigest()[:8]}.jpg")
     # 관광공사는 함께 받아도 되고, 위키미디어는 web.py 가 1초 간격을 지켜요
     with ThreadPoolExecutor(max_workers=6 if source == "tour" else 2) as pool:
@@ -194,6 +223,8 @@ def run(cmd, arg):
         tour(arg)
     elif cmd == "commons":
         commons(arg)
+    elif cmd == "openverse":
+        openverse(arg)
     elif cmd == "pexels":
         pexels(arg)
     elif cmd == "festival":
@@ -205,8 +236,8 @@ def run(cmd, arg):
             f.write(data)
         print("저장했어요:", sys.argv[3])
     elif cmd == "sheet":
-        if len(sys.argv) < 4 or arg not in ("tour", "commons"):
-            sys.exit("python scripts/photos.py sheet tour|commons 검색어 [장 수] [저장할 파일]")
+        if len(sys.argv) < 4 or arg not in ("tour", "commons", "openverse"):
+            sys.exit("python scripts/photos.py sheet tour|commons|openverse 검색어 [장 수] [저장할 파일]")
         sheet(arg, sys.argv[3], int(sys.argv[4]) if len(sys.argv) > 4 else 15, sys.argv[5] if len(sys.argv) > 5 else None)
     else:
         sys.exit(__doc__)

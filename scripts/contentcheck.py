@@ -67,6 +67,10 @@ def items_of(spec):
                             out.append((f"{where}.{k}" + (f"[{i}]" if isinstance(v, list) else ""), here, p))
                         elif isinstance(p, dict):
                             walk(p, f"{where}.{k}", here)
+                elif k == "grid" and isinstance(v, list) and isinstance(o.get("hl"), int):
+                    # 저녁 2×2: 그 문장이 말하는 음식은 밝힌 칸(hl, 0부터) 하나예요. 나머지 칸은 그 문장과 견주지 않아요 (2026-10-24)
+                    for i, c in enumerate(v):
+                        walk(c, f"{where}.{k}[{i + 1}]", here if i == o["hl"] else "")
                 elif isinstance(v, (dict, list)) and k not in ("meta", "dates", "region", "followup", "credits", "sources"):
                     walk(v, f"{where}.{k}", here)
         elif isinstance(o, list):
@@ -172,7 +176,15 @@ def photo_lines(spec, day, platforms=("instagram", "youtube")):
     curated -= {"먹고갈지도", "수출", "출시", "협업", "신메뉴", "신상", "제철", "가을", "겨울", "여름", "봄", "디저트", "간식", "음식", "맛집",
                 "먹방", "추천", "가격", "할인", "편의점", "먹스타그램", "요즘", "유행"} | PLACES  # 나라·지역 이름은 사진에 찍힐 대상이 아니에요(지역 사진은 region 으로 봐요)
     out, seen_crop, by_url = [], {}, {}
-    for where, text, p in items_of(spec):
+    items = items_of(spec)
+    # 같은 사진(주소·자르기가 같음)을 여러 자리에 다시 쓰면 shows·match·rights 는 한 곳에만 적어도 돼요(저녁 4칸이 문장마다 되풀이돼요, 2026-10-24)
+    noted = {}
+    for _, _, p in items:
+        for k in ("shows", "match", "rights"):
+            if p.get(k):
+                noted.setdefault((p["url"], tuple(p.get("crop") or ())), {}).setdefault(k, p[k])
+    for where, text, p in items:
+        p = {**p, **{k: v for k, v in noted.get((p["url"], tuple(p.get("crop") or ())), {}).items() if not p.get(k)}}
         url = p["url"]
         shows, match, rights = p.get("shows", ""), p.get("match", ""), p.get("rights", "")
         # 1) 출처와 쓸 수 있는지
@@ -206,6 +218,14 @@ def photo_lines(spec, day, platforms=("instagram", "youtube")):
                 continue
             if match != "정확" or b not in shows:
                 out.append(("사진 일치", f"{where}: 글은 {b} 상품을 말하는데 사진은 그 상품이 아니에요(match {match or '없음'}, shows: {shows[:30]}). 다른 가게·다른 회사 같은 종류 사진으로 대신하지 않아요", "차단"))
+    uses = {}
+    for where, _, p in items_of(spec):
+        if where.startswith(("thumb", "cover")) or ".grid[" in where:  # 썸네일·표지는 본편 사진을 다시 쓰고, 저녁 메뉴 격자는 장마다 같은 판을 보여 줘요
+            continue
+        uses.setdefault((p["url"], tuple(p.get("crop") or ())), []).append(where)
+    for (url, _), places in uses.items():  # 같은 사진이 한 콘텐츠에 또 나오면 보는 사람이 금방 지루해해요(2026-10-24 사용자)
+        if len(places) >= 2:
+            out.append(("사진 반복", f"같은 사진({url[-45:]})을 {len(places)}곳({', '.join(places[:4])})에 썼어요. 다른 사진(관광공사·위키미디어·오픈버스·뉴스와이어)으로 바꿔 주세요", "참고"))
     for url, crops in by_url.items():
         crops.discard(())
         if len(crops) >= 2:

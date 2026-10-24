@@ -5,6 +5,7 @@
   python3 scripts/news.py search "김천김밥축제" [--days 7] [--n 15]   구글 뉴스 검색: 날짜 | 매체 | 제목 | 주소
   python3 scripts/news.py url <구글 뉴스 주소> [주소 …]                원래 기사 주소
   python3 scripts/news.py text <주소> [--chars 3500] [--images]       제목, 날짜, 본문 앞부분 (구글 뉴스 주소도 된다)
+  python3 scripts/news.py press "GS25 호빵" [--days 30]               같은 소식의 뉴스와이어 보도자료(원본 사진을 쓸 수 있는 곳, 2026-10-24)
 
 - WebFetch 가 막힌 매체(연합뉴스, 조선비즈 등)도 text 로 열 수 있어요. 열지 못하면 한 줄로 알려 주고 끝나요.
 - 본문은 **사실 확인용**이에요. 숫자·날짜·까닭을 확인하는 데만 쓰고, 기사 문장을 카드·영상·블로그에 그대로 옮기지 않아요(PROMPT.md "사실 확인").
@@ -40,6 +41,19 @@ def search(query, days=None, n=15):
             when = ""
         rows.append((when, src, title, it.findtext("link") or ""))
     return rows[:n]
+
+
+def press(query, days=30, n=8):
+    """뉴스와이어에 회사가 낸 보도자료를 찾아요. 기사 사진은 못 쓰지만 같은 사진을 뉴스와이어에서는 쓸 수 있어요(sources.json photo_rights).
+    뉴스와이어 누리집 검색은 화면에서 그려져서 못 읽어요. 구글 뉴스의 site: 검색으로 찾아요."""
+    rows = []
+    for when, src, title, link in search(query + " site:newswire.co.kr", days, n):
+        try:
+            link = original_url(link).split("&sourceType")[0]
+        except WebError:
+            pass
+        rows.append((when, title.removesuffix(" - 뉴스와이어"), link))
+    return rows
 
 
 def _old_style(gid):
@@ -210,12 +224,19 @@ def main():
     sub = ap.add_subparsers(dest="cmd", required=True)
     s = sub.add_parser("search"); s.add_argument("query"); s.add_argument("--days", type=int); s.add_argument("--n", type=int, default=15)
     u = sub.add_parser("url"); u.add_argument("urls", nargs="+")
+    pr = sub.add_parser("press"); pr.add_argument("query"); pr.add_argument("--days", type=int, default=30)
     t = sub.add_parser("text"); t.add_argument("url"); t.add_argument("--chars", type=int, default=3500); t.add_argument("--images", action="store_true")
     a = ap.parse_args()
     try:
         if a.cmd == "search":
             for row in search(a.query, a.days, a.n):
                 print(" | ".join(row))
+        elif a.cmd == "press":
+            rows = press(a.query, a.days)
+            for row in rows:
+                print(" | ".join(row))
+            if not rows:
+                print("뉴스와이어에 이 소식의 보도자료가 없어요. 회사 누리집 사진은 photo_rights 상태를 보고, 아니면 관광공사·위키미디어·오픈버스 사진을 찾아요")
         elif a.cmd == "url":
             for x in a.urls:
                 try:
