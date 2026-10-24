@@ -4,7 +4,7 @@
   python3 scripts/today_rules.py                 오늘(한국 시간) 읽을 파일
   python3 scripts/today_rules.py 2026-11-01      그날 읽을 파일
   python3 scripts/today_rules.py --show blog     파일 하나를 보여 줘요 (이름이나 경로)
-  python3 scripts/today_rules.py --check 2026-10-19   그날 설계도에 보류 중인 칸이 들어갔는지 봐요
+  python3 scripts/today_rules.py --check 2026-10-19   그날 설계도에 보류 중인 칸이 들어갔는지, 내레이션 쇼츠가 빠지지 않았는지 봐요
 
 고르는 기준은 PROMPT.md 의 "만드는 영상" 표와 같아요. 요일, config.json 의 blog_days, myphotos/index.json 의 plan·side,
 이번 달 videos/ 에 달마다 만드는 것이 있는지를 봐요. 읽기만 하고 아무것도 쓰지 않아요.
@@ -89,7 +89,7 @@ def size(path):
 
 
 def check(day):
-    """그날 설계도에 보류 중인 칸이 있으면 알려 줘요. 있으면 1 로 끝나요."""
+    """그날 설계도에 보류 중인 칸이 있거나 내레이션 쇼츠가 빠졌으면 알려 줘요. 그러면 1 로 끝나요."""
     found = []
     for f in sorted((ROOT / "videos" / day.isoformat()).glob("*.json")):
         spec = json.loads(f.read_text(encoding="utf-8"))
@@ -102,7 +102,14 @@ def check(day):
     for line in found:
         print("  보류 중인 칸이에요. 지워 주세요: " + line)
     print(f"보류 칸 검사: {len(found)}개 파일" if found else "보류 칸 검사: 없음")
-    return 1 if found else 0
+    # 내레이션 쇼츠는 매일 하나(10-voice 또는 11-steps). 10-23·10-24 매일 실행이 "시간이 모자라" 건너뛰어서 넣은 검사예요 (2026-10-24)
+    folder = ROOT / "videos" / day.isoformat()
+    missing = (folder / "2-news.json").exists() and not any((folder / f).exists() for f in ("10-voice.json", "11-steps.json"))
+    if missing:
+        print("꼭 만들어 주세요: 오늘 10-voice.json(내레이션 쇼츠)이 없어요. 지금 만든 뒤 끝내요. "
+              "시간·턴이 모자란 것은 건너뛸 까닭이 아니에요(PROMPT.md \"만드는 영상\", rules/daily/voice.md). "
+              "후보를 3개 넘게 확인했는데도 겹치지 않는 확인된 주제가 없을 때만 건너뛰고, 본 후보와 까닭을 마지막 보고에 적어요.")
+    return 1 if found or missing else 0
 
 
 def main():
@@ -110,7 +117,7 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("day", nargs="?", help="YYYY-MM-DD (없으면 오늘, 한국 시간)")
     ap.add_argument("--show", help="파일 하나를 보여 줘요 (blog, rules/weekday/blog.md 처럼)")
-    ap.add_argument("--check", metavar="DAY", help="그날 설계도의 보류 칸 검사")
+    ap.add_argument("--check", metavar="DAY", help="그날 설계도의 보류 칸·빠진 내레이션 쇼츠 검사")
     a = ap.parse_args()
     if a.check:
         sys.exit(check(date.fromisoformat(a.check)))
