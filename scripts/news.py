@@ -179,7 +179,17 @@ def text(url, chars=3500, images=False):
     out = (["※ 사실 확인용이에요. 숫자·사실만 확인하고 기사 문장은 그대로 옮기지 않아요.", f"URL {url}", f"제목 {title}"]
            + ([f"날짜 {when}"] if when else []) + ([f"수정 {modified}"] if modified and modified[:16] != when[:16] else [])
            + ["", body[:chars] + (f" … [+{len(body) - chars}자]" if len(body) > chars else "")])
-    if images:
+    if images and "newswire.co.kr" in url:
+        # 뉴스와이어 보도자료(2026-10-24): 이 보도자료에 붙은 원본 사진만. 아래쪽 다른 보도자료 썸네일·회사 로고는 빼요
+        pics = re.findall(r'(?is)class="column_image" data-src="([^"]+)".*?alt="([^"]*)"', page)
+        org = re.search(r'"author":\{"@type":"Organization","name":"([^"]+)"', page)
+        org = html.unescape(org[1]) if org else "회사"
+        out.append("사진 " + json.dumps([p for p, _ in pics], ensure_ascii=False))
+        out.append("사진 설명 " + json.dumps([html.unescape(a) for _, a in pics], ensure_ascii=False))
+        out.append(f"사진 판단(단서) 뉴스와이어 배포 사진이에요(낸 곳: {org}). sources.json photo_rights '뉴스와이어 배포 보도자료' 조건대로 써요"
+                   f"(rights: \"{org} 보도자료 사진(뉴스와이어 배포)\", credits: \"사진: {org} 제공(뉴스와이어)\")" if pics else
+                   "사진 판단(단서) 이 보도자료에는 사진이 없어요")
+    elif images:
         pics = [_meta(page, "og:image")] + re.findall(r'<img[^>]+src=["\']([^"\']+\.(?:jpe?g|png|webp)[^"\']*)', page, re.I)
         seen = []
         for p in pics:
