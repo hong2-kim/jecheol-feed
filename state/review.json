@@ -1,9 +1,11 @@
 {
   "2026-10-24-2-news": {
     "verdict": "통과",
-    "hash": "05a6a17c7177",
+    "hash": "c742542d470d",
     "approved": true,
-    "reasons": [],
+    "reasons": [
+      "[확인] 사진 일치: cards[1].photo: 글에 나온 이름 '한식'이(가) 사진(shows: 국립중앙박물관 건물과 앞의 연못(거울못))에 없어요. 그 대상이 찍힌 사진으로 바꾸거나 사진 없는 장으로"
+    ],
     "noticed": null
   },
   "2026-10-24-3-dinner": {
@@ -22,7 +24,7 @@
   },
   "2026-10-24-10-voice": {
     "verdict": "통과",
-    "hash": "0397d4f06588",
+    "hash": "1d5111343757",
     "approved": true,
     "reasons": [
       "[확인] 사진 일치: lines[1].photo: shows(사진에 실제로 찍힌 것)가 없어요. 사진을 열어 보고 적어 주세요",

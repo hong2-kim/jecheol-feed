@@ -21,7 +21,7 @@
     "seconds": 18.6,
     "size_mb": 3.5,
     "yt_title": "일본 1위 감자스틱 자가리코 한국 첫 출시, 일본에서 사 오던 그 과자 먹어 본 사람?ㅋㅋ",
-    "sha256": "b84b9ed79eecff248db4ff68f635069fac9a8840ece78b28e97974a808533826"
+    "sha256": "2836cc4bf1f1f4163a055d5ad9ed68c5e5f911250e71dd88be70ccf37e0cdf27"
   },
   {
     "id": "2026-10-24-3-dinner",
@@ -43,7 +43,7 @@
     "seconds": 14.2,
     "size_mb": 7.5,
     "yt_title": "토요일 저녁 메뉴 뭐 먹지? 소고기구이·조개구이·곱창·짬뽕 중에 골라 줄게",
-    "sha256": "eea0d581e4d0192e99ae942182ee316c3dec134849df558e9fa16be83a8cda13"
+    "sha256": "25eee3551154b69282d9903e02d617f393b87caf4714677474bfa84e45a63e3d"
   },
   {
     "id": "2026-10-24-2-news",
@@ -66,11 +66,12 @@
       "https://www.newswire.co.kr/newsRead.php?no=1045389"
     ],
     "credits": [
-      "사진: GS리테일 제공"
+      "사진: GS리테일 제공",
+      "Richard Mortel from Riyadh, Saudi Arabia (CC BY 2.0) · commons.wikimedia.org/?curid=69722759"
     ],
     "url": "https://github.com/hong2-kim/jecheol-feed/releases/download/v2026-10-24/2026-10-24-2-news-1.jpg",
     "seconds": null,
-    "size_mb": 1.3,
+    "size_mb": 1.4,
     "yt_title": "한식의 날 첫 기념일, 편의점 김밥 12종 비교, 980원 견과류 먹거리 뉴스 3",
     "format": "cards",
     "files": [
@@ -108,19 +109,19 @@
       "https://v.daum.net/v/1W6rEg6bvL"
     ],
     "credits": [
-      "Aranami (CC BY 2.0)",
+      "miyaiijima (CC BY 2.0)",
+      "Shene81 (CC BY 3.0)",
       "Misei sen (CC BY 4.0)",
-      "Karel Schmiedberger ml. (CC BY 3.0)",
+      "www.snack-nieuws.nl (CC BY 2.0)",
       "Guilhem Vellut (CC BY 2.0)",
       "Carlos ZGZ (CC BY 2.0)",
-      "Go Ikeda (CC BY 2.0)",
       "Horacio Cambeiro (CC BY 3.0)"
     ],
     "url": "https://github.com/hong2-kim/jecheol-feed/releases/download/v2026-10-24/2026-10-24-10-voice.mp4",
     "seconds": 48.4,
-    "size_mb": 6.8,
+    "size_mb": 6.9,
     "yt_title": "빅맥 가격 한국 vs 일본 vs 미국, 2026 빅맥지수로 비교해 봤어요",
-    "sha256": "88d3601aaa0958c965f37415c2e0b9888ea214f5574083c6ac523975f82d41f7"
+    "sha256": "e3bb4a13d5ea28030581ecd435ea0d97580a0919c4cf4c21780696132087f412"
   },
   {
     "id": "2026-10-23-8-trend",
