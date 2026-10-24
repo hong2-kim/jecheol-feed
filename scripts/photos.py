@@ -101,15 +101,33 @@ def commons_rows(query):
     return rows
 
 
+LICENSE_MARK = {"by": "creativecommons.org/licenses/by/", "cc0": "creativecommons.org/publicdomain/zero/",
+                "pdm": "creativecommons.org/publicdomain/mark/"}
+
+
+def flickr_still_free(page, lic):
+    """오픈버스가 가진 플리커 라이선스는 옛것일 수 있어요. 2026-10-24 CC BY 로 나온 사진 2장이 원본에서는
+    '모든 권리 보유'로 바뀌어 있었어요. 원본 페이지에 지금도 같은 라이선스 주소가 있는지 봐요. 못 읽으면 쓰지 않아요."""
+    try:
+        html = web_get(page, timeout=25, retries=1, quiet=True).decode("utf-8", "ignore")
+    except WebError:
+        return False
+    return LICENSE_MARK[lic] in html
+
+
 def openverse_rows(query):
     """오픈버스는 플리커·위키미디어 등 여러 곳의 자유 이용 사진을 한꺼번에 찾아요. 상업적 이용과 수정이 되는 것 중
-    CC0·퍼블릭 도메인·CC BY 만 남겨요(CC BY-SA 는 우리 영상까지 같은 라이선스로 풀어야 해서 빼요)."""
+    CC0·퍼블릭 도메인·CC BY 만 남겨요(CC BY-SA 는 우리 영상까지 같은 라이선스로 풀어야 해서 빼요).
+    플리커 사진은 원본 페이지에서 지금 라이선스를 다시 확인한 것만 남겨요."""
     url = "https://api.openverse.org/v1/images/?" + urllib.parse.urlencode({
         "q": query, "license": "cc0,pdm,by", "page_size": 20, "mature": "false"})  # 키 없이는 20장까지(넘으면 401)
     data = json.loads(get(url))
     rows, today = [], time.strftime("%Y-%m-%d")
     for r in data.get("results", []):
         if (r.get("width") or 0) < 1000:
+            continue
+        page = r.get("foreign_landing_url") or ""
+        if "flickr.com" in page and not flickr_still_free(page, r["license"]):
             continue
         lic = "CC0" if r["license"] == "cc0" else "Public domain" if r["license"] == "pdm" else f"CC BY {r.get('license_version') or ''}".strip()
         free = r["license"] in ("cc0", "pdm")
