@@ -1,9 +1,11 @@
 {
   "2026-10-24-2-news": {
     "verdict": "통과",
-    "hash": "6e719ac1db8d",
-    "approved": false,
-    "reasons": [],
+    "hash": "05a6a17c7177",
+    "approved": true,
+    "reasons": [
+      "[차단] 사진 권리: cards[3].photo: 출처 불명 — 어디 사진인지 모르는 주소예요(file.newswire.co.kr). 쓰지 않아요(사용 불가)"
+    ],
     "noticed": null
   },
   "2026-10-24-3-dinner": {
