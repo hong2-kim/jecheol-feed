@@ -1,0 +1,329 @@
+{
+ "format": "voice",
+ "layout": "rec",
+ "kind": "저녁",
+ "subject": "일요일 저녁 메뉴 넷",
+ "title": "일요일 저녁, 이거면 끝! 넷 중에 하나만",
+ "summary": "일요일 저녁에 당기는 메뉴 넷(순두부찌개·초밥·텐동·피자)을 당기는 것별로 골라 줘요.",
+ "headline": "일요일 저녁\n[[이거면 끝]]",
+ "small": "일요일 저녁, 이거면 끝",
+ "intro": 7,
+ "length": [
+  15,
+  25
+ ],
+ "thumb": {
+  "head": "일요일 저녁\n[[이거면 끝]]",
+  "sub": "넷 중 [[하나만]] 골라 줄게",
+  "photo": {
+   "url": "vault:photos/ig-18152591185172559.jpg",
+   "shows": "새우튀김 올린 텐동",
+   "match": "정확",
+   "rights": "사용자 촬영 비공개 보관함"
+  }
+ },
+ "yt_title": "일요일 저녁 메뉴 뭐 먹지? 순두부찌개·초밥·텐동·피자 중에 골라 줄게",
+ "yt_keyword": "일요일 저녁 메뉴",
+ "yt_related": [
+  "저녁 메뉴 추천",
+  "오늘 뭐 먹지",
+  "주말 저녁 메뉴",
+  "일요일 뭐 먹지"
+ ],
+ "yt_tags": [
+  "일요일 저녁 메뉴",
+  "저녁 메뉴 추천",
+  "오늘 뭐 먹지",
+  "주말 저녁 메뉴",
+  "일요일 뭐 먹지"
+ ],
+ "yt_hashtags": [
+  "일요일저녁메뉴",
+  "오늘뭐먹지",
+  "주말저녁메뉴"
+ ],
+ "yt_lead": "일요일 저녁 메뉴 고민될 때, 넷 중에 하나만 골라요.",
+ "caption": "일요일 저녁, 이 중에 골랐어요?\n\n밥이 당기면 순두부찌개\n회가 당기면 초밥\n바삭한 게 당기면 텐동\n한 판이 당기면 피자\n\n넷 중에 오늘 뭐 먹을래요? 댓글로 알려 주세요!",
+ "tags": [
+  "일요일저녁메뉴",
+  "저녁메뉴추천",
+  "오늘뭐먹지",
+  "주말저녁메뉴"
+ ],
+ "sources": [],
+ "credits": [],
+ "lines": [
+  {
+   "say": "일요일 저녁, 이거면 끝이야!",
+   "nosub": true,
+   "show": {
+    "thumb": true
+   }
+  },
+  {
+   "say": "자, 시작!",
+   "show": {
+    "grid": [
+     {
+      "photo": {
+       "url": "vault:photos/ig-17868915556067950.jpg",
+       "shows": "순두부찌개와 공깃밥",
+       "match": "정확",
+       "rights": "사용자 촬영 비공개 보관함"
+      }
+     },
+     {
+      "photo": {
+       "url": "vault:photos/ig-17907476537156024.jpg",
+       "shows": "초밥 모둠 두 팩",
+       "match": "정확",
+       "rights": "사용자 촬영 비공개 보관함"
+      }
+     },
+     {
+      "photo": {
+       "url": "vault:photos/ig-18152591185172559.jpg",
+       "shows": "새우튀김 올린 텐동",
+       "match": "정확",
+       "rights": "사용자 촬영 비공개 보관함"
+      }
+     },
+     {
+      "photo": {
+       "url": "vault:photos/ig-17980872622422107.jpg",
+       "shows": "피자",
+       "match": "정확",
+       "rights": "사용자 촬영 비공개 보관함"
+      }
+     }
+    ],
+    "dir": "2x2",
+    "own": true,
+    "fade": 0.45
+   }
+  },
+  {
+   "say": "밥이 당기면, 순두부찌개.",
+   "subs": [
+    "밥이 당기면,",
+    "순두부찌개."
+   ],
+   "show": {
+    "grid": [
+     {
+      "photo": {
+       "url": "vault:photos/ig-17868915556067950.jpg",
+       "shows": "순두부찌개와 공깃밥",
+       "match": "정확",
+       "rights": "사용자 촬영 비공개 보관함"
+      }
+     },
+     {
+      "photo": {
+       "url": "vault:photos/ig-17907476537156024.jpg",
+       "shows": "초밥 모둠 두 팩",
+       "match": "정확",
+       "rights": "사용자 촬영 비공개 보관함"
+      }
+     },
+     {
+      "photo": {
+       "url": "vault:photos/ig-18152591185172559.jpg",
+       "shows": "새우튀김 올린 텐동",
+       "match": "정확",
+       "rights": "사용자 촬영 비공개 보관함"
+      }
+     },
+     {
+      "photo": {
+       "url": "vault:photos/ig-17980872622422107.jpg",
+       "shows": "피자",
+       "match": "정확",
+       "rights": "사용자 촬영 비공개 보관함"
+      }
+     }
+    ],
+    "dir": "2x2",
+    "own": true,
+    "hl": 0
+   }
+  },
+  {
+   "say": "회가 당기면, 초밥.",
+   "show": {
+    "grid": [
+     {
+      "photo": {
+       "url": "vault:photos/ig-17868915556067950.jpg",
+       "shows": "순두부찌개와 공깃밥",
+       "match": "정확",
+       "rights": "사용자 촬영 비공개 보관함"
+      }
+     },
+     {
+      "photo": {
+       "url": "vault:photos/ig-17907476537156024.jpg",
+       "shows": "초밥 모둠 두 팩",
+       "match": "정확",
+       "rights": "사용자 촬영 비공개 보관함"
+      }
+     },
+     {
+      "photo": {
+       "url": "vault:photos/ig-18152591185172559.jpg",
+       "shows": "새우튀김 올린 텐동",
+       "match": "정확",
+       "rights": "사용자 촬영 비공개 보관함"
+      }
+     },
+     {
+      "photo": {
+       "url": "vault:photos/ig-17980872622422107.jpg",
+       "shows": "피자",
+       "match": "정확",
+       "rights": "사용자 촬영 비공개 보관함"
+      }
+     }
+    ],
+    "dir": "2x2",
+    "own": true,
+    "hl": 1
+   }
+  },
+  {
+   "say": "바삭한 게 당기면, 텐동.",
+   "show": {
+    "grid": [
+     {
+      "photo": {
+       "url": "vault:photos/ig-17868915556067950.jpg",
+       "shows": "순두부찌개와 공깃밥",
+       "match": "정확",
+       "rights": "사용자 촬영 비공개 보관함"
+      }
+     },
+     {
+      "photo": {
+       "url": "vault:photos/ig-17907476537156024.jpg",
+       "shows": "초밥 모둠 두 팩",
+       "match": "정확",
+       "rights": "사용자 촬영 비공개 보관함"
+      }
+     },
+     {
+      "photo": {
+       "url": "vault:photos/ig-18152591185172559.jpg",
+       "shows": "새우튀김 올린 텐동",
+       "match": "정확",
+       "rights": "사용자 촬영 비공개 보관함"
+      }
+     },
+     {
+      "photo": {
+       "url": "vault:photos/ig-17980872622422107.jpg",
+       "shows": "피자",
+       "match": "정확",
+       "rights": "사용자 촬영 비공개 보관함"
+      }
+     }
+    ],
+    "dir": "2x2",
+    "own": true,
+    "hl": 2
+   }
+  },
+  {
+   "say": "한 판이 당기면, 피자.",
+   "show": {
+    "grid": [
+     {
+      "photo": {
+       "url": "vault:photos/ig-17868915556067950.jpg",
+       "shows": "순두부찌개와 공깃밥",
+       "match": "정확",
+       "rights": "사용자 촬영 비공개 보관함"
+      }
+     },
+     {
+      "photo": {
+       "url": "vault:photos/ig-17907476537156024.jpg",
+       "shows": "초밥 모둠 두 팩",
+       "match": "정확",
+       "rights": "사용자 촬영 비공개 보관함"
+      }
+     },
+     {
+      "photo": {
+       "url": "vault:photos/ig-18152591185172559.jpg",
+       "shows": "새우튀김 올린 텐동",
+       "match": "정확",
+       "rights": "사용자 촬영 비공개 보관함"
+      }
+     },
+     {
+      "photo": {
+       "url": "vault:photos/ig-17980872622422107.jpg",
+       "shows": "피자",
+       "match": "정확",
+       "rights": "사용자 촬영 비공개 보관함"
+      }
+     }
+    ],
+    "dir": "2x2",
+    "own": true,
+    "hl": 3
+   }
+  },
+  {
+   "say": "넷 중에 오늘 뭐 먹을래? 댓글로 알려 줘.",
+   "subs": [
+    "넷 중에 오늘 뭐 먹을래?",
+    "댓글로 알려 줘."
+   ],
+   "show": {
+    "grid": [
+     {
+      "photo": {
+       "url": "vault:photos/ig-17868915556067950.jpg",
+       "shows": "순두부찌개와 공깃밥",
+       "match": "정확",
+       "rights": "사용자 촬영 비공개 보관함"
+      }
+     },
+     {
+      "photo": {
+       "url": "vault:photos/ig-17907476537156024.jpg",
+       "shows": "초밥 모둠 두 팩",
+       "match": "정확",
+       "rights": "사용자 촬영 비공개 보관함"
+      }
+     },
+     {
+      "photo": {
+       "url": "vault:photos/ig-18152591185172559.jpg",
+       "shows": "새우튀김 올린 텐동",
+       "match": "정확",
+       "rights": "사용자 촬영 비공개 보관함"
+      }
+     },
+     {
+      "photo": {
+       "url": "vault:photos/ig-17980872622422107.jpg",
+       "shows": "피자",
+       "match": "정확",
+       "rights": "사용자 촬영 비공개 보관함"
+      }
+     }
+    ],
+    "dir": "2x2",
+    "own": true
+   }
+  }
+ ],
+ "dates": {
+  "checked": "2026-10-25"
+ },
+ "review": {
+  "photo_sheet": "cc26588a5d67"
+ }
+}

@@ -1,0 +1,160 @@
+{
+ "kind": "발견",
+ "subject": "단감 · 부유 시세",
+ "title": "올해 단감이 작고 귀한 까닭, 한 상자 4만 원 넘었어요",
+ "summary": "만생종 부유 단감이 올여름 고온·가뭄으로 작고 생산량도 줄 전망이에요. 16일 가락시장 상품 10kg 한 상자는 42,590원으로 작년 10월 평균보다 30.2% 높고, 하순부터 출하가 늘면 내릴 수 있대요.",
+ "thumb": {
+  "head": "단감 한 상자\n[[4만 원 넘었다]]",
+  "sub": "가락시장 [[10월 16일]] 시세",
+  "photo": {
+   "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Diospyros%20kaki%20%27Fuyu%27%2020101209%20c.jpg?width=1600",
+   "shows": "반으로 가른 부유(Fuyu) 단감 단면",
+   "match": "정확",
+   "rights": "위키미디어 공용 퍼블릭 도메인(출처 표시 불필요)",
+   "fit": "cover"
+  }
+ },
+ "caption": "올가을 단감, 작다고 느낀 적 있나요? 올해 부유 단감이 작고 귀한 까닭 얘기예요\n\n올여름 경남권을 덮친 고온과 가뭄 탓에 늦게 따는 만생종 '부유' 단감이 작아지고 생산량도 줄었어요. 한국농촌경제연구원은 10월 2일 올해산 단감 예상 생산량을 8만 4,500t으로 내다봤어요. 전년(9만t)보다 6.1%, 평년(9만 4,300t)보다 10.3% 적은 양이에요. 재배면적은 5.8% 늘었는데 10a당 생산량이 859kg으로 줄어든다고 봤어요.\n\n값은 올랐어요. 10월 16일 서울 가락시장에서 '부유' 단감 상품 10kg 한 상자는 42,590원에 거래됐어요. 지난해 10월 평균(32,704원)보다 30.2%, 평년 10월(33,184원)보다 28.3% 높은 값이에요. 다만 시장 관계자는 이달 하순부터 출하가 본격화하면 시세가 내려갈 수 있다고 내다봤어요. 값은 조사한 날 기준이라 지금과 다를 수 있어요.\n\n사진은 같은 종류의 예시 사진이에요. 올가을 단감, 드셔 보셨어요? 댓글로 알려 주세요.\n출처: 농민신문(10월 16일), 한국농촌경제연구원 10월 과일 관측",
+ "tags": [
+  "단감",
+  "부유단감",
+  "단감가격",
+  "가을제철과일"
+ ],
+ "sources": [
+  "https://www.nongmin.com/article/20261016500626"
+ ],
+ "credits": [
+  "ⓒ한국관광공사 포토코리아-이범수, 김지호",
+  "4300streetcar (CC BY 4.0) · commons.wikimedia.org/?curid=156129057"
+ ],
+ "yt_title": "단감 가격 올라 한 상자 4만 원, 올해 부유 단감 작고 귀한 까닭",
+ "yt_keyword": "단감 가격",
+ "yt_related": [
+  "부유 단감",
+  "단감 시세",
+  "가락시장 단감",
+  "단감 제철"
+ ],
+ "yt_tags": [
+  "단감 가격",
+  "부유 단감",
+  "단감 시세",
+  "가락시장 단감",
+  "단감 제철",
+  "가을 제철 과일"
+ ],
+ "yt_hashtags": [
+  "단감가격",
+  "부유단감",
+  "가을제철과일"
+ ],
+ "yt_lead": "올해 부유 단감은 고온·가뭄으로 작고 생산도 줄어 10월 16일 가락시장 10kg 한 상자가 42,590원이었어요.",
+ "dates": {
+  "checked": "2026-10-25",
+  "sources": [
+   {
+    "url": "https://www.nongmin.com/article/20261016500626",
+    "published": "2026-10-16"
+   }
+  ],
+  "stat_period": "2026년 10월 16일 가락시장·농경연 10월 과일 관측"
+ },
+ "scenes": [
+  {
+   "type": "cover",
+   "dur": 2.2,
+   "photo": {
+    "url": "https://tong.visitkorea.or.kr/cms2/website/51/2922851.jpg",
+    "shows": "감나무 가지에 주황빛 감이 달린 모습(아산 외암민속마을)",
+    "match": "같은 종류",
+    "rights": "한국관광공사 포토코리아 공공누리 1유형 · ⓒ이범수"
+   },
+   "kicker": "여러분",
+   "title": "올가을 감이\n[[작다고]] 느낀 적\n있나요?",
+   "size": 100
+  },
+  {
+   "type": "cover",
+   "dur": 2.0,
+   "photo": {
+    "url": "https://tong.visitkorea.or.kr/cms2/website/05/2814105.jpg",
+    "shows": "가을 감나무에 달린 감(울산수목원)",
+    "match": "같은 종류",
+    "rights": "한국관광공사 포토코리아 공공누리 1유형 · ⓒ김지호"
+   },
+   "kicker": "그런데 알고 보니",
+   "title": "올해 감이\n[[작고 귀한]]\n까닭이 있대요",
+   "size": 100,
+   "in": "push"
+  },
+  {
+   "type": "cover",
+   "dur": 2.0,
+   "photo": {
+    "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Diospyros%20kaki%20%27Fuyu%27%2020101209%20b.jpg?width=1600",
+    "shows": "반으로 가른 부유(Fuyu) 단감과 통감",
+    "match": "정확",
+    "rights": "위키미디어 공용 퍼블릭 도메인(출처 표시 불필요)"
+   },
+   "kicker": "그래서 찾아봤어요 · 단감",
+   "title": "부유 단감\n[[한 상자 4만 원]]\n넘었어요",
+   "size": 104
+  },
+  {
+   "type": "card",
+   "dur": 2.4,
+   "photo": {
+    "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Diospyros%20kaki%20%27Fuyu%27%2020101209%20c.jpg?width=1600",
+    "shows": "반으로 가른 부유(Fuyu) 단감 단면",
+    "match": "정확",
+    "rights": "위키미디어 공용 퍼블릭 도메인(출처 표시 불필요)"
+   },
+   "chip": "무엇",
+   "headline": "부유 단감\n[[올해 작아요]]",
+   "line": "고온·가뭄에 작은 감이 많아요"
+  },
+  {
+   "type": "card",
+   "dur": 2.6,
+   "photo": {
+    "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Fuyu%20and%20Hachiya%20Persimmons%20for%20sale%20in%20Boston.jpg?width=1600",
+    "shows": "마트 매대에 쌓인 부유·하치야 감(미국 보스턴)",
+    "match": "같은 종류",
+    "rights": "위키미디어 공용 CC BY 4.0 · 4300streetcar (CC BY 4.0) · commons.wikimedia.org/?curid=156129057"
+   },
+   "chip": "10월 16일",
+   "headline": "10kg 한 상자\n[[42,590원]]",
+   "line": "작년 10월 평균보다 30.2% ↑"
+  },
+  {
+   "type": "card",
+   "dur": 2.6,
+   "photo": {
+    "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Diospyros%20kaki%201.jpg?width=1600",
+    "shows": "초록 잎이 우거진 감나무",
+    "match": "분위기",
+    "rights": "위키미디어 공용 CC0(출처 표시 불필요)"
+   },
+   "chip": "생산량",
+   "headline": "올해 생산\n[[8만 4,500t]]",
+   "line": "작년보다 6.1% 줄 전망이에요"
+  },
+  {
+   "type": "card",
+   "dur": 2.4,
+   "photo": {
+    "url": "https://commons.wikimedia.org/wiki/Special:FilePath/%E3%82%AB%E3%82%AD%E3%83%8E%E3%82%AD%28%E6%9F%BF%E3%81%AE%E6%9C%A8%29%28Diospyros%20kaki%20Thunb.%29-%E5%AE%9F%20%285845080334%29.jpg?width=1600",
+    "shows": "붉게 물든 잎 사이에 달린 감",
+    "match": "같은 종류",
+    "rights": "위키미디어 공용 CC0(출처 표시 불필요)"
+   },
+   "chip": "앞으로",
+   "headline": "출하 늘면\n[[값 내릴 수도]]",
+   "line": "이달 하순부터 늘어난대요"
+  }
+ ],
+ "review": {
+  "photo_sheet": "c1c53cdf6a18"
+ }
+}
