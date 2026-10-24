@@ -3,9 +3,7 @@
     "verdict": "통과",
     "hash": "05a6a17c7177",
     "approved": true,
-    "reasons": [
-      "[차단] 사진 권리: cards[3].photo: 출처 불명 — 어디 사진인지 모르는 주소예요(file.newswire.co.kr). 쓰지 않아요(사용 불가)"
-    ],
+    "reasons": [],
     "noticed": null
   },
   "2026-10-24-3-dinner": {
@@ -20,6 +18,27 @@
     "hash": "65a5e64eba92",
     "approved": false,
     "reasons": [],
+    "noticed": null
+  },
+  "2026-10-24-10-voice": {
+    "verdict": "통과",
+    "hash": "0397d4f06588",
+    "approved": true,
+    "reasons": [
+      "[확인] 사진 일치: lines[1].photo: shows(사진에 실제로 찍힌 것)가 없어요. 사진을 열어 보고 적어 주세요",
+      "[확인] 사진 일치: lines[1].photo: match 를 정확/같은 종류/분위기 가운데 하나로 적어 주세요",
+      "[확인] 사진 일치: lines[2].photo: shows(사진에 실제로 찍힌 것)가 없어요. 사진을 열어 보고 적어 주세요",
+      "[확인] 사진 일치: lines[2].photo: match 를 정확/같은 종류/분위기 가운데 하나로 적어 주세요",
+      "[확인] 사진 일치: lines[3].photo: shows(사진에 실제로 찍힌 것)가 없어요. 사진을 열어 보고 적어 주세요",
+      "[확인] 사진 일치: lines[3].photo: match 를 정확/같은 종류/분위기 가운데 하나로 적어 주세요",
+      "[확인] 사진 일치: lines[4].photos[0]: shows(사진에 실제로 찍힌 것)가 없어요. 사진을 열어 보고 적어 주세요",
+      "[확인] 사진 일치: lines[4].photos[0]: match 를 정확/같은 종류/분위기 가운데 하나로 적어 주세요",
+      "[확인] 사진 일치: lines[4].photos[1]: shows(사진에 실제로 찍힌 것)가 없어요. 사진을 열어 보고 적어 주세요",
+      "[확인] 사진 일치: lines[4].photos[1]: match 를 정확/같은 종류/분위기 가운데 하나로 적어 주세요",
+      "[확인] 사진 일치: lines[6].photo: shows(사진에 실제로 찍힌 것)가 없어요. 사진을 열어 보고 적어 주세요",
+      "[확인] 사진 일치: lines[6].photo: match 를 정확/같은 종류/분위기 가운데 하나로 적어 주세요",
+      "…그 밖에 10건"
+    ],
     "noticed": null
   }
 }
