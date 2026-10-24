@@ -225,6 +225,13 @@ CSS = """
          box-shadow: 0 6px 0 #E6D5B5; }
 .vpick span { font-size: 44px; color: #6d5f4c; }
 .vpick b { font-size: 66px; font-weight: 900; }
+.vbr { display: flex; align-items: center; gap: 20px; margin: 14px 0; }
+.vbr > span { flex: none; width: 250px; font-size: 48px; font-weight: 900; color: #6d5f4c; }
+.vbr.hl > span { color: #1d1a16; }
+.vbr .tr { flex: 1; display: flex; align-items: center; gap: 16px; height: 86px; }
+.vbr .fill { flex: none; height: 100%; border-radius: 0 16px 16px 0; transform-origin: left center; }
+.vbr b { flex: none; font-size: 46px; font-weight: 900; color: #6d5f4c; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.vbr.hl b { color: #D8432B; font-size: 52px; }
 """
 PIN = ('<svg viewBox="0 0 200 250"><path d="M100 244C100 244 16 150 16 92a84 84 0 01168 0c0 58-84 152-84 152z" fill="#D8432B"/>'
        '<circle cx="100" cy="92" r="60" fill="#FFFDF5"/><path d="M62 84h76c0 26-16 42-38 42S62 110 62 84z" fill="#D8432B"/>'
@@ -385,6 +392,14 @@ def card_html(B, card, beats):
         for k, r in enumerate(card["rows"]):
             t = _at(r, k, beats, step=0.5)
             body.append(f'<div class="vpick a rise" style="--dl:{t:.2f}s;--d:.3s"><span>{rich(r["if"])}</span><b>{rich(r["then"])}</b></div>')
+    elif kind == "bars":  # 막대 비교: 줄마다 {"name", "value", "label", "hl": true(강조)}. 막대 길이는 value 끼리 견줘요
+        top = card.get("max") or max(r["value"] for r in card["rows"])
+        for k, r in enumerate(card["rows"]):
+            t = _at(r, k, beats, step=0.4)
+            color = r.get("color") or ("#D8432B" if r.get("hl") else "#B9A88E")
+            body.append(f'<div class="vbr{" hl" if r.get("hl") else ""}"><span class="a rise" style="--dl:{t:.2f}s;--d:.25s">{rich(r["name"])}</span>'
+                        f'<div class="tr"><div class="fill a grow" style="width:{r["value"] / top * 100 * card.get("scale", .45):.1f}%;background:{color};--dl:{t:.2f}s;--d:.5s"></div>'
+                        f'<b class="a rise" style="--dl:{t + .35:.2f}s;--d:.25s">{rich(r.get("label", ""))}</b></div></div>')
     return f'<div class="vcard {esc(kind)}">{title}{sub}<div class="vcb">{"".join(body)}</div>{src}</div>'
 
 
