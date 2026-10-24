@@ -1,0 +1,266 @@
+{
+ "format": "voice",
+ "kind": "해설",
+ "subject": "빅맥 값 한국 vs 일본 (빅맥지수 2026-07)",
+ "title": "한국 빅맥, 일본보다 비쌀까? 54개 나라 빅맥 값 비교",
+ "yt_title": "빅맥 가격 한국 vs 일본 vs 미국, 2026 빅맥지수로 비교해 봤어요",
+ "headline": "한국 빅맥\n[[일본보다 비쌀까?]]",
+ "summary": "한국 빅맥은 5,700원, 일본은 500엔(7월 환율로 약 4,600원)이에요. 이코노미스트 2026년 7월 빅맥지수 54개 나라 가운데 1위는 스위스, 한국 42위, 일본 48위, 꼴찌는 인도네시아예요.",
+ "caption": "한국 빅맥, 일본보다 비쌀까요?\n\n한국 빅맥 단품은 5,700원, 일본은 500엔이에요. 이코노미스트 2026년 7월 빅맥지수(54개 나라)로 견주면 한국은 3.84달러로 42위, 일본은 3.08달러로 48위예요. 1위는 스위스(9.04달러), 미국은 6.22달러, 가장 싼 곳은 인도네시아(2.38달러)예요.\n\n2000년엔 한국(2.71달러)·일본(2.77달러) 빅맥이 미국(2.24달러)보다 비쌌어요. 그 뒤 미국 값은 2.8배가 됐고 한국은 1.9배, 일본은 1.7배예요. 원화 값은 7월 환율(1달러 1,485.9원, 162.135엔)로 바꿨어요.\n\n여러분은 어느 나라 빅맥이 제일 맛있었어요?\n출처: 이코노미스트 빅맥지수(2026년 7월), Impress Watch, 다음 뉴스",
+ "tags": [
+  "빅맥",
+  "빅맥지수",
+  "맥도날드",
+  "일본여행",
+  "환율"
+ ],
+ "sources": [
+  "https://github.com/TheEconomist/big-mac-data",
+  "https://www.economist.com/big-mac-index",
+  "https://www.watch.impress.co.jp/docs/news/2088070.html",
+  "https://v.daum.net/v/1W6rEg6bvL"
+ ],
+ "credits": [
+  "Aranami (CC BY 2.0)",
+  "Misei sen (CC BY 4.0)",
+  "Karel Schmiedberger ml. (CC BY 3.0)",
+  "Guilhem Vellut (CC BY 2.0)",
+  "Carlos ZGZ (CC BY 2.0)",
+  "Go Ikeda (CC BY 2.0)",
+  "Horacio Cambeiro (CC BY 3.0)"
+ ],
+ "yt_keyword": "빅맥지수",
+ "yt_related": [
+  "빅맥 가격",
+  "한국 일본 빅맥",
+  "맥도날드 가격 비교",
+  "빅맥 제일 싼 나라",
+  "엔화 환율"
+ ],
+ "yt_tags": [
+  "빅맥지수",
+  "빅맥 가격",
+  "빅맥 한국 일본",
+  "맥도날드 가격",
+  "일본 맥도날드",
+  "스위스 빅맥",
+  "인도네시아 빅맥",
+  "환율",
+  "엔저"
+ ],
+ "yt_hashtags": [
+  "빅맥지수",
+  "빅맥",
+  "맥도날드"
+ ],
+ "yt_lead": "이코노미스트 2026년 7월 빅맥지수로 한국·일본·미국 빅맥 값을 견줘 봤어요.",
+ "lines": [
+  {
+   "say": "빅맥 하나, [[한국]]이 비쌀까요 [[일본]]이 비쌀까요?",
+   "photo": {
+    "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Big%20Mac%20hamburger.jpg?width=1600"
+   }
+  },
+  {
+   "say": "끝까지 보면 빅맥이 [[제일 싼 나라]]까지 알려 드려요.",
+   "photo": {
+    "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Double%20Big%20Mac%20Meal%20at%20McDonald%27s%20%285116376216%29.jpg?width=1600",
+    "fit": "cover"
+   },
+   "chip": "끝까지 보면 제일 싼 나라"
+  },
+  {
+   "say": "지금 한국 빅맥 단품은 [[5,700원]]이에요.",
+   "photo": {
+    "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Mcdonalds%20seoul.JPG?width=1600",
+    "fit": "cover"
+   },
+   "chip": "한국 5,700원"
+  },
+  {
+   "say": "일본은 [[500엔]], 7월 환율로 약 [[4,600원]]이에요.",
+   "photos": [
+    {
+     "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Big%20Mac%20in%20Japan%202018.jpg?width=1600"
+    },
+    {
+     "url": "https://commons.wikimedia.org/wiki/Special:FilePath/McDonald%27s%20R14%20Inage.jpg?width=1600",
+     "fit": "cover"
+    }
+   ],
+   "chip": "일본 500엔 ≈ 4,600원"
+  },
+  {
+   "say": "같은 빅맥인데, 한국이 [[1,100원]]쯤 더 비싸요.",
+   "card": {
+    "type": "bars",
+    "title": "빅맥 [[한 개]] 값",
+    "sub": "2026년 7월 환율로 바꿨어요",
+    "rows": [
+     {
+      "name": "한국",
+      "value": 5700,
+      "label": "5,700원",
+      "hl": true
+     },
+     {
+      "name": "일본",
+      "value": 4582,
+      "label": "약 4,600원",
+      "hl": true,
+      "color": "#E89A1C"
+     }
+    ],
+    "scale": 0.6,
+    "src": "이코노미스트 빅맥지수 2026년 7월"
+   }
+  },
+  {
+   "say": "영국 잡지 [[이코노미스트]]는 1986년부터 이걸 견줘 왔어요.",
+   "photo": {
+    "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Big%20Mac%20hamburger%20-%20Czech%20Republic.jpg?width=1600",
+    "fit": "cover"
+   },
+   "chip": "빅맥지수 · 1986년부터"
+  },
+  {
+   "say": "올해 7월, [[54개 나라]] 가운데 1등은 [[스위스]]예요.",
+   "photo": {
+    "url": "https://commons.wikimedia.org/wiki/Special:FilePath/McDonald%27s%20logo%20%40%20Acacias%20Centre%20%40%20Zone%20Industrielle%20Praille-Acacias-Vernets%20%40%20Gen%C3%A8ve%20%2850681992006%29.jpg?width=1600",
+    "fit": "cover"
+   },
+   "chip": "1위 스위스"
+  },
+  {
+   "say": "스위스는 약 [[1만 3,400원]], 미국은 약 [[9,200원]]이에요.",
+   "card": {
+    "type": "bars",
+    "title": "나라별 [[빅맥 값]]",
+    "sub": "54개 나라 · 2026년 7월",
+    "rows": [
+     {
+      "name": "스위스",
+      "value": 9.04,
+      "label": "약 1만 3,400원",
+      "beat": 0
+     },
+     {
+      "name": "미국",
+      "value": 6.22,
+      "label": "약 9,200원",
+      "beat": 0,
+      "after": 0.9
+     },
+     {
+      "name": "한국",
+      "value": 3.84,
+      "label": "5,700원 · 42위",
+      "hl": true,
+      "beat": 0,
+      "after": 2.4
+     },
+     {
+      "name": "일본",
+      "value": 3.08,
+      "label": "약 4,600원 · 48위",
+      "hl": true,
+      "color": "#E89A1C",
+      "beat": 0,
+      "after": 2.9
+     },
+     {
+      "name": "인도네시아",
+      "value": 2.38,
+      "label": "약 3,500원 · 꼴찌",
+      "color": "#2E8B57",
+      "beat": 1,
+      "after": 0.5
+     }
+    ],
+    "src": "이코노미스트 빅맥지수 · 원화는 7월 환율로 바꿈"
+   }
+  },
+  {
+   "say": "제일 싼 나라는 [[인도네시아]], 약 [[3,500원]]이에요."
+  },
+  {
+   "say": "그런데 2000년엔 한국·일본 빅맥이 [[미국보다 비쌌어요]].",
+   "photo": {
+    "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Yellow%20New%20York%20%2827940753932%29.jpg?width=1600",
+    "fit": "cover"
+   },
+   "chip": "2000년 한국 2.71달러 · 미국 2.24달러"
+  },
+  {
+   "say": "미국은 [[2.8배]], 한국은 [[1.9배]], 일본은 [[1.7배]]가 됐어요.",
+   "card": {
+    "type": "bars",
+    "title": "2000년보다 [[몇 배]]?",
+    "sub": "그 나라 돈으로 본 빅맥 값",
+    "rows": [
+     {
+      "name": "미국",
+      "value": 2.78,
+      "label": "2.8배 · 2.24→6.22달러",
+      "after": 0.2,
+      "beat": 0
+     },
+     {
+      "name": "한국",
+      "value": 1.9,
+      "label": "1.9배 · 3,000→5,700원",
+      "hl": true,
+      "after": 1.4,
+      "beat": 0
+     },
+     {
+      "name": "일본",
+      "value": 1.7,
+      "label": "1.7배 · 294→500엔",
+      "hl": true,
+      "color": "#E89A1C",
+      "after": 2.2,
+      "beat": 0
+     }
+    ],
+    "scale": 0.3,
+    "src": "이코노미스트 빅맥지수 2000년 4월 · 2026년 7월"
+   }
+  },
+  {
+   "say": "빅맥지수로 보면 원화는 [[38%]], 엔화는 [[50%]] 낮게 매겨져 있어요.",
+   "photo": {
+    "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Big%20Mac%202006-10-14.jpg?width=1600",
+    "fit": "cover"
+   },
+   "chip": "달러 견줘 원화 -38% · 엔화 -50%"
+  },
+  {
+   "say": "일본 빅맥이 싸 보이는 건, [[엔화 값]]이 그만큼 낮아서예요.",
+   "photo": {
+    "url": "https://commons.wikimedia.org/wiki/Special:FilePath/McDonald%27s%20R14%20Inage.jpg?width=1600",
+    "fit": "cover"
+   }
+  },
+  {
+   "say": "여러분은 어느 나라 빅맥이 제일 맛있었어요? [[댓글]]로 알려 주세요.",
+   "photo": {
+    "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Combos%20de%20Big%20Mac%20y%20McN%C3%ADfica%20servidos%20en%20el%20McDonald%27s%20del%20Obelisco%20de%20Buenos%20Aires.jpg?width=1600",
+    "fit": "cover"
+   }
+  }
+ ],
+ "dates": {
+  "checked": "2026-10-24",
+  "stats": {
+   "name": "이코노미스트 빅맥지수",
+   "basis": "2026-07-01"
+  }
+ },
+ "review": {
+  "photo_sheet": "b71e4c16062f",
+  "approved": "2026-10-24 09:48",
+  "note": "사용자가 대화에서 '좋아, 이걸로 오늘 내레이션 쇼츠 보내 줘.' (2026-10-24 시안 확인 뒤)",
+  "hash": "0397d4f06588"
+ }
+}
