@@ -42,5 +42,40 @@
       "…그 밖에 10건"
     ],
     "noticed": null
+  },
+  "2026-10-25-10-voice": {
+    "verdict": "통과",
+    "hash": "81b6d7cd4415",
+    "approved": false,
+    "reasons": [],
+    "noticed": null
+  },
+  "2026-10-25-2-news": {
+    "verdict": "통과",
+    "hash": "f5ba7ad861c0",
+    "approved": false,
+    "reasons": [],
+    "noticed": null
+  },
+  "2026-10-25-3-dinner": {
+    "verdict": "통과",
+    "hash": "20c6c4c88624",
+    "approved": false,
+    "reasons": [],
+    "noticed": null
+  },
+  "2026-10-25-4-find": {
+    "verdict": "통과",
+    "hash": "c8613a78d2c6",
+    "approved": false,
+    "reasons": [],
+    "noticed": null
+  },
+  "2026-10-25-8-trend": {
+    "verdict": "통과",
+    "hash": "993e6da84a7c",
+    "approved": false,
+    "reasons": [],
+    "noticed": null
   }
 }
