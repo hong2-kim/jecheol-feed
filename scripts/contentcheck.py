@@ -20,7 +20,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 from history import DATES_FROM, SYN, words  # 같은 낱말 다듬기·같은 말 묶음을 다시 써요
 
 ROOT = Path(__file__).resolve().parent.parent
-PHOTO_KEYS = {"photo", "photos", "photo_top", "photo_bottom", "inset", "logo", "video"}
+PHOTO_KEYS = {"photo", "photo2", "photos", "photo_top", "photo_bottom", "inset", "logo", "video"}
 TEXT_KEYS = ("title", "headline", "say", "line", "chip", "fact", "why", "note", "label", "name", "k", "v", "item", "big", "ribbon", "head", "sub", "q")
 MATCH = ("정확", "같은 종류", "분위기")
 

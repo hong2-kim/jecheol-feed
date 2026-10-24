@@ -151,13 +151,17 @@ body { color: #fff; font-family: "Noto Sans KR", sans-serif; word-break: keep-al
   padding: 6px 40px 12px; background: #111; border: 5px solid #FFD23E; font-family: "Thumb Title"; font-size: 56px; color: #fff; box-shadow: 0 8px 0 #E3262B; }
 .hero .hdate .am { color: #FFD23E; }
 .hero .hrows { position: absolute; left: 60px; right: 60px; list-style: none; z-index: 2; }
-.hero .hrows li { position: relative; height: 50px; padding-left: 30px; display: flex; align-items: center; border-top: 2px solid rgba(255,255,255,.14);
-  font-weight: 700; font-size: 30px; color: #fff; letter-spacing: -1.3px; white-space: nowrap; }
+.hero .hrows li { position: relative; height: 66px; padding-left: 34px; display: flex; align-items: center; border-top: 2px solid rgba(255,255,255,.14);
+  font-weight: 700; font-size: 40px; color: #fff; letter-spacing: -1.6px; white-space: nowrap; }
 .hero .hrows li:first-child { border-top: 0; }
-.hero .hrows li::before { content: ""; position: absolute; left: 2px; top: 50%; width: 12px; height: 12px; margin-top: -5px; border-radius: 50%; background: #FFD23E; }
+.hero .hrows li::before { content: ""; position: absolute; left: 2px; top: 50%; width: 16px; height: 16px; margin-top: -7px; border-radius: 50%; background: #FFD23E; }
 .hero .hrows b { color: #FFD23E; font-weight: 900; margin-right: 10px; }
 .hero .hrows .am { color: #FFD23E; }
 .hero .foot { bottom: 16px; font-size: 22px; }
+/* 사진 두 장 나란히 (photo2, 2026-10-24 사용자: 한 장을 통째로 넣으면 작고 가운데가 비어요) */
+.hero .hpic2 { position: absolute; left: 30px; right: 30px; display: flex; gap: 14px; z-index: 1; }
+.hero .hpic2 div { flex: 1; overflow: hidden; border-radius: 22px; border: 3px solid rgba(255,255,255,.16); }
+.hero .hpic2 img { width: 100%; height: 100%; object-fit: cover; }
 .hero .hpic.fit img { position: absolute; inset: 0; object-fit: contain; object-position: 50% 50%; }
 .hero .hpic.fit img.bg { object-fit: cover; filter: blur(14px) brightness(.45); transform: scale(1.1); }
 .hero .hprice { position: absolute; right: 26px; width: 210px; z-index: 3; padding: 10px 16px 12px; border-radius: 18px; background: rgba(10,8,6,.82);
