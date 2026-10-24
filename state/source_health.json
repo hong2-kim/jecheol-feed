@@ -1,50 +1,74 @@
 {
   "mfds-notice": {
-    "last_ok": "2026-10-24",
+    "last_ok": "2026-10-25",
     "fails": 0
   },
   "efsa": {
-    "last_ok": "2026-10-24",
+    "last_ok": "2026-10-25",
     "fails": 0
   },
   "cdc-food": {
-    "last_ok": "2026-10-24",
+    "last_ok": "2026-10-25",
     "fails": 0
   },
   "maff-jp": {
-    "last_ok": "2026-10-24",
+    "last_ok": "2026-10-25",
     "fails": 0
   },
   "mhlw-jp": {
-    "last_ok": "2026-10-24",
+    "last_ok": "2026-10-25",
     "fails": 0
   },
   "caa-jp": {
-    "last_ok": "2026-10-24",
+    "last_ok": "2026-10-25",
     "fails": 0
   },
   "tat-th": {
-    "last_ok": "2026-10-24",
+    "last_ok": "2026-10-25",
     "fails": 0
   },
   "thinkfood": {
-    "last_ok": "2026-10-24",
+    "last_ok": "2026-10-25",
     "fails": 0
   },
   "foodbank": {
-    "last_ok": "2026-10-24",
+    "last_ok": "2026-10-25",
     "fails": 0
   },
   "foodnews": {
-    "last_ok": "2026-10-24",
+    "last_ok": "2026-10-25",
     "fails": 0
   },
   "cj-newsroom": {
-    "last_ok": "2026-10-24",
+    "last_ok": "2026-10-25",
     "fails": 0
   },
   "spc-magazine": {
-    "last_ok": "2026-10-24",
+    "last_ok": "2026-10-25",
+    "fails": 0
+  },
+  "newswire-food": {
+    "last_ok": "2026-10-25",
+    "fails": 0
+  },
+  "newswire-restaurant": {
+    "last_ok": "2026-10-25",
+    "fails": 0
+  },
+  "newswire-liquor": {
+    "last_ok": "2026-10-25",
+    "fails": 0
+  },
+  "newswire-mart": {
+    "last_ok": "2026-10-25",
+    "fails": 0
+  },
+  "newswire-farm": {
+    "last_ok": "2026-10-25",
+    "fails": 0
+  },
+  "newswire-sea": {
+    "last_ok": "2026-10-25",
     "fails": 0
   }
 }
