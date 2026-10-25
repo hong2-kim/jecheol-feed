@@ -18,7 +18,10 @@
   "https://www.yonhapnewstv.co.kr/news/AKR20261024102111fTz",
   "https://www.jasm.co.kr/news/view/322789/%EC%A0%80%EB%8B%B9-%EC%A0%9C%EB%A1%9C%EC%8A%88%EA%B1%B0-%EC%A0%9C%ED%92%88-%EB%8C%80%EC%84%B8-%EC%8B%9D%ED%92%88%EC%97%85%EA%B3%84-%EA%B3%BC%EC%9E%90-%EC%9D%8C%EB%A3%8C-%EB%AC%B4%EC%84%A4%ED%83%95-%EA%B2%BD%EC%9F%81-2026"
  ],
- "credits": [],
+ "credits": [
+  "Фотограф (CC BY 3.0) · commons.wikimedia.org/?curid=108141346",
+  "James Larrison (CC BY 2.0) · commons.wikimedia.org/?curid=174615780"
+ ],
  "yt_keyword": "제로 식품",
  "yt_related": [
   "제로슈거",
@@ -45,20 +48,20 @@
   {
    "say": "제로 식품, 요즘 다들 이렇게 [[많이]] 사 먹는다고요?",
    "photo": {
-    "url": "vault:photos/ig-17895821848139039.jpg",
-    "shows": "케이크 진열대(생크림·딸기 케이크)",
-    "match": "분위기",
-    "rights": "사용자 촬영 비공개 보관함"
+    "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Coca-cola%20zero%20sugar.jpg?width=1600",
+    "shows": "제로 식품 진열대(제로 콜라 병이 줄지어 있음)",
+    "match": "같은 종류",
+    "rights": "위키미디어 공용 CC BY 3.0"
    },
    "chip": "끝까지 보면 제로 고를 때 알아 둘 것"
   },
   {
    "say": "끝까지 보면, 제로 식품 [[고를 때]] 알아 둘 것까지 알려 드려요.",
    "photo": {
-    "url": "vault:photos/ig-17917685458196987.jpg",
-    "shows": "간식 한 상(과자·삶은 달걀·콜라)",
-    "match": "분위기",
-    "rights": "사용자 촬영 비공개 보관함"
+    "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Soft%20drink%20shelf.JPG?width=1600",
+    "shows": "식품 매장 탄산음료 진열대",
+    "match": "같은 종류",
+    "rights": "위키미디어 공용 퍼블릭 도메인"
    },
    "chip": "끝까지 보면 제로 고를 때 알아 둘 것"
   },
@@ -119,23 +122,31 @@
    "chip": "탄산음료 42%"
   },
   {
-   "say": "과자도 따라가요. 해태제과는 당을 약 [[90%]] 낮췄다는 웨하스를 냈어요.",
-   "photo": {
-    "url": "vault:photos/ig-17918984326019931.jpg",
-    "shows": "딸기 컵케이크 진열",
-    "match": "분위기",
-    "rights": "사용자 촬영 비공개 보관함"
-   },
-   "chip": "당 약 90% ↓ (회사 설명)"
+   "say": "과자도 따라가요. 당을 약 [[90%]] 낮췄다는 저당 웨하스도 나왔어요.",
+   "chip": "당 약 90% ↓ (회사 설명)",
+   "photos": [
+    {
+     "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Loacker%20Quadratini%2C%20napolitaner.jpg?width=1600",
+     "shows": "네모난 웨하스 과자",
+     "match": "같은 종류",
+     "rights": "위키미디어 공용 CC0"
+    },
+    {
+     "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Milk%20flavored%20peanut%20wafer%20biscuits.jpg?width=1600",
+     "shows": "웨하스 과자 두 조각",
+     "match": "같은 종류",
+     "rights": "위키미디어 공용 CC0"
+    }
+   ]
   },
   {
    "say": "켈로그와 동서식품도 설탕 뺀 그래놀라와 핫초코를 냈어요.",
    "photos": [
     {
-     "url": "vault:photos/ig-17876048651543759.jpg",
-     "shows": "시리얼 그릇과 아침 상",
+     "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Granola%20Dark%20Chocolate%20and%20Banana.jpg?width=1600",
+     "shows": "다크초코 그래놀라 한 접시",
      "match": "같은 종류",
-     "rights": "사용자 촬영 비공개 보관함"
+     "rights": "위키미디어 공용 CC0"
     },
     {
      "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Hot-chocolate-1058197.jpg?width=1600",
@@ -149,39 +160,39 @@
   {
    "say": "익숙한 브랜드의 제로가 새 제로보다 탄산음료에서 약 [[5배]] 팔렸어요.",
    "photo": {
-    "url": "vault:photos/ig-17909174656114062.jpg",
-    "shows": "초코 아이스크림 콘",
-    "match": "분위기",
-    "rights": "사용자 촬영 비공개 보관함"
+    "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Coca-Cola%20Trio-%20Zero%20Sugar%2C%20Original%2C%20and%20Diet%20Coke.jpg?width=1600",
+    "shows": "콜라 오리지널·제로·다이어트 캔 나란히",
+    "match": "같은 종류",
+    "rights": "위키미디어 공용 CC BY 2.0"
    },
    "chip": "익숙한 브랜드 제로 약 5배"
   },
   {
    "say": "다만 제로라고 열량이 꼭 낮은 건 아니에요.",
    "photo": {
-    "url": "vault:photos/ig-17859912955034196.jpg",
-    "shows": "롤 아이스크림 두 컵",
-    "match": "분위기",
-    "rights": "사용자 촬영 비공개 보관함"
+    "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Kashi%20Chocolate%20Almond%20Sea%20Salt%20bar%2C%20Jan%202020.jpg?width=1600",
+    "shows": "초콜릿 견과 시리얼바",
+    "match": "같은 종류",
+    "rights": "위키미디어 공용 CC0"
    },
    "chip": "제로 ≠ 저칼로리"
   },
   {
    "say": "지방과 탄수화물은 들어갈 수 있고, 대체 감미료를 쓰기도 해요.",
    "photo": {
-    "url": "https://commons.wikimedia.org/wiki/Special:FilePath/A%20cup%20of%20almost%20finished%20hot%20chocolate%20with%20marshmallows..jpg?width=1600",
-    "shows": "마시멜로 올린 핫초코",
+    "url": "https://commons.wikimedia.org/wiki/Special:FilePath/No-Calorie-Sweetener-Packets.jpg?width=1600",
+    "shows": "대체 감미료 봉지 세 개",
     "match": "같은 종류",
-    "rights": "위키미디어 공용 CC0"
+    "rights": "위키미디어 공용 퍼블릭 도메인"
    }
   },
   {
    "say": "그러니 제로 표시 옆의 [[영양성분표]]도 한 번 보세요.",
    "photo": {
-    "url": "vault:photos/ig-17895190066037890.jpg",
-    "shows": "한라봉 주스 두 병",
-    "match": "분위기",
-    "rights": "사용자 촬영 비공개 보관함"
+    "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Nutrition%20Facts%20label%20with%2094%25%20saturated%20fat%20per%20serving.jpg?width=1600",
+    "shows": "과자 봉지 뒷면 영양성분표",
+    "match": "같은 종류",
+    "rights": "위키미디어 공용 CC0"
    },
    "chip": "영양성분표 확인"
   },
@@ -208,6 +219,6 @@
   "stat_period": "지난해 9월~올해 8월"
  },
  "review": {
-  "photo_sheet": "07fd9a44ce91"
+  "photo_sheet": "54e00c5f0593"
  }
 }
