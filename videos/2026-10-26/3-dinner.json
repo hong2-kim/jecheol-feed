@@ -1,0 +1,352 @@
+{
+ "format": "voice",
+ "layout": "rec",
+ "kind": "저녁",
+ "subject": "월요일 저녁 메뉴 넷",
+ "title": "월요일 저녁, 내가 골라 줄게! 넷 중에 하나만",
+ "summary": "월요일 퇴근길에 당기는 메뉴 넷(김치찌개·크림 파스타·수제버거·치즈돈까스)을 당기는 것별로 골라 줘요.",
+ "headline": "월요일 저녁\n[[내가 골라 줄게]]",
+ "small": "월요일 저녁, 내가 골라 줄게",
+ "intro": 7,
+ "length": [
+  15,
+  25
+ ],
+ "thumb": {
+  "head": "월요일 저녁\n[[내가 골라 줄게]]",
+  "sub": "넷 중 [[하나만]] 골라 줄게",
+  "photo": {
+   "url": "vault:photos/ig-17858642263047117.jpg",
+   "shows": "크림 파스타",
+   "match": "정확",
+   "rights": "사용자 촬영 비공개 보관함"
+  }
+ },
+ "yt_title": "월요일 저녁 메뉴 뭐 먹지? 김치찌개·크림 파스타·수제버거·치즈돈까스 중에 골라 줄게",
+ "yt_keyword": "월요일 저녁 메뉴",
+ "yt_related": [
+  "저녁 메뉴 추천",
+  "오늘 뭐 먹지",
+  "퇴근길 저녁 메뉴",
+  "월요일 뭐 먹지",
+  "김치찌개"
+ ],
+ "yt_tags": [
+  "월요일 저녁 메뉴",
+  "저녁 메뉴 추천",
+  "오늘 뭐 먹지",
+  "퇴근길 저녁 메뉴",
+  "월요일 뭐 먹지",
+  "김치찌개",
+  "크림 파스타",
+  "수제버거",
+  "치즈돈까스"
+ ],
+ "yt_hashtags": [
+  "월요일저녁메뉴",
+  "오늘뭐먹지",
+  "퇴근길저녁"
+ ],
+ "yt_lead": "월요일 퇴근길 저녁 메뉴 고민될 때, 넷 중에 하나만 골라요.",
+ "caption": "월요일 저녁, 뭐 먹을지 고민이죠?\n\n국물이 당기면 김치찌개\n면이 당기면 크림 파스타\n든든한 게 당기면 수제버거\n바삭한 게 당기면 치즈돈까스\n\n넷 중에 오늘 뭐 먹을래요? 댓글로 알려 주세요!",
+ "tags": [
+  "월요일저녁메뉴",
+  "저녁메뉴추천",
+  "오늘뭐먹지",
+  "퇴근길저녁"
+ ],
+ "sources": [],
+ "credits": [],
+ "lines": [
+  {
+   "say": "월요일 저녁, 내가 골라 줄게!",
+   "nosub": true,
+   "show": {
+    "thumb": true
+   }
+  },
+  {
+   "say": "자, 시작!",
+   "show": {
+    "grid": [
+     {
+      "photo": {
+       "url": "vault:photos/ig-17852634856066236.jpg",
+       "shows": "두부·햄 김치찌개 냄비",
+       "match": "정확",
+       "rights": "사용자 촬영 비공개 보관함"
+      }
+     },
+     {
+      "photo": {
+       "url": "vault:photos/ig-17858642263047117.jpg",
+       "shows": "크림 파스타",
+       "match": "정확",
+       "rights": "사용자 촬영 비공개 보관함"
+      }
+     },
+     {
+      "photo": {
+       "url": "vault:photos/ig-17868934504027841.jpg",
+       "shows": "수제버거와 감자튀김",
+       "match": "정확",
+       "rights": "사용자 촬영 비공개 보관함"
+      }
+     },
+     {
+      "photo": {
+       "url": "https://github.com/hong2-kim/jecheol-feed/releases/download/myphotos/2026-10-14-172554797.jpg",
+       "pos": "50% 82%",
+       "shows": "치즈돈까스 정식(치즈가 든 돈가스)",
+       "match": "정확",
+       "rights": "사용자가 직접 찍어 보낸 사진"
+      }
+     }
+    ],
+    "dir": "2x2",
+    "own": true,
+    "fade": 0.45
+   }
+  },
+  {
+   "say": "국물이 당기면, 칼칼한 김치찌개.",
+   "subs": [
+    "국물이 당기면,",
+    "칼칼한 김치찌개."
+   ],
+   "show": {
+    "grid": [
+     {
+      "photo": {
+       "url": "vault:photos/ig-17852634856066236.jpg",
+       "shows": "두부·햄 김치찌개 냄비",
+       "match": "정확",
+       "rights": "사용자 촬영 비공개 보관함"
+      }
+     },
+     {
+      "photo": {
+       "url": "vault:photos/ig-17858642263047117.jpg",
+       "shows": "크림 파스타",
+       "match": "정확",
+       "rights": "사용자 촬영 비공개 보관함"
+      }
+     },
+     {
+      "photo": {
+       "url": "vault:photos/ig-17868934504027841.jpg",
+       "shows": "수제버거와 감자튀김",
+       "match": "정확",
+       "rights": "사용자 촬영 비공개 보관함"
+      }
+     },
+     {
+      "photo": {
+       "url": "https://github.com/hong2-kim/jecheol-feed/releases/download/myphotos/2026-10-14-172554797.jpg",
+       "pos": "50% 82%",
+       "shows": "치즈돈까스 정식(치즈가 든 돈가스)",
+       "match": "정확",
+       "rights": "사용자가 직접 찍어 보낸 사진"
+      }
+     }
+    ],
+    "dir": "2x2",
+    "own": true,
+    "hl": 0
+   }
+  },
+  {
+   "say": "면이 당기면, 크림 파스타.",
+   "subs": [
+    "면이 당기면,",
+    "크림 파스타."
+   ],
+   "show": {
+    "grid": [
+     {
+      "photo": {
+       "url": "vault:photos/ig-17852634856066236.jpg",
+       "shows": "두부·햄 김치찌개 냄비",
+       "match": "정확",
+       "rights": "사용자 촬영 비공개 보관함"
+      }
+     },
+     {
+      "photo": {
+       "url": "vault:photos/ig-17858642263047117.jpg",
+       "shows": "크림 파스타",
+       "match": "정확",
+       "rights": "사용자 촬영 비공개 보관함"
+      }
+     },
+     {
+      "photo": {
+       "url": "vault:photos/ig-17868934504027841.jpg",
+       "shows": "수제버거와 감자튀김",
+       "match": "정확",
+       "rights": "사용자 촬영 비공개 보관함"
+      }
+     },
+     {
+      "photo": {
+       "url": "https://github.com/hong2-kim/jecheol-feed/releases/download/myphotos/2026-10-14-172554797.jpg",
+       "pos": "50% 82%",
+       "shows": "치즈돈까스 정식(치즈가 든 돈가스)",
+       "match": "정확",
+       "rights": "사용자가 직접 찍어 보낸 사진"
+      }
+     }
+    ],
+    "dir": "2x2",
+    "own": true,
+    "hl": 1
+   }
+  },
+  {
+   "say": "든든한 게 당기면, 수제버거.",
+   "subs": [
+    "든든한 게 당기면,",
+    "수제버거."
+   ],
+   "show": {
+    "grid": [
+     {
+      "photo": {
+       "url": "vault:photos/ig-17852634856066236.jpg",
+       "shows": "두부·햄 김치찌개 냄비",
+       "match": "정확",
+       "rights": "사용자 촬영 비공개 보관함"
+      }
+     },
+     {
+      "photo": {
+       "url": "vault:photos/ig-17858642263047117.jpg",
+       "shows": "크림 파스타",
+       "match": "정확",
+       "rights": "사용자 촬영 비공개 보관함"
+      }
+     },
+     {
+      "photo": {
+       "url": "vault:photos/ig-17868934504027841.jpg",
+       "shows": "수제버거와 감자튀김",
+       "match": "정확",
+       "rights": "사용자 촬영 비공개 보관함"
+      }
+     },
+     {
+      "photo": {
+       "url": "https://github.com/hong2-kim/jecheol-feed/releases/download/myphotos/2026-10-14-172554797.jpg",
+       "pos": "50% 82%",
+       "shows": "치즈돈까스 정식(치즈가 든 돈가스)",
+       "match": "정확",
+       "rights": "사용자가 직접 찍어 보낸 사진"
+      }
+     }
+    ],
+    "dir": "2x2",
+    "own": true,
+    "hl": 2
+   }
+  },
+  {
+   "say": "바삭한 게 당기면, 치즈돈까스.",
+   "subs": [
+    "바삭한 게 당기면,",
+    "치즈돈까스."
+   ],
+   "show": {
+    "grid": [
+     {
+      "photo": {
+       "url": "vault:photos/ig-17852634856066236.jpg",
+       "shows": "두부·햄 김치찌개 냄비",
+       "match": "정확",
+       "rights": "사용자 촬영 비공개 보관함"
+      }
+     },
+     {
+      "photo": {
+       "url": "vault:photos/ig-17858642263047117.jpg",
+       "shows": "크림 파스타",
+       "match": "정확",
+       "rights": "사용자 촬영 비공개 보관함"
+      }
+     },
+     {
+      "photo": {
+       "url": "vault:photos/ig-17868934504027841.jpg",
+       "shows": "수제버거와 감자튀김",
+       "match": "정확",
+       "rights": "사용자 촬영 비공개 보관함"
+      }
+     },
+     {
+      "photo": {
+       "url": "https://github.com/hong2-kim/jecheol-feed/releases/download/myphotos/2026-10-14-172554797.jpg",
+       "pos": "50% 82%",
+       "shows": "치즈돈까스 정식(치즈가 든 돈가스)",
+       "match": "정확",
+       "rights": "사용자가 직접 찍어 보낸 사진"
+      }
+     }
+    ],
+    "dir": "2x2",
+    "own": true,
+    "hl": 3
+   }
+  },
+  {
+   "say": "넷 중에 오늘 뭐 먹을래? 댓글로 알려 줘.",
+   "subs": [
+    "넷 중에 오늘 뭐 먹을래?",
+    "댓글로 알려 줘."
+   ],
+   "show": {
+    "grid": [
+     {
+      "photo": {
+       "url": "vault:photos/ig-17852634856066236.jpg",
+       "shows": "두부·햄 김치찌개 냄비",
+       "match": "정확",
+       "rights": "사용자 촬영 비공개 보관함"
+      }
+     },
+     {
+      "photo": {
+       "url": "vault:photos/ig-17858642263047117.jpg",
+       "shows": "크림 파스타",
+       "match": "정확",
+       "rights": "사용자 촬영 비공개 보관함"
+      }
+     },
+     {
+      "photo": {
+       "url": "vault:photos/ig-17868934504027841.jpg",
+       "shows": "수제버거와 감자튀김",
+       "match": "정확",
+       "rights": "사용자 촬영 비공개 보관함"
+      }
+     },
+     {
+      "photo": {
+       "url": "https://github.com/hong2-kim/jecheol-feed/releases/download/myphotos/2026-10-14-172554797.jpg",
+       "pos": "50% 82%",
+       "shows": "치즈돈까스 정식(치즈가 든 돈가스)",
+       "match": "정확",
+       "rights": "사용자가 직접 찍어 보낸 사진"
+      }
+     }
+    ],
+    "dir": "2x2",
+    "own": true
+   }
+  }
+ ],
+ "dates": {
+  "checked": "2026-10-26"
+ },
+ "review": {
+  "photo_sheet": "d2286420f975"
+ }
+}
