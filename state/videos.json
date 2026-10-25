@@ -34,7 +34,7 @@
     "seconds": 47.0,
     "size_mb": 7.1,
     "yt_title": "요즘 뜨는 유행 음식 5, 몇 개나 먹어 봤어?ㅋㅋ",
-    "sha256": "ec969b9ddfeed2d44be25c984ada2e824531d3f34ef05c6b0b8048bb65cccc06"
+    "sha256": "b77ce2e17fc3891b6de88775d9830a23483a97a4ef0c08c6f417d06a765385d0"
   },
   {
     "id": "2026-10-25-4-find",
@@ -61,7 +61,7 @@
     "seconds": 18.6,
     "size_mb": 5.3,
     "yt_title": "단감 가격 올라 한 상자 4만 원, 올해 부유 단감 작고 귀한 까닭",
-    "sha256": "f602dff149d0d6e3a9698858e5f13ec661c5b52f15176ad535649e72d3771377"
+    "sha256": "77f9630300f5d000b0327b7661fe7294952d54f9497bd13ebe7aab524a15ca1f"
   },
   {
     "id": "2026-10-25-3-dinner",
@@ -83,7 +83,7 @@
     "seconds": 13.4,
     "size_mb": 8.1,
     "yt_title": "일요일 저녁 메뉴 뭐 먹지? 순두부찌개·초밥·텐동·피자 중에 골라 줄게",
-    "sha256": "0edbc7109fe6e162285394bebc02824f680941065053bf46fbf19c7166afba9c"
+    "sha256": "e4bab6893326cfbfa880cb6bf0d0b786d4e236e8445839d00a8eeccf7ad77f28"
   },
   {
     "id": "2026-10-25-2-news",
@@ -147,12 +147,15 @@
       "https://www.yonhapnewstv.co.kr/news/AKR20261024102111fTz",
       "https://www.jasm.co.kr/news/view/322789/%EC%A0%80%EB%8B%B9-%EC%A0%9C%EB%A1%9C%EC%8A%88%EA%B1%B0-%EC%A0%9C%ED%92%88-%EB%8C%80%EC%84%B8-%EC%8B%9D%ED%92%88%EC%97%85%EA%B3%84-%EA%B3%BC%EC%9E%90-%EC%9D%8C%EB%A3%8C-%EB%AC%B4%EC%84%A4%ED%83%95-%EA%B2%BD%EC%9F%81-2026"
     ],
-    "credits": [],
+    "credits": [
+      "Фотограф (CC BY 3.0) · commons.wikimedia.org/?curid=108141346",
+      "James Larrison (CC BY 2.0) · commons.wikimedia.org/?curid=174615780"
+    ],
     "url": "https://github.com/hong2-kim/jecheol-feed/releases/download/v2026-10-25/2026-10-25-10-voice.mp4",
-    "seconds": 43.6,
-    "size_mb": 5.0,
+    "seconds": 43.3,
+    "size_mb": 5.7,
     "yt_title": "제로 식품 얼마나 팔릴까, 제로 슈거 과자·음료 29.3%가 샀어요",
-    "sha256": "18e38f5942925ee7b67448de70666b81d9d12d62853a65b59c76830b1fa66f4c"
+    "sha256": "531d9624371e303d3b50b51318c1f1a9c242968637ac5c89228751abe8a9e7aa"
   },
   {
     "id": "2026-10-24-4-find",
