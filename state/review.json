@@ -77,5 +77,33 @@
     "approved": false,
     "reasons": [],
     "noticed": null
+  },
+  "2026-10-26-10-voice": {
+    "verdict": "통과",
+    "hash": "bb18ed3d7f73",
+    "approved": false,
+    "reasons": [],
+    "noticed": null
+  },
+  "2026-10-26-2-news": {
+    "verdict": "통과",
+    "hash": "66f5e277c914",
+    "approved": false,
+    "reasons": [],
+    "noticed": null
+  },
+  "2026-10-26-3-dinner": {
+    "verdict": "통과",
+    "hash": "49c84981480f",
+    "approved": false,
+    "reasons": [],
+    "noticed": null
+  },
+  "2026-10-26-4-find": {
+    "verdict": "통과",
+    "hash": "03d0fa187fcf",
+    "approved": false,
+    "reasons": [],
+    "noticed": null
   }
 }
