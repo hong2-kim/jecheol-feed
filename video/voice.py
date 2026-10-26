@@ -470,8 +470,7 @@ def build_voice(spec, work=None):
         import rec
         css += rec.CSS
         parts, cuts, sfx, subs = rec.build_rec(spec, voices, speech, durs, starts, real)
-        if any("CC BY" in str(c) for c in spec.get("credits") or []):  # CC BY 사진은 한 줄이어도 끝 장면에 출처를 적어요
-            credits = B.credit_lines(spec)
+        credits = []  # 추천 쇼츠 끝 장면에는 사진 출처를 넣지 않고 게시글·설명에만 적어요 (2026-10-26 사용자)
         out = ['<!doctype html><html lang="ko"><head><meta charset="utf-8">',
                f"<style>{css}{CSS}{thumb.css().replace('FONT_DIR', (HERE / 'fonts').as_uri())}{rec.CSS}</style></head>",
                '<body style="--ac:#D8432B">'] + parts

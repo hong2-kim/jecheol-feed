@@ -2,64 +2,75 @@
  "format": "voice",
  "layout": "rec",
  "kind": "저녁",
- "subject": "월요일 저녁 메뉴 넷",
- "title": "월요일 저녁, 내가 골라 줄게! 넷 중에 하나만",
- "summary": "월요일 퇴근길에 당기는 메뉴 넷(김치찌개·크림 파스타·수제버거·치즈돈까스)을 당기는 것별로 골라 줘요.",
- "headline": "월요일 저녁\n[[내가 골라 줄게]]",
- "small": "월요일 저녁, 내가 골라 줄게",
+ "subject": "월요일 저녁 집밥 넷",
+ "title": "월요일부터 지쳤다면? 오늘 저녁은 따뜻한 집밥 넷 중에 하나",
+ "summary": "월요일 퇴근길, 부담 없이 먹고 쉴 집밥 넷(소고기 미역국·제육볶음·순두부찌개·오므라이스)을 당기는 것별로 골라 줘요.",
+ "headline": "월요일 지쳤다면?\n[[저녁은 이 4가지]]",
+ "small": "월요일 저녁, 따뜻한 집밥",
  "intro": 7,
  "length": [
   15,
   25
  ],
  "thumb": {
-  "head": "월요일 저녁\n[[내가 골라 줄게]]",
-  "sub": "넷 중 [[하나만]] 골라 줄게",
+  "head": "월요일 지쳤다면?\n[[저녁은 이 4가지]]",
+  "sub": "헬요일엔 [[따뜻한 집밥]]",
   "photo": {
-   "url": "vault:photos/ig-17858642263047117.jpg",
-   "shows": "크림 파스타",
+   "url": "https://images.pexels.com/photos/19902239/pexels-photo-19902239.jpeg?auto=compress&cs=tinysrgb&w=1600",
+   "shows": "데미글라스 소스를 두른 오므라이스(집밥 메뉴 한 접시)",
    "match": "정확",
-   "rights": "사용자 촬영 비공개 보관함"
+   "rights": "Pexels 라이선스, 상업적 이용·수정 가능(2026-10-26 확인)",
+   "credit": "사진: Markus Winkler / Pexels",
+   "terms": {
+    "url": "https://www.pexels.com/license/",
+    "checked": "2026-10-26",
+    "scope": "Pexels 라이선스, 상업적 이용·수정 가능, 표기 의무 없음",
+    "ok": true
+   }
   }
  },
- "yt_title": "월요일 저녁 메뉴 뭐 먹지? 김치찌개·크림 파스타·수제버거·치즈돈까스 중에 골라 줄게",
+ "yt_title": "월요일부터 벌써 지쳤다면? 오늘 저녁은 소고기 미역국·제육볶음·순두부찌개·오므라이스 중에 하나!",
  "yt_keyword": "월요일 저녁 메뉴",
  "yt_related": [
   "저녁 메뉴 추천",
   "오늘 뭐 먹지",
   "퇴근길 저녁 메뉴",
-  "월요일 뭐 먹지",
-  "김치찌개"
+  "집밥 메뉴 추천",
+  "순두부찌개"
  ],
  "yt_tags": [
   "월요일 저녁 메뉴",
   "저녁 메뉴 추천",
   "오늘 뭐 먹지",
   "퇴근길 저녁 메뉴",
-  "월요일 뭐 먹지",
-  "김치찌개",
-  "크림 파스타",
-  "수제버거",
-  "치즈돈까스"
+  "집밥 메뉴 추천",
+  "소고기 미역국",
+  "제육볶음",
+  "순두부찌개",
+  "오므라이스"
  ],
  "yt_hashtags": [
   "월요일저녁메뉴",
   "오늘뭐먹지",
-  "퇴근길저녁"
+  "집밥메뉴"
  ],
- "yt_lead": "월요일 퇴근길 저녁 메뉴 고민될 때, 넷 중에 하나만 골라요.",
- "caption": "월요일 저녁, 뭐 먹을지 고민이죠?\n\n국물이 당기면 김치찌개\n면이 당기면 크림 파스타\n든든한 게 당기면 수제버거\n바삭한 게 당기면 치즈돈까스\n\n넷 중에 오늘 뭐 먹을래요? 댓글로 알려 주세요!",
+ "yt_lead": "월요일부터 지친 날, 퇴근하고 부담 없이 먹을 따뜻한 집밥 넷 중에 하나만 골라요.",
+ "caption": "월요일부터 벌써 지쳤다면? 오늘 저녁은 이 4가지!\n\n속 편한 게 당기면 소고기 미역국\n든든한 게 당기면 제육볶음\n부드러운 게 당기면 순두부찌개\n한 접시로 끝내고 싶으면 오므라이스\n\n월요일 저녁, 여러분은 어떤 메뉴가 당기세요?",
  "tags": [
   "월요일저녁메뉴",
   "저녁메뉴추천",
   "오늘뭐먹지",
-  "퇴근길저녁"
+  "집밥메뉴"
  ],
  "sources": [],
- "credits": [],
+ "credits": [
+  "Kimtaro (CC BY 2.0) · www.flickr.com/photos/51035729853@N01/4630695299",
+  "사진: makafood / Pexels",
+  "사진: Markus Winkler / Pexels"
+ ],
  "lines": [
   {
-   "say": "월요일 저녁, 내가 골라 줄게!",
+   "say": "월요일부터 지쳤다면? 저녁은 이 4가지!",
    "nosub": true,
    "show": {
     "thumb": true
@@ -71,35 +82,55 @@
     "grid": [
      {
       "photo": {
-       "url": "vault:photos/ig-17852634856066236.jpg",
-       "shows": "두부·햄 김치찌개 냄비",
-       "match": "정확",
+       "url": "vault:photos/ig-17872113808130784.jpg",
+       "shows": "미역국 한 그릇(부추·깨, 소고기는 국물 속이라 잘 안 보임)",
+       "match": "같은 종류",
        "rights": "사용자 촬영 비공개 보관함"
       }
      },
      {
       "photo": {
-       "url": "vault:photos/ig-17858642263047117.jpg",
-       "shows": "크림 파스타",
-       "match": "정확",
-       "rights": "사용자 촬영 비공개 보관함"
+       "url": "https://live.staticflickr.com/4015/4630695299_b0a51e3e16_b.jpg",
+       "shows": "팬에 볶은 제육볶음(양파·대파·당근)",
+       "match": "같은 종류",
+       "rights": "CC BY 2.0, 상업적 이용·수정 가능(2026-10-26 확인)",
+       "credit": "Kimtaro (CC BY 2.0) · www.flickr.com/photos/51035729853@N01/4630695299",
+       "terms": {
+        "url": "https://creativecommons.org/licenses/by/2.0/",
+        "checked": "2026-10-26",
+        "scope": "CC BY 2.0, 상업적 이용·수정 가능",
+        "ok": true
+       }
       }
      },
      {
       "photo": {
-       "url": "vault:photos/ig-17868934504027841.jpg",
-       "shows": "수제버거와 감자튀김",
+       "url": "https://images.pexels.com/photos/8954509/pexels-photo-8954509.jpeg?auto=compress&cs=tinysrgb&w=1600",
+       "shows": "뚝배기 순두부찌개",
        "match": "정확",
-       "rights": "사용자 촬영 비공개 보관함"
+       "rights": "Pexels 라이선스, 상업적 이용·수정 가능(2026-10-26 확인)",
+       "credit": "사진: makafood / Pexels",
+       "terms": {
+        "url": "https://www.pexels.com/license/",
+        "checked": "2026-10-26",
+        "scope": "Pexels 라이선스, 상업적 이용·수정 가능, 표기 의무 없음",
+        "ok": true
+       }
       }
      },
      {
       "photo": {
-       "url": "https://github.com/hong2-kim/jecheol-feed/releases/download/myphotos/2026-10-14-172554797.jpg",
-       "pos": "50% 82%",
-       "shows": "치즈돈까스 정식(치즈가 든 돈가스)",
+       "url": "https://images.pexels.com/photos/19902239/pexels-photo-19902239.jpeg?auto=compress&cs=tinysrgb&w=1600",
+       "shows": "데미글라스 소스를 두른 오므라이스",
        "match": "정확",
-       "rights": "사용자가 직접 찍어 보낸 사진"
+       "rights": "Pexels 라이선스, 상업적 이용·수정 가능(2026-10-26 확인)",
+       "credit": "사진: Markus Winkler / Pexels",
+       "terms": {
+        "url": "https://www.pexels.com/license/",
+        "checked": "2026-10-26",
+        "scope": "Pexels 라이선스, 상업적 이용·수정 가능, 표기 의무 없음",
+        "ok": true
+       }
       }
      }
     ],
@@ -109,44 +140,64 @@
    }
   },
   {
-   "say": "국물이 당기면, 칼칼한 김치찌개.",
+   "say": "속 편한 게 당기면, 소고기 미역국.",
    "subs": [
-    "국물이 당기면,",
-    "칼칼한 김치찌개."
+    "속 편한 게 당기면,",
+    "소고기 미역국."
    ],
    "show": {
     "grid": [
      {
       "photo": {
-       "url": "vault:photos/ig-17852634856066236.jpg",
-       "shows": "두부·햄 김치찌개 냄비",
-       "match": "정확",
+       "url": "vault:photos/ig-17872113808130784.jpg",
+       "shows": "미역국 한 그릇(부추·깨, 소고기는 국물 속이라 잘 안 보임)",
+       "match": "같은 종류",
        "rights": "사용자 촬영 비공개 보관함"
       }
      },
      {
       "photo": {
-       "url": "vault:photos/ig-17858642263047117.jpg",
-       "shows": "크림 파스타",
-       "match": "정확",
-       "rights": "사용자 촬영 비공개 보관함"
+       "url": "https://live.staticflickr.com/4015/4630695299_b0a51e3e16_b.jpg",
+       "shows": "팬에 볶은 제육볶음(양파·대파·당근)",
+       "match": "같은 종류",
+       "rights": "CC BY 2.0, 상업적 이용·수정 가능(2026-10-26 확인)",
+       "credit": "Kimtaro (CC BY 2.0) · www.flickr.com/photos/51035729853@N01/4630695299",
+       "terms": {
+        "url": "https://creativecommons.org/licenses/by/2.0/",
+        "checked": "2026-10-26",
+        "scope": "CC BY 2.0, 상업적 이용·수정 가능",
+        "ok": true
+       }
       }
      },
      {
       "photo": {
-       "url": "vault:photos/ig-17868934504027841.jpg",
-       "shows": "수제버거와 감자튀김",
+       "url": "https://images.pexels.com/photos/8954509/pexels-photo-8954509.jpeg?auto=compress&cs=tinysrgb&w=1600",
+       "shows": "뚝배기 순두부찌개",
        "match": "정확",
-       "rights": "사용자 촬영 비공개 보관함"
+       "rights": "Pexels 라이선스, 상업적 이용·수정 가능(2026-10-26 확인)",
+       "credit": "사진: makafood / Pexels",
+       "terms": {
+        "url": "https://www.pexels.com/license/",
+        "checked": "2026-10-26",
+        "scope": "Pexels 라이선스, 상업적 이용·수정 가능, 표기 의무 없음",
+        "ok": true
+       }
       }
      },
      {
       "photo": {
-       "url": "https://github.com/hong2-kim/jecheol-feed/releases/download/myphotos/2026-10-14-172554797.jpg",
-       "pos": "50% 82%",
-       "shows": "치즈돈까스 정식(치즈가 든 돈가스)",
+       "url": "https://images.pexels.com/photos/19902239/pexels-photo-19902239.jpeg?auto=compress&cs=tinysrgb&w=1600",
+       "shows": "데미글라스 소스를 두른 오므라이스",
        "match": "정확",
-       "rights": "사용자가 직접 찍어 보낸 사진"
+       "rights": "Pexels 라이선스, 상업적 이용·수정 가능(2026-10-26 확인)",
+       "credit": "사진: Markus Winkler / Pexels",
+       "terms": {
+        "url": "https://www.pexels.com/license/",
+        "checked": "2026-10-26",
+        "scope": "Pexels 라이선스, 상업적 이용·수정 가능, 표기 의무 없음",
+        "ok": true
+       }
       }
      }
     ],
@@ -156,44 +207,64 @@
    }
   },
   {
-   "say": "면이 당기면, 크림 파스타.",
+   "say": "든든한 게 당기면, 제육볶음.",
    "subs": [
-    "면이 당기면,",
-    "크림 파스타."
+    "든든한 게 당기면,",
+    "제육볶음."
    ],
    "show": {
     "grid": [
      {
       "photo": {
-       "url": "vault:photos/ig-17852634856066236.jpg",
-       "shows": "두부·햄 김치찌개 냄비",
-       "match": "정확",
+       "url": "vault:photos/ig-17872113808130784.jpg",
+       "shows": "미역국 한 그릇(부추·깨, 소고기는 국물 속이라 잘 안 보임)",
+       "match": "같은 종류",
        "rights": "사용자 촬영 비공개 보관함"
       }
      },
      {
       "photo": {
-       "url": "vault:photos/ig-17858642263047117.jpg",
-       "shows": "크림 파스타",
-       "match": "정확",
-       "rights": "사용자 촬영 비공개 보관함"
+       "url": "https://live.staticflickr.com/4015/4630695299_b0a51e3e16_b.jpg",
+       "shows": "팬에 볶은 제육볶음(양파·대파·당근)",
+       "match": "같은 종류",
+       "rights": "CC BY 2.0, 상업적 이용·수정 가능(2026-10-26 확인)",
+       "credit": "Kimtaro (CC BY 2.0) · www.flickr.com/photos/51035729853@N01/4630695299",
+       "terms": {
+        "url": "https://creativecommons.org/licenses/by/2.0/",
+        "checked": "2026-10-26",
+        "scope": "CC BY 2.0, 상업적 이용·수정 가능",
+        "ok": true
+       }
       }
      },
      {
       "photo": {
-       "url": "vault:photos/ig-17868934504027841.jpg",
-       "shows": "수제버거와 감자튀김",
+       "url": "https://images.pexels.com/photos/8954509/pexels-photo-8954509.jpeg?auto=compress&cs=tinysrgb&w=1600",
+       "shows": "뚝배기 순두부찌개",
        "match": "정확",
-       "rights": "사용자 촬영 비공개 보관함"
+       "rights": "Pexels 라이선스, 상업적 이용·수정 가능(2026-10-26 확인)",
+       "credit": "사진: makafood / Pexels",
+       "terms": {
+        "url": "https://www.pexels.com/license/",
+        "checked": "2026-10-26",
+        "scope": "Pexels 라이선스, 상업적 이용·수정 가능, 표기 의무 없음",
+        "ok": true
+       }
       }
      },
      {
       "photo": {
-       "url": "https://github.com/hong2-kim/jecheol-feed/releases/download/myphotos/2026-10-14-172554797.jpg",
-       "pos": "50% 82%",
-       "shows": "치즈돈까스 정식(치즈가 든 돈가스)",
+       "url": "https://images.pexels.com/photos/19902239/pexels-photo-19902239.jpeg?auto=compress&cs=tinysrgb&w=1600",
+       "shows": "데미글라스 소스를 두른 오므라이스",
        "match": "정확",
-       "rights": "사용자가 직접 찍어 보낸 사진"
+       "rights": "Pexels 라이선스, 상업적 이용·수정 가능(2026-10-26 확인)",
+       "credit": "사진: Markus Winkler / Pexels",
+       "terms": {
+        "url": "https://www.pexels.com/license/",
+        "checked": "2026-10-26",
+        "scope": "Pexels 라이선스, 상업적 이용·수정 가능, 표기 의무 없음",
+        "ok": true
+       }
       }
      }
     ],
@@ -203,44 +274,64 @@
    }
   },
   {
-   "say": "든든한 게 당기면, 수제버거.",
+   "say": "부드러운 게 당기면, 순두부찌개.",
    "subs": [
-    "든든한 게 당기면,",
-    "수제버거."
+    "부드러운 게 당기면,",
+    "순두부찌개."
    ],
    "show": {
     "grid": [
      {
       "photo": {
-       "url": "vault:photos/ig-17852634856066236.jpg",
-       "shows": "두부·햄 김치찌개 냄비",
-       "match": "정확",
+       "url": "vault:photos/ig-17872113808130784.jpg",
+       "shows": "미역국 한 그릇(부추·깨, 소고기는 국물 속이라 잘 안 보임)",
+       "match": "같은 종류",
        "rights": "사용자 촬영 비공개 보관함"
       }
      },
      {
       "photo": {
-       "url": "vault:photos/ig-17858642263047117.jpg",
-       "shows": "크림 파스타",
-       "match": "정확",
-       "rights": "사용자 촬영 비공개 보관함"
+       "url": "https://live.staticflickr.com/4015/4630695299_b0a51e3e16_b.jpg",
+       "shows": "팬에 볶은 제육볶음(양파·대파·당근)",
+       "match": "같은 종류",
+       "rights": "CC BY 2.0, 상업적 이용·수정 가능(2026-10-26 확인)",
+       "credit": "Kimtaro (CC BY 2.0) · www.flickr.com/photos/51035729853@N01/4630695299",
+       "terms": {
+        "url": "https://creativecommons.org/licenses/by/2.0/",
+        "checked": "2026-10-26",
+        "scope": "CC BY 2.0, 상업적 이용·수정 가능",
+        "ok": true
+       }
       }
      },
      {
       "photo": {
-       "url": "vault:photos/ig-17868934504027841.jpg",
-       "shows": "수제버거와 감자튀김",
+       "url": "https://images.pexels.com/photos/8954509/pexels-photo-8954509.jpeg?auto=compress&cs=tinysrgb&w=1600",
+       "shows": "뚝배기 순두부찌개",
        "match": "정확",
-       "rights": "사용자 촬영 비공개 보관함"
+       "rights": "Pexels 라이선스, 상업적 이용·수정 가능(2026-10-26 확인)",
+       "credit": "사진: makafood / Pexels",
+       "terms": {
+        "url": "https://www.pexels.com/license/",
+        "checked": "2026-10-26",
+        "scope": "Pexels 라이선스, 상업적 이용·수정 가능, 표기 의무 없음",
+        "ok": true
+       }
       }
      },
      {
       "photo": {
-       "url": "https://github.com/hong2-kim/jecheol-feed/releases/download/myphotos/2026-10-14-172554797.jpg",
-       "pos": "50% 82%",
-       "shows": "치즈돈까스 정식(치즈가 든 돈가스)",
+       "url": "https://images.pexels.com/photos/19902239/pexels-photo-19902239.jpeg?auto=compress&cs=tinysrgb&w=1600",
+       "shows": "데미글라스 소스를 두른 오므라이스",
        "match": "정확",
-       "rights": "사용자가 직접 찍어 보낸 사진"
+       "rights": "Pexels 라이선스, 상업적 이용·수정 가능(2026-10-26 확인)",
+       "credit": "사진: Markus Winkler / Pexels",
+       "terms": {
+        "url": "https://www.pexels.com/license/",
+        "checked": "2026-10-26",
+        "scope": "Pexels 라이선스, 상업적 이용·수정 가능, 표기 의무 없음",
+        "ok": true
+       }
       }
      }
     ],
@@ -250,44 +341,64 @@
    }
   },
   {
-   "say": "바삭한 게 당기면, 치즈돈까스.",
+   "say": "한 접시로 끝내고 싶으면, 오므라이스.",
    "subs": [
-    "바삭한 게 당기면,",
-    "치즈돈까스."
+    "한 접시로 끝내고 싶으면,",
+    "오므라이스."
    ],
    "show": {
     "grid": [
      {
       "photo": {
-       "url": "vault:photos/ig-17852634856066236.jpg",
-       "shows": "두부·햄 김치찌개 냄비",
-       "match": "정확",
+       "url": "vault:photos/ig-17872113808130784.jpg",
+       "shows": "미역국 한 그릇(부추·깨, 소고기는 국물 속이라 잘 안 보임)",
+       "match": "같은 종류",
        "rights": "사용자 촬영 비공개 보관함"
       }
      },
      {
       "photo": {
-       "url": "vault:photos/ig-17858642263047117.jpg",
-       "shows": "크림 파스타",
-       "match": "정확",
-       "rights": "사용자 촬영 비공개 보관함"
+       "url": "https://live.staticflickr.com/4015/4630695299_b0a51e3e16_b.jpg",
+       "shows": "팬에 볶은 제육볶음(양파·대파·당근)",
+       "match": "같은 종류",
+       "rights": "CC BY 2.0, 상업적 이용·수정 가능(2026-10-26 확인)",
+       "credit": "Kimtaro (CC BY 2.0) · www.flickr.com/photos/51035729853@N01/4630695299",
+       "terms": {
+        "url": "https://creativecommons.org/licenses/by/2.0/",
+        "checked": "2026-10-26",
+        "scope": "CC BY 2.0, 상업적 이용·수정 가능",
+        "ok": true
+       }
       }
      },
      {
       "photo": {
-       "url": "vault:photos/ig-17868934504027841.jpg",
-       "shows": "수제버거와 감자튀김",
+       "url": "https://images.pexels.com/photos/8954509/pexels-photo-8954509.jpeg?auto=compress&cs=tinysrgb&w=1600",
+       "shows": "뚝배기 순두부찌개",
        "match": "정확",
-       "rights": "사용자 촬영 비공개 보관함"
+       "rights": "Pexels 라이선스, 상업적 이용·수정 가능(2026-10-26 확인)",
+       "credit": "사진: makafood / Pexels",
+       "terms": {
+        "url": "https://www.pexels.com/license/",
+        "checked": "2026-10-26",
+        "scope": "Pexels 라이선스, 상업적 이용·수정 가능, 표기 의무 없음",
+        "ok": true
+       }
       }
      },
      {
       "photo": {
-       "url": "https://github.com/hong2-kim/jecheol-feed/releases/download/myphotos/2026-10-14-172554797.jpg",
-       "pos": "50% 82%",
-       "shows": "치즈돈까스 정식(치즈가 든 돈가스)",
+       "url": "https://images.pexels.com/photos/19902239/pexels-photo-19902239.jpeg?auto=compress&cs=tinysrgb&w=1600",
+       "shows": "데미글라스 소스를 두른 오므라이스",
        "match": "정확",
-       "rights": "사용자가 직접 찍어 보낸 사진"
+       "rights": "Pexels 라이선스, 상업적 이용·수정 가능(2026-10-26 확인)",
+       "credit": "사진: Markus Winkler / Pexels",
+       "terms": {
+        "url": "https://www.pexels.com/license/",
+        "checked": "2026-10-26",
+        "scope": "Pexels 라이선스, 상업적 이용·수정 가능, 표기 의무 없음",
+        "ok": true
+       }
       }
      }
     ],
@@ -297,44 +408,64 @@
    }
   },
   {
-   "say": "넷 중에 오늘 뭐 먹을래? 댓글로 알려 줘.",
+   "say": "월요일 저녁, 여러분은 어떤 메뉴가 당기세요?",
    "subs": [
-    "넷 중에 오늘 뭐 먹을래?",
-    "댓글로 알려 줘."
+    "월요일 저녁,",
+    "여러분은 어떤 메뉴가 당기세요?"
    ],
    "show": {
     "grid": [
      {
       "photo": {
-       "url": "vault:photos/ig-17852634856066236.jpg",
-       "shows": "두부·햄 김치찌개 냄비",
-       "match": "정확",
+       "url": "vault:photos/ig-17872113808130784.jpg",
+       "shows": "미역국 한 그릇(부추·깨, 소고기는 국물 속이라 잘 안 보임)",
+       "match": "같은 종류",
        "rights": "사용자 촬영 비공개 보관함"
       }
      },
      {
       "photo": {
-       "url": "vault:photos/ig-17858642263047117.jpg",
-       "shows": "크림 파스타",
-       "match": "정확",
-       "rights": "사용자 촬영 비공개 보관함"
+       "url": "https://live.staticflickr.com/4015/4630695299_b0a51e3e16_b.jpg",
+       "shows": "팬에 볶은 제육볶음(양파·대파·당근)",
+       "match": "같은 종류",
+       "rights": "CC BY 2.0, 상업적 이용·수정 가능(2026-10-26 확인)",
+       "credit": "Kimtaro (CC BY 2.0) · www.flickr.com/photos/51035729853@N01/4630695299",
+       "terms": {
+        "url": "https://creativecommons.org/licenses/by/2.0/",
+        "checked": "2026-10-26",
+        "scope": "CC BY 2.0, 상업적 이용·수정 가능",
+        "ok": true
+       }
       }
      },
      {
       "photo": {
-       "url": "vault:photos/ig-17868934504027841.jpg",
-       "shows": "수제버거와 감자튀김",
+       "url": "https://images.pexels.com/photos/8954509/pexels-photo-8954509.jpeg?auto=compress&cs=tinysrgb&w=1600",
+       "shows": "뚝배기 순두부찌개",
        "match": "정확",
-       "rights": "사용자 촬영 비공개 보관함"
+       "rights": "Pexels 라이선스, 상업적 이용·수정 가능(2026-10-26 확인)",
+       "credit": "사진: makafood / Pexels",
+       "terms": {
+        "url": "https://www.pexels.com/license/",
+        "checked": "2026-10-26",
+        "scope": "Pexels 라이선스, 상업적 이용·수정 가능, 표기 의무 없음",
+        "ok": true
+       }
       }
      },
      {
       "photo": {
-       "url": "https://github.com/hong2-kim/jecheol-feed/releases/download/myphotos/2026-10-14-172554797.jpg",
-       "pos": "50% 82%",
-       "shows": "치즈돈까스 정식(치즈가 든 돈가스)",
+       "url": "https://images.pexels.com/photos/19902239/pexels-photo-19902239.jpeg?auto=compress&cs=tinysrgb&w=1600",
+       "shows": "데미글라스 소스를 두른 오므라이스",
        "match": "정확",
-       "rights": "사용자가 직접 찍어 보낸 사진"
+       "rights": "Pexels 라이선스, 상업적 이용·수정 가능(2026-10-26 확인)",
+       "credit": "사진: Markus Winkler / Pexels",
+       "terms": {
+        "url": "https://www.pexels.com/license/",
+        "checked": "2026-10-26",
+        "scope": "Pexels 라이선스, 상업적 이용·수정 가능, 표기 의무 없음",
+        "ok": true
+       }
       }
      }
     ],
@@ -347,6 +478,6 @@
   "checked": "2026-10-26"
  },
  "review": {
-  "photo_sheet": "d2286420f975"
+  "photo_sheet": "8ba41ab20691"
  }
 }
