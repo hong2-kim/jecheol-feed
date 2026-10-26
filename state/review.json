@@ -79,12 +79,10 @@
     "noticed": null
   },
   "2026-10-26-10-voice": {
-    "verdict": "확인 필요",
+    "verdict": "통과",
     "hash": "f28fec00382a",
     "approved": false,
-    "reasons": [
-      "[확인] 사진 확인: 검수 시트를 만든 뒤 사진이 바뀌었어요. python3 scripts/review_sheet.py /home/runner/work/jecheol-feed/jecheol-feed/videos/2026-10-26/10-voice.json 시트.jpg 로 "
-    ],
+    "reasons": [],
     "noticed": "확인 필요:f28fec00382a"
   },
   "2026-10-26-2-news": {
