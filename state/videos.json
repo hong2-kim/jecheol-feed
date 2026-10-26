@@ -24,7 +24,7 @@
     "seconds": 16.5,
     "size_mb": 3.7,
     "yt_title": "김천김밥축제 우승 김밥 편의점 출시, 축제 1등 김밥 줄 안 서고 먹는다?",
-    "sha256": "45d6d2055a98c19849b217d6fc8625f7c4b49b8da5b0318892e5374412364f83"
+    "sha256": "b27ba6f4f9b000bd9e1e0f0b6f00b77f6d28f502346a1b2f49016a5566a79417"
   },
   {
     "id": "2026-10-26-3-dinner",
@@ -46,7 +46,7 @@
     "seconds": 15.1,
     "size_mb": 6.5,
     "yt_title": "월요일 저녁 메뉴 뭐 먹지? 김치찌개·크림 파스타·수제버거·치즈돈까스 중에 골라 줄게",
-    "sha256": "887c64fb4e44df41cef53160bec24d4b16448655cb0a90010cdcf0414ada8c1b"
+    "sha256": "18832b5e19970a47fbc06ff61f90c7acb4c69aab0388fe05f8f65774b49c69a7"
   },
   {
     "id": "2026-10-26-2-news",
@@ -117,9 +117,10 @@
     ],
     "url": "https://github.com/hong2-kim/jecheol-feed/releases/download/v2026-10-26/2026-10-26-10-voice.mp4",
     "seconds": 44.9,
-    "size_mb": 7.2,
+    "size_mb": 6.9,
     "yt_title": "대구 떡볶이 페스티벌 2026, 방문객 31만 명·1인당 소비 24.3% 늘었어요",
-    "sha256": "530ee0152969891bedf24736ca7fc271a85ce4fcaffbc0d32a372c9f520b0ff8"
+    "sha256": "a64bbe9c69a282cbf798852291ff66b23a45a1a99bc625f8ddf48487974e8e5b",
+    "held": "확인 필요"
   },
   {
     "id": "2026-10-25-8-trend",
