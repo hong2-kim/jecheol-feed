@@ -122,6 +122,41 @@ body { background: #0E0B09; color: #fff; font-family: "Noto Sans KR", sans-serif
 .check .say .end b { display: block; font-size: 70px; font-weight: 900; letter-spacing: -2px; }
 .check .say .end span { display: block; margin-top: 14px; font-size: 44px; color: #A89E92; font-weight: 700; }
 
+/* 업체 김밥(lineup): 사진 타일 2~4개, 아래에 지역·업체와 김밥 이름. 오른쪽 15%(쇼츠 단추 자리)는 비워요 (2026-10-26) */
+.lineup { background: #17130F; }
+.lineup .head { position: absolute; left: 60px; right: 60px; top: 190px; text-align: center; }
+.lineup .head .kicker { font-size: 46px; font-weight: 800; color: var(--ac); }
+.lineup .head .title { white-space: pre-line; margin-top: 8px; font-size: 94px; font-weight: 900; line-height: 1.15; letter-spacing: -3px; }
+.lineup .grid { position: absolute; left: 60px; width: 840px; top: 480px; display: flex; flex-wrap: wrap; justify-content: center; gap: 46px 40px; }
+.lineup .it { width: 400px; }
+.lineup .ph { position: relative; width: 400px; height: 350px; border-radius: 24px; overflow: hidden; box-shadow: 0 12px 32px rgba(0,0,0,.5); }
+.lineup .ph img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.lineup .badge { position: absolute; left: 14px; top: 14px; padding: 6px 20px 9px; border-radius: 999px; background: var(--ac); color: #17130F; font-size: 32px; font-weight: 900; }
+.lineup .rg { margin-top: 16px; font-size: 34px; font-weight: 700; color: #B9AEA1; letter-spacing: -.5px; }
+.lineup .mn { margin-top: 2px; font-size: 50px; font-weight: 900; line-height: 1.15; letter-spacing: -1.5px; }
+.lineup.n2 .grid { top: 560px; }
+.lineup.n2 .ph { height: 500px; }
+.lineup .note { position: absolute; left: 60px; right: 162px; top: 1420px; font-size: 52px; font-weight: 800; text-align: center; letter-spacing: -1.5px; }
+.lineup.n2 .note { top: 1400px; }
+.tile.a { animation-name: tile; }
+@keyframes tile { from { opacity: 0; transform: translateY(46px) scale(.94); } to { opacity: 1; transform: var(--tf, none); } }
+
+/* 끝 장면(winners): 역대 우승작 세 장 + 가운데 물음. 올해 것이 가장 크게 (2026-10-26) */
+.winners { background: #17130F; }
+.winners .w { position: absolute; border: 10px solid #fff; border-radius: 24px; overflow: hidden; box-shadow: 0 16px 44px rgba(0,0,0,.6); transform: var(--tf); }
+.winners .w img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.winners .w1 { left: 56px; top: 170px; width: 430px; height: 360px; --tf: rotate(-4deg); }
+.winners .w2 { left: 490px; top: 210px; width: 420px; height: 350px; --tf: rotate(4deg); }
+.winners .w3 { left: 120px; top: 1060px; width: 700px; height: 470px; --tf: rotate(-2deg); border-color: var(--ac); }
+.winners .lb { position: absolute; left: 0; right: 0; bottom: 0; padding: 50px 22px 16px; background: linear-gradient(180deg, rgba(8,6,4,0), rgba(8,6,4,.88) 55%); }
+.winners .lb span { display: block; font-size: 30px; font-weight: 800; color: var(--ac); }
+.winners .lb b { display: block; font-size: 42px; font-weight: 900; letter-spacing: -1px; line-height: 1.15; }
+.winners .w3 .lb span { font-size: 36px; }
+.winners .w3 .lb b { font-size: 56px; }
+.winners .q { position: absolute; left: 60px; right: 60px; top: 640px; text-align: center; }
+.winners .q i { display: block; font-style: normal; font-size: 44px; font-weight: 700; color: #B9AEA1; }
+.winners .q b { display: block; white-space: pre-line; margin-top: 10px; font-size: 84px; font-weight: 900; line-height: 1.16; letter-spacing: -3px; }
+
 /* 한 장 정리(시안 C): 저장하고 싶어지는 표 한 장. 줄이 차례로 밝아져요 */
 .sheet { background: #F3EAD7; color: #17130F; }
 .sheet .head { position: absolute; left: 60px; right: 60px; top: 150px; }

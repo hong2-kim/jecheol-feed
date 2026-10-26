@@ -436,6 +436,42 @@ def scene_sheet(s, i, ctx):
     return "sheet", title + f'<div class="box">{table}{note}{save}</div>'
 
 
+def scene_lineup(s, i, ctx):
+    """참가 업체 김밥을 사진 타일로 2~4개씩. 사진 아래에 지역·업체 이름과 김밥 이름. 타일이 차례로 올라와요.
+    (2026-10-26 사용자: 김천김밥축제 쇼츠가 글자 위주라 어떤 김밥인지 모르겠다, 업체 사진을 3~4개씩 나눠 보여 주자)
+
+    {"type": "lineup", "kicker", "title", "items": [{"photo", "region", "shop", "menu", "badge"}], "note"}
+    업체 이름과 사진은 꼭 같은 집 같은 김밥이어야 해요. 같은 종류 사진으로 대신하지 않아요.
+    """
+    items, dur = s["items"], s["dur"]
+    t0 = .35
+    seg = min(.45, (dur * .55 - t0) / len(items))
+    cells = ""
+    for k, it in enumerate(items):
+        badge = f'<span class="badge">{esc(it["badge"])}</span>' if it.get("badge") else ""
+        where = " · ".join(v for v in (it.get("region"), it.get("shop")) if v)
+        cells += (f'<div class="it a tile" style="--dl:{round(t0 + k * seg, 2)}s;--d:.4s"><div class="ph">{img(it["photo"])}{badge}</div>'
+                  f'<div class="rg">{esc(where)}</div><div class="mn">{rich(it["menu"])}</div></div>')
+    head = f'<div class="head">{rise("kicker", s.get("kicker", ""), .1)}{rise("title", s["title"], .3)}</div>'
+    note = rise("note", s["note"], .6) if s.get("note") else ""
+    return f'lineup n{len(items)}', f'{head}<div class="grid">{cells}</div>{note}'
+
+
+def scene_winners(s, i, ctx):
+    """끝 장면. 역대 우승작 사진 세 장을 모으고 가운데에 다음 축제를 묻는 말. 올해 것(마지막)이 가장 크게.
+    (2026-10-26 사용자: 1·2·3회 우승작을 한 화면에 모으고 "다음엔 대체 무슨 김밥이 나올까?")
+
+    {"type": "winners", "kicker", "title", "items": [{"photo", "no", "name"}, …3개]}
+    """
+    pics = ""
+    for k, it in enumerate(s["items"][:3]):
+        pics += (f'<div class="w w{k + 1} a tile" style="--dl:{.1 + k * .3:.2f}s;--d:.4s">{img(it["photo"])}'
+                 f'<div class="lb"><span>{esc(it["no"])}</span><b>{rich(it["name"])}</b></div></div>')
+    kicker = f'<i>{rich(s["kicker"])}</i>' if s.get("kicker") else ""
+    q = f'<div class="q a hold" style="--dl:1s;--d:.45s">{kicker}<b>{rich(s["title"])}</b></div>'
+    return "winners", pics + q
+
+
 CREDIT = re.compile(r"^(?P<who>.+?)\s*\((?P<lic>[^()]*)\)(?:\s*·\s*(?P<link>.+))?$")
 FREE = ("CC0", "Public domain", "PDM")
 
@@ -536,7 +572,8 @@ def brand_foot(theme, lines=()):
 
 
 SCENES = {"cover": scene_cover, "card": scene_card, "duo": scene_duo, "info": scene_info,
-          "check": scene_check, "sheet": scene_sheet, "rank": scene_rank, "tease": scene_tease}
+          "check": scene_check, "sheet": scene_sheet, "rank": scene_rank, "tease": scene_tease,
+          "lineup": scene_lineup, "winners": scene_winners}
 
 # 장면이 넘어가는 방법 (base.css 의 in-이름, out-이름). 영상 종류마다 다르게 섞어요.
 TRANSITION = 0.3
@@ -566,6 +603,8 @@ SQUEEZE = 1.0  # 마지막으로 fit 이 장면 길이를 줄인 비율 (1.0 = �
 def longest(spec):
     if spec.get("format") == "voice":  # 내레이션 쇼츠는 읽는 시간만큼 (59초까지)
         return 59.0
+    if spec.get("longest"):  # 사용자가 장면을 더 넣어 달라고 한 영상만 (2026-10-26 김천김밥축제 업체·우승작)
+        return float(spec["longest"])
     skit =spec.get("kind") == "발견" or any(s["type"] == "rank" for s in spec.get("scenes", []))
     return LONGEST_SKIT if skit else LONGEST
 
