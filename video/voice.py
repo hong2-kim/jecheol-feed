@@ -13,7 +13,7 @@
   "cast": {"A": {"voice": "ko-KR-Chirp3-HD-Puck", "rate": 1.1, "label": "준", "color": "#2F7DD1"}, "B": {...}}
       등장인물마다 다른 목소리. 문장에 "who": "A" 를 적어요. 한 목소리로 두 사람을 하지 않아요(problems 가 막아요).
   문장마다 "gap"(다음 문장까지 쉼, 초. 끼어드는 맞장구는 -0.1까지), "rate"(그 문장만 빠르기)를 적을 수 있어요.
-  사진 대신 "card": 가격표(price)·순서(steps)·예산 막대(budget)·고르기(pick) 그래픽, "video": 영상 조각(소리는 빼요).
+  사진 대신 "card": 가격표(price)·순서(steps)·예산 막대(budget)·고르기(pick)·막대(bars)·가게 이름표(shops)·끝 화면 이름표 콜라주(collage) 그래픽, "video": 영상 조각(소리는 빼요).
       다음 문장에 그림이 없으면 앞 그림이 끊기지 않고 이어져요. 카드 줄은 "beat": n 이면 그 묶음의 n번째 문장이 시작될 때 나와요.
   "photo_note": "사진은 예시예요" 를 적으면 사진·영상 장면 귀퉁이에 작게 보여요(실제 상품 사진이 아닐 때). 그 음식을 찍은 것이면 "own": true.
   "narrator": {"voice": ..., "rate": ...} 혼자 읽는 영상을 채널 목소리와 다른 목소리로 읽어요.
@@ -232,6 +232,23 @@ CSS = """
 .vbr .fill { flex: none; height: 100%; border-radius: 0 16px 16px 0; transform-origin: left center; }
 .vbr b { flex: none; font-size: 46px; font-weight: 900; color: #6d5f4c; font-variant-numeric: tabular-nums; white-space: nowrap; }
 .vbr.hl b { color: #D8432B; font-size: 52px; }
+.vcard.shops { padding-top: 34px; }
+.vshop { display: flex; align-items: center; gap: 30px; margin-bottom: 18px; padding: 20px 32px; border-radius: 26px; background: #fff;
+         box-shadow: 0 6px 0 #E6D5B5; }
+.vshop i { flex: none; width: 172px; padding: 12px 0 16px; border-radius: 18px; color: #fff; font-style: normal; font-size: 40px; font-weight: 900;
+           text-align: center; line-height: 1.15; }
+.vshop div { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+.vshop b { font-size: 64px; font-weight: 900; letter-spacing: -2px; white-space: nowrap; line-height: 1.15; }
+.vshop span { font-size: 42px; color: #6d5f4c; font-weight: 800; line-height: 1.2; }
+.vshop span .am { color: #D8432B; }
+.vcard.collage { padding: 34px 34px 0; background: #1F2A1A; }
+.vcol { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px 10px; align-items: center; }
+.vtag { justify-self: center; padding: 10px 20px 14px; line-height: 1.15; border-radius: 14px; border: 5px solid #FFF6E6; color: #fff; font-weight: 900;
+        white-space: nowrap; letter-spacing: -1.5px; box-shadow: 0 6px 0 rgba(0,0,0,.35); }
+.vmid { grid-column: 1 / -1; margin: 16px 0; padding: 34px 20px 42px; border-radius: 30px; background: #FFF6E6; text-align: center;
+        font-size: 78px; font-weight: 900; line-height: 1.22; letter-spacing: -3px; color: #1d1a16; }
+.vmid .am { color: #D8432B; }
+.vcard.collage .vsrc { color: #b9c7ae; text-align: center; margin-top: 18px; }
 """
 PIN = ('<svg viewBox="0 0 200 250"><path d="M100 244C100 244 16 150 16 92a84 84 0 01168 0c0 58-84 152-84 152z" fill="#D8432B"/>'
        '<circle cx="100" cy="92" r="60" fill="#FFFDF5"/><path d="M62 84h76c0 26-16 42-38 42S62 110 62 84z" fill="#D8432B"/>'
@@ -400,6 +417,19 @@ def card_html(B, card, beats):
             body.append(f'<div class="vbr{" hl" if r.get("hl") else ""}"><span class="a rise" style="--dl:{t:.2f}s;--d:.25s">{rich(r["name"])}</span>'
                         f'<div class="tr"><div class="fill a grow" style="width:{r["value"] / top * 100 * card.get("scale", .45):.1f}%;background:{color};--dl:{t:.2f}s;--d:.5s"></div>'
                         f'<b class="a rise" style="--dl:{t + .35:.2f}s;--d:.25s">{rich(r.get("label", ""))}</b></div></div>')
+    elif kind == "shops":  # 가게 소개: 줄마다 {"name": 상호, "region": 지역, "menu": 대표 메뉴}. 사진 없이 이름표로 (이용 허락된 가게 사진이 없을 때)
+        for k, r in enumerate(card["rows"]):
+            t = _at(r, k, beats, step=0.45)
+            body.append(f'<div class="vshop a rise" style="--dl:{t:.2f}s;--d:.3s"><i style="background:{r.get("color", colors[k % 5])}">{esc(r["region"]).replace(chr(10), "<br>")}</i>'
+                        f'<div><b>{esc(r["name"])}</b><span>{rich(r["menu"])}</span></div></div>')
+    elif kind == "collage":  # 끝 화면: 가운데 큰 물음, 둘레에 가게 이름표. "names" 12개 안팎(위 6 · 아래 6)
+        names = card["names"]
+        half = (len(names) + 1) // 2
+        tag = lambda k, n: (f'<div class="vtag a pop" style="background:{colors[k % 5]};font-size:{50 if len(n) <= 4 else 44 if len(n) <= 6 else 37}px;'
+                            f'transform:rotate({(-2, 1.5, -1, 2)[k % 4]}deg);--dl:{.15 + k * .07:.2f}s;--d:.25s">{esc(n)}</div>')
+        body.append('<div class="vcol">' + "".join(tag(k, n) for k, n in enumerate(names[:half]))
+                    + f'<div class="vmid a pop" style="--dl:.05s;--d:.3s">{rich(card["center"]).replace(chr(10), "<br>")}</div>'
+                    + "".join(tag(half + k, n) for k, n in enumerate(names[half:])) + '</div>')
     return f'<div class="vcard {esc(kind)}">{title}{sub}<div class="vcb">{"".join(body)}</div>{src}</div>'
 
 
