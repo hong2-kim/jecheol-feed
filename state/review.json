@@ -80,14 +80,14 @@
   },
   "2026-10-26-10-voice": {
     "verdict": "통과",
-    "hash": "f28fec00382a",
+    "hash": "66176ed0b6ef",
     "approved": false,
     "reasons": [],
     "noticed": "확인 필요:f28fec00382a"
   },
   "2026-10-26-2-news": {
     "verdict": "통과",
-    "hash": "66f5e277c914",
+    "hash": "fa3f1e9f6390",
     "approved": false,
     "reasons": [],
     "noticed": null
