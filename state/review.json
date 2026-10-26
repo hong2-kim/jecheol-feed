@@ -94,16 +94,19 @@
   },
   "2026-10-26-3-dinner": {
     "verdict": "통과",
-    "hash": "49c84981480f",
+    "hash": "cfee4afe7424",
     "approved": false,
     "reasons": [],
     "noticed": null
   },
   "2026-10-26-4-find": {
     "verdict": "통과",
-    "hash": "03d0fa187fcf",
-    "approved": false,
-    "reasons": [],
+    "hash": "1202f08ecf59",
+    "approved": true,
+    "reasons": [
+      "[확인] 사진 일치: scenes[6].items[1].photo: 글에 나온 이름 '고추잡채'이(가) 사진(shows: 아리랑김밥 먹물명이김밥)에 없어요. 그 대상이 찍힌 사진으로 바꾸거나 사진 없는 장으로",
+      "[확인] 사진 일치: scenes[6].items[2].photo: 글에 나온 이름 '고추잡채'이(가) 사진(shows: 땡초김밥본점 땡초김밥)에 없어요. 그 대상이 찍힌 사진으로 바꾸거나 사진 없는 장으로"
+    ],
     "noticed": null
   }
 }
