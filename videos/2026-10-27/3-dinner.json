@@ -1,0 +1,348 @@
+{
+ "format": "voice",
+ "layout": "rec",
+ "kind": "저녁",
+ "subject": "화요일 저녁 (김치찌개·치즈돈까스·크림 파스타·텐동)",
+ "title": "화요일 저녁, 넷 중 골라 줄게! 김치찌개·치즈돈까스·파스타·텐동",
+ "summary": "화요일 저녁, 당기는 것별로 김치찌개·치즈돈까스·크림 파스타·텐동 넷 중에 골라 줘요.",
+ "headline": "화요일 저녁\n[[넷 중 골라 줌]]",
+ "small": "화요일 저녁, 넷 중에 골라 줄게",
+ "intro": 7,
+ "length": [
+  15,
+  25
+ ],
+ "thumb": {
+  "head": "화요일 저녁\n[[넷 중 골라 줌]]",
+  "sub": "넷 중 [[하나만]] 먹는다면",
+  "photo": {
+   "url": "https://github.com/hong2-kim/jecheol-feed/releases/download/myphotos/2026-10-14-172554797.jpg",
+   "pos": "50% 85%",
+   "shows": "치즈돈까스 정식 한 상(돈까스 접시와 밥·반찬)",
+   "match": "정확",
+   "rights": "사용자가 텔레그램으로 보낸 사진(2026-10-14)"
+  }
+ },
+ "yt_title": "화요일 저녁 메뉴 뭐 먹지? 김치찌개·치즈돈까스·크림 파스타·텐동 중에 골라 줌",
+ "yt_keyword": "화요일 저녁 메뉴",
+ "yt_related": [
+  "저녁 메뉴 추천",
+  "오늘 뭐 먹지",
+  "김치찌개",
+  "치즈돈까스",
+  "텐동"
+ ],
+ "yt_tags": [
+  "화요일 저녁 메뉴",
+  "저녁 메뉴 추천",
+  "오늘 뭐 먹지",
+  "저녁 뭐 먹지",
+  "김치찌개",
+  "치즈돈까스",
+  "크림 파스타",
+  "텐동"
+ ],
+ "yt_hashtags": [
+  "화요일저녁메뉴",
+  "오늘뭐먹지",
+  "저녁메뉴추천"
+ ],
+ "yt_lead": "화요일 저녁 메뉴 고민될 때, 김치찌개·치즈돈까스·크림 파스타·텐동 넷 중에 하나만 골라요.",
+ "caption": "화요일 저녁, 뭐 먹을지 아직 못 정했다면? 이 넷 중에 골라 줄게요!\n\n얼큰한 게 당기면 김치찌개\n바삭한 게 당기면 치즈돈까스\n크림이 당기면 파스타\n든든한 덮밥이 당기면 텐동\n\n넷 중에 오늘 뭐 먹을래요? 댓글로 알려 주세요.",
+ "tags": [
+  "화요일저녁메뉴",
+  "저녁메뉴추천",
+  "오늘뭐먹지",
+  "치즈돈까스"
+ ],
+ "sources": [],
+ "credits": [],
+ "lines": [
+  {
+   "say": "화요일 저녁, 넷 중 골라 줄게!",
+   "nosub": true,
+   "show": {
+    "thumb": true
+   }
+  },
+  {
+   "say": "자, 시작!",
+   "show": {
+    "grid": [
+     {
+      "photo": {
+       "url": "vault:photos/ig-17852634856066236.jpg",
+       "shows": "두부·햄·김치가 들어간 김치찌개가 끓는 모습",
+       "match": "정확",
+       "rights": "사용자 촬영 비공개 보관함"
+      }
+     },
+     {
+      "photo": {
+       "url": "https://github.com/hong2-kim/jecheol-feed/releases/download/myphotos/2026-10-14-172554797.jpg",
+       "pos": "50% 85%",
+       "shows": "치즈돈까스 정식 한 상(돈까스 접시와 밥·반찬)",
+       "match": "정확",
+       "rights": "사용자가 텔레그램으로 보낸 사진(2026-10-14)"
+      }
+     },
+     {
+      "photo": {
+       "url": "vault:photos/ig-17858642263047117.jpg",
+       "shows": "베이컨·버섯이 든 크림 스파게티",
+       "match": "같은 종류",
+       "rights": "사용자 촬영 비공개 보관함"
+      }
+     },
+     {
+      "photo": {
+       "url": "vault:photos/ig-17984192635429931.jpg",
+       "shows": "새우·김·튀김이 올라간 텐동과 미소국",
+       "match": "정확",
+       "rights": "사용자 촬영 비공개 보관함"
+      }
+     }
+    ],
+    "dir": "2x2",
+    "own": true,
+    "fade": 0.45
+   }
+  },
+  {
+   "say": "얼큰한 게 당기면, 김치찌개.",
+   "subs": [
+    "얼큰한 게 당기면,",
+    "김치찌개."
+   ],
+   "show": {
+    "grid": [
+     {
+      "photo": {
+       "url": "vault:photos/ig-17852634856066236.jpg",
+       "shows": "두부·햄·김치가 들어간 김치찌개가 끓는 모습",
+       "match": "정확",
+       "rights": "사용자 촬영 비공개 보관함"
+      }
+     },
+     {
+      "photo": {
+       "url": "https://github.com/hong2-kim/jecheol-feed/releases/download/myphotos/2026-10-14-172554797.jpg",
+       "pos": "50% 85%",
+       "shows": "치즈돈까스 정식 한 상(돈까스 접시와 밥·반찬)",
+       "match": "정확",
+       "rights": "사용자가 텔레그램으로 보낸 사진(2026-10-14)"
+      }
+     },
+     {
+      "photo": {
+       "url": "vault:photos/ig-17858642263047117.jpg",
+       "shows": "베이컨·버섯이 든 크림 스파게티",
+       "match": "같은 종류",
+       "rights": "사용자 촬영 비공개 보관함"
+      }
+     },
+     {
+      "photo": {
+       "url": "vault:photos/ig-17984192635429931.jpg",
+       "shows": "새우·김·튀김이 올라간 텐동과 미소국",
+       "match": "정확",
+       "rights": "사용자 촬영 비공개 보관함"
+      }
+     }
+    ],
+    "dir": "2x2",
+    "own": true,
+    "hl": 0
+   }
+  },
+  {
+   "say": "바삭한 게 당기면, 치즈돈까스.",
+   "subs": [
+    "바삭한 게 당기면,",
+    "치즈돈까스."
+   ],
+   "show": {
+    "grid": [
+     {
+      "photo": {
+       "url": "vault:photos/ig-17852634856066236.jpg",
+       "shows": "두부·햄·김치가 들어간 김치찌개가 끓는 모습",
+       "match": "정확",
+       "rights": "사용자 촬영 비공개 보관함"
+      }
+     },
+     {
+      "photo": {
+       "url": "https://github.com/hong2-kim/jecheol-feed/releases/download/myphotos/2026-10-14-172554797.jpg",
+       "pos": "50% 85%",
+       "shows": "치즈돈까스 정식 한 상(돈까스 접시와 밥·반찬)",
+       "match": "정확",
+       "rights": "사용자가 텔레그램으로 보낸 사진(2026-10-14)"
+      }
+     },
+     {
+      "photo": {
+       "url": "vault:photos/ig-17858642263047117.jpg",
+       "shows": "베이컨·버섯이 든 크림 스파게티",
+       "match": "같은 종류",
+       "rights": "사용자 촬영 비공개 보관함"
+      }
+     },
+     {
+      "photo": {
+       "url": "vault:photos/ig-17984192635429931.jpg",
+       "shows": "새우·김·튀김이 올라간 텐동과 미소국",
+       "match": "정확",
+       "rights": "사용자 촬영 비공개 보관함"
+      }
+     }
+    ],
+    "dir": "2x2",
+    "own": true,
+    "hl": 1
+   }
+  },
+  {
+   "say": "크림이 당기면, 파스타.",
+   "show": {
+    "grid": [
+     {
+      "photo": {
+       "url": "vault:photos/ig-17852634856066236.jpg",
+       "shows": "두부·햄·김치가 들어간 김치찌개가 끓는 모습",
+       "match": "정확",
+       "rights": "사용자 촬영 비공개 보관함"
+      }
+     },
+     {
+      "photo": {
+       "url": "https://github.com/hong2-kim/jecheol-feed/releases/download/myphotos/2026-10-14-172554797.jpg",
+       "pos": "50% 85%",
+       "shows": "치즈돈까스 정식 한 상(돈까스 접시와 밥·반찬)",
+       "match": "정확",
+       "rights": "사용자가 텔레그램으로 보낸 사진(2026-10-14)"
+      }
+     },
+     {
+      "photo": {
+       "url": "vault:photos/ig-17858642263047117.jpg",
+       "shows": "베이컨·버섯이 든 크림 스파게티",
+       "match": "같은 종류",
+       "rights": "사용자 촬영 비공개 보관함"
+      }
+     },
+     {
+      "photo": {
+       "url": "vault:photos/ig-17984192635429931.jpg",
+       "shows": "새우·김·튀김이 올라간 텐동과 미소국",
+       "match": "정확",
+       "rights": "사용자 촬영 비공개 보관함"
+      }
+     }
+    ],
+    "dir": "2x2",
+    "own": true,
+    "hl": 2
+   }
+  },
+  {
+   "say": "든든한 덮밥이 당기면, 텐동.",
+   "subs": [
+    "든든한 덮밥이 당기면,",
+    "텐동."
+   ],
+   "show": {
+    "grid": [
+     {
+      "photo": {
+       "url": "vault:photos/ig-17852634856066236.jpg",
+       "shows": "두부·햄·김치가 들어간 김치찌개가 끓는 모습",
+       "match": "정확",
+       "rights": "사용자 촬영 비공개 보관함"
+      }
+     },
+     {
+      "photo": {
+       "url": "https://github.com/hong2-kim/jecheol-feed/releases/download/myphotos/2026-10-14-172554797.jpg",
+       "pos": "50% 85%",
+       "shows": "치즈돈까스 정식 한 상(돈까스 접시와 밥·반찬)",
+       "match": "정확",
+       "rights": "사용자가 텔레그램으로 보낸 사진(2026-10-14)"
+      }
+     },
+     {
+      "photo": {
+       "url": "vault:photos/ig-17858642263047117.jpg",
+       "shows": "베이컨·버섯이 든 크림 스파게티",
+       "match": "같은 종류",
+       "rights": "사용자 촬영 비공개 보관함"
+      }
+     },
+     {
+      "photo": {
+       "url": "vault:photos/ig-17984192635429931.jpg",
+       "shows": "새우·김·튀김이 올라간 텐동과 미소국",
+       "match": "정확",
+       "rights": "사용자 촬영 비공개 보관함"
+      }
+     }
+    ],
+    "dir": "2x2",
+    "own": true,
+    "hl": 3
+   }
+  },
+  {
+   "say": "넷 중에 오늘 뭐 먹을래? 댓글로 알려 줘.",
+   "subs": [
+    "넷 중에 오늘 뭐 먹을래?",
+    "댓글로 알려 줘."
+   ],
+   "show": {
+    "grid": [
+     {
+      "photo": {
+       "url": "vault:photos/ig-17852634856066236.jpg",
+       "shows": "두부·햄·김치가 들어간 김치찌개가 끓는 모습",
+       "match": "정확",
+       "rights": "사용자 촬영 비공개 보관함"
+      }
+     },
+     {
+      "photo": {
+       "url": "https://github.com/hong2-kim/jecheol-feed/releases/download/myphotos/2026-10-14-172554797.jpg",
+       "pos": "50% 85%",
+       "shows": "치즈돈까스 정식 한 상(돈까스 접시와 밥·반찬)",
+       "match": "정확",
+       "rights": "사용자가 텔레그램으로 보낸 사진(2026-10-14)"
+      }
+     },
+     {
+      "photo": {
+       "url": "vault:photos/ig-17858642263047117.jpg",
+       "shows": "베이컨·버섯이 든 크림 스파게티",
+       "match": "같은 종류",
+       "rights": "사용자 촬영 비공개 보관함"
+      }
+     },
+     {
+      "photo": {
+       "url": "vault:photos/ig-17984192635429931.jpg",
+       "shows": "새우·김·튀김이 올라간 텐동과 미소국",
+       "match": "정확",
+       "rights": "사용자 촬영 비공개 보관함"
+      }
+     }
+    ],
+    "dir": "2x2",
+    "own": true
+   }
+  }
+ ],
+ "dates": {
+  "checked": "2026-10-27"
+ },
+ "review": {
+  "photo_sheet": "c6c6ccc47385"
+ }
+}
