@@ -17,6 +17,8 @@
       다음 문장에 그림이 없으면 앞 그림이 끊기지 않고 이어져요. 카드 줄은 "beat": n 이면 그 묶음의 n번째 문장이 시작될 때 나와요.
   "photo_note": "사진은 예시예요" 를 적으면 사진·영상 장면 귀퉁이에 작게 보여요(실제 상품 사진이 아닐 때). 그 음식을 찍은 것이면 "own": true.
   "narrator": {"voice": ..., "rate": ...} 혼자 읽는 영상을 채널 목소리와 다른 목소리로 읽어요.
+  "cast": "duo" 채널 짝(config.json youtube.duo)으로 나눠 읽어요. 문장에 "who": "host"(진행, 여)·"guide"(설명, 남). 이름표는 없어요.
+      혼자 읽으면 "narrator": "host" 또는 "guide". (2026-10-28 사용자가 정함, rules/daily/voice.md)
   "length": [20, 35] 로 목표 길이를, "facts": [...] 로 가격·시간 근거를 적어요(verify 가 대본 속 금액·시간과 맞춰 봐요).
 
 말투·소재 (2026-10-19 2차):
@@ -288,6 +290,20 @@ def line_photos(lines):
     return out
 
 
+def with_duo(spec):
+    """"cast": "duo" 를 채널 짝(config.json 의 youtube.duo, 진행 host·설명 guide)으로 바꿔요. 이름표 없이 목소리만 달라요.
+    혼자 읽을 때는 "narrator": "host"(여)·"guide"(남)로 둘 중 하나를 골라요. (2026-10-28 사용자가 정함)"""
+    if spec.get("cast") != "duo" and not isinstance(spec.get("narrator"), str):
+        return spec
+    duo = (json.loads((ROOT / "config.json").read_text(encoding="utf-8")).get("youtube") or {}).get("duo") or {}
+    spec = dict(spec)
+    if spec.get("cast") == "duo":
+        spec["cast"] = duo
+    if isinstance(spec.get("narrator"), str):
+        spec["narrator"] = duo.get(spec["narrator"], {})
+    return spec
+
+
 def who_of(spec, line):
     """그 문장을 말하는 사람의 설정(목소리·빠르기·이름·색). 혼자 읽는 영상이면 빈 dict."""
     return (spec.get("cast") or {}).get(line.get("who") or "", {}) if line.get("who") else {}
@@ -447,6 +463,7 @@ def build_voice(spec, work=None):
     """내레이션 쇼츠 HTML. (HTML, 길이, meta) — meta["voice"] 는 목소리 wav 경로(키가 없으면 None)."""
     import build as B
 
+    spec = with_duo(spec)
     lines = spec["lines"]
     voices = []
     narr = spec.get("narrator") or {}  # 혼자 읽는 영상의 목소리를 채널 목소리와 다르게 할 때 {"voice": ..., "rate": ...}
@@ -461,8 +478,7 @@ def build_voice(spec, work=None):
     durs = [s + g for s, g in zip(speech, gaps(spec, lines))]
     starts = [sum(durs[:i]) for i in range(len(lines))]
     body = sum(durs)
-    credits = B.credit_lines(spec)
-    credits = credits if len(credits) > 1 else []
+    credits = []  # 끝 장면에는 사진 출처를 넣지 않고 게시글·설명에만 적어요 (2026-10-22·10-28 사용자: "글로만 넣을꺼라고 했어")
     tail = 1.6
     css = (HERE / "base.css").read_text(encoding="utf-8").replace("FONT_DIR", (HERE / "fonts").as_uri())
     import thumb
@@ -510,10 +526,11 @@ def build_voice(spec, work=None):
             last_photo = photos[-1]
         for i, l in enumerate(lines):
             # 자막: 문장을 덩어리로 나눠 읽는 속도에 맞춰 차례로 바꿔요. 대화형은 말하는 사람 이름표와 색 띠를 붙여요
+            # (해설의 진행·설명 짝처럼 cast 에 label 이 없으면 이름표 없이 목소리만 바꿔요, 2026-10-28)
             c = who_of(spec, l)
-            tag = f'<span class="vwho" style="background:{c.get("color", "#333")}">{B.esc(c.get("label", l["who"]))}</span>' if c else ""
+            tag = f'<span class="vwho" style="background:{c.get("color", "#333")}">{B.esc(c["label"])}</span>' if c.get("label") else ""
             bar = f' style="box-shadow:inset 18px 0 0 {c["color"]}"' if c.get("color") else ""
-            room = CHUNK - 2 if c else CHUNK  # 이름표 자리만큼 한 번에 보여 줄 글을 줄여요
+            room = CHUNK - 2 if tag else CHUNK  # 이름표 자리만큼 한 번에 보여 줄 글을 줄여요
             parts = chunks(l["say"], room)
             weights = [B.units(p) + 1 for p in parts]
             t, said, d = starts[i], speech[i], durs[i]
@@ -553,6 +570,7 @@ def build_voice(spec, work=None):
 def problems(spec):
     """대본 길이와 빠진 것을 알려 줘요. (꼭 고칠 것, 보면 좋은 것, 어림 길이)"""
     import build as B
+    spec = with_duo(spec)
     must, should = [], []
     lines = spec.get("lines") or []
     lo, hi = spec.get("length") or (35, 50)  # 저녁 추천처럼 짧게 만드는 영상은 "length": [20, 35]

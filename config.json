@@ -28,9 +28,13 @@
     "gate": true
   },
   "youtube": {
-    "voice": "ko-KR-Wavenet-A",
+    "voice": "ko-KR-Chirp3-HD-Leda",
     "speaking_rate": 1.3,
-    "note": "2026-10-15 사용자가 고름: WaveNet 여자 목소리, 1.25배와 1.35배 사이",
+    "note": "2026-10-28 사용자가 고름: 채널 목소리는 Leda(여). 내레이션 쇼츠는 duo 짝으로 나눠 읽어요(rules/daily/voice.md). 예전 목소리는 ko-KR-Wavenet-A",
+    "duo": {
+      "host": {"voice": "ko-KR-Chirp3-HD-Leda", "rate": 1.3},
+      "guide": {"voice": "ko-KR-Chirp3-HD-Achird", "rate": 1.3}
+    },
     "handle": "@meokgomap"
   }
 }
