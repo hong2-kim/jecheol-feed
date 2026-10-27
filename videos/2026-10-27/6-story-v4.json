@@ -1,0 +1,564 @@
+{
+ "format": "voice",
+ "layout": "rec",
+ "cast": "A",
+ "voice_pick": {
+  "mode": "A",
+  "voices": [
+   "puck",
+   "erinome"
+  ],
+  "why": "'갓 잡은 굴, 바로 먹어도 돼?'라는 흔한 생각에 질문을 던지고 예상과 다른 사실(깐굴·반각굴·석화 차이, 개체굴 1%, 가열조리용 표시)로 답하는 구성이라 A조합. Puck 이 묻고 짧게 반응하고, Erinome 이 설명"
+ },
+ "kind": "해설",
+ "subject": "생굴 (깐굴·반각굴·석화, 생식용·가열조리용)",
+ "title": "갓 잡은 굴, 바로 먹어도 돼? 깐굴·반각굴·석화부터 생식용까지",
+ "yt_title": "갓 잡은 굴 바로 먹어도 돼? 깐굴·반각굴·석화 차이와 생식용 vs 가열조리용",
+ "headline": "갓 잡은 굴\n바로 먹어도 돼?",
+ "small": "갓 잡은 굴, 바로 먹어도 돼?",
+ "intro": 1,
+ "length": [
+  35,
+  50
+ ],
+ "summary": "생굴이 주인공인 굴 이야기. 경남이 전국 굴 생산의 78%, 깐굴·반각굴·석화 차이, 개체굴 생산 1%, 생식용과 가열조리용 포장 표시(85℃ 1분), 생식용도 노로바이러스 기준이 따로 없다는 점.",
+ "caption": "굴 좋아하는 분들, 생굴 앞에선 못 참죠? 갓 잡은 굴, 바로 먹어도 될까요?\n\n우리나라 굴은 2024년 말 기준 전국 생산량 31만 톤 중 24만 5천 톤(78%)이 경남에서 나요. 통영·거제·고성 같은 남해안이 주산지예요.\n\n깐굴은 껍데기를 벗긴 살만 파는 굴, 반각굴은 껍데기 반쪽에 얹은 굴, 석화는 껍데기째 굴이에요. 석화(石花)는 원래 굴의 다른 이름이에요. 우리나라 굴은 대부분 깐굴(알굴)로 먹고, 한 알씩 키우는 개체굴 생산은 1% 정도예요(해양수산부, 2025년 1월).\n\n굴 포장에는 '생식용'과 '가열조리용'이 있어요. '가열조리용'은 위생 기준에 못 미친 해역이거나 출하 연기 권고를 받은 해역의 굴에 붙는 표시예요. 이런 표시가 있으면 중심 온도 85℃ 이상에서 1분 이상 익혀 먹어야 해요(식약처). '생식용'이라고 위험이 0인 건 아니에요. 국내 식품 기준에 생식용 굴의 노로바이러스 기준은 따로 없어요. 걱정되면 익혀 드시는 게 가장 확실해요.\n\n참고로 2024년부터 2026년 9월까지 굴 생산해역 35개 지점에서 한 검사 1,223건 가운데 497건에서 노로바이러스가 나왔어요(해양수산부 제출 자료를 신장식 의원실이 분석, 2026년 10월 국정감사). 가게에서 파는 굴을 검사한 결과가 아니라 굴 나는 바다에서 한 검사예요.\n\n여러분은 생굴파인가요, 찐굴파인가요? 댓글로 알려 주세요!\n\n출처: 경남도(2025.04), 해양수산부(2025.01), 표준국어대사전, 식약처(2025.02), 경향신문(2026.10.23), 머니투데이(2026.10.12), 골든타임즈(2026.10.11), 뉴스톱(2026.10.21)",
+ "tags": [
+  "굴",
+  "생굴",
+  "석화",
+  "제철음식"
+ ],
+ "sources": [
+  "https://newsseoul.co.kr/news/view/1065608436615965",
+  "https://www.ajunews.com/view/20250109104015876",
+  "https://stdict.korean.go.kr/search/searchResult.do?searchKeyword=%EC%84%9D%ED%99%94",
+  "https://newstomato.com/ReadNews.aspx?no=691432",
+  "https://mfds.go.kr/webzine/202502/sub02.html",
+  "https://www.khan.co.kr/article/202610231518001/",
+  "https://www.mt.co.kr/economy/2026/10/12/2026101215514567657",
+  "https://goldentimes.kr/1224576",
+  "https://www.newstopkorea.com/news/articleView.html?idxno=48359"
+ ],
+ "credits": [
+  "ⓒ한국관광공사 포토코리아-김지호",
+  "sanjay_ach (CC BY 4.0) · commons.wikimedia.org/?curid=64861631",
+  "by jared (CC BY 2.0) · commons.wikimedia.org/?curid=2771787",
+  "Kang Byeong Kee (CC BY 3.0) · commons.wikimedia.org/?curid=5924067",
+  "exilexi (CC BY 4.0) · commons.wikimedia.org/?curid=83041807",
+  "Ryan Snyder (CC BY 2.0) · commons.wikimedia.org/?curid=157375972"
+ ],
+ "thumb": {
+  "head": "갓 잡은 굴\n[[바로 먹어도 돼?]]",
+  "sub": "갓 잡아도 [[안심 금물]]",
+  "photo": {
+   "url": "media/2026-10-27/oyster-raw-pile-1.jpg",
+   "shows": "쟁반마다 수북하게 담긴 껍데기 반쪽 생굴",
+   "match": "같은 종류",
+   "rights": "위키미디어 공용 CC0 · HSOMWEI mATIWM Uatnm LUNGA",
+   "terms": {
+    "ok": true,
+    "url": "https://commons.wikimedia.org/wiki/File:GD_%E5%BB%A3%E6%9D%B1_Guangdong_%E6%9D%B1%E8%8E%9E_Guangguan_%E8%99%8E%E9%96%80_Humen_Town_%E8%90%AC%E9%81%94%E5%BB%A3%E5%A0%B4_Wanda_Plaza_mall_shop_%E5%85%A8%E5%B8%8C%E9%AE%AE%E8%A0%94%E8%87%AA%E5%8A%A9%E9%A4%90%E5%BB%B3_ChuanXi_Seafood_Buffet_Restaurant_December_2025_N13P_04.jpg",
+    "checked": "2026-10-28",
+    "note": "CC0(저작권 포기). 아래쪽 폰 기종·날짜 글씨만 잘라 냄"
+   }
+  }
+ },
+ "yt_keyword": "생굴",
+ "yt_related": [
+  "굴",
+  "석화",
+  "반각굴",
+  "깐굴",
+  "가열조리용 굴",
+  "생식용 굴"
+ ],
+ "yt_tags": [
+  "굴",
+  "생굴",
+  "석화",
+  "반각굴",
+  "깐굴",
+  "생식용 굴",
+  "가열조리용",
+  "굴 먹는 법",
+  "굴찜",
+  "제철음식"
+ ],
+ "yt_hashtags": [
+  "생굴",
+  "석화",
+  "제철음식"
+ ],
+ "yt_lead": "생굴 좋아하는 분들을 위해 깐굴·반각굴·석화 차이와 굴 포장의 생식용·가열조리용 표시(중심 85℃ 1분 이상)를 정리했어요.",
+ "lines": [
+  {
+   "who": "puck",
+   "say": "굴 좋아하는 분들, 생굴 못 참죠?",
+   "nosub": true,
+   "show": {
+    "thumb": true
+   }
+  },
+  {
+   "who": "puck",
+   "say": "갓 잡은 굴, 바로 먹어도 될까요?",
+   "subs": [
+    "갓 잡은 굴,",
+    "바로 먹어도 될까요?"
+   ],
+   "show": {
+    "photo": {
+     "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Oysters%20served%20on%20ice.jpg?width=1600",
+     "shows": "얼음 위 접시에 담긴 껍데기째 생굴과 레몬",
+     "match": "같은 종류",
+     "rights": "위키미디어 공용 CC BY 4.0 · sanjay_ach"
+    }
+   }
+  },
+  {
+   "who": "erinome",
+   "pace": "number",
+   "rate": 1.05,
+   "say": "우리 굴은 열에 여덟 가까이, 경남 바다에서 나요.",
+   "subs": [
+    "우리 굴은 열에 여덟 가까이,",
+    "경남 바다에서 나요."
+   ],
+   "show": {
+    "photo": {
+     "url": "media/2026-10-27/oyster-g4-share.jpg",
+     "shows": "경남이 전국 굴 생산의 78%라는 원 그래프(통영·거제·고성)",
+     "match": "같은 종류",
+     "rights": "먹고갈지도 직접 그림",
+     "fit": "contain",
+     "terms": {
+      "ok": true,
+      "url": "https://github.com/hong2-kim/jecheol-feed",
+      "checked": "2026-10-28",
+      "note": "먹고갈지도가 직접 그린 그림(시안-10-27/img/oyster_graphics2.py). 남의 사진·포장 원본을 쓰지 않음"
+     }
+    },
+    "own": true
+   }
+  },
+  {
+   "who": "puck",
+   "rate": 1.06,
+   "say": "깐굴, 반각굴, 석화… 뭐가 달라요?",
+   "subs": [
+    "깐굴, 반각굴, 석화…",
+    "뭐가 달라요?"
+   ],
+   "show": {
+    "grid": [
+     {
+      "photo": {
+       "url": "media/2026-10-27/oyster-peeled-oyster.jpg",
+       "shows": "서울 수산시장 그릇에 담긴 깐굴",
+       "match": "정확",
+       "rights": "위키미디어 공용 CC BY 2.0 · by jared",
+       "terms": {
+        "ok": true,
+        "url": "https://commons.wikimedia.org/wiki/File:Korea-Seoul-Market-Oyster.jpg",
+        "checked": "2026-10-28",
+        "note": "CC BY 2.0, 위키미디어 원본(626x470)을 내려받아 900px 로 키워 둠(사용자가 찾아 줌)"
+       }
+      },
+      "label": "깐굴"
+     },
+     {
+      "photo": {
+       "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Oysters%2C%20eight%20kinds%20-%20Cambridge%2C%20MA.jpg?width=1600",
+       "shows": "얼음 위에 둥글게 놓인 반각굴",
+       "match": "같은 종류",
+       "rights": "위키미디어 공용 CC0 · Daderot"
+      },
+      "label": "반각굴"
+     },
+     {
+      "photo": {
+       "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Lowcountry%20oyster%20roast.jpg?width=1600",
+       "shows": "나무판 위에 껍데기째 쌓인 굴(석화), 미국 굴 구이 모임",
+       "match": "같은 종류",
+       "rights": "위키미디어 공용 CC0 · KellyDoyle"
+      },
+      "label": "석화 (石花)"
+     }
+    ],
+    "dir": "col"
+   }
+  },
+  {
+   "who": "erinome",
+   "rate": 1.1,
+   "say": "깐굴은 살만 쏙, 굴전이나 굴국밥용.",
+   "subs": [
+    "깐굴은 살만 쏙,",
+    "굴전이나 굴국밥용."
+   ],
+   "show": {
+    "grid": [
+     {
+      "photo": {
+       "url": "media/2026-10-27/oyster-peeled-oyster.jpg",
+       "shows": "서울 수산시장 그릇에 담긴 깐굴",
+       "match": "정확",
+       "rights": "위키미디어 공용 CC BY 2.0 · by jared",
+       "terms": {
+        "ok": true,
+        "url": "https://commons.wikimedia.org/wiki/File:Korea-Seoul-Market-Oyster.jpg",
+        "checked": "2026-10-28",
+        "note": "CC BY 2.0, 위키미디어 원본(626x470)을 내려받아 900px 로 키워 둠(사용자가 찾아 줌)"
+       }
+      },
+      "label": "깐굴"
+     },
+     {
+      "photo": {
+       "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Oysters%2C%20eight%20kinds%20-%20Cambridge%2C%20MA.jpg?width=1600",
+       "shows": "얼음 위에 둥글게 놓인 반각굴",
+       "match": "같은 종류",
+       "rights": "위키미디어 공용 CC0 · Daderot"
+      },
+      "label": "반각굴"
+     },
+     {
+      "photo": {
+       "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Lowcountry%20oyster%20roast.jpg?width=1600",
+       "shows": "나무판 위에 껍데기째 쌓인 굴(석화), 미국 굴 구이 모임",
+       "match": "같은 종류",
+       "rights": "위키미디어 공용 CC0 · KellyDoyle"
+      },
+      "label": "석화 (石花)"
+     }
+    ],
+    "dir": "col",
+    "hl": 0
+   }
+  },
+  {
+   "who": "erinome",
+   "rate": 1.1,
+   "say": "반각굴은 껍데기 반쪽에 얹어, 바로 한입.",
+   "subs": [
+    "반각굴은 껍데기 반쪽에 얹어,",
+    "바로 한입."
+   ],
+   "show": {
+    "grid": [
+     {
+      "photo": {
+       "url": "media/2026-10-27/oyster-peeled-oyster.jpg",
+       "shows": "서울 수산시장 그릇에 담긴 깐굴",
+       "match": "정확",
+       "rights": "위키미디어 공용 CC BY 2.0 · by jared",
+       "terms": {
+        "ok": true,
+        "url": "https://commons.wikimedia.org/wiki/File:Korea-Seoul-Market-Oyster.jpg",
+        "checked": "2026-10-28",
+        "note": "CC BY 2.0, 위키미디어 원본(626x470)을 내려받아 900px 로 키워 둠(사용자가 찾아 줌)"
+       }
+      },
+      "label": "깐굴"
+     },
+     {
+      "photo": {
+       "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Oysters%2C%20eight%20kinds%20-%20Cambridge%2C%20MA.jpg?width=1600",
+       "shows": "얼음 위에 둥글게 놓인 반각굴",
+       "match": "같은 종류",
+       "rights": "위키미디어 공용 CC0 · Daderot"
+      },
+      "label": "반각굴"
+     },
+     {
+      "photo": {
+       "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Lowcountry%20oyster%20roast.jpg?width=1600",
+       "shows": "나무판 위에 껍데기째 쌓인 굴(석화), 미국 굴 구이 모임",
+       "match": "같은 종류",
+       "rights": "위키미디어 공용 CC0 · KellyDoyle"
+      },
+      "label": "석화 (石花)"
+     }
+    ],
+    "dir": "col",
+    "hl": 1
+   }
+  },
+  {
+   "who": "erinome",
+   "rate": 1.1,
+   "say": "석화는 껍데기째. 한자로 돌에 핀 꽃이에요.",
+   "subs": [
+    "석화는 껍데기째.",
+    "한자로 돌에 핀 꽃이에요."
+   ],
+   "show": {
+    "grid": [
+     {
+      "photo": {
+       "url": "media/2026-10-27/oyster-peeled-oyster.jpg",
+       "shows": "서울 수산시장 그릇에 담긴 깐굴",
+       "match": "정확",
+       "rights": "위키미디어 공용 CC BY 2.0 · by jared",
+       "terms": {
+        "ok": true,
+        "url": "https://commons.wikimedia.org/wiki/File:Korea-Seoul-Market-Oyster.jpg",
+        "checked": "2026-10-28",
+        "note": "CC BY 2.0, 위키미디어 원본(626x470)을 내려받아 900px 로 키워 둠(사용자가 찾아 줌)"
+       }
+      },
+      "label": "깐굴"
+     },
+     {
+      "photo": {
+       "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Oysters%2C%20eight%20kinds%20-%20Cambridge%2C%20MA.jpg?width=1600",
+       "shows": "얼음 위에 둥글게 놓인 반각굴",
+       "match": "같은 종류",
+       "rights": "위키미디어 공용 CC0 · Daderot"
+      },
+      "label": "반각굴"
+     },
+     {
+      "photo": {
+       "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Lowcountry%20oyster%20roast.jpg?width=1600",
+       "shows": "나무판 위에 껍데기째 쌓인 굴(석화), 미국 굴 구이 모임",
+       "match": "같은 종류",
+       "rights": "위키미디어 공용 CC0 · KellyDoyle"
+      },
+      "label": "석화 (石花)"
+     }
+    ],
+    "dir": "col",
+    "hl": 2
+   }
+  },
+  {
+   "who": "erinome",
+   "say": "반각굴이 귀한 이유? 한 알씩 키우는 개체굴이 생산의 1% 정도래요.",
+   "subs": [
+    "반각굴이 귀한 이유?",
+    "한 알씩 키우는 개체굴이",
+    "생산의 [[1%]] 정도래요."
+   ],
+   "shows": [
+    {
+     "photo": {
+      "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Platter%20of%20oysters.jpg?width=1400",
+      "shows": "얼음 위 반각굴 플래터와 소스",
+      "match": "같은 종류",
+      "rights": "위키미디어 공용 CC BY 4.0 · exilexi"
+     }
+    },
+    {
+     "photo": {
+      "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Ryan%20Snyder%20-%20%288293859702%29.jpg?width=1600",
+      "shows": "접시에 한 알씩 놓인 반각굴과 레몬",
+      "match": "같은 종류",
+      "rights": "위키미디어 공용 CC BY 2.0 · Ryan Snyder"
+     },
+     "tag": [
+      "개체굴 생산 1% · 해수부 2025"
+     ]
+    },
+    null
+   ]
+  },
+  {
+   "who": "puck",
+   "say": "아, 그래서 귀한 거구나.",
+   "pace": "react"
+  },
+  {
+   "who": "puck",
+   "say": "그럼 생굴은 아무거나 먹어도 돼요?",
+   "subs": [
+    "그럼 생굴은",
+    "아무거나 먹어도 돼요?"
+   ],
+   "show": {
+    "photo": {
+     "url": "media/2026-10-27/oyster-raw-pile-3.jpg",
+     "shows": "얼음 위 껍데기째 굴과 쟁반 위 반각 생굴",
+     "match": "같은 종류",
+     "rights": "위키미디어 공용 CC0 · HSOMWEI mATIWM Uatnm LUNGA",
+     "terms": {
+      "ok": true,
+      "url": "https://commons.wikimedia.org/wiki/File:GD_%E5%BB%A3%E6%9D%B1_Guangdong_%E6%9D%B1%E8%8E%9E_Guangguan_%E8%99%8E%E9%96%80_Humen_Town_%E8%90%AC%E9%81%94%E5%BB%A3%E5%A0%B4_Wanda_Plaza_mall_shop_%E5%85%A8%E5%B8%8C%E9%AE%AE%E8%A0%94%E8%87%AA%E5%8A%A9%E9%A4%90%E5%BB%B3_ChuanXi_Seafood_Buffet_Restaurant_December_2025_N13P_03.jpg",
+      "checked": "2026-10-28",
+      "note": "CC0(저작권 포기). 아래쪽 폰 기종·날짜 글씨만 잘라 냄"
+     }
+    }
+   }
+  },
+  {
+   "who": "erinome",
+   "pace": "reveal",
+   "say": "포장부터 보세요. 생식용과 가열조리용이 있어요.",
+   "subs": [
+    "포장부터 보세요.",
+    "[[생식용]]과 [[가열조리용]]이 있어요."
+   ],
+   "show": {
+    "photo": {
+     "url": "media/2026-10-27/oyster-g5-labels.jpg",
+     "shows": "'생굴(생식용)'과 '생굴(가열조리용)' 포장 표시를 나란히 그린 예시 그림",
+     "match": "같은 종류",
+     "rights": "먹고갈지도 직접 그림",
+     "fit": "contain",
+     "terms": {
+      "ok": true,
+      "url": "https://github.com/hong2-kim/jecheol-feed",
+      "checked": "2026-10-28",
+      "note": "먹고갈지도가 직접 그린 그림(시안-10-27/img/oyster_graphics2.py). 남의 사진·포장 원본을 쓰지 않음"
+     }
+    },
+    "own": true
+   }
+  },
+  {
+   "who": "erinome",
+   "say": "생식용도 노로바이러스 기준은 없고, 가열조리용은 바다 위생 검사로 붙는 표시예요.",
+   "subs": [
+    "생식용도 노로바이러스",
+    "기준은 없고,",
+    "가열조리용은 바다 위생",
+    "검사로 붙는 표시예요."
+   ],
+   "shows": [
+    null,
+    null,
+    {
+     "photo": {
+      "url": "media/2026-10-27/oyster-g2-label.jpg",
+      "shows": "'생굴(가열조리용)' 포장 표시 예시 그림과 가열조리용 도장",
+      "match": "같은 종류",
+      "rights": "먹고갈지도 직접 그림",
+      "fit": "contain",
+      "terms": {
+       "ok": true,
+       "url": "https://github.com/hong2-kim/jecheol-feed",
+       "checked": "2026-10-28",
+       "note": "먹고갈지도가 직접 그린 그림(시안-10-27/img/oyster_graphics2.py). 남의 사진·포장 원본을 쓰지 않음"
+      }
+     }
+    },
+    null
+   ]
+  },
+  {
+   "who": "erinome",
+   "say": "이런 굴은 속까지 85도, 1분 이상 익혀요.",
+   "read": "이런 굴은 속까지 85도, 1분이상 익혀요.",
+   "subs": [
+    "이런 굴은 속까지",
+    "[[85도]], [[1분]] 이상 익혀요."
+   ],
+   "show": {
+    "photo": {
+     "url": "https://tong.visitkorea.or.kr/cms2/website/35/1193735.jpg",
+     "shows": "석쇠에서 껍데기째 굽는 굴구이(보령)",
+     "match": "같은 종류",
+     "rights": "한국관광공사 포토코리아 공공누리 1유형 · ⓒ김지호"
+    },
+    "tag": [
+     "중심 85℃ · 1분 이상"
+    ]
+   }
+  },
+  {
+   "who": "erinome",
+   "say": "걱정되면 익혀 드세요. 따끈한 굴국밥처럼요.",
+   "subs": [
+    "걱정되면 익혀 드세요.",
+    "따끈한 굴국밥처럼요."
+   ],
+   "show": {
+    "photo": {
+     "url": "https://tong.visitkorea.or.kr/cms2/website/29/1883029.jpg",
+     "shows": "굴이 들어간 매생이굴국밥 한 상",
+     "match": "같은 종류",
+     "rights": "한국관광공사 포토코리아 공공누리 1유형 · ⓒ김지호"
+    }
+   }
+  },
+  {
+   "who": "puck",
+   "say": "여러분은 생굴파인가요, 찐굴파인가요?",
+   "subs": [
+    "여러분은 생굴파인가요,",
+    "찐굴파인가요?"
+   ],
+   "show": {
+    "grid": [
+     {
+      "photo": {
+       "url": "media/2026-10-27/oyster-raw-pile-2.jpg",
+       "shows": "쟁반에 줄지어 담긴 통통한 반각 생굴",
+       "match": "같은 종류",
+       "rights": "위키미디어 공용 CC0 · HSOMWEI mATIWM Uatnm LUNGA",
+       "terms": {
+        "ok": true,
+        "url": "https://commons.wikimedia.org/wiki/File:GD_%E5%BB%A3%E6%9D%B1_Guangdong_%E6%9D%B1%E8%8E%9E_Guangguan_%E8%99%8E%E9%96%80_Humen_Town_%E8%90%AC%E9%81%94%E5%BB%A3%E5%A0%B4_Wanda_Plaza_mall_shop_%E5%85%A8%E5%B8%8C%E9%AE%AE%E8%A0%94%E8%87%AA%E5%8A%A9%E9%A4%90%E5%BB%B3_ChuanXi_Seafood_Buffet_Restaurant_December_2025_N13P_05.jpg",
+        "checked": "2026-10-28",
+        "note": "CC0(저작권 포기). 아래쪽 폰 기종·날짜 글씨만 잘라 냄"
+       }
+      },
+      "label": "생굴파"
+     },
+     {
+      "photo": {
+       "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Geoje%20Food%20OysterCuisine.jpg?width=1600",
+       "shows": "거제 식당 냄비 가득 쪄 낸 껍데기째 굴(찐굴·굴찜)",
+       "match": "정확",
+       "rights": "위키미디어 공용 CC BY 3.0 · Kang Byeong Kee"
+      },
+      "label": "찐굴파"
+     }
+    ],
+    "dir": "col"
+   }
+  }
+ ],
+ "dates": {
+  "checked": "2026-10-28",
+  "sources": [
+   {
+    "url": "https://newsseoul.co.kr/news/view/1065608436615965",
+    "published": "2025-04-28"
+   },
+   {
+    "url": "https://www.ajunews.com/view/20250109104015876",
+    "published": "2025-01-09"
+   },
+   {
+    "url": "https://newstomato.com/ReadNews.aspx?no=691432",
+    "published": "2016-09-23"
+   },
+   {
+    "url": "https://mfds.go.kr/webzine/202502/sub02.html",
+    "published": "2025-02-11"
+   },
+   {
+    "url": "https://www.khan.co.kr/article/202610231518001/",
+    "published": "2026-10-23"
+   },
+   {
+    "url": "https://www.mt.co.kr/economy/2026/10/12/2026101215514567657",
+    "published": "2026-10-12"
+   },
+   {
+    "url": "https://goldentimes.kr/1224576",
+    "published": "2026-10-11"
+   },
+   {
+    "url": "https://www.newstopkorea.com/news/articleView.html?idxno=48359",
+    "published": "2026-10-21"
+   }
+  ]
+ },
+ "music": "lib:snack-time-the-green-orbs",
+ "review": {
+  "photo_sheet": "cfb8eaeeed3f"
+ }
+}
