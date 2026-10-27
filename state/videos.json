@@ -1,5 +1,44 @@
 [
   {
+    "id": "2026-10-27-6-story-v4",
+    "date": "2026-10-27",
+    "kind": "해설",
+    "title": "갓 잡은 굴, 바로 먹어도 돼? 깐굴·반각굴·석화부터 생식용까지",
+    "summary": "생굴이 주인공인 굴 이야기. 경남이 전국 굴 생산의 78%, 깐굴·반각굴·석화 차이, 개체굴 생산 1%, 생식용과 가열조리용 포장 표시(85℃ 1분), 생식용도 노로바이러스 기준이 따로 없다는 점.",
+    "caption": "굴 좋아하는 분들, 생굴 앞에선 못 참죠? 갓 잡은 굴, 바로 먹어도 될까요?\n\n우리나라 굴은 2024년 말 기준 전국 생산량 31만 톤 중 24만 5천 톤(78%)이 경남에서 나요. 통영·거제·고성 같은 남해안이 주산지예요.\n\n깐굴은 껍데기를 벗긴 살만 파는 굴, 반각굴은 껍데기 반쪽에 얹은 굴, 석화는 껍데기째 굴이에요. 석화(石花)는 원래 굴의 다른 이름이에요. 우리나라 굴은 대부분 깐굴(알굴)로 먹고, 한 알씩 키우는 개체굴 생산은 1% 정도예요(해양수산부, 2025년 1월).\n\n굴 포장에는 '생식용'과 '가열조리용'이 있어요. '가열조리용'은 위생 기준에 못 미친 해역이거나 출하 연기 권고를 받은 해역의 굴에 붙는 표시예요. 이런 표시가 있으면 중심 온도 85℃ 이상에서 1분 이상 익혀 먹어야 해요(식약처). '생식용'이라고 위험이 0인 건 아니에요. 국내 식품 기준에 생식용 굴의 노로바이러스 기준은 따로 없어요. 걱정되면 익혀 드시는 게 가장 확실해요.\n\n참고로 2024년부터 2026년 9월까지 굴 생산해역 35개 지점에서 한 검사 1,223건 가운데 497건에서 노로바이러스가 나왔어요(해양수산부 제출 자료를 신장식 의원실이 분석, 2026년 10월 국정감사). 가게에서 파는 굴을 검사한 결과가 아니라 굴 나는 바다에서 한 검사예요.\n\n여러분은 생굴파인가요, 찐굴파인가요? 댓글로 알려 주세요!\n\n출처: 경남도(2025.04), 해양수산부(2025.01), 표준국어대사전, 식약처(2025.02), 경향신문(2026.10.23), 머니투데이(2026.10.12), 골든타임즈(2026.10.11), 뉴스톱(2026.10.21)",
+    "tags": [
+      "굴",
+      "생굴",
+      "석화",
+      "제철음식",
+      "먹고갈지도"
+    ],
+    "sources": [
+      "https://newsseoul.co.kr/news/view/1065608436615965",
+      "https://www.ajunews.com/view/20250109104015876",
+      "https://stdict.korean.go.kr/search/searchResult.do?searchKeyword=%EC%84%9D%ED%99%94",
+      "https://newstomato.com/ReadNews.aspx?no=691432",
+      "https://mfds.go.kr/webzine/202502/sub02.html",
+      "https://www.khan.co.kr/article/202610231518001/",
+      "https://www.mt.co.kr/economy/2026/10/12/2026101215514567657",
+      "https://goldentimes.kr/1224576",
+      "https://www.newstopkorea.com/news/articleView.html?idxno=48359"
+    ],
+    "credits": [
+      "ⓒ한국관광공사 포토코리아-김지호",
+      "sanjay_ach (CC BY 4.0) · commons.wikimedia.org/?curid=64861631",
+      "by jared (CC BY 2.0) · commons.wikimedia.org/?curid=2771787",
+      "Kang Byeong Kee (CC BY 3.0) · commons.wikimedia.org/?curid=5924067",
+      "exilexi (CC BY 4.0) · commons.wikimedia.org/?curid=83041807",
+      "Ryan Snyder (CC BY 2.0) · commons.wikimedia.org/?curid=157375972"
+    ],
+    "url": "https://github.com/hong2-kim/jecheol-feed/releases/download/v2026-10-27/2026-10-27-6-story-v4.mp4",
+    "seconds": 54.8,
+    "size_mb": 14.6,
+    "yt_title": "갓 잡은 굴 바로 먹어도 돼? 깐굴·반각굴·석화 차이와 생식용 vs 가열조리용",
+    "sha256": "bd66fbcf5916e55b5b1f10899c3b1706f55784957d26a37d76599b78a584f794"
+  },
+  {
     "id": "2026-10-27-6-story",
     "date": "2026-10-27",
     "kind": "이야기",
@@ -24,7 +63,7 @@
     "seconds": 14.8,
     "size_mb": 4.0,
     "yt_title": "굴 가열조리용 뜻, 생굴 포장지에 이 표시 있으면 익혀 드세요",
-    "sha256": "8b2ea68ebb847ef1656615dc5ace72b8a8e6fa3518bd9d20aeb348cb87035340"
+    "sha256": "a20556f7c45a002dda1d6afd642f1ca24d0ba285480ee7fcf21bae341095db0b"
   },
   {
     "id": "2026-10-27-3-dinner",
@@ -43,10 +82,10 @@
     "sources": [],
     "credits": [],
     "url": "https://github.com/hong2-kim/jecheol-feed/releases/download/v2026-10-27/2026-10-27-3-dinner.mp4",
-    "seconds": 14.9,
-    "size_mb": 5.0,
+    "seconds": 13.6,
+    "size_mb": 4.7,
     "yt_title": "화요일 저녁 메뉴 뭐 먹지? 부대찌개·치즈돈까스·까르보나라·텐동 중에 골라 줌",
-    "sha256": "79ce28ec70dd8aea7316882b8a96d4d2c9b4c01b7dee66bac27bc3dc3953cf7c"
+    "sha256": "1306e9cc03be6e54c6cbff83c094199211b6ee6ef8a4a1cc5780ae7431356ae3"
   },
   {
     "id": "2026-10-27-2-news",
@@ -112,10 +151,10 @@
       "ⓒ한국관광공사 포토코리아-이범수, 김지호"
     ],
     "url": "https://github.com/hong2-kim/jecheol-feed/releases/download/v2026-10-27/2026-10-27-10-voice.mp4",
-    "seconds": 41.8,
-    "size_mb": 5.2,
+    "seconds": 39.9,
+    "size_mb": 5.3,
     "yt_title": "한우의 날 11월 1일 첫 법정기념일, 한우 국거리 300g 3,000원 행사 어디서?",
-    "sha256": "8add31d7e7af2aba853d8a0b7a380ae51f7c38e85783f391a1515f16f6a3825e"
+    "sha256": "76c56cd0c5e773c2ed7bd6770d827aa126b77d9fdf3cdc39cb29dfc1bfa751f0"
   },
   {
     "id": "2026-10-26-4-find",

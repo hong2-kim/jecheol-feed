@@ -138,5 +138,12 @@
       "[확인] 이력: 이력: 굴 포장의 '가열조리용', 무슨 뜻일까? ↔ 2026-10-21/items/kr-galchi-silver-black '갈치, 은갈치와 먹갈치는 다른 물고기가 아니래요' (6일 전, 소식 글, 보냄, 점수 6.5) · 같은 기사 · 같은 말: 겨"
     ],
     "noticed": "확인 필요:705f56a6a9d6"
+  },
+  "2026-10-27-6-story-v4": {
+    "verdict": "통과",
+    "hash": "96f1b7630cf0",
+    "approved": false,
+    "reasons": [],
+    "noticed": null
   }
 }
