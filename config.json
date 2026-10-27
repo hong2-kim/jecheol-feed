@@ -35,6 +35,16 @@
       "host": {"voice": "ko-KR-Chirp3-HD-Leda", "rate": 1.3},
       "guide": {"voice": "ko-KR-Chirp3-HD-Achird", "rate": 1.3}
     },
+    "voices_note": "2026-10-28 사용자가 확정한 목소리. 설계도에 \"narrator\": \"이름\"(혼자) 또는 \"cast\": \"A\"/\"B\"(둘) 와 \"voice_pick\" 을 적어요(rules/daily/voice.md). rate 는 1배로 잰 말 빠르기(쉼 뺀 음절/초)를 7.2 안팎에 맞춘 기본값이고, 문장마다 pace 로 조금씩 바뀌어요(video/voice.py PACE).",
+    "voices": {
+      "achird": {"voice": "ko-KR-Chirp3-HD-Achird", "rate": 0.9, "sex": "남", "use": "남성 솔로: 신제품·음식 발견·일반 음식 이야기, 친구가 재미있는 사실을 알려 주듯"},
+      "puck": {"voice": "ko-KR-Chirp3-HD-Puck", "rate": 0.96, "sex": "남", "use": "남성 솔로·A조합: 축제·놀라운 사실·발견, 경쾌하게"},
+      "charon": {"voice": "ko-KR-Chirp3-HD-Charon", "rate": 0.93, "sex": "남", "use": "남성 솔로: 가격 비교·통계·식품 안전, 차분하고 정확하게"},
+      "aoede": {"voice": "ko-KR-Chirp3-HD-Aoede", "rate": 1.0, "sex": "여", "use": "여성 솔로: 유래·맛·역사·문화·감성 이야기"},
+      "erinome": {"voice": "ko-KR-Chirp3-HD-Erinome", "rate": 1.0, "sex": "여", "use": "A조합 설명: 답변·반전 설명"},
+      "laomedeia": {"voice": "ko-KR-Chirp3-HD-Laomedeia", "rate": 1.05, "sex": "여", "use": "B조합: 친구 대화·취향 비교"}
+    },
+    "pairs": {"A": ["puck", "erinome"], "B": ["achird", "laomedeia"]},
     "handle": "@meokgomap"
   }
 }

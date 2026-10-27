@@ -372,7 +372,8 @@ def build_rec(spec, voices, speech, durs, starts, real):
         if lines[s["line"]].get("nosub"):  # 제목이 곧 그 말일 때(썸네일과 같은 첫 화면) 자막을 따로 띄우지 않아요
             continue
         c = V.who_of(spec, lines[s["line"]])
-        tag = f'<span class="vwho" style="background:{c.get("color", "#333")}">{B.esc(c.get("label", s["who"]))}</span>' if c else ""
+        # 진행·설명 짝(duo)처럼 cast 에 label 이 없으면 이름표 없이 목소리만 바꿔요 (voice.py 와 같게, 2026-10-28)
+        tag = f'<span class="vwho" style="background:{c.get("color", "#333")}">{B.esc(c["label"])}</span>' if c and c.get("label") else ""
         y = 745 if s["line"] < intro else SUB_Y  # 745 는 흰 띠 위라서 상자 없이 글자만 (2026-10-21 사용자: 테두리 빼)
         out.append(f'<section class="scene" data-at="{s["at"]:.2f}" data-dur="{max(0.05, s["end"] - s["at"]):.2f}" data-out="0">'
                    f'<div class="rsub{" flat" if y == 745 else ""}" style="top:{y - 60}px;height:120px">{tag}<div style="font-size:{V.sub_size(s['text'], 66)}px">{B.rich(s["text"])}</div></div></section>')

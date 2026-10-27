@@ -104,6 +104,9 @@ def spec_sheet(path, out, mark=(), header=""):
         cap = (f"{'⚠ ' if hit else ''}{where}\n글: {text.replace(chr(10), ' ')[:60]}\nshows: {p.get('shows', '(없음)')[:40]}"
                f"\n출처·조건: {(p.get('rights') or p.get('url', ''))[:40]}")
         tiles.append(tile(img, cap, mark=hit))
+    pick = spec.get("voice_pick") or {}
+    if pick and not header:  # 고른 목소리와 까닭을 시트 맨 위에 (2026-10-28)
+        header = f"목소리: {pick.get('mode', '')} · {', '.join(pick.get('voices', []))}\n고른 까닭: {pick.get('why', '')}"
     grid(tiles, header=header).save(out, quality=82)
     return sheet_hash(spec), len(tiles)
 

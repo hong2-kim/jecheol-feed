@@ -19,6 +19,11 @@
   "narrator": {"voice": ..., "rate": ...} 혼자 읽는 영상을 채널 목소리와 다른 목소리로 읽어요.
   "cast": "duo" 채널 짝(config.json youtube.duo)으로 나눠 읽어요. 문장에 "who": "host"(진행, 여)·"guide"(설명, 남). 이름표는 없어요.
       혼자 읽으면 "narrator": "host" 또는 "guide". (2026-10-28 사용자가 정함, rules/daily/voice.md)
+  확정 목소리 (2026-10-28 2차, config.json youtube.voices·pairs):
+      "narrator": "achird"·"puck"·"charon"·"aoede" 혼자 / "cast": "A"(Puck+Erinome)·"B"(Achird+Laomedeia), 문장 "who": "puck" 처럼 이름.
+      "voice_pick": {"mode": "solo|A|B", "voices": [...], "why": "고른 까닭"} 을 적으면 호흡 모드: 문장 나눠 읽기, 쉼표 뒤 [pause short],
+      문장마다 "pace"(hook·fun·react·reveal·number·soft·end, 안 적으면 자동)로 빠르기와 쉼이 달라져요. "take": 2 로 그 문장만 다시 만들어요.
+      대본과 TTS 에 보낸 말은 목소리 wav 옆 .txt 에 남아요(voice_log).
   "length": [20, 35] 로 목표 길이를, "facts": [...] 로 가격·시간 근거를 적어요(verify 가 대본 속 금액·시간과 맞춰 봐요).
 
 말투·소재 (2026-10-19 2차):
@@ -62,21 +67,32 @@ def _voice_conf():
     return yt.get("voice", "ko-KR-Wavenet-A"), float(yt.get("speaking_rate", 1.3))
 
 
-def tts(text, name=None, rate=None):
+def tts(text, name=None, rate=None, markup=False, take=None, tail=0.08):
     """문장 하나를 읽은 소리(모노, -1~1). 같은 문장은 build/tts 에 받아 둔 걸 다시 써요. 키가 없으면 None.
-    name·rate 를 주면 그 목소리로 읽어요(대화형의 등장인물). 없으면 채널 목소리예요."""
+    name·rate 를 주면 그 목소리로 읽어요(대화형의 등장인물). 없으면 채널 목소리예요.
+    markup 이면 text 를 Chirp 3 의 markup 칸으로 보내요("[pause short]" 쉼 표시가 먹어요). 안 되면 표시를 빼고 text 로 다시 읽어요.
+    take 를 바꾸면 그 문장만 새로 만들어요(받아 둔 소리가 이상할 때)."""
     base_name, base_rate = _voice_conf()
     name, rate = name or base_name, float(rate or base_rate)
-    path = ROOT / "build" / "tts" / (hashlib.sha1(f"{name}|{rate}|{text}".encode()).hexdigest()[:16] + ".wav")
+    tag = f"{name}|{rate}|{text}" + ("|M" if markup else "") + (f"|take{take}" if take else "")
+    path = ROOT / "build" / "tts" / (hashlib.sha1(tag.encode()).hexdigest()[:16] + ".wav")
     if not path.exists():
         key = _key()
         if not key:
             return None
-        body = {"input": {"text": text}, "voice": {"languageCode": "ko-KR", "name": name},
-                "audioConfig": {"audioEncoding": "LINEAR16", "speakingRate": rate, "sampleRateHertz": SR}}
-        req = urllib.request.Request(f"https://texttospeech.googleapis.com/v1/text:synthesize?key={key}",
-                                     data=json.dumps(body).encode(), headers={"Content-Type": "application/json"})
-        data = base64.b64decode(json.loads(urllib.request.urlopen(req, timeout=60).read())["audioContent"])
+        def ask(inp):
+            body = {"input": inp, "voice": {"languageCode": "ko-KR", "name": name},
+                    "audioConfig": {"audioEncoding": "LINEAR16", "speakingRate": rate, "sampleRateHertz": SR}}
+            req = urllib.request.Request(f"https://texttospeech.googleapis.com/v1/text:synthesize?key={key}",
+                                         data=json.dumps(body).encode(), headers={"Content-Type": "application/json"})
+            return base64.b64decode(json.loads(urllib.request.urlopen(req, timeout=60).read())["audioContent"])
+        if markup:
+            try:
+                data = ask({"markup": text})
+            except urllib.error.HTTPError:  # markup(미리보기 기능)이 막히면 쉼 표시를 빼고 그냥 읽어요
+                data = ask({"text": " ".join(re.sub(r"\[pause[^\]]*\]", " ", text).split())})
+        else:
+            data = ask({"text": text})
         path.parent.mkdir(parents=True, exist_ok=True)
         path.write_bytes(data)
     with wave.open(str(path), "rb") as w:
@@ -85,7 +101,7 @@ def tts(text, name=None, rate=None):
             x = x.reshape(-1, 2).mean(axis=1)
     loud = np.nonzero(np.abs(x) > 0.02)[0]  # 앞뒤의 빈소리를 잘라 말이 바로 이어지게 해요
     if len(loud):
-        x = x[max(0, loud[0] - int(SR * 0.03)): loud[-1] + int(SR * 0.08)]
+        x = x[max(0, loud[0] - int(SR * 0.03)): loud[-1] + int(SR * tail)]
     return x
 
 
@@ -290,18 +306,193 @@ def line_photos(lines):
     return out
 
 
+def roster():
+    """확정한 목소리({"achird": {...}, ...})와 2인 조합({"A": ["puck", "erinome"], ...}). config.json youtube.voices·pairs."""
+    yt = json.loads((ROOT / "config.json").read_text(encoding="utf-8")).get("youtube") or {}
+    return yt.get("voices") or {}, yt.get("pairs") or {}
+
+
 def with_duo(spec):
-    """"cast": "duo" 를 채널 짝(config.json 의 youtube.duo, 진행 host·설명 guide)으로 바꿔요. 이름표 없이 목소리만 달라요.
-    혼자 읽을 때는 "narrator": "host"(여)·"guide"(남)로 둘 중 하나를 골라요. (2026-10-28 사용자가 정함)"""
-    if spec.get("cast") != "duo" and not isinstance(spec.get("narrator"), str):
+    """줄여 쓴 목소리를 config.json 값으로 풀어요. 이름표 없이 목소리만 달라요.
+    - "narrator": "achird"·"aoede"… / "cast": "A"(Puck+Erinome)·"B"(Achird+Laomedeia), 문장마다 "who": "puck" (2026-10-28 확정, youtube.voices·pairs)
+    - 예전 것: "cast": "duo"(진행 host·설명 guide), "narrator": "host"·"guide" (youtube.duo)"""
+    if not isinstance(spec.get("cast"), str) and not isinstance(spec.get("narrator"), str):
         return spec
-    duo = (json.loads((ROOT / "config.json").read_text(encoding="utf-8")).get("youtube") or {}).get("duo") or {}
+    yt = json.loads((ROOT / "config.json").read_text(encoding="utf-8")).get("youtube") or {}
+    duo, voices, pairs = yt.get("duo") or {}, yt.get("voices") or {}, yt.get("pairs") or {}
     spec = dict(spec)
     if spec.get("cast") == "duo":
         spec["cast"] = duo
+    elif isinstance(spec.get("cast"), str):
+        spec["cast"] = {n: voices.get(n, {}) for n in pairs.get(spec["cast"], [])}
     if isinstance(spec.get("narrator"), str):
-        spec["narrator"] = duo.get(spec["narrator"], {})
+        spec["narrator"] = voices.get(spec["narrator"]) or duo.get(spec["narrator"], {})
     return spec
+
+
+# ── 호흡·빠르기 (2026-10-28 사용자: "단어를 붙여 읽거나 문장 사이를 쉬지 않아 알아듣기 어렵다") ──
+# 잰 것: 여섯 목소리 모두 짧은 문장의 쉼표에서 거의 쉬지 않아요(0.05~0.08초). markup 의 [pause short] 를 넣으면 0.4~0.6초 쉬고,
+# 그걸 상황에 맞는 길이로 줄여요. 문장(. ? !)은 따로 만들어 사이를 직접 띄워요. 설계도에 "voice_pick" 이 있을 때만 이렇게 하고,
+# 없으면 예전 그대로예요(이미 만든 영상이 바뀌지 않게).
+PACE = {"hook": 1.04, "fun": 1.0, "react": 1.1, "reveal": 0.96, "number": 0.95, "soft": 0.94, "end": 0.96}  # 목소리 기본 빠르기에 곱해요
+COMMA = {"hook": 0.16, "fun": 0.2, "react": 0.14, "reveal": 0.26, "number": 0.26, "soft": 0.26, "end": 0.22}  # 쉼표 쉼(초)
+
+
+def breathing(spec):
+    return bool(spec.get("voice_pick"))
+
+
+def pace_of(spec, lines, i):
+    """문장의 말투: 적은 "pace" 가 먼저. 없으면 첫 문장 hook, 마지막 end, 숫자가 든 문장 number, 그 밖은 영상 "mood"(soft) 또는 fun."""
+    l = lines[i]
+    if l.get("pace") in PACE:
+        return l["pace"]
+    if i == 0:
+        return "hook"
+    if i == len(lines) - 1:
+        return "end"
+    if re.search(r"\d", l.get("say", "")):
+        return "number"
+    return "soft" if spec.get("mood") == "soft" else "fun"
+
+
+def sentences(text):
+    """한 문장 칸 안의 말을 마침표·물음표·느낌표·말줄임표 뒤에서 나눠요(나눈 조각마다 따로 읽어 끝 억양이 살아요)."""
+    return [s for s in re.split(r"(?<=[.?!…])\s+", text.strip()) if s]
+
+
+def _rms10(x):
+    win = SR // 100
+    n = len(x) // win
+    return np.sqrt(np.mean(x[: n * win].reshape(n, win) ** 2, axis=1)) if n else np.zeros(0)
+
+
+def squeeze(x, target):
+    """말 가운데 쉼이 target 초보다 길면 target 으로 줄여요(markup 쉼이 목소리마다 0.4~0.6초라서). (줄인 소리, 가장 긴 쉼)"""
+    e, win = _rms10(x), SR // 100
+    quiet, out, i, last, longest = e < 0.008, [], 0, 0, 0.0
+    while i < len(quiet):
+        if quiet[i]:
+            j = i
+            while j < len(quiet) and quiet[j]:
+                j += 1
+            if 0 < i and j < len(quiet):  # 앞뒤 끝은 tts 가 이미 잘랐어요
+                run = (j - i) / 100
+                keep = min(run, target)
+                longest = max(longest, keep)
+                if run > keep + 0.02:
+                    a, b = i * win, j * win
+                    half = int(SR * keep / 2)
+                    out.append(x[last: a + half])
+                    last = b - half
+            i = j
+        else:
+            i += 1
+    out.append(x[last:])
+    return np.concatenate(out), longest
+
+
+def _pauses(x):
+    """말 사이 0.1초 넘는 쉼의 합(초)."""
+    quiet, total, run = _rms10(x) < 0.008, 0, 0
+    for q in list(quiet) + [False]:
+        if q:
+            run += 1
+        else:
+            total += run if run >= 10 else 0
+            run = 0
+    return total / 100
+
+
+def syllables(text):
+    return len(re.findall(r"[가-힣0-9]", text))
+
+
+def speak(spec, lines, i, c):
+    """문장 하나를 호흡 넣어 읽어요. (소리, 기록 dict)"""
+    l, pace = lines[i], pace_of(spec, lines, i)
+    rate = round(float(l.get("rate") or float(c.get("rate") or _voice_conf()[1]) * PACE[pace]), 3)
+    said = spoken(l)
+    parts, sent, why = sentences(said), [], []
+    if l.get("read"):
+        why.append("read 칸(자막과 다르게 읽음)")
+    if said != " ".join(l["say"].replace("[[", "").replace("]]", "").split()) and not l.get("read"):
+        why.append("숫자·시각을 풀어 읽음")
+    if len(parts) > 1:
+        why.append(f"문장 {len(parts)}개로 나눠 읽음")
+    pieces, longest, warn = [], 0.0, []
+    for k, s in enumerate(parts):
+        # 쉼표 뒤에 쉼 표시. 짧은 맞장구(react)는 넣지 않아요("아, 그렇구나"가 늘어져요)
+        mk = re.sub(r",\s*", ", [pause short] ", s) if "," in s.rstrip(",") and pace != "react" else ""
+        v = tts(mk or s, c.get("voice"), rate, markup=bool(mk), take=l.get("take"), tail=0.12)
+        if v is None:
+            return None, {}
+        if mk:
+            v, lp = squeeze(v, COMMA[pace])
+            longest = max(longest, lp)
+            if lp < 0.1:
+                warn.append(f"쉼표에서 안 쉼('{s[:14]}…')")
+        sent.append(mk or s)
+        pieces.append(v)
+        if k < len(parts) - 1:
+            pieces.append(np.zeros(int(SR * (0.36 if s.endswith("?") else 0.3))))
+    if any("[pause" in s for s in sent):
+        why.append("쉼표 뒤에 [pause short] 넣고 쉼을 줄임")
+    v = np.concatenate(pieces)
+    v = v * min(LOUD / max(1e-9, np.sqrt(np.mean(v ** 2))), 0.98 / max(1e-9, np.abs(v).max()))  # 목소리·문장마다 크기를 맞춰요
+    sps = syllables(said) / max(0.01, len(v) / SR - _pauses(v))  # 0.1초 넘는 쉼을 뺀 말 빠르기
+    if syllables(said) >= 8 and sps > 8.4:
+        warn.append(f"빨라요({sps:.1f}음절/초)")
+    elif syllables(said) >= 8 and sps < 5.2:
+        warn.append(f"느려요({sps:.1f}음절/초)")
+    who = next((k for k, cc in (spec.get("cast") or {}).items() if cc is c), "") or (c.get("voice") or "").rsplit("-", 1)[-1].lower()
+    return v, {"n": i + 1, "who": who, "voice": c.get("voice"), "pace": pace, "rate": rate, "say": l["say"], "tts": sent,
+               "why": why, "sec": round(len(v) / SR, 2), "sps": round(sps, 1), "comma": round(longest, 2), "warn": warn}
+
+
+def breath_gaps(spec, lines, paces):
+    """문장 사이 쉼(초). 모두 같게 두지 않아요: 물음 뒤·화자 바뀜·숫자·반전 앞은 길게, 짧은 맞장구는 짧게. "gap" 을 적으면 그게 먼저."""
+    out = []
+    for i, l in enumerate(lines):
+        nxt = lines[i + 1] if i + 1 < len(lines) else None
+        if "gap" in l:
+            out.append(max(-0.15, float(l["gap"])))
+            continue
+        if nxt is None:
+            out.append(0.3)
+            continue
+        g = 0.42 if l["say"].rstrip().endswith("?") else 0.3
+        if syllables(l["say"]) <= 8:
+            g -= 0.05
+        if spec.get("cast") and nxt.get("who") != l.get("who"):
+            g += 0.06
+        if paces[i + 1] == "react" or nxt.get("act") == "react":
+            g = 0.18
+        if paces[i + 1] == "reveal":
+            g += 0.15
+        if paces[i + 1] == "number":
+            g += 0.1
+        if paces[i] == "number":
+            g += 0.06
+        if i + 1 == len(lines) - 1:
+            g += 0.08
+        out.append(round(min(0.7, max(0.15, g)), 2))
+    return out
+
+
+def voice_log(spec, logs, gaps_):
+    """대본과 실제로 TTS 에 보낸 말, 빠르기·쉼·경고를 한눈에. 문제가 대본인지 목소리인지 편집인지 가르려고 남겨요."""
+    pick = spec.get("voice_pick") or {}
+    out = [f"목소리: {pick.get('mode', '')} · {', '.join(pick.get('voices', []))}", f"고른 까닭: {pick.get('why', '')}", ""]
+    for g, r in zip(gaps_, logs):
+        out.append(f"[{r['n']}] {r['who']} · {r['pace']} · 빠르기 {r['rate']} · {r['sec']}초 · {r['sps']}음절/초 · 쉼표 쉼 {r['comma']}초 · 다음까지 {g}초")
+        out.append(f"   대본: {r['say']}")
+        if [s.replace(", [pause short] ", ", ") for s in r["tts"]] != [r["say"].replace("[[", "").replace("]]", "")] or r["why"]:
+            out.append(f"   TTS : {' / '.join(r['tts'])}")
+            out.append(f"   바꾼 까닭: {', '.join(r['why']) or '-'}")
+        if r["warn"]:
+            out.append(f"   ⚠ {', '.join(r['warn'])}")
+    return "\n".join(out)
 
 
 def who_of(spec, line):
@@ -465,17 +656,22 @@ def build_voice(spec, work=None):
 
     spec = with_duo(spec)
     lines = spec["lines"]
-    voices = []
+    voices, logs = [], []
     narr = spec.get("narrator") or {}  # 혼자 읽는 영상의 목소리를 채널 목소리와 다르게 할 때 {"voice": ..., "rate": ...}
-    for l in lines:
+    for i, l in enumerate(lines):
         c = who_of(spec, l) or narr
-        v = tts(spoken(l), c.get("voice"), l.get("rate") or c.get("rate"))
-        if v is not None and spec.get("cast") and len(v):  # 목소리마다 크기가 달라서 맞춰요
-            v = v * min(LOUD / max(1e-9, np.sqrt(np.mean(v ** 2))), 0.98 / max(1e-9, np.abs(v).max()))
+        if breathing(spec):  # 2026-10-28: 문장 나눠 읽기·쉼표 쉼·말투별 빠르기
+            v, r = speak(spec, lines, i, c)
+            logs.append(r)
+        else:
+            v = tts(spoken(l), c.get("voice"), l.get("rate") or c.get("rate"))
+            if v is not None and spec.get("cast") and len(v):  # 목소리마다 크기가 달라서 맞춰요
+                v = v * min(LOUD / max(1e-9, np.sqrt(np.mean(v ** 2))), 0.98 / max(1e-9, np.abs(v).max()))
         voices.append(v)
     real = all(v is not None for v in voices)
     speech = [len(v) / SR if real else estimate(l["say"]) for v, l in zip(voices, lines)]
-    durs = [s + g for s, g in zip(speech, gaps(spec, lines))]
+    gaps_ = breath_gaps(spec, lines, [pace_of(spec, lines, i) for i in range(len(lines))]) if breathing(spec) else gaps(spec, lines)
+    durs = [s + g for s, g in zip(speech, gaps_)]
     starts = [sum(durs[:i]) for i in range(len(lines))]
     body = sum(durs)
     credits = []  # 끝 장면에는 사진 출처를 넣지 않고 게시글·설명에만 적어요 (2026-10-22·10-28 사용자: "글로만 넣을꺼라고 했어")
@@ -562,16 +758,57 @@ def build_voice(spec, work=None):
         with wave.open(str(voice_path), "wb") as w:
             w.setnchannels(1), w.setsampwidth(2), w.setframerate(SR), w.writeframes(pcm.tobytes())
     meta = {"music": B.song(spec), "sfx": sfx or [], "ambience": [], "voice": str(voice_path) if voice_path else None}
+    if real and logs:  # 대본 ↔ TTS 에 보낸 말 기록 (목소리 wav 옆에 같은 이름 .txt)
+        meta["voice_log"] = voice_log(spec, logs, gaps_)
+        voice_path.with_suffix(".txt").write_text(meta["voice_log"], encoding="utf-8")
+        bad = [f"{r['n']}번 {', '.join(r['warn'])}" for r in logs if r["warn"]]
+        print("  목소리:", (spec.get("voice_pick") or {}).get("mode"), "· 다시 볼 문장:", "; ".join(bad) if bad else "없음")
     if cuts is not None:
         meta["rec"] = {"cuts": cuts, "subs": subs, "starts": starts, "durs": durs}
     return "\n".join(out), total, meta
 
 
+def pick_problems(spec):
+    """확정 목소리(이름·A/B)를 쓰는 설계도: 고른 기록(voice_pick)과 띄어쓰기·끊어 읽기. (꼭 고칠 것, 보면 좋은 것)"""
+    voices, pairs = roster()
+    named = isinstance(spec.get("narrator"), str) and spec["narrator"] in voices or isinstance(spec.get("cast"), str) and spec["cast"] in pairs
+    must, should = [], []
+    if isinstance(spec.get("narrator"), str) and spec["narrator"] not in voices and spec["narrator"] not in ("host", "guide"):
+        must.append(f"narrator '{spec['narrator']}' 는 확정 목소리가 아니에요({', '.join(voices)}).")
+    if isinstance(spec.get("cast"), str) and spec["cast"] not in pairs and spec["cast"] != "duo":
+        must.append(f"cast '{spec['cast']}' 는 없는 조합이에요({', '.join(pairs)}).")
+    pick = spec.get("voice_pick")
+    if named and not pick:
+        must.append('voice_pick 이 없어요. {"mode": "solo|A|B", "voices": [...], "why": "고른 까닭"} 을 적어 주세요.')
+    if pick and not (pick.get("mode") and pick.get("voices") and pick.get("why")):
+        must.append("voice_pick 에 mode·voices·why 가 다 있어야 해요.")
+    if not pick:
+        if not spec.get("narrator") and not spec.get("cast"):
+            should.append("목소리를 고르지 않아서 예전 채널 목소리로 읽어요. rules/daily/voice.md 대로 narrator·cast 와 voice_pick 을 적어 주세요.")
+        return must, should
+    lines = spec.get("lines") or []
+    for n, l in enumerate(lines, 1):
+        t = (l.get("read") or l.get("say") or "").replace("[[", "").replace("]]", "")
+        if "  " in t:
+            should.append(f"{n}번 문장: 띄어쓰기가 두 칸이에요.")
+        if re.search(r"[,.?!](?=[가-힣A-Za-z0-9])", t):
+            should.append(f"{n}번 문장: 문장부호 뒤에 띄어쓰기가 없어요('{t[:16]}…'). 붙여 읽혀요.")
+        for run in re.split(r"[,.?!…]", t):
+            if syllables(run) > 20:
+                should.append(f"{n}번 문장: '{run.strip()[:14]}…' 이 쉼 없이 {syllables(run)}음절이에요. 뜻이 끊기는 곳에 쉼표를 넣거나 나눠 주세요.")
+    if isinstance(spec.get("cast"), str):
+        turns = sum(1 for a, b in zip(lines, lines[1:]) if a.get("who") != b.get("who"))
+        if len(lines) > 4 and turns >= len(lines) - 1:
+            should.append(f"2인 대화가 거의 한 문장씩 번갈아요({turns}번 바뀜). 실제 대화처럼 한 사람이 이어 말하는 곳을 두세요.")
+    return must, should
+
+
 def problems(spec):
     """대본 길이와 빠진 것을 알려 줘요. (꼭 고칠 것, 보면 좋은 것, 어림 길이)"""
     import build as B
+    pm, ps = pick_problems(spec)
     spec = with_duo(spec)
-    must, should = [], []
+    must, should = pm, ps
     lines = spec.get("lines") or []
     lo, hi = spec.get("length") or (35, 50)  # 저녁 추천처럼 짧게 만드는 영상은 "length": [20, 35]
     short = hi <= 40
