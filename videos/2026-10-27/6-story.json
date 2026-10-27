@@ -132,6 +132,9 @@
   ]
  },
  "review": {
-  "photo_sheet": "5d724cd45eca"
+  "photo_sheet": "5d724cd45eca",
+  "approved": "2026-10-27 22:34",
+  "note": "사용자가 대화에서 '보내' (갈치 글과 낱말 2개만 겹친 반복 의심, 주제 다름)",
+  "hash": "705f56a6a9d6"
  }
 }
