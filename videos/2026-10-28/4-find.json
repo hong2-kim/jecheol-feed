@@ -2,7 +2,7 @@
  "kind": "발견",
  "subject": "감귤 · 올해 노지감귤 값과 당도",
  "title": "올해 귤값 24.4% 싸졌는데, 당도는 오히려 높대요",
- "summary": "극조생 노지감귤 출하가 작년보다 77.3% 늘어 5kg 평균 도매가가 8,417원으로 24.4% 내렸어요. 그런데 제주농산물수급관리센터는 올해 당도를 8.5브릭스로 작년보다 1.1브릭스 높게 봤어요.",
+ "summary": "노지감귤 도외 출하가 작년보다 77.3% 늘고 소비가 부진해 5kg 누적 평균 도매가가 8,417원으로 24.4% 내렸어요. 제주도 농업기술원 8월 관측조사에서 당도는 8.5브릭스로 작년보다 1.1브릭스 높았어요.",
  "thumb": {
   "head": "감귤 24.4%\n[[싸졌는데]]",
   "sub": "당도는 [[작년보다 높대요]]",
@@ -14,7 +14,7 @@
    "fit": "cover"
   }
  },
- "caption": "올가을 귤값이 싸졌다는 얘기, 들어 보셨나요? 싸면 맛이 별로일 것 같은데, 올해는 달라요\n\n제주농산물수급관리센터에 따르면 올해산 노지온주감귤 예상 생산량은 44만 3,300톤으로 작년 최종 생산량(41만 1,000톤)보다 7.8% 많아요. 10월 25일 기준 도외 상품 출하량은 21,268.2톤으로 작년 같은 기간보다 77.3% 늘었고요. 그러다 보니 올해 누적 평균 도매가격은 5kg에 8,417원으로, 작년 11,129원보다 24.4% 내렸어요(2024년산 7,978원보다는 5.5% 높아요).\n\n맛은 어떨까요? 같은 자료에서 올해 당도는 8.5브릭스로 작년보다 1.1브릭스, 최근 5년 평균보다 1.4브릭스 높게 조사됐어요. 제주도는 출하를 나눠 내고 소비 쿠폰 할인과 직거래를 늘리는 한편, 11월 20일까지 규격 밖 귤 단속도 한대요.\n\n값은 조사한 날 기준이라 지금과 다를 수 있어요. 더 자세한 이야기는 프로필 링크의 블로그에 있어요.\n\n여러분은 올해 귤, 몇 번 사 드셨어요?\n\n출처: 한국농어민신문(10월 27일)",
+ "caption": "올가을 귤값이 싸졌다는 얘기, 들어 보셨나요? 싸면 맛이 별로일 것 같은데, 올해는 달라요\n\n제주도에 따르면 10월 25일 기준 올해산 노지온주감귤 도외 상품 출하량은 21,268.2톤으로 작년 같은 때보다 77.3% 늘었어요. 극조생 출하가 늘고 소비도 부진해 올해 누적 평균 도매가격은 5kg에 8,417원으로, 작년 11,129원보다 24.4% 내렸어요(2024년산 7,978원보다는 5.5% 높아요).\n\n맛은 어떨까요? 제주도 농업기술원이 8월 19~25일 조사한 올해 노지감귤 당도는 8.5브릭스로 작년보다 1.1브릭스, 최근 5년 평균보다 1.4브릭스 높았어요. 농업기술원은 품질을 관측조사 이래 가장 높은 수준으로 봤고, 11월에 품질을 다시 조사해요.\n\n브릭스(°Bx)는 과즙에 녹아 있는 당분 등의 농도예요. 8.5브릭스면 과즙 100g에 당분 등이 약 8.5g 녹아 있다는 뜻이에요. 높을수록 달게 느끼기 쉽지만, 귤 맛은 신맛(산도)과의 균형에 따라서도 달라져요.\n\n제주도는 출하를 나눠 내고 소비 쿠폰 할인과 직거래를 늘리는 한편, 11월 20일까지 규격 밖 귤 단속도 한대요.\n\n값은 도매가 기준이라 가게 값과 다를 수 있어요. 더 자세한 이야기는 프로필 링크의 블로그에 있어요.\n\n여러분은 올해 귤, 몇 번 사 드셨어요?\n\n출처: 한국농어민신문(10월 27일), 파이낸셜뉴스(9월 8일)",
  "tags": [
   "감귤",
   "귤가격",
@@ -22,10 +22,15 @@
   "가을제철과일"
  ],
  "sources": [
-  "https://www.agrinet.co.kr/news/articleView.html?idxno=408248"
+  "https://www.agrinet.co.kr/news/articleView.html?idxno=408248",
+  "https://www.fnnews.com/news/202609081642379912",
+  "https://en.wikipedia.org/wiki/Brix",
+  "https://koreascience.or.kr/article/JAKO199703043001582.page"
  ],
  "credits": [
-  "ⓒ한국관광공사 포토코리아-이범수, 김지호"
+  "ⓒ한국관광공사 포토코리아-이범수, 김지호",
+  "Mandarins - whole and halved ⓒIvar Leidus, CC BY-SA 4.0 (위키미디어 공용)",
+  "Refractometer ⓒFernando G. (FGM), CC BY-SA 3.0 (위키미디어 공용)"
  ],
  "yt_title": "감귤 가격 24.4% 내렸는데 당도는 높아요, 올해 귤 사도 될까",
  "yt_keyword": "감귤 가격",
@@ -33,7 +38,7 @@
   "제주 감귤",
   "노지감귤",
   "귤 당도",
-  "극조생 감귤",
+  "브릭스",
   "귤 제철"
  ],
  "yt_tags": [
@@ -41,7 +46,7 @@
   "제주 감귤",
   "노지감귤",
   "귤 당도",
-  "극조생 감귤",
+  "브릭스 뜻",
   "귤 제철",
   "가을 제철 과일"
  ],
@@ -50,21 +55,25 @@
   "제주감귤",
   "가을제철과일"
  ],
- "yt_lead": "올해 감귤 가격은 5kg 평균 8,417원으로 작년보다 24.4% 내렸는데, 당도는 8.5브릭스로 작년보다 높게 조사됐어요.",
+ "yt_lead": "올해 감귤 가격은 5kg 누적 평균 도매가 8,417원으로 작년보다 24.4% 내렸는데, 8월 관측조사 당도는 8.5브릭스로 작년보다 높았어요.",
  "dates": {
   "checked": "2026-10-28",
   "sources": [
    {
     "url": "https://www.agrinet.co.kr/news/articleView.html?idxno=408248",
     "published": "2026-10-27"
+   },
+   {
+    "url": "https://www.fnnews.com/news/202609081642379912",
+    "published": "2026-09-08"
    }
   ],
-  "stat_period": "2026년산 노지감귤 10월 25일 기준"
+  "stat_period": "출하 10월 25일 기준, 당도 8월 19~25일 관측조사"
  },
  "scenes": [
   {
    "type": "cover",
-   "dur": 2.2,
+   "dur": 2.0,
    "photo": {
     "url": "https://tong.visitkorea.or.kr/cms2/website/12/2704212.jpg",
     "shows": "돌담 옆 귤나무에 귤이 달린 모습",
@@ -77,7 +86,7 @@
   },
   {
    "type": "cover",
-   "dur": 2.0,
+   "dur": 1.8,
    "photo": {
     "url": "https://tong.visitkorea.or.kr/cms2/website/10/2704210.jpg",
     "shows": "감귤 가지에 달린 귤을 손으로 따는 모습",
@@ -104,7 +113,7 @@
   },
   {
    "type": "card",
-   "dur": 2.5,
+   "dur": 2.3,
    "photo": {
     "url": "https://tong.visitkorea.or.kr/cms2/website/11/2704211.jpg",
     "shows": "돌담 옆 귤밭 풍경",
@@ -113,24 +122,25 @@
    },
    "chip": "왜 싸졌나",
    "headline": "출하가\n[[77.3% 늘었어요]]",
-   "line": "25일까지 21,268.2톤 나갔어요"
+   "line": "10월 25일까지 2만 1,268톤\n소비 부진도 겹쳤어요"
   },
   {
    "type": "card",
-   "dur": 2.8,
+   "dur": 2.5,
    "photo": {
     "url": "https://tong.visitkorea.or.kr/cms2/website/36/2704136.jpg",
-    "shows": "시장 매대에 쌓인 귤과 가격표(제주 세화민속오일시장)",
+    "shows": "시장 매대에 쌓인 귤(제주 세화민속오일시장). 가격표는 화면 밖으로 잘라 냄",
     "match": "같은 종류",
-    "rights": "한국관광공사 포토코리아 공공누리 1유형 · ⓒ김지호"
+    "rights": "한국관광공사 포토코리아 공공누리 1유형 · ⓒ김지호",
+    "pos": "8% 50%"
    },
    "chip": "값은",
    "headline": "5kg 평균\n[[8,417원]]",
-   "line": "작년 11,129원보다 24.4% ↓"
+   "line": "작년 11,129원보다 24.4% ↓\n올해 누적 평균 도매가"
   },
   {
    "type": "card",
-   "dur": 2.8,
+   "dur": 2.3,
    "photo": {
     "url": "https://tong.visitkorea.or.kr/cms2/website/12/2610412.jpg",
     "shows": "돌 위에 놓인 귤(얼굴 그림을 그린 것, 휴애리)",
@@ -139,11 +149,48 @@
    },
    "chip": "맛은",
    "headline": "당도\n[[8.5브릭스]]",
-   "line": "작년보다 1.1브릭스 높아요"
+   "line": "작년보다 1.1브릭스 높아요\n8월 농업기술원 관측조사"
+  },
+  {
+   "type": "duo",
+   "dur": 4.5,
+   "photo_top": {
+    "url": "https://upload.wikimedia.org/wikipedia/commons/9/9a/Mandarins_-_whole_and_halved.jpg",
+    "shows": "통귤과 반으로 자른 귤, 귤 한 조각",
+    "match": "참고 사진",
+    "rights": "위키미디어 공용 CC BY-SA 4.0 · ⓒIvar Leidus",
+    "pos": "78% 50%"
+   },
+   "photo_bottom": {
+    "url": "https://upload.wikimedia.org/wikipedia/commons/9/9e/Refractometer.jpg",
+    "shows": "오렌지 즙을 떨어뜨려 당도를 재는 손 굴절 당도계와 눈금(오른쪽 아래 원)",
+    "match": "참고 사진",
+    "rights": "위키미디어 공용 CC BY-SA 3.0 · ⓒFernando G. (FGM)",
+    "pos": "100% 60%"
+   },
+   "chip_top": "참고 사진",
+   "chip_bottom": "당도 측정기(굴절계) · 참고 사진",
+   "title": "8.5브릭스?\n[[그게 뭔데?]]",
+   "size": 104,
+   "sub": "과즙 100g에 녹은 당분 등 [[약 8.5g]]\n높을수록 달게 느끼기 쉬워요\n단, 신맛(산도)도 맛을 좌우해요"
   },
   {
    "type": "card",
-   "dur": 2.5,
+   "dur": 2.8,
+   "photo": {
+    "url": "https://tong.visitkorea.or.kr/cms2/website/10/2704210.jpg",
+    "shows": "감귤 가지에 달린 귤을 손으로 따는 모습",
+    "match": "같은 종류",
+    "rights": "한국관광공사 포토코리아 공공누리 1유형 · ⓒ김지호",
+    "pos": "50% 35%"
+   },
+   "chip": "그래서 올해 귤은?",
+   "headline": "값은 [[내리고]]\n당도는 [[높아요]]",
+   "line": "8월 조사 당도, 관측 이래 최고\n11월에 한 번 더 조사해요"
+  },
+  {
+   "type": "card",
+   "dur": 2.0,
    "photo": {
     "url": "https://tong.visitkorea.or.kr/cms2/website/33/2704233.jpg",
     "shows": "귤나무가 늘어선 제주 귤밭 길",
@@ -152,10 +199,8 @@
    },
    "chip": "앞으로",
    "headline": "제주도가\n[[수급 관리]] 나서요",
-   "line": "소비 촉진에 단속도 강화해요"
+   "line": "출하 조절·소비쿠폰 할인\n11월 20일까지 규격 밖 귤 단속"
   }
  ],
- "review": {
-  "photo_sheet": "1db5fa327d2e"
- }
+ "css": ".cover .back, .card .back { display: none; } .cover .pic, .cover .pic.fill, .cover .pic.whole { height: 1920px; -webkit-mask-image: none; mask-image: none; } .cover .pic img, .cover .pic.whole img, .cover .pic.fill img { object-fit: cover; filter: brightness(.95); } .cover .pic::after { content: \"\"; position: absolute; left: 0; right: 0; bottom: 0; height: 960px; background: linear-gradient(180deg, rgba(8,6,4,0) 0%, rgba(8,6,4,.5) 30%, rgba(8,6,4,.84) 62%, rgba(8,6,4,.92) 100%); } .cover .mid { top: auto; bottom: 400px; text-shadow: 0 3px 20px rgba(0,0,0,.6); } .card .pic.wide, .card .pic.wide.fill, .card .pic.tall { height: 1920px; -webkit-mask-image: none; mask-image: none; } .card .pic img { object-fit: cover; } .card .shade { height: 900px; } .card .txt { bottom: 400px; } .chip { font-size: 46px; } .ln { font-size: 54px; font-weight: 700; line-height: 1.34; } .duo .seam { top: 590px; height: 740px; background: linear-gradient(180deg, rgba(8,6,4,0) 0%, rgba(8,6,4,.8) 26%, rgba(8,6,4,.8) 74%, rgba(8,6,4,0) 100%); } .duo .sub { white-space: pre-line; font-size: 50px; line-height: 1.42; margin-top: 22px; } .duo .tagchip { top: 150px !important; font-size: 34px; font-weight: 800; padding: 8px 20px 12px; border-radius: 12px; background: rgba(8,6,4,.6); } .duo .tagchip ~ .tagchip { top: 1290px !important; } .tref { display: none; }"
 }

@@ -698,7 +698,7 @@ def build_html(spec):
     meta = {"music": song(spec), "sfx": [], "ambience": []}  # 먹고갈지도 노래를 조용히 깔아요. 효과음은 넣지 않아요.
     import thumb
     css = (HERE / "base.css").read_text(encoding="utf-8") + thumb.css()
-    css = css.replace("FONT_DIR", (HERE / "fonts").as_uri())
+    css = css.replace("FONT_DIR", (HERE / "fonts").as_uri()) + spec.get("css", "")  # 설계도 "css": 그 영상 한 편에만 덧씌우는 배치 (2026-10-28 감귤, 다른 영상엔 없음)
     out = ['<!doctype html><html lang="ko"><head><meta charset="utf-8">', f"<style>{css}</style></head>",
            f'<body style="--ac:{accent}">']
     # "thumb" 이 있으면 맨 앞 0.9초를 썸네일 화면(큰 두 줄 제목 + 사진 한 장)으로 보여 줘요. (2026-10-17 사용자가 정함, thumb.py)

@@ -283,7 +283,7 @@ KEEP_CSS = (".rkeep .bpic { height: 890px; } .rkeep .bpic img { object-position:
 
 def page(spec):
     """썸네일 그림 한 장을 찍을 HTML."""
-    style = ((HERE / "base.css").read_text(encoding="utf-8") + css() + KEEP_CSS).replace("FONT_DIR", (HERE / "fonts").as_uri())
+    style = ((HERE / "base.css").read_text(encoding="utf-8") + css() + KEEP_CSS).replace("FONT_DIR", (HERE / "fonts").as_uri()) + spec.get("css", "")  # build.build_html 과 같은 한 편 전용 배치
     keep = " rkeep" if spec.get("layout") == "rec" else ""
     return ('<!doctype html><html lang="ko"><head><meta charset="utf-8">'
             f'<style>{style}</style></head><body><section class="scene first{keep}" style="visibility:visible">{body(spec)}</section></body></html>')
