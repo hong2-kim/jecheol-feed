@@ -157,14 +157,14 @@
    "photo_top": {
     "url": "https://upload.wikimedia.org/wikipedia/commons/9/9a/Mandarins_-_whole_and_halved.jpg",
     "shows": "통귤과 반으로 자른 귤, 귤 한 조각",
-    "match": "참고 사진",
+    "match": "같은 종류",
     "rights": "위키미디어 공용 CC BY-SA 4.0 · ⓒIvar Leidus",
     "pos": "78% 50%"
    },
    "photo_bottom": {
     "url": "https://upload.wikimedia.org/wikipedia/commons/9/9e/Refractometer.jpg",
     "shows": "오렌지 즙을 떨어뜨려 당도를 재는 손 굴절 당도계와 눈금(오른쪽 아래 원)",
-    "match": "참고 사진",
+    "match": "같은 종류",
     "rights": "위키미디어 공용 CC BY-SA 3.0 · ⓒFernando G. (FGM)",
     "pos": "100% 60%"
    },
@@ -202,5 +202,8 @@
    "line": "출하 조절·소비쿠폰 할인\n11월 20일까지 규격 밖 귤 단속"
   }
  ],
- "css": ".cover .back, .card .back { display: none; } .cover .pic, .cover .pic.fill, .cover .pic.whole { height: 1920px; -webkit-mask-image: none; mask-image: none; } .cover .pic img, .cover .pic.whole img, .cover .pic.fill img { object-fit: cover; filter: brightness(.95); } .cover .pic::after { content: \"\"; position: absolute; left: 0; right: 0; bottom: 0; height: 960px; background: linear-gradient(180deg, rgba(8,6,4,0) 0%, rgba(8,6,4,.5) 30%, rgba(8,6,4,.84) 62%, rgba(8,6,4,.92) 100%); } .cover .mid { top: auto; bottom: 400px; text-shadow: 0 3px 20px rgba(0,0,0,.6); } .card .pic.wide, .card .pic.wide.fill, .card .pic.tall { height: 1920px; -webkit-mask-image: none; mask-image: none; } .card .pic img { object-fit: cover; } .card .shade { height: 900px; } .card .txt { bottom: 400px; } .chip { font-size: 46px; } .ln { font-size: 54px; font-weight: 700; line-height: 1.34; } .duo .seam { top: 590px; height: 740px; background: linear-gradient(180deg, rgba(8,6,4,0) 0%, rgba(8,6,4,.8) 26%, rgba(8,6,4,.8) 74%, rgba(8,6,4,0) 100%); } .duo .sub { white-space: pre-line; font-size: 50px; line-height: 1.42; margin-top: 22px; } .duo .tagchip { top: 150px !important; font-size: 34px; font-weight: 800; padding: 8px 20px 12px; border-radius: 12px; background: rgba(8,6,4,.6); } .duo .tagchip ~ .tagchip { top: 1290px !important; } .tref { display: none; }"
+ "css": ".cover .back, .card .back { display: none; } .cover .pic, .cover .pic.fill, .cover .pic.whole { height: 1920px; -webkit-mask-image: none; mask-image: none; } .cover .pic img, .cover .pic.whole img, .cover .pic.fill img { object-fit: cover; filter: brightness(.95); } .cover .pic::after { content: \"\"; position: absolute; left: 0; right: 0; bottom: 0; height: 960px; background: linear-gradient(180deg, rgba(8,6,4,0) 0%, rgba(8,6,4,.5) 30%, rgba(8,6,4,.84) 62%, rgba(8,6,4,.92) 100%); } .cover .mid { top: auto; bottom: 400px; text-shadow: 0 3px 20px rgba(0,0,0,.6); } .card .pic.wide, .card .pic.wide.fill, .card .pic.tall { height: 1920px; -webkit-mask-image: none; mask-image: none; } .card .pic img { object-fit: cover; } .card .shade { height: 900px; } .card .txt { bottom: 400px; } .chip { font-size: 46px; } .ln { font-size: 54px; font-weight: 700; line-height: 1.34; } .duo .seam { top: 590px; height: 740px; background: linear-gradient(180deg, rgba(8,6,4,0) 0%, rgba(8,6,4,.8) 26%, rgba(8,6,4,.8) 74%, rgba(8,6,4,0) 100%); } .duo .sub { white-space: pre-line; font-size: 50px; line-height: 1.42; margin-top: 22px; } .duo .tagchip { top: 150px !important; font-size: 34px; font-weight: 800; padding: 8px 20px 12px; border-radius: 12px; background: rgba(8,6,4,.6); } .duo .tagchip ~ .tagchip { top: 1290px !important; } .tref { display: none; }",
+ "review": {
+  "photo_sheet": "db29066c43f4"
+ }
 }
