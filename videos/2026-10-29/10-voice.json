@@ -1,0 +1,168 @@
+{
+ "format": "voice",
+ "kind": "해설",
+ "subject": "수험생 영양제 부당광고 2026-10-28 식약처 적발",
+ "title": "수험생 영양제라던 제품, 알고 보니 일반 식품이었대요",
+ "yt_title": "수험생 영양제 부당광고, 식약처가 23곳 적발했어요 카페인 권고량도 확인",
+ "headline": "수험생 영양제\n[[일반 식품이었다]]",
+ "narrator": "charon",
+ "voice_pick": {
+  "mode": "solo",
+  "voices": [
+   "charon"
+  ],
+  "why": "식약처 적발 숫자와 카페인 권고량을 정확히 전하는 정보 이야기라 차분하고 또렷한 Charon 솔로"
+ },
+ "summary": "식약처가 10월 28일 수능을 앞두고 일반 식품을 집중력 영양제처럼 광고한 23개 업체를 적발했어요. 판매는 41만 상자, 약 71억 원이고, 카페인 권고량 계산법도 함께 정리해요.",
+ "caption": "수험생 영양제라던 제품이 알고 보니 일반 식품이었대요\n\n식약처는 10월 28일 수능을 앞두고 일반 식품을 '대치동 영양제', '고3 영양제', '집중력 향상' 같은 문구로 광고한 23개 업체를 적발했다고 밝혔어요. 이 업체들이 판 제품은 41만 상자, 금액은 약 71억 원이에요. 식약처는 이 제품들이 집중력 향상 기능성을 인정받은 건강기능식품이 아니라고 했어요.\n\n점검한 제품 10개에는 카페인이 든 원료가 들어 있었고, 한 포에 카페인 100mg이 든 제품도 있었어요. 어린이·청소년의 하루 최대 카페인 권고량은 체중 1kg당 2.5mg이라서, 체중 50kg이면 125mg, 60kg이면 150mg까지예요.\n\n여러분은 수험생에게 뭘 챙겨 주세요?\n\n출처: 식품의약품안전처 발표(10월 28일), 연합뉴스(10월 28일), 농어업경제귀농신문(10월 28일)",
+ "tags": [
+  "수험생간식",
+  "수능",
+  "카페인",
+  "식약처"
+ ],
+ "sources": [
+  "https://www.knongnews.com/news/articleView.html?idxno=25272"
+ ],
+ "credits": [
+  "고려 (CC BY 4.0) · commons.wikimedia.org/?curid=64302850"
+ ],
+ "yt_keyword": "수험생 영양제",
+ "yt_related": [
+  "수능 간식",
+  "집중력 영양제",
+  "카페인 권고량",
+  "식약처 부당광고",
+  "청소년 카페인"
+ ],
+ "yt_tags": [
+  "수험생 영양제",
+  "수능 간식",
+  "집중력 영양제",
+  "카페인 권고량",
+  "식약처 적발",
+  "부당광고",
+  "청소년 카페인"
+ ],
+ "yt_hashtags": [
+  "수험생영양제",
+  "수능간식",
+  "카페인"
+ ],
+ "yt_lead": "식약처가 수능을 앞두고 일반 식품을 수험생 영양제처럼 광고한 23곳을 적발했고, 청소년 카페인 권고량은 체중 1kg당 2.5mg이에요.",
+ "dates": {
+  "checked": "2026-10-29",
+  "sources": [
+   {
+    "url": "https://www.knongnews.com/news/articleView.html?idxno=25272",
+    "published": "2026-10-28"
+   }
+  ],
+  "stat_period": "2026년 수능 앞둔 점검"
+ },
+ "lines": [
+  {
+   "say": "수험생 영양제라던 제품들, 알고 보니 [[일반 식품]]이었대요.",
+   "photo": {
+    "url": "https://commons.wikimedia.org/wiki/Special:FilePath/The%20exam%20location%20%28Puhung%20High%20School%29%2C%20for%20The%20South%20Korea%20College%20Scholastic%20Ability%20Test%2C%202018.jpg?width=1600",
+    "shows": "수능 시험장으로 쓰인 고등학교 교실(책상이 줄지어 놓인 모습)",
+    "match": "분위기",
+    "rights": "위키미디어 공용 CC BY 4.0 · 고려 (CC BY 4.0) · commons.wikimedia.org/?curid=64302850"
+   },
+   "chip": "수험생 영양제의 정체"
+  },
+  {
+   "say": "끝까지 보면, 카페인 [[하루 권고량]] 계산법까지 알려 드려요.",
+   "chip": "끝까지 보면 카페인 권고량 계산"
+  },
+  {
+   "say": "식약처가 10월 28일, 수능 앞두고 부당 광고한 [[23곳]]을 적발했어요.",
+   "photo": {
+    "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Karl%20Gummies%20side%20view.jpg?width=1600",
+    "shows": "호박빛 젤리 한 알(옆모습)",
+    "match": "분위기",
+    "rights": "위키미디어 공용 CC0"
+   },
+   "chip": "적발 23곳"
+  },
+  {
+   "say": "이 업체들이 판 제품은 [[41만 상자]], 금액은 약 [[71억 원]]이에요.",
+   "photo": {
+    "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Watermelon%20gummy%20candies.jpg?width=1600",
+    "shows": "수박 모양 젤리 더미",
+    "match": "분위기",
+    "rights": "위키미디어 공용 CC0"
+   },
+   "chip": "41만 상자 · 71억 원"
+  },
+  {
+   "say": "대치동 영양제, 고3 영양제, 집중력 향상 같은 문구로 광고했대요.",
+   "photo": {
+    "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Meiji%20Kaju-gummi%20variants.jpg?width=1600",
+    "shows": "과일 모양 젤리 다섯 알과 자",
+    "match": "분위기",
+    "rights": "위키미디어 공용 CC0"
+   },
+   "chip": "집중력 향상 · 고3 영양제"
+  },
+  {
+   "say": "식약처는, 이 제품들이 집중력 향상을 인정받은, 건강기능식품이 아니라고 밝혔어요.",
+   "photo": {
+    "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Jasmine%20gummies.jpg?width=1600",
+    "shows": "투명 포장지에 싼 젤리 사탕 더미",
+    "match": "분위기",
+    "rights": "위키미디어 공용 CC0"
+   }
+  },
+  {
+   "say": "점검한 제품 가운데 [[10개]]에는, 카페인이 든 원료가 들어 있었어요.",
+   "photo": {
+    "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Energy%20Drink%20Display.jpg?width=1600",
+    "shows": "에너지 드링크 진열대",
+    "match": "분위기",
+    "rights": "위키미디어 공용 CC0"
+   },
+   "chip": "카페인 원료 10개"
+  },
+  {
+   "say": "한 포에 카페인 [[100mg]]이 든 제품도 있었어요. 체중 40kg 청소년의 하루 최대 권고량과 같아요.",
+   "photo": {
+    "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Coffein%20im%20Energy-Drink.jpg?width=1600",
+    "shows": "카페인 설명이 담긴 에너지 드링크 캔",
+    "match": "분위기",
+    "rights": "위키미디어 공용 Public domain"
+   },
+   "chip": "한 포 카페인 100mg"
+  },
+  {
+   "say": "하루 최대 권고량은 체중 1kg당 [[2.5mg]]이에요. 50kg이면, [[125mg]]까지예요.",
+   "photo": {
+    "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Canadian%20energy%20drink%20bottle.jpg?width=1600",
+    "shows": "에너지 드링크 병",
+    "match": "분위기",
+    "rights": "위키미디어 공용 Public domain"
+   },
+   "chip": "체중 1kg당 2.5mg · 50kg 125mg",
+   "read": "하루 최대 권고량은, 체중 1킬로그램당 이 점 오 밀리그램이에요. 50킬로그램이면, 125밀리그램까지예요."
+  },
+  {
+   "say": "수험생 간식을 사기 전에, 건강기능식품으로 인정받은 제품인지, 먼저 확인해 보세요.",
+   "photo": {
+    "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Karl%20Gummies%20top%20view.jpg?width=1600",
+    "shows": "호박빛 젤리 한 알(위에서)",
+    "match": "분위기",
+    "rights": "위키미디어 공용 CC0"
+   }
+  },
+  {
+   "say": "여러분은 수험생에게, 뭘 챙겨 주세요? [[댓글]]로 알려 주세요."
+  }
+ ],
+ "followup": {
+  "of": "2026-10-21/2-news#2",
+  "new": "식약처가 10월 28일 수험생 대상 부당광고 23곳 적발(41만 상자·약 71억 원, 카페인 원료 제품 10개)"
+ },
+ "review": {
+  "photo_sheet": "37262040ba02"
+ }
+}
