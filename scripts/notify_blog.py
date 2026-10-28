@@ -48,6 +48,9 @@ def posted_message(event, site):
                 "컴퓨터에서 Claude 에게 \"네이버 로그인 창 열어 줘\"라고 한 뒤 직접 로그인해 주세요. 로그인하면 밀린 초안부터 올라가요.")
     if status == "held":  # 보내기 전 검수(scripts/gate.py)에 걸려 올리지 않음. 고치거나 승인하면 다음 날 다시 검수해요 (2026-10-23 5단계)
         return f"🛑 <b>검수에 걸려 블로그를 올리지 않았어요</b>\n{title}\n{note}\n고치거나 Claude 에게 \"보내\"라고 하면 다음 날 다시 검수해요.{page}"
+    if status == "stopped":  # 운영 폴더가 main 이 아니거나 예상 못 한 오류로 발행 전에 멈춤. 초안은 그대로 남아 있어요 (2026-10-28)
+        return (f"❌ <b>블로그 발행이 멈췄어요</b>\n{note}\n"
+                "컴퓨터에서 Claude 에게 \"오늘 블로그 발행 다시 돌려 줘\"라고 해 주세요. 그냥 두면 내일 13시에 다시 해 봐요.")
     if status == "skipped":
         return f"⚠️ <b>블로그를 자동으로 올리지 않았어요</b>\n{title}\n{note}{page}"
     return f"❌ <b>블로그를 올리지 못했어요</b>\n{title}\n{note}\n다음 날 한 번 더 시도해요.{page}"

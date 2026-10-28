@@ -4,7 +4,8 @@
   python3 scripts/today_rules.py                 오늘(한국 시간) 읽을 파일
   python3 scripts/today_rules.py 2026-11-01      그날 읽을 파일
   python3 scripts/today_rules.py --show blog     파일 하나를 보여 줘요 (이름이나 경로)
-  python3 scripts/today_rules.py --check 2026-10-19   그날 설계도에 보류 중인 칸이 들어갔는지, 내레이션 쇼츠가 빠지지 않았는지 봐요
+  python3 scripts/today_rules.py --check 2026-10-19   그날 설계도에 보류 중인 칸이 들어갔는지, 내레이션 쇼츠가 빠지지 않았는지,
+                                                      블로그 초안의 사진 검수가 비지 않았는지 봐요
 
 고르는 기준은 PROMPT.md 의 "만드는 영상" 표와 같아요. 요일, config.json 의 blog_days, myphotos/index.json 의 plan·side,
 이번 달 videos/ 에 달마다 만드는 것이 있는지를 봐요. 읽기만 하고 아무것도 쓰지 않아요.
@@ -109,7 +110,37 @@ def check(day):
         print("꼭 만들어 주세요: 오늘 10-voice.json(내레이션 쇼츠)이 없어요. 지금 만든 뒤 끝내요. "
               "시간·턴이 모자란 것은 건너뛸 까닭이 아니에요(PROMPT.md \"만드는 영상\", rules/daily/voice.md). "
               "후보를 3개 넘게 확인했는데도 겹치지 않는 확인된 주제가 없을 때만 건너뛰고, 본 후보와 까닭을 마지막 보고에 적어요.")
-    return 1 if found or missing else 0
+    unchecked = blog_photo_check(day)
+    return 1 if found or missing or unchecked else 0
+
+
+# 사진 검수 시트·shows·match 는 매일 실행이 직접 채울 수 있어요. 나머지 '확인 필요'(이력 겹침, 이용 조건 등)는 사람 몫이라 막지 않아요.
+BLOG_PHOTO_AREAS = ("사진 확인", "사진 일치")
+
+
+def blog_photo_check(day):
+    """그날 블로그 초안의 사진 검수가 비었으면 알려 줘요. 비면 13시 네이버 발행이 검수에서 멈춰요.
+    10-26·10-28 매일 실행이 초안을 맨 끝에 쓰고 검수를 건너뛰어 두 번 다 멈춰서 넣은 검사예요 (2026-10-28)."""
+    import gate
+    todo = 0
+    for f in sorted((ROOT / "blog").glob(f"{day.isoformat()}-*.json")):
+        result = gate.evaluate(f)
+        if result["verdict"] == "통과":
+            print(f"블로그 초안 검수: {f.name} 통과")
+            continue
+        photo = [m for area, lv, m in result["findings"] if area in BLOG_PHOTO_AREAS and lv != "참고"]
+        if photo:
+            todo += 1
+            print(f"꼭 고쳐 주세요: 블로그 초안 {f.name} 의 사진 검수가 비었어요. 그대로 두면 13시 네이버 발행이 멈춰요. "
+                  f"python3 scripts/review_sheet.py blog/{f.name} /tmp/시트.jpg 로 시트를 열어 보고, 사진마다 shows·match 와 "
+                  "review.photo_sheet 를 적은 뒤 끝내요 (PROMPT.md 7-1).")
+            for m in photo[:3]:
+                print("  " + m[:160])
+        else:
+            print(f"블로그 초안 검수: {f.name} {result['verdict']} — 사람이 볼 것이라 13시에 보류돼요. 까닭을 마지막 보고에 적어요.")
+            for line in gate.reasons(result, 3):
+                print("  " + line)
+    return todo
 
 
 def main():
@@ -117,7 +148,7 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("day", nargs="?", help="YYYY-MM-DD (없으면 오늘, 한국 시간)")
     ap.add_argument("--show", help="파일 하나를 보여 줘요 (blog, rules/weekday/blog.md 처럼)")
-    ap.add_argument("--check", metavar="DAY", help="그날 설계도의 보류 칸·빠진 내레이션 쇼츠 검사")
+    ap.add_argument("--check", metavar="DAY", help="그날 설계도의 보류 칸·빠진 내레이션 쇼츠·블로그 사진 검수 검사")
     a = ap.parse_args()
     if a.check:
         sys.exit(check(date.fromisoformat(a.check)))
