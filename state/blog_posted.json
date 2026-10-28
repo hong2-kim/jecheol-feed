@@ -78,5 +78,13 @@
     "title": "10월 제철 감귤, 값은 24.4% 내렸는데 당도는 높다고? (2026)",
     "note": "검수: 확인 필요\n[확인] 사진 확인: 실제 사진 검수 시트를 열어 본 기록(review.photo_sheet)이 없어요. python3 scripts/review_sheet.py C:/Users/User/클로드 연습하기/jecheol-feed/blog/2026-10-28-gamgyul.j\n[확인] 사진 일치: lines[1].photo: shows(사진에 실제로 찍힌 것)가 없어요. 사진을 열어 보고 적어 주세요\n[확인] 사진 일치: lines[1].photo: match 를 정확/같은 종류/분위기 가운데 하나로 적어 주세요\n[확인] 사진 일치: lines[2].photo: shows(사진에 실제로 찍힌 것)가 없어요. 사진을 열어 보고 적어 주세요\n[확인] 사진 일치: lines[2].photo: match 를 정확/같은 종류/분위기 가운데 하나로 적어 주세요\n[확인] 사진 일치: lines[3].photo: shows(사진에 실제로 찍힌 것)가 없어요. 사진을 열어 보고 적어 주세요\n…그 밖에 3건",
     "at": "2026-10-28T07:43:20.399Z"
+  },
+  {
+    "key": "2026-10-28-gamgyul:published",
+    "id": "2026-10-28-gamgyul",
+    "status": "published",
+    "title": "10월 제철 감귤, 값은 24.4% 내렸는데 당도는 높다고? (2026)",
+    "url": "https://blog.naver.com/hongbeom_404/224456809486",
+    "at": "2026-10-28T07:46:03.104Z"
   }
 ]
