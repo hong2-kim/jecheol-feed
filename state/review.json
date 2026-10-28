@@ -160,18 +160,7 @@
     "approved": false,
     "reasons": [],
     "noticed": null,
-    "held_noticed": "3:보류",
-    "held_cards": [
-      {
-        "no": 3,
-        "headline": "오레오 씬즈 [[말차 맛 출시]]",
-        "grade": "보류",
-        "reasons": [
-          "사진 없는 소식 장 (복구 절차 기록 없음)"
-        ],
-        "news": "#3"
-      }
-    ]
+    "held_noticed": "3:보류"
   },
   "2026-10-28-3-dinner": {
     "verdict": "통과",
@@ -182,14 +171,10 @@
     "held_noticed": null
   },
   "2026-10-28-4-find": {
-    "verdict": "확인 필요",
-    "hash": "3505481c189a",
+    "verdict": "통과",
+    "hash": "308e21feab9b",
     "approved": false,
-    "reasons": [
-      "[확인] 사진 확인: 실제 사진 검수 시트를 열어 본 기록(review.photo_sheet)이 없어요. python3 scripts/review_sheet.py /home/runner/work/jecheol-feed/jecheol-feed/videos/2026-10-28",
-      "[확인] 사진 일치: scenes[7].photo_top: match 를 정확/같은 종류/분위기 가운데 하나로 적어 주세요",
-      "[확인] 사진 일치: scenes[7].photo_bottom: match 를 정확/같은 종류/분위기 가운데 하나로 적어 주세요"
-    ],
+    "reasons": [],
     "noticed": "확인 필요:3505481c189a",
     "held_noticed": null
   }
