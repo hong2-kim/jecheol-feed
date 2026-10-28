@@ -177,5 +177,21 @@
     "reasons": [],
     "noticed": "확인 필요:3505481c189a",
     "held_noticed": null
+  },
+  "2026-10-29-2-news": {
+    "verdict": "통과",
+    "hash": "740f6d39a22e",
+    "approved": false,
+    "reasons": [],
+    "noticed": null,
+    "held_noticed": null
+  },
+  "2026-10-29-3-dinner": {
+    "verdict": "통과",
+    "hash": "4b586cc6d1d7",
+    "approved": false,
+    "reasons": [],
+    "noticed": null,
+    "held_noticed": null
   }
 }
