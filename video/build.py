@@ -216,9 +216,20 @@ BLANK = "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAA
 
 
 def zoomed(photo):
-    """설계도에 "fit": "cover" 를 적은 사진만 화면을 꽉 채우게 잘라요. 나머지는 잘리지 않게 통째로 보여 줘요.
-    (2026-10-17 사용자가 정함: "확대 요청이 없으면 안 잘리게")"""
+    """설계도에 "fit": "cover" 를 적은 사진만 화면을 꽉 채우게 잘라요."""
     return isinstance(photo, dict) and photo.get("fit") == "cover"
+
+
+def keep_whole(photo):
+    """원본 전체가 중요한 사진: 상품 포장·포스터·안내문처럼 디자인된 그림. 잘리지 않게 통째로 둬요.
+    설계도 사진에 "fit": "contain"(또는 "whole"·"pack")이나 "kind": "poster"·"pack" 을 적어요.
+    (2026-10-17 "확대 요청이 없으면 안 잘리게" 규칙은 이런 사진에만 남기고, 음식 사진은 2026-10-28 사용자 승인으로 크게 보여 줘요)"""
+    return isinstance(photo, dict) and (photo.get("fit") in ("contain", "whole", "pack") or photo.get("kind") in ("poster", "pack"))
+
+
+def fills(photo):
+    """가로 음식 사진을 세로 화면에 크게(칸을 꽉 채워, 가장자리만 자연스럽게 잘려요). 핵심이 가장자리에 있으면 "pos" 로 옮겨요."""
+    return bool(photo) and not zoomed(photo) and not keep_whole(photo)
 
 
 def img(photo):
@@ -246,9 +257,11 @@ def fit_size(text, size, room=930):
 
 
 def scene_cover(s, i, ctx):
-    whole = not s.get("video") and not zoomed(s.get("photo"))
-    tag, back, _ = moving(s, s["dur"])
-    parts = [(f'<div class="back"><img src="{back}"></div>' if whole else "") + f'<div class="pic{" whole" if whole else ""}">{tag}</div>', '<div class="mid">']
+    tag, back, tall = moving(s, s["dur"])
+    fill = not s.get("video") and not tall and fills(s.get("photo"))  # 가로 음식 사진: 위쪽 큰 칸을 꽉 채워요 (2026-10-28)
+    whole = not s.get("video") and not zoomed(s.get("photo")) and not fill
+    parts = [(f'<div class="back"><img src="{back}"></div>' if whole or fill else "")
+             + f'<div class="pic{" whole" if whole else " fill" if fill else ""}">{tag}</div>', '<div class="mid">']
     if s.get("kicker"):
         parts.append(rise("kicker", s["kicker"], .15))
     parts.append(rise("title", s["title"], .4, style=f'font-size:{fit_size(s["title"], s.get("size", 128))}px'))
@@ -271,7 +284,7 @@ def scene_card(s, i, ctx):
         inset = f'<div class="inset a rise" style="--dl:.3s;--d:.3s"><img src="{src}" style="object-position:{pos}"></div>'
     return "card", (
         f'<div class="back"><img src="{back}"></div>'
-        f'<div class="pic {"tall" if tall else "wide"}{"" if s.get("video") or zoomed(s.get("photo")) else " whole"}">{tag}</div>{inset}<div class="shade"></div>'
+        f'<div class="pic {"tall" if tall else "wide"}{"" if s.get("video") or zoomed(s.get("photo")) else " fill" if not tall and fills(s.get("photo")) else " whole"}">{tag}</div>{inset}<div class="shade"></div>'
         f'<div class="txt">{chip}{rise("hd", s["headline"], .32)}{rise("ln", s.get("line", ""), .6)}</div>'
     )
 
@@ -823,7 +836,7 @@ def why_lines(card):
 
 def card_problems(spec):
     """카드 뉴스 설계도에서 고칠 곳을 찾아요. (꼭 고칠 것, 고치면 좋은 것)"""
-    must, should = [], []
+    must, should = news_problems(spec), []  # 소식 단위(news)가 있으면 장과 게시글이 맞는지 (2026-10-28)
     cards = spec.get("cards") or []
     if is_top5(spec):
         top5_problems(spec, must, should)
@@ -889,10 +902,16 @@ def card_problems(spec):
             should.append(f"카드 {n}: 핵심 숫자 줄이 길어요. 20자 안쪽으로 줄여 주세요.")
         if c.get("note") and units(c["note"]) > 9:
             should.append(f"카드 {n}: 스티커 한마디(note)가 길어요. 8자 안쪽으로 줄여 주세요.")
-        if not kind and not c.get("photo") and not c.get("big"):
-            should.append(f"카드 {n}: 사진이 없어요. 맞는 사진이 없으면 big 에 큰 숫자(예: 9% ↓)를 적어 주세요.")
-        if not kind and c.get("big") and not c.get("photo"):
-            should.append(f"카드 {n}: 숫자 장에 사진이 없어요. 그 음식이 찍힌 사진을 photo 에 적으면 어둡게 깔리고 숫자가 위에 얹혀요.")
+        if not kind and not c.get("photo") and not c.get("flow"):  # 2026-10-28 사용자: 사진 없이 글자만 큰 장 금지(말차 오레오 사례)
+            tried = [k for k in PHOTO_STEPS if (c.get("photo_search") or {}).get(k)]
+            if story:
+                should.append(f"카드 {n}: 사진 없는 숫자 장이에요. 그 음식 사진이 있으면 photo 에 적어 주세요.")
+            elif len(tried) == len(PHOTO_STEPS):  # 복구 절차를 다 거쳤으면 이 장(소식)은 제작 때 보류돼요
+                should.append(f"카드 {n}: 사진 없는 소식 장이라 이 소식은 보류돼요(복구 시도 기록 있음). 나머지 소식은 그대로 나가요.")
+            else:
+                must.append(f"카드 {n}: 사진 없는 소식 장이에요. 글자만 큰 장으로 대신하지 말고 복구 절차를 차례로 해 주세요: "
+                            "① 그 제품·음식의 실제 사진 더 찾기 ② 제조사 보도자료·미디어센터 ③ 쓸 수 있는 다른 실제 사진·시각 자료(막대·비교 장) "
+                            "④ 레이아웃 바꾸기. 다 해도 없으면 photo_search 에 exact·press·other·layout 마다 해 본 것을 적어요(그 소식만 보류돼요).")
         must.extend(density_problems(c, n))
         if story and kind != "summary":  # 장마다 앞 장에서 이어지는 물음 (2026-10-19 5단계)
             q = str(c.get("q") or "")
@@ -1072,6 +1091,12 @@ def typed_problems(c, n, must, should):
             must.append(f"카드 {n}: 큰 제목 장(hero)에 사진(photo)이 없어요.")
         if not c.get("say") and not c.get("lines"):
             should.append(f"카드 {n}: 큰 제목 장(hero)에 가운데 한마디(say)가 없어요. 무엇이 몇 월 며칠에 어떻게 되는지 두 줄로 적어 주세요.")
+        if len(hero_lines(c.get("headline", ""))) > 2 or any(len(str(x).split("\n")) > 2 for x in [c.get("say", "")] + [l.get("say", "") for l in c.get("lines") or []]):
+            should.append(f"카드 {n}: 큰 제목 장의 headline·say 는 두 줄까지예요. 길면 사진이 작아져 그린 뒤 검수에 걸려요.")
+        if len(c.get("rows") or []) > HERO_ROWS_MAX:
+            should.append(f"카드 {n}: 정보 줄(rows)은 {HERO_ROWS_MAX}줄까지만 보여요. 핵심만 남기고 나머지는 다음 장으로 옮겨 주세요.")
+        if c.get("more") and (len(hero_more(c)) != 2 or c.get("photo2")):
+            should.append(f"카드 {n}: B안(more)은 정확·같은 종류 사진이 꼭 2장일 때만 쓰여요(분위기 사진은 빠져요). 아니면 A안(사진 한 장)으로 나가요.")
         for line in c.get("lines") or []:
             for row in str(line.get("say") or "").split("\n"):
                 if units(row) > HERO_SAY_MAX:
@@ -1113,7 +1138,7 @@ def news_cover(cover, total, when, name, pill, label, weekly=False, story=False,
     story(이야기 카드)면 이름표는 cover.label(없으면 "오늘의 먹거리 이슈")이고, items 목록은 있을 때만 보여요."""
     if cover.get("photo"):
         src, pos = fetch_photo(cover["photo"])
-        top = f'<div class="ph"><img src="{src}" style="object-position:{pos}"></div>'
+        top = f'<div class="ph"><img src="{src}" style="object-position:{pos}"></div>{ref_label(cover["photo"]).replace("ref", "ref ph-ref", 1)}'
     else:
         top = f'<div class="ph">{NEWS_MAP}</div>'
     items = (cover.get("items") or [])[:3] if story else cover["items"]
@@ -1182,7 +1207,7 @@ def compare_html(c):
         pic = ""
         if s.get("photo"):
             src, pos = fetch_photo(s["photo"])
-            pic = f'<img src="{src}" style="object-position:{pos}">'
+            pic = f'<img src="{src}" style="object-position:{pos}">{ref_label(s["photo"]).replace("ref", "ref cm-ref", 1)}'
         note = f'<i class="cm-n">{rich(s["note"])}</i>' if s.get("note") else ""
         return (f'<div class="cm-it{" hi" if i == hi else ""}"><span class="cm-lb">{rich(s["label"])}</span>{pic}'
                 f'<b class="cm-v" style="font-size:{size}px">{rich(s["value"])}</b>{note}</div>')
@@ -1252,64 +1277,579 @@ def story_bits(c, nxt, n, total):
 
 HERO_SAY_MAX = 18  # 큰 제목 장 가운데 자막 한 줄 칸 수
 HERO_ROOM = 1000   # 큰 제목 한 줄이 차지하는 폭 (화면 양 끝에서 40px 안쪽)
-HERO_ROW, HERO_FOOT = 66, 58  # 큰 제목 장 아래 정보 한 줄 높이, 맨 아래 자료 줄 자리
-HERO_ROWS_HEAD = 170  # 정보 줄이 있는 장은 제목을 조금 줄여 사진·글씨 자리를 내요 (2026-10-24 사용자: 글씨·사진이 안 보여요)
+# 사진 중심 (2026-10-28 사용자: 제목만 크고 사진이 작은 장 금지). 제목은 눈길을 끌 만큼만, 사진은 양옆 끝까지 크게, 설명은 아래 짧게.
+HERO_HEAD_CAP = 100      # 큰 제목 글자 크기 상한 (예전 170~230)
+HERO_ONE_LINE = 92       # 두 줄 제목을 한 줄로 이어도 이 크기 이상이면 한 줄로 써요
+HERO_TOP = 122           # 제목이 시작하는 곳 (로고·날짜 줄 아래)
+HERO_ROW, HERO_ROWS_MAX = 64, 2  # 아래 정보 줄 높이, 줄 수 상한 (더 많으면 다음 장으로)
+HERO_SAY_LINE = 66       # 한마디 한 줄 높이 (글자 50px)
+HERO_FOOT = 1296         # 맨 아래 자료 줄 위쪽 끝
+HERO_MORE_SPLIT = 0.62   # 사진이 석 장이면 큰 사진이 사진 칸 높이의 이만큼, 나머지는 같은 크기 두 칸
 
 
-def hero_head(line, cap=230):
-    """큰 제목 한 줄. 화면 양 끝에 맞게 글자 크기를 정하고, 검은 테두리를 뒤에 한 벌 깔아요."""
+def hero_head(line, cap=HERO_HEAD_CAP):
+    """큰 제목 한 줄. 화면 양 끝에 맞게 글자 크기를 정하고(상한 cap), 검은 테두리를 뒤에 한 벌 깔아요."""
     import thumb
     size = min(cap, int(160 * HERO_ROOM / max(1.0, thumb.width(line, 160))))
     plain = line.replace("[[", "").replace("]]", "")
     return size, f'<span data-t="{esc(plain)}">{rich(line)}</span>'
 
 
+def hero_lines(headline):
+    """제목 줄들. 한 줄로 이어도 충분히 크면 줄바꿈을 없애요 (불필요한 줄바꿈 줄이기)."""
+    lines = [x for x in str(headline).split("\n") if x.strip()]
+    if len(lines) > 1:
+        one = " ".join(lines)
+        if hero_head(one)[0] >= HERO_ONE_LINE:
+            return [one]
+    return lines
+
+
+def ref_label(p):
+    """그 상품·그 대상이 아닌 사진(match 가 같은 종류·분위기)에 붙이는 '참고 사진' 딱지 (2026-10-28 사용자: 대체 사진은 참고 사진임을 분명히).
+    ref 를 적으면 그 말로 써요. 예: 참고 사진 · 실제 제품 아님"""
+    if not isinstance(p, dict) or p.get("match", "정확") == "정확":
+        return ""
+    return f'<span class="ref">{esc(p.get("ref") or "참고 사진")}</span>'
+
+
+def hero_more(c):
+    """큰 사진 아래 같은 크기 두 칸(B안)에 넣을 사진. 내용과 바로 이어지지 않는 분위기 사진은 빼요 (2026-10-28 사용자)."""
+    return [p for p in (c.get("more") or []) if p.get("match") in ("정확", "같은 종류")][:2]
+
+
+def hero_photos(c, box):
+    """사진 칸. A안: 한 장을 양옆 끝까지 꽉 채워요(자연스럽게 잘라요, 위치는 pos). 기본이에요.
+    두 장(photo2)은 나란히, B안(more 에 정확·같은 종류 사진 2장)은 큰 사진 + 같은 크기 두 칸. more 가 모자라면 A안으로 돌아가요."""
+    top, height = box
+    def cell(p, style):
+        if p.get("fit") == "pack":  # 상품 포장 사진: 자르지 않고 흰 판에 통째로 크게 (흰 바탕이 사진의 일부예요)
+            return f'<div class="pk" style="{style}"><img src="{pack_photo(p)}">{ref_label(p)}</div>'
+        src, pos = fetch_photo(p)
+        return f'<div style="{style}"><img src="{src}" style="object-position:{pos}">{ref_label(p)}</div>'
+    more = hero_more(c)
+    pics = [c["photo"]] + ([c["photo2"]] if c.get("photo2") else []) + (more if len(more) == 2 and not c.get("photo2") else [])
+    gap = 10
+    if len(pics) == 1:
+        cells = cell(pics[0], f"left:0;top:0;width:1080px;height:{height}px")
+    elif len(pics) == 2:
+        w = (1080 - gap) // 2
+        cells = "".join(cell(p, f"left:{k * (w + gap)}px;top:0;width:{w}px;height:{height}px") for k, p in enumerate(pics))
+    else:
+        main = round(height * HERO_MORE_SPLIT)
+        w, h = (1080 - gap) // 2, height - main - gap
+        cells = cell(pics[0], f"left:0;top:0;width:1080px;height:{main}px") + "".join(
+            cell(p, f"left:{k * (w + gap)}px;top:{main + gap}px;width:{w}px;height:{h}px") for k, p in enumerate(pics[1:3]))
+    return f'<div class="hpics" style="top:{top}px;height:{height}px">{cells}</div>'
+
+
+HERO_SCALE = 176  # 비교 그림 띠 높이
+
+
+def scale_html(sc, top):
+    """두 가지 크기·두께를 나란히 그린 띠 (2026-10-28 말차 오레오: 기존 오레오보다 약 40% 얇아요).
+    {"title": "두께 비교", "note": "[[약 40%]] 얇아요", "src": "회사 발표", "shape": "sandwich" 또는 "bar",
+     "items": [{"label": "기존 오레오 샌드", "value": 100}, {"label": "오레오 씬즈", "value": 60, "hl": true}]}
+    값은 확인한 자료의 비율만 써요. 비율 그림이라 사진처럼 보이지 않게 단순하게 그려요."""
+    items = sc.get("items") or []
+    top_v = max((float(i["value"]) for i in items), default=1) or 1
+    cells = ""
+    for i in items:
+        h = max(12, round(96 * float(i["value"]) / top_v))
+        body = (f'<span class="sw" style="height:{h}px"><i></i><i></i><i></i></span>' if sc.get("shape", "sandwich") == "sandwich"
+                else f'<span class="sb" style="height:{h}px"></span>')
+        cells += f'<div class="sc-it{" hi" if i.get("hl") else ""}">{body}<b>{rich(i["label"])}</b></div>'
+    head = (f'<div class="sc-hd"><em>{rich(sc.get("title", ""))}</em><strong>{rich(sc.get("note", ""))}</strong>'
+            f'<small>{esc(sc.get("src", ""))}</small></div>')
+    return f'<div class="hscale" style="top:{top}px;height:{HERO_SCALE}px">{head}{cells}</div>'
+
+
 def hero_card(c, n, total, when, name, pill, say=None):
-    """큰 제목 장 (2026-10-21 사용자가 빅아치 시안으로 정함).
-    위: 빨간 띠(ribbon) + 화면 양 끝까지 큰 두 줄 제목 + 왼쪽에서 오른쪽으로 번지는 밑줄
-    가운데: 한마디(say). 내레이션(lines)이 있으면 쇼츠에서 한 줄씩 바뀌어요 (그림 한 장일 때는 첫 줄)
-    아래: 양옆 끝까지 사진 + 날짜 띠(date).
-    rows(정보 줄)가 있으면 제목 → 사진 → 한마디 → 정보 줄 → 자료 줄 차례로 쌓아요 (2026-10-24 사용자: 글씨는 아래로 크게, 사진도 크게).
-    photo2 가 있으면 사진 두 장을 나란히 놓아요."""
-    src, _ = fetch_photo(c["photo"])
+    """큰 제목 장. 2026-10-28 사용자가 사진 중심으로 다시 정함 (예전: 2026-10-21 빅아치 시안, 화면 양 끝까지 큰 두 줄 제목).
+    위: 로고·날짜 + 짧은 제목(상한 HERO_HEAD_CAP) + 밑줄
+    가운데: 양옆 끝까지 큰 사진 (photo2 가 있으면 두 장 나란히, more 가 있으면 큰 사진 + 같은 크기 두 칸). ribbon 은 사진 왼쪽 위 딱지.
+    아래: 한마디(say, 내레이션 lines 가 있으면 쇼츠에서 한 줄씩 바뀌어요) → 정보 줄(rows, 2줄까지) → 자료 줄 (또는 날짜 띠 date)."""
     if say is None:
         say = c.get("say") or ((c.get("lines") or [{}])[0]).get("say", "")
-    rows = c.get("rows") or []
-    heads, top = "", 180
-    for k, line in enumerate(str(c["headline"]).split("\n")):
-        size, body = hero_head(line, HERO_ROWS_HEAD if rows else 230)
+    rows = (c.get("rows") or [])[:HERO_ROWS_MAX]
+    heads, top = "", HERO_TOP
+    lines = hero_lines(c["headline"])
+    for line in lines:
+        size, body = hero_head(line, HERO_HEAD_CAP if len(lines) <= 2 and not c.get("compact") else 84)  # compact: 검수에 걸려 자동으로 줄인 장  # 세 줄이면 더 작게 (제목 높이 검수에 걸리지 않게)
         heads += f'<div class="ht" style="top:{top}px;font-size:{size}px">{body}</div>'
-        top += round(size * 1.06)
-    rib = f'<div class="hrib">{rich(c["ribbon"])}</div>' if c.get("ribbon") else ""
+        top += round(size * 1.08)
+    say_n = max(1, max((len(str(x.get("say", "")).split("\n")) for x in c.get("lines") or [{"say": say}]), default=1))
+    rows_top = HERO_FOOT - (HERO_ROW * len(rows) + 14 if rows else 0) - (96 if c.get("date") else 0)
+    bottom = rows_top - (HERO_SCALE + 10 if c.get("scale") else 0)
+    say_top = bottom - HERO_SAY_LINE * say_n - 12
+    pic_top = top + 40
+    photo = hero_photos(c, (pic_top, say_top - 22 - pic_top))
+    rib = f'<div class="hrib" style="top:{pic_top + 26}px">{rich(c["ribbon"])}</div>' if c.get("ribbon") else ""
     date = f'<div class="hdate">{rich(c["date"])}</div>' if c.get("date") else ""
-    say_top, extra = top + 30, ""
-    if rows:
-        rows_top = 1350 - HERO_FOOT - HERO_ROW * len(rows)
-        pic_top = top + 36
-        say_top = rows_top - 150
-        box = f"top:{pic_top}px;height:{say_top - 10 - pic_top}px"
-        if c.get("photo2"):  # 두 장 나란히: 칸을 꽉 채워 크게 (가장자리만 조금 잘려요)
-            cells = "".join(f'<div><img src="{fetch_photo(p)[0]}" style="object-position:{p.get("pos", "50% 50%")}"></div>'
-                            for p in (c["photo"], c["photo2"]))
-            photo = f'<div class="hpic2" style="{box}">{cells}</div>'
-        else:  # 한 장: 칸이 낮아서 잘리지 않게 통째로
-            photo = f'<div class="hpic fit" style="{box};bottom:auto"><img class="bg" src="{backdrop(c["photo"])}"><img src="{src}"></div>'
-        items = "".join(f'<li><span><b>{esc(r["k"])}</b>{rich(r["v"])}</span></li>' for r in rows)
-        extra = (f'<ul class="hrows" style="top:{rows_top}px">{items}</ul>'
-                 f'<div class="foot"><span>자료 {esc(c["src"])}</span><b>{n} / {total}</b></div>')
-        if c.get("price"):  # 값표: 사진 오른쪽 흐린 빈자리에 단품·세트·라지세트 (2026-10-21 사용자)
-            cells = "".join(f'<div><span>{esc(r["k"])}</span><b>{rich(r["v"])}</b></div>' for r in c["price"])
-            head = f'<em>{esc(c["price_title"])}</em>' if c.get("price_title") else ""  # 확정 전 값이면 "예상 가격"처럼 적어요
-            note = f'<i>{esc(c["price_note"])}</i>' if c.get("price_note") else ""
-            extra += f'<div class="hprice" style="top:{pic_top + 10}px">{head}{cells}{note}</div>'
-    else:
-        photo = f'<div class="hpic"><img src="{src}"></div>'
+    items = "".join(f'<li><span><b>{esc(r["k"])}</b>{rich(r["v"])}</span></li>' for r in rows)
+    extra = f'<ul class="hrows" style="top:{rows_top + 4}px">{items}</ul>' if rows else ""
+    if c.get("scale"):
+        extra += scale_html(c["scale"], bottom + 4)
+    if not c.get("date"):
+        extra += f'<div class="foot"><span>자료 {esc(c["src"])}</span><b>{n} / {total}</b></div>'
+    if c.get("price"):  # 값표: 사진 오른쪽 위 (2026-10-21 사용자)
+        cells = "".join(f'<div><span>{esc(r["k"])}</span><b>{rich(r["v"])}</b></div>' for r in c["price"])
+        head = f'<em>{esc(c["price_title"])}</em>' if c.get("price_title") else ""  # 확정 전 값이면 "예상 가격"처럼 적어요
+        note = f'<i>{esc(c["price_note"])}</i>' if c.get("price_note") else ""
+        extra += f'<div class="hprice" style="top:{pic_top + 20}px">{head}{cells}{note}</div>'
     return (
         f'<section class="nc hero" id="c{n + 1}">{photo}'
         f'<div class="mast"><div class="brand">{OUTRO_PIN}<span>{name}</span><i>{pill}</i></div><div class="when">{esc(when)}</div></div>'
-        f'{rib}{heads}<div class="hline" style="top:{top + 8}px"></div>'
-        f'<div class="hsay" style="top:{say_top}px"><div>{rich(say)}</div></div>{date}{extra}</section>'
+        f'{heads}<div class="hline" style="top:{top + 4}px"></div>{rib}'
+        f'<div class="hsay" style="top:{say_top}px;height:{HERO_SAY_LINE * say_n + 8}px"><div>{rich(say)}</div></div>{date}{extra}</section>'
     )
+
+
+# 그린 뒤 검수 (2026-10-28 사용자: 제목이 지나치게 크거나 사진이 작거나 여백이 크면 걸러 주세요)
+# 카드마다 제목 높이, 사진이 실제로 보이는 넓이, 사진 칸 안 빈 여백(통째로 넣어 남은 곳), 사진·글 없이 비어 있는 가로 띠를 재요.
+TEXT_SEL = (".ht", ".hsay > div", ".hrows li", ".hrib", ".hl", ".fact", ".bs", ".why > div", ".bignum", ".tag", ".foot span", ".foot b",
+            ".when", ".brand span", ".cm-lb", ".cm-v", ".cm-n", ".ch-lb", ".list li", ".ref", ".note", ".q", ".nx-q", ".ask", ".ln",
+            ".hprice span", ".hprice b", ".hprice em", ".hprice i", ".sc-hd em", ".sc-hd strong", ".sc-hd small", ".sc-it b")  # 겹침·잘림을 재는 글자 칸
+LAYOUT_PROBE = r"""() => [...document.querySelectorAll('section.nc')].map(sec => {
+  const S = sec.getBoundingClientRect(), A = S.width * S.height;
+  const cut = (a, b) => ({left: Math.max(a.left, b.left), top: Math.max(a.top, b.top), right: Math.min(a.right, b.right), bottom: Math.min(a.bottom, b.bottom)});
+  const area = r => Math.max(0, r.right - r.left) * Math.max(0, r.bottom - r.top);
+  let photo = 0, spare = 0;
+  for (const im of sec.querySelectorAll('img')) {
+    if (im.classList.contains('bg') || !im.naturalWidth) continue;
+    let r = cut(im.getBoundingClientRect(), S);
+    if (im.parentElement !== sec) r = cut(r, im.parentElement.getBoundingClientRect());
+    const box = area(r);
+    if (box < 2000) continue;
+    if (im.closest('.pk')) photo += box;  // 상품 포장 사진: 흰 판까지 사진이에요
+    else if (getComputedStyle(im).objectFit === 'contain') {
+      const b = im.getBoundingClientRect(), k = Math.min(b.width / im.naturalWidth, b.height / im.naturalHeight);
+      const seen = Math.min(box, im.naturalWidth * k * im.naturalHeight * k);
+      photo += seen; spare += box - seen;
+    } else photo += box;
+  }
+  const tight = e => { const r = document.createRange(); r.selectNodeContents(e); return r.getBoundingClientRect(); };
+  const texts = [...sec.querySelectorAll(TEXT_SEL)].filter(e => e.innerText.trim() && e.getClientRects().length).map(e => ({e, r: tight(e), t: e.innerText.trim().replace(/\s+/g, ' ')}));
+  const bad = [];
+  for (const x of texts) {
+    if (x.r.left < S.left - 2 || x.r.right > S.right + 2 || x.r.top < S.top - 2 || x.r.bottom > S.bottom + 2) bad.push('화면 밖으로 잘림: ' + x.t.slice(0, 20));
+    else if (getComputedStyle(x.e).whiteSpace === 'nowrap' && x.e.scrollWidth > x.e.clientWidth + 3) bad.push('칸을 넘침: ' + x.t.slice(0, 20));
+  }
+  for (let i = 0; i < texts.length; i++) for (let j = i + 1; j < texts.length; j++) {
+    const a = texts[i], b = texts[j];
+    if (a.e.contains(b.e) || b.e.contains(a.e)) continue;
+    const o = area(cut(a.r, b.r));
+    if (o > 0.12 * Math.min(area(a.r), area(b.r)) && o > 150) bad.push('글자가 겹침: ' + a.t.slice(0, 12) + ' / ' + b.t.slice(0, 12));
+  }
+  const small = texts.map(x => ({t: x.t, f: parseFloat(getComputedStyle(x.e).fontSize)})).sort((a, b) => a.f - b.f)[0] || {t: '', f: 99};
+  const word = texts.filter(x => x.t.replace(/[\s\[\]]/g, '').length <= 4).map(x => ({t: x.t, h: (x.r.bottom - x.r.top) / S.height})).sort((a, b) => b.h - a.h)[0] || {t: '', h: 0};
+  const heads = [...sec.querySelectorAll(sec.classList.contains('hero') ? '.ht' : '.hl')].map(e => e.getBoundingClientRect());
+  const title = heads.length ? Math.max(...heads.map(r => r.bottom)) - Math.min(...heads.map(r => r.top)) : 0;
+  return {id: sec.id, title: title / S.height, photo: photo / A, spare: spare / A, text: bad, word: word.t, word_h: word.h, small: small.t, small_px: small.f};
+})""".replace("TEXT_SEL", repr(",".join(TEXT_SEL)))
+MIN_TEXT_PX = 26  # 카드 글자 최소 크기 (2026-10-28 사용자: 휴대폰에서 실제로 읽히게)
+HERO_LIMITS = {"title": 0.22, "photo": 0.40, "spare": 0.06, "empty": 110}  # 제목 높이·사진 넓이·빈 여백 비율, 빈 가로 띠(px)
+
+
+def empty_band(jpg):
+    """그림에서 아무것도 없는(어두운 한 가지 색) 가장 긴 가로 띠의 높이(px). 맨 위 로고 줄과 맨 아래 자료 줄 자리는 빼요.
+    상품 사진의 흰 판처럼 밝은 바탕은 사진의 일부라 세지 않아요."""
+    with Image.open(jpg) as im:
+        g = im.convert("L").resize((270, im.height // 2))
+    rows = [g.crop((0, y, 270, y + 1)) for y in range(g.height)]
+    flat = [max(r.getextrema()) - min(r.getextrema()) < 14 and max(r.getextrema()) < 110 for r in rows]
+    best = run = 0
+    for y, f in enumerate(flat):
+        run = run + 1 if f and 60 < y < g.height - 40 else 0
+        best = max(best, run)
+    return best * 2
+
+
+def layout_checks(spec, probe):
+    """모든 장: 글자 잘림·겹침(꼭 고칠 것)과 단어 하나가 화면을 크게 차지하는 장(사람이 확인). (꼭, 확인 필요)"""
+    must, check = [], []
+    for m in probe:
+        n = int(m["id"][1:]) - 1
+        where = "첫 장" if n == 0 else f"카드 {n}"
+        must += [f"{where}: {t}" for t in m.get("text") or []]
+        if m.get("small_px", 99) < MIN_TEXT_PX:  # 휴대폰(가로 약 390pt)에서 1080 그림은 0.36배로 보여요. 26px 아래는 9pt 아래라 읽기 어려워요
+            must.append(f"{where}: 글자가 너무 작아요({m['small_px']:.0f}px, '{m['small'][:16]}'). {MIN_TEXT_PX}px 이상으로, 긴 출처는 게시글로 옮겨 주세요.")
+        if m.get("word_h", 0) > 0.12 and m.get("photo", 0) < 0.3:  # 사진 위에 얹은 큰 숫자는 괜찮아요
+            check.append(f"{where}: '{m['word']}' 한 단어가 화면 높이의 {m['word_h']:.0%}를 차지해요. 사진·제목과 합칠 수 있는지 봐 주세요.")
+    return must, check
+
+
+def layout_problems(spec, probe, shots):
+    """그린 카드를 재서 고쳐야 할 것을 돌려줘요. 사진 넓이·제목 크기는 큰 제목 장(hero)만 걸러요 (다른 꼴은 꼴별 기준을 따로, docs/card-checks.md)."""
+    must = layout_checks(spec, probe)[0]
+    for n, c in enumerate(spec.get("cards") or [], 1):
+        if c.get("type") != "hero":
+            continue
+        m = next((x for x in probe if x["id"] == f"c{n + 1}"), None)
+        if not m:
+            continue
+        lim = HERO_LIMITS
+        if m["title"] > lim["title"]:
+            must.append(f"카드 {n}: 제목이 화면 높이의 {m['title']:.0%}를 차지해요({lim['title']:.0%} 이하로). 제목을 줄여 주세요.")
+        if m["photo"] < lim["photo"]:
+            must.append(f"카드 {n}: 사진이 화면의 {m['photo']:.0%}만 보여요({lim['photo']:.0%} 이상). 사진을 크게, 글을 줄여 주세요.")
+        if m["spare"] > lim["spare"]:
+            must.append(f"카드 {n}: 사진 칸에 빈 여백이 {m['spare']:.0%}예요. 사진을 칸에 꽉 채워 주세요.")
+        band = empty_band(shots[n]) if n < len(shots) else 0
+        if band > lim["empty"]:
+            must.append(f"카드 {n}: 비어 있는 가로 띠가 {band}px 있어요({lim['empty']}px 이하로).")
+    return must
+
+
+# 카드 단위 보류 (2026-10-28 사용자: 사진 한 장 문제로 하루 전체가 멈추지 않게, 문제 있는 소식만 빼고 나머지는 그대로)
+# 형식·사진 누락 → 보류, 사진 이용 조건 확인 전 → '확인 필요', 사실·사진 일치 차단 → 차단. 빼는 단위는 '소식'이에요:
+# 한 소식이 여러 장이면 그 소식의 장을 모두 함께 빼요(일부만 남아 내용이 왜곡되지 않게).
+# 첫 소식(표지·썸네일 주제)이 걸리거나 남은 장이 모자라거나 소식을 깔끔히 떼어 낼 수 없으면 지우지 않고 전체를 보류해요.
+CARD_AT = re.compile(r"^카드 (\d+):")
+CARD_IN = re.compile(r"\bcards\[(\d+)\]")
+NEWS_KEYS = ("title", "summary", "line", "list", "caption", "outlets", "tags", "yt_tags", "yt_hashtags", "sources", "credits")
+
+
+def held_card_no(text):
+    """검수 문장이 가리키는 카드 번호(1부터). 카드 하나를 가리키지 않으면 None."""
+    m = CARD_AT.match(text) or CARD_IN.search(text)
+    return int(m.group(1)) if m else None
+
+
+def _wordset(text):
+    return {w for w in re.findall(r"[0-9A-Za-z가-힣]{2,}", str(text).replace("[[", "").replace("]]", ""))}
+
+
+def news_units(spec):
+    """소식 단위 목록(설계도의 "news"). 소식마다 제목·요약·게시글 문단·썸네일 한 줄·태그·출처를 따로 가져요 (2026-10-28 사용자)."""
+    return [u for u in spec.get("news") or [] if isinstance(u, dict)]
+
+
+def _uniq(xs):
+    out = []
+    for x in xs:
+        if x not in out:
+            out.append(x)
+    return out
+
+
+def compose_news(spec):
+    """소식 단위로 제목·요약·썸네일 목록·게시글·태그·출처를 다시 짜요. news 칸이 없으면 그대로 돌려줘요.
+    게시글 = caption_head \\n {줄들 · 이어 붙임}{caption_line} \\n\\n 1. 문단 \\n\\n 2. 문단 … \\n\\n caption_ask \\n\\n 출처: …"""
+    units = news_units(spec)
+    if not units:
+        return spec
+    spec = json.loads(json.dumps(spec, ensure_ascii=False))
+    n = len(units)
+    lead = units[0].get("lead") or {}  # 맨 앞 소식이 표지·썸네일 주제예요. 첫 소식이 빠지면 다음 소식의 lead 로 바뀌어요
+    if lead.get("thumb"):
+        spec["thumb"] = dict(spec.get("thumb") or {}, **lead["thumb"])
+    if lead.get("cover"):
+        spec["cover"] = dict(spec.get("cover") or {}, **lead["cover"])
+    for key in ("caption_head", "yt_title", "yt_keyword", "yt_lead"):
+        if lead.get(key):
+            spec[key] = lead[key]
+    if all(u.get("title") for u in units):
+        spec["title"] = ", ".join(u["title"] for u in units)
+    if all(u.get("summary") for u in units):
+        spec["summary"] = " ".join(u["summary"] for u in units)
+    th = spec.get("thumb")
+    if isinstance(th, dict) and all(u.get("list") for u in units):
+        th["list"] = [u["list"] for u in units]
+        th["list_tag"] = f"오늘의 먹거리 뉴스 {n}"
+    if all(u.get("caption") for u in units):
+        head = str(spec.get("caption_head") or "").strip()
+        line = " · ".join(u.get("line") or u.get("title", "") for u in units) + str(spec.get("caption_line") or "").replace("{n}", str(n))
+        parts = [(head + "\n" + line).strip()] + [f"{i}. {u['caption']}" for i, u in enumerate(units, 1)]
+        if spec.get("caption_ask"):
+            parts.append(spec["caption_ask"])
+        outlets = _uniq([o for u in units for o in u.get("outlets") or []] + list(spec.get("common_outlets") or []))
+        if outlets:
+            parts.append("출처: " + ", ".join(outlets))
+        spec["caption"] = "\n\n".join(parts)
+    for key in ("tags", "yt_tags", "yt_hashtags", "yt_related"):
+        mine = [t for u in units for t in u.get(key) or []]
+        if mine:
+            spec[key] = _uniq(mine + list(spec.get("common_" + key) or []))
+    for key in ("sources", "credits"):
+        mine = [t for u in units for t in u.get(key) or []]
+        if mine or any(key in u for u in units):
+            spec[key] = _uniq(mine + list(spec.get("common_" + key) or []))
+    if spec.get("yt_title"):
+        spec["yt_title"] = re.sub(r"(뉴스 ?)\d+", lambda m: f"{m.group(1)}{n}", spec["yt_title"])
+    return spec
+
+
+def news_problems(spec):
+    """소식 단위가 있으면 장과 게시글이 맞는지 봐요. (꼭 고칠 것들)"""
+    units = news_units(spec)
+    if not units:
+        return []
+    out, ids = [], [u.get("id") for u in units]
+    if len(set(ids)) != len(ids) or None in ids:
+        out.append("소식(news)마다 서로 다른 id 를 적어 주세요.")
+    for u in units:
+        miss = [k for k in ("title", "caption", "list", "line") if not u.get(k)]
+        if miss:
+            out.append(f"소식 {u.get('id')}: {', '.join(miss)} 칸이 비었어요.")
+        if not any(c.get("news") == u.get("id") for c in spec.get("cards") or []):
+            out.append(f"소식 {u.get('id')}: 이 소식을 보여 주는 장이 없어요.")
+    order = []
+    for n, c in enumerate(spec.get("cards") or [], 1):
+        if c.get("news") not in ids:
+            out.append(f"카드 {n}: news 칸에 소식 id 를 적어 주세요({ids}).")
+        elif not order or order[-1] != c["news"]:
+            order.append(c["news"])
+    if len(order) != len(set(order)) or [i for i in ids if i in order] != order:
+        out.append("한 소식의 장은 붙여서, 소식 순서대로 놓아 주세요.")
+    return out
+
+
+def _card_news(spec):
+    """장마다 소식 id. 소식 단위가 없으면 카드의 "news" 숫자, 그것도 없으면 장 번호를 써요."""
+    return [c.get("news") if c.get("news") is not None else f"#{n}" for n, c in enumerate(spec["cards"], 1)]
+
+
+def _fallback_drop(spec, gone_cards, gone_news_idx):
+    """소식 단위가 없는 예전 설계도: 썸네일 목록·게시글 번호 문단을 번호로 빼고, 여러 소식이 섞인 문장이 있으면 지우지 않고 멈춰요.
+    (바꿀 칸들, 떼어 내지 못한 까닭 또는 None)"""
+    out = {}
+    th = spec.get("thumb") or {}
+    lst = th.get("list") if isinstance(th.get("list"), list) else []
+    if not gone_news_idx:
+        return out, None
+    paras = str(spec.get("caption", "")).split("\n\n")
+    numbered = [i for i, p in enumerate(paras) if re.match(r"^\d+\. ", p)]
+    if len(numbered) != len(lst):
+        return out, "게시글 번호 문단과 썸네일 목록 수가 달라 소식을 떼어 낼 수 없어요(news 칸으로 소식을 나눠 적어 주세요)"
+    gone_text = " ".join([lst[k - 1] for k in gone_news_idx] + [paras[numbered[k - 1]] for k in gone_news_idx]
+                         + [str(c.get("headline", "")) for c in gone_cards])
+    keep_text = " ".join([x for i, x in enumerate(lst, 1) if i not in gone_news_idx]
+                         + [paras[j] for k, j in enumerate(numbered, 1) if k not in gone_news_idx])
+    gone_w = _wordset(gone_text) - _wordset(keep_text) - {"뉴스", "먹거리", "오늘의", "오늘", "출시", "할인"}
+    keep_w = _wordset(keep_text) - _wordset(gone_text)
+    unsafe = []
+
+    def cut(text, seps, where):
+        tail = re.search(r"\s*(오늘의 )?먹거리 뉴스 \d+\s*$", text)
+        body, end = (text[:tail.start()], tail.group(0)) if tail else (text, "")
+
+        def split(x, rest):  # 굵은 구분(쉼표)부터 나누고, 소식이 섞인 토막만 더 잘게(가운뎃점) 나눠요. 끝까지 섞여 있으면 지우지 않고 멈춰요
+            g, k = _wordset(x) & gone_w, _wordset(x) & keep_w
+            if not g:
+                return x
+            if not k:
+                return None
+            if not rest:
+                unsafe.append(f"{where}의 '{x.strip()[:24]}'에 여러 소식이 섞여 있어요")
+                return x
+            parts = [split(y, rest[1:]) for y in x.split(rest[0])]
+            return rest[0].join(y for y in parts if y is not None)
+        body = split(body, list(seps)) or ""
+        return body.rstrip(" ,·") + end
+    for key in ("title", "yt_title"):
+        if spec.get(key):
+            out[key] = cut(spec[key], (", ",), key)
+    if spec.get("summary"):  # 요약은 문장에 소식이 섞여 있으면 지우지 않고, 남은 소식의 썸네일 줄로 새로 써요(다른 소식 내용이 빠지지 않게)
+        sents = re.split(r"(?<=[.!?요])\s+", spec["summary"])
+        if not any(_wordset(x) & gone_w for x in sents):
+            pass
+        elif any(_wordset(x) & gone_w and _wordset(x) & keep_w for x in sents):
+            out["summary"] = " ".join(re.sub(r"\[\[|\]\]", "", x) for i, x in enumerate(lst, 1) if i not in gone_news_idx)
+        else:
+            out["summary"] = " ".join(x for x in sents if not _wordset(x) & gone_w)
+    keep = [p for i, p in enumerate(paras) if not (i in numbered and numbered.index(i) + 1 in gone_news_idx)]
+    k = 0
+    for i, p in enumerate(keep):
+        if re.match(r"^\d+\. ", p):
+            k += 1
+            keep[i] = re.sub(r"^\d+\. ", f"{k}. ", p)
+    first = keep[0].split("\n")
+    keep[0] = "\n".join(cut(x, (", ", " · "), "게시글 첫 줄") for x in first)
+    out["caption"] = "\n\n".join(keep)
+    left = len(lst) - len(gone_news_idx)
+    out["thumb"] = dict(th, list=[x for i, x in enumerate(lst, 1) if i not in gone_news_idx])
+    if th.get("list_tag"):
+        out["thumb"]["list_tag"] = re.sub(r"\d+", str(left), th["list_tag"])
+    for key in ("caption", "yt_title", "title"):
+        if out.get(key):
+            out[key] = re.sub(r"(뉴스 ?)" + str(len(lst)) + r"(가지)?", lambda m: f"{m.group(1)}{left}{m.group(2) or ''}", out[key])
+    return out, ("소식을 깔끔히 떼어 낼 수 없어요: " + " / ".join(unsafe[:2])) if unsafe else None
+
+
+def drop_cards(spec, nos):
+    """nos(1부터) 장이 속한 **소식 전체**를 뺀 설계도. (새 설계도, 떼어 내지 못한 까닭 또는 None)
+    소식 단위(news)가 있으면 그 소식의 칸만 빼고 다시 짜요. 없으면 예전 설계도용 방법(_fallback_drop)."""
+    spec = json.loads(json.dumps(spec, ensure_ascii=False))
+    cards = spec["cards"]
+    ids = _card_news(spec)
+    gone_ids = {ids[n - 1] for n in nos if 1 <= n <= len(cards)}
+    drop = [n for n in range(1, len(cards) + 1) if ids[n - 1] in gone_ids]
+    if not drop:
+        return spec, None
+    gone = [cards[n - 1] for n in drop]
+    cover = spec.get("cover") or {}
+    if isinstance(cover.get("items"), list) and len(cover["items"]) == len(cards):
+        cover["items"] = [x for i, x in enumerate(cover["items"], 1) if i not in drop]
+    units = news_units(spec)
+    if units:
+        spec["news"] = [u for u in units if u.get("id") not in gone_ids]
+        spec["cards"] = [c for i, c in enumerate(cards, 1) if i not in drop]
+        return compose_news(spec), None
+    # 예전 설계도: 카드의 "news" 숫자(썸네일 목록 몇 번째)로 소식을 찾아요. 없으면 장 수와 목록 수가 같을 때만 장 번호로
+    lst = ((spec.get("thumb") or {}).get("list")) or []
+    if all(isinstance(i, int) for i in gone_ids):
+        gone_idx = set(gone_ids)
+    elif len(lst) == len(cards):
+        gone_idx = set(drop)
+    else:
+        return spec, "어느 소식인지 몰라 떼어 낼 수 없어요(카드마다 news 칸을 적어 주세요)"
+    changed, why = _fallback_drop(spec, gone, gone_idx)
+    if why:
+        return spec, why
+    spec.update(changed)
+    spec["cards"] = [c for i, c in enumerate(cards, 1) if i not in drop]
+    left = json.dumps({k: v for k, v in spec.items() if k not in ("tags", "yt_tags", "yt_hashtags", "yt_related", "credits", "meta", "dates", "sources", "review")}, ensure_ascii=False)
+    gone_src = json.dumps(gone, ensure_ascii=False)
+    gone_only = {w for w in _wordset(gone_src) - _wordset(left) - _wordset(left.replace(" ", "")) if len(w) >= 2}
+    for key in ("tags", "yt_tags", "yt_hashtags", "yt_related"):
+        if isinstance(spec.get(key), list):
+            spec[key] = [t for t in spec[key] if str(t).replace(" ", "") in left.replace(" ", "")
+                         or not any(w in str(t).replace(" ", "") for w in gone_only)]
+    if isinstance(spec.get("credits"), list):
+        spec["credits"] = [c for c in spec["credits"] if str(c).replace(" ", "") in left.replace(" ", "")
+                           or str(c).replace(" ", "") not in gone_src.replace(" ", "")]
+    return spec, None
+
+
+FIRST_MIN_NEWS = 2  # 첫 소식이 빠진 뒤에도 남아야 하는 소식 수
+
+
+def first_news_gap(spec, gone_ids):
+    """첫 소식이 빠질 때 남은 소식으로 표지·썸네일·제목·요약을 다시 꾸밀 수 없는 까닭. 꾸밀 수 있으면 None (2026-10-28 사용자).
+    소식 단위(news)가 있고, 남은 소식이 FIRST_MIN_NEWS 개 이상이고, 새 맨 앞 소식이 lead(썸네일·표지)를 가질 때만."""
+    units = [u for u in news_units(spec) if u.get("id") not in gone_ids]
+    if not news_units(spec):
+        return "예전 설계도(소식 단위 없음)라 표지·썸네일을 다시 꾸밀 수 없어요"
+    if len(units) < FIRST_MIN_NEWS:
+        return f"남는 소식이 {len(units)}개뿐이에요({FIRST_MIN_NEWS}개부터)"
+    lead = units[0].get("lead") or {}
+    if not (lead.get("thumb") and lead.get("cover")):
+        return f"다음 소식({units[0].get('title', units[0].get('id'))})에 표지·썸네일 자료(lead.thumb·lead.cover)가 없어요"
+    return None
+
+
+PHOTO_STEPS = ("exact", "press", "other", "layout")  # 사진 복구 절차: 실제 사진 → 보도자료·미디어센터 → 다른 사진·시각 자료 → 레이아웃
+
+
+def photo_gap(c):
+    """사진 없는 소식 장인지. 비교·막대·정리처럼 숫자가 주인공인 꼴과 flow 는 빼요."""
+    return not c.get("type") and not c.get("photo") and not c.get("flow")
+
+
+def triage(spec, day=""):
+    """보내기 전에 장마다 살펴 문제 있는 소식만 빼요. (고친 설계도, 보류 목록, 전체 보류 까닭 또는 None)
+    보류 목록: [{"no": 원래 장 번호, "headline", "grade": 보류|확인 필요|차단, "reasons": [...], "news"}]"""
+    if spec.get("format") != "cards" or not spec.get("cards"):
+        return spec, [], None
+    spec = compose_news(spec)
+    held = {}
+
+    def hold(n, grade, why):
+        h = held.setdefault(n, {"no": n, "headline": str(spec["cards"][n - 1].get("headline", "")).replace("\n", " "), "grade": grade,
+                                "reasons": [], "news": _card_news(spec)[n - 1]})
+        rank = {"보류": 1, "확인 필요": 2, "차단": 3}
+        if rank[grade] > rank[h["grade"]]:
+            h["grade"] = grade
+        if why not in h["reasons"]:
+            h["reasons"].append(why)
+
+    for n, c in enumerate(spec["cards"], 1):
+        if photo_gap(c) and not is_story(spec):
+            tried = c.get("photo_search") or {}
+            note = " · ".join(f"{k}: {tried[k]}" for k in PHOTO_STEPS if tried.get(k))
+            hold(n, "보류", "사진 없는 소식 장" + (f" (복구 시도: {note})" if note else " (복구 절차 기록 없음)"))
+    must, _ = card_problems(spec)
+    whole = []
+    for m in must:
+        n = held_card_no(m)
+        if n is None:
+            whole.append(m)
+        elif "사진 없는 소식 장" not in m:
+            hold(n, "보류", m)
+    try:
+        sys.path.insert(0, str(HERE.parent / "scripts"))
+        import contentcheck
+        for kind, msg, grade in contentcheck.photo_lines(spec, day or "9999-12-31"):
+            n = held_card_no(msg)
+            if not n or n > len(spec["cards"]):
+                continue
+            if grade == "차단":
+                hold(n, "차단", f"{kind}: {msg}")
+            elif grade == "확인" and kind == "사진 권리":
+                hold(n, "확인 필요", f"{kind}: {msg}")
+    except Exception as e:  # 검사를 못 하면 장을 빼지 않고 보내기 전 검수(gate)에 맡겨요
+        print(f"  장별 사진 검사를 하지 못했어요: {e}")
+    if whole:
+        return spec, list(held.values()), "형식: " + " / ".join(whole[:3])
+    if not held:
+        return spec, [], None
+    ids = _card_news(spec)
+    for n in list(held):  # 같은 소식의 다른 장도 함께 빠져요
+        for m in range(1, len(ids) + 1):
+            if ids[m - 1] == ids[n - 1] and m not in held:
+                hold(m, held[n]["grade"], f"같은 소식의 {n}장이 보류돼 함께 빠져요")
+    held_list = sorted(held.values(), key=lambda h: h["no"])
+    if ids[0] in {h["news"] for h in held_list}:
+        why = first_news_gap(spec, {h["news"] for h in held_list})
+        if why:
+            return spec, held_list, "첫 소식(표지·썸네일 주제)이 걸렸어요: " + " / ".join(held_list[0]["reasons"][:2]) + f" — {why}"
+    if is_top5(spec):
+        return spec, held_list, "TOP5 는 순위가 이어져 장을 뺄 수 없어요"
+    lo = STORY_MIN if is_story(spec) else CARD_MIN
+    if len(spec["cards"]) - len(held) < lo:
+        return spec, held_list, f"보류하고 나면 {len(spec['cards']) - len(held)}장만 남아요({lo}장부터)"
+    out, why = drop_cards(spec, list(held))
+    if why:
+        return spec, held_list, why
+    return out, held_list, None
+
+
+def layout_triage(spec, bad, held_before=()):
+    """그린 뒤 검수에 걸린 장: 큰 제목 장은 한 번 작게(compact) 고쳐 다시 재고, 그래도 안 되면 그 장의 소식만 빼요.
+    (새 설계도, 새로 보류한 장 목록, 전체 보류 까닭 또는 None)"""
+    by = {}
+    for m in bad:
+        n = held_card_no(m)
+        if n is None:
+            return spec, [], "첫 장 검수: " + m
+        by.setdefault(n, []).append(m)
+    spec = json.loads(json.dumps(spec, ensure_ascii=False))
+    drop, held = [], []
+    ids = _card_news(spec)
+    for n, ms in by.items():
+        c = spec["cards"][n - 1]
+        if c.get("type") == "hero" and not c.get("compact"):
+            c["compact"] = True  # 자동 수정: 제목을 더 작게 해서 다시 재요
+            continue
+        if ids[n - 1] == ids[0] and first_news_gap(spec, {ids[0]}):
+            return spec, [], "첫 소식 장 검수: " + " / ".join(ms[:2]) + " — " + first_news_gap(spec, {ids[0]})
+        drop.append(n)
+        held.append({"no": n, "headline": str(c.get("headline", "")).replace("\n", " "), "grade": "보류", "reasons": ms, "news": ids[n - 1]})
+    if drop:
+        gone = {ids[n - 1] for n in drop}
+        for m in range(1, len(ids) + 1):
+            if ids[m - 1] in gone and m not in drop:
+                drop.append(m)
+                held.append({"no": m, "headline": str(spec["cards"][m - 1].get("headline", "")).replace("\n", " "), "grade": "보류",
+                             "reasons": ["같은 소식의 다른 장이 보류돼 함께 빠져요"], "news": ids[m - 1]})
+        lo = STORY_MIN if is_story(spec) else CARD_MIN
+        if len(spec["cards"]) - len(drop) < lo:
+            return spec, held, f"보류하고 나면 {len(spec['cards']) - len(drop)}장만 남아요"
+        spec, why = drop_cards(spec, drop)
+        if why:
+            return spec, held, why
+    return spec, held, None
 
 
 def news_card(c, n, total, when, name, pill, nxt=None, story=False):
@@ -1329,11 +1869,11 @@ def news_card(c, n, total, when, name, pill, nxt=None, story=False):
         top = f'<div class="ph">{NEWS_MAP}</div>' + flow_html(c["flow"])
     elif c.get("big") and c.get("photo"):  # 숫자 강조 장: 그 음식 사진을 어둡게 깔고 큰 숫자를 얹어요 (2026-10-19 5단계)
         src, pos = fetch_photo(c["photo"])
-        top = (f'<div class="ph numbg"><img src="{src}" style="object-position:{pos}"></div>'
+        top = (f'<div class="ph numbg"><img src="{src}" style="object-position:{pos}"></div>{ref_label(c["photo"]).replace("ref", "ref ph-ref", 1)}'
                f'<div class="bignum" style="font-size:{fit_size(c["big"], 230, 950)}px">{rich(c["big"])}</div>')
     elif c.get("photo"):
         src, pos = fetch_photo(c["photo"])
-        top = f'<div class="ph"><img src="{src}" style="object-position:{pos}"></div>'
+        top = f'<div class="ph"><img src="{src}" style="object-position:{pos}"></div>{ref_label(c["photo"]).replace("ref", "ref ph-ref", 1)}'
     else:  # 맞는 사진이 없는 소식은 지도 바탕에 큰 숫자를 얹어요
         big = f'<div class="bignum" style="font-size:{fit_size(c["big"], 230, 950)}px">{rich(c["big"])}</div>' if c.get("big") else ""
         top = f'<div class="ph">{NEWS_MAP}</div>{big}'
@@ -1407,7 +1947,7 @@ def build_cards(spec):
         return page, len(cards) + 1
     if story:
         pill = esc(spec.get("pill") or STORY_PILL)
-    body = news_cover(spec["cover"], len(cards), when, name, pill, label, weekly=spec.get("kind") == "유행", story=story,
+    body = news_cover(spec["cover"], len(news_units(spec)) or len(((spec.get("thumb") or {}).get("list")) or []) or len(cards), when, name, pill, label, weekly=spec.get("kind") == "유행", story=story,
                       first_q=cards[0].get("q") if story and cards else None)
     body += "".join(news_card(c, n, len(cards), when, name, pill, cards[n] if n < len(cards) else None, story)
                     for n, c in enumerate(cards, 1))
@@ -1586,6 +2126,12 @@ def youtube_problems(spec):
 
 if __name__ == "__main__":
     spec = json.loads(Path(sys.argv[1]).read_text(encoding="utf-8"))
+    if news_units(spec) and spec.get("format") == "cards":  # 소식 단위로 게시글·제목·목록·태그·출처를 맞춰 설계도에 다시 적어요 (2026-10-28)
+        fixed = compose_news(spec)
+        if fixed != spec:
+            Path(sys.argv[1]).write_text(json.dumps(fixed, ensure_ascii=False, indent=1), encoding="utf-8")
+            print("  소식 단위(news)로 제목·요약·게시글·썸네일 목록·태그·출처를 다시 맞춰 설계도에 적었어요.")
+            spec = fixed
     try:  # 지난 콘텐츠와 겹치는지, 날짜가 맞는지 (2026-10-23 3단계, scripts/history.py). 알려 주기만 하고 막지는 않아요
         sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "scripts"))
         import history

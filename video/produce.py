@@ -9,6 +9,7 @@
 하나가 실패해도 나머지는 계속 만들고, 실패 이유는 logs/errors.jsonl 에 남겨요.
 """
 import json
+import re
 import subprocess
 import sys
 import traceback
@@ -71,7 +72,25 @@ def render(spec, name, browser):
 
 
 def render_cards(spec, name, browser):
-    """카드 뉴스를 그림으로 만들어요. dist/날짜-이름-1.jpg, -2.jpg … (만든 파일 이름들)"""
+    """카드 뉴스를 그림으로 만들어요. dist/날짜-이름-1.jpg, -2.jpg … (만든 파일 이름들, 마지막 설계도, 그린 뒤 검수로 보류한 장)
+    그린 뒤 검수에 걸린 장은 자동으로 고쳐 다시 그리거나(큰 제목 장), 그 장만 빼고 다시 그려요 (2026-10-28 사용자)."""
+    held = []
+    for _ in range(4):
+        files, bad = draw_cards(spec, name, browser)
+        if not bad:
+            break
+        spec, more, whole = build.layout_triage(spec, bad)
+        held += more
+        if whole:
+            raise ValueError("카드 검수: " + whole)
+    else:
+        raise ValueError("카드 검수: 고쳐 다시 그려도 걸려요 — " + " / ".join(bad[:3]))
+    (ROOT / "dist" / f"{name}.txt").write_text(build.description(spec), encoding="utf-8")
+    return files, spec, held
+
+
+def draw_cards(spec, name, browser):
+    """카드를 한 번 그려 찍고 그린 뒤 검수를 해요. (파일 이름들, 꼭 고칠 것)"""
     page_html, count = build.build_cards(spec)
     work = ROOT / "build"
     work.mkdir(exist_ok=True)
@@ -89,6 +108,15 @@ def render_cards(spec, name, browser):
             out = ROOT / "dist" / f"{name}-{n}.jpg"
             page.locator(f"#c{n}").screenshot(path=str(out), type="jpeg", quality=95)
             files.append(out.name)
+        probe = page.evaluate(build.LAYOUT_PROBE)
+        bad = build.layout_problems(spec, probe, [ROOT / "dist" / f for f in files])
+        if bad:  # 제목만 크고 사진이 작은 장, 글자가 겹치거나 잘린 장은 그대로 보내지 않아요 (2026-10-28 사용자)
+            return files, bad
+        for line in build.layout_checks(spec, probe)[1]:  # 컴퓨터가 판단하기 어려운 것은 사람이 봐요
+            print(f"  확인 필요: {line}")
+        for stale in (ROOT / "dist").glob(f"{name}-[0-9]*.jpg"):  # 장을 뺀 뒤 남은 예전 그림은 지워요
+            if stale.name not in files and re.fullmatch(rf"{re.escape(name)}-\d+\.jpg", stale.name):
+                stale.unlink()
         # 큰 제목 장(hero)은 쇼츠에서 가운데 자막이 내레이션 한 줄마다 바뀌어요. 줄마다 한 장씩 더 찍어 둬요 (날짜-이름-장-s줄.jpg)
         for n, c in enumerate(spec.get("cards") or [], 2):
             if c.get("type") != "hero":
@@ -98,8 +126,7 @@ def render_cards(spec, name, browser):
                 page.locator(f"#c{n}").screenshot(path=str(ROOT / "dist" / f"{name}-{n}-s{k}.jpg"), type="jpeg", quality=95)
     finally:
         page.close()
-    (ROOT / "dist" / f"{name}.txt").write_text(build.description(spec), encoding="utf-8")
-    return files
+    return files, []
 
 
 COVER_SEC, CARD_SEC, FADE_SEC, THUMB_SEC = 3.0, 4.0, 0.4, 1.2  # 카드 쇼츠: 첫 장, 소식 한 장, 넘어가는 시간, 맨 앞 썸네일
@@ -237,6 +264,13 @@ def main():
             try:
                 spec = json.loads(path.read_text(encoding="utf-8"))
                 spec.update({"_day": day, "_name": path.stem})  # 오디오 보관함 곡을 날짜로 돌려 고를 때 써요
+                if spec.get("format") == "cards":  # 문제 있는 장만 빼고 나머지는 그대로 만들어요 (2026-10-28 사용자)
+                    spec, held, whole = build.triage(spec, day)
+                    if held:
+                        entry["held"] = held
+                        print(f"  보류한 장: " + "; ".join(f"{h['no']}장 {h['headline']} ({h['grade']})" for h in held))
+                    if whole:
+                        raise ValueError("전체 보류: " + whole)
                 entry["music"] = build.track_info(spec)
                 entry.update({k: spec.get(k) for k in ("kind", "title", "summary", "caption", "tags", "sources", "credits", "pin")})
                 entry["tags"] = build.hashtags(spec.get("tags"))  # 인스타에 들어가는 5개만
@@ -250,7 +284,12 @@ def main():
                         log_error(f"thumb:{name}", e)
                         print(f"썸네일을 만들지 못했어요: {name} — {e}")
                 if build.is_cards(spec):
-                    files = render_cards(spec, name, browser)
+                    files, spec, more = render_cards(spec, name, browser)
+                    if more:  # 그린 뒤 검수로 장을 뺐으면 글·태그·유튜브 글도 남은 장에 맞춰요
+                        entry["held"] = entry.get("held", []) + more
+                        entry.update({k: spec.get(k) for k in ("title", "summary", "caption", "credits")})
+                        entry["tags"] = build.hashtags(spec.get("tags"))
+                        entry["yt_title"], entry["yt_desc"] = build.youtube_text(spec)
                     size = sum((ROOT / "dist" / f).stat().st_size for f in files)
                     entry.update({"ok": True, "format": "cards", "file": files[0], "files": files, "size_mb": round(size / 1e6, 1)})
                     print(f"만들었어요: {name} 카드 {len(files)}장")

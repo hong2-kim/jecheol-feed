@@ -1215,6 +1215,26 @@
       }
     },
     {
+      "name": "동서식품",
+      "hosts": [
+        "dongsuh.co.kr"
+      ],
+      "photo_source": "회사 누리집 홍보센터 뉴스(보도자료)·제품소개",
+      "terms_url": "https://www.dongsuh.co.kr (하단 이용약관 제13조)",
+      "scope": "보도자료 조건부 후보(docs/photo-rights-press.md): 그 제품 소개 장에만, 원본 변경 없이, 사진: 동서식품 제공. 근거: 홍보센터 뉴스 보도자료 이미지·언론 배포('자료 동서식품'). 걸림: 누리집 약관 제13조 ② 영리 목적 사전 승낙, 보도자료 이용 안내 없음",
+      "credit": "사진: 동서식품 제공",
+      "edit": "",
+      "checked": "2026-10-28",
+      "status": "확인 필요",
+      "recheck_days": 90,
+      "note": "2026-10-28 오레오 씬즈 말차 카드에서 여섯 가지를 확인(docs/photo-rights-press.md). 사용자 승인 대기. 승인하면 status 를 '사용 가능'으로(엔진이 이 말만 알아들어요), uses 를 허용으로 바꾸고 scope 의 조건을 지킨다",
+      "uses": {
+        "instagram": "미확인",
+        "youtube": "미확인",
+        "blog": "미확인"
+      }
+    },
+    {
       "name": "농심",
       "hosts": [
         "nongshim.com"

@@ -206,18 +206,22 @@ def photo_lines(spec, day, platforms=("instagram", "youtube")):
             have = words(shows) | {SYN.get(w.lower(), w) for w in words(shows)}
             seen_in = lambda w: w in have or any(w in h or h in w for h in have)
             miss = sorted(w for w in want if not seen_in(w))
+            labeled = match == "같은 종류" and "참고" in str(p.get("ref") or "")  # '참고 사진 · 실제 제품 아님' 딱지를 단 사진 (2026-10-28)
             star = {w for w in marked_names(text) if w in curated}  # [[ ]] 로 내세운 이름은 꼭 사진에 있어야 해요
             # 글에 나온 이름 가운데 사진에 하나도 없거나, [[ ]] 로 내세운 이름이 없을 때만 (재료 이름까지 다 찍혀야 하는 것은 아니에요)
             if miss and (len(miss) == len(want) or any(not seen_in(w) for w in star)):
-                out.append(("사진 일치", f"{where}: 글에 나온 이름 '{'·'.join(miss)}'이(가) 사진(shows: {shows[:30]})에 없어요. 그 대상이 찍힌 사진으로 바꾸거나 사진 없는 장으로", "확인" if match == "정확" else "차단"))
+                out.append(("사진 일치", f"{where}: 글에 나온 이름 '{'·'.join(miss)}'이(가) 사진(shows: {shows[:30]})에 없어요. 그 대상이 찍힌 사진으로 바꾸거나 사진 없는 장으로", "확인" if match == "정확" else "참고" if labeled else "차단"))
         said, seen_ = set(re.findall(r"(\d+)차", text)), set(re.findall(r"(\d+)차", shows))
         if said and seen_ and not said & seen_:  # 1차 협업 이야기에 2차 신제품 사진 (맘스터치 사례)
             out.append(("사진 일치", f"{where}: 글은 {'·'.join(sorted(said))}차인데 사진은 {'·'.join(sorted(seen_))}차 제품이에요", "차단"))
         for b in sorted(brands_in(text)):
             if match == "분위기" or not shows:
                 continue
-            if match != "정확" or b not in shows:
-                out.append(("사진 일치", f"{where}: 글은 {b} 상품을 말하는데 사진은 그 상품이 아니에요(match {match or '없음'}, shows: {shows[:30]}). 다른 가게·다른 회사 같은 종류 사진으로 대신하지 않아요", "차단"))
+            if match == "같은 종류" and "참고" in str(p.get("ref") or ""):
+                # 2026-10-28 사용자: 제품 이름은 그대로 두고, 같은 종류 사진에는 '참고 사진 · 실제 제품 아님'을 분명히 붙여요
+                out.append(("사진 일치", f"{where}: {b} 상품 글에 같은 종류 참고 사진({shows[:24]}) — '{p['ref']}' 딱지와 함께 써요. 쓸 수 있는 실제 제품 사진이 있으면 그것으로 바꿔 주세요", "참고"))
+            elif match != "정확" or b not in shows:
+                out.append(("사진 일치", f"{where}: 글은 {b} 상품을 말하는데 사진은 그 상품이 아니에요(match {match or '없음'}, shows: {shows[:30]}). 다른 가게·다른 회사 같은 종류 사진으로 대신하지 않아요. 꼭 써야 하면 사진에 \"ref\": \"참고 사진 · 실제 제품 아님\" 을 적어요", "차단"))
     uses = {}
     for where, _, p in items_of(spec):
         if where.startswith(("thumb", "cover")) or ".grid[" in where:  # 썸네일·표지는 본편 사진을 다시 쓰고, 저녁 메뉴 격자는 장마다 같은 판을 보여 줘요

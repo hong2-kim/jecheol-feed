@@ -108,8 +108,12 @@ def photo_sheet_finding(path, spec):
     return []
 
 
-def evaluate(path):
-    """{"verdict": 통과|확인 필요|차단, "findings": [(갈래, 등급, 내용)], "hash", "approved", "forced"}"""
+HELD_AT = re.compile(r"^카드 (\d+):|\bcards\[(\d+)\]")
+
+
+def evaluate(path, held=()):
+    """{"verdict": 통과|확인 필요|차단, "findings": [(갈래, 등급, 내용)], "hash", "approved", "forced"}
+    held: 제작 때 빼고 만든 카드 번호(1부터). 그 장을 가리키는 검수 결과는 '참고'로 낮춰요(그 장은 나가지 않아요, 2026-10-28)."""
     path = Path(path).resolve()
     spec = json.loads(path.read_text(encoding="utf-8"))
     found = []
@@ -122,6 +126,11 @@ def evaluate(path):
         found += [(a, lv, m) for a, m, lv in contentcheck.findings(path)]
     except Exception as e:
         found.append(("검수 오류", "확인", f"contentcheck 를 하지 못했어요: {str(e)[:150]}"))
+    if held:
+        def on_held(msg):
+            m = HELD_AT.search(msg)
+            return bool(m) and int(m.group(1) or m.group(2)) in set(held)
+        found = [(a, "참고", f"보류한 장이라 이번에 나가지 않아요 — {m}") if on_held(m) else (a, lv, m) for a, lv, m in found]
     h = content_hash(spec)
     review = spec.get("review") or {}
     approved = bool(review.get("approved")) and review.get("hash") == h

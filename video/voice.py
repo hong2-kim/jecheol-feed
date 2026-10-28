@@ -290,9 +290,9 @@ def pic_html(B, photo):
     if is_pack(B, photo):
         return f'<div class="vpic pack"><img src="{B.pack_photo(photo)}"></div>'
     src, pos = B.fetch_photo(photo)
-    if B.zoomed(photo):  # "fit": "cover" 를 적었을 때만 칸을 꽉 채워 잘라요
+    if B.zoomed(photo) or B.fills(photo):  # 음식 사진은 칸을 꽉 채워요 (2026-10-28 사용자 승인, 가장자리만 잘려요. 핵심 위치는 pos)
         return f'<div class="vpic"><img src="{src}" style="object-position:{pos}"></div>'
-    # 그 밖에는 잘리지 않게 통째로, 빈 곳은 같은 사진을 흐리게 (2026-10-17 사용자가 정함)
+    # 포스터·안내문처럼 전체가 중요한 사진("fit": "contain", "kind": "poster")은 잘리지 않게 통째로 (2026-10-17 사용자가 정함)
     return f'<div class="vpic whole"><img class="bg" src="{B.backdrop(photo)}"><img src="{src}"></div>'
 
 

@@ -69,6 +69,7 @@ CSS = """
 .bpic img.bg, .bpic.cover img { object-fit: cover; }
 /* 흰 바탕 상품 사진은 위에 붙이면 아래가 텅 비어 보여서 가운데에 둬요 (2026-10-21 빅아치) */
 .bpic.pack { background: #fff; } .bpic.pack img { padding: 30px 56px; object-position: 50% 50%; }
+.tref { position: absolute; right: 24px; top: 832px; z-index: 903; padding: 8px 22px 12px; border-radius: 12px; background: rgba(10,8,6,.74); color: #fff; font-weight: 800; font-size: 40px; letter-spacing: -1px; white-space: nowrap; }
 .bback { position: absolute; left: 0; right: 0; top: 1700px; bottom: 0; overflow: hidden; }
 /* 사진 아래 목록 (thumb.list). 사진은 띠 바로 아래에 통째로 붙고, 남은 아래 칸에 소식 목록이 들어가요 (2026-10-21 빅아치 소식 카드) */
 .blist { position: absolute; left: 0; right: 0; bottom: 0; z-index: 902; background: #1F2A1A; display: flex; align-items: center; padding: 0 70px; }
@@ -222,13 +223,23 @@ def body(spec):
     head, sub, photo = parts(spec)
     name = json.loads((HERE.parent / "config.json").read_text(encoding="utf-8")).get("account") or "먹고갈지도"
     t = spec.get("thumb") or {}
+    ref = ref_tag(photo)
     if t.get("list"):
-        return (list_html(B, photo, t["list"], t.get("list_tag", ""))
+        return (list_html(B, photo, t["list"], t.get("list_tag", "")) + ref
                 + f'<div class="bstrip{" logo" if BRAND == "strip" else ""}"><div style="font-size:{strip_size(sub)}px">{B.rich(sub)}</div></div>'
                 + brand_marks(name) + head_html(head, name, t.get("color", AC)))
-    return (f'<div class="bback"><img src="{B.backdrop(photo)}"></div>{photo_html(B, photo)}'
+    return (f'<div class="bback"><img src="{B.backdrop(photo)}"></div>{photo_html(B, photo)}{ref}'
             + f'<div class="bstrip{" logo" if BRAND == "strip" else ""}"><div style="font-size:{strip_size(sub)}px">{B.rich(sub)}</div></div>'
             + brand_marks(name) + head_html(head, name, t.get("color", AC)))
+
+
+def ref_tag(photo):
+    """그 제품·그 대상이 아닌 사진(match 가 같은 종류·분위기)이면 사진 오른쪽 위에 작은 '참고 사진' 딱지 (2026-10-28 사용자).
+    정확한 사진(match 정확)이나 match 를 적지 않은 사진에는 붙이지 않아요. 사진에 "ref" 를 적으면 그 말로 써요."""
+    if not isinstance(photo, dict) or photo.get("match") not in ("같은 종류", "분위기"):
+        return ""
+    import build as B
+    return f'<div class="tref">{B.esc(photo.get("ref") or "참고 사진")}</div>'
 
 
 def list_html(B, photo, items, tag=""):

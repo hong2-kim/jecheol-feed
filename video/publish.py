@@ -172,7 +172,7 @@ def gate_all(day, results):
             continue
         spec = ROOT / "videos" / day / (r["id"][len(day) + 1:] + ".json")
         try:
-            out[r["id"]] = gate.evaluate(spec)
+            out[r["id"]] = gate.evaluate(spec, held=[h["no"] for h in r.get("held") or []])
         except Exception as e:
             log_error(f"gate:{r['id']}", e)
             out[r["id"]] = {"verdict": "확인 필요", "findings": [("검수 오류", "확인", f"검수를 하지 못했어요: {str(e)[:150]}")], "hash": "", "approved": False}
@@ -182,6 +182,38 @@ def gate_all(day, results):
 def gate_reasons(g):
     import gate
     return gate.reasons(g, 12)  # 차단 먼저
+
+
+def held_cards_notice(token, chat, day, results, review, passed):
+    """일부 장만 빼고 보내는 카드 뉴스: 뺀 장과 까닭을 한 번 알리고, 그 장의 사진 검수 시트를 보내요 (2026-10-28 사용자)."""
+    import re
+    for r in results:
+        held = r.get("held") or []
+        if not held or r["id"] not in passed:
+            continue
+        key = ";".join(f"{h['no']}:{h['grade']}" for h in held)
+        if (review.get(r["id"]) or {}).get("held_noticed") == key:
+            continue
+        name = LABELS.get(r['id'][11:], (r.get('title') or r['id'],))[0]
+        lines = [f"✂️ {name} — 아래 {len(held)}장은 빼고, 나머지 장만 쪽 번호를 다시 매겨 보내요"]
+        for h in held:
+            lines.append(f"\n■ {h['no']}장 「{h['headline']}」 — {h['grade']}")
+            lines += ["  " + x[:160] for x in h["reasons"][:3]]
+        lines.append("\n'확인 필요'는 보고 괜찮으면 Claude 에게 말해 주세요. 그 장을 넣어 다시 만들어요. '차단'·'보류'는 고쳐야 나가요.")
+        if token and chat:
+            tg("sendMessage", token, data={"chat_id": chat, "text": "\n".join(lines)[:4000], "disable_web_page_preview": "true"})
+            try:  # 뺀 장의 사진 자리를 빨간 테두리로 표시한 검수 시트
+                import review_sheet
+                out = ROOT / "dist" / f"{r['id']}-held.jpg"
+                marks = {f"cards[{h['no']}].photo" for h in held}
+                review_sheet.spec_sheet(ROOT / "videos" / day / (r["id"][len(day) + 1:] + ".json"), out, marks, "\n".join(lines[:6]).replace("✂️ ", ""))  # 검수 시트 글꼴에는 그림 문자가 없어요
+                with open(out, "rb") as f:
+                    tg("sendPhoto", token, data={"chat_id": chat, "caption": f"뺀 장 검수 시트 · {name} · 빨간 칸이 뺀 장의 사진"[:900]},
+                       files={"photo": (out.name, f, "image/jpeg")})
+            except Exception as e:
+                log_error(f"review_sheet:held:{r['id']}", e)
+        review.setdefault(r["id"], {})["held_noticed"] = key
+        review[r["id"]]["held_cards"] = held
 
 
 def hold_notice(token, chat, day, held, review):
@@ -236,7 +268,7 @@ def main():
     for rid, g in gates.items():
         old = review.get(rid) or {}
         review[rid] = {"verdict": g["verdict"], "hash": g["hash"], "approved": g.get("approved", False),
-                       "reasons": gate_reasons(g), "noticed": old.get("noticed")}
+                       "reasons": gate_reasons(g), "noticed": old.get("noticed"), "held_noticed": old.get("held_noticed")}
     passed = {rid for rid, g in gates.items() if g["verdict"] == "통과"}
 
     videos = read_json(ROOT / "state" / "videos.json", [])
@@ -272,6 +304,10 @@ def main():
         hold_notice(token, chat, day, held, review)
     except Exception as e:
         log_error("telegram:hold", e)
+    try:
+        held_cards_notice(token, chat, day, ok, review, passed)
+    except Exception as e:
+        log_error("telegram:held_cards", e)
     write_json(ROOT / "state" / "review.json", review)
     if not insta_on():  # 유튜브 쇼츠만 보내요. 쇼츠가 없는(인스타 전용) 것은 보낸 것으로만 적어 둬요
         sent |= {r["id"] for r in todo if not has_youtube(r)}
