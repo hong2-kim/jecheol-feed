@@ -1,0 +1,53 @@
+{
+ "date": "2026-10-30",
+ "checked": "2026-10-30",
+ "pairing": {
+  "drink": "",
+  "note": ""
+ },
+ "id": "2026-10-30-kr-oreoz-marshmallow-party",
+ "country": "한국",
+ "category": "예고",
+ "region": "전국",
+ "subject": "오레오오즈 마시멜로 파티",
+ "angle": "마시멜로를 2배로 늘린 시리얼 신제품",
+ "season": "2026년 10월 29일 발표",
+ "length_sec": 25,
+ "title": "동서식품이 오레오오즈에 마시멜로를 2배로 넣은 신제품을 냈어요",
+ "summary": [
+  "동서식품이 마시멜로 함량을 기존 오레오오즈의 2배로 늘린 '오레오오즈 마시멜로 파티'를 냈다고 10월 29일 밝혔어요.",
+  "별·하트 모양 파스텔 색 마시멜로가 들어가요.",
+  "450g 대용량과 25g 컵 두 가지로 나와요."
+ ],
+ "facts": [
+  "오레오오즈는 1997년 미국에서 나온 초코 시리얼 브랜드예요.",
+  "우유에 말아 먹는 것 말고 아이스크림·빙수·요거트 토핑으로도 쓸 수 있다고 해요."
+ ],
+ "script": {
+  "hook": "마시멜로가 2배로 늘었어요.",
+  "flow": "오레오오즈|마시멜로 2배|450g·25g 컵",
+  "closing": "값은 확인되지 않았어요."
+ },
+ "visuals": [
+  "시리얼",
+  "마시멜로"
+ ],
+ "cautions": [
+  "상품을 사라고 권하지 않아요."
+ ],
+ "unverified": [
+  "값·판매처"
+ ],
+ "sources": [
+  {
+   "name": "이슈투데이(10월 29일)",
+   "url": "https://www.issuetoday.co.kr/news/article.html?no=60955",
+   "official": false
+  },
+  {
+   "name": "컨슈머타임스(10월 29일)",
+   "url": "https://www.cstimes.com/news/articleView.html?idxno=725868",
+   "official": false
+  }
+ ]
+}
