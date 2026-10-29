@@ -193,5 +193,29 @@
     "reasons": [],
     "noticed": null,
     "held_noticed": null
+  },
+  "2026-10-30-2-news": {
+    "verdict": "통과",
+    "hash": "df0695716575",
+    "approved": false,
+    "reasons": [],
+    "noticed": null,
+    "held_noticed": null
+  },
+  "2026-10-30-3-dinner": {
+    "verdict": "통과",
+    "hash": "7bade78681f7",
+    "approved": false,
+    "reasons": [],
+    "noticed": null,
+    "held_noticed": null
+  },
+  "2026-10-30-4-find": {
+    "verdict": "통과",
+    "hash": "27b55531dc5c",
+    "approved": false,
+    "reasons": [],
+    "noticed": null,
+    "held_noticed": null
   }
 }
