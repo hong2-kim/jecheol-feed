@@ -1,0 +1,345 @@
+{
+ "format": "voice",
+ "layout": "rec",
+ "kind": "저녁",
+ "subject": "토요일 저녁 (족발·짬뽕·닭갈비·파스타)",
+ "title": "토요일 저녁, 족발·짬뽕·닭갈비·파스타 중에 골라 줄게",
+ "summary": "토요일 저녁, 족발·짬뽕·닭갈비·파스타 넷 중에 골라 줘요.",
+ "headline": "토요일 저녁\n[[오늘은 이거]]",
+ "small": "토요일 저녁, 이 중에 골라 줄게",
+ "intro": 7,
+ "length": [
+  15,
+  25
+ ],
+ "narrator": "achird",
+ "voice_pick": {
+  "mode": "solo",
+  "voices": [
+   "achird"
+  ],
+  "why": "토요일 저녁 메뉴를 친구에게 골라 주는 가벼운 추천이라 친근한 Achird 솔로"
+ },
+ "thumb": {
+  "head": "토요일 저녁\n[[오늘은 이거]]",
+  "sub": "넷 중 [[하나만]] 골라 줄게",
+  "photo": {
+   "url": "vault:photos/ig-17873813923161731.jpg",
+   "shows": "얇게 썬 족발 한 접시",
+   "match": "정확",
+   "rights": "사용자 촬영 비공개 보관함"
+  }
+ },
+ "yt_title": "토요일 저녁 메뉴 뭐 먹지? 족발·짬뽕·닭갈비·파스타 중에 골라 줌",
+ "yt_keyword": "토요일 저녁 메뉴",
+ "yt_related": [
+  "저녁 메뉴 추천",
+  "오늘 뭐 먹지",
+  "주말 저녁",
+  "족발",
+  "닭갈비"
+ ],
+ "yt_tags": [
+  "토요일 저녁 메뉴",
+  "저녁 메뉴 추천",
+  "오늘 뭐 먹지",
+  "주말 저녁 메뉴",
+  "족발",
+  "짬뽕",
+  "닭갈비",
+  "파스타"
+ ],
+ "yt_hashtags": [
+  "토요일저녁메뉴",
+  "오늘뭐먹지",
+  "저녁메뉴추천"
+ ],
+ "yt_lead": "토요일 저녁 메뉴 고민될 때, 족발·짬뽕·닭갈비·파스타 넷 중에 하나만 골라요.",
+ "caption": "토요일 저녁, 뭐 먹을지 못 정했다면? 이 넷 중에 골라 줄게요!\n\n고기가 당기면 족발\n얼큰한 게 당기면 짬뽕\n매콤한 게 당기면 닭갈비\n크림이 당기면 파스타\n\n넷 중에 오늘 뭐 먹을래요? 댓글로 알려 주세요.",
+ "tags": [
+  "토요일저녁메뉴",
+  "저녁메뉴추천",
+  "오늘뭐먹지",
+  "족발"
+ ],
+ "sources": [],
+ "credits": [],
+ "lines": [
+  {
+   "say": "토요일 저녁, 오늘은 이거!",
+   "nosub": true,
+   "show": {
+    "thumb": true
+   }
+  },
+  {
+   "say": "자, 시작!",
+   "show": {
+    "grid": [
+     {
+      "photo": {
+       "url": "vault:photos/ig-17873813923161731.jpg",
+       "shows": "얇게 썬 족발 한 접시",
+       "match": "정확",
+       "rights": "사용자 촬영 비공개 보관함"
+      }
+     },
+     {
+      "photo": {
+       "url": "vault:photos/ig-18152934571179770.jpg",
+       "shows": "새우와 메추리알이 올라간 짬뽕 한 그릇",
+       "match": "정확",
+       "rights": "사용자 촬영 비공개 보관함"
+      }
+     },
+     {
+      "photo": {
+       "url": "vault:photos/ig-17858431873006445.jpg",
+       "shows": "불판 위 양념 닭갈비",
+       "match": "정확",
+       "rights": "사용자 촬영 비공개 보관함"
+      }
+     },
+     {
+      "photo": {
+       "url": "vault:photos/ig-17904882671277246.jpg",
+       "shows": "로제 소스 파스타",
+       "match": "정확",
+       "rights": "사용자 촬영 비공개 보관함"
+      }
+     }
+    ],
+    "dir": "2x2",
+    "own": true,
+    "fade": 0.45
+   }
+  },
+  {
+   "say": "고기가 당기면, 쫀득한 족발.",
+   "subs": [
+    "고기가 당기면,",
+    "쫀득한 족발."
+   ],
+   "show": {
+    "grid": [
+     {
+      "photo": {
+       "url": "vault:photos/ig-17873813923161731.jpg",
+       "shows": "얇게 썬 족발 한 접시",
+       "match": "정확",
+       "rights": "사용자 촬영 비공개 보관함"
+      }
+     },
+     {
+      "photo": {
+       "url": "vault:photos/ig-18152934571179770.jpg",
+       "shows": "새우와 메추리알이 올라간 짬뽕 한 그릇",
+       "match": "정확",
+       "rights": "사용자 촬영 비공개 보관함"
+      }
+     },
+     {
+      "photo": {
+       "url": "vault:photos/ig-17858431873006445.jpg",
+       "shows": "불판 위 양념 닭갈비",
+       "match": "정확",
+       "rights": "사용자 촬영 비공개 보관함"
+      }
+     },
+     {
+      "photo": {
+       "url": "vault:photos/ig-17904882671277246.jpg",
+       "shows": "로제 소스 파스타",
+       "match": "정확",
+       "rights": "사용자 촬영 비공개 보관함"
+      }
+     }
+    ],
+    "dir": "2x2",
+    "own": true,
+    "hl": 0
+   }
+  },
+  {
+   "say": "얼큰한 게 당기면, 짬뽕.",
+   "show": {
+    "grid": [
+     {
+      "photo": {
+       "url": "vault:photos/ig-17873813923161731.jpg",
+       "shows": "얇게 썬 족발 한 접시",
+       "match": "정확",
+       "rights": "사용자 촬영 비공개 보관함"
+      }
+     },
+     {
+      "photo": {
+       "url": "vault:photos/ig-18152934571179770.jpg",
+       "shows": "새우와 메추리알이 올라간 짬뽕 한 그릇",
+       "match": "정확",
+       "rights": "사용자 촬영 비공개 보관함"
+      }
+     },
+     {
+      "photo": {
+       "url": "vault:photos/ig-17858431873006445.jpg",
+       "shows": "불판 위 양념 닭갈비",
+       "match": "정확",
+       "rights": "사용자 촬영 비공개 보관함"
+      }
+     },
+     {
+      "photo": {
+       "url": "vault:photos/ig-17904882671277246.jpg",
+       "shows": "로제 소스 파스타",
+       "match": "정확",
+       "rights": "사용자 촬영 비공개 보관함"
+      }
+     }
+    ],
+    "dir": "2x2",
+    "own": true,
+    "hl": 1
+   }
+  },
+  {
+   "say": "매콤한 게 당기면, 불판 닭갈비.",
+   "subs": [
+    "매콤한 게 당기면,",
+    "불판 닭갈비."
+   ],
+   "show": {
+    "grid": [
+     {
+      "photo": {
+       "url": "vault:photos/ig-17873813923161731.jpg",
+       "shows": "얇게 썬 족발 한 접시",
+       "match": "정확",
+       "rights": "사용자 촬영 비공개 보관함"
+      }
+     },
+     {
+      "photo": {
+       "url": "vault:photos/ig-18152934571179770.jpg",
+       "shows": "새우와 메추리알이 올라간 짬뽕 한 그릇",
+       "match": "정확",
+       "rights": "사용자 촬영 비공개 보관함"
+      }
+     },
+     {
+      "photo": {
+       "url": "vault:photos/ig-17858431873006445.jpg",
+       "shows": "불판 위 양념 닭갈비",
+       "match": "정확",
+       "rights": "사용자 촬영 비공개 보관함"
+      }
+     },
+     {
+      "photo": {
+       "url": "vault:photos/ig-17904882671277246.jpg",
+       "shows": "로제 소스 파스타",
+       "match": "정확",
+       "rights": "사용자 촬영 비공개 보관함"
+      }
+     }
+    ],
+    "dir": "2x2",
+    "own": true,
+    "hl": 2
+   }
+  },
+  {
+   "say": "크림이 당기면, 파스타.",
+   "show": {
+    "grid": [
+     {
+      "photo": {
+       "url": "vault:photos/ig-17873813923161731.jpg",
+       "shows": "얇게 썬 족발 한 접시",
+       "match": "정확",
+       "rights": "사용자 촬영 비공개 보관함"
+      }
+     },
+     {
+      "photo": {
+       "url": "vault:photos/ig-18152934571179770.jpg",
+       "shows": "새우와 메추리알이 올라간 짬뽕 한 그릇",
+       "match": "정확",
+       "rights": "사용자 촬영 비공개 보관함"
+      }
+     },
+     {
+      "photo": {
+       "url": "vault:photos/ig-17858431873006445.jpg",
+       "shows": "불판 위 양념 닭갈비",
+       "match": "정확",
+       "rights": "사용자 촬영 비공개 보관함"
+      }
+     },
+     {
+      "photo": {
+       "url": "vault:photos/ig-17904882671277246.jpg",
+       "shows": "로제 소스 파스타",
+       "match": "정확",
+       "rights": "사용자 촬영 비공개 보관함"
+      }
+     }
+    ],
+    "dir": "2x2",
+    "own": true,
+    "hl": 3
+   }
+  },
+  {
+   "say": "넷 중에 오늘 뭐 먹을래? 댓글로 알려 줘.",
+   "subs": [
+    "넷 중에 오늘 뭐 먹을래?",
+    "댓글로 알려 줘."
+   ],
+   "show": {
+    "grid": [
+     {
+      "photo": {
+       "url": "vault:photos/ig-17873813923161731.jpg",
+       "shows": "얇게 썬 족발 한 접시",
+       "match": "정확",
+       "rights": "사용자 촬영 비공개 보관함"
+      }
+     },
+     {
+      "photo": {
+       "url": "vault:photos/ig-18152934571179770.jpg",
+       "shows": "새우와 메추리알이 올라간 짬뽕 한 그릇",
+       "match": "정확",
+       "rights": "사용자 촬영 비공개 보관함"
+      }
+     },
+     {
+      "photo": {
+       "url": "vault:photos/ig-17858431873006445.jpg",
+       "shows": "불판 위 양념 닭갈비",
+       "match": "정확",
+       "rights": "사용자 촬영 비공개 보관함"
+      }
+     },
+     {
+      "photo": {
+       "url": "vault:photos/ig-17904882671277246.jpg",
+       "shows": "로제 소스 파스타",
+       "match": "정확",
+       "rights": "사용자 촬영 비공개 보관함"
+      }
+     }
+    ],
+    "dir": "2x2",
+    "own": true
+   }
+  }
+ ],
+ "dates": {
+  "checked": "2026-10-31"
+ },
+ "review": {
+  "photo_sheet": "46bc787cb9e6"
+ }
+}
