@@ -335,7 +335,14 @@ def with_duo(spec):
 # 그걸 상황에 맞는 길이로 줄여요. 문장(. ? !)은 따로 만들어 사이를 직접 띄워요. 설계도에 "voice_pick" 이 있을 때만 이렇게 하고,
 # 없으면 예전 그대로예요(이미 만든 영상이 바뀌지 않게).
 PACE = {"hook": 1.04, "fun": 1.0, "react": 1.1, "reveal": 0.96, "number": 0.95, "soft": 0.94, "end": 0.96}  # 목소리 기본 빠르기에 곱해요
-COMMA = {"hook": 0.16, "fun": 0.2, "react": 0.14, "reveal": 0.26, "number": 0.26, "soft": 0.26, "end": 0.22}  # 쉼표 쉼(초)
+COMMA = {"hook": 0.1, "fun": 0.12, "react": 0.1, "reveal": 0.2, "number": 0.2, "soft": 0.22, "end": 0.14}  # 쉼표 쉼(초), 2026-10-31 사용자: 늘어지지 않게
+# 2026-10-31 사용자: 물음이 평서문처럼 들렸어요. 8번 재 보니 [pause short] 를 넣은 물음은 6번 끝이 내려갔고, 같은 말도 읽을 때마다 억양이 달라요.
+# 그래서 물음은 쉼 표시 없이 읽고, 끝이 올라간 것을 골라요. 느린 문장은 그 문장만 고쳐 읽어요(일괄 배속 금지).
+RISE = 3.0  # 물음 끝이 앞 말보다 이만큼(반음) 높아야 해요
+TAKES = 8  # 물음 하나를 읽어 볼 수
+SLOW, BRISK, FAST = 6.2, 6.9, 7.8  # 쉼 뺀 음절/초: SLOW 보다 느린 문장만 BRISK 쯤으로 고쳐 읽어요
+QUICKER = (1.06, 1.12, 1.18, 1.24)  # 느린 문장을 고칠 때 올려 볼 빠르기(배)
+SLOW_OK = ("soft", "reveal", "number")  # 일부러 천천히 읽는 말투
 
 
 def breathing(spec):
@@ -408,10 +415,73 @@ def syllables(text):
     return len(re.findall(r"[가-힣0-9]", text))
 
 
+def _f0(x, low=75, high=520):
+    """10밀리초마다 목소리 높이(Hz). 소리가 작거나 높이가 잡히지 않으면 0."""
+    n, hop = int(SR * 0.04), SR // 100
+    out, a0, a1 = [], SR // high, SR // low
+    for at in range(0, len(x) - n, hop):
+        w = x[at: at + n] * np.hanning(n)
+        if np.sqrt(np.mean(w ** 2)) < 0.012:
+            out.append(0.0)
+            continue
+        spec = np.fft.rfft(w, 2 * n)
+        ac = np.fft.irfft(spec * np.conj(spec))[:n]
+        ac = ac / (ac[0] + 1e-12)
+        k = a0 + int(np.argmax(ac[a0: a1]))
+        out.append(SR / k if ac[k] >= 0.5 else 0.0)
+    return np.array(out)
+
+
+def rise_of(x):
+    """말 끝이 앞 말보다 몇 반음 높은지. 잴 수 없으면 None."""
+    f = _f0(x)
+    on = np.nonzero(f)[0]
+    if len(on) < 20:
+        return None
+    last = on[-1]
+    end, before = f[max(0, last - 8): last + 1], f[max(0, last - 80): max(1, last - 25)]
+    end, before = end[end > 0], before[before > 0]
+    return round(float(12 * np.log2(np.median(end) / np.median(before))), 1) if len(end) and len(before) else None
+
+
+def ask_read(s, c, rate, take):
+    """물음 하나를 끝이 올라가게 읽어요. 앞에서부터 읽어 보다 올라간 것이 나오면 멈추고, 끝내 없으면 가장 많이 오른 것. (소리, 오른 높이)"""
+    first, best, top = int(take or 1), None, None
+    for t in range(first, first + TAKES):
+        v = tts(s, c.get("voice"), rate, take=t if t > 1 else None, tail=0.12)
+        if v is None:
+            return None, None
+        r = rise_of(v)
+        if best is None or (r is not None and (top is None or r > top)):
+            best, top = v, r
+        if r is not None and r >= RISE and syllables(s) / (len(v) / SR) >= SLOW:
+            return v, r
+    return best, top
+
+
 def speak(spec, lines, i, c):
-    """문장 하나를 호흡 넣어 읽어요. (소리, 기록 dict)"""
+    """문장 하나를 호흡 넣어 읽어요. 느린 문장은 그 문장만 빠르기를 고쳐 다시 읽어요. (소리, 기록 dict)"""
     l, pace = lines[i], pace_of(spec, lines, i)
     rate = round(float(l.get("rate") or float(c.get("rate") or _voice_conf()[1]) * PACE[pace]), 3)
+    v, rec = read_line(spec, lines, i, c, pace, rate)
+    if v is None or l.get("rate") or pace in SLOW_OK or spec.get("mood") == "soft" or syllables(spoken(l)) < 6 or rec["sps"] >= SLOW:
+        return v, rec
+    for step in QUICKER:  # 같은 빠르기도 읽을 때마다 길이가 달라서 조금씩 올려 보고 알맞은 곳에서 멈춰요
+        quick = round(rate * step, 3)
+        v2, rec2 = read_line(spec, lines, i, c, pace, quick)
+        if v2 is None:
+            break
+        if abs(rec2["sps"] - BRISK) < abs(rec["sps"] - BRISK):
+            v, rec = v2, rec2
+            rec["why"].append(f"느려서 이 문장만 빠르기 {rate}→{quick}")
+        if SLOW <= rec["sps"] <= FAST:
+            break
+    return v, rec
+
+
+def read_line(spec, lines, i, c, pace, rate):
+    """정해진 빠르기로 문장 하나를 읽어요. (소리, 기록 dict)"""
+    l = lines[i]
     said = spoken(l)
     parts, sent, why = sentences(said), [], []
     if l.get("read"):
@@ -422,9 +492,16 @@ def speak(spec, lines, i, c):
         why.append(f"문장 {len(parts)}개로 나눠 읽음")
     pieces, longest, warn = [], 0.0, []
     for k, s in enumerate(parts):
-        # 쉼표 뒤에 쉼 표시. 짧은 맞장구(react)는 넣지 않아요("아, 그렇구나"가 늘어져요)
-        mk = re.sub(r",\s*", ", [pause short] ", s) if "," in s.rstrip(",") and pace != "react" else ""
-        v = tts(mk or s, c.get("voice"), rate, markup=bool(mk), take=l.get("take"), tail=0.12)
+        # 쉼표 뒤에 쉼 표시. 짧은 맞장구(react)와 짧은 말은 넣지 않아요("아, 그렇구나"가 늘어져요). 물음도 넣지 않아요(끝이 내려가요)
+        mark = "," in s.rstrip(",") and pace != "react" and syllables(s) > 4 and not s.endswith("?")
+        mk = re.sub(r",\s*", ", [pause short] ", s) if mark else ""
+        if s.endswith("?"):
+            v, lift = ask_read(s, c, rate, l.get("take"))
+            why.append(f"물음 끝 {lift}반음 오름")
+            if v is not None and (lift is None or lift < RISE):
+                warn.append(f"물음 끝이 안 올라가요('{s[:14]}…', {lift}반음)")
+        else:
+            v = tts(mk or s, c.get("voice"), rate, markup=bool(mk), take=l.get("take"), tail=0.12)
         if v is None:
             return None, {}
         if mk:
@@ -435,7 +512,7 @@ def speak(spec, lines, i, c):
         sent.append(mk or s)
         pieces.append(v)
         if k < len(parts) - 1:
-            pieces.append(np.zeros(int(SR * (0.36 if s.endswith("?") else 0.3))))
+            pieces.append(np.zeros(int(SR * (0.24 if s.endswith("?") else 0.2))))
     if any("[pause" in s for s in sent):
         why.append("쉼표 뒤에 [pause short] 넣고 쉼을 줄임")
     v = np.concatenate(pieces)
@@ -461,7 +538,7 @@ def breath_gaps(spec, lines, paces):
         if nxt is None:
             out.append(0.3)
             continue
-        g = 0.42 if l["say"].rstrip().endswith("?") else 0.3
+        g = 0.3 if l["say"].rstrip().endswith("?") else 0.2
         if syllables(l["say"]) <= 8:
             g -= 0.05
         if spec.get("cast") and nxt.get("who") != l.get("who"):
