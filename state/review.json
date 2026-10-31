@@ -241,5 +241,68 @@
     "reasons": [],
     "noticed": null,
     "held_noticed": null
+  },
+  "2026-11-01-1-check": {
+    "verdict": "확인 필요",
+    "hash": "208e86f0f201",
+    "approved": false,
+    "reasons": [
+      "[확인] 이력: 이력: 찬 바람 부는 11월, 먹어 본 제철은 몇 개? ↔ 2026-10-15/1-check '10월 바다 제철 5, 몇 개 먹어 봤어요?' (17일 전, 제철, 보냄, 점수 10.5) · 같은 말: 먹어, 제철수산물, 체크, 보며, 봤는지, 세어 →"
+    ],
+    "noticed": "확인 필요:208e86f0f201",
+    "held_noticed": null
+  },
+  "2026-11-01-1-monthly": {
+    "verdict": "확인 필요",
+    "hash": "a7042b35fcbe",
+    "approved": false,
+    "reasons": [
+      "[확인] 이력: 이력: 11월 제철, 뭐부터 먹을까? 5가지 ↔ 2026-10-12/1-monthly '10월에 이건 먹고 지나가야죠, 제철 음식 5' (20일 전, 제철, 보냄, 점수 8) · 같은 말: 모음, 소금구, 오르, 전남 → 반복 의심 — 새 숫자·새 사",
+      "[확인] 이력: 이력: 11월 제철, 뭐부터 먹을까? 5가지 ↔ 2026-10-14/items/kr-gwamegi '과메기, 원조는 꽁치가 아니라 청어였다고요?' (18일 전, 소식 글, 보냄, 점수 6) · 같은 말: 과메기, 경북, 구룡포, 좋아 → 반복 의심 —"
+    ],
+    "noticed": "확인 필요:a7042b35fcbe",
+    "held_noticed": null
+  },
+  "2026-11-01-1-sheet": {
+    "verdict": "확인 필요",
+    "hash": "08639c44a0dc",
+    "approved": false,
+    "reasons": [
+      "[확인] 이력: 이력: 11월 제철 먹거리 요약표, 장 볼 때 꺼내 보세요 ↔ 2026-10-15/1-sheet '10월 바다 제철 한 장 정리, 저장해 두세요' (17일 전, 제철, 보냄, 점수 9) · 같은 말: 장보기, 제철수산물, 공식, 나온, 맛있 → 반복 "
+    ],
+    "noticed": "확인 필요:08639c44a0dc",
+    "held_noticed": null
+  },
+  "2026-11-01-10-voice": {
+    "verdict": "통과",
+    "hash": "a2907039d844",
+    "approved": false,
+    "reasons": [],
+    "noticed": null,
+    "held_noticed": null
+  },
+  "2026-11-01-2-news": {
+    "verdict": "통과",
+    "hash": "66f19aa423b8",
+    "approved": false,
+    "reasons": [],
+    "noticed": null,
+    "held_noticed": null
+  },
+  "2026-11-01-3-dinner": {
+    "verdict": "통과",
+    "hash": "3f138b82154f",
+    "approved": false,
+    "reasons": [],
+    "noticed": null,
+    "held_noticed": null
+  },
+  "2026-11-01-4-find": {
+    "verdict": "통과",
+    "hash": "d632680c4887",
+    "approved": false,
+    "reasons": [],
+    "noticed": null,
+    "held_noticed": null
   }
 }
