@@ -105,11 +105,17 @@
    ],
    "src": "식품안전나라 · 매일일보 · 10월 30일",
    "photo": {
-    "url": "https://tong.visitkorea.or.kr/cms2/website/50/1934750.jpg",
-    "shows": "딸기를 넣은 찹쌀떡 두 개(GS25 제품 아님)",
-    "match": "같은 종류",
-    "rights": "한국관광공사 포토코리아 공공누리 1유형 · ⓒ김지호",
-    "ref": "참고 사진 · 해당 제품 아님",
+    "url": "https://file.newswire.co.kr/data/datafile2/data/2026/10/31017998_20261005091050_1115140623.jpg",
+    "crop": [
+     830,
+     1180,
+     1760,
+     1780
+    ],
+    "shows": "회수 대상이고 판매 중단된 상품과 같은 이름의 GS25 한정선 피스타치오 찹쌀떡 80g 포장을 손에 든 모습(모델 얼굴은 잘라 냄)",
+    "match": "정확",
+    "rights": "GS리테일 보도자료 사진(뉴스와이어 배포)",
+    "credit": "사진: GS리테일 제공(뉴스와이어)",
     "fit": "cover"
    }
   },
@@ -132,13 +138,31 @@
    ],
    "src": "괴산군 · 괴산타임즈 · 10월 30일",
    "photo": {
-    "url": "vault:photos/ig-17912885954202395.jpg",
-    "shows": "김가루를 올린 칼국수 한 그릇(괴산 축제 사진 아님)",
+    "url": "https://conlab.visitkorea.or.kr/api/depot/public/depot-flow/query/download-image/8f2eeae1-2b9a-4743-86d8-1a00750fd6f1/it17",
+    "shows": "두 손으로 수타면 반죽을 늘이는 장면(괴산 축제 사진 아님)",
     "match": "같은 종류",
-    "rights": "사용자 촬영 비공개 보관함",
     "ref": "참고 사진 · 축제 사진 아님",
+    "rights": "한국관광공사 포토코리아 공공누리 1유형 · ⓒ프레임스튜디오",
     "fit": "cover"
-   }
+   },
+   "more": [
+    {
+     "url": "https://conlab.visitkorea.or.kr/api/depot/public/depot-flow/query/download-image/12bdeec5-d819-4a1b-a152-18356314d3bc/it17",
+     "shows": "양은냄비 라면을 젓가락으로 들어 올린 모습",
+     "match": "같은 종류",
+     "ref": "참고 사진",
+     "rights": "한국관광공사 포토코리아 공공누리 1유형 · ⓒ알렉스 분도",
+     "fit": "cover"
+    },
+    {
+     "url": "https://conlab.visitkorea.or.kr/api/depot/public/depot-flow/query/download-image/49f842d0-180a-4c64-ad89-7f894dfbbf97/it17",
+     "shows": "달걀을 올린 라면 한 냄비",
+     "match": "같은 종류",
+     "ref": "참고 사진",
+     "rights": "한국관광공사 포토코리아 공공누리 1유형 · ⓒ김지호",
+     "fit": "cover"
+    }
+   ]
   }
  ],
  "news": [
@@ -228,29 +252,42 @@
     "https://www.m-i.kr/news/articleView.html?idxno=2012698"
    ],
    "credits": [
-    "ⓒ한국관광공사 포토코리아-김지호"
+    "GS리테일 제공(뉴스와이어)"
    ],
    "lead": {
     "thumb": {
      "head": "GS25 찹쌀떡\n[[판매 중단]]",
      "sub": "제조일자 [[10월 23일]] 제품",
      "photo": {
-      "url": "https://tong.visitkorea.or.kr/cms2/website/50/1934750.jpg",
-      "shows": "딸기를 넣은 찹쌀떡 두 개(GS25 제품 아님)",
-      "match": "같은 종류",
-      "rights": "한국관광공사 포토코리아 공공누리 1유형 · ⓒ김지호",
-      "ref": "참고 사진 · 해당 제품 아님",
+      "url": "https://file.newswire.co.kr/data/datafile2/data/2026/10/31017998_20261005091050_1115140623.jpg",
+      "crop": [
+       656,
+       1165,
+       1760,
+       1790
+      ],
+      "shows": "회수 대상이고 판매 중단된 상품과 같은 이름의 GS25 한정선 피스타치오 찹쌀떡 80g 포장을 손에 든 모습(모델 얼굴은 잘라 냄)",
+      "match": "정확",
+      "rights": "GS리테일 보도자료 사진(뉴스와이어 배포)",
+      "credit": "사진: GS리테일 제공(뉴스와이어)",
       "fit": "cover"
      }
     },
     "cover": {
      "title": "GS25 찹쌀떡\n[[판매 중단]]됐대",
      "photo": {
-      "url": "https://tong.visitkorea.or.kr/cms2/website/50/1934750.jpg",
-      "shows": "딸기를 넣은 찹쌀떡 두 개(GS25 제품 아님)",
-      "match": "같은 종류",
-      "rights": "한국관광공사 포토코리아 공공누리 1유형 · ⓒ김지호",
-      "ref": "참고 사진 · 해당 제품 아님"
+      "url": "https://file.newswire.co.kr/data/datafile2/data/2026/10/31017998_20261005091050_1115140623.jpg",
+      "crop": [
+       656,
+       1165,
+       1760,
+       1790
+      ],
+      "shows": "회수 대상이고 판매 중단된 상품과 같은 이름의 GS25 한정선 피스타치오 찹쌀떡 80g 포장을 손에 든 모습(모델 얼굴은 잘라 냄)",
+      "match": "정확",
+      "rights": "GS리테일 보도자료 사진(뉴스와이어 배포)",
+      "credit": "사진: GS리테일 제공(뉴스와이어)",
+      "fit": "cover"
      }
     },
     "caption_head": "GS25 피스타치오 찹쌀떡이 판매 중단됐다는데, 알고 계셨어요?",
@@ -286,7 +323,11 @@
    "sources": [
     "https://www.goesantimes.com/news/articleView.html?idxno=33489"
    ],
-   "credits": []
+   "credits": [
+    "ⓒ한국관광공사 포토코리아-프레임스튜디오",
+    "ⓒ한국관광공사 포토코리아-알렉스 분도",
+    "ⓒ한국관광공사 포토코리아-김지호"
+   ]
   }
  ],
  "caption_head": "투썸 뱅쇼가 누적 500만 잔이나 팔렸다는데, 드셔 보셨어요?",
@@ -363,9 +404,12 @@
   "https://www.goesantimes.com/news/articleView.html?idxno=33489"
  ],
  "credits": [
+  "GS리테일 제공(뉴스와이어)",
+  "ⓒ한국관광공사 포토코리아-프레임스튜디오",
+  "ⓒ한국관광공사 포토코리아-알렉스 분도",
   "ⓒ한국관광공사 포토코리아-김지호"
  ],
  "review": {
-  "photo_sheet": "a2a532f0e711"
+  "photo_sheet": "b46e589caa1d"
  }
 }
