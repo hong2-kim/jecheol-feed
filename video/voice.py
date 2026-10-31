@@ -49,6 +49,7 @@ GAP = 0.12  # 문장 사이 쉼(초)
 TURN = 0.18  # 대화에서 말하는 사람이 바뀔 때 쉼(초)
 LOUD = 0.085  # 대화형은 목소리마다 크기가 달라서 이 크기(RMS)로 맞춰요
 SHORTEST, LONGEST = 25.0, 59.0
+READ_LIMIT = 56.0  # 호흡 모드 어림의 상한. 어림이 실제보다 2~3초 짧을 때가 있어서 59초보다 낮게 둬요 (10-31: 어림 58.1초, 클라우드 실제 61.6초)
 CHUNK = 14  # 자막 한 번에 보여 줄 칸 수(한글 1칸)
 
 
@@ -123,6 +124,13 @@ def estimate(text):
     """키가 없을 때(설계도 확인만 할 때) 읽는 시간 어림. 1.3배 빠르기로 한 칸에 0.135초쯤."""
     from build import units
     return 0.25 + units(text) * 0.135
+
+
+def estimate_read(text):
+    """호흡 모드(voice_pick)로 읽는 시간 어림. 예전 estimate 는 1.3배 기준이라 30%쯤 짧게 나와요(2026-10-29·31 쇼츠가 59초를 넘겨 빠졌어요).
+    숫자는 풀어 읽어 길어서 한 칸으로 치고, 쉼표마다 쉼을 더해요. 10-28~31 대본 6개의 실제 소리로 맞췄어요."""
+    cells = sum(.3 if c == " " else 1 if c.isdigit() else .55 if ord(c) < 128 else 1 for c in text if c not in ",.?!")
+    return max(0.6, cells * 0.177 + text.count(",") * 0.09 - 0.19)
 
 
 STRETCH = 1.25  # 자막 한 덩어리는 room 의 이만큼까지 늘려도 돼요 (글자를 그만큼 줄여요, sub_size)
@@ -746,7 +754,7 @@ def build_voice(spec, work=None):
                 v = v * min(LOUD / max(1e-9, np.sqrt(np.mean(v ** 2))), 0.98 / max(1e-9, np.abs(v).max()))
         voices.append(v)
     real = all(v is not None for v in voices)
-    speech = [len(v) / SR if real else estimate(l["say"]) for v, l in zip(voices, lines)]
+    speech = [len(v) / SR if real else estimate_read(spoken(l)) if breathing(spec) else estimate(l["say"]) for v, l in zip(voices, lines)]
     gaps_ = breath_gaps(spec, lines, [pace_of(spec, lines, i) for i in range(len(lines))]) if breathing(spec) else gaps(spec, lines)
     durs = [s + g for s, g in zip(speech, gaps_)]
     starts = [sum(durs[:i]) for i in range(len(lines))]
@@ -925,9 +933,13 @@ def problems(spec):
         run = run + 1 if vis.get("photos") and not vis.get("video") else 0
         if run == 4 and short:
             should.append(f"{a + 1}번 문장까지 사진만 네 번 이어져요. 영상 조각이나 가격·순서 그래픽을 섞어 주세요.")
-    total = sum(estimate(l.get("say", "")) for l in lines) + sum(gaps(spec, lines)) + 1.6
-    if total > LONGEST:
-        must.append(f"읽는 데 {total:.0f}초쯤 걸려요. 59초 안으로 줄여 주세요.")
+    if breathing(spec):
+        paces = [pace_of(spec, lines, i) for i in range(len(lines))]
+        total = sum(estimate_read(spoken(l)) for l in lines) + sum(breath_gaps(spec, lines, paces)) + 1.6
+    else:
+        total = sum(estimate(l.get("say", "")) for l in lines) + sum(gaps(spec, lines)) + 1.6
+    if total > (READ_LIMIT if breathing(spec) else LONGEST):
+        must.append(f"읽는 데 {total:.0f}초쯤 걸려요. 59초를 넘으면 영상이 안 만들어져요. 빠르기는 그대로 두고 덜 중요한 문장을 빼 주세요.")
     elif total > hi + 3:
         should.append(f"읽는 데 {total:.0f}초쯤이에요. {lo}~{hi}초로 줄여 주세요.")
     elif total < lo - 3:
