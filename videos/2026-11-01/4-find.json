@@ -1,0 +1,139 @@
+{
+ "kind": "발견",
+ "subject": "벌교꼬막축제 · 2026 제22회 일정",
+ "title": "꼬막으로 연 축제, 벌교꼬막축제 11월 20~22일",
+ "summary": "제22회 벌교꼬막축제가 11월 20~22일 보성 벌교읍 천변 일원에서 열려요. 꼬막비빔밥 1,000인분 만들기와 태백산맥 문학기행이 마련돼요.",
+ "thumb": {
+  "head": "꼬막이\n[[축제가 됐대요]]",
+  "sub": "벌교 [[11월 20~22일]]",
+  "photo": {
+   "url": "https://tong.visitkorea.or.kr/cms2/website/92/2824092.jpg",
+   "shows": "꼬막 무침 등이 놓인 꼬막정식 상차림(순천에서 찍은 사진, 벌교 축제 사진 아님)",
+   "match": "같은 종류",
+   "rights": "한국관광공사 포토코리아 공공누리 1유형 · ⓒ스튜디오 4cats",
+   "fit": "cover"
+  }
+ },
+ "tags": [
+  "벌교꼬막축제",
+  "꼬막",
+  "11월축제",
+  "전남여행"
+ ],
+ "sources": [
+  "https://newssunday.co.kr/news/view.php?no=255120"
+ ],
+ "credits": [
+  "ⓒ한국관광공사 포토코리아-스튜디오 4cats"
+ ],
+ "yt_title": "벌교꼬막축제 2026, 11월 20~22일 꼬막비빔밥 1,000인분",
+ "yt_keyword": "벌교꼬막축제",
+ "yt_related": [
+  "벌교 꼬막",
+  "꼬막비빔밥",
+  "벌교꼬막축제 일정",
+  "11월 축제",
+  "꼬막정식"
+ ],
+ "yt_tags": [
+  "벌교꼬막축제",
+  "벌교 꼬막",
+  "꼬막비빔밥",
+  "꼬막정식",
+  "11월 축제"
+ ],
+ "yt_hashtags": [
+  "벌교꼬막축제",
+  "꼬막",
+  "11월축제"
+ ],
+ "yt_lead": "제22회 벌교꼬막축제가 11월 20~22일 보성 벌교읍 천변 일원에서 열리고, 꼬막비빔밥 1,000인분 만들기가 마련돼요.",
+ "dates": {
+  "checked": "2026-11-01",
+  "sources": [
+   {
+    "url": "https://newssunday.co.kr/news/view.php?no=255120",
+    "published": "2026-10-23",
+    "modified": "2026-10-23"
+   }
+  ],
+  "event": {
+   "name": "제22회 벌교꼬막축제",
+   "start": "2026-11-20",
+   "end": "2026-11-22"
+  }
+ },
+ "css": ".cover .back, .card .back { display: none; } .cover .pic, .cover .pic.fill, .cover .pic.whole { height: 1920px; -webkit-mask-image: none; mask-image: none; } .cover .pic img, .cover .pic.whole img, .cover .pic.fill img { object-fit: cover; filter: brightness(.95); } .cover .pic::after { content: \"\"; position: absolute; left: 0; right: 0; bottom: 0; height: 960px; background: linear-gradient(180deg, rgba(8,6,4,0) 0%, rgba(8,6,4,.5) 30%, rgba(8,6,4,.84) 62%, rgba(8,6,4,.92) 100%); } .cover .mid { top: auto; bottom: 400px; text-shadow: 0 3px 20px rgba(0,0,0,.6); } .card .pic.wide, .card .pic.wide.fill, .card .pic.tall { height: 1920px; -webkit-mask-image: none; mask-image: none; } .card .pic img { object-fit: cover; } .card .shade { height: 900px; } .card .txt { bottom: 400px; } .chip { font-size: 46px; } .ln { font-size: 54px; font-weight: 700; line-height: 1.34; } .duo .seam { top: 590px; height: 740px; background: linear-gradient(180deg, rgba(8,6,4,0) 0%, rgba(8,6,4,.8) 26%, rgba(8,6,4,.8) 74%, rgba(8,6,4,0) 100%); } .duo .sub { white-space: pre-line; font-size: 50px; line-height: 1.42; margin-top: 22px; } .duo .tagchip { top: 150px !important; font-size: 34px; font-weight: 800; padding: 8px 20px 12px; border-radius: 12px; background: rgba(8,6,4,.6); } .duo .tagchip ~ .tagchip { top: 1290px !important; } .tref { display: none; }",
+ "scenes": [
+  {
+   "type": "cover",
+   "dur": 2.0,
+   "photo": {
+    "url": "https://tong.visitkorea.or.kr/cms2/website/92/2824092.jpg",
+    "shows": "꼬막 무침 등이 놓인 꼬막정식 상차림(순천에서 찍은 사진, 벌교 축제 사진 아님)",
+    "match": "같은 종류",
+    "rights": "한국관광공사 포토코리아 공공누리 1유형 · ⓒ스튜디오 4cats"
+   },
+   "kicker": "여러분",
+   "title": "제철 꼬막 먹으러\n[[벌교까지]]\n가 본 적\n있나요?",
+   "size": 100
+  },
+  {
+   "type": "cover",
+   "dur": 1.8,
+   "photo": {
+    "url": "https://tong.visitkorea.or.kr/cms2/website/94/2824094.jpg",
+    "shows": "꼬막정식 한 상 차림(벌교 축제 사진 아님)",
+    "match": "분위기",
+    "rights": "한국관광공사 포토코리아 공공누리 1유형 · ⓒ스튜디오 4cats"
+   },
+   "kicker": "그런데",
+   "title": "꼬막이\n[[축제가 됐대요]]",
+   "size": 100,
+   "in": "push"
+  },
+  {
+   "type": "cover",
+   "dur": 2.0,
+   "photo": {
+    "url": "https://tong.visitkorea.or.kr/cms2/website/04/2824104.jpg",
+    "shows": "놋그릇에 담은 꼬막 무침(벌교 축제 사진 아님)",
+    "match": "같은 종류",
+    "rights": "한국관광공사 포토코리아 공공누리 1유형 · ⓒ스튜디오 4cats"
+   },
+   "kicker": "그래서 찾아봤어요 · 벌교꼬막",
+   "title": "벌교꼬막축제\n[[11월 20~22일]]",
+   "size": 100
+  },
+  {
+   "type": "card",
+   "dur": 2.5,
+   "photo": {
+    "url": "https://tong.visitkorea.or.kr/cms2/website/02/2824102.jpg",
+    "shows": "꼬막정식 상차림의 부추전(벌교 축제 사진 아님)",
+    "match": "분위기",
+    "rights": "한국관광공사 포토코리아 공공누리 1유형 · ⓒ스튜디오 4cats"
+   },
+   "chip": "장소",
+   "headline": "벌교읍\n[[천변 일원]]",
+   "line": "제22회 벌교꼬막축제\n11월 20~22일 3일 동안"
+  },
+  {
+   "type": "card",
+   "dur": 2.6,
+   "photo": {
+    "url": "https://tong.visitkorea.or.kr/cms2/website/03/2824103.jpg",
+    "shows": "참기름에 무친 꼬막 무침(벌교 축제 사진 아님)",
+    "match": "같은 종류",
+    "rights": "한국관광공사 포토코리아 공공누리 1유형 · ⓒ스튜디오 4cats"
+   },
+   "chip": "뭘 하나",
+   "headline": "꼬막비빔밥\n[[1,000인분]]",
+   "line": "꼬막비빔밥 만들기와\n태백산맥 문학기행도 있어요"
+  }
+ ],
+ "caption": "제철 꼬막 먹으러 벌교까지 가 본 적 있나요? 꼬막으로 연 벌교꼬막축제 얘기예요.\n\n제22회 벌교꼬막축제가 11월 20일부터 22일까지 보성군 벌교읍 천변 일원에서 열려요. 보성군은 제철 벌교꼬막을 비롯한 지역 먹거리를 맛볼 수 있고, 꼬막비빔밥 1,000인분 만들기와 태백산맥 문학기행 같은 체험·공연이 마련된다고 밝혔어요. 벌교 태백산맥 꼬막거리에는 꼬막정식과 꼬막비빔밥 같은 대표 음식을 내는 음식점 8곳이 지정돼 있어요. 보성군은 축제를 앞두고 이 8곳에 위생용품을 지원했어요.\n\n사진은 꼬막정식 상차림 참고 사진이에요(벌교 현지 사진 아님). 일정은 바뀔 수 있으니 가기 전에 확인하세요.\n\n여러분은 꼬막, 무침파예요 비빔밥파예요?",
+ "review": {
+  "photo_sheet": "f6f721efa2ff"
+ }
+}

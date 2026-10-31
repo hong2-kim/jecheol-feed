@@ -1,0 +1,176 @@
+{
+ "kind": "제철",
+ "subject": "2026-11 이달의 제철 모음",
+ "title": "11월 제철, 뭐부터 먹을까? 5가지",
+ "yt_title": "11월 제철 음식 5가지, 굴 꼬막 삼치 과메기 가리비",
+ "yt_keyword": "11월 제철 음식",
+ "yt_related": [
+  "11월 제철 해산물",
+  "삼치 소금구이",
+  "가리비 버터구이",
+  "과메기",
+  "꼬막"
+ ],
+ "yt_tags": [
+  "11월 제철 음식",
+  "11월 제철 해산물",
+  "11월 제철 수산물",
+  "삼치 소금구이",
+  "가리비 버터구이",
+  "과메기",
+  "꼬막",
+  "굴"
+ ],
+ "yt_hashtags": [
+  "11월제철음식",
+  "삼치",
+  "가리비"
+ ],
+ "yt_lead": "11월 제철 음식, 굴·꼬막·삼치·과메기·가리비를 언제 맛있는지와 함께 정리했어요.",
+ "thumb": {
+  "head": "11월 제철 음식\n[[이거 먹고 가]]",
+  "sub": "삼치·가리비는 [[해수부 선정]]",
+  "photo": {
+   "url": "https://tong.visitkorea.or.kr/cms2/website/34/3052834.jpg",
+   "shows": "석쇠에 올려 굽는 가리비 구이 세 개와 치즈(충남 태안 조개구이)",
+   "match": "같은 종류",
+   "rights": "한국관광공사 포토코리아 공공누리 1유형 · ⓒ천준교",
+   "fit": "cover"
+  }
+ },
+ "summary": "11월에 맛이 오르는 제철 음식 다섯 가지를 정리했어요. 굴, 꼬막, 삼치, 과메기, 가리비예요. 삼치와 가리비류는 해양수산부가 고른 11월 이달의 수산물이에요.",
+ "scenes": [
+  {
+   "type": "cover",
+   "dur": 2.0,
+   "photo": {
+    "url": "https://tong.visitkorea.or.kr/cms2/website/34/3052834.jpg",
+    "shows": "석쇠에 올려 굽는 가리비 구이 세 개와 치즈(충남 태안 조개구이)",
+    "match": "같은 종류",
+    "rights": "한국관광공사 포토코리아 공공누리 1유형 · ⓒ천준교"
+   },
+   "kicker": "11월 · 이달의 제철 5",
+   "title": "찬 바람 부는 11월\n[[먹고갈지도]]에서\n제철 볼까?",
+   "size": 104
+  },
+  {
+   "type": "card",
+   "dur": 2.2,
+   "photo": {
+    "url": "https://tong.visitkorea.or.kr/cms2/website/41/1178441.jpg",
+    "shows": "접시에 담긴 굴전(경남 통영에서 찍은 굴전)",
+    "match": "같은 종류",
+    "rights": "한국관광공사 포토코리아 공공누리 1유형 · ⓒ김지호"
+   },
+   "chip": "01 · 경남 남해안",
+   "headline": "굴\n[[굴전 · 굴보쌈]]",
+   "line": "굴 수확이 막 시작됐어요"
+  },
+  {
+   "type": "card",
+   "dur": 2.2,
+   "photo": {
+    "url": "https://tong.visitkorea.or.kr/cms2/website/03/2824103.jpg",
+    "shows": "참기름에 무친 꼬막 무침을 놋그릇에 담은 모습(꼬막정식 상차림)",
+    "match": "같은 종류",
+    "rights": "한국관광공사 포토코리아 공공누리 1유형 · ⓒ스튜디오 4cats"
+   },
+   "chip": "02 · 전남 보성 벌교",
+   "headline": "꼬막\n[[무침 · 정식]]",
+   "line": "11월 20일 벌교꼬막축제가 열려요"
+  },
+  {
+   "type": "card",
+   "dur": 2.2,
+   "photo": {
+    "url": "https://live.staticflickr.com/5522/12098489504_f4e9296cef_b.jpg",
+    "shows": "소금구이처럼 노릇하게 구운 삼치(Spanish mackerel) 한 토막을 접시에 올린 요리(일본 홋카이도 식당 요리)",
+    "match": "같은 종류",
+    "rights": "플리커 CC BY 2.0 · City Foodsters (CC BY 2.0) · www.flickr.com/photos/89060048@N03/12098489504",
+    "pos": "25% 45%",
+    "terms": {
+     "url": "https://creativecommons.org/licenses/by/2.0/",
+     "checked": "2026-10-31",
+     "scope": "CC BY 2.0, 상업적 이용·수정 가능",
+     "ok": true
+    }
+   },
+   "chip": "03 · 해수부 11월 선정",
+   "headline": "삼치\n[[소금구이]]",
+   "line": "11월부터 겨울까지 맛이 좋아요"
+  },
+  {
+   "type": "card",
+   "dur": 2.2,
+   "photo": {
+    "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Gwamegi.jpg?width=1600",
+    "shows": "접시에 담긴 과메기와 쪽파·마늘·고추",
+    "match": "정확",
+    "rights": "위키미디어 공용 CC BY 2.0 · Hyeon-Jeong Suk"
+   },
+   "chip": "04 · 경북 포항 구룡포",
+   "headline": "과메기\n[[겨울 별미]]",
+   "line": "지금부터 본격 출하가 시작돼요"
+  },
+  {
+   "type": "card",
+   "dur": 2.2,
+   "photo": {
+    "url": "https://tong.visitkorea.or.kr/cms2/website/33/3052833.jpg",
+    "shows": "버터구이처럼 석쇠에 올려 굽는 가리비 구이(충남 태안 조개구이)",
+    "match": "같은 종류",
+    "rights": "한국관광공사 포토코리아 공공누리 1유형 · ⓒ천준교"
+   },
+   "chip": "05 · 동해·남해안",
+   "headline": "가리비\n[[버터구이]]",
+   "line": "늦가을부터 겨울까지 살이 차요"
+  }
+ ],
+ "caption": "찬 바람 부는 11월 제철, 뭐부터 먹을까요? 이달의 제철 5\n\n01 굴 굴전·굴보쌈 (경남 남해안)\n남해안에서 본격적인 굴 수확이 시작됐어요. 올여름 큰 태풍이나 고수온 피해가 없어 작황이 좋다는 현지 보도가 있었어요. 굴은 위생 관리를 확인하고 익혀 드시면 더 안심이에요.\n02 꼬막 무침·정식 (전남 보성 벌교)\n제철 꼬막을 맛보러 벌교를 찾는 사람이 많아요. 제22회 벌교꼬막축제가 11월 20일부터 22일까지 벌교읍 천변 일원에서 열려요.\n03 삼치 소금구이 (전국)\n해양수산부가 11월 이달의 수산물로 삼치와 가리비류를 골랐어요. 삼치는 가을부터 살에 지방이 차올라 11월부터 겨울까지 맛이 좋고, 소금을 살짝 뿌려 구우면 담백하고 고소해요.\n04 과메기 (경북 포항 구룡포)\n겨울철 별미 과메기가 본격 출하 시기를 맞았어요. 포항구룡포과메기문화관에서는 11~12월 매주 토·일 오후 2~5시에 무료 시식회를 열어요. 재료가 떨어지면 일찍 끝날 수 있어요.\n05 가리비 버터구이 (동해·남해안)\n참가리비는 동해안, 해만가리비는 남해안에서 주로 길러요. 늦가을부터 겨울까지 살이 차올라 맛이 좋아요. 버터를 곁들여 구우면 관자의 부드러운 속살이 고소해져요. 사진은 충남 태안의 조개구이 가리비구이예요.\n\n여러분은 몇 번부터 드실래요?\n일정과 영업시간은 가기 전에 확인하세요.",
+ "tags": [
+  "11월제철음식",
+  "굴",
+  "꼬막",
+  "삼치"
+ ],
+ "sources": [
+  "https://mobile.busan.com/view/election/view.php?code=2026110100202533690",
+  "http://news.lghellovision.net/news/articleView.html?idxno=559443",
+  "https://www.kbmaeil.com/article/20261026500564",
+  "https://newssunday.co.kr/news/view.php?no=255120"
+ ],
+ "credits": [
+  "ⓒ한국관광공사 포토코리아-김지호, 스튜디오 4cats, 천준교",
+  "City Foodsters (CC BY 2.0) · www.flickr.com/photos/89060048@N03/12098489504",
+  "Hyeon-Jeong Suk (CC BY 2.0) · commons.wikimedia.org/?curid=54787632"
+ ],
+ "dates": {
+  "checked": "2026-11-01",
+  "sources": [
+   {
+    "url": "https://mobile.busan.com/view/election/view.php?code=2026110100202533690",
+    "published": "2026-11-01"
+   },
+   {
+    "url": "http://news.lghellovision.net/news/articleView.html?idxno=559443",
+    "published": "2026-10-22"
+   },
+   {
+    "url": "https://www.kbmaeil.com/article/20261026500564",
+    "published": "2026-10-26"
+   },
+   {
+    "url": "https://newssunday.co.kr/news/view.php?no=255120",
+    "published": "2026-10-23"
+   }
+  ],
+  "event": {
+   "name": "제22회 벌교꼬막축제",
+   "start": "2026-11-20",
+   "end": "2026-11-22"
+  }
+ },
+ "review": {
+  "photo_sheet": "7a929978440a"
+ }
+}
