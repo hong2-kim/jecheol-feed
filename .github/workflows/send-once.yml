@@ -1,13 +1,11 @@
-# 2026-10-31 아침, 사용자가 승인한 도루묵 쇼츠를 비공개 보관함에서 받아 텔레그램으로 한 번만 보내요.
-# 이 파일을 올릴 때는 받기와 봇 키만 확인하고 보내지는 않아요. 끝나면 지워요.
+# 2026-10-31 저녁, 사용자가 승인한 할로윈 저녁 쇼츠를 비공개 보관함에서 받아 텔레그램으로 한 번만 보내요.
+# 공공누리 제3유형 사진을 무보정으로 넣어서 일반 produce 경로를 쓰지 않아요. 이 파일을 올리면 바로 보내고, 날짜가 지나면 보내지 않아요. 끝나면 지워요.
 name: send-once
 
 on:
   push:
     branches: [main]
     paths: [".github/workflows/send-once.yml"]
-  schedule:
-    - cron: "45 21 30 10 *" # 한국 시간 10월 31일 오전 6시 45분
 
 permissions:
   contents: read
@@ -17,32 +15,28 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
+      - name: 날짜 확인
+        run: '[ "$(TZ=Asia/Seoul date +%F)" = "2026-10-31" ]'
       - name: 비공개 보관함에서 받기
         env:
           PHOTOS_TOKEN: ${{ secrets.PHOTOS_TOKEN }}
         run: |
           for f in mp4 jpg html; do
             curl -fsSL -H "Authorization: Bearer $PHOTOS_TOKEN" -H "Accept: application/vnd.github.raw" \
-              -o "s.$f" "https://api.github.com/repos/hong2-kim/jecheol-photos/contents/send/2026-10-31-dorumuk.$f"
+              -o "s.$f" "https://api.github.com/repos/hong2-kim/jecheol-photos/contents/send/2026-10-31-halloween-dinner.$f"
           done
           ls -la s.*
-          [ "$(stat -c%s s.mp4)" -gt 10000000 ]
-      - name: 봇 키 확인
-        env:
-          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
-        run: curl -fsS -o /dev/null "https://api.telegram.org/bot$TELEGRAM_BOT_TOKEN/getMe"
+          [ "$(stat -c%s s.mp4)" -gt 5000000 ]
       - name: 텔레그램으로 보내기
-        if: github.event_name == 'schedule'
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID || secrets.TELEGRAM_CHAT_I }}
         run: |
-          [ "$(TZ=Asia/Seoul date +%F)" = "2026-10-31" ] || exit 0
           API="https://api.telegram.org/bot$TELEGRAM_BOT_TOKEN"
           curl -fsS -o /dev/null "$API/sendVideo" --form-string "chat_id=$TELEGRAM_CHAT_ID" \
-            --form-string "caption=[유튜브 쇼츠 · 도루묵] 말짱 도루묵? 알 때문에 호불호 갈리는 이 생선!" \
+            --form-string "caption=[유튜브 쇼츠 · 저녁 추천] 할로윈인데 그냥 밥 먹을 거야? 🎃 토요일 저녁 메뉴 4가지" \
             --form-string "supports_streaming=true" -F "width=1080" -F "height=1920" -F "video=@s.mp4;type=video/mp4"
           curl -fsS -o /dev/null "$API/sendPhoto" --form-string "chat_id=$TELEGRAM_CHAT_ID" \
-            --form-string "caption=도루묵 쇼츠 썸네일" -F "photo=@s.jpg;type=image/jpeg"
+            --form-string "caption=할로윈 저녁 쇼츠 썸네일" -F "photo=@s.jpg;type=image/jpeg"
           curl -fsS -o /dev/null "$API/sendMessage" --form-string "chat_id=$TELEGRAM_CHAT_ID" \
             --form-string "parse_mode=HTML" --form-string "disable_web_page_preview=true" -F "text=<s.html"
