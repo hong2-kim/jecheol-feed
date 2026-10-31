@@ -23,7 +23,7 @@
     "seconds": 15.5,
     "size_mb": 4.8,
     "yt_title": "냉동 치킨 케바삭, 한 달 30만 봉 팔린 이유 에어프라이어 10분",
-    "sha256": "d2c59527f1798995cc276060858a3aeea8505daedd7d06cce28bdb552d3686e0"
+    "sha256": "ac37b63ed02d7fc376c044fb252805935789c2f52f1afaa4c2edfa0791a834f1"
   },
   {
     "id": "2026-10-31-3-dinner",
@@ -42,10 +42,10 @@
     "sources": [],
     "credits": [],
     "url": "https://github.com/hong2-kim/jecheol-feed/releases/download/v2026-10-31/2026-10-31-3-dinner.mp4",
-    "seconds": 19.0,
-    "size_mb": 9.3,
+    "seconds": 19.1,
+    "size_mb": 9.2,
     "yt_title": "토요일 저녁 메뉴 뭐 먹지? 족발·짬뽕·닭갈비·파스타 중에 골라 줌",
-    "sha256": "2d1aa63e9e4bb89640e256ec6702ef6707c46dd25245d776ebb3b245b223a154"
+    "sha256": "9efe89952e7168314911512f2c1b4e46ada53308b31e86e608846b78fe0e6011"
   },
   {
     "id": "2026-10-31-2-news",
@@ -67,11 +67,14 @@
       "https://www.goesantimes.com/news/articleView.html?idxno=33489"
     ],
     "credits": [
+      "GS리테일 제공(뉴스와이어)",
+      "ⓒ한국관광공사 포토코리아-프레임스튜디오",
+      "ⓒ한국관광공사 포토코리아-알렉스 분도",
       "ⓒ한국관광공사 포토코리아-김지호"
     ],
     "url": "https://github.com/hong2-kim/jecheol-feed/releases/download/v2026-10-31/2026-10-31-2-news-1.jpg",
     "seconds": null,
-    "size_mb": 1.5,
+    "size_mb": 1.4,
     "yt_title": "투썸 뱅쇼 누적 500만 잔, 10월 31일 겨울 음료 4종 오늘의 먹거리 뉴스 3",
     "format": "cards",
     "files": [
