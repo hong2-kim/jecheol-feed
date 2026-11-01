@@ -1,0 +1,170 @@
+{
+ "kind": "세계",
+ "subject": "2026-11 세계 축제",
+ "title": "11~12월 해외 간다면? 이 축제에선 이걸 드세요 4",
+ "yt_title": "11월 해외 음식 축제 4곳, 오사카 군고구마 오다이바 홍콩 뉘른베르크",
+ "yt_keyword": "11월 해외 음식 축제",
+ "yt_related": [
+  "오사카 야키이모 페스",
+  "오다이바 해산물 축제",
+  "홍콩 푸드 페스티벌",
+  "뉘른베르크 크리스마스 마켓"
+ ],
+ "yt_tags": [
+  "11월 해외 음식 축제",
+  "해외 음식 축제",
+  "오사카 군고구마",
+  "오다이바 해산물 축제",
+  "홍콩 푸드 페스티벌",
+  "뉘른베르크 크리스마스 마켓",
+  "해외여행 먹거리"
+ ],
+ "yt_hashtags": [
+  "해외음식축제",
+  "오사카여행",
+  "홍콩여행"
+ ],
+ "yt_lead": "11~12월 해외여행 계획이라면, 오사카·도쿄·홍콩·뉘른베르크에서 열리는 음식 축제 네 곳을 날짜와 함께 정리했어요.",
+ "thumb": {
+  "head": "12월 도쿄 가면\n[[해산물 덮밥]]",
+  "sub": "[[12월 4~6일]] 무료 축제",
+  "photo": {
+   "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Kaisen-don%20002.jpg?width=1600",
+   "shows": "생선회·새우·연어알을 올린 해산물 덮밥(일본)",
+   "match": "같은 종류",
+   "rights": "위키미디어 공용 CC0",
+   "fit": "cover"
+  }
+ },
+ "summary": "11월 초부터 12월까지 열리는 해외 음식 축제 네 곳을 날짜, 장소, 먹을 것과 함께 정리했어요.",
+ "scenes": [
+  {
+   "type": "cover",
+   "dur": 2.0,
+   "photo": {
+    "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Lebkuchenstand.JPG?width=1600",
+    "shows": "뉘른베르크 크리스마스 시장의 렙쿠헨 가판대",
+    "match": "정확",
+    "rights": "위키미디어 공용 CC BY 4.0 · Schlurcher"
+   },
+   "kicker": "11월 2일 월요일 · 세계 먹거리 축제 4",
+   "title": "11월 해외 가려면?\n[[먹고갈지도]]에서\n먹을 곳 볼까?",
+   "size": 104
+  },
+  {
+   "type": "duo",
+   "dur": 2.2,
+   "photo_top": {
+    "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Osaka%20Castle%20and%20OBP.jpg?width=1600",
+    "shows": "오사카성과 주변 빌딩 전경(오사카성 공원 일대)",
+    "match": "분위기",
+    "rights": "위키미디어 공용 CC0"
+   },
+   "photo_bottom": {
+    "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Roasted%20sweet%20potato.jpg?width=1600",
+    "shows": "껍질을 갈라 속이 노랗게 보이는 군고구마 한 개(그릇에 담김)",
+    "match": "같은 종류",
+    "rights": "위키미디어 공용 CC0"
+   },
+   "no": "01 · 일본 오사카",
+   "title": "야키이모 페스",
+   "sub": "~[[11.8]] · 군고구마 메뉴 약 30종, 입장 무료"
+  },
+  {
+   "type": "duo",
+   "dur": 2.2,
+   "photo_top": {
+    "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Kaisen-don%20002.jpg?width=1600",
+    "shows": "생선회·새우·연어알을 올린 해산물 덮밥(일본)",
+    "match": "같은 종류",
+    "rights": "위키미디어 공용 CC0"
+   },
+   "photo_bottom": {
+    "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Kaisen-don%20001.jpg?width=1600",
+    "shows": "참치·흰살생선회를 올린 해산물 덮밥 정식(일본)",
+    "match": "같은 종류",
+    "rights": "위키미디어 공용 CC0"
+   },
+   "no": "02 · 일본 도쿄",
+   "title": "魚ジャパンフェス",
+   "sub": "12.4~6 · 해산물 덮밥, [[입장 무료]]"
+  },
+  {
+   "type": "duo",
+   "dur": 2.2,
+   "photo_top": {
+    "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Hong%20Kong%20Convention%20and%20Exhibition%20Centre%20200907.JPG?width=1600",
+    "shows": "홍콩 컨벤션 센터(겨울 푸드 페스티벌이 열리는 곳) 건물 바깥",
+    "match": "정확",
+    "rights": "위키미디어 공용 퍼블릭 도메인"
+   },
+   "photo_bottom": {
+    "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Dim%20Sum%20Breakfast.jpg?width=1600",
+    "shows": "찜통에 담긴 딤섬 여러 종류",
+    "match": "분위기",
+    "rights": "위키미디어 공용 CC0"
+   },
+   "no": "03 · 홍콩",
+   "title": "겨울 푸드 페스티벌",
+   "sub": "12.24~28 · 입장 [[HK$30]]"
+  },
+  {
+   "type": "duo",
+   "dur": 2.2,
+   "photo_top": {
+    "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Lights%20in%20Christkindlesmarkt%20Nuremberg.jpg?width=1600",
+    "shows": "뉘른베르크 크리스마스 시장의 불빛 장식(밤)",
+    "match": "분위기",
+    "rights": "위키미디어 공용 CC BY 2.0 · Marco Nürnberger"
+   },
+   "photo_bottom": {
+    "url": "https://commons.wikimedia.org/wiki/Special:FilePath/N%C3%BCrnberger%20Rostbratw%C3%BCrste.JPG?width=1600",
+    "shows": "불판에 구워지는 뉘른베르크 소시지(로스트브라트부어스트)",
+    "match": "정확",
+    "rights": "위키미디어 공용 CC BY 4.0 · Schlurcher"
+   },
+   "no": "04 · 독일 뉘른베르크",
+   "title": "크리스트킨들스마르크트",
+   "sub": "[[11.27]]~12.24 · 렙쿠헨·소시지, 입장 무료"
+  }
+ ],
+ "caption": "01 일본 오사카, 야키이모 페스(やきいもフェス OSAKA 2026)\n10월 30일(금)~11월 8일(일), 오사카성 공원 태양의 광장. 평일 11~19시, 주말·공휴일 10~19시. 입장은 무료이고 먹는 값은 따로 내요. 결제는 카드·전자결제만 돼요. 소금버터 브륄레 군고구마, 군고구마 튀김, 군고구마 된장국, 군고구마 매운 찌개처럼 군고구마로 만든 메뉴가 나와요. 주최 측은 약 30종이라고 소개해요.\n\n11~12월 해외 간다면? 이 축제에선 이걸 드세요.\n\n02 일본 도쿄, 사카나&재팬 페스티벌(魚ジャパンフェス)\n12월 4일(금)~6일(일), 오다이바 아오미 지구 특설 행사장. 10~18시(임시 시간이라고 주최 측이 밝혔어요). 입장은 무료이고 먹고 마시는 건 따로 내요. 참치·연어·성게·게·관자·굴·연어알 같은 해산물로 만든 해산물 덮밥, 어부 밥상, 지역 음식, 해산물 라멘, 해산물 빠에야가 나온다고 해요. 8월 7일 주최 측 발표 기준이에요.\n\n03 홍콩, 겨울 푸드 페스티벌\n12월 24~28일, 완차이 홍콩 컨벤션 센터 3홀. 24~27일 10~20시, 28일 10~19시. 입장료는 HK$30이고 3세 이하와 65세 이상은 무료예요. 일본·한국·대만 음식, 세계 음식과 커피·디저트, 동남아 먹거리, 설 음식과 건어물 같은 구역이 나뉘어 있어요.\n\n04 독일 뉘른베르크, 크리스트킨들스마르크트\n11월 27일(금)~12월 24일. 하우프트마르크트와 라트하우스 광장. 매일 10~21시이고 12월 24일은 14시까지예요. 입장은 무료. 렙쿠헨(향신료 과자), 손가락만 한 뉘른베르크 소시지가 대표 먹거리예요. 개막식은 27일 17시 30분 프라우엔 교회 발코니에서 해요.\n\n일정과 입장료는 바뀔 수 있어요. 가기 전에 공식 안내를 확인하세요.\n\n여러분은 어디가 제일 끌려요?\n\n출처: 야키이모 페스 OSAKA 공식 누리집, 사카나&재팬 페스티벌 실행위원회 보도자료(8월 7일), 홍콩 겨울 푸드 페스티벌 공식 누리집, 뉘른베르크 크리스트킨들스마르크트 공식 누리집",
+ "tags": [
+  "해외여행",
+  "오사카여행",
+  "도쿄여행",
+  "세계축제"
+ ],
+ "sources": [
+  "https://yakiimofes.jp/osaka2026/",
+  "https://prtimes.jp/main/html/rd/p/000000059.000068543.html",
+  "https://food-expo.com.hk/%E9%A6%99%E6%B8%AF%E5%86%AC%E6%97%A5%E7%BE%8E%E9%A3%9F%E7%AF%80.html",
+  "https://www.christkindlesmarkt.de/en/",
+  "https://www.festivalsindeutschland.de/en/festival/nurnberger-christkindlesmarkt"
+ ],
+ "credits": [
+  "Marco Nürnberger (CC BY 2.0) · commons.wikimedia.org/?curid=144507790",
+  "Schlurcher (CC BY 4.0) · commons.wikimedia.org/?curid=9431707",
+  "Schlurcher (CC BY 4.0) · commons.wikimedia.org/?curid=9431598"
+ ],
+ "dates": {
+  "checked": "2026-11-02",
+  "sources": [
+   {
+    "url": "https://yakiimofes.jp/osaka2026/"
+   },
+   {
+    "url": "https://prtimes.jp/main/html/rd/p/000000059.000068543.html",
+    "published": "2026-08-07"
+   }
+  ],
+  "event": {
+   "name": "SAKANA&JAPAN FESTIVAL 2026 in お台場",
+   "start": "2026-12-04",
+   "end": "2026-12-06"
+  }
+ },
+ "review": {
+  "photo_sheet": "29972ce94c9f"
+ }
+}

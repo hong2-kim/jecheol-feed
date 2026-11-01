@@ -1,0 +1,137 @@
+{
+ "kind": "해외",
+ "subject": "2026-11 해외 트렌드",
+ "title": "요즘 해외에서 뜬대, 일본 크림 디저트·대만 기차 도시락·중국 낭 3가지",
+ "yt_title": "해외 먹거리 트렌드 11월, 일본 크림 디저트 대만 철도 도시락 중국 낭",
+ "yt_keyword": "해외 먹거리 트렌드",
+ "yt_related": [
+  "일본 편의점 디저트",
+  "패미마트 무한크림",
+  "대만 철도 도시락",
+  "대만 기차 도시락",
+  "중국 시안 낭"
+ ],
+ "yt_tags": [
+  "해외 먹거리 트렌드",
+  "해외 트렌드",
+  "일본 편의점 디저트",
+  "패미마트 무한크림",
+  "대만 철도 도시락",
+  "대만 기차 도시락",
+  "시안 낭",
+  "신장 낭"
+ ],
+ "yt_hashtags": [
+  "해외먹거리트렌드",
+  "일본편의점",
+  "대만도시락"
+ ],
+ "yt_lead": "해외 먹거리 트렌드, 일본 패미마트 크림 디저트와 대만 철도 도시락, 중국 시안 낭 가판대 소식이에요.",
+ "thumb": {
+  "head": "해외 먹거리\n[[요즘 뜬대]]",
+  "sub": "일본은 [[6일에 300만 개]]",
+  "photo": {
+   "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Cream%20puff%20%28cropped%20and%20edited%29.jpg?width=1280",
+   "shows": "크림을 가득 올려 짠 슈크림 하나(미국에서 찍은 사진, 패미마트 제품 아님)",
+   "match": "같은 종류",
+   "rights": "위키미디어 공용 CC BY 2.0 · Stu Spivack",
+   "ref": "참고 사진 · 실제 제품 아님",
+   "fit": "cover"
+  }
+ },
+ "summary": "일본 패미마트는 크림 디저트 3종이 6일에 300만 개 팔렸다고 밝혔어요. 대만 철도 도시락은 2025년 매출이 역대 최고였고, 중국 시안의 신장 낭 가판대는 문 열기 전부터 줄이 길어요.",
+ "scenes": [
+  {
+   "type": "cover",
+   "dur": 2.0,
+   "photo": {
+    "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Pitir%20nan2.jpg?width=1280",
+    "shows": "무늬를 찍어 구운 신장(위구르)식 둥근 낭 한 장, 시안 가판대 사진은 아님",
+    "match": "같은 종류",
+    "rights": "위키미디어 공용 퍼블릭 도메인",
+    "ref": "참고 사진 · 시안 가판대 아님"
+   },
+   "kicker": "해외 먹거리 트렌드 · 11월",
+   "title": "요즘 해외선\n[[뭐가 뜰까]]\n3가지 볼까?",
+   "size": 104
+  },
+  {
+   "type": "card",
+   "dur": 2.6,
+   "photo": {
+    "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Cream%20puff%20%28cropped%20and%20edited%29.jpg?width=1280",
+    "shows": "크림을 가득 올려 짠 슈크림 하나(미국에서 찍은 사진, 패미마트 제품 아님)",
+    "match": "같은 종류",
+    "rights": "위키미디어 공용 CC BY 2.0 · Stu Spivack",
+    "ref": "참고 사진 · 실제 제품 아님"
+   },
+   "chip": "01 · 일본 패미마트",
+   "headline": "크림 디저트\n[[6일에 300만 개]]",
+   "line": "패미마트가 밝힌 판매 기록이에요"
+  },
+  {
+   "type": "card",
+   "dur": 2.6,
+   "photo": {
+    "url": "https://commons.wikimedia.org/wiki/Special:FilePath/TR%20Bento%20outside%20of%20Entrance%20South%203%2C%20TR%20Taipei%20Station%20%2853436935216%29.jpg?width=1280",
+    "shows": "타이베이역 앞 바닥에 놓은 대만 철도 도시락 상자와 포장 상자(TR Bento)",
+    "match": "정확",
+    "rights": "위키미디어 공용 CC0"
+   },
+   "chip": "02 · 대만 기차역",
+   "headline": "철도 도시락\n[[연 942만 개]]",
+   "line": "2025년 매출 역대 최고예요"
+  },
+  {
+   "type": "card",
+   "dur": 2.6,
+   "photo": {
+    "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Uyghur%20chon%20nan.JPG?width=1280",
+    "shows": "신장(위구르)식 둥근 낭(납작빵) 한 장, 시안 가판대 사진은 아님",
+    "match": "같은 종류",
+    "rights": "위키미디어 공용 퍼블릭 도메인",
+    "ref": "참고 사진 · 시안 가판대 아님"
+   },
+   "chip": "03 · 중국 시안",
+   "headline": "신장 낭 빵\n[[줄 100명]]",
+   "line": "문 열기 전 줄이 100명 넘어요"
+  }
+ ],
+ "caption": "요즘 해외에서 뜬다는 먹거리 3가지, 몇 개나 알고 계셨어요?\n\n01 일본 · 패미마트 크림 디저트\n일본 패미마트는 10월 13일부터 18일까지 엿새 동안 '무한크림' 디저트 3종이 300만 개(300万食) 넘게 팔렸다고 10월 20일 밝혔어요. 패미마트 디저트 가운데 가장 빠른 기록이라고 해요. 어떤 세 제품이 합산됐는지는 발표문에 적혀 있지 않아요. 20일에는 생크림을 8년 만에 바꾼 에클레어·푸딩·크레이프가 나왔어요.\n\n02 대만 · 철도 도시락\n대만 철도 공사의 도시락 매출이 2025년 8억 7,600만 대만달러로 역대 최고를 찍었다고 10월 26일 보도됐어요. 한 해 942만 개, 하루 약 2만 5,800개가 팔렸고 돼지갈비(포크찹) 도시락이 718만 개로 가장 많았어요. 판매 개수는 2019년의 1,054만 개에는 못 미쳤어요.\n\n03 중국 · 시안 신장 낭\n중국 시안의 한 길거리 가판대에서 신장식 낭(납작빵)을 3개 10위안에 팔아요. 문을 열기 전부터 100명 넘게 몇 시간씩 줄을 서기도 한다고 10월 30일 차이나데일리가 전했어요. 사진은 위구르식 낭 참고 사진이고, 가판대 사진이 아니에요. 줄이 길다는 보도일 뿐 판매량은 밝혀지지 않았어요.\n\n일본 크림 디저트 사진은 참고 사진이에요.\n\n여러분은 어디서 먹어 보고 싶으세요?\n\n출처: 패미마트(10월 20일), 포커스 타이완(10월 26일), 차이나데일리(10월 30일)",
+ "tags": [
+  "해외먹거리",
+  "일본편의점",
+  "대만도시락",
+  "해외여행"
+ ],
+ "sources": [
+  "https://www.family.co.jp/company/news_releases/2026/20261020_01.html",
+  "https://focustaiwan.tw/business/202610260010",
+  "http://usa.chinadaily.com.cn/a/202610/30/WS6ae3c3ede4b06d4aa0565f2b.html"
+ ],
+ "credits": [
+  "Stu Spivack (CC BY 2.0) · commons.wikimedia.org/?curid=25450004"
+ ],
+ "dates": {
+  "checked": "2026-11-02",
+  "sources": [
+   {
+    "url": "https://www.family.co.jp/company/news_releases/2026/20261020_01.html",
+    "published": "2026-10-20"
+   },
+   {
+    "url": "https://focustaiwan.tw/business/202610260010",
+    "published": "2026-10-26"
+   },
+   {
+    "url": "http://usa.chinadaily.com.cn/a/202610/30/WS6ae3c3ede4b06d4aa0565f2b.html",
+    "published": "2026-10-30",
+    "modified": "2026-10-30"
+   }
+  ],
+  "stat_period": "일본 2026년 10월 13~18일 · 대만 2025년 한 해"
+ },
+ "review": {
+  "photo_sheet": "0918be54b083"
+ }
+}
