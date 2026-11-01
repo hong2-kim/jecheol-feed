@@ -8,7 +8,7 @@ on:
     paths: [".github/workflows/send-once.yml"]
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
   send:
@@ -27,6 +27,12 @@ jobs:
           done
           ls -la s.*
           [ "$(stat -c%s s.mp4)" -gt 5000000 ]
+      - name: 내려받기 주소 만들기
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          cp s.mp4 2026-11-01-12-season-all.mp4
+          gh release upload v2026-11-01 2026-11-01-12-season-all.mp4 --clobber --repo "$GITHUB_REPOSITORY"
       - name: 텔레그램으로 보내기
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
