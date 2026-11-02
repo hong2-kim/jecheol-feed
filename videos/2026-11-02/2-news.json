@@ -32,12 +32,19 @@
   "head": "볶음너구리\n[[단종 2년 만에]]",
   "sub": "[[10월 27일]] 한정 판매",
   "photo": {
-   "url": "https://commons.wikimedia.org/wiki/Special:FilePath/A%20spicy%20ramyeon.jpg?width=1280",
-   "shows": "포크로 비빈 매운 볶음 라면 한 냄비(농심 제품 아님)",
-   "match": "같은 종류",
-   "rights": "위키미디어 공용 CC BY 4.0 · BrithnyBiong",
-   "ref": "참고 사진 · 실제 제품 아님",
-   "fit": "cover"
+   "match": "정확",
+   "rights": "농심 뉴스룸 보도자료 · 사진: 농심 제공",
+   "terms": {
+    "ok": true,
+    "url": "https://www.nongshim.com/newsroom/policy/operation",
+    "checked": "2026-11-02",
+    "scope": "농심 뉴스룸 운영정책 2항: 보도자료·자체 제작 이미지를 정보 제공·콘텐츠 제작에 자유 이용, 출처 표기",
+    "note": "로고·상표 변형 금지, 왜곡 금지, 상업적 재판매 금지. 보정 없이 쓰고 제품은 자르지 않음"
+   },
+   "fit": "cover",
+   "no_grade": true,
+   "url": "vault:press/2026-11-02-nguri/nongshim-scene.jpg",
+   "shows": "단종 뒤 재출시된 농심 볶음너구리 봉지면·용기면과 접시에 담은 완성된 볶음너구리"
   },
   "list": [
    "[[볶음너구리]]가 2시간 만에 마감됐다고?!",
@@ -55,12 +62,19 @@
    "[[그릭요거트]] 편의점 디저트로?"
   ],
   "photo": {
-   "url": "https://commons.wikimedia.org/wiki/Special:FilePath/A%20spicy%20ramyeon.jpg?width=1280",
-   "shows": "포크로 비빈 매운 볶음 라면 한 냄비(농심 제품 아님)",
-   "match": "같은 종류",
-   "rights": "위키미디어 공용 CC BY 4.0 · BrithnyBiong",
-   "ref": "참고 사진 · 실제 제품 아님",
-   "fit": "cover"
+   "match": "정확",
+   "rights": "농심 뉴스룸 보도자료 · 사진: 농심 제공",
+   "terms": {
+    "ok": true,
+    "url": "https://www.nongshim.com/newsroom/policy/operation",
+    "checked": "2026-11-02",
+    "scope": "농심 뉴스룸 운영정책 2항: 보도자료·자체 제작 이미지를 정보 제공·콘텐츠 제작에 자유 이용, 출처 표기",
+    "note": "로고·상표 변형 금지, 왜곡 금지, 상업적 재판매 금지. 보정 없이 쓰고 제품은 자르지 않음"
+   },
+   "fit": "cover",
+   "no_grade": true,
+   "url": "vault:press/2026-11-02-nguri/nongshim-scene.jpg",
+   "shows": "단종 뒤 재출시된 농심 볶음너구리 봉지면·용기면과 접시에 담은 완성된 볶음너구리"
   }
  },
  "short_cover": false,
@@ -95,6 +109,11 @@
     "url": "https://www.financialpost.co.kr/news/articleView.html?idxno=283853",
     "published": "2026-11-01",
     "modified": "2026-11-01"
+   },
+   {
+    "url": "https://www.nongshim.com/newsroom/news/view?id=218&category=all&page=5",
+    "published": "2026-10-14",
+    "modified": "2026-10-14"
    }
   ],
   "released": {
@@ -129,12 +148,25 @@
    ],
    "src": "연합뉴스 · 농심 · 10월 14·31일",
    "photo": {
-    "url": "https://commons.wikimedia.org/wiki/Special:FilePath/A%20spicy%20ramyeon.jpg?width=1280",
-    "shows": "포크로 비빈 매운 볶음 라면 한 냄비(농심 제품 아님)",
-    "match": "같은 종류",
-    "rights": "위키미디어 공용 CC BY 4.0 · BrithnyBiong",
-    "ref": "참고 사진 · 실제 제품 아님",
-    "fit": "cover"
+    "match": "정확",
+    "rights": "농심 뉴스룸 보도자료 · 사진: 농심 제공",
+    "terms": {
+     "ok": true,
+     "url": "https://www.nongshim.com/newsroom/policy/operation",
+     "checked": "2026-11-02",
+     "scope": "농심 뉴스룸 운영정책 2항: 보도자료·자체 제작 이미지를 정보 제공·콘텐츠 제작에 자유 이용, 출처 표기",
+     "note": "로고·상표 변형 금지, 왜곡 금지, 상업적 재판매 금지. 보정 없이 쓰고 제품은 자르지 않음"
+    },
+    "fit": "cover",
+    "no_grade": true,
+    "url": "vault:press/2026-11-02-nguri/nongshim-scene.jpg",
+    "shows": "단종 뒤 재출시된 농심 볶음너구리 봉지면·용기면과 접시에 담은 완성된 볶음너구리",
+    "crop": [
+     420,
+     60,
+     1800,
+     1020
+    ]
    }
   },
   {
@@ -240,33 +272,48 @@
    ],
    "sources": [
     "https://www.yna.co.kr/view/AKR20261014034600030",
-    "https://www.yna.co.kr/view/AKR20261030159900030"
+    "https://www.yna.co.kr/view/AKR20261030159900030",
+    "https://www.nongshim.com/newsroom/news/view?id=218&category=all&page=5"
    ],
    "credits": [
-    "BrithnyBiong (CC BY 4.0) · commons.wikimedia.org/?curid=188090938"
+    "농심 제공(농심 뉴스룸)"
    ],
    "lead": {
     "thumb": {
      "head": "볶음너구리\n[[단종 2년 만에]]",
      "sub": "[[10월 27일]] 한정 판매",
      "photo": {
-      "url": "https://commons.wikimedia.org/wiki/Special:FilePath/A%20spicy%20ramyeon.jpg?width=1280",
-      "shows": "포크로 비빈 매운 볶음 라면 한 냄비(농심 제품 아님)",
-      "match": "같은 종류",
-      "rights": "위키미디어 공용 CC BY 4.0 · BrithnyBiong",
-      "ref": "참고 사진 · 실제 제품 아님",
-      "fit": "cover"
+      "match": "정확",
+      "rights": "농심 뉴스룸 보도자료 · 사진: 농심 제공",
+      "terms": {
+       "ok": true,
+       "url": "https://www.nongshim.com/newsroom/policy/operation",
+       "checked": "2026-11-02",
+       "scope": "농심 뉴스룸 운영정책 2항: 보도자료·자체 제작 이미지를 정보 제공·콘텐츠 제작에 자유 이용, 출처 표기",
+       "note": "로고·상표 변형 금지, 왜곡 금지, 상업적 재판매 금지. 보정 없이 쓰고 제품은 자르지 않음"
+      },
+      "fit": "cover",
+      "no_grade": true,
+      "url": "vault:press/2026-11-02-nguri/nongshim-scene.jpg",
+      "shows": "단종 뒤 재출시된 농심 볶음너구리 봉지면·용기면과 접시에 담은 완성된 볶음너구리"
      }
     },
     "cover": {
      "title": "단종 2년 만에\n[[볶음너구리]]\n돌아왔대",
      "photo": {
-      "url": "https://commons.wikimedia.org/wiki/Special:FilePath/A%20spicy%20ramyeon.jpg?width=1280",
-      "shows": "포크로 비빈 매운 볶음 라면 한 냄비(농심 제품 아님)",
-      "match": "같은 종류",
-      "rights": "위키미디어 공용 CC BY 4.0 · BrithnyBiong",
-      "ref": "참고 사진 · 실제 제품 아님",
-      "fit": "cover"
+      "match": "정확",
+      "rights": "농심 뉴스룸 보도자료 · 사진: 농심 제공",
+      "terms": {
+       "ok": true,
+       "url": "https://www.nongshim.com/newsroom/policy/operation",
+       "checked": "2026-11-02",
+       "scope": "농심 뉴스룸 운영정책 2항: 보도자료·자체 제작 이미지를 정보 제공·콘텐츠 제작에 자유 이용, 출처 표기",
+       "note": "로고·상표 변형 금지, 왜곡 금지, 상업적 재판매 금지. 보정 없이 쓰고 제품은 자르지 않음"
+      },
+      "fit": "cover",
+      "no_grade": true,
+      "url": "vault:press/2026-11-02-nguri/nongshim-scene.jpg",
+      "shows": "단종 뒤 재출시된 농심 볶음너구리 봉지면·용기면과 접시에 담은 완성된 볶음너구리"
      }
     },
     "caption_head": "단종됐던 볶음너구리가 돌아왔다는데, 드셔 보셨어요?",
@@ -452,15 +499,16 @@
  "sources": [
   "https://www.yna.co.kr/view/AKR20261014034600030",
   "https://www.yna.co.kr/view/AKR20261030159900030",
+  "https://www.nongshim.com/newsroom/news/view?id=218&category=all&page=5",
   "https://www.foodtoday.or.kr/news/article.html?no=209305",
   "https://www.gukjenews.com/news/articleView.html?idxno=3738840",
   "https://www.financialpost.co.kr/news/articleView.html?idxno=283853"
  ],
  "credits": [
-  "BrithnyBiong (CC BY 4.0) · commons.wikimedia.org/?curid=188090938",
+  "농심 제공(농심 뉴스룸)",
   "ⓒ한국관광공사 포토코리아-알렉스 분도"
  ],
  "review": {
-  "photo_sheet": "5c006110f8d0"
+  "photo_sheet": "3446fb6a9be6"
  }
 }

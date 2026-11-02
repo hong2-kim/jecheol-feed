@@ -116,7 +116,7 @@ def fetch_photo(photo):
             raise ValueError(f"사진이 너무 작아요 ({image.size[0]}x{image.size[1]}): {url}")
         if not (CACHE / (key + ".orig")).exists():
             (CACHE / (key + ".orig")).write_text("%d %d" % image.size)
-        grade(image).save(path, "JPEG", quality=92)
+        (image if photo.get("no_grade") else grade(image)).save(path, "JPEG", quality=92)  # no_grade: 로고 색을 바꾸면 안 되는 회사 사진
     if key not in SIZES:
         with Image.open(path) as im:
             SIZES[key] = im.size
