@@ -307,7 +307,7 @@
   },
   "2026-11-02-10-voice": {
     "verdict": "통과",
-    "hash": "7fdcd26c6d54",
+    "hash": "eb3852cc765f",
     "approved": false,
     "reasons": [],
     "noticed": null,
@@ -315,7 +315,7 @@
   },
   "2026-11-02-2-news": {
     "verdict": "통과",
-    "hash": "de59304fc96d",
+    "hash": "48481a9db300",
     "approved": false,
     "reasons": [],
     "noticed": null,
