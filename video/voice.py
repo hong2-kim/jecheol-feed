@@ -790,7 +790,8 @@ def build_voice(spec, work=None):
             first = "" if n else " first"
             if vis.get("card"):
                 beats = [starts[i] - at for i in range(a, b)]
-                out.append(f'<section class="scene{first}" data-at="{at:.2f}" data-dur="{d:.2f}" data-out="0"{anim}>{card_html(B, vis["card"], beats)}{chip}</section>')
+                # 카드는 칩 자리(top 850)까지 차지해 제목을 가려요. 카드 안에 같은 숫자가 있으니 칩은 안 띄워요 (2026-11-02 라면·치킨)
+                out.append(f'<section class="scene{first}" data-at="{at:.2f}" data-dur="{d:.2f}" data-out="0"{anim}>{card_html(B, vis["card"], beats)}</section>')
                 continue
             if vis.get("video"):
                 out.append(f'<section class="scene{first}" data-at="{at:.2f}" data-dur="{d:.2f}" data-out="0"{anim}>'
