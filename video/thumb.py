@@ -253,7 +253,8 @@ def list_html(B, photo, items, tag=""):
     with Image.open(path) as im:
         w, h = im.size
     padx, pady = (56, 30) if pack else (0, 0)
-    pic_h = min(round((PIC_W - 2 * padx) * h / w) + 2 * pady, 760)  # 목록 칸이 너무 좁아지지 않게 사진 칸은 760까지
+    room = 1920 - 810 - (80 if tag else 0) - 113 * len(items) - 30  # 목록이 세 줄 이상이면 마지막 줄이 화면 밖으로 밀려요 (2026-11-03 빼빼로 소식 3)
+    pic_h = min(round((PIC_W - 2 * padx) * h / w) + 2 * pady, 760, room)  # 목록 칸이 너무 좁아지지 않게 사진 칸은 760까지
     size = min(min(B.fit_size(line, 64, 900) for line in items), 64)
     rows = "".join(f'<li style="font-size:{size}px">{B.rich(line)}</li>' for line in items)
     pic = (f'<div class="bpic{" pack" if pack else ""}" style="height:{pic_h}px">'
