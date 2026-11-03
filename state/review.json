@@ -397,5 +397,37 @@
     ],
     "noticed": "확인 필요:ebc6e3fff946",
     "held_noticed": null
+  },
+  "2026-11-04-10-voice": {
+    "verdict": "통과",
+    "hash": "bfaba54406aa",
+    "approved": false,
+    "reasons": [],
+    "noticed": null,
+    "held_noticed": null
+  },
+  "2026-11-04-2-news": {
+    "verdict": "통과",
+    "hash": "4bae073cb80e",
+    "approved": false,
+    "reasons": [],
+    "noticed": null,
+    "held_noticed": null
+  },
+  "2026-11-04-3-dinner": {
+    "verdict": "통과",
+    "hash": "bcf63c14cf36",
+    "approved": false,
+    "reasons": [],
+    "noticed": null,
+    "held_noticed": null
+  },
+  "2026-11-04-4-find": {
+    "verdict": "통과",
+    "hash": "0457ab458a42",
+    "approved": false,
+    "reasons": [],
+    "noticed": null,
+    "held_noticed": null
   }
 }
