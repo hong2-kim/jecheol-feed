@@ -1,0 +1,192 @@
+{
+ "format": "voice",
+ "kind": "해설",
+ "subject": "파리바게뜨 초코 쫀득 츄러스 500만 개 · 후속작 롱롱",
+ "title": "파리바게뜨 초코 츄러스 500만 개 팔렸대요, 후속작은 뭐가 다를까?",
+ "yt_title": "파리바게뜨 초코 쫀득 츄러스 500만 개, 후속작 롱롱 츄러스는 뭐가 달라?",
+ "headline": "500만 개 팔린\n[[초코 츄러스]]",
+ "narrator": "achird",
+ "voice_pick": {
+  "mode": "solo",
+  "voices": [
+   "achird"
+  ],
+  "why": "막 나온 디저트 신상과 판매 숫자를 친구에게 알려 주는 발견 이야기라 친근한 Achird 솔로"
+ },
+ "summary": "파리바게뜨가 11월 4일 초코 쫀득 츄러스 누적 판매 500만 개 돌파와 후속작 롱롱! 초코 쫀득 츄러스 출시, 11월 30일까지 초코 디저트 30종 캠페인을 밝혔어요.",
+ "caption": "파리바게뜨 초코 쫀득 츄러스가 500만 개 넘게 팔렸대요. 후속작도 나왔어요.\n\n파리바게뜨는 11월 4일, 9월에 낸 초코 쫀득 츄러스가 누적 500만 개 넘게 팔렸다고 밝혔어요. 10월 18일까지는 약 380만 개였다고 해요. 후속작 '롱롱! 초코 쫀득 츄러스'는 기존보다 길이를 늘리고 초콜릿 코팅 비중을 높였어요. 11월 30일까지 초코 디저트 30종을 모은 '#초코딥하게파바' 캠페인도 열어요. 영수증 응모번호를 파바앱에 입력하면 경품 추첨에 참여할 수 있고, 1등은 500만 원 상당 여행상품권과 LAFC 홈경기 관람권 2매예요. 사진은 츄러스 참고 사진이고 실제 제품이 아니에요. 협찬이나 광고가 아니에요.\n\n여러분은 초코 츄러스, 먹어 보셨어요?\n\n출처: 조세일보(11월 4일), 매일일보(11월 4일), 캐치뉴스(11월 4일)",
+ "tags": [
+  "초코츄러스",
+  "파리바게뜨",
+  "빵집신상",
+  "디저트"
+ ],
+ "sources": [
+  "https://m.joseilbo.com/news/view.htm?newsid=578874",
+  "https://www.m-i.kr/news/articleView.html?idxno=2014119",
+  "https://www.catchnews.kr/news/articleView.html?idxno=130188"
+ ],
+ "credits": [
+  "LWY from Pasadena, USA (CC BY 2.0) · commons.wikimedia.org/?curid=17760163",
+  "Marta Lino (CC BY 2.0) · commons.wikimedia.org/?curid=38621153",
+  "LWY from Pasadena, USA (CC BY 2.0) · commons.wikimedia.org/?curid=17760569",
+  "Joy (CC BY 2.0) · commons.wikimedia.org/?curid=49412855"
+ ],
+ "yt_keyword": "파리바게뜨 츄러스",
+ "yt_related": [
+  "초코 쫀득 츄러스",
+  "롱롱 초코 쫀득 츄러스",
+  "초코딥하게파바",
+  "파리바게뜨 신상",
+  "파바앱 경품"
+ ],
+ "yt_tags": [
+  "파리바게뜨 츄러스",
+  "초코 쫀득 츄러스",
+  "롱롱 츄러스",
+  "초코딥하게파바",
+  "빵집 신상"
+ ],
+ "yt_hashtags": [
+  "파리바게뜨츄러스",
+  "초코쫀득츄러스",
+  "빵집신상"
+ ],
+ "yt_lead": "파리바게뜨 초코 쫀득 츄러스가 500만 개 넘게 팔렸고, 후속작 롱롱 츄러스가 나왔어요.",
+ "dates": {
+  "checked": "2026-11-05",
+  "sources": [
+   {
+    "url": "https://m.joseilbo.com/news/view.htm?newsid=578874",
+    "published": "2026-11-04",
+    "modified": "2026-11-04"
+   },
+   {
+    "url": "https://www.m-i.kr/news/articleView.html?idxno=2014119",
+    "published": "2026-11-04",
+    "modified": "2026-11-04"
+   },
+   {
+    "url": "https://www.catchnews.kr/news/articleView.html?idxno=130188",
+    "published": "2026-11-04",
+    "modified": "2026-11-04"
+   }
+  ],
+  "released": {
+   "name": "롱롱! 초코 쫀득 츄러스",
+   "date": "2026-11-04",
+   "state": "판매 중"
+  },
+  "event": {
+   "name": "#초코딥하게파바 캠페인",
+   "start": "2026-11-04",
+   "end": "2026-11-30"
+  }
+ },
+ "lines": [
+  {
+   "say": "[[초코 쫀득 츄러스]], 500만 개 넘게 팔렸대요.",
+   "photo": {
+    "url": "vault:photos/ig-17844016432191195.jpg",
+    "shows": "아이스커피와 함께 손에 든 츄러스",
+    "match": "같은 종류",
+    "ref": "참고 사진 · 실제 제품 아님",
+    "rights": "사용자 촬영 비공개 보관함"
+   },
+   "chip": "500만 개 돌파"
+  },
+  {
+   "say": "끝까지 보면, [[경품]] 응모 방법까지 알려 드려요.",
+   "photo": {
+    "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Chocolate-con-churros.jpg?width=1600",
+    "shows": "접시에 담긴 츄러스와 초콜릿 음료",
+    "match": "같은 종류",
+    "ref": "참고 사진 · 실제 제품 아님",
+    "rights": "위키미디어 공용 퍼블릭 도메인"
+   },
+   "chip": "끝까지 보면 경품 응모 방법"
+  },
+  {
+   "say": "9월에 나온 이 츄러스는, 초콜릿 반죽에 다크 초콜릿 코팅을 더했어요.",
+   "photo": {
+    "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Churros%20el%20hatillo.JPG?width=1600",
+    "shows": "초콜릿을 끼얹은 긴 츄러스가 쟁반에 놓인 모습",
+    "match": "같은 종류",
+    "ref": "참고 사진 · 실제 제품 아님",
+    "rights": "위키미디어 공용 퍼블릭 도메인"
+   }
+  },
+  {
+   "say": "출시 한 달 반 만인 10월 18일까지, 누적 [[380만 개]]가 팔렸대요.",
+   "photo": {
+    "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Churros%20y%20chocolate%20en%20Granada.jpg?width=1600",
+    "shows": "접시에 수북이 담긴 츄러스와 초콜릿 음료",
+    "match": "같은 종류",
+    "ref": "참고 사진 · 실제 제품 아님",
+    "rights": "위키미디어 공용 CC BY 2.0",
+    "credit": "LWY from Pasadena, USA (CC BY 2.0) · commons.wikimedia.org/?curid=17760163"
+   },
+   "chip": "380만 개"
+  },
+  {
+   "say": "SNS에서 시식 후기가 퍼졌고, 생크림 곁들이는 조합도 나왔대요.",
+   "photo": {
+    "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Churros%20at%20Hot%20Chocolate%20at%20San%20Gines.jpg?width=1600",
+    "shows": "흰 접시의 츄러스 두 개와 초콜릿 음료",
+    "match": "같은 종류",
+    "ref": "참고 사진 · 실제 제품 아님",
+    "rights": "위키미디어 공용 CC BY 2.0",
+    "credit": "Marta Lino (CC BY 2.0) · commons.wikimedia.org/?curid=38621153"
+   }
+  },
+  {
+   "say": "그리고 11월 4일, 누적 [[500만 개]]를 넘겼다고 밝혔어요.",
+   "photo": {
+    "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Chocolate%20con%20churros%20de%20lazo.jpg?width=1600",
+    "shows": "고리 모양 츄러스와 초콜릿 음료",
+    "match": "같은 종류",
+    "ref": "참고 사진 · 실제 제품 아님",
+    "rights": "위키미디어 공용 CC BY 2.0",
+    "credit": "LWY from Pasadena, USA (CC BY 2.0) · commons.wikimedia.org/?curid=17760569"
+   },
+   "chip": "500만 개 넘김"
+  },
+  {
+   "say": "후속작은 길이를 늘리고, 초콜릿 코팅 비중을 높였어요.",
+   "photo": {
+    "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Chocolate%20con%20churros%20and%20purros%20%2826770893323%29.jpg?width=1600",
+    "shows": "긴 츄러스와 초콜릿 음료가 놓인 카운터",
+    "match": "같은 종류",
+    "ref": "참고 사진 · 실제 제품 아님",
+    "rights": "위키미디어 공용 CC BY 2.0",
+    "credit": "Joy (CC BY 2.0) · commons.wikimedia.org/?curid=49412855"
+   }
+  },
+  {
+   "say": "[[30일]]까지, 초코 디저트 [[30종]] 캠페인도 해요.",
+   "photo": {
+    "url": "vault:photos/ig-18213213379062534.jpg",
+    "shows": "빵집 진열대의 크루아상과 초코 빵들",
+    "match": "분위기",
+    "rights": "사용자 촬영 비공개 보관함"
+   },
+   "chip": "30일까지 · 30종"
+  },
+  {
+   "say": "영수증 응모번호를, 파바앱에 넣으면 경품 추첨에 참여해요.",
+   "photo": {
+    "url": "vault:photos/ig-17898005710959707.jpg",
+    "shows": "포장 상자에 담긴 미니 케이크들",
+    "match": "분위기",
+    "rights": "사용자 촬영 비공개 보관함"
+   },
+   "chip": "영수증 응모번호 → 파바앱"
+  },
+  {
+   "say": "여러분은 초코 츄러스, 먹어 보셨어요? [[댓글]]로 알려 주세요."
+  }
+ ],
+ "review": {
+  "photo_sheet": "2b09aefdec38"
+ }
+}
