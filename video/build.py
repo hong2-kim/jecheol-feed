@@ -2105,7 +2105,14 @@ def youtube_keywords(spec):
 # 유튜브 카테고리 이름 -> 업로드 API 의 categoryId (2026-11-04 사용자가 정함, PROMPT.md "유튜브 카테고리")
 YT_CATEGORIES = {"노하우/스타일": 26, "뉴스/정치": 25, "교육": 27, "엔터테인먼트": 24, "여행/이벤트": 19}
 _YT_FUN = ("상황극", "밸런스게임", "챌린지", "퀴즈", "테스트", "몇개먹어", "웃긴", "밈")
-_YT_TRIP = ("축제", "페스티벌", "박람회", "엑스포", "여행")
+_YT_FEST = ("축제", "페스티벌", "박람회", "엑스포", "한마당", "큰잔치", "페스타", "페스트")
+# 축제·지역 먹거리는 '축제'라는 말 말고 무엇을 전하려는지로 나눠요 (2026-11-04 사용자): 일정·장소·방문 / 음식 소개·추천 / 개최 소식·정책·결과
+_YT_FEST_VISIT = ("일정", "기간", "날짜", "장소", "위치", "가는법", "가는길", "교통", "주차", "셔틀", "입장", "예매", "티켓", "코스", "일원", "개최지", "여행")
+_YT_FEST_FOOD = ("먹거리", "먹을", "꼭먹", "드세요", "맛보", "메뉴", "추천", "별미", "대표음식", "출시", "편의점", "우승", "1등", "맛집", "총정리")
+_YT_FEST_NEWS = ("개막", "개최", "확정", "발표", "선정", "지정", "법정기념일", "취소", "연기", "무산", "예산", "지원", "방문객", "효과", "결과", "늘었", "줄었")
+_YT_FEST_DATE = re.compile(r"\d+[~∼\-]\d+일|\d+일부터.{0,12}?\d+일까지")  # 11월6~8일, 10월29일부터11월1일까지
+_YT_FEST_PLACES = re.compile(r"\d+곳")
+_YT_FEST_PRICE = re.compile(r"\d[\d,]*원|\d+만\d*천?원")
 _YT_REVIEW = ("맛집", "후기", "리뷰", "다녀왔", "가봤", "먹어봤", "방문")
 _YT_GOV = ("정부", "식약처", "농식품부", "농림축산식품부", "해수부", "해양수산부", "공정위", "소비자원", "적발", "단속", "리콜", "회수",
            "판매중단", "대책", "규제", "관세", "법안", "정책", "부당광고", "위반", "금지", "통계")
@@ -2117,10 +2124,11 @@ _YT_EDU = ("유래", "차이", "다를까", "vs", "왜", "이유", "역사", "�
 def youtube_category(spec):
     """유튜브 쇼츠 카테고리 추천 (이름, categoryId). 설계도에 yt_category 를 적으면 그걸 쓰고, 없으면 종류(kind)와 제목으로 골라요.
     저녁 추천·맛집 후기 → 노하우/스타일, 뉴스 → 정책·물가는 뉴스/정치·신상·할인은 노하우/스타일, 상식·유래 → 교육, 재미·상황극 → 엔터테인먼트.
-    축제·해외 축제·지역 먹거리는 여행/이벤트예요."""
+    축제·해외 축제·지역 먹거리는 youtube_festival_category() 로 내용에 따라 나눠요."""
     if spec.get("yt_category") in YT_CATEGORIES:
         return spec["yt_category"], YT_CATEGORIES[spec["yt_category"]]
     kind = spec.get("kind") or ""
+    fest = None if kind == "저녁" else youtube_festival_category(spec)
 
     def pick(text):
         text = text.replace(" ", "").lower()
@@ -2129,8 +2137,8 @@ def youtube_category(spec):
             return "노하우/스타일"
         if has(_YT_FUN):
             return "엔터테인먼트"
-        if kind in ("세계", "지역") or (kind in ("발견", "해설", "이야기") and has(_YT_TRIP)):
-            return "여행/이벤트"
+        if fest:
+            return fest
         if kind in ("유행", "해외"):
             return "노하우/스타일"
         if kind == "제철":
@@ -2149,6 +2157,38 @@ def youtube_category(spec):
     if not name:
         name = "노하우/스타일" if kind == "소식" else "교육"  # 카드 뉴스는 대개 신상·할인 소식이에요
     return name, YT_CATEGORIES[name]
+
+
+def youtube_festival_category(spec):
+    """축제·지역 먹거리 영상의 카테고리. 축제가 아니면 None (2026-11-04 사용자).
+    일정·장소·방문 안내 → 여행/이벤트, 축제 음식 소개·먹거리 추천 → 노하우/스타일, 개최 소식·정책 발표·결과 → 뉴스/정치.
+    유튜브 제목(없으면 게시글 제목)의 낱말은 2점, 게시글 제목·설명 첫 줄의 낱말은 1점으로 세어 가장 많은 쪽으로 가요."""
+    kind = spec.get("kind") or ""
+    norm = lambda t: str(t or "").replace(" ", "").lower().replace("먹거리뉴스", "")  # 카드 뉴스 제목 끝 "먹거리 뉴스"는 음식 소개가 아니에요
+    head = norm(spec.get("yt_title") or spec.get("title"))
+    rest = norm(" ".join(str(spec.get(k) or "") for k in ("title", "yt_lead", "headline")))
+    if kind == "소식":  # 카드 뉴스는 여러 소식 묶음이라 유튜브 제목에 축제가 있을 때만
+        if not any(w in head for w in _YT_FEST):
+            return None
+    elif kind not in ("세계", "지역") and not any(w in head + rest for w in _YT_FEST):
+        return None
+
+    def score(words=(), pattern=None):
+        n = sum(2 * (w in head) + (w in rest) for w in words)
+        if pattern:
+            n += 2 * bool(pattern.search(head)) + bool(pattern.search(rest))
+        return n
+
+    scores = {"뉴스/정치": score(_YT_FEST_NEWS + _YT_GOV),
+              "여행/이벤트": score(_YT_FEST_VISIT, _YT_FEST_DATE) + score(pattern=_YT_FEST_PLACES),
+              "노하우/스타일": score(_YT_FEST_FOOD, _YT_FEST_PRICE) + score(pattern=re.compile(r"\d+가지"))}
+    # 점수가 같으면: 카드 뉴스는 소식, 지역 먹거리는 음식 소개, 나머지는 방문 안내 쪽으로
+    order = {"소식": ("뉴스/정치", "여행/이벤트", "노하우/스타일"), "지역": ("노하우/스타일", "여행/이벤트", "뉴스/정치")}.get(
+        kind, ("여행/이벤트", "노하우/스타일", "뉴스/정치"))
+    best = max(order, key=lambda name: scores[name])  # max 는 같은 점수면 앞의 것을 골라요
+    if scores[best]:
+        return best
+    return {"세계": "여행/이벤트", "지역": "노하우/스타일", "소식": "뉴스/정치"}.get(kind)  # 단서가 없으면 다른 규칙으로 넘겨요
 
 
 def youtube_problems(spec):
