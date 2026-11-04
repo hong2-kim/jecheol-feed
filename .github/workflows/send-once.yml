@@ -1,5 +1,5 @@
-# 2026-11-02 저녁, 사용자가 승인한 가리비 쇼츠 수정본을 비공개 보관함에서 받아 텔레그램으로 한 번만 보내요.
-# 기존 장면 화면에 나레이션을 얹은 배치가 공용 코드에 없어서 일반 produce 경로를 쓰지 않아요. 이 파일을 올리면 바로 보내고, 날짜가 지나면 보내지 않아요. 끝나면 지워요.
+# 2026-11-04, 사용자가 승인한 11-03 남은 밥 쇼츠 수정본을 비공개 보관함에서 받아 텔레그램으로 한 번만 보내요.
+# 날짜가 바뀌어 일반 produce 경로(오늘 날짜 폴더만 만듦)로는 11-03 영상이 다시 가지 않아요. 이 파일을 올리면 바로 보내고, 날짜가 지나면 보내지 않아요. 끝나면 지워요.
 name: send-once
 
 on:
@@ -16,23 +16,24 @@ jobs:
     timeout-minutes: 10
     steps:
       - name: 날짜 확인
-        run: '[ "$(TZ=Asia/Seoul date +%F)" = "2026-11-02" ]'
+        run: '[ "$(TZ=Asia/Seoul date +%F)" = "2026-11-04" ]'
       - name: 비공개 보관함에서 받기
         env:
           PHOTOS_TOKEN: ${{ secrets.PHOTOS_TOKEN }}
         run: |
           for f in mp4 jpg html; do
             curl -fsSL -H "Authorization: Bearer $PHOTOS_TOKEN" -H "Accept: application/vnd.github.raw" \
-              -o "s.$f" "https://api.github.com/repos/hong2-kim/jecheol-photos/contents/send/2026-11-02-4-find-v2.$f"
+              -o "s.$f" "https://api.github.com/repos/hong2-kim/jecheol-photos/contents/send/2026-11-03-10-voice-v2.$f"
           done
           ls -la s.*
-          [ "$(stat -c%s s.mp4)" -gt 5000000 ]
-      - name: 내려받기 주소 만들기
+          [ "$(stat -c%s s.mp4)" -gt 3000000 ]
+      - name: 내려받기 주소 바꾸기 (예전 주소에 수정본을 덮어써요)
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          cp s.mp4 2026-11-02-4-find-v2.mp4
-          gh release upload v2026-11-02 2026-11-02-4-find-v2.mp4 --clobber --repo "$GITHUB_REPOSITORY"
+          cp s.mp4 2026-11-03-10-voice.mp4
+          cp s.jpg 2026-11-03-10-voice-thumb.jpg
+          gh release upload v2026-11-03 2026-11-03-10-voice.mp4 2026-11-03-10-voice-thumb.jpg --clobber --repo "$GITHUB_REPOSITORY"
       - name: 텔레그램으로 보내기
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
@@ -40,9 +41,9 @@ jobs:
         run: |
           API="https://api.telegram.org/bot$TELEGRAM_BOT_TOKEN"
           curl -fsS -o /dev/null "$API/sendVideo" --form-string "chat_id=$TELEGRAM_CHAT_ID" \
-            --form-string "caption=[유튜브 쇼츠 · 발견형 · 오늘의 한 가지 · 수정본] 가리비 제철 11월, 참가리비 vs 해만가리비 뭐가 다를까?" \
+            --form-string "caption=[유튜브 쇼츠 · 내레이션 쇼츠 · 수정본] 남은 밥 다시 데우면 안전할까? 보관이 더 중요한 이유 (2시간·5℃·24시간·75℃)" \
             --form-string "supports_streaming=true" -F "width=1080" -F "height=1920" -F "video=@s.mp4;type=video/mp4"
           curl -fsS -o /dev/null "$API/sendPhoto" --form-string "chat_id=$TELEGRAM_CHAT_ID" \
-            --form-string "caption=가리비 쇼츠 수정본 썸네일" -F "photo=@s.jpg;type=image/jpeg"
+            --form-string "caption=남은 밥 쇼츠 수정본 썸네일" -F "photo=@s.jpg;type=image/jpeg"
           curl -fsS -o /dev/null "$API/sendMessage" --form-string "chat_id=$TELEGRAM_CHAT_ID" \
             --form-string "parse_mode=HTML" --form-string "disable_web_page_preview=true" -F "text=<s.html"
