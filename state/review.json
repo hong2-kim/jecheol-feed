@@ -429,5 +429,29 @@
     "reasons": [],
     "noticed": null,
     "held_noticed": null
+  },
+  "2026-11-05-10-voice": {
+    "verdict": "통과",
+    "hash": "3b0307849afd",
+    "approved": false,
+    "reasons": [],
+    "noticed": null,
+    "held_noticed": null
+  },
+  "2026-11-05-2-news": {
+    "verdict": "통과",
+    "hash": "42cb400757c2",
+    "approved": false,
+    "reasons": [],
+    "noticed": null,
+    "held_noticed": null
+  },
+  "2026-11-05-3-dinner": {
+    "verdict": "통과",
+    "hash": "2e3f823a27b3",
+    "approved": false,
+    "reasons": [],
+    "noticed": null,
+    "held_noticed": null
   }
 }
