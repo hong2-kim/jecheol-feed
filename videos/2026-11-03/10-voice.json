@@ -1,10 +1,10 @@
 {
  "format": "voice",
  "kind": "해설",
- "subject": "식은 밥 재가열 볶음밥 증후군",
- "title": "실온에 오래 둔 밥, 다시 데우면 안전할까?",
- "yt_title": "식은 밥 재가열해도 될까? 볶음밥 증후군 보관법 2시간·5℃·24시간",
- "headline": "식은 밥 데우면\n[[안전할까?]]",
+ "subject": "남은 흰쌀밥 보관과 재가열",
+ "title": "남은 밥, 다시 데우면 안전할까?",
+ "yt_title": "남은 밥 다시 데우면 안전할까? 보관이 더 중요한 이유 (2시간·5℃·24시간·75℃)",
+ "headline": "남은 밥 데우면\n[[안전할까?]]",
  "narrator": "charon",
  "voice_pick": {
   "mode": "solo",
@@ -13,42 +13,46 @@
   ],
   "why": "식품안전 기준 숫자를 차분하고 정확하게 전하는 안내라 Charon 솔로"
  },
- "summary": "식품안전정보원은 실온에 오래 둔 밥에서 바실러스 세레우스균이 늘고 열에 강한 구토형 독소가 생길 수 있어 다시 데워도 안전하지 않을 수 있다고 11월 2일 안내했어요. 조리 음식은 2시간 안에 먹고, 5℃ 이하 냉장 후 24시간 안에 먹고, 재가열은 중심 75℃ 1분 이상 한 번만 하라고 권했어요.",
- "caption": "실온에 오래 둔 밥, 다시 데우면 안전할까요?\n\n식품안전정보원이 11월 2일 안내한 내용이에요. 조리한 밥을 실온에 오래 두면 바실러스 세레우스균이 늘면서 독소를 만들 수 있고, 그중 구토형 독소(세레울라이드)는 열에 매우 강해 다시 데워도 없어지지 않을 수 있대요.\n\n그래서 조리한 음식은 가급적 2시간 안에 먹고, 남으면 빨리 식혀 5℃ 이하로 냉장하고, 밥은 24시간 안에 먹으라고 했어요. 데울 때는 한 번만, 중심 온도 75℃에서 1분 이상 가열하되 이미 독소가 생긴 음식은 안전을 보장할 수 없다고 해요.\n\n여러분은 남은 밥, 어떻게 보관하세요?\n\n출처: 식품안전정보원 안내, 이데일리·한국식품의약신문(11월 2일)",
+ "summary": "식품안전정보원은 실온에 오래 둔 밥에서 바실러스 세레우스균이 늘고, 열에 강한 구토형 독소가 생기면 다시 데워도 남을 수 있다고 11월 2일 안내했어요. 조리한 음식은 가급적 2시간 안에 먹고, 남은 밥은 빨리 식혀 5℃ 이하로 냉장해 24시간 안에 먹고, 다시 데울 땐 한 번만 중심 75℃에서 1분 이상 데우라고 권했어요.",
+ "caption": "남은 밥, 다시 데우면 안전할까요?\n\n사실 다시 데우는 것보다 보관 방법이 더 중요해요. 식품안전정보원이 11월 2일 안내한 내용이에요.\n\n밥을 지어도 바실러스 세레우스균의 포자는 살아남을 수 있어요. 밥을 실온에 오래 두면 균이 늘면서 독소를 만들고, 그중 구토형 독소(세레울라이드)는 열에 강해 다시 데워도 남을 수 있어요.\n\n✔ 조리한 음식은 가급적 2시간 안에 먹기\n✔ 남은 밥은 빨리 식혀 냉장(5℃ 이하), 24시간 안에 먹기\n✔ 다시 데울 땐 한 번만, 중심 온도 75℃에서 1분 이상\n단, 실온에 오래 둔 밥은 다시 데워도 안전하지 않을 수 있어요.\n\n여러분은 남은 밥, 냉장하시나요? 냉동하시나요?\n\n출처: 식품안전정보원 안내, 이데일리·한국식품의약신문(11월 2일)\n사진: 위키미디어(Ocdp, plusstory1, yosshi, Douglas Perkins, Janine from Mililani, jules), Pexels, Pixabay. 7·8번째 장면의 냉장고·전자레인지는 그림이에요.",
  "tags": [
-  "식은밥",
-  "볶음밥증후군",
+  "남은밥",
+  "밥보관",
   "식중독예방",
-  "밥보관"
+  "볶음밥증후군"
  ],
  "sources": [
   "https://www.edaily.co.kr/News/Read?newsId=02246806645641784",
   "https://www.kfmn.co.kr/news/articleView.html?idxno=44780"
  ],
  "credits": [
-  "ⓒ한국관광공사 포토코리아-토라이 리퍼블릭, 알렉스 분도, 스튜디오"
+  "위키미디어 커먼즈: Bap (cooked rice) 2 — plusstory1, CC BY 4.0",
+  "위키미디어 커먼즈: 釜で炊く — yosshi, CC BY-SA 2.0",
+  "위키미디어 커먼즈: Rice balls to freeze — Janine from Mililani, Hawaii, CC BY 2.0",
+  "위키미디어 커먼즈: Frozen rice — jules, CC BY 2.0",
+  "Pexels·Pixabay 무료 사진, 위키미디어 CC0(Ocdp, Douglas Perkins)"
  ],
- "yt_keyword": "식은 밥 재가열",
+ "yt_keyword": "남은 밥 재가열",
  "yt_related": [
-  "볶음밥 증후군",
   "남은 밥 보관",
   "바실러스 세레우스",
-  "밥 식중독",
-  "식은 밥 데우기"
+  "볶음밥 증후군",
+  "밥 냉장 보관",
+  "밥 데우기"
  ],
  "yt_tags": [
-  "식은 밥 재가열",
-  "볶음밥 증후군",
+  "남은 밥 재가열",
   "남은 밥 보관",
   "바실러스 세레우스",
-  "밥 식중독"
+  "볶음밥 증후군",
+  "밥 냉장 보관"
  ],
  "yt_hashtags": [
-  "식은밥",
-  "볶음밥증후군",
+  "남은밥",
+  "밥보관",
   "식중독예방"
  ],
- "yt_lead": "식은 밥을 다시 데워도 안전한지, 식품안전정보원이 안내한 보관 기준(2시간·5℃·24시간)을 정리했어요.",
+ "yt_lead": "남은 밥을 다시 데워도 안전한지, 식품안전정보원이 안내한 보관·재가열 기준을 정리했어요.",
  "dates": {
   "checked": "2026-11-03",
   "sources": [
@@ -66,94 +70,103 @@
  },
  "lines": [
   {
-   "say": "식은 [[밥]], 다시 데우면 안전할까요?",
+   "say": "남은 밥, 다시 데우면 [[안전할까요]]?",
    "photo": {
-    "url": "vault:photos/ig-17867815024570737.jpg",
-    "shows": "철냄비에 볶은 볶음밥",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/d/d6/Meshi_001.jpg",
+    "shows": "공기에 담은 흰쌀밥과 젓가락",
     "match": "같은 종류",
-    "rights": "사용자 촬영 비공개 보관함"
+    "rights": "위키미디어 CC0 (Ocdp)"
    }
   },
   {
-   "say": "끝까지 보면, 밥 [[보관 시간]]까지 알려 드려요.",
+   "say": "사실 다시 데우는 것보다, [[보관 방법]]이 더 중요해요.",
    "photo": {
-    "url": "https://tong.visitkorea.or.kr/cms2/website/27/3106827.jpg",
-    "shows": "잡곡밥을 솥과 그릇에 담은 모습(오곡밥)",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/f/f9/Bap_%28cooked_rice%29_2.jpg",
+    "shows": "솥에 지어 둔 흰쌀밥(보관 방법은 사진으로 보여 줄 수 없어 이 영상의 주인공인 흰쌀밥을 씀)",
     "match": "분위기",
-    "rights": "한국관광공사 포토코리아 공공누리 1유형 · ⓒ한국관광공사 포토코리아-토라이 리퍼블릭"
-   },
-   "chip": "끝까지 보면 보관 시간"
-  },
-  {
-   "say": "식품안전정보원이 2일, [[볶음밥 증후군]]을 안내했어요.",
-   "photo": {
-    "url": "vault:photos/ig-17903036833638045.jpg",
-    "shows": "대게 껍데기에 담은 볶음밥",
-    "match": "분위기",
-    "rights": "사용자 촬영 비공개 보관함"
+    "rights": "위키미디어 CC BY 4.0 (plusstory1)"
    }
   },
   {
-   "say": "실온에 오래 둔 밥에서는, 바실러스 세레우스균이 늘 수 있어요.",
+   "say": "원인은 [[바실러스 세레우스균]]. 밥을 지어도 살아남을 수 있어요.",
    "photo": {
-    "url": "vault:photos/ig-17895985276052686.jpg",
-    "shows": "잡곡밥이 놓인 백반 한 상",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/6/66/%E9%87%9C%E3%81%A7%E7%82%8A%E3%81%8F_%2827720246573%29.jpg",
+    "shows": "김이 나며 솥에서 지어지는 흰쌀밥(균은 눈에 안 보여 '밥을 지어도'에 맞춘 장면)",
     "match": "분위기",
-    "rights": "사용자 촬영 비공개 보관함"
-   },
-   "chip": "실온에 오래 둔 밥"
+    "rights": "위키미디어 CC BY-SA 2.0 (yosshi)"
+   }
   },
   {
-   "say": "문제는 이 균이 만든 구토형 독소가, 열에 [[강하다]]는 거예요.",
+   "say": "오래 두면 균이 늘면서 [[독소]]를 만들어요.",
    "photo": {
-    "url": "https://tong.visitkorea.or.kr/cms2/website/06/2707206.jpg",
-    "shows": "접시에 담은 주먹밥",
-    "match": "분위기",
-    "rights": "한국관광공사 포토코리아 공공누리 1유형 · ⓒ한국관광공사 포토코리아-알렉스 분도"
-   },
-   "chip": "재가열해도 독소는 남을 수 있어요"
-  },
-  {
-   "say": "그래서 조리한 음식은, 가급적 [[2시간]] 안에 드시래요.",
-   "photo": {
-    "url": "https://tong.visitkorea.or.kr/cms2/website/07/2707207.jpg",
-    "shows": "컵에 담은 컵밥과 주먹밥",
-    "match": "분위기",
-    "rights": "한국관광공사 포토코리아 공공누리 1유형 · ⓒ한국관광공사 포토코리아-알렉스 분도"
-   },
-   "chip": "2시간 이내"
-  },
-  {
-   "say": "남으면 빨리 식혀 [[5℃]] 이하로 냉장하고, [[24시간]] 안에 드세요.",
-   "photo": {
-    "url": "vault:photos/ig-17865989186231144.jpg",
-    "shows": "접시에 담은 김밥",
+    "url": "https://images.pexels.com/photos/8956718/pexels-photo-8956718.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    "shows": "식탁에 둔 스테인리스 공기의 흰쌀밥",
     "match": "같은 종류",
-    "rights": "사용자 촬영 비공개 보관함"
-   },
-   "chip": "5℃ 이하 · 24시간"
+    "rights": "Pexels 무료 라이선스"
+   }
   },
   {
-   "say": "데울 땐 한 번만, 중심 온도 [[75℃]]에서 1분 이상이에요.",
+   "say": "그런데 이 독소는 [[열에 강해요]].",
    "photo": {
-    "url": "https://tong.visitkorea.or.kr/cms2/website/08/2824708.jpg",
-    "shows": "쌀밥 정식 한 상",
-    "match": "분위기",
-    "rights": "한국관광공사 포토코리아 공공누리 1유형 · ⓒ한국관광공사 포토코리아"
-   },
-   "chip": "75℃ 1분 이상"
+    "url": "https://images.pexels.com/photos/17563535/pexels-photo-17563535.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    "shows": "위에서 찍은 흰쌀밥 한 그릇",
+    "match": "같은 종류",
+    "rights": "Pexels 무료 라이선스"
+   }
   },
   {
-   "say": "여러분은 남은 밥, 어떻게 보관하세요? [[댓글]]로 알려 주세요.",
+   "say": "남은 밥은 [[실온]]에 오래 두지 말고,",
    "photo": {
-    "url": "https://tong.visitkorea.or.kr/cms2/website/05/2707205.jpg",
-    "shows": "접시에 담은 주먹밥 다른 컷",
-    "match": "분위기",
-    "rights": "한국관광공사 포토코리아 공공누리 1유형 · ⓒ한국관광공사 포토코리아-알렉스 분도"
+    "url": "https://upload.wikimedia.org/wikipedia/commons/d/d6/A_bowl_of_rice.jpg",
+    "shows": "그릇에 담은 흰쌀밥",
+    "match": "같은 종류",
+    "rights": "위키미디어 CC0 (Douglas Perkins)"
+   },
+   "chip": "조리 후 가급적 2시간 안"
+  },
+  {
+   "say": "빠르게 식혀 [[냉장 보관]]하고, 가급적 빨리 드세요.",
+   "photo": {
+    "url": "compose/2026-11-03-rice-fridge.jpg",
+    "shows": "흰쌀밥 실사(Pexels) + 냉장 보관을 뜻하는 냉장고 그림 배지(그림임이 보이게 조합)",
+    "match": "같은 종류",
+    "rights": "Pexels 무료 라이선스 + 직접 그린 아이콘",
+    "no_grade": true
+   },
+   "chip": "냉장 5℃ 이하 · 24시간 안"
+  },
+  {
+   "say": "다시 먹을 땐 [[속까지 충분히]] 뜨겁게 데워 주세요.",
+   "photo": {
+    "url": "compose/2026-11-03-rice-microwave.jpg",
+    "shows": "흰쌀밥 실사(Pixabay) + 전자레인지 그림 배지(그림임이 보이게 조합)",
+    "match": "같은 종류",
+    "rights": "Pixabay 무료 라이선스 + 직접 그린 아이콘",
+    "no_grade": true
+   },
+   "chip": "한 번만 · 중심 75℃ 1분 이상"
+  },
+  {
+   "say": "단, 실온에 오래 방치한 밥은 [[다시 데워도]] 안전하지 않을 수 있어요.",
+   "photo": {
+    "url": "https://upload.wikimedia.org/wikipedia/commons/8/8c/Rice_balls_to_freeze.jpg",
+    "shows": "얼리려고 랩 위에 소분한 흰쌀밥",
+    "match": "같은 종류",
+    "rights": "위키미디어 CC BY 2.0 (Janine from Mililani, Hawaii)"
+   }
+  },
+  {
+   "say": "여러분은 남은 밥, [[냉장]]하시나요? [[냉동]]하시나요?",
+   "photo": {
+    "url": "https://upload.wikimedia.org/wikipedia/commons/c/c9/Frozen_rice_-_jules.jpg",
+    "shows": "냉동했다 꺼낸 흰쌀밥(냉장·냉동 가운데 냉동 쪽)",
+    "match": "같은 종류",
+    "rights": "위키미디어 CC BY 2.0 (jules)"
    }
   }
  ],
+ "pic": "full",
  "review": {
-  "photo_sheet": "09d9cf335652"
+  "photo_sheet": "c8cd3e680a6e"
  }
 }

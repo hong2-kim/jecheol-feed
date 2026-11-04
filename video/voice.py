@@ -782,6 +782,10 @@ def build_voice(spec, work=None):
                f'<section class="scene first" data-at="0" data-dur="{body:.2f}" data-out="0" style="z-index:900;pointer-events:none">'
                f'{thumb.head_html(head, name, (spec.get("thumb") or {}).get("color", thumb.AC))}</section>']
         note = f'<div class="vnote">{B.esc(spec["photo_note"])}</div>' if spec.get("photo_note") else ""
+        # "pic": "full" — 사진 칸을 화면 끝까지 늘려 아래 흐린 띠를 없애고 칩을 작게 (2026-11-03 남은 밥 쇼츠, 이 설정을 적은 영상만)
+        full = spec.get("pic") == "full"
+        if full:
+            out[1] = out[1].replace("</style>", ".vpic { height: 1110px; } .vchip { font-size: 42px; padding: 6px 22px 11px; }</style>")
         last_photo = None
         for n, (a, b, vis) in enumerate(segments(lines)):
             at, d = starts[a], sum(durs[a:b])
@@ -803,8 +807,9 @@ def build_voice(spec, work=None):
                 pa = at + d0 * k / len(photos)
                 pd = d0 / len(photos) if k < len(photos) - 1 else at + d - pa
                 mark = "" if isinstance(photo, dict) and photo.get("own") else note  # "own": 그 음식을 찍은 사진이면 예시 표시를 안 해요
+                back = "" if full else f'<div class="vback"><img src="{B.backdrop(photo)}"></div>'
                 out.append(f'<section class="scene{first if not k else ""}" data-at="{pa:.2f}" data-dur="{pd:.2f}" data-out="0"{anim if (n or k) else ""}>'
-                           f'<div class="vback"><img src="{B.backdrop(photo)}"></div>{pic_html(B, photo)}{chip}{mark}</section>')
+                           f'{back}{pic_html(B, photo)}{chip}{mark}</section>')
             last_photo = photos[-1]
         for i, l in enumerate(lines):
             # 자막: 문장을 덩어리로 나눠 읽는 속도에 맞춰 차례로 바꿔요. 대화형은 말하는 사람 이름표와 색 띠를 붙여요

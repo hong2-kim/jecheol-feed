@@ -1073,6 +1073,68 @@
       }
     },
     {
+      "name": "Pexels",
+      "hosts": [
+        "images.pexels.com",
+        "pexels.com"
+      ],
+      "photo_source": "Pexels 무료 사진(사진 쪽 주소 images.pexels.com/photos/번호/...)",
+      "terms_url": "https://www.pexels.com/license/",
+      "scope": "무료, 상업적 이용·변경 가능. 금지: 원본 그대로 되팔기, 사람이 나온 사진을 불쾌하게 쓰기, 사진 속 인물·브랜드가 보증하는 것처럼 쓰기",
+      "credit": "표기 필요 없음(적어 두면 좋음)",
+      "edit": "가능",
+      "checked": "2026-11-04",
+      "status": "사용 가능",
+      "recheck_days": 90,
+      "note": "2026-11-03 사용자가 '위키미디어·관광공사만 고집하지 말고 Pexels·Pixabay까지' 쓰라고 함",
+      "uses": {
+        "instagram": "가능",
+        "youtube": "가능",
+        "blog": "가능"
+      }
+    },
+    {
+      "name": "Pixabay",
+      "hosts": [
+        "cdn.pixabay.com",
+        "pixabay.com"
+      ],
+      "photo_source": "Pixabay 무료 사진(cdn.pixabay.com/photo/...)",
+      "terms_url": "https://pixabay.com/service/license-summary/",
+      "scope": "무료, 상업적 이용·변경 가능. 금지: 원본 그대로 되팔기·배포, 사람·상표가 보증하는 것처럼 쓰기",
+      "credit": "표기 필요 없음(적어 두면 좋음)",
+      "edit": "가능",
+      "checked": "2026-11-04",
+      "status": "사용 가능",
+      "recheck_days": 90,
+      "note": "2026-11-03 사용자가 '위키미디어·관광공사만 고집하지 말고 Pexels·Pixabay까지' 쓰라고 함",
+      "uses": {
+        "instagram": "가능",
+        "youtube": "가능",
+        "blog": "가능"
+      }
+    },
+    {
+      "name": "직접 만든 조합 그림(compose/)",
+      "hosts": [
+        "compose/"
+      ],
+      "photo_source": "위 '사용 가능' 출처 사진에 직접 그린 아이콘을 얹은 그림. 저장소 compose/ 폴더",
+      "terms_url": "",
+      "scope": "바탕 사진 출처의 조건을 따른다. 그린 부분은 누가 봐도 그림이어야 하고, 실제 사진처럼 꾸미지 않는다",
+      "credit": "바탕 사진 출처를 따름",
+      "edit": "가능",
+      "checked": "2026-11-04",
+      "status": "사용 가능",
+      "recheck_days": 365,
+      "note": "2026-11-03 사용자가 맞는 사진이 없으면 실사와 그림 요소를 조합해도 된다고 함(실제 사진인 척 금지)",
+      "uses": {
+        "instagram": "가능",
+        "youtube": "가능",
+        "blog": "가능"
+      }
+    },
+    {
       "name": "비공개 사진 보관함·저장소 자료(사용자 촬영)",
       "hosts": [
         "vault:",
