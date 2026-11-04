@@ -277,6 +277,7 @@ def main():
                 entry["yt_title"], entry["yt_desc"] = build.youtube_text(spec)
                 kw = build.youtube_keywords(spec)
                 entry.update({"yt_keyword": kw["keyword"], "yt_related": kw["related"], "yt_tags": kw["tag_text"], "yt_hashtags": kw["hashtags"]})
+                entry["yt_category"], entry["yt_category_id"] = build.youtube_category(spec)  # 텔레그램 안내에만 가요(설명에는 안 넣어요)
                 if thumb.has(spec):
                     try:  # 썸네일이 안 만들어져도 영상은 그대로 만들어요
                         entry["thumb"] = render_thumb(spec, name, browser)

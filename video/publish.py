@@ -131,8 +131,9 @@ def send_youtube(token, chat, r, day, alone=False):
     if len(desc) > 3300:  # 텔레그램 글 한 개에 다 들어가게
         desc = desc[:3300].rstrip() + "\n…"
     url = f"https://github.com/{REPO}/releases/download/v{day}/{video}"
+    category = f"📂 유튜브 카테고리: {html.escape(r['yt_category'])}\n\n" if r.get("yt_category") else ""  # 설명에는 넣지 않아요 (2026-11-04 사용자)
     text = (f"<b>{html.escape(tag)}</b>\n{'위 영상' if cards or alone else '바로 위 인스타 영상(같은 파일)'}을 쇼츠로 올려 주세요. 썸네일은 맨 앞(0초) 장면을 고르면 큰 제목 화면이 돼요.\n\n{html.escape(music_note(r, youtube=True))}"
-            f"<b>제목</b> (눌러서 복사)\n<code>{html.escape(r['yt_title'])}</code>\n\n"
+            f"{category}<b>제목</b> (눌러서 복사)\n<code>{html.escape(r['yt_title'])}</code>\n\n"
             + keywords_block(r) +
             f"<b>설명</b> (눌러서 복사)\n<pre>{html.escape(desc)}</pre>\n"
             f"<b>내려받기</b>\n{html.escape(url)}")

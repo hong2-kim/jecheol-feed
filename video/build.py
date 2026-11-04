@@ -2102,6 +2102,55 @@ def youtube_keywords(spec):
     return {"keyword": keyword, "related": related, "tags": tags, "tag_text": tag_text, "hashtags": tags_h}
 
 
+# 유튜브 카테고리 이름 -> 업로드 API 의 categoryId (2026-11-04 사용자가 정함, PROMPT.md "유튜브 카테고리")
+YT_CATEGORIES = {"노하우/스타일": 26, "뉴스/정치": 25, "교육": 27, "엔터테인먼트": 24, "여행/이벤트": 19}
+_YT_FUN = ("상황극", "밸런스게임", "챌린지", "퀴즈", "테스트", "몇개먹어", "웃긴", "밈")
+_YT_TRIP = ("축제", "페스티벌", "박람회", "엑스포", "여행")
+_YT_REVIEW = ("맛집", "후기", "리뷰", "다녀왔", "가봤", "먹어봤", "방문")
+_YT_GOV = ("정부", "식약처", "농식품부", "농림축산식품부", "해수부", "해양수산부", "공정위", "소비자원", "적발", "단속", "리콜", "회수",
+           "판매중단", "대책", "규제", "관세", "법안", "정책", "부당광고", "위반", "금지", "통계")
+_YT_PRICE = ("올랐", "내렸", "가격인상", "가격인하", "물가", "상승", "하락", "급등", "폭등")  # 소식·해설에서만 뉴스로 봐요. '인하'만 쓰면 '확인하세요'에 걸려요
+_YT_HOWTO = ("하는법", "는법", "방법", "꿀팁", "할인", "반값", "세일", "행사", "신상", "출시", "한정판", "편의점", "품절", "팔린", "레시피", "조합", "고르", "아끼")
+_YT_EDU = ("유래", "차이", "다를까", "vs", "왜", "이유", "역사", "상식", "영양", "안전", "원래", "뜻", "몰랐", "제철")
+
+
+def youtube_category(spec):
+    """유튜브 쇼츠 카테고리 추천 (이름, categoryId). 설계도에 yt_category 를 적으면 그걸 쓰고, 없으면 종류(kind)와 제목으로 골라요.
+    저녁 추천·맛집 후기 → 노하우/스타일, 뉴스 → 정책·물가는 뉴스/정치·신상·할인은 노하우/스타일, 상식·유래 → 교육, 재미·상황극 → 엔터테인먼트.
+    축제·해외 축제·지역 먹거리는 여행/이벤트예요."""
+    if spec.get("yt_category") in YT_CATEGORIES:
+        return spec["yt_category"], YT_CATEGORIES[spec["yt_category"]]
+    kind = spec.get("kind") or ""
+
+    def pick(text):
+        text = text.replace(" ", "").lower()
+        has = lambda words: any(w in text for w in words)
+        if kind == "저녁":
+            return "노하우/스타일"
+        if has(_YT_FUN):
+            return "엔터테인먼트"
+        if kind in ("세계", "지역") or (kind in ("발견", "해설", "이야기") and has(_YT_TRIP)):
+            return "여행/이벤트"
+        if kind in ("유행", "해외"):
+            return "노하우/스타일"
+        if kind == "제철":
+            return "교육"
+        if has(_YT_REVIEW):
+            return "노하우/스타일"
+        if has(_YT_GOV) or (kind in ("소식", "해설") and has(_YT_PRICE)):
+            return "뉴스/정치"
+        if has(_YT_HOWTO):
+            return "노하우/스타일"
+        if has(_YT_EDU):
+            return "교육"
+
+    # 보는 사람에게 보이는 유튜브 제목으로 먼저 고르고, 거기서 안 갈리면 게시글 제목·첫 장면 글까지 봐요
+    name = pick(str(spec.get("yt_title") or "")) or pick(" ".join(str(spec.get(k) or "") for k in ("yt_title", "title", "headline")))
+    if not name:
+        name = "노하우/스타일" if kind == "소식" else "교육"  # 카드 뉴스는 대개 신상·할인 소식이에요
+    return name, YT_CATEGORIES[name]
+
+
 def youtube_problems(spec):
     """유튜브 키워드 규칙에 어긋나는 것을 알려 줘요."""
     out = []
