@@ -453,5 +453,31 @@
     "reasons": [],
     "noticed": null,
     "held_noticed": null
+  },
+  "2026-11-06-2-news": {
+    "verdict": "통과",
+    "hash": "9553fbc5a875",
+    "approved": false,
+    "reasons": [],
+    "noticed": null,
+    "held_noticed": null
+  },
+  "2026-11-06-3-dinner": {
+    "verdict": "통과",
+    "hash": "72cf69c65abe",
+    "approved": false,
+    "reasons": [],
+    "noticed": null,
+    "held_noticed": null
+  },
+  "2026-11-06-4-find": {
+    "verdict": "확인 필요",
+    "hash": "13149ef4ac6d",
+    "approved": false,
+    "reasons": [
+      "[확인] 사진 확인: 실제 사진 검수 시트를 열어 본 기록(review.photo_sheet)이 없어요. python3 scripts/review_sheet.py /home/runner/work/jecheol-feed/jecheol-feed/videos/2026-11-06"
+    ],
+    "noticed": "확인 필요:13149ef4ac6d",
+    "held_noticed": null
   }
 }
