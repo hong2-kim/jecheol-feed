@@ -1,0 +1,49 @@
+{
+ "date": "2026-11-06",
+ "checked": "2026-11-06",
+ "pairing": {
+  "drink": "",
+  "note": ""
+ },
+ "country": "한국",
+ "unverified": [],
+ "id": "2026-11-06-kr-pulmuone-neobiani",
+ "category": "예고",
+ "region": "전국",
+ "subject": "풀무원 반듯한식 숯불너비아니·육즙떡갈비",
+ "angle": "큐브육 너비아니와 두툼한 떡갈비, 100% 국내산 돼지고기",
+ "season": "2026년 11월",
+ "length_sec": 30,
+ "title": "풀무원이 국내산 돼지고기 너비아니·떡갈비를 냈어요",
+ "summary": [
+  "풀무원식품이 11월 5일 반듯한식 숯불너비아니(350g, 10,980원)와 육즙떡갈비(360g, 10,980원)를 냈다고 밝혔어요.",
+  "두 제품 모두 100% 국내산 돼지고기에 갈빗살과 다리살을 배합했어요.",
+  "프라이팬이나 에어프라이어로 조리해요."
+ ],
+ "facts": [
+  "너비아니는 고기를 갈지 않고 큼직하게 썬 큐브육을 쓰고, 오븐에 한 번 익힌 뒤 직화로 구웠어요."
+ ],
+ "script": {
+  "hook": "풀무원 너비아니, 갈지 않고 큼직하게 썬 고기로 만들었대요.",
+  "flow": "큐브육 너비아니|두툼한 떡갈비|국내산 돼지고기",
+  "closing": "제품 설명은 회사가 밝힌 거예요."
+ },
+ "visuals": [
+  "떡갈비"
+ ],
+ "cautions": [
+  "제품 설명은 회사가 밝힌 거예요."
+ ],
+ "sources": [
+  {
+   "name": "풀무원 뉴스룸(11월 5일)",
+   "url": "https://news.pulmuone.co.kr/pulmuone/newsroom/viewNewsroom.do?id=3972",
+   "official": true
+  },
+  {
+   "name": "뉴스드림(11월 5일)",
+   "url": "https://www.newsdream.kr/news/articleView.html?idxno=121508",
+   "official": false
+  }
+ ]
+}

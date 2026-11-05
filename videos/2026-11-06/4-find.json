@@ -1,0 +1,150 @@
+{
+ "kind": "발견",
+ "css": ".cover .back, .card .back { display: none; } .cover .pic, .cover .pic.fill, .cover .pic.whole { height: 1920px; -webkit-mask-image: none; mask-image: none; } .cover .pic img, .cover .pic.whole img, .cover .pic.fill img { object-fit: cover; filter: brightness(.95); } .cover .pic::after { content: \"\"; position: absolute; left: 0; right: 0; bottom: 0; height: 960px; background: linear-gradient(180deg, rgba(8,6,4,0) 0%, rgba(8,6,4,.5) 30%, rgba(8,6,4,.84) 62%, rgba(8,6,4,.92) 100%); } .cover .mid { top: auto; bottom: 400px; text-shadow: 0 3px 20px rgba(0,0,0,.6); } .card .pic.wide, .card .pic.wide.fill, .card .pic.tall { height: 1920px; -webkit-mask-image: none; mask-image: none; } .card .pic img { object-fit: cover; } .card .shade { height: 900px; } .card .txt { bottom: 400px; } .chip { font-size: 46px; } .ln { font-size: 54px; font-weight: 700; line-height: 1.34; } .duo .seam { top: 590px; height: 740px; background: linear-gradient(180deg, rgba(8,6,4,0) 0%, rgba(8,6,4,.8) 26%, rgba(8,6,4,.8) 74%, rgba(8,6,4,0) 100%); } .duo .sub { white-space: pre-line; font-size: 50px; line-height: 1.42; margin-top: 22px; } .duo .tagchip { top: 150px !important; font-size: 34px; font-weight: 800; padding: 8px 20px 12px; border-radius: 12px; background: rgba(8,6,4,.6); } .duo .tagchip ~ .tagchip { top: 1290px !important; } .tref { display: none; }",
+ "subject": "대만 철도 도시락 · 연 942만 개",
+ "title": "대만 기차 도시락은 왜 한 해 942만 개나 팔릴까?",
+ "summary": "대만 철도공사(타이완 철도)의 철도 도시락은 2025년 942만 개, 하루 약 2만 5,800개가 팔려 매출이 8억 7,600만 대만달러로 역대 최고였어요. 포크찹 도시락이 718만 개로 1위예요.",
+ "thumb": {
+  "head": "기차역 도시락\n[[942만 개?]]",
+  "sub": "1년에 [[이만큼]] 팔렸대요",
+  "photo": {
+   "url": "https://commons.wikimedia.org/wiki/Special:FilePath/TRA%20Pork%20Ribs%20Rice%20Bento%20%28Taichung%29%2002.JPG?width=1600",
+   "shows": "타이중 철도 식당의 포크찹 도시락(밥 위에 돼지갈비, 계란, 브로콜리)",
+   "match": "정확",
+   "rights": "위키미디어 공용 퍼블릭 도메인",
+   "fit": "cover"
+  }
+ },
+ "tags": [
+  "대만도시락",
+  "철도도시락",
+  "대만여행",
+  "해외먹거리"
+ ],
+ "sources": [
+  "https://focustaiwan.tw/business/202610260010"
+ ],
+ "credits": [
+  "yunlin2003 (CC BY 2.0) · commons.wikimedia.org/?curid=77388538"
+ ],
+ "yt_title": "대만 철도 도시락 연 942만 개, 매출 역대 최고 찍은 이유",
+ "yt_keyword": "대만 철도 도시락",
+ "yt_related": [
+  "대만 기차 도시락",
+  "대만 포크찹 도시락",
+  "타이베이역 도시락",
+  "대만 여행 먹거리",
+  "해외 먹거리 트렌드"
+ ],
+ "yt_tags": [
+  "대만 철도 도시락",
+  "대만 기차 도시락",
+  "대만 포크찹 도시락",
+  "타이베이역 도시락",
+  "대만 여행 먹거리",
+  "해외 먹거리 트렌드"
+ ],
+ "yt_hashtags": [
+  "대만철도도시락",
+  "대만여행",
+  "해외먹거리"
+ ],
+ "yt_lead": "대만 철도 도시락이 2025년 942만 개 팔려 매출 역대 최고를 찍었고, 1위는 포크찹 도시락이에요.",
+ "dates": {
+  "checked": "2026-11-06",
+  "sources": [
+   {
+    "url": "https://focustaiwan.tw/business/202610260010",
+    "published": "2026-10-26",
+    "modified": "2026-10-26"
+   }
+  ],
+  "stat_period": "2025년 1~12월(대만 철도공사 발표)"
+ },
+ "followup": {
+  "of": "2026-11-02/9-abroad#2",
+  "new": "대만 철도 도시락 2025년 판매 순위: 포크찹 718만 개, 닭다리 56만 개, 쌍쌍 도시락 26만 개, 타이베이역 265만 개"
+ },
+ "caption": "기차역 도시락이 한 해에 942만 개 팔린다면 믿어지세요? 대만 철도 도시락 얘기예요.\n\n대만 철도공사가 밝힌 숫자예요. 2025년에 철도 도시락 942만 개가 팔렸고, 하루로 치면 약 2만 5,800개예요. 매출은 8억 7,600만 대만달러로 역대 최고였어요. 개수는 2019년 1,054만 개보다 적었지만 매출은 1년 전보다 9.07% 늘었어요.\n\n제일 잘 팔린 건 돼지갈비 튀김 도시락(포크찹)으로 718만 개예요. 2위는 닭다리 도시락 56만 개, 3위는 포크찹과 생선살 두 가지가 들어간 가오슝 쌍쌍 도시락 26만 개예요. 철도 도시락은 1949년에 처음 나왔다고 해요.\n\n사진은 대만 철도역과 철도 식당에서 찍은 도시락 사진이에요. 더 자세한 이야기는 프로필 링크의 블로그에 있어요.\n\n여러분은 기차 탈 때 도시락 드세요, 다른 걸 드세요?\n\n출처: 포커스 타이완(10월 26일)",
+ "scenes": [
+  {
+   "type": "cover",
+   "dur": 2.0,
+   "photo": {
+    "url": "https://commons.wikimedia.org/wiki/Special:FilePath/TR%20Bento%20food%20cart%20and%20Entrance%20South%203%2C%20TR%20Taipei%20Station%2020240101.jpg?width=1600",
+    "shows": "타이베이역 남3문 앞 철도 도시락 판매대에 사람들이 줄 선 모습(대만 철도 타이베이역)",
+    "match": "정확",
+    "rights": "위키미디어 공용 CC0"
+   },
+   "kicker": "여러분",
+   "title": "기차역 도시락이\n[[1년에 942만 개]]\n팔린다면\n믿어져요?",
+   "size": 100
+  },
+  {
+   "type": "cover",
+   "dur": 1.8,
+   "photo": {
+    "url": "https://commons.wikimedia.org/wiki/Special:FilePath/TR%20Bento%20Qidu%20Store%20and%20Uni-President%20Vender%20vending%20machine%20%2843339079045%29.jpg?width=1600",
+    "shows": "'台鐵便當本舖' 간판이 걸린 철도 도시락 매장(대만 철도역 안)",
+    "match": "정확",
+    "rights": "위키미디어 공용 CC0"
+   },
+   "kicker": "저도 오늘 알았어요",
+   "title": "대만 철도 도시락\n[[매출 역대 최고]]",
+   "size": 100,
+   "in": "push"
+  },
+  {
+   "type": "cover",
+   "dur": 2.0,
+   "photo": {
+    "url": "https://commons.wikimedia.org/wiki/Special:FilePath/TRA%20Pork%20Ribs%20Rice%20Bento%20%28Taichung%29%2002.JPG?width=1600",
+    "shows": "타이중 철도 식당의 포크찹 도시락(밥 위에 돼지갈비, 계란, 브로콜리)",
+    "match": "정확",
+    "rights": "위키미디어 공용 퍼블릭 도메인"
+   },
+   "kicker": "그래서 찾아봤어요 · 대만 철도 도시락",
+   "title": "철도 도시락\n[[이렇게 팔렸대요]]",
+   "size": 100
+  },
+  {
+   "type": "card",
+   "dur": 2.8,
+   "photo": {
+    "url": "https://commons.wikimedia.org/wiki/Special:FilePath/TR%20Bento%20outside%20of%20Entrance%20South%203%2C%20TR%20Taipei%20Station%20%2853436935216%29.jpg?width=1600",
+    "shows": "타이베이역 앞에 놓은 포장된 철도 도시락 상자",
+    "match": "정확",
+    "rights": "위키미디어 공용 CC0"
+   },
+   "chip": "얼마나",
+   "headline": "하루 약\n[[2만 5,800개]]",
+   "line": "2025년 942만 개, 매출 8억 7,600만 대만달러"
+  },
+  {
+   "type": "card",
+   "dur": 2.8,
+   "photo": {
+    "url": "https://commons.wikimedia.org/wiki/Special:FilePath/TRA%20Taichung%20Railways%20Restaurant%20pork%20ribs%20rice%20box%2020180722b.jpg?width=1600",
+    "shows": "타이중 철도 식당의 포크찹 도시락 상자(돼지갈비·두부·계란·브로콜리)",
+    "match": "정확",
+    "rights": "위키미디어 공용 CC BY 2.0 · yunlin2003"
+   },
+   "chip": "뭐가 1등",
+   "headline": "포크찹 도시락\n[[718만 개]]",
+   "line": "돼지갈비를 올린 도시락이 1위예요"
+  },
+  {
+   "type": "card",
+   "dur": 2.8,
+   "photo": {
+    "url": "https://commons.wikimedia.org/wiki/Special:FilePath/TR%20Bento%20outside%20of%20Entrance%20South%203%2C%20TR%20Taipei%20Station%20%2853436014427%29.jpg?width=1600",
+    "shows": "칸막이 도시락 속 닭다리 구이와 반찬(타이베이역 앞)",
+    "match": "정확",
+    "rights": "위키미디어 공용 CC0"
+   },
+   "chip": "2위는",
+   "headline": "닭다리 도시락\n[[56만 개]]",
+   "line": "1위와는 큰 차이, 3위는 26만 개예요"
+  }
+ ]
+}
