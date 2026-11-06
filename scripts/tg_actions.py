@@ -215,6 +215,9 @@ def handle_reply(msg):
         return None
     review = _read(ROOT / "state" / "review.json", {})
     rid = next((k for k, v in review.items() if v.get("ask_msg") == to), None)
+    if not rid:  # 기록에 없으면 답장한 메시지의 [고쳐서 다시] 버튼에서 영상 id 를 읽어요(시험 메시지 등)
+        rows = ((msg.get("reply_to_message") or {}).get("reply_markup") or {}).get("inline_keyboard") or []
+        rid = next((b["callback_data"][6:] for row in rows for b in row if str(b.get("callback_data", "")).startswith("j:fix:")), None)
     if not rid or not spec_path(rid).exists():
         return None
     return fix(rid, msg["text"].strip())

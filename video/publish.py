@@ -200,6 +200,7 @@ def buttons(rid, verdict, held_cards=False):
 
 
 ASK_TAIL = "고칠 점이 있으면 이 메시지에 답장으로 적어 주세요. 그대로 고쳐서 다시 보내요."
+FIXED = "고친 시안"  # 검수는 통과했지만 [고쳐서 다시]로 고친 것: 승인 버튼을 받을 때까지 시안으로 둬요
 
 
 def gate_reasons(g):
@@ -275,7 +276,8 @@ def hold_notice(token, chat, day, held, review):
             send_draft(token, chat, day, r)
         except Exception as e:
             log_error(f"telegram:draft:{r['id']}", e)
-        ask = [f"🟡 {name} — {g['verdict']}", *("  " + x for x in gate.reasons(g, 6)), "",
+        why = gate.reasons(g, 6) or (["요청하신 대로 고친 시안이에요. 검수는 통과했어요."] if g["verdict"] == FIXED else [])
+        ask = [f"🟡 {name} — {g['verdict']}", *("  " + x for x in why), "",
                "괜찮으면 [승인], 고쳐야 하면 [고쳐서 다시], 안 쓰려면 [이번엔 빼기]를 눌러 주세요.", ASK_TAIL]
         m = tg("sendMessage", token, data={"chat_id": chat, "text": "\n".join(ask)[:4000], "disable_web_page_preview": "true",
                                            "reply_markup": buttons(r["id"], g["verdict"])})
@@ -306,6 +308,10 @@ def main():
     # 보내기 전 검수: 통과(또는 사용자가 승인한 확인 필요)만 보내고, 나머지는 보류해 까닭을 state/review.json 에 적어요
     gates = gate_all(day, results)
     review = read_json(ROOT / "state" / "review.json", {}) or {}
+    # 텔레그램 [고쳐서 다시]·답장으로 고친 것은 검수를 통과해도 '승인 전 시안'으로 보내요. [승인]을 눌러야 올릴 목록·RSS에 들어가요. (2026-11-06 사용자)
+    for rid, g in gates.items():
+        if (review.get(rid) or {}).get("fix") and g["verdict"] == "통과" and not g.get("approved"):
+            gates[rid] = {**g, "verdict": FIXED}
     for rid, g in gates.items():
         old = review.get(rid) or {}
         review[rid] = {"verdict": g["verdict"], "hash": g["hash"], "approved": g.get("approved", False),

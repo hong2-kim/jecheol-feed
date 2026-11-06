@@ -84,6 +84,21 @@ def call_photos():
 
 def send_test(token, chat):
     sent = datetime.now(KST).strftime("%H:%M")
+    rid = (json.loads((ROOT / "requests" / "buttons-test.json").read_text(encoding="utf-8")) or {}).get("rid") \
+        if (ROOT / "requests" / "buttons-test.json").exists() else None
+    if rid:  # 실제 고치기 시험: 그 영상에 [고쳐서 다시]·답장을 받는 메시지(아침에 받은 영상을 고쳐요)
+        sys.path.insert(0, str(ROOT / "video"))
+        try:
+            from publish import LABELS
+            name = LABELS.get(rid[11:], (rid[11:],))[0]
+        except Exception:
+            name = rid
+        kb = {"inline_keyboard": [[{"text": "🛠 고쳐서 다시", "callback_data": f"j:fix:{rid}"},
+                                   {"text": "이대로 둘게요", "callback_data": f"j:fine:{rid}"}]]}
+        api(token, "sendMessage", chat_id=chat, reply_markup=json.dumps(kb, ensure_ascii=False),
+            text=f"🧪 실제 고치기 시험 · {name} ({rid})\n이 메시지에 고칠 점을 답장으로 적어 주세요. 그대로 고쳐서 '승인 전 시안'으로 다시 보내요.\n"
+                 "(답장 없이 [고쳐서 다시]만 누르면 검수 까닭이 없어 그대로 둘 수 있어요.) 네이버·인스타 어디에도 올리지 않아요.")
+        return
     kb = {"inline_keyboard": [[{"text": "✅ 연결 확인", "callback_data": f"j:ping:{sent}"}],
                               [{"text": "🛠 고치기 루틴도 불러 보기", "callback_data": f"j:pingfix:{sent}"}]]}
     api(token, "sendMessage", chat_id=chat, reply_markup=json.dumps(kb, ensure_ascii=False),
