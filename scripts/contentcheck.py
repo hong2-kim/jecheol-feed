@@ -8,6 +8,8 @@
 설계도에 적는 칸 (PROMPT.md "사진은 내용을 정한 뒤에"):
 - 사진마다 `shows`: 사진을 직접 열어 보고 적은, 실제로 찍힌 것("맘스터치 2차 쿵파오싸이버거", "백설기", "인천종합어시장 꽃게 좌판")
            `match`: 정확(글이 말하는 바로 그 음식·상품) / 같은 종류(같은 음식이지만 그 상품·그 가게 것은 아님) / 분위기(장소·풍경)
+           2026-11-07부터: 특정 상품을 말하는 장면(그 회사 상품을 다루는 쇼츠의 모든 문장, 브랜드 이름이 든 카드)은 `정확` 만.
+           음식 일반을 말하는 문장·장은 그 문장에 "general": true 를 적고 같은 종류 참고 사진을 쓸 수 있어요.
            `rights`: 사진을 쓸 수 있는 근거("맘스터치·더시그니처 제공, 재판매 및 DB 금지 · 연합뉴스 배포" 처럼 사진 설명 그대로)
 - 지역 콘텐츠는 `region`: {"title_scope": 제목이 말하는 범위, "places": [{"name", "address", "admin", "source"}], "foods": [{"name", "why", "source"}]}
 """
@@ -56,31 +58,54 @@ def items_of(spec):
     """(자리 이름, 그 자리의 글, 사진 dict) 목록. 사진은 가장 가까운 글과 묶어요(장면·장·문장, 그 안의 칸)."""
     out = []
 
-    def walk(o, where, ctx):
+    def walk(o, where, ctx, gen=False):
         if isinstance(o, dict):
             own = text_of(o)
             here = (own + " " + ctx).strip() if own else ctx
+            gen = gen or o.get("general") is True  # 그 상품이 아니라 음식 일반을 말하는 문장·장 (2026-11-06)
             for k, v in o.items():
                 if k in PHOTO_KEYS:
                     for i, p in enumerate(v if isinstance(v, list) else [v]):
                         if isinstance(p, dict) and isinstance(p.get("url"), str):
-                            out.append((f"{where}.{k}" + (f"[{i}]" if isinstance(v, list) else ""), here, p))
+                            out.append((f"{where}.{k}" + (f"[{i}]" if isinstance(v, list) else ""), here, {**p, "_general": True} if gen else p))
                         elif isinstance(p, dict):
-                            walk(p, f"{where}.{k}", here)
+                            walk(p, f"{where}.{k}", here, gen)
                 elif k == "grid" and isinstance(v, list) and isinstance(o.get("hl"), int):
                     # 저녁 2×2: 그 문장이 말하는 음식은 밝힌 칸(hl, 0부터) 하나예요. 나머지 칸은 그 문장과 견주지 않아요 (2026-10-24)
                     for i, c in enumerate(v):
-                        walk(c, f"{where}.{k}[{i + 1}]", here if i == o["hl"] else "")
+                        walk(c, f"{where}.{k}[{i + 1}]", here if i == o["hl"] else "", gen)
                 elif isinstance(v, (dict, list)) and k not in ("meta", "dates", "region", "followup", "credits", "sources"):
-                    walk(v, f"{where}.{k}", here)
+                    walk(v, f"{where}.{k}", here, gen)
         elif isinstance(o, list):
             for i, v in enumerate(o):
-                walk(v, f"{where}[{i + 1}]", ctx)
+                walk(v, f"{where}[{i + 1}]", ctx, gen)
 
     for key in ("thumb", "cover", "scenes", "lines", "cards", "top", "slides", "base"):
         if spec.get(key) is not None:
             walk(spec[key], key, "")
     return out
+
+
+def product_of(spec):
+    """콘텐츠 하나가 통째로 한 회사 상품을 다루는지(내레이션·발견형·해설 쇼츠). (브랜드들, 상품 이름 끝말들)
+    문장에 브랜드 이름이 없어도("9월에 나온 이 츄러스는") 그 상품 이야기라서, 주제·제목으로 봐요 (2026-11-06 파리바게뜨 츄러스·GS25 혜자로운 사례).
+    소식이 여럿인 카드 뉴스는 장마다 글로 보니 여기서는 빼요."""
+    if spec.get("format") == "cards" or spec.get("cards"):
+        return set(), set()
+    head = " ".join(str(spec.get(k) or "") for k in ("subject", "title", "yt_keyword", "headline"))
+    brands = brands_in(head)
+    if not brands:
+        return set(), set()
+    released = (spec.get("dates") or {}).get("released")
+    named = re.findall(r"\[\[(.+?)\]\]", " ".join(str(t or "") for t in (spec.get("headline"), (spec.get("thumb") or {}).get("head"))))
+    if isinstance(released, dict) and released.get("name"):
+        named.append(str(released["name"]))
+    names = set()
+    for m in named:
+        ws = re.findall(r"[가-힣A-Za-z]{2,}", m)
+        if ws:
+            names.add(ws[-1])  # '초코 쫀득 츄러스' → '츄러스' (우리말 이름은 끝말이 그 물건이에요)
+    return brands, names - brands
 
 
 def marked_names(text):
@@ -92,7 +117,8 @@ def marked_names(text):
 
 
 def brands_in(text):
-    return {b for b in BRANDS if re.search(rf"(?<![A-Za-z가-힣]){re.escape(b)}", text or "")}
+    found = {b for b in BRANDS if re.search(rf"(?<![A-Za-z가-힣]){re.escape(b)}", text or "")}
+    return {b for b in found if not any(b != o and b in o for o in found)}  # '이마트24' 가 있으면 '이마트' 는 따로 세지 않아요
 
 
 def host_kind(url, rights, terms=None, today="9999-12-31", platforms=("instagram", "youtube")):
@@ -169,8 +195,15 @@ def company_hosts():
     return _COMPANY
 
 
+# 2026-11-06 사용자: 특정 제품을 말하는 장면은 그 제품의 실제 사진만. '참고 사진' 딱지를 달아도 비슷한 다른 음식 사진으로 대신하지 않아요.
+# 음식 일반을 말하는 문장·장에 "general": true 를 적으면 그곳만 같은 종류 참고 사진을 쓸 수 있어요.
+EXACT_FROM = "2026-11-07"
+
+
 def photo_lines(spec, day, platforms=("instagram", "youtube")):
     new_rule = day >= DATES_FROM
+    exact_rule = day >= EXACT_FROM
+    p_brands, p_names = product_of(spec) if exact_rule else (set(), set())
     # 그 콘텐츠가 이름으로 내세운 음식·상품(태그·유튜브 태그·핵심 키워드·주제). 글에 이 이름이 나오면 사진도 그것이어야 해요
     curated = words(" ".join(json.dumps(spec.get(k) or "", ensure_ascii=False) for k in ("tags", "yt_tags", "yt_keyword", "yt_related", "subject")))
     curated -= {"먹고갈지도", "수출", "출시", "협업", "신메뉴", "신상", "제철", "가을", "겨울", "여름", "봄", "디저트", "간식", "음식", "맛집",
@@ -214,10 +247,25 @@ def photo_lines(spec, day, platforms=("instagram", "youtube")):
         said, seen_ = set(re.findall(r"(\d+)차", text)), set(re.findall(r"(\d+)차", shows))
         if said and seen_ and not said & seen_:  # 1차 협업 이야기에 2차 신제품 사진 (맘스터치 사례)
             out.append(("사진 일치", f"{where}: 글은 {'·'.join(sorted(said))}차인데 사진은 {'·'.join(sorted(seen_))}차 제품이에요", "차단"))
+        general = bool(p.get("_general"))
+        if p_brands and shows and not where.startswith("cover"):
+            if match == "같은 종류" and not general:
+                out.append(("사진 일치", f"{where}: 이 콘텐츠는 {'·'.join(sorted(p_brands))} 상품을 다뤄요. 그 상품을 말하는 장면에 비슷한 다른 음식 사진"
+                                         f"(shows: {shows[:30]})을 쓰지 않아요('참고 사진' 딱지를 달아도). 실제 제품 사진(PROMPT.md \"제품 사진 찾는 차례\")으로 바꾸거나, "
+                                         f"숫자 카드(card)·그 회사 매장·행사 사진으로 바꾸거나, 그 문장을 빼 주세요. 상품이 아니라 음식 일반을 말하는 문장이면 그 문장에 \"general\": true", "차단"))
+            elif match == "분위기" and not general and any(n in shows for n in p_names):
+                hit = next(n for n in p_names if n in shows)
+                out.append(("사진 일치", f"{where}: match 를 분위기로 적었지만 사진에 '{hit}'이(가) 찍혀 있어요(shows: {shows[:30]}). 그 상품이 아니면 같은 종류 사진이라 "
+                                         f"그 상품 이야기에 쓰지 않아요. 실제 제품 사진이나 장소·매장 사진으로 바꿔 주세요", "차단"))
         for b in sorted(brands_in(text)):
             if match == "분위기" or not shows:
                 continue
-            if match == "같은 종류" and "참고" in str(p.get("ref") or ""):
+            if match == "같은 종류" and p_brands and not general:
+                continue  # 위에서 콘텐츠 단위로 이미 알렸어요
+            if match == "같은 종류" and "참고" in str(p.get("ref") or "") and exact_rule and not general:
+                out.append(("사진 일치", f"{where}: 글은 {b} 상품을 말하는데 사진은 비슷한 다른 음식이에요(shows: {shows[:30]}). '참고 사진' 딱지를 달아도 그 상품 장면에는 "
+                                         f"실제 제품 사진만 써요(2026-11-06). 실제 제품 사진을 찾거나(PROMPT.md \"제품 사진 찾는 차례\"), 못 찾으면 그 장을 보류해요", "차단"))
+            elif match == "같은 종류" and "참고" in str(p.get("ref") or ""):
                 # 2026-10-28 사용자: 제품 이름은 그대로 두고, 같은 종류 사진에는 '참고 사진 · 실제 제품 아님'을 분명히 붙여요
                 out.append(("사진 일치", f"{where}: {b} 상품 글에 같은 종류 참고 사진({shows[:24]}) — '{p['ref']}' 딱지와 함께 써요. 쓸 수 있는 실제 제품 사진이 있으면 그것으로 바꿔 주세요", "참고"))
             elif match != "정확" or b not in shows:
@@ -291,7 +339,7 @@ def blog_as_spec(post):
         elif b.get("type") == "photo" and b.get("url"):
             ph = {k: b[k] for k in ("url", "shows", "match", "rights", "terms", "crop") if k in b}
             ph.setdefault("rights", b.get("credit") or "")
-            lines.append({"say": (b.get("desc") or "") + " " + ctx, "photo": ph})
+            lines.append({"say": (b.get("desc") or "") + " " + ctx, "photo": ph, **({"general": True} if b.get("general") is True else {})})
     return {"kind": "블로그", "title": post.get("title"), "subject": post.get("subject"), "tags": post.get("tags"),
             "yt_keyword": post.get("keyword"), "lines": lines, "region": post.get("region")}
 

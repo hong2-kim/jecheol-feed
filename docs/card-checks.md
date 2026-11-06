@@ -137,6 +137,6 @@
 - `video/publish.py`: 뺀 장 알림·검수 시트, gate 에 뺀 장 번호 전달. `scripts/gate.py`: 뺀 장 결과를 참고로.
 - `video/base.css`, `video/voice.py`: 영상 음식 사진 크게(`fills`, `keep_whole`).
 - `docs/photo-rights-press.md`: 회사 보도자료 사진 판단 기준과 동서식품 검토.
-- `scripts/contentcheck.py`: 상품 이름 글 + 같은 종류 사진이면 `ref` 딱지가 있을 때만 참고로 낮춤.
+- `scripts/contentcheck.py`: 상품 이름 글 + 같은 종류 사진이면 `ref` 딱지가 있을 때만 참고로 낮춤. **2026-11-07 설계도부터는 딱지가 있어도 차단**(그 장 보류). `"general": true` 를 적은 장(음식 일반)만 예외. 한 회사 상품을 다루는 쇼츠는 문장에 브랜드가 없어도 모든 문장이 대상(`product_of`).
 - `sources.json` `photo_rights`: 동서식품 추가(확인 필요, 약관 제13조).
 - `PROMPT.md` "화면은 사진 중심", "정확한 사진이 없을 때", `rules/daily/cards.md` hero·사진 없는 장 규칙.

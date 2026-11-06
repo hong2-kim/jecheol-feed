@@ -351,6 +351,14 @@ TAKES = 8  # 물음 하나를 읽어 볼 수
 SLOW, BRISK, FAST = 6.2, 6.9, 7.8  # 쉼 뺀 음절/초: SLOW 보다 느린 문장만 BRISK 쯤으로 고쳐 읽어요
 QUICKER = (1.06, 1.12, 1.18, 1.24)  # 느린 문장을 고칠 때 올려 볼 빠르기(배)
 SLOW_OK = ("soft", "reveal", "number")  # 일부러 천천히 읽는 말투
+# 2026-11-06 사용자: "자, 시작!"이 "자아~~ 시이~작!"처럼, "오늘 뭐 먹지?"가 첫 낱말부터 늘어졌어요.
+# 잰 것: 같은 짧은 말도 읽을 때마다 길이가 크게 달라요(Achird "자, 시작!" 0.67초 ↔ 1.04초). 6음절 아래는 빠르기 검사를 건너뛰었고,
+# 물음은 끝이 오른 것 가운데 빠르기 기준(앞뒤 여백까지 넣은 6.2음절/초)을 짧은 물음이 넘을 수 없어 늘 '가장 많이 오른 읽기'
+# = 가장 과장되게 늘인 읽기(1.52초, 가운데 쉼 0.53초)를 골랐어요. 그래서 늘어진 읽기를 따로 알아보고 그 조각만 다시 읽어요.
+DRAWN_SPS = 5.0  # 쉼·앞뒤 여백을 뺀 음절/초가 이보다 느리면 늘어진 읽기
+DRAWN_GAP = 0.3  # 쉼표 없는 말 가운데 이보다 긴 쉼이 있으면 늘어진 읽기(쉼표가 있으면 +0.15초)
+RETAKES = 4  # 늘어진 조각을 다시 읽어 볼 수
+PAUSE_COMMA = re.compile(r"(?<!\d),\s*|(?<=\d),(?!\d{3}(?!\d))\s*")  # 쉼을 넣는 쉼표. '5,000'·'7,500원' 같은 천 단위 쉼표는 빼요(숫자가 끊겨 읽혀요)
 
 
 def breathing(spec):
@@ -419,6 +427,25 @@ def _pauses(x):
     return total / 100
 
 
+def _longest_pause(x):
+    """말 가운데 가장 긴 쉼(초)."""
+    quiet, best, run = _rms10(x) < 0.008, 0, 0
+    for q in quiet:
+        run = run + 1 if q else 0
+        best = max(best, run)
+    return best / 100
+
+
+def drawn(v, text):
+    """늘어진 읽기인지. (늘어짐, 쉼·앞뒤 여백 뺀 음절/초, 가장 긴 쉼). 사진·화면 길이와는 상관없이 말만 봐요."""
+    syl = syllables(text)
+    if v is None or not syl:
+        return False, 0.0, 0.0
+    net = syl / max(0.05, len(v) / SR - 0.15 - _pauses(v))
+    gap = _longest_pause(v)
+    return net < DRAWN_SPS or gap > DRAWN_GAP + (0.15 if "," in text else 0), round(net, 1), round(gap, 2)
+
+
 def syllables(text):
     return len(re.findall(r"[가-힣0-9]", text))
 
@@ -454,17 +481,21 @@ def rise_of(x):
 
 def ask_read(s, c, rate, take):
     """물음 하나를 끝이 올라가게 읽어요. 앞에서부터 읽어 보다 올라간 것이 나오면 멈추고, 끝내 없으면 가장 많이 오른 것. (소리, 오른 높이)"""
-    first, best, top = int(take or 1), None, None
+    # 2026-11-06: 가장 많이 오른 읽기가 가장 늘어진 읽기일 때가 많아요. 늘어지지 않은 것 가운데서 고르고,
+    # 다 늘어졌으면 가장 덜 늘어진 것을 써요.
+    first, tries = int(take or 1), []
     for t in range(first, first + TAKES):
         v = tts(s, c.get("voice"), rate, take=t if t > 1 else None, tail=0.12)
         if v is None:
             return None, None
         r = rise_of(v)
-        if best is None or (r is not None and (top is None or r > top)):
-            best, top = v, r
-        if r is not None and r >= RISE and syllables(s) / (len(v) / SR) >= SLOW:
+        bad, net, _ = drawn(v, s)
+        if r is not None and r >= RISE and not bad:
             return v, r
-    return best, top
+        tries.append((v, r, bad, net))
+    ok = [x for x in tries if not x[2]]
+    v, r, _, _ = max(ok, key=lambda x: x[1] if x[1] is not None else -99) if ok else max(tries, key=lambda x: x[3])
+    return v, r
 
 
 def speak(spec, lines, i, c):
@@ -501,21 +532,40 @@ def read_line(spec, lines, i, c, pace, rate):
     pieces, longest, warn = [], 0.0, []
     for k, s in enumerate(parts):
         # 쉼표 뒤에 쉼 표시. 짧은 맞장구(react)와 짧은 말은 넣지 않아요("아, 그렇구나"가 늘어져요). 물음도 넣지 않아요(끝이 내려가요)
-        mark = "," in s.rstrip(",") and pace != "react" and syllables(s) > 4 and not s.endswith("?")
-        mk = re.sub(r",\s*", ", [pause short] ", s) if mark else ""
+        mark = bool(PAUSE_COMMA.search(s.rstrip(","))) and pace != "react" and syllables(s) > 4 and not s.endswith("?")
+        mk = PAUSE_COMMA.sub(", [pause short] ", s) if mark else ""
+
+        def once(t):
+            x = tts(mk or s, c.get("voice"), rate, markup=bool(mk), take=t, tail=0.12)
+            return squeeze(x, COMMA[pace]) if x is not None and mk else (x, None)
+        lp = None
         if s.endswith("?"):
             v, lift = ask_read(s, c, rate, l.get("take"))
             why.append(f"물음 끝 {lift}반음 오름")
             if v is not None and (lift is None or lift < RISE):
                 warn.append(f"물음 끝이 안 올라가요('{s[:14]}…', {lift}반음)")
         else:
-            v = tts(mk or s, c.get("voice"), rate, markup=bool(mk), take=l.get("take"), tail=0.12)
+            v, lp = once(l.get("take"))
+            bad, net, gap = drawn(v, s)
+            if bad and not l.get("take"):  # 늘어진 읽기: 빠르기는 그대로 두고 그 조각만 다시 읽어요 (2026-11-06)
+                for t in range(2, 2 + RETAKES):
+                    v2, lp2 = once(t)
+                    if v2 is None:
+                        break
+                    b2, n2, g2 = drawn(v2, s)
+                    if not b2 or n2 > net:
+                        v, lp, bad, net, gap = v2, lp2, b2, n2, g2
+                    if not b2:
+                        why.append(f"늘어진 읽기라 다시 읽음(take {t}, {n2}음절/초)")
+                        break
         if v is None:
             return None, {}
+        bad, net, gap = drawn(v, s)
+        if bad:
+            warn.append(f"늘어져요('{s[:14]}…', {net}음절/초·가운데 쉼 {gap}초)")
         if mk:
-            v, lp = squeeze(v, COMMA[pace])
-            longest = max(longest, lp)
-            if lp < 0.1:
+            longest = max(longest, lp or 0)
+            if (lp or 0) < 0.1:
                 warn.append(f"쉼표에서 안 쉼('{s[:14]}…')")
         sent.append(mk or s)
         pieces.append(v)
@@ -884,6 +934,8 @@ def pick_problems(spec):
             should.append(f"{n}번 문장: 띄어쓰기가 두 칸이에요.")
         if re.search(r"[,.?!](?=[가-힣A-Za-z0-9])", t):
             should.append(f"{n}번 문장: 문장부호 뒤에 띄어쓰기가 없어요('{t[:16]}…'). 붙여 읽혀요.")
+        if re.search(r"\d\s*,\s+(?:만|천|억|원|개|명|곳|%|kg|g|분|시간|배)", t):
+            should.append(f"{n}번 문장: 숫자와 단위 사이에 쉼표가 있어요('{t[:16]}…'). 한 뜻으로 이어 읽게 쉼표를 빼 주세요.")
         for run in re.split(r"[,.?!…]", t):
             if syllables(run) > 20:
                 should.append(f"{n}번 문장: '{run.strip()[:14]}…' 이 쉼 없이 {syllables(run)}음절이에요. 뜻이 끊기는 곳에 쉼표를 넣거나 나눠 주세요.")
@@ -927,7 +979,8 @@ def problems(spec):
         shown = line_photos(lines) if lines and (lines[0].get("photo") or lines[0].get("photos")) else []
         keys = {json.dumps(p, sort_keys=True) for ps in shown for p in ps}
         if shown and len(keys) < 8 and not short:
-            should.append(f"서로 다른 사진이 {len(keys)}장이에요. 8~12장이 좋아요(사진이 자주 바뀌어야 끝까지 봐요).")
+            should.append(f"서로 다른 사진이 {len(keys)}장이에요. 8~12장이 좋아요(사진이 자주 바뀌어야 끝까지 봐요). "
+                          "대상이 맞는 사진으로만 채우고, 모자라면 숫자 카드나 문장 줄이기로 풀어요. 비슷한 다른 음식 사진으로 채우지 않아요.")
     run = 0
     if spec.get("layout") == "rec":  # 추천 쇼츠는 장면을 자막 조각마다 따로 정해요 (rec.problems)
         import rec
@@ -949,7 +1002,13 @@ def problems(spec):
     elif total > hi + 3:
         should.append(f"읽는 데 {total:.0f}초쯤이에요. {lo}~{hi}초로 줄여 주세요.")
     elif total < lo - 3:
-        should.append(f"읽는 데 {total:.0f}초쯤이에요. {lo}~{hi}초가 되게 늘리면 좋아요.")
+        should.append(f"읽는 데 {total:.0f}초쯤이에요. {lo}~{hi}초가 되게 늘리려면 내용 있는 문장을 더해요. 빠르기를 낮추거나 쉼(gap)을 늘려 말을 늘이지 않아요.")
+    base = float((spec.get("narrator") or {}).get("rate") or 0) if isinstance(spec.get("narrator"), dict) else 0
+    for n, l in enumerate(lines, 1):  # 2026-11-06 사용자: 사진·화면 길이에 맞추려고 말을 늘이지 않아요. 화면이 말 길이를 따라가요
+        if base and l.get("rate") and float(l["rate"]) < base * 0.95:
+            should.append(f"{n}번 문장 rate {l['rate']} 가 목소리 기본({base})보다 느려요. 사진 길이에 맞추려는 거면 빼 주세요(화면이 말 길이에 맞춰져요).")
+        if "gap" in l and float(l["gap"]) > 0.6:
+            should.append(f"{n}번 문장 뒤 쉼(gap {l['gap']}초)이 길어요. 화면을 오래 보여 주려고 쉼을 늘리지 않아요.")
     # 가격·시간 확인은 저녁 추천처럼 근거(facts)를 적는 영상만 해요. 매일 내레이션 쇼츠(10-voice)는 지금 규칙 그대로예요.
     m, s = verify(spec) if (spec.get("facts") is not None or spec.get("kind") == "저녁추천") else ([], [])
     must, should = must + m, should + s
