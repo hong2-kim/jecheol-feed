@@ -468,7 +468,8 @@
     "approved": false,
     "reasons": [],
     "noticed": null,
-    "held_noticed": null
+    "held_noticed": null,
+    "fix": "2026-11-06 19:40"
   },
   "2026-11-06-4-find": {
     "verdict": "통과",
