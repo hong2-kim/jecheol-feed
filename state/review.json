@@ -498,5 +498,17 @@
     "hash": "5049825d7c29",
     "approved": false,
     "reasons": []
+  },
+  "2026-11-07-3-dinner": {
+    "verdict": "통과",
+    "hash": "95cb1c614389",
+    "approved": false,
+    "reasons": []
+  },
+  "2026-11-07-4-find": {
+    "verdict": "통과",
+    "hash": "c30a0d1f5430",
+    "approved": false,
+    "reasons": []
   }
 }

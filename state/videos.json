@@ -1,5 +1,57 @@
 [
   {
+    "id": "2026-11-07-4-find",
+    "date": "2026-11-07",
+    "kind": "발견",
+    "title": "겨울 딸기 샌드위치가 79.8% 늘었어요, 하루 1만 5천 개 팔린 날도 있대요",
+    "summary": "BGF리테일이 CU의 겨울철(12~2월) 딸기 샌드위치 매출이 79.8% 늘었고, 대표 제품은 하루 약 1만 5천 개까지 팔린 날이 있다고 밝혔어요.",
+    "caption": "겨울엔 딸기 샌드위치 찾게 되죠? 요즘 편의점 딸기 샌드위치 얘기예요.\n\nBGF리테일이 밝힌 숫자예요. CU의 겨울철(12~2월) 딸기 샌드위치 매출은 2024년 21.4%, 2025년 23.4% 늘었고 2026년은 79.8% 늘었어요. 지난해 말 낸 생과일 샌드위치 시리즈 가운데 대표 제품은 하루 약 1만 5천 개까지 팔린 날도 있대요. 지난해 12월부터 올해 4월까지 생과일 샌드위치 매출은 전년 동기보다 94.3% 늘었다고 해요.\n\n6일부터 생딸기를 넣은 샌드위치 3종이 순차로 나와요. 18일에는 딸기·오렌지·샤인머스캣을 함께 넣은 샌드위치가 나온다고 해요.\n\n사진은 과일 샌드위치 일반 사진이고, CU 제품 사진이 아니에요. 협찬이나 광고가 아니에요. 더 자세한 이야기는 프로필 링크의 블로그에 있어요.\n\n여러분은 과일 샌드위치, 좋아하세요?\n\n출처: 현대경제신문(11월 5일)",
+    "tags": [
+      "딸기샌드위치",
+      "편의점디저트",
+      "생과일샌드위치",
+      "겨울간식",
+      "먹고갈지도"
+    ],
+    "sources": [
+      "https://www.finomy.com/news/articleView.html?idxno=265802"
+    ],
+    "credits": [
+      "Naotake Murayama (CC BY 2.0) · commons.wikimedia.org/?curid=32084255",
+      "Araisyohei (CC BY 4.0) · commons.wikimedia.org/?curid=123056964",
+      "Wotancito (CC BY 4.0) · commons.wikimedia.org/?curid=151513676",
+      "Nesnad (CC BY 4.0) · commons.wikimedia.org/?curid=145294227",
+      "Nesnad (CC BY 4.0) · commons.wikimedia.org/?curid=127581455"
+    ],
+    "url": "https://github.com/hong2-kim/jecheol-feed/releases/download/v2026-11-07/2026-11-07-4-find.mp4",
+    "seconds": 13.8,
+    "size_mb": 4.0,
+    "yt_title": "편의점 딸기 샌드위치 겨울 매출 79.8% 늘었어요, 하루 1만 5천 개까지",
+    "sha256": "e2f9070c2f4c780736745a3ccd1041aa613a51b710ae509d600a0831a54c3c1c"
+  },
+  {
+    "id": "2026-11-07-3-dinner",
+    "date": "2026-11-07",
+    "kind": "저녁",
+    "title": "토요일 저녁 뭐 먹지? 칼국수·대게찜·피자·닭갈비 중에 골라 줄게",
+    "summary": "토요일 저녁, 칼국수·대게찜·피자·닭갈비 넷 중에 골라 줘요.",
+    "caption": "토요일 저녁, 뭐 먹을지 못 정했다면? 이 넷 중에 골라 줄게요!\n\n국물이 당기면 칼국수\n푸짐한 게 당기면 대게찜\n쭉 늘어나는 게 당기면 피자\n매콤한 게 당기면 닭갈비\n\n넷 중에 오늘 뭐 먹을래요? 댓글로 알려 주세요.",
+    "tags": [
+      "토요일저녁메뉴",
+      "저녁메뉴추천",
+      "오늘뭐먹지",
+      "대게찜",
+      "먹고갈지도"
+    ],
+    "sources": [],
+    "credits": [],
+    "url": "https://github.com/hong2-kim/jecheol-feed/releases/download/v2026-11-07/2026-11-07-3-dinner.mp4",
+    "seconds": 16.1,
+    "size_mb": 7.8,
+    "yt_title": "토요일 저녁 메뉴 뭐 먹지? 칼국수·대게찜·피자·닭갈비 중에 골라 줌",
+    "sha256": "ecdcc446171622dd0b2ba27571b976360f652b43ff228f729baa8e70cfcecb1b"
+  },
+  {
     "id": "2026-11-06-8-trend",
     "date": "2026-11-06",
     "kind": "유행",
