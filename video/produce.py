@@ -308,7 +308,16 @@ def main():
                         log_error(f"thumb:{name}", e)
                         print(f"썸네일을 만들지 못했어요: {name} — {e}")
                 if build.is_cards(spec):
-                    files, spec, more = render_cards(spec, name, browser, strict=not draft_all)
+                    try:
+                        files, spec, more = render_cards(spec, name, browser, strict=not draft_all)
+                    except ValueError as e:  # 그린 뒤 검수로 장을 다 빼야 하면 멈추지 않고 전부 넣은 시안으로 (2026-11-06 사용자)
+                        if draft_all or not str(e).startswith("카드 검수"):
+                            raise
+                        draft_all = f"전체 보류: {e}"
+                        entry.update(draft_all=draft_all, warns=[f"{draft_all}. 걸린 장도 넣은 시안이에요"])
+                        entry.pop("held", None)
+                        print(f"  {draft_all} → 전부 넣은 승인 전 시안으로 만들어요")
+                        files, spec, more = render_cards(spec, name, browser, strict=False)
                     if draft_all and more:
                         entry["warns"] += [f"그린 뒤 검수: {r[:120]}" for h in more for r in h["reasons"][:2]]
                         more = []

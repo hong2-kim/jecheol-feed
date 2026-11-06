@@ -1835,6 +1835,10 @@ def layout_triage(spec, bad, held_before=()):
         if c.get("type") == "hero" and not c.get("compact"):
             c["compact"] = True  # 자동 수정: 제목을 더 작게 해서 다시 재요
             continue
+        note = re.sub(r"\[\[|\]\]|<[^>]+>|\s+", "", str(c.get("note") or ""))
+        if note and any("겹침" in m and note[:5] in m.replace(" ", "") for m in ms):
+            c.pop("note")  # 자동 수정: 사진 위 스티커 한마디가 다른 글과 겹치면 스티커만 빼고 다시 재요 (2026-11-06 사용자)
+            continue
         if ids[n - 1] == ids[0] and first_news_gap(spec, {ids[0]}):
             return spec, [], "첫 소식 장 검수: " + " / ".join(ms[:2]) + " — " + first_news_gap(spec, {ids[0]})
         drop.append(n)
