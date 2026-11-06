@@ -8,6 +8,7 @@
 네이버에 올린 기록(state/blog_posted.json)은 사용자의 컴퓨터가 올린 뒤에 적어 보내요.
 """
 import html
+import json
 import os
 import sys
 from datetime import datetime, timedelta
@@ -44,13 +45,15 @@ def posted_message(event, site):
     if status == "published":
         return f"✅ <b>네이버 블로그에 올렸어요</b>\n{title}\n{e(event.get('url') or '')}"
     if status == "login":
-        return ("❌ <b>네이버 로그인이 만료돼 블로그를 올리지 못했어요</b>\n"
-                "컴퓨터에서 Claude 에게 \"네이버 로그인 창 열어 줘\"라고 한 뒤 직접 로그인해 주세요. 로그인하면 밀린 초안부터 올라가요.")
+        return ("❌ <b>네이버 로그인이 만료돼 블로그를 올리지 못했어요</b>\n"  # 로그인은 사용자만 해요(아이디·비밀번호를 Claude 가 넣지 않아요)
+                "컴퓨터 앞에 있을 때 '클로드 연습하기' 폴더의 scripts\\naver-login.cmd 를 두 번 눌러 직접 로그인해 주세요. "
+                "로그인하면 다음 발행 때 밀린 초안부터 올라가요.")
     if status == "held":  # 보내기 전 검수(scripts/gate.py)에 걸려 올리지 않음. 고치거나 승인하면 다음 날 다시 검수해요 (2026-10-23 5단계)
-        return f"🛑 <b>검수에 걸려 블로그를 올리지 않았어요</b>\n{title}\n{note}\n고치거나 Claude 에게 \"보내\"라고 하면 다음 날 다시 검수해요.{page}"
+        return (f"🟡 <b>검수에 걸려 블로그를 아직 올리지 않았어요</b>\n{title}\n{note}\n\n"  # 버튼으로 정하면 컴퓨터가 3시간까지 기다렸다 이어 가요 (2026-11-06)
+                f"초안을 보고 [승인]을 누르면 올라가요(컴퓨터가 3시간까지 기다려요). 고칠 점은 이 메시지에 답장으로 적어 주세요.{page}")
     if status == "stopped":  # 운영 폴더가 main 이 아니거나 예상 못 한 오류로 발행 전에 멈춤. 초안은 그대로 남아 있어요 (2026-10-28)
         return (f"❌ <b>블로그 발행이 멈췄어요</b>\n{note}\n"
-                "컴퓨터에서 Claude 에게 \"오늘 블로그 발행 다시 돌려 줘\"라고 해 주세요. 그냥 두면 내일 13시에 다시 해 봐요.")
+                "오류였으면 컴퓨터가 10분 간격으로 두 번 더 스스로 해 봐요. 그래도 안 되면 내일 13시에 다시 해 봐요.")
     if status == "skipped":
         return f"⚠️ <b>블로그를 자동으로 올리지 않았어요</b>\n{title}\n{note}{page}"
     return f"❌ <b>블로그를 올리지 못했어요</b>\n{title}\n{note}\n다음 날 한 번 더 시도해요.{page}"
@@ -82,8 +85,22 @@ def run():
     sent.update(p["id"] for p in posts)
 
     events = [ev for ev in (read_json(ROOT / "state" / "blog_posted.json", []) or []) if "posted:" + ev["key"] not in sent]
+    review = read_json(ROOT / "state" / "review.json", {}) or {}
     for event in events:
-        send(posted_message(event, site))
+        if event.get("status") == "held" and event.get("id"):  # 승인·고쳐서 다시·안 올리기 버튼 (scripts/tg_actions.py, 2026-11-06)
+            rid = "blog-" + event["id"]
+            kb = {"inline_keyboard": [[{"text": "✅ 승인(올리기)", "callback_data": f"j:ok:{rid}"}],
+                                      [{"text": "🛠 고쳐서 다시", "callback_data": f"j:fix:{rid}"},
+                                       {"text": "🗑 이번엔 안 올리기", "callback_data": f"j:no:{rid}"}]]}
+            m = api(token, "sendMessage", chat_id=chat_id, text=posted_message(event, site), parse_mode="HTML",
+                    disable_web_page_preview="true", reply_markup=json.dumps(kb, ensure_ascii=False))
+            note = event.get("note") or ""
+            review[rid] = {**review.get(rid, {}), "ask_msg": m.get("message_id"),
+                           "verdict": "차단" if "검수: 차단" in note else "확인 필요",
+                           "reasons": [x for x in note.split("\n")[1:] if x][:6]}
+            write_json(ROOT / "state" / "review.json", review)
+        else:
+            send(posted_message(event, site))
         sent.add("posted:" + event["key"])
 
     write_json(path, sorted(sent))

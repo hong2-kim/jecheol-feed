@@ -5,8 +5,9 @@
 
 1. dist/results.json 을 읽어요.
 2. 성공한 영상의 내려받기 주소를 state/videos.json 에 적어요. (RSS가 이 파일을 읽어요)
-3. 보내기 전 검수(scripts/gate.py): 통과한 것(또는 사용자가 승인한 '확인 필요')만 보내요. 걸린 것은 보내지 않고
-   까닭을 state/review.json 에 적고 한 번 알려요. 보낸 것으로 적지 않으니 고쳐서 다시 올리면 다시 검수해 보내요. (2026-10-23 5단계)
+3. 보내기 전 검수(scripts/gate.py): 통과한 것만 '올릴 것'으로 보내요. 걸린 것(겹치는 내용·사진 확인 등)도 멈추지 않고
+   '승인 전 시안'으로 영상·카드를 그대로 보내고 [승인]·[빼기]·[고쳐서 다시] 버튼을 붙여요(2026-11-06 사용자: 제작과 승인을 나눔).
+   버튼은 scripts/tg_actions.py 가 처리해요(photos 작업이 10분마다 받아요). 까닭은 state/review.json 에 적어요.
 4. 텔레그램으로 영상과 게시글용 글을 보내요. 실패한 항목은 이유와 함께 알려요.
 영상 파일 올리기(릴리스)는 작업 파일에서 gh 명령으로 먼저 해 둬요.
 """
@@ -165,7 +166,8 @@ def send_shorts_only(token, chat, day, todo, bad, sent):
 
 
 def gate_all(day, results):
-    """보내기 전 검수(scripts/gate.py). {id: 검수 결과}. 설계도가 없거나 검수를 못 하면 '확인 필요'로 봐요(통과로 치지 않아요). (2026-10-23 5단계)"""
+    """보내기 전 검수(scripts/gate.py). {id: 검수 결과}. 설계도가 없거나 검수를 못 하면 '확인 필요'로 봐요(통과로 치지 않아요). (2026-10-23 5단계)
+    제작 때 기준을 넘었지만 시안으로 만든 것(warns: 길이, 전체 보류)은 사람이 승인하기 전에는 '확인 필요'예요 (2026-11-06)."""
     import gate
     out = {}
     for r in results:
@@ -173,11 +175,30 @@ def gate_all(day, results):
             continue
         spec = ROOT / "videos" / day / (r["id"][len(day) + 1:] + ".json")
         try:
-            out[r["id"]] = gate.evaluate(spec, held=[h["no"] for h in r.get("held") or []])
+            out[r["id"]] = g = gate.evaluate(spec, held=[h["no"] for h in r.get("held") or [] if h.get("no")])
+            if r.get("warns"):
+                g["findings"] += [("제작", "확인", w) for w in r["warns"]]
+                if g["verdict"] == "통과" and not (g.get("approved") or g.get("forced")):
+                    g["verdict"] = "확인 필요"
         except Exception as e:
             log_error(f"gate:{r['id']}", e)
             out[r["id"]] = {"verdict": "확인 필요", "findings": [("검수 오류", "확인", f"검수를 하지 못했어요: {str(e)[:150]}")], "hash": "", "approved": False}
     return out
+
+
+def buttons(rid, verdict, held_cards=False):
+    """승인 전 시안·뺀 장 알림에 붙는 버튼. scripts/tg_actions.py 가 처리해요(callback j:할일:id)."""
+    if held_cards:
+        rows = [[{"text": "➕ 뺀 장도 넣어 다시 만들기", "callback_data": f"j:keep:{rid}"}],
+                [{"text": "🛠 고쳐서 다시", "callback_data": f"j:fix:{rid}"}, {"text": "이대로 둘게요", "callback_data": f"j:fine:{rid}"}]]
+    else:
+        ok = "✅ 그래도 쓰기(승인)" if verdict == "차단" else "✅ 승인(올릴 목록에 넣기)"
+        rows = [[{"text": ok, "callback_data": f"j:ok:{rid}"}],
+                [{"text": "🛠 고쳐서 다시", "callback_data": f"j:fix:{rid}"}, {"text": "🗑 이번엔 빼기", "callback_data": f"j:no:{rid}"}]]
+    return json.dumps({"inline_keyboard": rows}, ensure_ascii=False)
+
+
+ASK_TAIL = "고칠 점이 있으면 이 메시지에 답장으로 적어 주세요. 그대로 고쳐서 다시 보내요."
 
 
 def gate_reasons(g):
@@ -200,9 +221,11 @@ def held_cards_notice(token, chat, day, results, review, passed):
         for h in held:
             lines.append(f"\n■ {h['no']}장 「{h['headline']}」 — {h['grade']}")
             lines += ["  " + x[:160] for x in h["reasons"][:3]]
-        lines.append("\n'확인 필요'는 보고 괜찮으면 Claude 에게 말해 주세요. 그 장을 넣어 다시 만들어요. '차단'·'보류'는 고쳐야 나가요.")
+        lines.append("\n뺀 장이 괜찮으면 [뺀 장도 넣어 다시 만들기]를 눌러 주세요. 바로 다시 만들어 보내요. " + ASK_TAIL)
         if token and chat:
-            tg("sendMessage", token, data={"chat_id": chat, "text": "\n".join(lines)[:4000], "disable_web_page_preview": "true"})
+            m = tg("sendMessage", token, data={"chat_id": chat, "text": "\n".join(lines)[:4000], "disable_web_page_preview": "true",
+                                               "reply_markup": buttons(r["id"], "", held_cards=True)})
+            review.setdefault(r["id"], {})["ask_msg"] = m.get("message_id")
             try:  # 뺀 장의 사진 자리를 빨간 테두리로 표시한 검수 시트
                 import review_sheet
                 out = ROOT / "dist" / f"{r['id']}-held.jpg"
@@ -217,21 +240,46 @@ def held_cards_notice(token, chat, day, results, review, passed):
         review[r["id"]]["held_cards"] = held
 
 
+def send_draft(token, chat, day, r):
+    """승인 전 시안: 올릴 때와 같은 영상·카드·글을 보내요(인스타를 안 보내는 설정이면 유튜브 쇼츠 것만)."""
+    if not insta_on() and has_youtube(r):
+        send_youtube(token, chat, r, day, alone=True)
+        return
+    text = (ROOT / "dist" / f"{r['id']}.txt").read_text(encoding="utf-8") if (ROOT / "dist" / f"{r['id']}.txt").exists() else ""
+    if r.get("format") == "cards":
+        send_cards(token, chat, r)
+    else:
+        with open(ROOT / "dist" / r["file"], "rb") as f:
+            tg("sendVideo", token, data={"chat_id": chat, "caption": f"[승인 전 시안]\n{r.get('title') or r['id']}"[:900], "supports_streaming": "true",
+                                         "width": 1080, "height": 1920}, files={"video": (r["file"], f, "video/mp4")})
+    if text:
+        tg("sendMessage", token, data={"chat_id": chat, "text": f"[승인 전 시안 · 게시글]\n{text}"[:4000], "disable_web_page_preview": "true"})
+    if has_youtube(r) and r.get("format") == "cards":
+        send_youtube(token, chat, r, day)
+
+
 def hold_notice(token, chat, day, held, review):
-    """보류한 것만 한 번 알려요. 같은 내용(같은 지문·같은 판정)으로 이미 알린 것은 다시 알리지 않아요."""
+    """검수에 걸린 것도 멈추지 않고 '승인 전 시안'으로 보내고 버튼으로 물어요. 같은 내용(같은 지문·같은 판정)은 다시 보내지 않아요.
+    (2026-11-06 사용자: 겹치는 시안도 우선 만들어 보내고, 쓸지·보낼지는 사용자가 정함)"""
     import gate
-    fresh = [(r, g) for r, g in held if (review.get(r["id"]) or {}).get("noticed") != f"{g['verdict']}:{g['hash']}"]
+    fresh = [(r, g) for r, g in held if (review.get(r["id"]) or {}).get("noticed") != f"{g['verdict']}:{g['hash']}"
+             and not (review.get(r["id"]) or {}).get("dropped")]
     if not fresh or not (token and chat):
         return
-    lines = [f"🛑 {day} 검수에 걸려 보내지 않은 것 {len(fresh)}개"]
+    tg("sendMessage", token, data={"chat_id": chat, "text": f"🟡 {day} 승인 전 시안 {len(fresh)}개\n검수에 걸린 것도 만들어 보내요. 보고 시안마다 버튼으로 정해 주세요. 승인하기 전에는 '올릴 것' 목록과 RSS에 넣지 않아요."})
     for r, g in fresh:
-        lines.append(f"\n■ {LABELS.get(r['id'][11:], (r.get('title') or r['id'],))[0]} — {g['verdict']}")
-        lines += ["  " + x for x in gate.reasons(g)]
-    lines.append("\n고친 설계도를 다시 올리면 다시 검수해요. '확인 필요'는 보고 괜찮으면 Claude 에게 \"보내\"라고 하면 승인해 다시 보내요. '차단'은 고쳐야 나가요.")
-    tg("sendMessage", token, data={"chat_id": chat, "text": "\n".join(lines)[:4000], "disable_web_page_preview": "true"})
-    for r, g in fresh:
-        review[r["id"]]["noticed"] = f"{g['verdict']}:{g['hash']}"
         name = LABELS.get(r['id'][11:], (r.get('title') or r['id'],))[0]
+        tg("sendMessage", token, data={"chat_id": chat, "text": f"━━━━ 🟡 승인 전 시안 · {name} ━━━━"})
+        try:
+            send_draft(token, chat, day, r)
+        except Exception as e:
+            log_error(f"telegram:draft:{r['id']}", e)
+        ask = [f"🟡 {name} — {g['verdict']}", *("  " + x for x in gate.reasons(g, 6)), "",
+               "괜찮으면 [승인], 고쳐야 하면 [고쳐서 다시], 안 쓰려면 [이번엔 빼기]를 눌러 주세요.", ASK_TAIL]
+        m = tg("sendMessage", token, data={"chat_id": chat, "text": "\n".join(ask)[:4000], "disable_web_page_preview": "true",
+                                           "reply_markup": buttons(r["id"], g["verdict"])})
+        review[r["id"]]["noticed"] = f"{g['verdict']}:{g['hash']}"
+        review[r["id"]]["ask_msg"] = m.get("message_id")
         try:  # 문제가 걸린 자리를 빨간 테두리로 표시한 사진 검수 시트(제목·종류·날짜·까닭·출처)
             import re
             import review_sheet
@@ -244,15 +292,6 @@ def hold_notice(token, chat, day, held, review):
             with open(out, "rb") as f:
                 tg("sendPhoto", token, data={"chat_id": chat, "caption": f"사진 검수 시트 · {name} ({g['verdict']}) · 빨간 칸이 까닭이 걸린 자리"[:900]},
                    files={"photo": (out.name, f, "image/jpeg")})
-        except Exception as e:
-            log_error(f"review_sheet:{r['id']}", e)
-        try:  # 완성된 결과물을 사람이 볼 수 있게 장면 모음 한 장(scripts/review_sheet.py --media)
-            import review_sheet
-            files = [ROOT / "dist" / f for f in (r.get("files") or [r["file"]])]
-            out = ROOT / "dist" / f"{r['id']}-review.jpg"
-            review_sheet.media_sheet([f for f in files if f.exists()], out)
-            with open(out, "rb") as f:
-                tg("sendPhoto", token, data={"chat_id": chat, "caption": f"검수용 장면 모음 · {r['id']} ({g['verdict']})"}, files={"photo": (out.name, f, "image/jpeg")})
         except Exception as e:
             log_error(f"review_sheet:{r['id']}", e)
 
@@ -269,7 +308,7 @@ def main():
     for rid, g in gates.items():
         old = review.get(rid) or {}
         review[rid] = {"verdict": g["verdict"], "hash": g["hash"], "approved": g.get("approved", False),
-                       "reasons": gate_reasons(g), "noticed": old.get("noticed"), "held_noticed": old.get("held_noticed")}
+                       "reasons": gate_reasons(g), **{k: old[k] for k in ("noticed", "held_noticed", "ask_msg", "dropped", "fix") if k in old}}
     passed = {rid for rid, g in gates.items() if g["verdict"] == "통과"}
 
     videos = read_json(ROOT / "state" / "videos.json", [])

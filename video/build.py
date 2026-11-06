@@ -1754,8 +1754,11 @@ def triage(spec, day=""):
         return spec, [], None
     spec = compose_news(spec)
     held = {}
+    keep = set((spec.get("review") or {}).get("keep_cards") or [])  # 사용자가 텔레그램에서 "뺀 장도 넣기"를 누른 장 (2026-11-06)
 
     def hold(n, grade, why):
+        if n in keep:
+            return
         h = held.setdefault(n, {"no": n, "headline": str(spec["cards"][n - 1].get("headline", "")).replace("\n", " "), "grade": grade,
                                 "reasons": [], "news": _card_news(spec)[n - 1]})
         rank = {"보류": 1, "확인 필요": 2, "차단": 3}

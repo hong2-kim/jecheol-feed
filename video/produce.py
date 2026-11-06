@@ -30,12 +30,20 @@ FPS = 30
 SIZE = {"width": 1080, "height": 1920}
 
 
-def render(spec, name, browser):
+LONG_DRAFT = 90  # 기준(build.longest)보다 길어도 이 초까지는 만들어 '승인 전 시안'으로 보내요 (2026-11-06 사용자)
+
+
+def render(spec, name, browser, warns=None):
+    """warns 에 리스트를 주면 기준을 넘었지만 만든 까닭을 적어요(보내기 전 검수에서 '확인 필요'가 돼요)."""
     build.EXTRACT = True
     page_html, duration, meta = build.build_html(spec)
     top = build.longest(spec)
-    if not 9.9 <= duration <= top + 0.1:
+    if duration < 9.9 or duration > LONG_DRAFT:
         raise ValueError(f"영상 길이가 {duration:.1f}초예요. 10~{top:.0f}초로 맞춰 주세요.")
+    if duration > top + 0.1:
+        print(f"  기준({top:.0f}초)보다 긴 {duration:.1f}초라 승인 전 시안으로 보내요")
+        if warns is not None:
+            warns.append(f"영상 길이가 {duration:.1f}초예요(기준 {top:.0f}초). 보고 괜찮으면 승인해 주세요")
     work = ROOT / "build"
     work.mkdir(exist_ok=True)
     html_path = work / f"{name}.html"
@@ -71,20 +79,27 @@ def render(spec, name, browser):
     return out, duration
 
 
-def render_cards(spec, name, browser):
+def render_cards(spec, name, browser, strict=True):
     """카드 뉴스를 그림으로 만들어요. dist/날짜-이름-1.jpg, -2.jpg … (만든 파일 이름들, 마지막 설계도, 그린 뒤 검수로 보류한 장)
-    그린 뒤 검수에 걸린 장은 자동으로 고쳐 다시 그리거나(큰 제목 장), 그 장만 빼고 다시 그려요 (2026-10-28 사용자)."""
+    그린 뒤 검수에 걸린 장은 자동으로 고쳐 다시 그리거나(큰 제목 장), 그 장만 빼고 다시 그려요 (2026-10-28 사용자).
+    strict=False(전체 보류 시안): 장을 더 뺄 수 없으면 그린 그대로 두고, 걸린 까닭은 보류 목록에 적어요 (2026-11-06 사용자)."""
     held = []
     for _ in range(4):
         files, bad = draw_cards(spec, name, browser)
         if not bad:
             break
-        spec, more, whole = build.layout_triage(spec, bad)
+        fixed, more, whole = build.layout_triage(spec, bad)
+        if whole and not strict:
+            held.append({"no": 0, "headline": "그린 뒤 검수", "grade": "확인 필요", "reasons": bad[:3], "news": None})
+            break
+        spec = fixed
         held += more
         if whole:
             raise ValueError("카드 검수: " + whole)
     else:
-        raise ValueError("카드 검수: 고쳐 다시 그려도 걸려요 — " + " / ".join(bad[:3]))
+        if strict:
+            raise ValueError("카드 검수: 고쳐 다시 그려도 걸려요 — " + " / ".join(bad[:3]))
+        held.append({"no": 0, "headline": "그린 뒤 검수", "grade": "확인 필요", "reasons": bad[:3], "news": None})
     (ROOT / "dist" / f"{name}.txt").write_text(build.description(spec), encoding="utf-8")
     return files, spec, held
 
@@ -264,13 +279,21 @@ def main():
             try:
                 spec = json.loads(path.read_text(encoding="utf-8"))
                 spec.update({"_day": day, "_name": path.stem})  # 오디오 보관함 곡을 날짜로 돌려 고를 때 써요
+                draft_all = None
                 if spec.get("format") == "cards":  # 문제 있는 장만 빼고 나머지는 그대로 만들어요 (2026-10-28 사용자)
+                    whole_spec = spec
                     spec, held, whole = build.triage(spec, day)
                     if held:
                         entry["held"] = held
                         print(f"  보류한 장: " + "; ".join(f"{h['no']}장 {h['headline']} ({h['grade']})" for h in held))
-                    if whole:
-                        raise ValueError("전체 보류: " + whole)
+                    if whole:  # 장을 빼서는 안 되면 멈추지 않고 전부 넣은 시안을 만들어 승인을 받아요 (2026-11-06 사용자)
+                        draft_all = "전체 보류: " + whole
+                        entry["draft_all"] = draft_all
+                        entry.pop("held", None)
+                        entry["warns"] = [f"{draft_all}. 걸린 장도 넣은 시안이에요"] + [
+                            f"{h['no']}장 「{h['headline']}」 {h['grade']}: {(h['reasons'] or [''])[0][:120]}" for h in held[:4]]
+                        spec = build.compose_news(whole_spec)
+                        print(f"  {draft_all} → 전부 넣은 승인 전 시안으로 만들어요")
                 entry["music"] = build.track_info(spec)
                 entry.update({k: spec.get(k) for k in ("kind", "title", "summary", "caption", "tags", "sources", "credits", "pin")})
                 entry["tags"] = build.hashtags(spec.get("tags"))  # 인스타에 들어가는 5개만
@@ -285,7 +308,10 @@ def main():
                         log_error(f"thumb:{name}", e)
                         print(f"썸네일을 만들지 못했어요: {name} — {e}")
                 if build.is_cards(spec):
-                    files, spec, more = render_cards(spec, name, browser)
+                    files, spec, more = render_cards(spec, name, browser, strict=not draft_all)
+                    if draft_all and more:
+                        entry["warns"] += [f"그린 뒤 검수: {r[:120]}" for h in more for r in h["reasons"][:2]]
+                        more = []
                     if more:  # 그린 뒤 검수로 장을 뺐으면 글·태그·유튜브 글도 남은 장에 맞춰요
                         entry["held"] = entry.get("held", []) + more
                         entry.update({k: spec.get(k) for k in ("title", "summary", "caption", "credits")})
@@ -302,7 +328,10 @@ def main():
                         log_error(f"short:{name}", e)
                         print(f"쇼츠 영상을 만들지 못했어요: {name} — {e}")
                 else:
-                    out, duration = render(spec, name, browser)
+                    warns = []
+                    out, duration = render(spec, name, browser, warns)
+                    if warns:
+                        entry["warns"] = warns
                     entry.update({"ok": True, "seconds": round(duration, 1), "size_mb": round(out.stat().st_size / 1e6, 1)})
                     print(f"만들었어요: {out.name} ({duration:.1f}초)")
             except Exception as e:

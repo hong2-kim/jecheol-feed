@@ -82,6 +82,10 @@ def pick(day, morning=False):
         now.append(("rules/monthly/day2.md", ("매달 2일" if day.day == 2 else "밀린 것") + ". 오늘 만들 것: 9-abroad"))
     if photos_today(day):
         now.append(("rules/when/myphotos.md", "사용자가 보낸 사진·동영상을 오늘 씀"))
+    open_fix = [f.name for f in sorted((ROOT / "requests").glob("fix-*.json"))
+                if json.loads(f.read_text(encoding="utf-8")).get("status") == "open"]
+    if open_fix:  # 텔레그램 [고쳐서 다시] 요청 (2026-11-06, scripts/tg_actions.py)
+        now.insert(0, ("rules/fix.md", f"고칠 요청 {len(open_fix)}건: {', '.join(open_fix[:3])} — 순서 0-0, 가장 먼저"))
     return now, later, maybe
 
 

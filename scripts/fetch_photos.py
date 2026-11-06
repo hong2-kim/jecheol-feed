@@ -7,6 +7,7 @@
 - 파일마다 이름, 고유 번호, 지문(sha256), 함께 적은 글을 myphotos/index.json 에 적어요.
   이 기록은 파일을 지운 뒤에도 남겨서, 같은 파일을 다시 받아도 또 쓰지 않아요.
 - TELEGRAM_CHAT_ID 로 정해 둔 사람이 보낸 것만 받아요.
+- 승인 전 시안의 버튼(승인·빼기·고쳐서 다시·뺀 장 넣기)과 그 메시지에 단 답장도 받아 scripts/tg_actions.py 로 실행해요 (2026-11-06).
 - 텔레그램은 받은 것을 하루만 보관하니, 이 스크립트는 몇 시간마다 돌아야 해요.
 필요한 값(환경 변수): TELEGRAM_BOT_TOKEN, TELEGRAM_CHAT_ID
 """
@@ -21,6 +22,7 @@ from datetime import datetime
 
 import cleanup
 import plan
+import tg_actions
 from common import KST, ROOT, log_error, read_json, write_json
 
 INCOMING = ROOT / "incoming"
@@ -93,6 +95,28 @@ def media(msg):
     return None
 
 
+def button(token, chat, cb):
+    """버튼 하나: 정해 둔 사람이 누른 것만 처리하고, 버튼을 치운 뒤 답할 글을 돌려줘요."""
+    message = cb.get("message") or {}
+    if str((cb.get("from") or {}).get("id")) != chat or str((message.get("chat") or {}).get("id")) != chat:
+        return []
+    try:
+        done = tg_actions.handle_callback(cb.get("data"))
+    except Exception as e:
+        log_error("tg_actions", f"{type(e).__name__}: {e}")
+        done = "버튼을 처리하다가 문제가 생겼어요. 아무것도 바꾸지 않았어요. 한 번 더 눌러 주세요."
+    try:  # 오래된 버튼이면 텔레그램이 답을 거절해요(괜찮아요)
+        api(token, "answerCallbackQuery", callback_query_id=cb["id"], text="받았어요")
+    except Exception:
+        pass
+    if done and not done.startswith("버튼을 처리하다가"):
+        try:
+            api(token, "editMessageReplyMarkup", chat_id=chat, message_id=message.get("message_id"), reply_markup='{"inline_keyboard":[]}')
+        except Exception:
+            pass
+    return [done] if done else []
+
+
 def run():
     token = os.environ.get("TELEGRAM_BOT_TOKEN", "").strip()
     chat = os.environ.get("TELEGRAM_CHAT_ID", "").strip()
@@ -101,7 +125,7 @@ def run():
         return
     state = ROOT / "state" / "tg_offset.json"
     offset = (read_json(state, {}) or {}).get("next", 0)
-    updates = api(token, "getUpdates", offset=offset, timeout=0, allowed_updates='["message"]')
+    updates = api(token, "getUpdates", offset=offset, timeout=0, allowed_updates='["message","callback_query"]')
     index = read_json(INDEX, []) or []
     known = {e.get("tg_unique") for e in index} | {e.get("sha256") for e in index}
     captions, saved, again, too_big, answers = {}, [], [], 0, []
@@ -112,10 +136,22 @@ def run():
             captions[msg["media_group_id"]] = msg["caption"]
     for up in updates:
         offset = max(offset, up["update_id"] + 1)
+        if up.get("callback_query"):  # 승인 전 시안 버튼
+            answers += button(token, chat, up["callback_query"])
+            continue
         msg = up.get("message") or {}
         if str((msg.get("chat") or {}).get("id")) != chat:
             continue
         found = media(msg)
+        if not found and msg.get("reply_to_message"):  # 시안 알림에 단 답장 = 고칠 점
+            try:
+                done = tg_actions.handle_reply(msg)
+            except Exception as e:
+                log_error("tg_actions:reply", f"{type(e).__name__}: {e}")
+                done = "답장을 처리하다가 문제가 생겼어요. 한 번 더 보내 주세요."
+            if done:
+                answers.append(done)
+                continue
         if not found:
             if msg.get("text"):  # 올렸어, 삭제 확인 같은 말
                 try:

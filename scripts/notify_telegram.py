@@ -91,7 +91,9 @@ def run():
         if os.environ.get("GITHUB_EVENT_NAME") != "schedule":
             print(f"{days[0]} 글이 아직 없어요. 아침 점검 때가 아니라 알리지 않아요.")
             return
-        api(token, "sendMessage", chat_id=chat_id, text=f"{days[0]} 소재를 만들지 못했어요. 다음 수집 때 다시 시도해요.")
+        kb = {"inline_keyboard": [[{"text": "🔁 지금 다시 만들기", "callback_data": f"j:rerun:{days[0]}"}]]}  # scripts/tg_actions.py (2026-11-06)
+        api(token, "sendMessage", chat_id=chat_id, text=f"{days[0]} 소재를 만들지 못했어요. 버튼을 누르면 다시 만들어요(누르지 않으면 내일 아침).",
+            reply_markup=json.dumps(kb, ensure_ascii=False))
         raise RuntimeError(f"{days[0]} 글이 없어요")
     if not todo:
         print("새로 보낼 글이 없어요.")

@@ -6,6 +6,7 @@
 (깃허브 자동 작업이 매일 오전 8시에 돌려요. 그날 영상은 보통 6시 반쯤 만들어져요)
 필요한 값(환경 변수): TELEGRAM_BOT_TOKEN, TELEGRAM_CHAT_ID
 """
+import json
 import os
 import sys
 from datetime import datetime
@@ -43,7 +44,8 @@ def main():
     text = (f"⚠️ {now.month}월 영상이 아직 안 나왔어요: {', '.join(left)}\n"
             "달 초(1일, 2일)에 나와야 하는 영상이에요. 오늘 아침 실행에서 만들지 못했어요. 내일 아침에 다시 만들어요.")
     try:
-        api(token, "sendMessage", chat_id=chat_id, text=text)
+        kb = {"inline_keyboard": [[{"text": "🔁 지금 다시 만들기", "callback_data": f"j:rerun:{now.strftime('%Y-%m-%d')}"}]]}  # scripts/tg_actions.py
+        api(token, "sendMessage", chat_id=chat_id, text=text + "\n버튼을 누르면 지금 다시 만들어요.", reply_markup=json.dumps(kb, ensure_ascii=False))
     except Exception as e:
         log_error("check_monthly", e)
         sys.exit(f"알림 실패: {e}")
