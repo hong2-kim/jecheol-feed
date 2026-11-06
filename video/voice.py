@@ -347,6 +347,8 @@ COMMA = {"hook": 0.1, "fun": 0.12, "react": 0.1, "reveal": 0.2, "number": 0.2, "
 # 2026-10-31 사용자: 물음이 평서문처럼 들렸어요. 8번 재 보니 [pause short] 를 넣은 물음은 6번 끝이 내려갔고, 같은 말도 읽을 때마다 억양이 달라요.
 # 그래서 물음은 쉼 표시 없이 읽고, 끝이 올라간 것을 골라요. 느린 문장은 그 문장만 고쳐 읽어요(일괄 배속 금지).
 RISE = 3.0  # 물음 끝이 앞 말보다 이만큼(반음) 높아야 해요
+RISE_MAX = 10.0  # 이보다 많이 오르면 과장된 억양이라 다른 읽기를 먼저 봐요(2026-11-06)
+SHORT_OK = {"자", "아", "와", "오", "네", "음", "어", "짠", "단", "또", "참", "그럼", "근데", "사실", "다만", "그래서", "자자", "여러분", "이건", "이거"}
 TAKES = 8  # 물음 하나를 읽어 볼 수
 SLOW, BRISK, FAST = 6.2, 6.9, 7.8  # 쉼 뺀 음절/초: SLOW 보다 느린 문장만 BRISK 쯤으로 고쳐 읽어요
 QUICKER = (1.06, 1.12, 1.18, 1.24)  # 느린 문장을 고칠 때 올려 볼 빠르기(배)
@@ -480,7 +482,7 @@ def rise_of(x):
 
 
 def ask_read(s, c, rate, take):
-    """물음 하나를 끝이 올라가게 읽어요. 앞에서부터 읽어 보다 올라간 것이 나오면 멈추고, 끝내 없으면 가장 많이 오른 것. (소리, 오른 높이)"""
+    """물음 하나를 끝이 올라가게 읽어요. 앞에서부터 읽어 보다 늘어지지 않고 알맞게(3~10반음) 오른 것이 나오면 멈춰요. (소리, 오른 높이)"""
     # 2026-11-06: 가장 많이 오른 읽기가 가장 늘어진 읽기일 때가 많아요. 늘어지지 않은 것 가운데서 고르고,
     # 다 늘어졌으면 가장 덜 늘어진 것을 써요.
     first, tries = int(take or 1), []
@@ -490,11 +492,13 @@ def ask_read(s, c, rate, take):
             return None, None
         r = rise_of(v)
         bad, net, _ = drawn(v, s)
-        if r is not None and r >= RISE and not bad:
+        if r is not None and RISE <= r <= RISE_MAX and not bad:
             return v, r
         tries.append((v, r, bad, net))
+    # 2026-11-06 사용자: 물음이라고 끝을 과장되게 올리지 않아요. 늘어지지 않은 것 가운데 알맞게 오른 것 → 덜 과장된 것 차례로 골라요
     ok = [x for x in tries if not x[2]]
-    v, r, _, _ = max(ok, key=lambda x: x[1] if x[1] is not None else -99) if ok else max(tries, key=lambda x: x[3])
+    fit = lambda x: (x[1] is not None and x[1] >= RISE, -max(0.0, (x[1] or 0) - RISE_MAX), x[1] or -99)
+    v, r, _, _ = max(ok, key=fit) if ok else max(tries, key=lambda x: x[3])
     return v, r
 
 
@@ -934,8 +938,13 @@ def pick_problems(spec):
             should.append(f"{n}번 문장: 띄어쓰기가 두 칸이에요.")
         if re.search(r"[,.?!](?=[가-힣A-Za-z0-9])", t):
             should.append(f"{n}번 문장: 문장부호 뒤에 띄어쓰기가 없어요('{t[:16]}…'). 붙여 읽혀요.")
-        if re.search(r"\d\s*,\s+(?:만|천|억|원|개|명|곳|%|kg|g|분|시간|배)", t):
+        if re.search(r"\d\s*,\s+(?:만|천|억|원|개|명|곳|%|kg|g|분|시간|배|이상|이하|정도|가량|째|씩)", t):
             should.append(f"{n}번 문장: 숫자와 단위 사이에 쉼표가 있어요('{t[:16]}…'). 한 뜻으로 이어 읽게 쉼표를 빼 주세요.")
+        # 두 음절 안 짧은 말 뒤 쉼표('밥이, 당기면')는 조사·꾸밈말이 끊겨 읽혀요. 감탄·이음말('자, 시작!')은 괜찮아요 (2026-11-06)
+        for m in re.finditer(r"(?:^|[,.?!]\s*)([가-힣]{1,2}),\s", t):
+            if m.group(1) not in SHORT_OK:
+                should.append(f"{n}번 문장: '{m.group(1)},' 처럼 짧은 말 뒤 쉼표는 끊겨 읽혀요('{t[:16]}…'). 한 덩어리 말이면 쉼표를 빼 주세요.")
+                break
         for run in re.split(r"[,.?!…]", t):
             if syllables(run) > 20:
                 should.append(f"{n}번 문장: '{run.strip()[:14]}…' 이 쉼 없이 {syllables(run)}음절이에요. 뜻이 끊기는 곳에 쉼표를 넣거나 나눠 주세요.")
