@@ -1,9 +1,11 @@
 {
   "rid": "2026-11-06-3-dinner",
   "spec": "videos/2026-11-06/3-dinner.json",
-  "status": "open",
+  "status": "kept",
   "at": "2026-11-06 19:40",
   "reasons": [],
   "held_cards": [],
-  "note": ""
+  "note": "",
+  "done_at": "2026-11-07",
+  "summary": "요청에 reasons·note 가 비어 있는 시험 요청이라 고칠 내용이 없어 그대로 둠(kept)."
 }

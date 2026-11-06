@@ -1,0 +1,155 @@
+{
+ "kind": "발견",
+ "css": ".cover .back, .card .back { display: none; } .cover .pic, .cover .pic.fill, .cover .pic.whole { height: 1920px; -webkit-mask-image: none; mask-image: none; } .cover .pic img, .cover .pic.whole img, .cover .pic.fill img { object-fit: cover; filter: brightness(.95); } .cover .pic::after { content: \"\"; position: absolute; left: 0; right: 0; bottom: 0; height: 960px; background: linear-gradient(180deg, rgba(8,6,4,0) 0%, rgba(8,6,4,.5) 30%, rgba(8,6,4,.84) 62%, rgba(8,6,4,.92) 100%); } .cover .mid { top: auto; bottom: 400px; text-shadow: 0 3px 20px rgba(0,0,0,.6); } .card .pic.wide, .card .pic.wide.fill, .card .pic.tall { height: 1920px; -webkit-mask-image: none; mask-image: none; } .card .pic img { object-fit: cover; } .card .shade { height: 900px; } .card .txt { bottom: 400px; } .chip { font-size: 46px; } .ln { font-size: 54px; font-weight: 700; line-height: 1.34; } .duo .seam { top: 590px; height: 740px; background: linear-gradient(180deg, rgba(8,6,4,0) 0%, rgba(8,6,4,.8) 26%, rgba(8,6,4,.8) 74%, rgba(8,6,4,0) 100%); } .duo .sub { white-space: pre-line; font-size: 50px; line-height: 1.42; margin-top: 22px; } .duo .tagchip { top: 150px !important; font-size: 34px; font-weight: 800; padding: 8px 20px 12px; border-radius: 12px; background: rgba(8,6,4,.6); } .duo .tagchip ~ .tagchip { top: 1290px !important; } .tref { display: none; }",
+ "subject": "딸기 샌드위치 · 편의점 겨울 매출 79.8%",
+ "title": "겨울 딸기 샌드위치가 79.8% 늘었어요, 하루 1만 5천 개 팔린 날도 있대요",
+ "summary": "BGF리테일이 CU의 겨울철(12~2월) 딸기 샌드위치 매출이 79.8% 늘었고, 대표 제품은 하루 약 1만 5천 개까지 팔린 날이 있다고 밝혔어요.",
+ "thumb": {
+  "head": "딸기 샌드위치\n[[겨울 79.8%↑]]",
+  "sub": "하루 [[1만 5천 개]]도 팔렸대요",
+  "photo": {
+   "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Fruits%20Sandwich.jpg?width=1600",
+   "shows": "딸기·키위·망고를 넣은 과일 샌드위치 단면 세 조각",
+   "match": "같은 종류",
+   "rights": "위키미디어 공용 CC BY 2.0 · Naotake Murayama",
+   "general": true,
+   "fit": "cover"
+  }
+ },
+ "tags": [
+  "딸기샌드위치",
+  "편의점디저트",
+  "생과일샌드위치",
+  "겨울간식"
+ ],
+ "sources": [
+  "https://www.finomy.com/news/articleView.html?idxno=265802"
+ ],
+ "credits": [
+  "Naotake Murayama (CC BY 2.0) · commons.wikimedia.org/?curid=32084255",
+  "Araisyohei (CC BY 4.0) · commons.wikimedia.org/?curid=123056964",
+  "Wotancito (CC BY 4.0) · commons.wikimedia.org/?curid=151513676",
+  "Nesnad (CC BY 4.0) · commons.wikimedia.org/?curid=145294227",
+  "Nesnad (CC BY 4.0) · commons.wikimedia.org/?curid=127581455"
+ ],
+ "yt_title": "편의점 딸기 샌드위치 겨울 매출 79.8% 늘었어요, 하루 1만 5천 개까지",
+ "yt_keyword": "편의점 딸기 샌드위치",
+ "yt_related": [
+  "딸기 샌드위치",
+  "생과일 샌드위치",
+  "편의점 디저트",
+  "CU 샌드위치",
+  "겨울 딸기"
+ ],
+ "yt_tags": [
+  "편의점 딸기 샌드위치",
+  "딸기 샌드위치",
+  "생과일 샌드위치",
+  "편의점 디저트",
+  "CU 샌드위치",
+  "겨울 딸기"
+ ],
+ "yt_hashtags": [
+  "딸기샌드위치",
+  "편의점디저트",
+  "생과일샌드위치"
+ ],
+ "yt_lead": "편의점 딸기 샌드위치 겨울 매출이 79.8% 늘었고, 대표 제품은 하루 약 1만 5천 개까지 팔렸다고 BGF리테일이 밝혔어요.",
+ "dates": {
+  "checked": "2026-11-07",
+  "sources": [
+   {
+    "url": "https://www.finomy.com/news/articleView.html?idxno=265802",
+    "published": "2026-11-05",
+    "modified": "2026-11-05"
+   }
+  ],
+  "stat_period": "겨울철(12~2월) 매출, 생과일 샌드위치는 2025년 12월~2026년 4월(BGF리테일 발표)"
+ },
+ "caption": "겨울엔 딸기 샌드위치 찾게 되죠? 요즘 편의점 딸기 샌드위치 얘기예요.\n\nBGF리테일이 밝힌 숫자예요. CU의 겨울철(12~2월) 딸기 샌드위치 매출은 2024년 21.4%, 2025년 23.4% 늘었고 2026년은 79.8% 늘었어요. 지난해 말 낸 생과일 샌드위치 시리즈 가운데 대표 제품은 하루 약 1만 5천 개까지 팔린 날도 있대요. 지난해 12월부터 올해 4월까지 생과일 샌드위치 매출은 전년 동기보다 94.3% 늘었다고 해요.\n\n6일부터 생딸기를 넣은 샌드위치 3종이 순차로 나와요. 18일에는 딸기·오렌지·샤인머스캣을 함께 넣은 샌드위치가 나온다고 해요.\n\n사진은 과일 샌드위치 일반 사진이고, CU 제품 사진이 아니에요. 협찬이나 광고가 아니에요. 더 자세한 이야기는 프로필 링크의 블로그에 있어요.\n\n여러분은 과일 샌드위치, 좋아하세요?\n\n출처: 현대경제신문(11월 5일)",
+ "scenes": [
+  {
+   "type": "cover",
+   "dur": 2.0,
+   "photo": {
+    "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Fruits%20Sandwich.jpg?width=1600",
+    "shows": "딸기·키위·망고를 넣은 과일 샌드위치 단면 세 조각",
+    "match": "같은 종류",
+    "rights": "위키미디어 공용 CC BY 2.0 · Naotake Murayama",
+    "general": true
+   },
+   "kicker": "여러분",
+   "title": "겨울엔\n[[딸기 샌드위치]]\n찾게 되죠?",
+   "size": 100,
+   "general": true
+  },
+  {
+   "type": "cover",
+   "dur": 1.8,
+   "photo": {
+    "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Fruit%20sandwich%20in%20Da-cafe%2C%20Tokyo%202022-06-29%20as%281%29.jpg?width=1600",
+    "shows": "망고·딸기·무화과를 넣은 과일 샌드위치 세 조각과 라떼",
+    "match": "같은 종류",
+    "rights": "위키미디어 공용 CC BY 4.0 · Araisyohei",
+    "general": true
+   },
+   "kicker": "저도 오늘 알았어요",
+   "title": "편의점 딸기 샌드위치\n[[겨울 매출 79.8%↑]]",
+   "size": 96,
+   "in": "push",
+   "general": true
+  },
+  {
+   "type": "cover",
+   "dur": 2.0,
+   "photo": {
+    "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Fruit%20sando.jpg?width=1600",
+    "shows": "생딸기와 망고, 생크림을 넣은 샌드위치 단면",
+    "match": "같은 종류",
+    "rights": "위키미디어 공용 CC BY 4.0 · Wotancito",
+    "general": true
+   },
+   "kicker": "그래서 찾아봤어요 · 딸기 샌드위치",
+   "title": "과일 샌드위치\n[[얼마나 팔렸대요]]",
+   "size": 100,
+   "general": true
+  },
+  {
+   "type": "card",
+   "dur": 2.8,
+   "photo": {
+    "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Fruit%20sandwiches%20-%20in%20Tokyo%20-%202024%20feb%2013%20various%2017%2044%2053%20374000.jpeg?width=1600",
+    "shows": "진열대에 놓인 딸기·키위 등 과일 샌드위치",
+    "match": "같은 종류",
+    "rights": "위키미디어 공용 CC BY 4.0 · Nesnad",
+    "general": true
+   },
+   "chip": "하루 최고",
+   "headline": "하루 약\n[[1만 5천 개]]",
+   "line": "대표 딸기 샌드위치가 팔린 날도 있대요",
+   "general": true
+  },
+  {
+   "type": "card",
+   "dur": 2.8,
+   "photo": {
+    "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Fruit%20sandwiches%20for%20sale%20-%20Kanagawa%20-%202023%20Jan%209.jpeg?width=1600",
+    "shows": "포장해 진열한 과일 샌드위치들",
+    "match": "같은 종류",
+    "rights": "위키미디어 공용 CC BY 4.0 · Nesnad",
+    "general": true
+   },
+   "chip": "생과일 시리즈",
+   "headline": "12~4월 매출\n[[94.3% ↑]]",
+   "line": "전년 같은 기간과 견준 생과일 샌드위치",
+   "general": true
+  }
+ ],
+ "followup": {
+  "of": "2026-11-06/8-trend#3",
+  "new": "카드에 없던 하루 최고 약 1만 5천 개 판매와 생과일 샌드위치 12~4월 매출 94.3% 증가"
+ },
+ "review": {
+  "photo_sheet": "717428ee41b1"
+ }
+}
