@@ -9,6 +9,8 @@
   fine  이대로: 버튼만 치워요
   fix   고쳐서 다시: requests/fix-영상id.json 을 남겨요. 고치기 루틴이 있으면 바로, 없으면 다음 아침 매일 실행이 고쳐요
   rerun 그날 치를 못 만들었을 때 지금 다시 만들기(j:rerun:날짜). 고치기 루틴이 있으면 바로, 없으면 다음 아침
+  ping / pingfix  연결 확인(buttons.yml 시험이 보내요). ping 은 아무것도 바꾸지 않고, pingfix 는 고치기 루틴만 불러 봐요
+버튼은 scripts/watch_buttons.py(buttons.yml)가 알림을 보낸 뒤 3시간 동안 지켜보다가 누르면 photos 작업을 바로 불러요.
 답장: 시안·뺀 장 알림 메시지에 답장하면 그 글을 고칠 점(note)으로 fix 를 해요.
 
 깃허브 작업을 불러야 하는 일은 build/dispatch.json 에 적어 두고, photos 작업이 기록을 올린 뒤에 불러요.
@@ -168,7 +170,26 @@ def rerun(day):
             else f"{day} 치를 지금 바로 만들려면 고치기 루틴 연결(한 번만)이 필요해요. 내일 아침에는 평소대로 만들어요.")
 
 
-ACTIONS = {"rerun": rerun, "ok": approve, "no": drop, "keep": keep_cards, "fix": fix, "fine": lambda rid: f"알겠어요. {name_of(rid)} 은(는) 이대로 둘게요."}
+def routine_ready():
+    return bool(os.environ.get("FIX_ROUTINE_URL") and os.environ.get("FIX_ROUTINE_TOKEN"))
+
+
+def ping(sent):
+    """연결 확인 버튼(buttons.yml 시험이 보내요). 아무것도 바꾸지 않아요."""
+    return (f"✅ 버튼이 이어졌어요 · 보낸 때 {sent} → 처리 {now()}\n"
+            + ("고치기 루틴 바로 연결: 됨 (Secrets 있음)" if routine_ready()
+               else "고치기 루틴 바로 연결: 아직 (Secrets FIX_ROUTINE_URL·FIX_ROUTINE_TOKEN 없음 → [고쳐서 다시]는 다음 날 아침에 처리돼요)"))
+
+
+def ping_fix(sent):
+    """고치기 루틴을 실제로 불러 봐요. 열린 요청이 없으면 루틴은 아무것도 하지 않고 끝나요."""
+    if not routine_ready():
+        return "고치기 루틴 바로 연결이 아직이라 부르지 않았어요 (Secrets FIX_ROUTINE_URL·FIX_ROUTINE_TOKEN 없음)."
+    queue("fix", rid="ping")
+    return "🛠 고치기 루틴을 불러 볼게요. 1~2분 안에 부른 결과가 와요."
+
+
+ACTIONS = {"ping": ping, "pingfix": ping_fix, "rerun": rerun, "ok": approve, "no": drop, "keep": keep_cards, "fix": fix, "fine": lambda rid: f"알겠어요. {name_of(rid)} 은(는) 이대로 둘게요."}
 
 
 def handle_callback(data):
@@ -177,8 +198,8 @@ def handle_callback(data):
     if len(parts) != 3 or parts[0] != "j" or parts[1] not in ACTIONS:
         return None
     rid = parts[2]
-    if parts[1] == "rerun":
-        return rerun(rid)
+    if parts[1] in ("rerun", "ping", "pingfix"):  # 설계도가 없는 버튼
+        return ACTIONS[parts[1]](rid)
     if not spec_path(rid).exists():
         return f"설계도가 없어요: {rid}"
     return ACTIONS[parts[1]](rid)
@@ -201,31 +222,65 @@ def fire_fix(rid):
     url, token = os.environ.get("FIX_ROUTINE_URL", "").strip(), os.environ.get("FIX_ROUTINE_TOKEN", "").strip()
     if not (url and token):
         return False
-    text = (f"작업: 오늘 치 만들기\n{rid[6:]} 치를 매일 실행과 똑같이 만들어 주세요." if rid.startswith("rerun:")
-            else f"작업: 고치기\nrequests/fix-{rid}.json 을 고쳐 주세요.")
+    if rid.startswith("rerun:"):
+        text = f"작업: 오늘 치 만들기\n{rid[6:]} 치를 매일 실행과 똑같이 만들어 주세요."
+    elif rid == "ping":
+        text = "작업: 고치기\n(텔레그램 연결 확인으로 불렀어요. 열린 요청이 없으면 아무것도 바꾸지 말고 끝내요.)"
+    else:
+        text = f"작업: 고치기\nrequests/fix-{rid}.json 을 고쳐 주세요."
     body = json.dumps({"text": text}).encode()
     req = urllib.request.Request(url, data=body, method="POST", headers={
         "Authorization": f"Bearer {token}", "anthropic-version": "2023-06-01",
         "anthropic-beta": "experimental-cc-routine-2026-04-01", "Content-Type": "application/json"})
-    urllib.request.urlopen(req, timeout=60).read()
-    return True
+    with urllib.request.urlopen(req, timeout=60) as res:
+        out = json.loads(res.read() or b"{}")
+    return out.get("claude_code_session_url") or True
+
+
+def tell(text):
+    """작업 결과를 텔레그램으로 알려요(설정이 없으면 화면에만)."""
+    print(text)
+    token = os.environ.get("TELEGRAM_BOT_TOKEN", "").strip()
+    chat = os.environ.get("TELEGRAM_CHAT_ID", "").strip()
+    if token and chat:
+        try:
+            from notify_telegram import api
+            api(token, "sendMessage", chat_id=chat, text=text[:4000], disable_web_page_preview="true")
+        except Exception as e:
+            print(f"텔레그램으로 알리지 못했어요: {type(e).__name__}")
 
 
 def run_dispatch():
-    """photos 작업이 기록을 올린 뒤 불러요: 쌓아 둔 깃허브 작업 부르기와 고치기 루틴 부르기."""
+    """photos 작업이 기록을 올린 뒤 불러요: 쌓아 둔 깃허브 작업 부르기와 고치기 루틴 부르기.
+    못 부르면 조용히 넘기지 않고 텔레그램으로 알려요(고칠 요청은 남아 있어 다음 아침 매일 실행이 처리해요)."""
     import subprocess
+    import urllib.error
     jobs = _read(DISPATCH, [])
     for job in jobs:
+        rid = job["inputs"].get("rid", "")
         try:
             if job["workflow"] == "fix":
-                fire_fix(job["inputs"]["rid"])
+                fired = fire_fix(rid)
+                if fired and rid == "ping":
+                    tell("✅ 고치기 루틴을 불렀어요(연결 시험). 열린 요청이 없으면 루틴은 아무것도 바꾸지 않고 끝나요."
+                         + (f"\n{fired}" if isinstance(fired, str) else ""))
             else:
                 args = ["gh", "workflow", "run", job["workflow"], "--ref", "main"]
                 for k, v in job["inputs"].items():
                     args += ["-f", f"{k}={v}"]
                 subprocess.run(args, check=True)
         except Exception as e:
+            why = f"HTTP {e.code}" if isinstance(e, urllib.error.HTTPError) else type(e).__name__
             print(f"작업을 부르지 못했어요: {job} ({e})")
+            if job["workflow"] == "fix":
+                tell(f"⚠️ 고치기 루틴을 바로 부르지 못했어요 ({why}).\n"
+                     + ("연결 시험이라 바뀐 것은 없어요." if rid == "ping" else
+                        "요청은 남아 있어서 내일 아침 매일 제작 때 먼저 처리해요." if not rid.startswith("rerun:") else
+                        "내일 아침에는 평소대로 만들어요.")
+                     + ("\n열쇠(FIX_ROUTINE_TOKEN)가 틀렸거나 만료됐을 수 있어요. claude.ai 루틴 화면에서 새로 만들어 Secrets 에 넣으면 돼요."
+                        if why in ("HTTP 401", "HTTP 403") else ""))
+            else:
+                tell(f"⚠️ {job['workflow']} 작업을 부르지 못했어요 ({why}). 다음 정기 실행 때 이어서 해요.")
     if DISPATCH.exists():
         DISPATCH.unlink()
 

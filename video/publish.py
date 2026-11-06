@@ -22,13 +22,14 @@ import requests
 
 sys.path.insert(0, str(Path(__file__).parent.parent / "scripts"))
 import plan  # noqa: E402
-from common import log_error, read_json, write_json  # noqa: E402
+from common import log_error, note_buttons, read_json, write_json  # noqa: E402
 
 ROOT = Path(__file__).parent.parent
 REPO = os.environ.get("GITHUB_REPOSITORY", "hong2-kim/jecheol-feed")
 
 
 def tg(method, token, **kw):
+    note_buttons((kw.get("data") or {}).get("reply_markup"))  # 버튼 지킴이(buttons.yml)를 부르라는 표시
     r = requests.post(f"https://api.telegram.org/bot{token}/{method}", timeout=180, **kw)
     if not r.ok:
         raise RuntimeError(f"텔레그램 {method} 실패: {r.status_code} {r.text[:200]}")

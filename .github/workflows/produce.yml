@@ -17,6 +17,7 @@ on:
 permissions:
   contents: write
   pages: write
+  actions: write # 버튼 지킴이(buttons.yml)를 불러요
   id-token: write
 
 concurrency:
@@ -72,6 +73,11 @@ jobs:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID || secrets.TELEGRAM_CHAT_I }} # 이름이 한 글자 빠진 채 저장돼 있어도 읽어요
         run: python video/publish.py "${{ steps.day.outputs.day }}"
+      - name: 버튼 지킴이 부르기 # 버튼 붙은 알림을 보냈으면 3시간 동안 바로바로 받게 해요 (buttons.yml)
+        if: always()
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: if [ -f build/buttons_sent ]; then gh workflow run buttons.yml --ref main || echo "버튼 지킴이를 부르지 못했어요"; else echo "보낸 버튼이 없어요"; fi
       - name: RSS 만들기
         run: python scripts/build_feed.py
       - uses: actions/upload-pages-artifact@v3

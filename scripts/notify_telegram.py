@@ -17,10 +17,11 @@ import urllib.parse
 import urllib.request
 from datetime import datetime, timedelta
 
-from common import KST, ROOT, load_items, log_error, read_json, today_kst, write_json
+from common import KST, ROOT, load_items, log_error, note_buttons, read_json, today_kst, write_json
 
 
 def api(token, method, **params):
+    note_buttons(params.get("reply_markup"))  # 버튼 지킴이(buttons.yml)를 부르라는 표시
     data = urllib.parse.urlencode(params).encode()
     with urllib.request.urlopen(f"https://api.telegram.org/bot{token}/{method}", data=data, timeout=30) as res:
         return json.loads(res.read())["result"]

@@ -29,6 +29,17 @@ def write_json(path, data):
     path.write_text(json.dumps(data, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
 
+BUTTONS_SENT = ROOT / "build" / "buttons_sent"
+
+
+def note_buttons(markup):
+    """우리 버튼(j:…)을 붙여 보냈으면 표시해요. 작업 파일이 이걸 보고 버튼 지킴이(buttons.yml)를 불러요. (2026-11-06)
+    깃허브 일정 실행은 몇 시간씩 밀려서, 버튼을 보낸 뒤 얼마 동안은 지킴이가 바로바로 받게 해요."""
+    if markup and "j:" in (markup if isinstance(markup, str) else json.dumps(markup)):
+        BUTTONS_SENT.parent.mkdir(parents=True, exist_ok=True)
+        BUTTONS_SENT.write_text(datetime.now(KST).isoformat(timespec="seconds"), encoding="utf-8")
+
+
 def log_error(where, message):
     """오류를 logs/errors.jsonl 에 한 줄씩 남겨요."""
     path = ROOT / "logs" / "errors.jsonl"

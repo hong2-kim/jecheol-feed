@@ -12,6 +12,7 @@ on:
 permissions:
   contents: write
   pages: write
+  actions: write # 버튼 지킴이(buttons.yml)를 불러요
   id-token: write
 
 concurrency:
@@ -55,6 +56,11 @@ jobs:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID || secrets.TELEGRAM_CHAT_I }}
         run: python scripts/check_monthly.py
+      - name: 버튼 지킴이 부르기 # 버튼 붙은 알림을 보냈으면 3시간 동안 바로바로 받게 해요 (buttons.yml)
+        if: always()
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: if [ -f build/buttons_sent ]; then gh workflow run buttons.yml --ref main || echo "버튼 지킴이를 부르지 못했어요"; else echo "보낸 버튼이 없어요"; fi
       - name: 보낸 기록 저장
         if: always()
         run: |

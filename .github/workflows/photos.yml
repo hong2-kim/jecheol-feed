@@ -59,7 +59,7 @@ jobs:
         run: |
           git config user.name "jecheol-feed"
           git config user.email "actions@users.noreply.github.com"
-          git add myphotos state logs videos requests
+          git add myphotos state logs videos requests blog # blog: 블로그 초안 [승인] 버튼이 적은 review (13시 발행이 읽어요)
           REBUILD=no
           git diff --cached --name-only | grep -q "^state/videos.json$" && REBUILD=yes
           git diff --cached --quiet || git commit -m "텔레그램 대화방 확인"
@@ -72,4 +72,6 @@ jobs:
           GH_TOKEN: ${{ github.token }}
           FIX_ROUTINE_URL: ${{ secrets.FIX_ROUTINE_URL }}
           FIX_ROUTINE_TOKEN: ${{ secrets.FIX_ROUTINE_TOKEN }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }} # 못 부르면 텔레그램으로 알려요
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID || secrets.TELEGRAM_CHAT_I }}
         run: cd scripts && python tg_actions.py dispatch
