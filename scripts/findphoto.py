@@ -3,7 +3,7 @@
 스스로 검색 방법을 바꿔 정확한 사진을 확보하는 시스템")
 
   python3 scripts/findphoto.py "파리바게뜨" "초코 쫀득 츄러스" [--en "churros"] [--days 90]
-  python3 scripts/findphoto.py rights          회사별 사진 이용 조건과 '사용자 결정 대기' 회사 목록 (sources.json photo_rights)
+  python3 scripts/findphoto.py rights          회사별 사진 이용 조건과 '회사 확인 필요'(권한 미확인) 목록 (sources.json photo_rights)
 
 하는 일 (읽기만 해요. 사진을 내려받거나 설계도를 고치지 않아요):
   1. 검색어를 여러 꼴로 만들어요: 브랜드+제품명, 제품명만, 줄임말·회사 이름(파바·SPC, GS리테일…), '출시'·'신제품'을 붙인 말, 띄어쓰기 뺀 말
@@ -33,6 +33,12 @@ ALIASES = {
     "롯데웰푸드": ["롯데"], "맘스터치": [], "롯데리아": ["롯데GRS"], "맥도날드": [], "버거킹": [], "스타벅스": [], "투썸": ["투썸플레이스"],
 }
 EXTRA = ("출시", "신제품")
+# 위키미디어·오픈버스는 영어 제목이 많아요
+EN_BRAND = {"파리바게뜨": ["Paris Baguette"], "배스킨라빈스": ["Baskin Robbins"], "던킨": ["Dunkin"], "GS25": ["GS25"], "CU": ["CU convenience"],
+            "세븐일레븐": ["7-Eleven Korea"], "이마트24": ["emart24"], "이마트": ["E-mart", "Emart"], "롯데마트": ["Lotte Mart"], "농심": ["Nongshim"],
+            "오뚜기": ["Ottogi"], "CJ": ["CJ CheilJedang"], "비비고": ["bibigo"], "풀무원": ["Pulmuone"], "오리온": ["Orion"], "빙그레": ["Binggrae"],
+            "맘스터치": ["Mom's Touch"], "롯데리아": ["Lotteria"], "맥도날드": ["McDonald's"], "버거킹": ["Burger King"], "스타벅스": ["Starbucks"],
+            "투썸": ["A Twosome Place"], "교촌": ["Kyochon"], "BBQ": ["BBQ chicken"], "bhc": ["bhc chicken"]}
 
 
 def variants(brand, name):
@@ -71,6 +77,17 @@ def rights_of(brand):
         if set(r.get("brands") or []) & names or any(n in r.get("name", "") for n in names):
             return r
     return None
+
+
+def company_photo(caps, brand):
+    """사진 설명이 회사가 배포한 사진인지: '○○ 제공', '사진=회사이름'. 기자·그래픽·통신사 촬영은 아니에요."""
+    names = [brand, *ALIASES.get(brand, [])]
+    for c in caps:
+        if re.search(r"기자|그래픽|일러스트|촬영=", c):
+            continue
+        if "제공" in c or any(re.search(rf"(?:사진|이미지|자료)\s*[=:/]\s*{re.escape(n)}", c) for n in names):
+            return True
+    return False
 
 
 def parse_text(out):
@@ -129,20 +146,29 @@ def find(brand, name, en="", days=90, max_open=4):
                 report["tried"].append(f"  열지 못함 {src} ({e})")
                 continue
             report["articles"].append({"when": when, "source": src, "title": title, "url": link, "captions": caps, "hint": hint,
-                                       "company_photo": "제공" in " ".join(caps) and "기자" not in " ".join(caps)})
+                                       "company_photo": company_photo(caps, brand)})
         if opened >= max_open:
             break
-    # ④ CC 사진: 그 제품·그 회사 매장 (영어 이름이 있으면 영어로도)
-    for q in [x for x in (f"{brand} {en}".strip() if en else "", name, brand) if x]:
+    # ④ CC 사진: 그 제품·그 회사 매장. 제목에 브랜드(우리말·영어)가 있어야 후보예요. 브랜드 없는 '츄러스' 사진은 비슷한 다른 음식이라 넣지 않아요.
+    # 제품 이름까지 있으면 '제품', 브랜드만 있으면 '매장·회사'(그 회사 매장·행사 장면에 분위기 사진으로만)
+    brand_keys = [k.lower() for k in [brand, *ALIASES.get(brand, []), *EN_BRAND.get(brand, [])] if len(k) >= 2]
+    prod_keys = [w.lower() for w in name.split() if len(w) >= 2] + [w.lower() for w in en.split() if len(w) >= 3]
+    seen_url = set()
+    for q in dict.fromkeys(x for x in (*(f"{b} {en}".strip() for b in EN_BRAND.get(brand, [])), f"{brand} {en}".strip() if en else "", name,
+                                       brand, *EN_BRAND.get(brand, [])) if x):
         for kind, fn in (("commons", photos.commons_rows), ("openverse", photos.openverse_rows)):
             try:
                 rows = photos.cached(kind, q, fn)
             except WebError as e:
                 report["tried"].append(f"{kind} '{q}': 못 읽음({e})")
                 continue
-            hits = [row for row in rows if any(k.lower() in (row.get("title") or "").lower() for k in [brand, *ALIASES.get(brand, []), *(en.split() if en else [])])]
-            report["tried"].append(f"{kind} '{q}': {len(rows)}장 중 이름이 맞는 {len(hits)}장")
-            report["cc"] += [{"from": kind, **{k: row.get(k) for k in ("url", "title", "size", "license", "credit")}} for row in hits[:3]]
+            hits = [row for row in rows if any(k in (row.get("title") or "").lower() for k in brand_keys) and row.get("url") not in seen_url]
+            report["tried"].append(f"{kind} '{q}': {len(rows)}장 중 브랜드가 맞는 {len(hits)}장")
+            for row in hits[:3]:
+                seen_url.add(row.get("url"))
+                t = (row.get("title") or "").lower()
+                report["cc"].append({"from": kind, "what": "제품" if any(k in t for k in prod_keys) else "회사 관련(이 제품 아님: 매장·행사 장면에만)",
+                                     **{k: row.get(k) for k in ("url", "title", "size", "license", "credit")}})
     st = report["rights"].get("status")
     report["next"] = next_step(report, st)
     report["photo_search"] = {
@@ -160,10 +186,16 @@ def next_step(rep, status):
     if company and status == "사용 가능":
         return "회사 배포 사진이 있고 회사 상태가 사용 가능이에요. 원본을 회사 보도자료 게시판에서 받아(press_board) scope 조건대로 써요"
     if company and status == "확인 필요":
-        return ("회사 배포 사진이 있어요. 회사 상태가 '확인 필요'라 사진에 terms 를 적어 넣으면 그 장면만 '확인 필요'로 올라가요. "
-                "회사 결정이 나면 그 뒤로는 자동이에요(python3 scripts/findphoto.py rights). 그동안 다른 검색어·영어 이름·CC 사진도 더 봐요")
+        return ("회사 배포 사진은 있지만 회사 상태가 '확인 필요'(이용 권한 미확인)라 게시용으로 쓰지 않아요. "
+                "같은 제품의 뉴스와이어 배포분, 조건이 확인된 CC 실제 사진을 다른 검색어·영어 이름(--en)으로 더 찾아요")
+    if any(c["what"] == "제품" for c in rep["cc"]):
+        return "그 제품이 찍힌 CC 사진 후보가 있어요. 열어 보고 제품 이름·포장·생김새가 맞으면 match 정확으로 써요(라이선스대로 credit)"
+    if company and status in ("사용 불가", "확인 필요"):
+        tail = ("CC 사진 가운데 그 회사 매장 사진은 매장·행사 장면에만(match 분위기) 쓸 수 있어요. " if rep["cc"] else "")
+        return ("실제 제품 사진은 회사 배포 사진뿐이고 이용 권한이 없어요(회사 상태 " + status + "). " + tail +
+                "제품을 직접 설명하는 장면은 다른 검색어·영어 이름(--en)·출시 기간(--days)으로 한 번 더 찾고, 그래도 없으면 그 장면만 숫자 카드나 문장 빼기로 풀어요")
     if rep["cc"]:
-        return "CC 사진 후보가 있어요. 열어 보고 그 제품(또는 그 회사 매장)이 맞는지 확인해요"
+        return "그 회사 매장 CC 사진만 있어요. 매장·행사 장면에만(match 분위기) 쓰고, 제품 장면 사진은 다른 검색어로 더 찾아요"
     return ("이번 검색어로는 실제 사진이 없어요. 제품 이름을 보도 제목에 나온 꼴로 바꾸거나(--days 늘리기, 영어 이름 --en), "
             "출시 날짜 기사·회사 SNS 공지 기사로 다시 찾아요. 그래도 없을 때만 그 장면을 숫자 카드로 바꾸거나 그 문장을 빼요")
 
@@ -176,7 +208,7 @@ def rights_list():
         if r.get("photo_source", "").startswith(("회사", "보도자료")) or r.get("brands"):
             print(f"  {r.get('status'):6} | {r['name']} | {str(r.get('scope') or r.get('note') or '')[:90]}")
     if wait:
-        print("\n사용자 결정 대기 (회사마다 한 번만 정하면 그 뒤로는 자동):")
+        print("\n권한 미확인 (공식 이용 조건이나 회사 허락이 확인되면 기록하고, 그 뒤로는 자동. 사용자 승인만으로는 안 돼요):")
         for r in wait:
             d = r["decision"]
             print(f"  - {r['name']}: {d.get('ask') if isinstance(d, dict) else d}")

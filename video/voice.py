@@ -358,6 +358,7 @@ SLOW_OK = ("soft", "reveal", "number")  # 일부러 천천히 읽는 말투
 # 물음은 끝이 오른 것 가운데 빠르기 기준(앞뒤 여백까지 넣은 6.2음절/초)을 짧은 물음이 넘을 수 없어 늘 '가장 많이 오른 읽기'
 # = 가장 과장되게 늘인 읽기(1.52초, 가운데 쉼 0.53초)를 골랐어요. 그래서 늘어진 읽기를 따로 알아보고 그 조각만 다시 읽어요.
 DRAWN_SPS = 5.0  # 쉼·앞뒤 여백을 뺀 음절/초가 이보다 느리면 늘어진 읽기
+DRAWN_SPS_SHORT = 5.5  # 다섯 음절 안 짧은 말("자, 시작!")은 더 빠릿해야 해요. 11-04 실제 영상 0.8초 안팎 읽기를 잡아요(정상 0.57~0.69초)
 DRAWN_GAP = 0.3  # 쉼표 없는 말 가운데 이보다 긴 쉼이 있으면 늘어진 읽기(쉼표가 있으면 +0.15초)
 RETAKES = 4  # 늘어진 조각을 다시 읽어 볼 수
 PAUSE_COMMA = re.compile(r"(?<!\d),\s*|(?<=\d),(?!\d{3}(?!\d))\s*")  # 쉼을 넣는 쉼표. '5,000'·'7,500원' 같은 천 단위 쉼표는 빼요(숫자가 끊겨 읽혀요)
@@ -445,7 +446,7 @@ def drawn(v, text):
         return False, 0.0, 0.0
     net = syl / max(0.05, len(v) / SR - 0.15 - _pauses(v))
     gap = _longest_pause(v)
-    return net < DRAWN_SPS or gap > DRAWN_GAP + (0.15 if "," in text else 0), round(net, 1), round(gap, 2)
+    return net < (DRAWN_SPS_SHORT if syl <= 5 else DRAWN_SPS) or gap > DRAWN_GAP + (0.15 if "," in text else 0), round(net, 1), round(gap, 2)
 
 
 def syllables(text):
@@ -940,8 +941,9 @@ def pick_problems(spec):
             should.append(f"{n}번 문장: 문장부호 뒤에 띄어쓰기가 없어요('{t[:16]}…'). 붙여 읽혀요.")
         if re.search(r"\d\s*,\s+(?:만|천|억|원|개|명|곳|%|kg|g|분|시간|배|이상|이하|정도|가량|째|씩)", t):
             should.append(f"{n}번 문장: 숫자와 단위 사이에 쉼표가 있어요('{t[:16]}…'). 한 뜻으로 이어 읽게 쉼표를 빼 주세요.")
-        # 두 음절 안 짧은 말 뒤 쉼표('밥이, 당기면')는 조사·꾸밈말이 끊겨 읽혀요. 감탄·이음말('자, 시작!')은 괜찮아요 (2026-11-06)
-        for m in re.finditer(r"(?:^|[,.?!]\s*)([가-힣]{1,2}),\s", t):
+        # 조사로 끝나는 짧은 말 뒤 쉼표('밥이, 당기면')는 한 덩어리 말이 끊겨 읽혀요 (2026-11-06).
+        # 감탄·이음말('자, 시작!')과 이름 나열('깐굴, 반각굴, 석화')은 괜찮아요: 조사로 끝나지 않으면 보지 않아요
+        for m in re.finditer(r"(?:^|[,.?!…]\s*)([가-힣]{1,2}[이가을를에의])(?<!어)(?<!는데),\s", t):
             if m.group(1) not in SHORT_OK:
                 should.append(f"{n}번 문장: '{m.group(1)},' 처럼 짧은 말 뒤 쉼표는 끊겨 읽혀요('{t[:16]}…'). 한 덩어리 말이면 쉼표를 빼 주세요.")
                 break

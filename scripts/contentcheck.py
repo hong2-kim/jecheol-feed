@@ -330,6 +330,8 @@ def photo_lines(spec, day, platforms=("instagram", "youtube")):
                 continue  # 위에서 장면별로 봤어요
             if match == "같은 종류" and exact_rule and general and PRODUCT_CUES.search(text):
                 out.append(("사진 일치", f"{where}: general(음식 일반)로 적었지만 글은 {b} 상품 이야기예요('{PRODUCT_CUES.search(text).group(0)}'). 그 상품의 실제 사진을 써 주세요", "차단"))
+            elif match == "같은 종류" and exact_rule and general:
+                continue  # 음식 일반 장("GS25 군고구마 매출 248%"의 군고구마 사진)은 브랜드 이름이 있어도 장면별로 허용해요 (2026-11-06)
             elif match == "같은 종류" and "참고" in str(p.get("ref") or "") and exact_rule and not general:
                 out.append(("사진 일치", f"{where}: 글은 {b} 상품을 말하는데 사진은 비슷한 다른 음식이에요(shows: {shows[:30]}). '참고 사진' 딱지를 달아도 그 상품 장면에는 "
                                          f"실제 제품 사진만 써요(2026-11-06). 실제 제품 사진을 찾거나(PROMPT.md \"제품 사진 찾는 차례\"), 못 찾으면 그 장을 보류해요", "차단"))
