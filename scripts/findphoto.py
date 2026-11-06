@@ -7,7 +7,7 @@
 
 하는 일 (읽기만 해요. 사진을 내려받거나 설계도를 고치지 않아요):
   1. 검색어를 여러 꼴로 만들어요: 브랜드+제품명, 제품명만, 줄임말·회사 이름(파바·SPC, GS리테일…), '출시'·'신제품'을 붙인 말, 띄어쓰기 뺀 말
-  2. 경로를 차례로 봐요: ① 뉴스와이어 보도자료(원본 사진, 바로 쓸 수 있음) ② 언론 기사의 사진 설명('○○ 제공' = 회사 보도자료 사진 → 원본은 회사 게시판)
+  2. 경로를 차례로 봐요: ① 뉴스와이어 보도자료(원본 사진. 배포됐다는 것만으로 상업적 재사용이 허용되지는 않아요: 사진 출처·약관 조건·허용 범위를 photo_rights 대로 따로 봐요) ② 언론 기사의 사진 설명('○○ 제공' = 회사 보도자료 사진 → 원본은 회사 게시판)
      ③ 회사 보도자료 게시판 주소(권리 기록부의 press_board) ④ 위키미디어·오픈버스의 CC 사진(그 제품·그 회사 매장)
   3. 회사 사진 이용 상태(사용 가능/확인 필요/사용 불가)를 권리 기록부에서 찾아 같이 알려 줘요. 상태를 바꾸지 않아요.
   4. 설계도 photo_search 에 붙일 한 줄 기록을 만들어 줘요.
@@ -105,7 +105,7 @@ def find(brand, name, en="", days=90, max_open=4):
     r = rights_of(brand)
     report["rights"] = {"name": r.get("name"), "status": r.get("status"), "scope": r.get("scope"), "press_board": r.get("press_board", ""),
                         "decision": r.get("decision", "")} if r else {"status": "기록 없음", "scope": "권리 기록부에 이 회사가 없어요. 조건을 확인하면 photo_rights 에 더해요"}
-    # ① 뉴스와이어: 회사가 낸 보도자료의 원본 사진 (photo_rights '뉴스와이어 배포 보도자료' = 사용 가능)
+    # ① 뉴스와이어: 회사가 낸 보도자료의 원본 사진. 쓸 수 있는지는 photo_rights '뉴스와이어 배포 보도자료' 의 조건·범위와 사진 설명(촬영자 표시)으로 따로 봐요
     seen = set()
     for q in report["queries"][:4]:
         try:
@@ -181,7 +181,7 @@ def find(brand, name, en="", days=90, max_open=4):
 
 def next_step(rep, status):
     if rep["newswire"] and any(n["photos"] for n in rep["newswire"]):
-        return "뉴스와이어 원본 사진이 있어요. 열어 보고 그 제품이 맞으면 match 정확, credits '사진: ○○ 제공(뉴스와이어)'로 써요"
+        return "뉴스와이어 원본 사진이 있어요. 사진 설명에 다른 촬영자·언론사 표시가 없고 photo_rights '뉴스와이어 배포 보도자료' 의 조건·범위 안일 때만, 열어 보고 그 제품이 맞으면 match 정확, credits '사진: ○○ 제공(뉴스와이어)'로 써요"
     company = [a for a in rep["articles"] if a["company_photo"]]
     if company and status == "사용 가능":
         return "회사 배포 사진이 있고 회사 상태가 사용 가능이에요. 원본을 회사 보도자료 게시판에서 받아(press_board) scope 조건대로 써요"
