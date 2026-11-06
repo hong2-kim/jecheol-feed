@@ -1136,7 +1136,11 @@ def news_cover(cover, total, when, name, pill, label, weekly=False, story=False,
     """첫 장. 오늘 소식들을 궁금하게 던져요. 답은 다음 장부터 나와요.
     weekly(트렌드 카드)면 이름표에 "10월 3주차 유행 업데이트"를 크게 쓰고, 아래에 매주 온다는 한마디를 붙여요.
     story(이야기 카드)면 이름표는 cover.label(없으면 "오늘의 먹거리 이슈")이고, items 목록은 있을 때만 보여요."""
-    if cover.get("photo"):
+    if cover.get("photo") and cover["photo"].get("fit") == "pack":
+        # 포스터·상품 포장처럼 잘리면 안 되는 사진: 흐린 바탕 위에 통째로, 제목이 읽히게 조금 어둡게 (2026-11-06 속초 축제 포스터)
+        p = cover["photo"]
+        top = f'<div class="ph"><img src="{backdrop(p)}"><img src="{pack_photo(p)}" style="object-fit:contain;filter:brightness(.4)"></div>'  # 표기는 날짜와 겹쳐 소식 장·게시글에만
+    elif cover.get("photo"):
         src, pos = fetch_photo(cover["photo"])
         top = f'<div class="ph"><img src="{src}" style="object-position:{pos}"></div>{ref_label(cover["photo"]).replace("ref", "ref ph-ref", 1)}'
     else:
@@ -1306,11 +1310,12 @@ def hero_lines(headline):
 
 
 def ref_label(p):
-    """그 상품·그 대상이 아닌 사진(match 가 같은 종류·분위기)에 붙이는 '참고 사진' 딱지 (2026-10-28 사용자: 대체 사진은 참고 사진임을 분명히).
-    ref 를 적으면 그 말로 써요. 예: 참고 사진 · 실제 제품 아님"""
-    if not isinstance(p, dict) or p.get("match", "정확") == "정확":
+    """사진 위 작은 표기. 사진에 적은 "label" 을 그대로 보여 줘요(2026-11-06 사용자: '참고 사진'·'실제 제품 아님'을 되풀이하지 말고
+    사진 성격대로 — 예: "2025년 축제 현장 · 울진군", "사진: 풀무원 제공", "축제가 열리는 죽변항"). label 이 없으면 아무것도 붙이지 않아요.
+    예전 설계도의 "ref"('참고 사진' 딱지)는 더 쓰지 않아요."""
+    if not isinstance(p, dict) or not str(p.get("label") or "").strip():
         return ""
-    return f'<span class="ref">{esc(p.get("ref") or "참고 사진")}</span>'
+    return f'<span class="ref">{esc(str(p["label"]).strip())}</span>'
 
 
 def hero_more(c):

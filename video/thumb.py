@@ -234,12 +234,12 @@ def body(spec):
 
 
 def ref_tag(photo):
-    """그 제품·그 대상이 아닌 사진(match 가 같은 종류·분위기)이면 사진 오른쪽 위에 작은 '참고 사진' 딱지 (2026-10-28 사용자).
-    정확한 사진(match 정확)이나 match 를 적지 않은 사진에는 붙이지 않아요. 사진에 "ref" 를 적으면 그 말로 써요."""
-    if not isinstance(photo, dict) or photo.get("match") not in ("같은 종류", "분위기"):
+    """사진 오른쪽 위 작은 표기. 사진에 적은 "label"(사진 성격·출처·촬영 연도)을 그대로 보여 줘요 (2026-11-06 사용자).
+    label 이 없으면 붙이지 않아요. 예전의 '참고 사진' 딱지("ref")는 더 쓰지 않아요."""
+    if not isinstance(photo, dict) or not str(photo.get("label") or "").strip():
         return ""
     import build as B
-    return f'<div class="tref">{B.esc(photo.get("ref") or "참고 사진")}</div>'
+    return f'<div class="tref">{B.esc(str(photo["label"]).strip())}</div>'
 
 
 def list_html(B, photo, items, tag=""):

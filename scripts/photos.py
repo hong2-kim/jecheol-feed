@@ -8,6 +8,8 @@
   python scripts/photos.py festival 20261012      그날 이후 열리는 축제 (한국관광공사, 공식 일정)
   python scripts/photos.py get <주소> <저장할 파일>   사진을 내려받아 직접 눈으로 확인할 때
   python scripts/photos.py sheet tour 굴구이 15 /tmp/s.jpg   후보 여러 장을 번호를 붙여 한 장에 모아요 (commons·openverse 도 된다)
+  python scripts/photos.py leads festival "죽변항 수산물축제" 2026   넓게 찾을 검색어(뉴스·블로그·SNS·유튜브·지난 회차) + 이미 확인한 출처 + 확인 차례
+  python scripts/photos.py exif 사진.jpg              촬영일(EXIF) — 지난 축제 사진의 연도 확인
 
 tour, festival 은 환경 변수 TOUR_API_KEY, pexels 는 PEXELS_API_KEY 가 있어야 해요. 결과는 한 줄에 하나씩 JSON으로 나와요.
 tour·commons 검색 결과는 임시 폴더에 6시간 저장해 같은 검색어를 다시 묻지 않아요. 내려받기는 scripts/web.py 로 해요
@@ -225,6 +227,44 @@ def sheet(source, query, n=15, out=None):
         print(json.dumps({"no": i, **row}, ensure_ascii=False))
 
 
+LEAD_KINDS = {
+    # 2026-11-06 사용자: 지자체·공공누리에만 묶지 말고 처음부터 넓게 찾는다. 찾기(후보)와 이용 조건 확인은 따로 한다
+    "festival": ["{n} {y}", "{n} {y1}", "{n} {y2}", "{n} 현장", "{n} 개막 사진 제공", "{n} 먹거리 부스", "{n} 방문객",
+                 "{n} 후기 블로그", "{n} 인스타그램", "{n} 유튜브", "{n} 보도자료 사진", "{n} 사진DB"],
+    "product": ["{n}", "{n} 출시 사진 제공", "{n} 보도자료", "{n} 뉴스룸", "{n} 공식 인스타그램", "{n} 후기", "{n} 리뷰 블로그",
+                "{n} 유튜브 리뷰", "{n} 뉴스와이어"],
+    "food": ["{n}", "{n} 사진", "{n} 지역 축제", "{n} 시장", "{n} 후기 블로그", "{n} 유튜브"],
+}
+
+
+def leads(kind, name, year=None):
+    """사진 찾기 순서표. ① 넓게 찾을 검색어(뉴스·지역 언론·블로그·SNS·유튜브·지난 회차) ② 이미 이용 조건을 확인한 출처(sources.json photo_rights)
+    — 등록부에 있는 곳은 다시 조사하지 않고 적힌 상태대로 써요. ③ 확인하는 차례. (2026-11-06)"""
+    y = int(year or time.strftime("%Y"))
+    plan = [q.format(n=name, y=y, y1=y - 1, y2=y - 2) for q in LEAD_KINDS.get(kind, LEAD_KINDS["food"])]
+    print(json.dumps({"찾기": "아래 검색어를 한꺼번에 찾고(WebSearch 를 같은 차례에 여러 개), 기사 속 사진 설명('○○ 제공')·앨범 제목·현수막으로 대상과 연도를 먼저 맞춰요",
+                      "검색어": plan}, ensure_ascii=False))
+    reg = json.loads((Path(__file__).resolve().parent.parent / "sources.json").read_text(encoding="utf-8")).get("photo_rights") or []
+    known = [{"출처": r.get("name"), "상태": r.get("status"), "범위": (r.get("scope") or "")[:80], "확인": r.get("checked")}
+             for r in reg if r.get("status") and r.get("status") != "확인 필요"]
+    print(json.dumps({"이미 확인한 출처(다시 조사하지 않음)": known}, ensure_ascii=False))
+    print(json.dumps({"확인 차례": ["후보마다 shows(실제로 찍힌 것)·연도(EXIF·앨범·현수막·기사 날짜)를 적는다",
+                                    "그다음 이용 조건: 등록부 → 사진·앨범에 붙은 공공누리 유형·CC → 회사·축제가 배포한 사진(10-26 결정) → 블로그·SNS 는 허락이나 조건이 있을 때만",
+                                    "언론사·기자가 찍은 사진·방송 화면은 단서로만 쓰고 그 사진은 쓰지 않는다(원본을 낸 곳을 찾아간다)"]}, ensure_ascii=False))
+
+
+def exif_date(path):
+    """사진 파일의 촬영일(EXIF). 지난 축제 사진의 연도를 확인할 때 써요(축제 기간 안인지 함께 봐요)."""
+    from PIL import Image
+    with Image.open(path) as im:
+        ex = im.getexif()
+        try:
+            shot = ex.get_ifd(0x8769).get(36867)
+        except Exception:
+            shot = None
+        print(json.dumps({"파일": str(path), "크기": im.size, "촬영": shot, "수정": ex.get(306), "기기": ex.get(272)}, ensure_ascii=False))
+
+
 def main():
     sys.stdout.reconfigure(encoding="utf-8")
     if len(sys.argv) < 3:
@@ -253,6 +293,12 @@ def run(cmd, arg):
         with open(sys.argv[3], "wb") as f:
             f.write(data)
         print("저장했어요:", sys.argv[3])
+    elif cmd == "leads":
+        if len(sys.argv) < 4:
+            sys.exit('python scripts/photos.py leads festival|product|food "이름" [연도]')
+        leads(arg, sys.argv[3], sys.argv[4] if len(sys.argv) > 4 else None)
+    elif cmd == "exif":
+        exif_date(arg)
     elif cmd == "sheet":
         if len(sys.argv) < 4 or arg not in ("tour", "commons", "openverse"):
             sys.exit("python scripts/photos.py sheet tour|commons|openverse 검색어 [장 수] [저장할 파일]")

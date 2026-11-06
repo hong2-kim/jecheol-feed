@@ -285,7 +285,7 @@ def photo_lines(spec, day, platforms=("instagram", "youtube")):
             have = words(shows) | {SYN.get(w.lower(), w) for w in words(shows)}
             seen_in = lambda w: w in have or any(w in h or h in w for h in have)
             miss = sorted(w for w in want if not seen_in(w))
-            labeled = match == "같은 종류" and "참고" in str(p.get("ref") or "")  # '참고 사진 · 실제 제품 아님' 딱지를 단 사진 (2026-10-28)
+            labeled = False  # 2026-11-06 사용자: '참고 사진' 딱지로 다른 대상 사진을 대신 쓰지 않아요(예전엔 ref 가 있으면 참고로 낮췄어요)
             star = {w for w in marked_names(text) if w in curated}  # [[ ]] 로 내세운 이름은 꼭 사진에 있어야 해요
             # 글에 나온 이름 가운데 사진에 하나도 없거나, [[ ]] 로 내세운 이름이 없을 때만 (재료 이름까지 다 찍혀야 하는 것은 아니에요)
             if miss and (len(miss) == len(want) or any(not seen_in(w) for w in star)):
@@ -335,11 +335,15 @@ def photo_lines(spec, day, platforms=("instagram", "youtube")):
             elif match == "같은 종류" and "참고" in str(p.get("ref") or "") and exact_rule and not general:
                 out.append(("사진 일치", f"{where}: 글은 {b} 상품을 말하는데 사진은 비슷한 다른 음식이에요(shows: {shows[:30]}). '참고 사진' 딱지를 달아도 그 상품 장면에는 "
                                          f"실제 제품 사진만 써요(2026-11-06). 실제 제품 사진을 찾거나(PROMPT.md \"제품 사진 찾는 차례\"), 못 찾으면 그 장을 보류해요", "차단"))
-            elif match == "같은 종류" and "참고" in str(p.get("ref") or ""):
-                # 2026-10-28 사용자: 제품 이름은 그대로 두고, 같은 종류 사진에는 '참고 사진 · 실제 제품 아님'을 분명히 붙여요
-                out.append(("사진 일치", f"{where}: {b} 상품 글에 같은 종류 참고 사진({shows[:24]}) — '{p['ref']}' 딱지와 함께 써요. 쓸 수 있는 실제 제품 사진이 있으면 그것으로 바꿔 주세요", "참고"))
             elif match != "정확" or b not in shows:
-                out.append(("사진 일치", f"{where}: 글은 {b} 상품을 말하는데 사진은 그 상품이 아니에요(match {match or '없음'}, shows: {shows[:30]}). 다른 가게·다른 회사 같은 종류 사진으로 대신하지 않아요. 꼭 써야 하면 사진에 \"ref\": \"참고 사진 · 실제 제품 아님\" 을 적어요", "차단"))
+                out.append(("사진 일치", f"{where}: 글은 {b} 상품을 말하는데 사진은 그 상품이 아니에요(match {match or '없음'}, shows: {shows[:30]}). 실제 제품 사진(회사 배포 사진·공식 SNS·이용 허락이나 조건이 확인된 구매 후기 사진)을 찾고, 끝내 없으면 photo_search 를 적어 그 장만 보류해요", "차단"))
+        if "참고" in str(p.get("ref") or ""):
+            out.append(("사진 표기", f"{where}: '참고 사진' 딱지(ref)는 2026-11-06부터 쓰지 않아요. 사진 성격을 label 에 적어요(예: '2025년 축제 현장 · 울진군', '사진: ○○ 제공')", "참고"))
+        if "축제" in text and "축제" not in shows and not where.startswith("thumb"):
+            # 2026-11-06 사용자: 축제 소식은 실제 축제 현장 사진(올해 → 지난해·이전 회차). 생선 말리기·항구·관광지 사진에 표기만 붙여 대신하지 않아요
+            out.append(("사진 일치", f"{where}: 축제 소식인데 축제 현장 사진이 아니에요(shows: {shows[:30]}). 같은 축제의 올해·지난해 현장 사진(전경·부스·방문객·판매장·공연·현수막)을 찾고 shows 에 '2024 죽변항 수산물축제 …'처럼 적어요. 못 찾으면 '축제 현장 사진 미확보'로 보고해요", "확인"))
+        elif "축제" in shows and not re.search(r"20\d\d", str(p.get("label") or "") + shows):
+            out.append(("사진 표기", f"{where}: 축제 현장 사진이면 촬영 연도(확인된 것만)를 label 에 적어요(예: '2024년 축제 현장 · 울진군')", "참고"))
     uses = {}
     for where, _, p in items_of(spec):
         if where.startswith(("thumb", "cover")) or ".grid[" in where:  # 썸네일·표지는 본편 사진을 다시 쓰고, 저녁 메뉴 격자는 장마다 같은 판을 보여 줘요
