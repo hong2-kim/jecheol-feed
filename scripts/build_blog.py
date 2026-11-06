@@ -163,7 +163,9 @@ def block_html(b):
         # 추천 사진은 고를 때 보라고 보여 주는 것이라, 본문을 복사할 때는 빠져요.
         tip = ""
         if b.get("url"):
-            credit = f"<br>이 사진을 쓰면 사진 아래에 적어 주세요: <b>{esc(b['credit'])}</b>" if b.get("credit") else "<br>출처를 적지 않아도 되는 사진이에요."
+            # 사진 성격·촬영 연도 표기(label, 예: '2024년 축제 현장 · 울진군')가 있으면 출처와 함께 적어요 (2026-11-06, 카드·썸네일과 같은 규칙)
+            line = " · ".join(x for x in (str(b.get("label") or "").strip(), str(b.get("credit") or "").strip()) if x)
+            credit = f"<br>이 사진을 쓰면 사진 아래에 적어 주세요: <b>{esc(line)}</b>" if line else "<br>출처를 적지 않아도 되는 사진이에요."
             tip = (f'<div class="pick" data-nocopy><img src="{esc(b["url"])}" alt="{esc(b["desc"])}" loading="lazy">'
                    f'<small>추천 사진 · <a href="{esc(b["url"])}" target="_blank" rel="noopener">크게 보기·저장</a>{credit}</small></div>')
         return f'<div class="photo">📷 사진 자리: {esc(b["desc"])}{tip}</div>'

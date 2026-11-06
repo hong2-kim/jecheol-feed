@@ -26,7 +26,7 @@ jobs:
           git config user.name "jecheol-feed"
           git config user.email "actions@users.noreply.github.com"
           git merge --no-edit "origin/${GITHUB_REF_NAME}"
-          git push origin main
+          python3 scripts/safe_push.py --no-rebase # 대량 삭제를 막고 올려요(2026-11-06)
           git push origin --delete "${GITHUB_REF_NAME}"
       - name: 공개 작업 부르기
         env:

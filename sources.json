@@ -1261,7 +1261,7 @@
       "checked": "2026-11-06",
       "status": "확인 필요",
       "recheck_days": 90,
-      "note": "2026-11-06 확인. 동서식품과 같은 꼴(약관에 영리 이용 사전 승낙). 쓰려면 회사 허락이 필요",
+      "note": "2026-11-06 확인. 동서식품과 같은 꼴(약관에 영리 이용 사전 승낙). 쓰려면 회사 허락이 필요 언론 기사 속 '사진=이마트 제공' 배포 사진도 같은 판단(배포 범위·이용 안내 없음, 2026-11-06 11-06 소식에서 실제 매장 CC0 사진으로 대신).",
       "uses": {
         "instagram": "미확인",
         "youtube": "미확인",
@@ -1432,14 +1432,14 @@
         "pulmuone.co.kr"
       ],
       "photo_source": "회사 누리집·뉴스룸·보도자료",
-      "terms_url": "",
-      "scope": "",
+      "terms_url": "https://news.pulmuone.co.kr/pulmuone/newsroom/listDataroom.do",
+      "scope": "뉴스룸 보도자료실에 제품 사진 첨부가 공개돼 있지만 이용 안내·허락 문구가 없고, 누리집·뉴스룸에서 이용약관·저작권 정책을 찾지 못함",
       "credit": "",
       "edit": "",
-      "checked": "미확인",
+      "checked": "2026-11-06",
       "status": "확인 필요",
       "recheck_days": 90,
-      "note": "외부 SNS·영상·블로그 재사용 허용 여부를 아직 확인하지 않았다. 확인하면 terms_url·scope·credit·edit·checked 를 채우고 status 를 바꾼다",
+      "note": "2026-11-06 확인. GS리테일·BGF리테일과 같은 꼴(원본 사진은 있지만 이용 안내·허락 없음). 회사 허락(메일)을 받으면 기록하고 그 뒤로 자동",
       "uses": {
         "instagram": "미확인",
         "youtube": "미확인",
@@ -1447,7 +1447,13 @@
       },
       "brands": [
         "풀무원"
-      ]
+      ],
+      "press_board": "https://news.pulmuone.co.kr/pulmuone/newsroom/listDataroom.do",
+      "decision": {
+        "state": "회사 확인 필요",
+        "since": "2026-11-06",
+        "ask": "보도자료실 사진의 정보 채널(인스타·유튜브·블로그) 이용을 회사에 확인하기 전에는 쓰지 않아요"
+      }
     },
     {
       "name": "하림",

@@ -38,5 +38,4 @@ jobs:
           git config user.email "actions@users.noreply.github.com"
           git add state/yt_stats.json
           git diff --cached --quiet || git commit -m "유튜브 조회수 기록"
-          git pull --rebase
-          git push
+          python3 scripts/safe_push.py # 받아 다시 얹기·대량 삭제·받지 않은 저장소를 막고 올려요(2026-11-06)

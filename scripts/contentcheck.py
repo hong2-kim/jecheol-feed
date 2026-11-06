@@ -240,6 +240,19 @@ def company_hosts():
 EXACT_FROM = "2026-11-07"
 
 
+def festival_scene(spec, where, text):
+    """축제를 소개하는 장면인지 (2026-11-06). 카드는 태그가 '축제'인 장, 다른 꼴은 설계도 dates.event 축제 이름이 문장에 나올 때만.
+    '축제와 지역 농산물을 엮은 도시락'처럼 축제라는 말만 나오는 문장은 빼요."""
+    m = re.match(r"cards\[(\d+)\]", where)
+    if m and isinstance(spec.get("cards"), list) and 1 <= int(m.group(1)) <= len(spec["cards"]):
+        return (spec["cards"][int(m.group(1)) - 1].get("tag") or "") == "축제"  # cards[N] 은 1부터 세요(gate.py HELD_AT 과 같음)
+    if where.startswith("cover"):
+        return False
+    name = str(((spec.get("dates") or {}).get("event") or {}).get("name") or "")
+    words = [w for w in re.split(r"[\s·]+", re.sub(r"제?\d+회|\d{4}", " ", name)) if len(w) >= 2 and w != "축제"]
+    return bool(words) and "축제" in name and all(w in text for w in words)
+
+
 def photo_lines(spec, day, platforms=("instagram", "youtube")):
     new_rule = day >= DATES_FROM
     exact_rule = day >= EXACT_FROM
@@ -285,7 +298,8 @@ def photo_lines(spec, day, platforms=("instagram", "youtube")):
             have = words(shows) | {SYN.get(w.lower(), w) for w in words(shows)}
             seen_in = lambda w: w in have or any(w in h or h in w for h in have)
             miss = sorted(w for w in want if not seen_in(w))
-            labeled = False  # 2026-11-06 사용자: '참고 사진' 딱지로 다른 대상 사진을 대신 쓰지 않아요(예전엔 ref 가 있으면 참고로 낮췄어요)
+            # 2026-11-06 사용자: '참고 사진' 딱지로 다른 대상 사진을 대신 쓰지 않아요. 이미 만든(11-07 전) 설계도는 예전처럼 참고로 낮춰요(다시 만들 때 보류 알림이 가지 않게)
+            labeled = not exact_rule and match == "같은 종류" and "참고" in str(p.get("ref") or "")
             star = {w for w in marked_names(text) if w in curated}  # [[ ]] 로 내세운 이름은 꼭 사진에 있어야 해요
             # 글에 나온 이름 가운데 사진에 하나도 없거나, [[ ]] 로 내세운 이름이 없을 때만 (재료 이름까지 다 찍혀야 하는 것은 아니에요)
             if miss and (len(miss) == len(want) or any(not seen_in(w) for w in star)):
@@ -335,11 +349,13 @@ def photo_lines(spec, day, platforms=("instagram", "youtube")):
             elif match == "같은 종류" and "참고" in str(p.get("ref") or "") and exact_rule and not general:
                 out.append(("사진 일치", f"{where}: 글은 {b} 상품을 말하는데 사진은 비슷한 다른 음식이에요(shows: {shows[:30]}). '참고 사진' 딱지를 달아도 그 상품 장면에는 "
                                          f"실제 제품 사진만 써요(2026-11-06). 실제 제품 사진을 찾거나(PROMPT.md \"제품 사진 찾는 차례\"), 못 찾으면 그 장을 보류해요", "차단"))
+            elif not exact_rule and match == "같은 종류" and "참고" in str(p.get("ref") or ""):
+                out.append(("사진 일치", f"{where}: {b} 상품 글에 같은 종류 참고 사진({shows[:24]}) — 11-07 전 설계도라 알리기만 해요. 새 설계도는 실제 제품 사진만 써요", "참고"))
             elif match != "정확" or b not in shows:
                 out.append(("사진 일치", f"{where}: 글은 {b} 상품을 말하는데 사진은 그 상품이 아니에요(match {match or '없음'}, shows: {shows[:30]}). 실제 제품 사진(회사 배포 사진·공식 SNS·이용 허락이나 조건이 확인된 구매 후기 사진)을 찾고, 끝내 없으면 photo_search 를 적어 그 장만 보류해요", "차단"))
         if "참고" in str(p.get("ref") or ""):
             out.append(("사진 표기", f"{where}: '참고 사진' 딱지(ref)는 2026-11-06부터 쓰지 않아요. 사진 성격을 label 에 적어요(예: '2025년 축제 현장 · 울진군', '사진: ○○ 제공')", "참고"))
-        if "축제" in text and "축제" not in shows and not where.startswith("thumb"):
+        if festival_scene(spec, where, text) and "축제" not in shows and not where.startswith("thumb"):
             # 2026-11-06 사용자: 축제 소식은 실제 축제 현장 사진(올해 → 지난해·이전 회차). 생선 말리기·항구·관광지 사진에 표기만 붙여 대신하지 않아요
             out.append(("사진 일치", f"{where}: 축제 소식인데 축제 현장 사진이 아니에요(shows: {shows[:30]}). 같은 축제의 올해·지난해 현장 사진(전경·부스·방문객·판매장·공연·현수막)을 찾고 shows 에 '2024 죽변항 수산물축제 …'처럼 적어요. 못 찾으면 '축제 현장 사진 미확보'로 보고해요", "확인"))
         elif "축제" in shows and not re.search(r"20\d\d", str(p.get("label") or "") + shows):
