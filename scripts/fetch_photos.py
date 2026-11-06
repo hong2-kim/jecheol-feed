@@ -129,6 +129,7 @@ def run():
     index = read_json(INDEX, []) or []
     known = {e.get("tg_unique") for e in index} | {e.get("sha256") for e in index}
     captions, saved, again, too_big, answers = {}, [], [], 0, []
+    pressed = set()  # 이번에 처리한 (메시지, 버튼)
     loose, named = [], []  # 따로 보낸 글 (받은 시각, 글), 그 글로 이름을 채운 항목
     for up in updates:  # 여러 개를 한꺼번에 보내면 글은 첫 번째에만 붙어요
         msg = up.get("message") or {}
@@ -137,7 +138,16 @@ def run():
     for up in updates:
         offset = max(offset, up["update_id"] + 1)
         if up.get("callback_query"):  # 승인 전 시안 버튼
-            answers += button(token, chat, up["callback_query"])
+            cb = up["callback_query"]
+            key = ((cb.get("message") or {}).get("message_id"), cb.get("data"))
+            if key in pressed:  # 답이 오기 전에 두 번 누른 것: 한 번만 해요(고치기 루틴·제작이 두 번 불리지 않게)
+                try:
+                    api(token, "answerCallbackQuery", callback_query_id=cb["id"], text="이미 받았어요")
+                except Exception:
+                    pass
+                continue
+            pressed.add(key)
+            answers += button(token, chat, cb)
             continue
         msg = up.get("message") or {}
         if str((msg.get("chat") or {}).get("id")) != chat:

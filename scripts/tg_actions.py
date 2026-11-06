@@ -77,7 +77,10 @@ def set_review(rid, **fields):
 
 def queue(workflow, **inputs):
     jobs = _read(DISPATCH, [])
-    jobs.append({"workflow": workflow, "inputs": inputs})
+    job = {"workflow": workflow, "inputs": inputs}
+    if job in jobs:  # 같은 일은 한 번만 불러요
+        return
+    jobs.append(job)
     _write(DISPATCH, jobs)
 
 
