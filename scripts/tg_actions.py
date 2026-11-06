@@ -54,11 +54,11 @@ def blog_decide(rid, what):
 def name_of(rid):
     if rid.startswith("blog-"):
         return "블로그 초안 " + rid[5:]
-    import sys
-    sys.path.insert(0, str(ROOT / "video"))
-    try:
-        from publish import LABELS
-        return LABELS.get(rid[11:], (rid[11:],))[0]
+    try:  # video/publish.py 를 불러오면 requests 가 필요해서(photos 작업엔 없음) LABELS 칸만 읽어요
+        import ast
+        tree = ast.parse((ROOT / "video" / "publish.py").read_text(encoding="utf-8"))
+        node = next(n for n in tree.body if isinstance(n, ast.Assign) and getattr(n.targets[0], "id", "") == "LABELS")
+        return ast.literal_eval(node.value).get(rid[11:], (rid[11:],))[0]
     except Exception:
         return rid[11:]
 
@@ -149,6 +149,11 @@ def keep_cards(rid):
 def fix(rid, note=""):
     review = _read(ROOT / "state" / "review.json", {})
     r = review.get(rid) or {}
+    old = _read(ROOT / "requests" / f"fix-{rid}.json", None)
+    if old and old.get("status") == "open" and old.get("note") and note and note not in old["note"]:
+        note = old["note"] + "\n" + note  # 아직 안 고친 요청에 답장을 더 하면 고칠 점을 이어 붙여요
+    elif old and old.get("status") == "open" and not note:
+        note = old.get("note", "")
     req = {"rid": rid, "spec": spec_path(rid).relative_to(ROOT).as_posix(), "status": "open", "at": now(),
            "reasons": r.get("reasons") or [], "held_cards": r.get("held_cards") or [], "note": note[:800]}
     _write(ROOT / "requests" / f"fix-{rid}.json", req)
@@ -161,33 +166,39 @@ def fix(rid, note=""):
         sent = set(_read(ROOT / "state" / "sent_videos.json", []))  # 고친 것은 다시 보내야 해요
         _write(ROOT / "state" / "sent_videos.json", sorted(sent - {rid}))
     queue("fix", rid=rid)
-    soon = bool(os.environ.get("FIX_ROUTINE_URL") and os.environ.get("FIX_ROUTINE_TOKEN"))
-    when = "지금 고치기 시작해요. 20~40분 뒤 고친 시안이 와요." if soon else "내일 아침 매일 제작 때 먼저 고쳐서 다시 보내요."
+    when = ("지금 고치기 시작해요. 20~40분 뒤 고친 시안이 와요." if routine_ready()
+            else "지금 바로는 못 불러서 내일 아침 매일 제작 때 먼저 고쳐요. " + routine_missing())
     return f"🛠 {name_of(rid)} 고쳐서 다시 만들게요." + (f"\n반영할 점: {note[:200]}" if note else "") + f"\n{when}"
 
 
 def rerun(day):
     queue("fix", rid=f"rerun:{day}")
-    soon = bool(os.environ.get("FIX_ROUTINE_URL") and os.environ.get("FIX_ROUTINE_TOKEN"))
-    return (f"🔁 {day} 치를 지금 다시 만들게요. 30~60분 뒤 텔레그램으로 와요." if soon
-            else f"{day} 치를 지금 바로 만들려면 고치기 루틴 연결(한 번만)이 필요해요. 내일 아침에는 평소대로 만들어요.")
+    return (f"🔁 {day} 치를 지금 다시 만들게요. 30~60분 뒤 텔레그램으로 와요." if routine_ready()
+            else f"{day} 치를 지금 바로는 만들지 못해요. 내일 아침에는 평소대로 만들어요. " + routine_missing())
 
 
 def routine_ready():
-    return bool(os.environ.get("FIX_ROUTINE_URL") and os.environ.get("FIX_ROUTINE_TOKEN"))
+    return not routine_missing()
+
+
+def routine_missing():
+    """고치기 루틴을 바로 못 부르는 까닭: 깃허브 작업에 안 보이는 Secret 이름(값은 적지 않아요). 다 있으면 빈 글."""
+    gone = [k for k in ("FIX_ROUTINE_URL", "FIX_ROUTINE_TOKEN") if not os.environ.get(k, "").strip()]
+    return (f"(깃허브 작업에 Secret {'·'.join(gone)} 이(가) 안 보여요. 저장소 Settings → Secrets and variables → Actions 의 "
+            "'Repository secrets' 에 이 이름 그대로 있어야 해요)") if gone else ""
 
 
 def ping(sent):
     """연결 확인 버튼(buttons.yml 시험이 보내요). 아무것도 바꾸지 않아요."""
     return (f"✅ 버튼이 이어졌어요 · 보낸 때 {sent} → 처리 {now()}\n"
             + ("고치기 루틴 바로 연결: 됨 (Secrets 있음)" if routine_ready()
-               else "고치기 루틴 바로 연결: 아직 (Secrets FIX_ROUTINE_URL·FIX_ROUTINE_TOKEN 없음 → [고쳐서 다시]는 다음 날 아침에 처리돼요)"))
+               else "고치기 루틴 바로 연결: 아직 → [고쳐서 다시]는 다음 날 아침에 처리돼요 " + routine_missing()))
 
 
 def ping_fix(sent):
     """고치기 루틴을 실제로 불러 봐요. 열린 요청이 없으면 루틴은 아무것도 하지 않고 끝나요."""
     if not routine_ready():
-        return "고치기 루틴 바로 연결이 아직이라 부르지 않았어요 (Secrets FIX_ROUTINE_URL·FIX_ROUTINE_TOKEN 없음)."
+        return "고치기 루틴 바로 연결이 아직이라 부르지 않았어요. " + routine_missing()
     queue("fix", rid="ping")
     return "🛠 고치기 루틴을 불러 볼게요. 1~2분 안에 부른 결과가 와요."
 
@@ -215,9 +226,14 @@ def handle_reply(msg):
         return None
     review = _read(ROOT / "state" / "review.json", {})
     rid = next((k for k, v in review.items() if v.get("ask_msg") == to), None)
-    if not rid:  # 기록에 없으면 답장한 메시지의 [고쳐서 다시] 버튼에서 영상 id 를 읽어요(시험 메시지 등)
-        rows = ((msg.get("reply_to_message") or {}).get("reply_markup") or {}).get("inline_keyboard") or []
+    if not rid:  # 기록에 없으면 답장한 봇 메시지의 버튼이나 글 속 영상 id 에서 읽어요(시험 메시지 등).
+        import re  # 텔레그램은 답장에 원래 메시지의 버튼을 안 붙여 줄 때가 있어서 글도 봐요
+        to_msg = msg.get("reply_to_message") or {}
+        rows = (to_msg.get("reply_markup") or {}).get("inline_keyboard") or []
         rid = next((b["callback_data"][6:] for row in rows for b in row if str(b.get("callback_data", "")).startswith("j:fix:")), None)
+        if not rid and (to_msg.get("from") or {}).get("is_bot"):
+            m = re.search(r"\b(\d{4}-\d{2}-\d{2}-\d+-[a-z]+)\b", to_msg.get("text") or to_msg.get("caption") or "")
+            rid = m.group(1) if m else None
     if not rid or not spec_path(rid).exists():
         return None
     return fix(rid, msg["text"].strip())
