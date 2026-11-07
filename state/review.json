@@ -518,5 +518,11 @@
     "reasons": [],
     "held_noticed": "2:확인 필요",
     "ask_msg": 927
+  },
+  "2026-11-08-10-voice": {
+    "verdict": "통과",
+    "hash": "cce74fa6541d",
+    "approved": false,
+    "reasons": []
   }
 }
