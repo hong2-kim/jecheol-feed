@@ -109,13 +109,22 @@ def check(day):
     print(f"보류 칸 검사: {len(found)}개 파일" if found else "보류 칸 검사: 없음")
     # 내레이션 쇼츠는 매일 하나(10-voice 또는 11-steps). 10-23·10-24 매일 실행이 "시간이 모자라" 건너뛰어서 넣은 검사예요 (2026-10-24)
     folder = ROOT / "videos" / day.isoformat()
-    missing = (folder / "2-news.json").exists() and not any((folder / f).exists() for f in ("10-voice.json", "11-steps.json"))
+    # 2026-11-07: 카드 뉴스가 없는 날은 이 검사가 아예 안 돌아 내레이션·카드가 함께 빠졌어요. 그날 설계도가 하나라도 있으면 봐요
+    made = any(folder.glob("*.json")) if folder.exists() else False
+    missing = made and not any((folder / f).exists() for f in ("10-voice.json", "11-steps.json"))
+    # 카드 뉴스: 그날 확인된 소식 글이 2개 넘게 있는데 카드가 없으면 만들어요. 사진이 모자라다는 까닭으로 소식을 빼지 않아요 (rules/daily/cards.md 2-1)
+    items = list((ROOT / "items" / day.isoformat()).glob("*.json")) if (ROOT / "items" / day.isoformat()).exists() else []
+    no_cards = len(items) >= 2 and not (folder / "2-news.json").exists()
+    if no_cards:
+        print(f"꼭 만들어 주세요: 오늘 소식 글이 {len(items)}개인데 2-news.json(카드 뉴스)이 없어요. 사진이 모자란 소식도 빼지 말고 "
+              "PROMPT.md \"사진은 끝까지 찾는다\"(지자체 사진 게시판·보도자료·지난 회차·Unsplash·블로그 후보)로 찾아 넣어요. "
+              "확인 필요 사진(공공누리 2유형 등)은 terms ok:false 로 넣으면 그 장만 보류되고 나머지가 나가요. 끝내 못 구한 장은 photo_search 를 적어요.")
     if missing:
         print("꼭 만들어 주세요: 오늘 10-voice.json(내레이션 쇼츠)이 없어요. 지금 만든 뒤 끝내요. "
               "시간·턴이 모자란 것은 건너뛸 까닭이 아니에요(PROMPT.md \"만드는 영상\", rules/daily/voice.md). "
               "후보를 3개 넘게 확인했는데도 겹치지 않는 확인된 주제가 없을 때만 건너뛰고, 본 후보와 까닭을 마지막 보고에 적어요.")
     unchecked = blog_photo_check(day)
-    return 1 if found or missing or unchecked else 0
+    return 1 if found or missing or no_cards or unchecked else 0
 
 
 # 사진 검수 시트·shows·match 는 매일 실행이 직접 채울 수 있어요. 나머지 '확인 필요'(이력 겹침, 이용 조건 등)는 사람 몫이라 막지 않아요.
