@@ -363,7 +363,7 @@ SLOW_OK = ("soft", "reveal", "number")  # 일부러 천천히 읽는 말투
 # = 가장 과장되게 늘인 읽기(1.52초, 가운데 쉼 0.53초)를 골랐어요. 그래서 늘어진 읽기를 따로 알아보고 그 조각만 다시 읽어요.
 DRAWN_SPS = 5.0  # 쉼·앞뒤 여백을 뺀 음절/초가 이보다 느리면 늘어진 읽기
 DRAWN_SPS_SHORT = 5.5  # 다섯 음절 안 짧은 말("자, 시작!")은 더 빠릿해야 해요. 11-04 실제 영상 0.8초 안팎 읽기를 잡아요(정상 0.57~0.69초)
-DRAWN_GAP = 0.3  # 쉼표 없는 말 가운데 이보다 긴 쉼이 있으면 늘어진 읽기(쉼표가 있으면 +0.15초)
+DRAWN_GAP = 0.25  # 2026-11-08 0.3→0.25: 조사 앞에서 끊어 읽는 것('생일상 / 에')도 잡게. 쉼표 없는 말 가운데 이보다 긴 쉼이 있으면 늘어진 읽기(쉼표가 있으면 +0.15초)
 RETAKES = 4  # 늘어진 조각을 다시 읽어 볼 수
 PAUSE_COMMA = re.compile(r"(?<!\d),\s*|(?<=\d),(?!\d{3}(?!\d))\s*")  # 쉼을 넣는 쉼표. '5,000'·'7,500원' 같은 천 단위 쉼표는 빼요(숫자가 끊겨 읽혀요)
 
@@ -557,17 +557,24 @@ def read_line(spec, lines, i, c, pace, rate):
         else:
             v, starts, breaths, slow = once(l.get("take"))
             bad, net, gap = drawn(v, s)
-            if (bad or slow) and not l.get("take"):  # 늘어진 읽기: 빠르기는 그대로 두고 그 조각만 다시 읽어요 (2026-11-06·11-08)
+            commas = len(phrases(s)) - 1
+            nogap = commas - len(breaths)  # 쉼표인데 틈 없이 이어 읽은 곳('보면, 리뉴얼로'가 '보멸리뉴얼로'처럼 붙어 들려요, 2026-11-08)
+            # 쉼표에서 틈 없이 이어 읽는 건 다시 읽혀도 거의 안 바뀌고(5번 읽어 봄), 쉼표 앞뒤를 따로 읽어 이으면 앞 조각이 1.2~1.7배 늘어지고
+            # 끝이 문장 끝처럼 떨어져서(−8~−14반음) 더 나빴어요(2026-11-08 잰 것). 그래서 이어 읽음은 다시 읽는 까닭으로 삼지 않고 기록만 해요
+            if (bad or slow) and not l.get("take"):  # 빠르기는 그대로 두고 그 조각만 다시 읽어요 (2026-11-06·11-08)
                 for t in range(2, 2 + RETAKES):
                     v2, st2, br2, sl2 = once(t)
                     if v2 is None:
                         break
                     b2, n2, g2 = drawn(v2, s)
+                    ng2 = commas - len(br2)
                     if (len(sl2), b2, -n2) < (len(slow), bad, -net):
-                        v, starts, breaths, slow, bad, net, gap = v2, st2, br2, sl2, b2, n2, g2
+                        v, starts, breaths, slow, bad, net, gap, nogap = v2, st2, br2, sl2, b2, n2, g2, ng2
+                        why.append(f"다시 읽음(take {t}: 늘어짐 {len(sl2) + int(b2)}곳, 붙어 읽은 쉼표 {ng2}곳)")
                     if not b2 and not sl2:
-                        why.append(f"늘어진 읽기라 다시 읽음(take {t}, {n2}음절/초)")
                         break
+            if nogap:
+                why.append(f"쉼표 {nogap}곳은 틈 없이 이어 읽음(억양으로 나뉨)")
         if v is None:
             return None, {}
         bad, net, gap = drawn(v, s)
@@ -784,45 +791,174 @@ def bad_joint(left, right):
     return None
 
 
-def sub_chunks(text, room=CHUNK):
-    """자막 덩어리 [(글, 첫 말 조각 번호 또는 None)]. 한 문장이 WHOLE 칸 안이면 통째로 한 화면에서 끝내요.
-    넘으면 쉼표·문장부호 자리(말 조각 사이)에서만 나눠요. 쉼표 없이 WHOLE 을 넘는 조각만 그 안에서 나누고(chunks, 번호 None),
-    그때도 이어진 말(bad_joint)은 피해요. 덩어리 수는 될 수 있는 대로 적게, 길이는 고르게."""
+# ── 자막 나누기 2차 (2026-11-08 사용자: 글자 수·쉼표만으로 나누지 말고 실제 발화·뜻·호흡·표시 시간·연결 관계·장면 전환을 함께) ──
+MIN_SHOW = 0.8  # 자막 한 덩어리가 화면에 머무는 가장 짧은 때(초). 더 짧으면 읽기 전에 사라져요
+SPLIT_LIMIT = 6  # 나누는 자리 벌점이 이보다 크면 '자연스럽게 나눌 곳이 없음' → 문장을 줄이게 해요
+LONGEST_LINE = 44  # 한 문장이 이보다 길면(자막 세 화면 넘게) 문장을 줄여야 해요
+
+
+def cut_cost(left, right):
+    """left / right 사이에서 자막을 나눌 때 벌점(작을수록 자연스러움). 나누면 안 되는 자리는 None.
+    뜻이 끝나는 곳(문장부호) 0 · 쉼표 0.5 · 이음말('~고, ~면, ~서, ~는데, ~어도') 뒤 2 · '이·가' 뒤 3 ·
+    '을·를·에·로' 뒤와 '은·는'(주제인지 꾸밈인지 몰라서) 6 · 받침 ㄴ·ㄹ·그 밖 7. 꾸미는 말과 대상('쫄깃한 / 골뱅이'), 이어진 동사·의존 명사·조사·숫자 단위는 None."""
+    if bad_joint(left, right):
+        return None
+    a = left.replace("[[", "").replace("]]", "").split()
+    b = right.replace("[[", "").replace("]]", "").split()
+    if not a or not b:
+        return None
+    x = a[-1]
+    hx = re.sub(r"[^가-힣0-9]", "", x)
+    if re.search(r"[.?!…]$", x):
+        return 0
+    if x.endswith(","):
+        return 0.5
+    if re.search(r"(고|며|면|서|는데|은데|지만|니까|라서|어서|아서|해서|려고|거나|든지|다가|자마자|도록)$", hx):
+        return 2
+    if re.search(r"(번째는|오늘은|요즘은|사실은|이번엔|이건|그건|저는|우리는|여러분은|여러분)$", hx):
+        return 2
+    if re.search(r"[이가]$", hx) and len(hx) >= 2:
+        return 3
+    if re.search(r"[어아여워해]도$", hx):  # '데워도, 독소가'처럼 이어 주는 말
+        return 2
+    if re.search(r"(을|를|에|에서|에게|한테|와|과|로|으로|부터|까지|처럼|보다|만|도)$", hx):
+        return 6
+    if re.search(r"(한|운|된|난|진|른|던|운|인|할|될|볼|갈)$", hx) and len(hx) >= 2:  # 꾸미는 말 뒤 — '쫄깃한 / 골뱅이를'
+        return None
+    if re.search(r"[는은]$", hx):  # '채우는 / 갈비찜'(꾸밈)인지 '음식은 / 뭔가요'(주제)인지 글만으로는 몰라서 되도록 피해요
+        return 6
+    last = ord(hx[-1]) - 0xAC00 if hx and "가" <= hx[-1] <= "힣" else -1
+    if last >= 0 and last % 28 in (4, 8) and len(hx) >= 2:  # 받침 ㄴ·ㄹ 로 끝나는 꾸미는 말일 수 있어요('빠질', '맛있는')
+        return 7
+    if re.search(r"의$", hx):
+        return None  # '먹고갈지도의 / 생일' 처럼 이어진 말
+    return 7
+
+
+def sub_plans(text, room=CHUNK, top=3):
+    """자막을 나누는 방법 후보를 좋은 차례로 [(벌점, [(글, 첫 말 조각 번호 또는 None)])].
+    한 화면(whole 칸 안)에 들어가면 나누지 않아요(쉼표가 있어도). 넘으면 덩어리를 될 수 있는 대로 적게,
+    낱말 사이 어디든 후보로 두고 cut_cost 와 길이 고르기로 점수를 매겨요(쉼표가 없어도 자연스러운 곳에서 나눌 수 있어요)."""
     from build import units
-    if not text.split():
+    words = text.split()
+    if not words:
         return []
-    whole = WHOLE - (CHUNK - room)  # 이름표가 붙으면 그만큼 짧게
+    whole = WHOLE - (CHUNK - room)
     if units(text) <= whole:
-        return [(text, 0)]
-    ps = phrases(text)
-    size = lambda i, j: sum(units(p) for p in ps[i:j]) + 0.3 * (j - i - 1)
-    n = len(ps)
-    best = {0: (0, 0.0, [])}
-    for j in range(1, n + 1):
-        for i in range(j):
-            if i not in best or (size(i, j) > whole and j - i > 1):
-                continue
-            cnt, cost, cuts = best[i]
-            piece = size(i, j)
-            c2 = cost + (60 if piece < 5 else 0) + (piece - min(whole, size(0, n) / 2)) ** 2 / 50
-            cand = (cnt + 1, c2, cuts + [j])
-            if j not in best or cand[:2] < best[j][:2]:
-                best[j] = cand
-    out, start = [], 0
-    for cut in best[n][2]:
-        group = " ".join(ps[start:cut])
-        if units(group) > whole:  # 쉼표 없이 긴 조각: 그 안에서 나눠요(검수가 쉼표를 넣으라고 알려 줘요)
-            for k, part in enumerate(chunks(group, room)):
-                out.append((part, start if k == 0 else None))
-        else:
-            out.append((group, start))
-        start = cut
-    fixed, open_ = [], False  # [[강조]] 가 덩어리 사이에서 끊기면 양쪽을 닫고 열어 줘요
-    for t, k in out:
+        return [(0.0, [(text, 0)])]
+    n = len(words)
+    size = lambda i, j: sum(units(w) for w in words[i:j]) + 0.3 * (j - i - 1)
+    plans = []
+    k_min = max(2, -(-int(size(0, n)) // whole))
+    for k in (k_min, k_min + 1):
+        goal = size(0, n) / k
+        # best[(j, cnt)] = 낮은 벌점 차례 목록 [(벌점, 자른 자리들)] (상위 top 개)
+        best = {(0, 0): [(0.0, [])]}
+        for j in range(1, n + 1):
+            for cnt in range(1, k + 1):
+                cands = []
+                for i in range(j):
+                    if (i, cnt - 1) not in best or size(i, j) > whole:
+                        continue
+                    if j < n:
+                        c = cut_cost(" ".join(words[i:j]), " ".join(words[j:]))
+                        if c is None:
+                            continue
+                    else:
+                        c = 0
+                    piece = size(i, j)
+                    extra = c + (piece - goal) ** 2 / 90  # 짧은 덩어리는 실제 표시 시간(MIN_SHOW)으로 다시 봐요(plan_subs)
+                    cands += [(cost + extra, cuts + [j]) for cost, cuts in best[(i, cnt - 1)]]
+                if cands:
+                    best[(j, cnt)] = sorted(cands)[:top]
+        plans += best.get((n, k), [])
+    plans.sort()
+    out = []
+    phr = phrases(text)
+    ends = []  # 말 조각이 끝나는 낱말 번호
+    acc = 0
+    for p in phr:
+        acc += len(p.split())
+        ends.append(acc)
+    for cost, cuts in plans[:top]:
+        pieces, start = [], 0
+        for cut in cuts:
+            first = ends.index(start) + 1 if start in ends else (0 if start == 0 else None)
+            pieces.append((" ".join(words[start:cut]), first))
+            start = cut
+        out.append((cost, _close_marks(pieces)))
+    if not out:  # 자연스럽게 나눌 곳이 없어요: 예전 방식으로 나누고, 검수가 문장을 줄이라고 막아요
+        out.append((99.0, _close_marks([(p, None if k else 0) for k, p in enumerate(chunks(text, room))])))
+    return out
+
+
+def _close_marks(pieces):
+    """[[강조]] 가 덩어리 사이에서 끊기면 양쪽을 닫고 열어 줘요."""
+    fixed, open_ = [], False
+    for t, k in pieces:
         t = ("[[" if open_ and not t.startswith("[[") else "") + t
         open_ = t.count("[[") > t.count("]]")
         fixed.append((t + ("]]" if open_ else ""), k))
     return fixed
+
+
+def sub_chunks(text, room=CHUNK):
+    """자막 덩어리 [(글, 첫 말 조각 번호 또는 None)] — 가장 좋은 나누기(sub_plans 의 첫째)."""
+    plans = sub_plans(text, room)
+    return plans[0][1] if plans else []
+
+
+def plan_subs(say, said, v, c, rate, room=CHUNK, dur=None):
+    """실제 목소리에 맞춘 자막 [(글, 바뀌는 때(문장 시작에서 초), 실제 시점인지)].
+    나누기 후보마다 덩어리를 따로 읽은 소리를 전체 소리에 맞춰(align_phrases) 다음 덩어리가 들리기 시작하는 때를 찾고,
+    그 0.1초 전 가장 조용한 때로 바꿔요. 바뀌는 때가 모음 가운데이거나 덩어리가 MIN_SHOW 보다 짧게 보이면 다음 후보를 봐요.
+    읽는 말(read)이 자막과 달라 덩어리를 따로 읽을 수 없으면 말 조각 수가 같을 때만 그 시점을 쓰고, 아니면 어림해요(검수가 알려요)."""
+    from build import units
+    plans = sub_plans(say, room)
+    sec = len(v) / SR if v is not None else 0
+    dur = dur or sec
+    same = plain(say) == said
+    tried = []
+    for cost, parts in plans:
+        if len(parts) == 1:
+            return [(parts[0][0], 0.0, True)], cost
+        if v is None:
+            w = [units(p) + 1 for p, _ in parts]
+            return [(p, sec * sum(w[:k]) / sum(w), False) for k, (p, _) in enumerate(parts)], cost
+        if same:
+            texts = [plain(p) for p, _ in parts]
+        elif all(k is not None for _, k in parts) and len(phrases(say)) == len(phrases(said)):
+            ps = phrases(said)
+            idx = [k for _, k in parts] + [len(ps)]
+            texts = [" ".join(ps[idx[m]:idx[m + 1]]) for m in range(len(parts))]
+        else:
+            texts = None
+        if texts is None:
+            continue
+        pieces = [tts(t.rstrip(",").strip(), c.get("voice"), rate, tail=0.05) for t in texts]
+        if any(p is None for p in pieces):
+            continue
+        onsets = align_phrases(v, pieces)
+        times, prev = [0.0], 0.0
+        for o in onsets:
+            if o is None:
+                break
+            t = max(prev + 0.3, settle(v, o - SUB_LEAD))
+            times.append(t)
+            prev = t
+        if len(times) != len(parts):
+            continue
+        shows = [b - a for a, b in zip(times, times[1:] + [dur])]
+        bad = sum(1 for t in times[1:] if mid_speech(v, t)) + sum(1 for s in shows if s < MIN_SHOW)
+        res = [(p, t, True) for (p, _), t in zip(parts, times)]
+        if not bad:
+            return res, cost
+        tried.append((bad, cost, res))
+    if tried:
+        tried.sort(key=lambda x: (x[0], x[1]))
+        return tried[0][2], tried[0][1]
+    w = [units(p) + 1 for p, _ in plans[0][1]]
+    return [(p, sec * sum(w[:k]) / sum(w), False) for k, (p, _) in enumerate(plans[0][1])], plans[0][0]
 
 
 def sub_times(say, said, sec, edges, room=CHUNK):
@@ -1146,6 +1282,12 @@ def build_voice(spec, work=None):
         import rec
         css += rec.CSS
         parts, cuts, sfx, subs = rec.build_rec(spec, voices, speech, durs, starts, real)
+        if real:  # 저녁 추천도 만든 뒤 시점 검수: 자막·장면이 모음 가운데서 바뀌는지, 너무 짧게 보이는지 (2026-11-08)
+            for s_ in subs:
+                if s_["k"] and mid_speech(voices[s_["line"]], s_["at"] - starts[s_["line"]]):
+                    timing.append(f"{s_['line'] + 1}번 문장: 자막 '{plain(s_['text'])[:12]}' 이 말소리 가운데서 바뀌어요")
+                if s_["end"] - s_["at"] < MIN_SHOW * 0.6 and not lines[s_["line"]].get("nosub"):
+                    timing.append(f"{s_['line'] + 1}번 문장: 자막 '{plain(s_['text'])[:12]}' 이 {s_['end'] - s_['at']:.2f}초만 보여요")
         credits = []  # 추천 쇼츠 끝 장면에는 사진 출처를 넣지 않고 게시글·설명에만 적어요 (2026-10-26 사용자)
         out = ['<!doctype html><html lang="ko"><head><meta charset="utf-8">',
                f"<style>{css}{CSS}{thumb.css().replace('FONT_DIR', (HERE / 'fonts').as_uri())}{rec.CSS}</style></head>",
@@ -1167,10 +1309,13 @@ def build_voice(spec, work=None):
             out[1] = out[1].replace("</style>", ".vpic { height: 1110px; } .vchip { font-size: 42px; padding: 6px 22px 11px; }</style>")
         if spec.get("sub_accent"):  # 가운데 띠(자막) 강조 글씨 색을 그 영상만 바꿔요 (2026-11-08 생일 특집: 주황)
             out[1] = out[1].replace("</style>", f".vsub .am {{ color: {spec['sub_accent']}; }}</style>")
-        subs_at = [sub_times(l["say"], spoken(l), speech[i], line_edges[i], CHUNK - 2 if who_of(spec, l).get("label") else CHUNK)
-                   for i, l in enumerate(lines)]
-        if real:  # 실제 소리에서 다음 말 바로 앞의 가장 조용한 때로 옮겨요(앞 말 끝소리를 자르지 않게)
-            subs_at = [[(p, settle(voices[i], t) if k and ok else t, ok) for k, (p, t, ok) in enumerate(sa)] for i, sa in enumerate(subs_at)]
+        # 자막 나누기·바꾸는 때 (2026-11-08 2차): 뜻·연결 관계로 나눌 후보를 고르고, 실제 목소리에 맞춰 바꾸는 때를 정해요(plan_subs)
+        subs_at = []
+        for i, l in enumerate(lines):
+            c = who_of(spec, l) or narr
+            room = CHUNK - 2 if who_of(spec, l).get("label") else CHUNK
+            rate = (logs[i].get("rate") if breathing(spec) and logs else None) or l.get("rate") or c.get("rate")
+            subs_at.append(plan_subs(l["say"], spoken(l), voices[i] if real else None, c, rate, room, durs[i])[0])
         last_photo = None
         for n, (a, b, vis) in enumerate(segments(lines)):
             at, d = starts[a], sum(durs[a:b])
@@ -1380,29 +1525,33 @@ def problems(spec):
 
 
 def sub_problems(spec):
-    """자막·장면 전환 검수 (2026-11-08 사용자: '빠질 / 수 없는', '비벼 / 먹으면 이 / 입맛이'). 영상을 만들기 전에 봐요.
-    한 문장이 한 화면에 안 들어가면 쉼표 자리에서만 나뉘어요. 쉼표 없이 긴 말은 그 안에서 나뉘니 쉼표를 넣거나 줄이게 해요."""
+    """자막·장면 전환 검수 — 영상을 만들기 전에 봐요 (2026-11-08 사용자: '빠질 / 수 없는', '비벼 / 먹으면 이 / 입맛이').
+    한 화면에 들어가면 나누지 않고, 나눠야 하면 뜻이 끝나는 자리(sub_plans)에서 나눠요. 자연스럽게 나눌 곳이 없거나
+    한 문장이 너무 길면 자막을 억지로 쪼개지 말고 문장을 줄이게 해요. 실제 시점 검수는 영상을 만들 때 해요(plan_subs, timing)."""
     from build import units
     must, should = [], []
     for n, l in enumerate(spec.get("lines") or [], 1):
         say = l.get("say") or ""
         room = CHUNK - 2 if who_of(spec, l).get("label") else CHUNK
-        parts = sub_chunks(say, room)
+        if units(say) > LONGEST_LINE:
+            must.append(f"{n}번 문장이 {units(say):.0f}칸이에요. 자막이 세 화면 넘게 나뉘어요. 두 문장으로 나누거나 줄여 주세요.")
+            continue
+        plans = sub_plans(say, room)
+        cost, parts = plans[0] if plans else (0, [])
+        if cost >= 99:
+            must.append(f"{n}번 문장: 자막을 자연스럽게 나눌 곳이 없어요('{plain(say)[:16]}…'). 이어진 말이 갈라지지 않게 문장을 줄이거나 쉼표를 넣어 주세요.")
+            continue
         for k in range(1, len(parts)):
-            a, b = plain(parts[k - 1][0]), plain(parts[k][0])
-            if parts[k][1] is None:
-                why = bad_joint(a, b)
-                if why:
-                    must.append(f"{n}번 문장: 자막이 '{a[-8:]} / {b[:8]}' 로 나뉘어 {why}. 뜻이 끊기는 곳에 쉼표를 넣거나 문장을 줄여 주세요.")
-                else:
-                    should.append(f"{n}번 문장: 쉼표 없는 곳('{a[-6:]} / {b[:6]}')에서 자막이 나뉘어요. 쉼표를 넣거나 줄이면 한 화면에서 끝나요.")
-            if units(b) <= 2.5:
-                must.append(f"{n}번 문장: 자막 '{b}' 이 한두 글자뿐이에요.")
-        for ph in phrases(say):
-            if units(ph) > TIGHT:
-                must.append(f"{n}번 문장: '{plain(ph)[:12]}…' 이 쉼표 없이 {units(ph):.0f}칸이에요. 한 화면에 안 들어가 말 가운데서 자막이 나뉘어요. 쉼표를 넣거나 나눠 주세요.")
-        if len(l.get("photos") or []) > 1 and len(phrases(say)) < len(l["photos"]):
-            should.append(f"{n}번 문장: 사진이 {len(l['photos'])}장인데 쉼표가 모자라 말 가운데서 사진이 바뀌어요. 쉼표를 넣어 주세요.")
+            a_, b_ = parts[k - 1][0], parts[k][0]
+            c = cut_cost(a_, b_)
+            if c is None:
+                must.append(f"{n}번 문장: 자막이 '{plain(a_)[-8:]} / {plain(b_)[:8]}' 로 나뉘어 {bad_joint(a_, b_) or '이어진 말이 갈라져요'}. 문장을 줄이거나 쉼표를 넣어 주세요.")
+            elif c > SPLIT_LIMIT:
+                should.append(f"{n}번 문장: 자막이 '{plain(a_)[-6:]} / {plain(b_)[:6]}' 에서 나뉘어요(뜻이 덜 끝난 곳). 줄이면 한 화면에서 끝나요.")
+            if units(b_) <= 2.5:
+                must.append(f"{n}번 문장: 자막 '{plain(b_)}' 이 한두 글자뿐이에요.")
+        if len(l.get("photos") or []) > len(parts):
+            should.append(f"{n}번 문장: 사진이 {len(l['photos'])}장인데 자막 덩어리가 {len(parts)}개라 말 가운데서 사진이 바뀔 수 있어요. 문장을 나누거나 사진을 한 장으로.")
     return must, should
 
 

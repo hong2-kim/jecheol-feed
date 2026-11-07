@@ -183,9 +183,15 @@ def sub_times(line, voice_arr, said, measure=None):
     if audio and all(a is not None for a in audio):
         w = [len(a) for a in audio]
     edges, moved = [0.0], []
+    # 2026-11-08: 조각마다 따로 읽은 소리를 문장 소리에 맞춰(DTW) 다음 조각이 실제로 들리기 시작하는 때를 찾고, 그 0.1초 전 가장 조용한 때에 바꿔요.
+    # 맞추지 못하면 예전처럼 길이 비율로 어림해 가까운 쉼으로 옮겨요.
+    onsets = V.align_phrases(voice_arr, audio) if voice_arr is not None and audio and all(a is not None for a in audio) else None
     for k in range(1, len(parts)):
         rough = said * sum(w[:k]) / sum(w)
-        if voice_arr is not None:  # 따로 읽힌 길이로 어림한 곳에서 가장 가까운 말 사이 쉬는 곳으로
+        if onsets and onsets[k - 1] is not None:
+            t = V.settle(voice_arr, onsets[k - 1] - V.SUB_LEAD)
+            moved.append(t - rough)
+        elif voice_arr is not None:  # 따로 읽힌 길이로 어림한 곳에서 가장 가까운 말 사이 쉬는 곳으로
             t, d = _snap(voice_arr, rough, 0.25, comma=bool(re.search(r"[,.?!]\]*$", parts[k - 1].strip())))
             moved.append(d)
         else:
@@ -406,7 +412,7 @@ def problems(spec, cuts=None, subs=None):
                 must.append(f"{n}번 문장: 자막 '{bare}' 이 서술어만 따로 나와요.")
             if units(bare) > 15:
                 should.append(f"{n}번 문장: 자막 '{bare}' 이 길어요({units(bare):.0f}칸). 한 화면에 13칸쯤이 읽기 좋아요.")
-            if k + 1 < len(parts) and not l.get("subs"):  # 2026-11-08: 이어진 말('빠질 / 수 없는', '비벼 / 먹으면') 사이에서 나누지 않아요
+            if k + 1 < len(parts):  # 2026-11-08: 이어진 말('빠질 / 수 없는', '비벼 / 먹으면') 사이에서 나누지 않아요(직접 적은 subs 도)
                 import voice as V
                 why = V.bad_joint(parts[k], parts[k + 1])
                 if why:

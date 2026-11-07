@@ -888,6 +888,8 @@ def card_problems(spec):
                 must.append(f"카드 {n}: {name}({key})이 없어요.")
         if kind:
             typed_problems(c, n, must, should)
+            if c.get('type') == 'hero' and c.get('lines') and not spec.get('voice_pick'):  # 2026-11-08: 카드 쇼츠 내레이션도 내레이션 쇼츠와 같은 읽기로
+                must.append(f"카드 {n}: 큰 제목 장 내레이션(lines)이 있는데 voice_pick·narrator 가 없어요. 없으면 예전 빠른 채널 목소리로 읽어요(rules/daily/voice.md 목소리).")
         head = str(c.get("headline") or "").split("\n")
         if len(head) > 2:
             must.append(f"카드 {n}: 한 줄 소식은 두 줄까지예요.")

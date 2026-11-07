@@ -77,8 +77,65 @@ def render(spec, name, browser, warns=None):
             raise RuntimeError("영상을 저장하지 못했어요 (ffmpeg 오류).")
     finally:
         page.close()
+    if warns is not None:  # 다 만든 영상(mp4)으로 다시 봐요: 길이, 소리, 목소리가 제자리에 들어갔는지 (2026-11-08 사용자)
+        warns.extend(final_check(out, duration, meta.get("voice")))
     (ROOT / "dist" / f"{name}.txt").write_text(build.description(spec), encoding="utf-8")
     return out, duration
+
+
+def final_check(mp4, duration, voice_wav=None):
+    """다 만든 영상 검사. 걸린 까닭 목록(없으면 빈 목록).
+    ① 영상 길이가 설계와 0.5초 넘게 다른지 ② 소리가 들어갔는지 ③ 내레이션 영상이면 영상 속 소리와 목소리 파일을 맞춰 봐서
+    목소리가 밀리거나(0.08초 넘게) 빠졌는지. 판정하지 못하면 '판정 못 함'으로 남겨요(통과로 치지 않아요)."""
+    import wave
+    import numpy as np
+    out = []
+    ff = imageio_ffmpeg.get_ffmpeg_exe()
+    info = subprocess.run([ff, "-i", str(mp4)], capture_output=True, text=True, encoding="utf-8", errors="replace").stderr
+    m = re.search(r"Duration: (\d+):(\d+):([\d.]+)", info)
+    if not m:
+        return ["최종 영상 검사: 영상 길이를 읽지 못했어요(판정 못 함)"]
+    got = int(m[1]) * 3600 + int(m[2]) * 60 + float(m[3])
+    if abs(got - duration) > 0.5:
+        out.append(f"최종 영상 검사: 영상 길이 {got:.1f}초가 설계 {duration:.1f}초와 달라요")
+    if "Audio:" not in info:
+        out.append("최종 영상 검사: 소리가 없어요")
+        return out
+    if not voice_wav or not Path(voice_wav).exists():
+        return out
+    tmp = ROOT / "build" / (Path(mp4).stem + "-check.wav")
+    r = subprocess.run([ff, "-y", "-loglevel", "error", "-i", str(mp4), "-ac", "1", "-ar", "16000", str(tmp)])
+    if r.returncode or not tmp.exists():
+        return out + ["최종 영상 검사: 영상 속 소리를 꺼내지 못했어요(판정 못 함)"]
+
+    def env(path):
+        with wave.open(str(path)) as w:
+            x = np.frombuffer(w.readframes(w.getnframes()), dtype=np.int16).astype(np.float64) / 32768
+            sr = w.getframerate()
+        hop = sr // 100
+        n = len(x) // hop
+        return np.sqrt(np.mean(x[: n * hop].reshape(n, hop) ** 2, axis=1)) if n else np.zeros(0)
+    a, b = env(tmp), env(voice_wav)
+    n = min(len(a), len(b))
+    if n < 200:
+        return out + ["최종 영상 검사: 소리가 너무 짧아 판정 못 함"]
+    a, b = a[:n], b[:n]
+    # 배경음악이 섞여 있어서 목소리 크기 변화(올라갔다 내려가는 모양)끼리 견줘요
+    da, db = np.diff(np.log(a + 1e-4)), np.diff(np.log(b + 1e-4))
+    da, db = (da - da.mean()) / (da.std() + 1e-9), (db - db.mean()) / (db.std() + 1e-9)
+    lags = range(-30, 31)
+    score = [float(np.mean(da[max(0, k): n - 1 + min(0, k)] * db[max(0, -k): n - 1 - max(0, k)])) for k in lags]
+    best = int(np.argmax(score))
+    lag, peak = list(lags)[best] / 100, score[best]
+    if peak < 0.15:
+        out.append(f"최종 영상 검사: 영상 속 목소리를 찾지 못했어요(맞춤 점수 {peak:.2f}, 판정 못 함)")
+    elif abs(lag) > 0.08:
+        out.append(f"최종 영상 검사: 영상 속 목소리가 {lag:+.2f}초 밀려 있어요(자막과 어긋나요)")
+    voiced = b > 0.1 * b.max()  # 목소리가 있는 곳에서 영상 소리도 커졌는지(빠진 문장이 없는지)
+    if voiced.any() and np.mean(a[voiced]) < 1.5 * np.mean(a[~voiced] + 1e-9) and np.mean(a[voiced]) < 0.01:
+        out.append("최종 영상 검사: 목소리 자리에서 영상 소리가 커지지 않아요(목소리가 빠졌을 수 있어요)")
+    print(f"  최종 영상 검사: 길이 {got:.1f}초, 목소리 어긋남 {lag:+.2f}초(맞춤 점수 {peak:.2f})")
+    return out
 
 
 def render_cards(spec, name, browser, strict=True):
@@ -189,7 +246,11 @@ def card_segments(files, name, spec, front=None):
             segs.append((f, CARD_SEC, FADE_SEC))
             continue
         for k, line in enumerate(c["lines"], 1):
-            sound = voice.tts(voice.spoken(line))
+            if spec.get("voice_pick"):  # 2026-11-08: 내레이션 쇼츠와 같은 읽기(쉼표 숨·늘어짐 다시 읽기, 배속 일괄 금지)
+                sp = voice.with_duo(spec)
+                sound, _ = voice.speak(sp, c["lines"], k - 1, sp.get("narrator") or {})
+            else:
+                sound = voice.tts(voice.spoken(line))
             sec = len(sound) / voice.SR if sound is not None else voice.estimate(voice.spoken(line))
             fade = FADE_SEC if k == 1 else SAY_FADE
             lead = SAY_LEAD + (fade if k == 1 else 0)
