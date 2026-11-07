@@ -406,6 +406,11 @@ def problems(spec, cuts=None, subs=None):
                 must.append(f"{n}번 문장: 자막 '{bare}' 이 서술어만 따로 나와요.")
             if units(bare) > 15:
                 should.append(f"{n}번 문장: 자막 '{bare}' 이 길어요({units(bare):.0f}칸). 한 화면에 13칸쯤이 읽기 좋아요.")
+            if k + 1 < len(parts) and not l.get("subs"):  # 2026-11-08: 이어진 말('빠질 / 수 없는', '비벼 / 먹으면') 사이에서 나누지 않아요
+                import voice as V
+                why = V.bad_joint(parts[k], parts[k + 1])
+                if why:
+                    must.append(f"{n}번 문장: 자막이 '{bare[-8:]} / {V.plain(parts[k + 1])[:8]}' 로 나뉘어 {why}. 쉼표를 넣거나 subs 로 나눠 주세요.")
             if k + 1 < len(parts):
                 nxt = parts[k + 1].replace("[[", "").strip()
                 if re.search(r"[\d만천백]$", bare) or (nxt and any(nxt.startswith(u) for u in UNITS) and re.search(r"\d", bare.split()[-1])):

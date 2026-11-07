@@ -37,6 +37,8 @@ def render(spec, name, browser, warns=None):
     """warns 에 리스트를 주면 기준을 넘었지만 만든 까닭을 적어요(보내기 전 검수에서 '확인 필요'가 돼요)."""
     build.EXTRACT = True
     page_html, duration, meta = build.build_html(spec)
+    if warns is not None and meta.get("timing"):  # 자막·사진이 말 가운데서 바뀌거나 쉼표 앞이 늘어지면 '승인 전 시안'으로 (2026-11-08 사용자)
+        warns.extend(f"시점 검수: {t}" for t in meta["timing"][:4])
     top = build.longest(spec)
     if duration < 9.9 or duration > LONG_DRAFT:
         raise ValueError(f"영상 길이가 {duration:.1f}초예요. 10~{top:.0f}초로 맞춰 주세요.")
