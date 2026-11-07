@@ -364,7 +364,14 @@ def photo_lines(spec, day, platforms=("instagram", "youtube")):
                 out.append(("사진 일치", f"{where}: 글은 {b} 상품을 말하는데 사진은 그 상품이 아니에요(match {match or '없음'}, shows: {shows[:30]}). 실제 제품 사진(회사 배포 사진·공식 SNS·이용 허락이나 조건이 확인된 구매 후기 사진)을 찾고, 끝내 없으면 photo_search 를 적어 그 장만 보류해요", "차단"))
         if "참고" in str(p.get("ref") or ""):
             out.append(("사진 표기", f"{where}: '참고 사진' 딱지(ref)는 2026-11-06부터 쓰지 않아요. 사진 성격을 label 에 적어요(예: '2025년 축제 현장 · 울진군', '사진: ○○ 제공')", "참고"))
-        if festival_scene(spec, where, text) and "축제" not in shows and not where.startswith("thumb"):
+        festival_here = festival_scene(spec, where, text) and not where.startswith("thumb")
+        food = set(name_words(shows)) & (set(name_words(text)) - GENERIC - PLACES - {"축제", "현장", "사진"})
+        if festival_here and "축제" not in shows and general and match == "같은 종류" and food and not re.search(r"축제|현장", str(p.get("label") or "")):
+            # 2026-11-07 사용자: 쓸 수 있는 현장 사진이 없으면 소식을 빼지 않고 대표 음식·식재료 사진으로 살린다(축제 현장처럼 표기하지 않음)
+            out.append(("사진 일치", f"{where}: 축제 현장 사진 대신 대표 음식 사진({'·'.join(sorted(food))})을 썼어요. 사진 보고에 '축제 현장 사진 미확보'와 찾아본 곳을 적어요", "참고"))
+        elif festival_here and "축제" not in shows and general and re.search(r"축제|현장", str(p.get("label") or "")):
+            out.append(("사진 표기", f"{where}: 음식 일반 사진인데 label 에 '축제·현장'을 적었어요(label: {p.get('label')}). 축제 현장처럼 표현하지 말고 '가리비 사진 · 출처'처럼 적어요", "확인"))
+        elif festival_here and "축제" not in shows:
             # 2026-11-06 사용자: 축제 소식은 실제 축제 현장 사진(올해 → 지난해·이전 회차). 생선 말리기·항구·관광지 사진에 표기만 붙여 대신하지 않아요
             out.append(("사진 일치", f"{where}: 축제 소식인데 축제 현장 사진이 아니에요(shows: {shows[:30]}). 같은 축제의 올해·지난해 현장 사진(전경·부스·방문객·판매장·공연·현수막)을 찾고 shows 에 '2024 죽변항 수산물축제 …'처럼 적어요. 못 찾으면 '축제 현장 사진 미확보'로 보고해요", "확인"))
         elif "축제" in shows and not re.search(r"20\d\d", str(p.get("label") or "") + shows):

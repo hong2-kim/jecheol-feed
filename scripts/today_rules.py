@@ -118,7 +118,7 @@ def check(day):
     if no_cards:
         print(f"꼭 만들어 주세요: 오늘 소식 글이 {len(items)}개인데 2-news.json(카드 뉴스)이 없어요. 사진이 모자란 소식도 빼지 말고 "
               "PROMPT.md \"사진은 끝까지 찾는다\"(지자체 사진 게시판·보도자료·지난 회차·Unsplash·블로그 후보)로 찾아 넣어요. "
-              "확인 필요 사진(공공누리 2유형 등)은 terms ok:false 로 넣으면 그 장만 보류되고 나머지가 나가요. 끝내 못 구한 장은 photo_search 를 적어요.")
+              "현장 사진이 확인 필요(공공누리 2유형 등)면 photo_candidates 로 보고하고 그 장은 대표 음식·식재료 사진(general, 음식 사진이라고 표기)으로 살려요. 대체 사진까지 없는 장만 photo_search 를 적어요.")
     if missing:
         print("꼭 만들어 주세요: 오늘 10-voice.json(내레이션 쇼츠)이 없어요. 지금 만든 뒤 끝내요. "
               "시간·턴이 모자란 것은 건너뛸 까닭이 아니에요(PROMPT.md \"만드는 영상\", rules/daily/voice.md). "
