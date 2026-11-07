@@ -161,20 +161,18 @@
    ],
    "src": "고성군수협 · 고성군·연합뉴스 · 11월 5일",
    "photo": {
-    "url": "vault:press/2026-11-07-news/goseong-2024-booths.jpg",
-    "shows": "2024 제8회 고성 가리비 수산물축제 먹거리 부스 거리(가리비찜·가리비전복볶음밥 값 현수막, 밤, 방문객)",
+    "url": "https://tong.visitkorea.or.kr/cms2/website/33/3052833.jpg",
+    "shows": "충남 태안 조개구이집 석쇠 위에서 굽는 가리비 구이",
     "match": "같은 종류",
     "fit": "cover",
-    "label": "2024년 축제 현장 · 고성군",
-    "rights": "고성군 보도자료(2024-10-28) 첨부 사진 · 공공누리 제2유형(출처표시+상업적 이용금지)",
-    "terms": {
-     "ok": false,
-     "url": "https://www.goseong.go.kr/board/view.goseong?boardId=BBS_0000196&menuCd=DOM_000000102002008000&dataSid=5651234",
-     "checked": "2026-11-07",
-     "scope": "공공누리 제2유형: 출처 표시, 상업적 이용 금지",
-     "note": "고성군 보도자료(2024-10-28 '제8회 고성 가리비 수산물 축제, 6만여 명 방문 성황리에 마쳐') 첨부 5-4. 제2유형이라 사용자가 정하기 전에는 확인 필요"
-    }
-   }
+    "general": true,
+    "about": "가리비 일반",
+    "label": "가리비 사진 · 한국관광공사",
+    "rights": "한국관광공사 포토코리아 공공누리 1유형 · ⓒ천준교"
+   },
+   "about": "가리비 일반",
+   "general": true,
+   "photo_note": "고성군 축제 현장 사진은 공공누리 2유형(상업적 이용 금지)이라 후보로만 보고. 대표 음식인 가리비 사진(관광공사 1유형)으로 살림(2026-11-07 사용자)"
   },
   {
    "type": "hero",
@@ -319,44 +317,34 @@
     "https://www.munhwa.com/article/11629316"
    ],
    "credits": [
-    "사진: 고성군(2024년 축제 현장)"
+    "ⓒ한국관광공사 포토코리아-천준교"
    ],
    "lead": {
     "thumb": {
      "head": "고성 가리비\n[[8일까지]]",
      "sub": "[[고성군스포츠파크]]에서 사흘",
      "photo": {
-      "url": "vault:press/2026-11-07-news/goseong-2024-booths.jpg",
-      "shows": "2024 제8회 고성 가리비 수산물축제 먹거리 부스 거리(가리비찜·가리비전복볶음밥 값 현수막, 밤, 방문객)",
+      "url": "https://tong.visitkorea.or.kr/cms2/website/33/3052833.jpg",
+      "shows": "충남 태안 조개구이집 석쇠 위에서 굽는 가리비 구이",
       "match": "같은 종류",
       "fit": "cover",
-      "label": "2024년 축제 현장 · 고성군",
-      "rights": "고성군 보도자료(2024-10-28) 첨부 사진 · 공공누리 제2유형(출처표시+상업적 이용금지)",
-      "terms": {
-       "ok": false,
-       "url": "https://www.goseong.go.kr/board/view.goseong?boardId=BBS_0000196&menuCd=DOM_000000102002008000&dataSid=5651234",
-       "checked": "2026-11-07",
-       "scope": "공공누리 제2유형: 출처 표시, 상업적 이용 금지",
-       "note": "고성군 보도자료(2024-10-28 '제8회 고성 가리비 수산물 축제, 6만여 명 방문 성황리에 마쳐') 첨부 5-4. 제2유형이라 사용자가 정하기 전에는 확인 필요"
-      }
+      "general": true,
+      "about": "가리비 일반",
+      "label": "가리비 사진 · 한국관광공사",
+      "rights": "한국관광공사 포토코리아 공공누리 1유형 · ⓒ천준교"
      }
     },
     "cover": {
      "title": "고성 가리비\n[[주말 축제]]",
      "photo": {
-      "url": "vault:press/2026-11-07-news/goseong-2024-booths.jpg",
-      "shows": "2024 제8회 고성 가리비 수산물축제 먹거리 부스 거리(가리비찜·가리비전복볶음밥 값 현수막, 밤, 방문객)",
+      "url": "https://tong.visitkorea.or.kr/cms2/website/33/3052833.jpg",
+      "shows": "충남 태안 조개구이집 석쇠 위에서 굽는 가리비 구이",
       "match": "같은 종류",
       "fit": "cover",
-      "label": "2024년 축제 현장 · 고성군",
-      "rights": "고성군 보도자료(2024-10-28) 첨부 사진 · 공공누리 제2유형(출처표시+상업적 이용금지)",
-      "terms": {
-       "ok": false,
-       "url": "https://www.goseong.go.kr/board/view.goseong?boardId=BBS_0000196&menuCd=DOM_000000102002008000&dataSid=5651234",
-       "checked": "2026-11-07",
-       "scope": "공공누리 제2유형: 출처 표시, 상업적 이용 금지",
-       "note": "고성군 보도자료(2024-10-28 '제8회 고성 가리비 수산물 축제, 6만여 명 방문 성황리에 마쳐') 첨부 5-4. 제2유형이라 사용자가 정하기 전에는 확인 필요"
-      }
+      "general": true,
+      "about": "가리비 일반",
+      "label": "가리비 사진 · 한국관광공사",
+      "rights": "한국관광공사 포토코리아 공공누리 1유형 · ⓒ천준교"
      }
     },
     "caption_head": "고성 가리비 수산물축제, 11월 8일까지 고성군스포츠파크에서 열려요",
@@ -444,6 +432,12 @@
  "yt_title": "곤지암 소머리국밥 거리축제 11월 7일, 햇굴 최대 35% 할인까지 먹거리 뉴스 3",
  "yt_keyword": "곤지암 소머리국밥 거리축제",
  "yt_lead": "제4회 곤지암 소머리국밥 거리축제가 11월 7일 곤지암 시내에서 열려요.",
+ "photo_missing": [
+  {
+   "scene": "카드 2 · 고성 가리비 축제 현장",
+   "tried": "현장 사진 미확보(대표 음식 가리비 사진으로 대신함). 찾아본 곳: 고성군 보도자료 게시판(2026·2024, 공공누리 2유형), 위키미디어, 기사 사진(연합 포스터 재판매 금지·쿠키·문화일보 출처 없음)"
+  }
+ ],
  "photo_candidates": [
   {
    "scene": "카드 2 · 고성 가리비 축제",
@@ -458,6 +452,13 @@
    "page": "https://www.goseong.go.kr/board/view.goseong?boardId=BBS_0000196&menuCd=DOM_000000102002008000&dataSid=5840120",
    "url": "vault:press/2026-11-07-news/goseong-2026-poster.jpg",
    "why": "2026 제9회 공식 포스터. 제2유형이라 사용자 결정 전 후보"
+  },
+  {
+   "scene": "카드 2 · 고성 가리비 축제",
+   "from": "고성군 보도자료(공공누리 제2유형)",
+   "page": "https://www.goseong.go.kr/board/view.goseong?boardId=BBS_0000196&menuCd=DOM_000000102002008000&dataSid=5651234",
+   "url": "vault:press/2026-11-07-news/goseong-2024-booths.jpg",
+   "why": "2024년 축제 먹거리 부스 거리(밤). 제2유형이라 사용자 결정 전 후보"
   },
   {
    "scene": "카드 3 · 롯데마트 햇굴",
@@ -509,9 +510,9 @@
  ],
  "credits": [
   "사진: 광주시(2026 축제 현장)",
-  "사진: 고성군(2024년 축제 현장)"
+  "ⓒ한국관광공사 포토코리아-천준교"
  ],
  "review": {
-  "photo_sheet": "381152d794ad"
+  "photo_sheet": "d37f09c3e675"
  }
 }
