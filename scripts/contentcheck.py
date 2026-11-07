@@ -173,6 +173,12 @@ def host_kind(url, rights, terms=None, today="9999-12-31", platforms=("instagram
     if isinstance(terms, dict) and terms.get("ok") and terms.get("url") and terms.get("checked"):
         return "이용 조건 확인한 사진", False, ""
     host = url.split("/")[2] if "://" in url else url.split(":")[0] + ":"
+    if url.startswith("vault:press/"):
+        # 보관함 press/ 는 바깥 사진을 옮겨 둔 곳이라 보관함 자체가 근거가 아니에요. 원본 페이지(terms.url)의 출처 조건으로 봐요 (2026-11-07)
+        src = (terms or {}).get("url") if isinstance(terms, dict) else ""
+        if not src:
+            return "보관함에 옮긴 바깥 사진", True, "원본 페이지와 이용 조건(terms: url·checked·scope·ok)이 없어요. 원본 조건을 확인해 적어 주세요(확인 필요)"
+        url, host = src, (src.split("/")[2] if "://" in src else src)
     entry = rights_entry(url, host)
     if entry:
         status = entry.get("status")
