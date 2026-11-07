@@ -5,13 +5,14 @@
   python scripts/photos.py commons "sanma shioyaki"  위키미디어 공용 사진 (CC0·퍼블릭 도메인·CC BY 만)
   python scripts/photos.py openverse "tteokbokki"  오픈버스(플리커·위키미디어 등) CC0·퍼블릭 도메인·CC BY 사진 (키 없이 돼요. 영어로 찾아야 잘 나와요, 2026-10-24)
   python scripts/photos.py pexels "grilled pork belly"  Pexels 무료 사진 (인스타·쇼츠·블로그 모두 돼요. 영어로 찾아야 잘 나와요)
+  python scripts/photos.py unsplash "bibimbap"     Unsplash 무료 사진 (상업적 이용·수정 가능. Unsplash+ 유료 사진은 빼요, 2026-11-07)
   python scripts/photos.py festival 20261012      그날 이후 열리는 축제 (한국관광공사, 공식 일정)
   python scripts/photos.py get <주소> <저장할 파일>   사진을 내려받아 직접 눈으로 확인할 때
   python scripts/photos.py sheet tour 굴구이 15 /tmp/s.jpg   후보 여러 장을 번호를 붙여 한 장에 모아요 (commons·openverse 도 된다)
   python scripts/photos.py leads festival "죽변항 수산물축제" 2026   넓게 찾을 검색어(뉴스·블로그·SNS·유튜브·지난 회차) + 이미 확인한 출처 + 확인 차례
   python scripts/photos.py exif 사진.jpg              촬영일(EXIF) — 지난 축제 사진의 연도 확인
 
-tour, festival 은 환경 변수 TOUR_API_KEY, pexels 는 PEXELS_API_KEY 가 있어야 해요. 결과는 한 줄에 하나씩 JSON으로 나와요.
+tour, festival 은 환경 변수 TOUR_API_KEY, pexels 는 PEXELS_API_KEY, unsplash 는 UNSPLASH_ACCESS_KEY 가 있어야 해요. 결과는 한 줄에 하나씩 JSON으로 나와요.
 tour·commons 검색 결과는 임시 폴더에 6시간 저장해 같은 검색어를 다시 묻지 않아요. 내려받기는 scripts/web.py 로 해요
 (같은 곳에 너무 자주 묻지 않고, 요청 제한(429)에는 Retry-After 를 지켜 세 번까지만 다시 해요. 2026-10-19).
 """
@@ -168,6 +169,60 @@ def pexels(query):
                           "license": "Pexels", "page": p["url"], "credit": f"사진: {p['photographer']} / Pexels"}, ensure_ascii=False))
 
 
+UNSPLASH_TERMS = "Unsplash 라이선스: 무료, 상업적 이용·수정 가능, 출처 표시 없어도 됨. 사진만 그대로 되팔기·비슷한 사진 서비스 금지. 사진 속 인물·상표·작품은 따로 확인"
+
+
+def unsplash_rows(query):
+    """Unsplash 무료 사진(2026-11-07 사용자가 더함). Unsplash+(유료) 사진은 빼요(plus·premium 표시, plus.unsplash.com 주소).
+    사진 속 사람 얼굴·상표·작품은 라이선스와 따로라 열어 보고 판단해요. 실제 그 축제·그 제품 사진이 아니면 '같은 종류'·'분위기'로만 적어요."""
+    key = os.environ.get("UNSPLASH_ACCESS_KEY", "").strip()
+    if not key:
+        sys.exit("UNSPLASH_ACCESS_KEY 가 없어요. Unsplash 는 WebSearch 'site:unsplash.com/photos 영어 검색어' 로 찾고, 사진 페이지에서 "
+                 "Unsplash+ 가 아닌지(주소가 plus.unsplash.com 이 아닌지) 본 뒤 images.unsplash.com 주소와 page 를 적어요.")
+    url = "https://api.unsplash.com/search/photos?" + urllib.parse.urlencode({"query": query, "per_page": 30, "content_filter": "high"})
+    data = json.loads(web_get(url, timeout=40, headers={"Authorization": f"Client-ID {key}", "Accept-Version": "v1"}))
+    rows, today, track = [], time.strftime("%Y-%m-%d"), {}
+    for r in data.get("results", []):
+        raw = (r.get("urls") or {}).get("raw") or ""
+        if r.get("premium") or r.get("plus") or "plus.unsplash.com" in raw or "premium_photo" in raw or (r.get("width") or 0) < 1200:
+            continue
+        who = ((r.get("user") or {}).get("name") or "작자 미상")[:50]
+        page = (r.get("links") or {}).get("html") or ""
+        track[r["id"]] = (r.get("links") or {}).get("download_location") or ""
+        rows.append({"url": raw + ("&" if "?" in raw else "?") + "w=2000&q=85&fm=jpg", "title": (r.get("alt_description") or r.get("description") or "")[:80],
+                     "size": f"{r.get('width')}x{r.get('height')}", "license": "Unsplash", "from": "unsplash", "page": page,
+                     "credit": f"사진: {who} / Unsplash",
+                     "terms": {"url": "https://unsplash.com/license", "checked": today, "scope": UNSPLASH_TERMS, "ok": True},
+                     "note": "무료 사진이에요. 사람 얼굴·상표가 크게 보이면 쓰지 않고, 실제 그 행사·제품 사진처럼 쓰지 않아요"})
+    if track:  # 고른 사진을 get 할 때 Unsplash 에 내려받음을 알려요(API 안내)
+        CACHE.mkdir(exist_ok=True)
+        f = CACHE / "unsplash-track.json"
+        old = json.loads(f.read_text(encoding="utf-8")) if f.exists() else {}
+        f.write_text(json.dumps({**old, **track}, ensure_ascii=False), encoding="utf-8")
+    return rows
+
+
+def unsplash(query):
+    for row in cached("unsplash", query, unsplash_rows):
+        print(json.dumps(row, ensure_ascii=False))
+
+
+def unsplash_track(url):
+    """Unsplash API 안내대로, 쓰려고 내려받은 사진은 download_location 을 한 번 불러요(키와 검색 기록이 있을 때만)."""
+    key = os.environ.get("UNSPLASH_ACCESS_KEY", "").strip()
+    m = re.search(r"images\.unsplash\.com/photo-[\w-]+", url)
+    f = CACHE / "unsplash-track.json"
+    if not (key and m and f.exists()):
+        return
+    for pid, loc in json.loads(f.read_text(encoding="utf-8")).items():
+        if loc and pid and pid in url:
+            try:
+                web_get(loc, timeout=20, retries=1, quiet=True, headers={"Authorization": f"Client-ID {key}"})
+            except (WebError, TypeError):
+                pass
+            return
+
+
 def festival(start):
     total, items = tour_call("KorService2", "searchFestival2", eventStartDate=start, arrange="A", numOfRows=100)
     print(json.dumps({"from": start, "total": total}, ensure_ascii=False))
@@ -181,7 +236,8 @@ FONT = Path(__file__).resolve().parent.parent / "video" / "fonts" / "NotoSansKR-
 
 def _thumb(row, source):
     """후보 하나를 작게 받아 와요(받은 것은 임시 폴더에 두고 다시 써요). 못 받으면 None."""
-    url = row["url"].replace("?width=1600", "?width=480") if source == "commons" else row["url"]
+    url = (row["url"].replace("?width=1600", "?width=480") if source == "commons"
+           else row["url"].replace("w=2000", "w=480") if source == "unsplash" else row["url"])
     path = CACHE / f"img-{hashlib.sha1(url.encode()).hexdigest()[:16]}.jpg"
     if not path.exists():
         try:
@@ -196,7 +252,7 @@ def sheet(source, query, n=15, out=None):
     from PIL import Image, ImageDraw, ImageFont, ImageOps
     CACHE.mkdir(exist_ok=True)
     rows = (cached("tour", query, tour_rows)["rows"] if source == "tour"
-            else cached(source, query, openverse_rows if source == "openverse" else commons_rows))[:n]
+            else cached(source, query, {"openverse": openverse_rows, "unsplash": unsplash_rows}.get(source, commons_rows)))[:n]
     out = Path(out or CACHE / f"sheet-{source}-{hashlib.sha1(query.encode()).hexdigest()[:8]}.jpg")
     # 관광공사는 함께 받아도 되고, 위키미디어는 web.py 가 1초 간격을 지켜요
     with ThreadPoolExecutor(max_workers=6 if source == "tour" else 2) as pool:
@@ -227,29 +283,45 @@ def sheet(source, query, n=15, out=None):
         print(json.dumps({"no": i, **row}, ensure_ascii=False))
 
 
+# 찾는 차례(2026-11-07 사용자: 몇 장 찾고 없다고 하지 말고 끝까지. 차례대로 넓히되 검색은 한꺼번에 해요)
+SEARCH_ORDER = [
+    "① 공식·공공: 공식 누리집, 지자체·기관(사진DB·보도자료), 한국관광공사(tour), 공공누리, 공유마당(gongu.copyright.or.kr), 위키미디어(commons)·오픈버스(openverse)",
+    "② 이용 조건이 분명한 무료 사진: Unsplash(unsplash, Unsplash+ 유료 제외) · Pexels(pexels) · Pixabay",
+    "③ 관련 뉴스·보도자료·행사 자료: 뉴스와이어(news.py press), 기사 사진 설명 '○○ 제공'(원본을 낸 곳으로), 축제 공식 자료",
+    "④ 개인 블로그: 네이버 블로그·티스토리 방문·구매 후기",
+    "⑤ 유튜브 영상·썸네일",
+    "⑥ 인스타그램 등 SNS 게시물",
+]
 LEAD_KINDS = {
     # 2026-11-06 사용자: 지자체·공공누리에만 묶지 말고 처음부터 넓게 찾는다. 찾기(후보)와 이용 조건 확인은 따로 한다
+    # 2026-11-07 사용자: 검색어·지역명·음식명·비슷한 표현을 넓혀 충분히 찾는다. 공유마당·Unsplash 를 더함
     "festival": ["{n} {y}", "{n} {y1}", "{n} {y2}", "{n} 현장", "{n} 개막 사진 제공", "{n} 먹거리 부스", "{n} 방문객",
-                 "{n} 후기 블로그", "{n} 인스타그램", "{n} 유튜브", "{n} 보도자료 사진", "{n} 사진DB"],
-    "product": ["{n}", "{n} 출시 사진 제공", "{n} 보도자료", "{n} 뉴스룸", "{n} 공식 인스타그램", "{n} 후기", "{n} 리뷰 블로그",
-                "{n} 유튜브 리뷰", "{n} 뉴스와이어"],
-    "food": ["{n}", "{n} 사진", "{n} 지역 축제", "{n} 시장", "{n} 후기 블로그", "{n} 유튜브"],
+                 "{n} 보도자료 사진", "{n} 사진DB", "{n} 공유마당", "{n} 후기 블로그", "{n} 티스토리", "{n} 유튜브", "{n} 인스타그램",
+                 "{n} 지역명+축제 대표 음식(예: '죽변 대게')"],
+    "product": ["{n}", "{n} 출시 사진 제공", "{n} 보도자료", "{n} 뉴스룸", "{n} 뉴스와이어", "{n} 공식 인스타그램", "{n} 후기",
+                "{n} 리뷰 블로그", "{n} 티스토리", "{n} 유튜브 리뷰", "{n} 줄임말·띄어쓰기 뺀 말·영어 이름"],
+    "food": ["{n}", "{n} 사진", "{n} 지역 이름(산지·유명한 곳)", "{n} 비슷한 이름·사투리", "{n} 영어 이름 (unsplash·pexels·commons)",
+             "{n} 공유마당", "{n} 지역 축제", "{n} 시장", "{n} 후기 블로그", "{n} 유튜브", "{n} 인스타그램"],
 }
 
 
 def leads(kind, name, year=None):
-    """사진 찾기 순서표. ① 넓게 찾을 검색어(뉴스·지역 언론·블로그·SNS·유튜브·지난 회차) ② 이미 이용 조건을 확인한 출처(sources.json photo_rights)
-    — 등록부에 있는 곳은 다시 조사하지 않고 적힌 상태대로 써요. ③ 확인하는 차례. (2026-11-06)"""
+    """사진 찾기 순서표. ① 넓게 찾을 검색어(공식·공공 → 무료 사진 → 뉴스·보도자료 → 블로그 → 유튜브 → SNS, 지난 회차까지)
+    ② 이미 이용 조건을 확인한 출처(sources.json photo_rights) — 등록부에 있는 곳은 다시 조사하지 않고 적힌 상태대로 써요. ③ 확인하는 차례.
+    (2026-11-06, 2026-11-07 차례·Unsplash·공유마당 더함)"""
     y = int(year or time.strftime("%Y"))
     plan = [q.format(n=name, y=y, y1=y - 1, y2=y - 2) for q in LEAD_KINDS.get(kind, LEAD_KINDS["food"])]
-    print(json.dumps({"찾기": "아래 검색어를 한꺼번에 찾고(WebSearch 를 같은 차례에 여러 개), 기사 속 사진 설명('○○ 제공')·앨범 제목·현수막으로 대상과 연도를 먼저 맞춰요",
-                      "검색어": plan}, ensure_ascii=False))
+    print(json.dumps({"찾기": "아래 검색어를 한꺼번에 찾고(WebSearch 를 같은 차례에 여러 개), 기사 속 사진 설명('○○ 제공')·앨범 제목·현수막으로 대상과 연도를 먼저 맞춰요. "
+                              "없으면 검색어(지역명·음식명·비슷한 표현·영어)를 바꿔 한 번 더 찾아요. 사진이 없다고 단색·지도·글자 화면으로 바꾸지 않아요",
+                      "차례": SEARCH_ORDER, "검색어": plan}, ensure_ascii=False))
     reg = json.loads((Path(__file__).resolve().parent.parent / "sources.json").read_text(encoding="utf-8")).get("photo_rights") or []
     known = [{"출처": r.get("name"), "상태": r.get("status"), "범위": (r.get("scope") or "")[:80], "확인": r.get("checked")}
              for r in reg if r.get("status") and r.get("status") != "확인 필요"]
     print(json.dumps({"이미 확인한 출처(다시 조사하지 않음)": known}, ensure_ascii=False))
     print(json.dumps({"확인 차례": ["후보마다 shows(실제로 찍힌 것)·연도(EXIF·앨범·현수막·기사 날짜)를 적는다",
-                                    "그다음 이용 조건: 등록부 → 사진·앨범에 붙은 공공누리 유형·CC → 회사·축제가 배포한 사진(10-26 결정) → 블로그·SNS 는 허락이나 조건이 있을 때만",
+                                    "그다음 이용 조건: 등록부 → 사진·앨범에 붙은 공공누리 유형·CC → 회사·축제가 배포한 사진(10-26 결정) → 블로그·유튜브·SNS 는 작성자 허락이나 이용 조건이 있을 때만(출처 표기만으로는 안 돼요)",
+                                    "허락이 불분명한 블로그·유튜브·SNS 사진은 넣지 않고 설계도 photo_candidates 에 장면·원본 링크와 함께 적는다(텔레그램 사진 보고에 나감)",
+                                    "Unsplash: Unsplash+ 유료 제외, 사진 속 인물·상표 확인, 실제 그 행사·제품 사진처럼 쓰지 않는다(match 같은 종류·분위기)",
                                     "언론사·기자가 찍은 사진·방송 화면은 단서로만 쓰고 그 사진은 쓰지 않는다(원본을 낸 곳을 찾아간다)"]}, ensure_ascii=False))
 
 
@@ -285,6 +357,8 @@ def run(cmd, arg):
         openverse(arg)
     elif cmd == "pexels":
         pexels(arg)
+    elif cmd == "unsplash":
+        unsplash(arg)
     elif cmd == "festival":
         festival(arg)
     elif cmd == "get":
@@ -292,6 +366,7 @@ def run(cmd, arg):
         data = get(safe, 60)
         with open(sys.argv[3], "wb") as f:
             f.write(data)
+        unsplash_track(arg)
         print("저장했어요:", sys.argv[3])
     elif cmd == "leads":
         if len(sys.argv) < 4:

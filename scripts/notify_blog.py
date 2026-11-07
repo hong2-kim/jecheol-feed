@@ -81,6 +81,11 @@ def run():
         picked = posts[:1]
     for post in picked:
         send(message(post, site, first and post["date"] not in days, auto))
+        try:  # 사진 사용 내역: 출처·원본 링크·허락 확인·확인할 사진 (2026-11-07 사용자)
+            import photo_report
+            send(html.escape(photo_report.report(post, post.get("title"), post.get("date") or "9999-12-31")))
+        except Exception as e:
+            log_error(f"photo_report:blog:{post.get('id')}", e)
     # 오래된 초안을 나중에 한꺼번에 알리지 않도록, 지금 있는 초안은 모두 알린 것으로 적어요.
     sent.update(p["id"] for p in posts)
 

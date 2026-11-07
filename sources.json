@@ -1115,6 +1115,144 @@
       }
     },
     {
+      "name": "Unsplash+ (유료 사진)",
+      "hosts": [
+        "plus.unsplash.com",
+        "/premium_photo-"
+      ],
+      "photo_source": "Unsplash+ 구독 사진(주소 plus.unsplash.com/premium_photo-...)",
+      "terms_url": "https://unsplash.com/plus/license",
+      "scope": "구독자 전용. 우리는 구독하지 않아요",
+      "credit": "",
+      "edit": "",
+      "checked": "2026-11-07",
+      "status": "사용 불가",
+      "recheck_days": 180,
+      "note": "2026-11-07 사용자: Unsplash+ 유료 사진은 무료 사진과 구분. 무료 Unsplash 사진만 써요",
+      "uses": {
+        "instagram": "불가",
+        "youtube": "불가",
+        "blog": "불가"
+      }
+    },
+    {
+      "name": "Unsplash",
+      "hosts": [
+        "images.unsplash.com",
+        "unsplash.com"
+      ],
+      "photo_source": "Unsplash 무료 사진(사진 쪽 주소 images.unsplash.com/photo-...). 찾기는 photos.py unsplash(키 UNSPLASH_ACCESS_KEY) 또는 WebSearch site:unsplash.com/photos",
+      "terms_url": "https://unsplash.com/license",
+      "scope": "무료, 상업적 이용·수정 가능, 출처 표시 없어도 됨. 금지: 사진을 그대로 되팔기, 비슷한 사진 서비스 만들기. 사진 속 인물·상표·작품은 라이선스와 따로 확인",
+      "credit": "표기 필요 없음(사진: 이름 / Unsplash 로 적어 둠)",
+      "edit": "가능",
+      "checked": "2026-11-07",
+      "status": "사용 가능",
+      "recheck_days": 90,
+      "note": "2026-11-07 사용자가 우선 검색 대상에 더함. 실제 그 음식·행사와 다른 사진을 그 현장 사진처럼 쓰지 않는다(match 같은 종류·분위기). 원본 page 를 사진에 적어 텔레그램 사진 보고에 링크로 보낸다",
+      "uses": {
+        "instagram": "가능",
+        "youtube": "가능",
+        "blog": "가능"
+      }
+    },
+    {
+      "name": "공유마당(한국저작권위원회)",
+      "hosts": [
+        "gongu.copyright.or.kr"
+      ],
+      "photo_source": "공유마당 사진(작품마다 라이선스: CC·공공누리·만료 저작물)",
+      "terms_url": "https://gongu.copyright.or.kr/gongu/main/contents.do?menuNo=200195",
+      "scope": "작품마다 다름. 상업적 이용·변경이 되는 것(CC0·CC BY·공공누리 1유형·만료)만 씀",
+      "credit": "작품 페이지의 표기 그대로",
+      "edit": "작품마다",
+      "checked": "2026-11-07",
+      "status": "확인 필요",
+      "recheck_days": 90,
+      "note": "작품 페이지에서 라이선스를 보고 사진에 terms(url·checked·scope·ok) 를 적으면 쓴다. terms 없으면 확인 필요",
+      "uses": {
+        "instagram": "미확인",
+        "youtube": "미확인",
+        "blog": "미확인"
+      }
+    },
+    {
+      "name": "개인 블로그(네이버 블로그·티스토리 등)",
+      "hosts": [
+        "blog.naver.com",
+        "m.blog.naver.com",
+        "blogfiles.pstatic.net",
+        "postfiles.pstatic.net",
+        "blogthumb.pstatic.net",
+        "blogpfthumb-phinf.pstatic.net",
+        "tistory.com",
+        "t1.daumcdn.net",
+        "brunch.co.kr"
+      ],
+      "photo_source": "개인이 올린 방문·구매 후기 사진",
+      "terms_url": "",
+      "scope": "작성자 허락이나 CC 같은 이용 조건이 있을 때만",
+      "credit": "사진: ○○ 블로그",
+      "edit": "허락 범위 안에서",
+      "checked": "2026-11-07",
+      "status": "사용 불가",
+      "recheck_days": 90,
+      "note": "2026-11-07 사용자: 블로그까지 찾되 출처 표기만으로 쓸 수 없다. 허락·조건을 사진 terms(ok, url, checked, scope, permission) 에 적어야 쓰고, 불분명하면 설계도 photo_candidates 에 원본 링크와 함께 후보로만 적는다",
+      "uses": {
+        "instagram": "불가",
+        "youtube": "불가",
+        "blog": "불가"
+      }
+    },
+    {
+      "name": "유튜브 영상·썸네일",
+      "hosts": [
+        "youtube.com",
+        "youtu.be",
+        "ytimg.com"
+      ],
+      "photo_source": "유튜브 영상 화면·썸네일",
+      "terms_url": "https://www.youtube.com/t/terms",
+      "scope": "올린 사람의 허락이나 CC BY 영상일 때만",
+      "credit": "영상: ○○ 유튜브",
+      "edit": "허락 범위 안에서",
+      "checked": "2026-11-07",
+      "status": "사용 불가",
+      "recheck_days": 90,
+      "note": "2026-11-07 사용자: 유튜브까지 찾되 허락 불명확이면 photo_candidates 후보로만. 방송사 영상 화면은 쓰지 않음(기존 기준)",
+      "uses": {
+        "instagram": "불가",
+        "youtube": "불가",
+        "blog": "불가"
+      }
+    },
+    {
+      "name": "인스타그램 등 SNS 게시물",
+      "hosts": [
+        "instagram.com",
+        "cdninstagram.com",
+        "fbcdn.net",
+        "facebook.com",
+        "threads.net",
+        "twitter.com",
+        "twimg.com"
+      ],
+      "photo_source": "SNS 게시물 사진",
+      "terms_url": "https://help.instagram.com/581066165581870",
+      "scope": "올린 사람의 허락이 있을 때만(공식 계정도 허락·이용 안내가 있어야)",
+      "credit": "사진: @계정",
+      "edit": "허락 범위 안에서",
+      "checked": "2026-11-07",
+      "status": "사용 불가",
+      "recheck_days": 90,
+      "note": "2026-11-07 사용자: SNS까지 찾되 허락 불명확이면 photo_candidates 후보로만, 원본 게시물 링크를 텔레그램 사진 보고에 보냄",
+      "uses": {
+        "instagram": "불가",
+        "youtube": "불가",
+        "blog": "불가"
+      }
+    },
+    {
       "name": "직접 만든 조합 그림(compose/)",
       "hosts": [
         "compose/"

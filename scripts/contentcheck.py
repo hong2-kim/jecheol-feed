@@ -161,6 +161,9 @@ def brands_in(text):
     return {b for b in found if not any(b != o and b in o for o in found)}  # '이마트24' 가 있으면 '이마트' 는 따로 세지 않아요
 
 
+STOCK = re.compile(r"unsplash\.com|pexels\.com|pixabay\.com")  # 무료 사진 사이트 (2026-11-07)
+
+
 def host_kind(url, rights, terms=None, today="9999-12-31", platforms=("instagram", "youtube")):
     """사진 출처 갈래와 판단. (갈래, 문제 여부, 설명). 문제 여부가 참이면 조건이 확인되기 전에는 게시용으로 쓰지 않아요.
     2026-10-23 사용자가 정함: "공식 사진은 사용 조건을 확인한 후 활용한다". 판단 순서: 사진마다 적은 terms → sources.json 의 photo_rights → 주소 갈래."""
@@ -360,6 +363,12 @@ def photo_lines(spec, day, platforms=("instagram", "youtube")):
             out.append(("사진 일치", f"{where}: 축제 소식인데 축제 현장 사진이 아니에요(shows: {shows[:30]}). 같은 축제의 올해·지난해 현장 사진(전경·부스·방문객·판매장·공연·현수막)을 찾고 shows 에 '2024 죽변항 수산물축제 …'처럼 적어요. 못 찾으면 '축제 현장 사진 미확보'로 보고해요", "확인"))
         elif "축제" in shows and not re.search(r"20\d\d", str(p.get("label") or "") + shows):
             out.append(("사진 표기", f"{where}: 축제 현장 사진이면 촬영 연도(확인된 것만)를 label 에 적어요(예: '2024년 축제 현장 · 울진군')", "참고"))
+        if STOCK.search(url) and shows:
+            # 2026-11-07 사용자: Unsplash 등 무료 사진은 적극 쓰되, 실제 음식·행사와 다른 사진을 그 현장·그 제품 사진처럼 쓰지 않아요
+            if festival_scene(spec, where, text) and "축제" in shows:
+                out.append(("사진 일치", f"{where}: 무료 사진 사이트(Unsplash·Pexels·Pixabay) 사진을 축제 현장 사진으로 적었어요(shows: {shows[:30]}). 그 축제를 찍은 사진인지 사진 페이지 설명으로 확인되지 않으면 그 축제 현장 사진으로 쓰지 않아요", "확인"))
+            elif match == "정확" and (kind_ == "상품" or brands_in(text)):
+                out.append(("사진 일치", f"{where}: 무료 사진 사이트 사진을 그 상품의 실제 사진(match 정확)으로 적었어요(shows: {shows[:30]}). 포장·로고로 그 제품임이 보일 때만 정확이에요", "확인"))
     uses = {}
     for where, _, p in items_of(spec):
         if where.startswith(("thumb", "cover")) or ".grid[" in where:  # 썸네일·표지는 본편 사진을 다시 쓰고, 저녁 메뉴 격자는 장마다 같은 판을 보여 줘요

@@ -9,6 +9,7 @@
    '승인 전 시안'으로 영상·카드를 그대로 보내고 [승인]·[빼기]·[고쳐서 다시] 버튼을 붙여요(2026-11-06 사용자: 제작과 승인을 나눔).
    버튼은 scripts/tg_actions.py 가 처리해요(photos 작업이 10분마다 받아요). 까닭은 state/review.json 에 적어요.
 4. 텔레그램으로 영상과 게시글용 글을 보내요. 실패한 항목은 이유와 함께 알려요.
+5. 항목마다 사진 사용 내역(scripts/photo_report.py)을 따로 한 통 보내요(2026-11-07 사용자).
 영상 파일 올리기(릴리스)는 작업 파일에서 gh 명령으로 먼저 해 둬요.
 """
 import hashlib
@@ -145,6 +146,21 @@ def send_youtube(token, chat, r, day, alone=False):
     tg("sendMessage", token, data={"chat_id": chat, "text": text, "parse_mode": "HTML", "disable_web_page_preview": "true"})
 
 
+def send_photo_report(token, chat, day, r):
+    """사진 사용 내역(출처·원본 링크·블로그/유튜브/SNS 사진 여부·허락 확인·확인할 사진·후보·못 구한 장면)을 결과물과 따로 한 통 보내요.
+    (2026-11-07 사용자) 보고를 못 만들어도 결과물 전송은 그대로 해요."""
+    try:
+        import photo_report
+        path = ROOT / "videos" / day / (r["id"][len(day) + 1:] + ".json")
+        if not path.exists():
+            return
+        spec = json.loads(path.read_text(encoding="utf-8"))
+        text = photo_report.report(spec, r.get("title") or spec.get("title"), day, r.get("held") or [])
+        tg("sendMessage", token, data={"chat_id": chat, "text": text, "disable_web_page_preview": "true"})
+    except Exception as e:
+        log_error(f"photo_report:{r['id']}", e)
+
+
 def send_shorts_only(token, chat, day, todo, bad, sent):
     """인스타용을 빼고 유튜브 쇼츠만 보내요: 첫 안내 → 항목마다 구분 줄, 영상, 제목·설명."""
     if not (todo or bad):
@@ -161,6 +177,7 @@ def send_shorts_only(token, chat, day, todo, bad, sent):
         try:
             send_youtube(token, chat, r, day, alone=True)
             sent.add(r["id"])
+            send_photo_report(token, chat, day, r)
         except Exception as e:
             log_error(f"youtube:{r['id']}", e)
             print(f"못 보냈어요: {r['id']} ({e})")
@@ -276,6 +293,7 @@ def hold_notice(token, chat, day, held, review):
             send_draft(token, chat, day, r)
         except Exception as e:
             log_error(f"telegram:draft:{r['id']}", e)
+        send_photo_report(token, chat, day, r)
         why = gate.reasons(g, 6) or (["요청하신 대로 고친 시안이에요. 검수는 통과했어요."] if g["verdict"] == FIXED else [])
         ask = [f"🟡 {name} — {g['verdict']}", *("  " + x for x in why), "",
                "괜찮으면 [승인], 고쳐야 하면 [고쳐서 다시], 안 쓰려면 [이번엔 빼기]를 눌러 주세요.", ASK_TAIL]
@@ -410,6 +428,7 @@ def main():
         except Exception as e:
             log_error(f"youtube:{r['id']}", e)
             print(f"유튜브 안내를 못 보냈어요: {r['id']} ({e})")
+        send_photo_report(token, chat, day, r)
     write_json(ROOT / "state" / "sent_videos.json", sorted(sent))
     print(f"보냈어요: {len(todo)}개, 실패 알림 {len(bad)}개")
 

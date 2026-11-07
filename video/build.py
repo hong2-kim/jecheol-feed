@@ -908,6 +908,9 @@ def card_problems(spec):
                 should.append(f"카드 {n}: 사진 없는 숫자 장이에요. 그 음식 사진이 있으면 photo 에 적어 주세요.")
             elif len(tried) == len(PHOTO_STEPS):  # 복구 절차를 다 거쳤으면 이 장(소식)은 제작 때 보류돼요
                 should.append(f"카드 {n}: 사진 없는 소식 장이라 이 소식은 보류돼요(복구 시도 기록 있음). 나머지 소식은 그대로 나가요.")
+                if not (c.get("photo_search") or {}).get("wide"):  # 2026-11-07 사용자: 몇 장 찾고 없다고 하지 말고 끝까지
+                    should.append(f"카드 {n}: 넓혀 찾은 기록(photo_search.wide)이 없어요. 검색어(지역명·음식명·비슷한 말·영어)를 바꿔 "
+                                  "공유마당·Unsplash·블로그·유튜브·SNS 까지 찾고, 허락이 불분명한 사진은 photo_candidates 에 후보로 적어 주세요.")
             else:
                 must.append(f"카드 {n}: 사진 없는 소식 장이에요. 글자만 큰 장으로 대신하지 말고 복구 절차를 차례로 해 주세요: "
                             "① 그 제품·음식의 실제 사진 더 찾기 ② 제조사 보도자료·미디어센터 ③ 쓸 수 있는 다른 실제 사진·시각 자료(막대·비교 장) "
@@ -1745,6 +1748,7 @@ def first_news_gap(spec, gone_ids):
 
 
 PHOTO_STEPS = ("exact", "press", "other", "layout")  # 사진 복구 절차: 실제 사진 → 보도자료·미디어센터 → 다른 사진·시각 자료 → 레이아웃
+# (+ "wide": 검색어를 넓혀 공유마당·Unsplash·블로그·유튜브·SNS 까지 찾은 기록, 2026-11-07. 없으면 알리기만 해요)
 
 
 def photo_gap(c):
@@ -1775,7 +1779,7 @@ def triage(spec, day=""):
     for n, c in enumerate(spec["cards"], 1):
         if photo_gap(c) and not is_story(spec):
             tried = c.get("photo_search") or {}
-            note = " · ".join(f"{k}: {tried[k]}" for k in PHOTO_STEPS if tried.get(k))
+            note = " · ".join(f"{k}: {tried[k]}" for k in (*PHOTO_STEPS, "wide") if tried.get(k))
             hold(n, "보류", "사진 없는 소식 장" + (f" (복구 시도: {note})" if note else " (복구 절차 기록 없음)"))
     must, _ = card_problems(spec)
     whole = []
