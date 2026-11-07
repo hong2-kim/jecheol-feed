@@ -510,5 +510,24 @@
     "hash": "c30a0d1f5430",
     "approved": false,
     "reasons": []
+  },
+  "2026-11-07-2-news": {
+    "verdict": "통과",
+    "hash": "9cfeb10e4e0e",
+    "approved": false,
+    "reasons": [],
+    "ask_msg": 927,
+    "held_noticed": "2:확인 필요",
+    "held_cards": [
+      {
+        "no": 2,
+        "headline": "고성 가리비 [[8일까지]]",
+        "grade": "확인 필요",
+        "reasons": [
+          "사진 권리: cards[2].photo: 경남 고성군 보도자료 첨부 사진 — 경남 고성군 보도자료 첨부 사진 사진은 이용 조건을 아직 확인하지 않았어요(sources.json photo_rights). 확인 전에는 게시용으로 쓰지 않아요(확인 필요)"
+        ],
+        "news": 2
+      }
+    ]
   }
 }
