@@ -524,5 +524,23 @@
     "hash": "93a3399424cc",
     "approved": false,
     "reasons": []
+  },
+  "2026-11-08-2-news": {
+    "verdict": "통과",
+    "hash": "c9e9de4dc765",
+    "approved": false,
+    "reasons": []
+  },
+  "2026-11-08-3-dinner": {
+    "verdict": "통과",
+    "hash": "46b964ba095a",
+    "approved": false,
+    "reasons": []
+  },
+  "2026-11-08-4-find": {
+    "verdict": "통과",
+    "hash": "d98ad053b0f3",
+    "approved": false,
+    "reasons": []
   }
 }
