@@ -542,5 +542,29 @@
     "hash": "d98ad053b0f3",
     "approved": false,
     "reasons": []
+  },
+  "2026-11-09-10-voice": {
+    "verdict": "통과",
+    "hash": "9ba57a4446b5",
+    "approved": false,
+    "reasons": []
+  },
+  "2026-11-09-2-news": {
+    "verdict": "통과",
+    "hash": "acd9252c7cc6",
+    "approved": false,
+    "reasons": []
+  },
+  "2026-11-09-3-dinner": {
+    "verdict": "통과",
+    "hash": "980fd5a9f294",
+    "approved": false,
+    "reasons": []
+  },
+  "2026-11-09-4-find": {
+    "verdict": "통과",
+    "hash": "30fa265ea1b0",
+    "approved": false,
+    "reasons": []
   }
 }
