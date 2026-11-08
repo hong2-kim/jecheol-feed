@@ -1,0 +1,209 @@
+{
+ "format": "voice",
+ "kind": "해설",
+ "subject": "편의점 한 손 간편식 · 스몰 밀",
+ "title": "편의점 한 손 간편식이 늘어난 까닭, 제일 많이 는 건 프로틴 음료 82%",
+ "yt_title": "편의점 간편식 매출 늘었다, 프로틴 음료 82% 스몰 밀 유행?",
+ "headline": "요즘 편의점\n[[한 손 간편식]]",
+ "thumb": {
+  "sub": "제일 많이 는 건 [[프로틴 음료]]"
+ },
+ "narrator": "charon",
+ "voice_pick": {
+  "mode": "solo",
+  "voices": [
+   "charon"
+  ],
+  "why": "작년 대비 매출 증가율을 차례로 견주는 통계 중심 이야기라 차분하고 정확한 Charon 솔로"
+ },
+ "summary": "세븐일레븐이 올해 1~10월 매출을 작년과 견주니 브리또 17%, 샌드위치 22%, 군고구마 23%, 프로틴 음료 82% 늘었고, 8월에 낸 김초밥 4종은 40만 개 넘게 팔렸다고 밝혔어요.",
+ "caption": "요즘 편의점에서 한 손에 쥐고 먹는 간편식이 자꾸 늘어요. 세븐일레븐이 올해 1월 1일부터 10월 31일까지 매출을 작년 같은 기간과 견줬더니 브리또 17%, 샌드위치 22%, 군고구마 23%, 프로틴 음료 82%가 늘었대요.\n\n회사는 고물가와 건강 관리를 챙기는 소비 변화로 한 끼 양을 줄여 가볍게 먹는 '스몰 밀' 문화가 자리 잡았다고 설명했어요. 8월에 나온 일본식 김초밥(마끼) 4종은 누적 40만 개 넘게 팔렸고, 구매 고객 가운데 여성이 55%라고 해요.\n\n숫자는 모두 세븐일레븐이 밝힌 것이고, 사진은 일반 사진이에요.\n\n여러분은 한 끼를 가볍게 드세요, 든든하게 드세요?\n\n출처: 뉴스핌(11월 8일), 머니투데이(11월 8일)\n사진: lazy fri13th (CC BY 2.0) · commons.wikimedia.org/?curid=148804776, Adam Pieniazek (CC BY 2.0) · www.flickr.com/photos/7663044@N06/2769034215",
+ "tags": [
+  "편의점신상",
+  "간편식",
+  "프로틴음료",
+  "스몰밀"
+ ],
+ "sources": [
+  "https://www.newspim.com/news/view/20261108000110",
+  "https://www.mt.co.kr/amp/living/2026/11/08/2026110810500441964"
+ ],
+ "credits": [
+  "lazy fri13th (CC BY 2.0) · commons.wikimedia.org/?curid=148804776",
+  "Adam Pieniazek (CC BY 2.0) · www.flickr.com/photos/7663044@N06/2769034215"
+ ],
+ "yt_keyword": "편의점 간편식",
+ "yt_related": [
+  "스몰 밀",
+  "프로틴 음료",
+  "편의점 샌드위치",
+  "군고구마",
+  "마끼"
+ ],
+ "yt_tags": [
+  "편의점 간편식",
+  "스몰 밀",
+  "프로틴 음료",
+  "편의점 신상",
+  "군고구마",
+  "편의점 샌드위치",
+  "브리또"
+ ],
+ "yt_hashtags": [
+  "편의점간편식",
+  "스몰밀",
+  "프로틴음료"
+ ],
+ "yt_lead": "편의점 한 손 간편식 매출이 올해 1~10월 작년보다 늘었고, 프로틴 음료는 82% 늘었어요.",
+ "followup": {
+  "of": "2026-11-06/10-voice",
+  "new": "11-06 편의점 도시락 브랜드 매출 이야기와 달리, 세븐일레븐이 11월 8일 밝힌 1~10월 품목별 증가율(브리또 17%·샌드위치 22%·군고구마 23%·프로틴 음료 82%)과 김초밥 4종 40만 개는 새 사실"
+ },
+ "dates": {
+  "checked": "2026-11-09",
+  "sources": [
+   {
+    "url": "https://www.newspim.com/news/view/20261108000110",
+    "published": "2026-11-08",
+    "modified": "2026-11-08"
+   },
+   {
+    "url": "https://www.mt.co.kr/amp/living/2026/11/08/2026110810500441964",
+    "published": "2026-11-08",
+    "modified": "2026-11-08"
+   }
+  ],
+  "stat_period": "2026년 1월 1일~10월 31일 (작년 같은 기간 대비)"
+ },
+ "lines": [
+  {
+   "say": "요즘 편의점에서 [[한 손 간편식]]이 자꾸 늘어요, 왜일까요?",
+   "about": "편의점 일반",
+   "general": true,
+   "photo": {
+    "url": "https://commons.wikimedia.org/wiki/Special:FilePath/2020-03-20%2020.05.17%20CU%20%EC%9B%90%EC%A3%BC%EB%8B%A8%EA%B5%AC2%EC%B0%A8%EC%A0%90.jpg?width=1600",
+    "shows": "물건이 가득 진열된 편의점 매장 안(2020년 강원 원주 한 매장, 이번 소식 매장 아님)",
+    "match": "분위기",
+    "rights": "위키미디어 공용 CC0 · CU 원주단구2차점.jpg",
+    "general": true
+   }
+  },
+  {
+   "say": "끝까지 보면, [[제일 많이 늘어난 것]]까지 알려 드려요.",
+   "chip": "끝까지 보면 가장 많이 늘어난 것"
+  },
+  {
+   "say": "세븐일레븐이, 올해 1월부터 10월까지, 매출을 작년과 견줬어요.",
+   "about": "편의점 일반",
+   "general": true,
+   "photo": {
+    "url": "https://commons.wikimedia.org/wiki/Special:FilePath/24%20hours%20Ramyeon%20Ramen%20convenience%20store%20%28South%20Korea%29.jpg?width=1600",
+    "shows": "라면과 컵라면이 벽 가득 진열된 편의점 안(한국 한 매장, 이번 소식 매장 아님)",
+    "match": "분위기",
+    "rights": "위키미디어 공용 CC BY 2.0 · lazy fri13th",
+    "general": true,
+    "terms": {
+     "url": "https://creativecommons.org/licenses/by/2.0/",
+     "checked": "2026-11-09",
+     "scope": "CC BY 2.0, 상업적 이용·수정 가능",
+     "ok": true
+    }
+   }
+  },
+  {
+   "say": "브리또는 [[17%]] 늘었어요.",
+   "chip": "브리또 17%",
+   "about": "브리또",
+   "general": true,
+   "photo": {
+    "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Avocado%20Burrito%20-%20Potatoast%202025-12-30.jpg?width=1600",
+    "shows": "접시에 놓인 또르띠아 브리또와 소스·채소(일반 브리또 사진)",
+    "match": "같은 종류",
+    "rights": "위키미디어 공용 CC0 · Avocado Burrito - Potatoast 2025-12-30.jpg",
+    "general": true
+   }
+  },
+  {
+   "say": "샌드위치는 [[22%]] 늘었고요.",
+   "chip": "샌드위치 22%",
+   "about": "샌드위치",
+   "general": true,
+   "photo": {
+    "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Korean%20convenience%20store%20sandwiches.jpg?width=1600",
+    "shows": "파란 접시 위 상추와 햄이 든 샌드위치 단면(한국 편의점 샌드위치 일반 사진)",
+    "match": "같은 종류",
+    "rights": "위키미디어 공용 CC0 · Korean convenience store sandwiches.jpg",
+    "general": true
+   }
+  },
+  {
+   "say": "군고구마는 [[23%]] 늘었어요.",
+   "chip": "군고구마 23%",
+   "about": "군고구마",
+   "general": true,
+   "photo": {
+    "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Roasted%20sweet%20potato.jpg?width=1600",
+    "shows": "그릇에 담긴 반으로 갈라 속이 노랗게 보이는 군고구마(일반 사진)",
+    "match": "같은 종류",
+    "rights": "위키미디어 공용 CC0 · Roasted sweet potato.jpg",
+    "general": true
+   }
+  },
+  {
+   "say": "회사는 고물가와 건강 관리 때문에, 한 끼를 줄이는 [[스몰 밀]]이 늘었다고 봤어요.",
+   "about": "스몰 밀 일반",
+   "general": true
+  },
+  {
+   "say": "8월에 나온 일본식 김초밥 4종은, [[40만 개]] 넘게 팔렸대요.",
+   "chip": "김초밥 4종 40만 개",
+   "about": "김초밥 일반",
+   "general": true,
+   "photo": {
+    "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Gimbap.jpg?width=1600",
+    "shows": "접시에 가지런히 썬 김밥(김초밥 일반 사진, 특정 상품 아님)",
+    "match": "같은 종류",
+    "rights": "위키미디어 공용 CC0 · Gimbap.jpg",
+    "general": true
+   }
+  },
+  {
+   "say": "그런데 제일 많이 는 건 프로틴 음료, 무려 [[82%]]예요.",
+   "chip": "프로틴 음료 82%",
+   "about": "프로틴 음료 일반",
+   "general": true,
+   "photo": {
+    "url": "https://live.staticflickr.com/3112/2769034215_c8abfa8c2d_b.jpg",
+    "shows": "잔에 담긴 단백질 쉐이크 한 잔(프로틴 음료 일반 사진, 특정 상품 아님)",
+    "match": "같은 종류",
+    "rights": "Adam Pieniazek (CC BY 2.0) · www.flickr.com/photos/7663044@N06/2769034215",
+    "general": true,
+    "terms": {
+     "url": "https://creativecommons.org/licenses/by/2.0/",
+     "checked": "2026-11-08",
+     "scope": "CC BY 2.0, 상업적 이용·수정 가능",
+     "ok": true
+    },
+    "page": "https://www.flickr.com/photos/7663044@N06/2769034215"
+   }
+  },
+  {
+   "say": "여러분은 한 끼를 [[가볍게]], 아니면 든든하게 드세요?",
+   "about": "편의점 도시락 일반",
+   "general": true,
+   "photo": {
+    "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Convenience%20store%20dosirak.jpg?width=1600",
+    "shows": "검은 도시락 용기에 밥과 반찬이 담긴 편의점 도시락(일반 사진, 특정 상품 아님)",
+    "match": "같은 종류",
+    "rights": "위키미디어 공용 CC0 · Convenience store dosirak.jpg",
+    "general": true
+   }
+  },
+  {
+   "say": "[[댓글]]로 알려 주세요."
+  }
+ ],
+ "review": {
+  "photo_sheet": "2985900bc813"
+ }
+}
