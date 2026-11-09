@@ -849,7 +849,7 @@ def sub_plans(text, room=CHUNK, top=3):
     n = len(words)
     size = lambda i, j: sum(units(w) for w in words[i:j]) + 0.3 * (j - i - 1)
     plans = []
-    k_min = max(2, -(-int(size(0, n)) // whole))
+    k_min = max(2, int(-(-size(0, n) // whole)))
     for k in (k_min, k_min + 1):
         goal = size(0, n) / k
         # best[(j, cnt)] = 낮은 벌점 차례 목록 [(벌점, 자른 자리들)] (상위 top 개)
@@ -867,7 +867,8 @@ def sub_plans(text, room=CHUNK, top=3):
                     else:
                         c = 0
                     piece = size(i, j)
-                    extra = c + (piece - goal) ** 2 / 90  # 짧은 덩어리는 실제 표시 시간(MIN_SHOW)으로 다시 봐요(plan_subs)
+                    # 5칸 안 되는 조각('늘었다고 / 봤어요.')은 띄엄띄엄 보여서 피해요 (rules/daily/voice.md, 2026-11-09 확인)
+                    extra = c + (piece - goal) ** 2 / 90 + (3 if piece < 5 else 0)  # 짧은 덩어리는 실제 표시 시간(MIN_SHOW)으로 다시 봐요(plan_subs)
                     cands += [(cost + extra, cuts + [j]) for cost, cuts in best[(i, cnt - 1)]]
                 if cands:
                     best[(j, cnt)] = sorted(cands)[:top]
@@ -1240,6 +1241,19 @@ def photo_flips(subs, edges, dur, n):
 
 
 def build_voice(spec, work=None):
+    """설계도에 "sub_px" 가 있으면 그 크기로 한 줄에 들어가는 만큼만 한 화면에 보여 줘요(넘으면 자연스러운 자리에서 나눠요).
+    2026-11-09 편의점 간편식: 사용자 "글자 크기는 되도록 통일, 짧은 말이라도 첫 화면 크기로". 그 설정을 적은 영상만 바뀌어요."""
+    global WHOLE
+    keep = WHOLE
+    if spec.get("sub_px"):
+        WHOLE = min(keep, 70 * CHUNK / int(spec["sub_px"]))
+    try:
+        return _build_voice(spec, work)
+    finally:
+        WHOLE = keep
+
+
+def _build_voice(spec, work=None):
     """내레이션 쇼츠 HTML. (HTML, 길이, meta) — meta["voice"] 는 목소리 wav 경로(키가 없으면 None)."""
     import build as B
 
@@ -1307,6 +1321,8 @@ def build_voice(spec, work=None):
         full = spec.get("pic") == "full"
         if full:
             out[1] = out[1].replace("</style>", ".vpic { height: 1110px; } .vchip { font-size: 42px; padding: 6px 22px 11px; }</style>")
+        # "sub_px": 가운데 띠 자막 글자 크기를 그 영상 안에서 하나로 맞춰요. 짧은 말도 커지지 않고, 이보다 긴 덩어리만 한 줄에 들어가게 줄어요
+        # (2026-11-09 편의점 간편식: 사용자 "짧은말이라도 첫 화면 크기로 통일")
         if spec.get("sub_accent"):  # 가운데 띠(자막) 강조 글씨 색을 그 영상만 바꿔요 (2026-11-08 생일 특집: 주황)
             out[1] = out[1].replace("</style>", f".vsub .am {{ color: {spec['sub_accent']}; }}</style>")
         # 자막 나누기·바꾸는 때 (2026-11-08 2차): 뜻·연결 관계로 나눌 후보를 고르고, 실제 목소리에 맞춰 바꾸는 때를 정해요(plan_subs)
@@ -1355,7 +1371,7 @@ def build_voice(spec, work=None):
                 t1 = parts[k + 1][1] if k + 1 < len(parts) else durs[i]
                 mark = f' data-line-at="{starts[i]:.2f}"' if k == 0 else ""  # 문장이 시작하는 때(검수에서 받아쓰기 시각을 맞출 때 써요)
                 out.append(f'<section class="scene" data-at="{starts[i] + t0:.2f}" data-dur="{max(t1 - t0, 0.05):.2f}" data-out="0"{mark} style="z-index:950">'
-                           f'<div class="vsub"{bar}>{tag}<div style="font-size:{sub_size(p, 62 if c else 70, room)}px">{B.rich(p)}</div></div></section>')
+                           f'<div class="vsub"{bar}>{tag}<div style="font-size:{min(int(spec.get("sub_px") or 99), sub_size(p, 62 if c else 70, room))}px">{B.rich(p)}</div></div></section>')
                 if k and real:
                     why = mid_speech(voices[i], t0)
                     if why:
