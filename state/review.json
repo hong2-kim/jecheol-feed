@@ -568,5 +568,39 @@
     "hash": "30fa265ea1b0",
     "approved": false,
     "reasons": []
+  },
+  "2026-11-10-10-voice": {
+    "verdict": "통과",
+    "hash": "331eedea2829",
+    "approved": false,
+    "reasons": []
+  },
+  "2026-11-10-12-gim": {
+    "verdict": "통과",
+    "hash": "1d7c4142fbf8",
+    "approved": false,
+    "reasons": []
+  },
+  "2026-11-10-2-news": {
+    "verdict": "통과",
+    "hash": "6c358a5a6721",
+    "approved": false,
+    "reasons": []
+  },
+  "2026-11-10-3-dinner": {
+    "verdict": "통과",
+    "hash": "53c3aead23e1",
+    "approved": false,
+    "reasons": []
+  },
+  "2026-11-10-6-story": {
+    "verdict": "확인 필요",
+    "hash": "f0e6e69c0175",
+    "approved": false,
+    "reasons": [
+      "[확인] 이력: 이력: 부산 어묵은 왜 이름났을까? ↔ 2026-11-07/blog/2026-11-07-weekly-trend '편의점 군고구마 2주 새 248%, 겨울 어묵탕·딸기 ' (3일 전, 블로그, 보냄, 점수 7) · 같은 말: 겨울간식, 어묵탕, 어묵 →"
+    ],
+    "noticed": "확인 필요:f0e6e69c0175",
+    "ask_msg": 1002
   }
 }
