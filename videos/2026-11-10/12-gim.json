@@ -1,0 +1,250 @@
+{
+ "format": "voice",
+ "kind": "해설",
+ "subject": "한국 김 수출 1등 나라",
+ "title": "한국 김을 가장 많이 사 가는 나라, 일본이 아니었다",
+ "yt_title": "한국 김 가장 많이 사 가는 나라, 일본일까? 김 수출 11억 달러",
+ "headline": "김 1등 손님\n[[일본일까?]]",
+ "thumb": {
+  "sub": "김 수출 [[11억 달러]]"
+ },
+ "narrator": "puck",
+ "voice_pick": {
+  "mode": "solo",
+  "voices": [
+   "puck"
+  ],
+  "why": "'1등이 일본일까?' 하고 뒤집는 놀라운 사실 이야기라 경쾌한 Puck 솔로"
+ },
+ "summary": "해양수산부에 따르면 김 수출은 2023년 7억 9300만 달러, 2024년 9억 9700만 달러, 2025년 11억 3000만 달러로 늘었고, 2025년 11월 20일까지 나라별로는 미국 2억 2천만 달러가 일본 2억 1천만 달러를 앞섰어요.",
+ "caption": "한국 김을 가장 많이 사 가는 나라, 일본일까요? 해양수산부에 따르면 2025년 11월 20일까지 김 수출은 미국이 2억 2천만 달러로 일본(2억 1천만 달러)을 조금 앞섰어요. 중국은 1억 달러로 36.6% 늘었고요.\n\n김 수출은 2023년 7억 9300만 달러, 2024년 9억 9700만 달러에 이어 2025년 11억 3000만 달러로 처음 10억 달러를 넘었어요. 수산식품 가운데 수출 1위 품목이에요.\n\n여러분은 김, 어떻게 드세요?\n\n출처: 해양수산부 발표(파이낸스스코프 2026년 1월 15일, 데일리안 2025년 12월 23일, 뉴스서울 2025년 11월 23일)\n사진: karendotcom127 (CC BY 2.0) · commons.wikimedia.org, 그 밖 위키미디어 공용 CC0·퍼블릭 도메인",
+ "tags": [
+  "김",
+  "김수출",
+  "K푸드",
+  "조미김"
+ ],
+ "sources": [
+  "https://www.finance-scope.com/article/view/scp202601150020",
+  "https://www.dailian.co.kr/news/view/1589370",
+  "https://newsseoul.co.kr/news/view/1065607847990918"
+ ],
+ "credits": [
+  "karendotcom127 (CC BY 2.0) · commons.wikimedia.org/wiki/File:Korean_seaweed-packed_gim-01.jpg"
+ ],
+ "yt_keyword": "김 수출",
+ "yt_related": [
+  "조미김",
+  "김스낵",
+  "K푸드",
+  "해외 김",
+  "김 수출 1위"
+ ],
+ "yt_tags": [
+  "김 수출",
+  "조미김",
+  "김스낵",
+  "K푸드",
+  "김 수출 1위 나라",
+  "한국 김",
+  "해외 반응"
+ ],
+ "yt_hashtags": [
+  "김수출",
+  "조미김",
+  "K푸드"
+ ],
+ "yt_lead": "한국 김 수출은 2025년 11억 3000만 달러로 처음 10억 달러를 넘었고, 나라별로는 미국이 일본을 조금 앞섰어요.",
+ "dates": {
+  "checked": "2026-11-09",
+  "sources": [
+   {
+    "url": "https://www.finance-scope.com/article/view/scp202601150020",
+    "published": "2026-01-15"
+   },
+   {
+    "url": "https://www.dailian.co.kr/news/view/1589370",
+    "published": "2025-12-23"
+   },
+   {
+    "url": "https://newsseoul.co.kr/news/view/1065607847990918",
+    "published": "2025-11-23"
+   }
+  ],
+  "stat_period": "연간 수출액은 2023~2025년, 나라별은 2025년 1월~11월 20일 누적"
+ },
+ "lines": [
+  {
+   "say": "한국 김, 제일 많이 사 가는 건 [[일본]]일까요?",
+   "about": "김",
+   "general": true,
+   "photo": {
+    "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Korean%20seaweed%20Gim%20%282%29.jpg?width=1600",
+    "shows": "손으로 집어 든 구운 김 여러 장(일반 사진)",
+    "match": "같은 종류",
+    "rights": "위키미디어 공용 CC0 · Korean seaweed Gim (2).jpg",
+    "general": true
+   }
+  },
+  {
+   "say": "끝까지 보면, [[1등 나라]]까지 알려 드려요.",
+   "chip": "끝까지 보면 김 1등 나라"
+  },
+  {
+   "say": "김은 작년에만, [[11억 3천만 달러]]어치 팔려 나갔어요.",
+   "chip": "2025년 11억 3천만 달러",
+   "about": "김",
+   "general": true,
+   "photo": {
+    "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Gim-garu.jpg?width=1600",
+    "shows": "흰 접시에 담긴 김가루(김 가공품 일반 사진)",
+    "match": "같은 종류",
+    "rights": "위키미디어 공용 CC0 · Gim-garu.jpg",
+    "general": true
+   }
+  },
+  {
+   "say": "2025년, 처음으로 [[10억 달러]]를 넘겼어요.",
+   "card": {
+    "type": "bars",
+    "title": "한국 김 [[수출액]]",
+    "sub": "단위: 억 달러",
+    "rows": [
+     {
+      "name": "2023년",
+      "value": 7.93,
+      "label": "7.9"
+     },
+     {
+      "name": "2024년",
+      "value": 9.97,
+      "label": "10.0"
+     },
+     {
+      "name": "2025년",
+      "value": 11.3,
+      "label": "11.3 · [[처음 10억↑]]",
+      "hl": true
+     }
+    ],
+    "scale": 0.55,
+    "src": "해양수산부 발표"
+   }
+  },
+  {
+   "say": "수산식품 가운데, 수출 [[1위]] 품목이에요.",
+   "chip": "수산식품 수출 1위",
+   "about": "한국 김 양식장",
+   "general": true,
+   "photo": {
+    "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Seaweed%20Farms%20in%20South%20Korea.jpg?width=1600",
+    "shows": "남해안 바다에 바둑판처럼 펼쳐진 김·해조류 양식장 위성 사진(NASA)",
+    "match": "분위기",
+    "rights": "위키미디어 공용 퍼블릭 도메인 · NASA Earth Observatory · Seaweed Farms in South Korea.jpg",
+    "general": true
+   }
+  },
+  {
+   "say": "그럼 1등은? 바로 [[미국]]이에요.",
+   "pace": "reveal",
+   "about": "미국의 김밥",
+   "general": true,
+   "photo": {
+    "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Beef%20kimbap%20from%20a%20DC%20lunch%20counter.jpg?width=1600",
+    "shows": "미국 워싱턴 DC 한 점심 가게에서 파는 소고기 김밥 한 판",
+    "match": "분위기",
+    "rights": "위키미디어 공용 CC0 · Beef kimbap from a DC lunch counter.jpg",
+    "general": true
+   }
+  },
+  {
+   "say": "작년 11월 20일까지, 미국이 [[2억 2천만 달러]]로, 일본을 살짝 앞섰어요.",
+   "card": {
+    "type": "bars",
+    "title": "김 많이 사 간 [[나라]]",
+    "sub": "2025년 1월~11월 20일, 단위: 억 달러",
+    "rows": [
+     {
+      "name": "미국",
+      "value": 2.2,
+      "label": "2.2",
+      "hl": true
+     },
+     {
+      "name": "일본",
+      "value": 2.1,
+      "label": "2.1"
+     },
+     {
+      "name": "중국",
+      "value": 1.0,
+      "label": "1.0 · [[36.6%↑]]"
+     },
+     {
+      "name": "태국",
+      "value": 0.88,
+      "label": "0.88"
+     },
+     {
+      "name": "러시아",
+      "value": 0.85,
+      "label": "0.85"
+     }
+    ],
+    "scale": 0.55,
+    "src": "해양수산부 발표(데일리안 2025-12-23)"
+   }
+  },
+  {
+   "say": "해외에선, 김이 [[과자]]처럼 팔리기도 해요.",
+   "about": "해외 김스낵",
+   "general": true,
+   "photo": {
+    "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Pack%20of%20Organic%20Mini%20Roasted%20Seaweed%20Snack.jpg?width=1600",
+    "shows": "영어로 'Organic Mini Roasted Seaweed Snack'이라 적힌 김스낵 봉지(해외 판매 일반 사진)",
+    "match": "같은 종류",
+    "fit": "contain",
+    "rights": "위키미디어 공용 CC0 · Pack of Organic Mini Roasted Seaweed Snack.jpg",
+    "general": true
+   }
+  },
+  {
+   "say": "업계도 해외 입맛에 맞춘, [[조미김]] 같은 제품을 늘려 왔어요.",
+   "about": "조미김",
+   "general": true,
+   "photo": {
+    "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Korean%20seaweed-packed%20gim-01.jpg?width=1600",
+    "shows": "한국 조미김 한 봉지(도시락김, 일반 사진·특정 수출 상품 아님)",
+    "match": "같은 종류",
+    "fit": "contain",
+    "rights": "karendotcom127 (CC BY 2.0) · Korean seaweed-packed gim-01.jpg",
+    "general": true,
+    "terms": {
+     "url": "https://creativecommons.org/licenses/by/2.0/",
+     "checked": "2026-11-09",
+     "scope": "CC BY 2.0, 상업적 이용·수정 가능",
+     "ok": true
+    }
+   }
+  },
+  {
+   "say": "여러분은 김, 어떻게 드세요? [[댓글]]로 알려 주세요.",
+   "about": "김밥",
+   "general": true,
+   "photo": {
+    "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Gimbap%20%28pixabay%29.jpg?width=1600",
+    "shows": "접시에 가지런히 썬 김밥과 국 한 그릇(일반 사진)",
+    "match": "같은 종류",
+    "rights": "위키미디어 공용 CC0 · Gimbap (pixabay).jpg",
+    "general": true
+   }
+  }
+ ],
+ "followup": {
+  "of": "2026-10-24/10-voice",
+  "new": "빅맥 값 비교와 달리 김 수출액(2023~2025)과 나라별 순위(미국>일본, 중국 36.6%↑)는 새 사실"
+ },
+ "review": {
+  "photo_sheet": "c43738cba8ae"
+ }
+}
