@@ -45,6 +45,7 @@
       "laomedeia": {"voice": "ko-KR-Chirp3-HD-Laomedeia", "rate": 1.05, "sex": "여", "use": "B조합: 친구 대화·취향 비교"}
     },
     "pairs": {"A": ["puck", "erinome"], "B": ["achird", "laomedeia"]},
-    "handle": "@meokgomap"
+    "handle": "@meokgomap",
+    "viral": {"enabled": true, "note": "2026-11-09 사용자가 부탁함: 매일 09시 ytstats 가 scripts/yt_viral.py 로 '채널 평소보다 몇 배' 터진 먹거리 쇼츠를 텔레그램으로 보내요. 낱말(queries)·기준(min_multiple, min_views, per_query, top)은 여기에 적으면 기본값 대신 써요."}
   }
 }

@@ -32,10 +32,18 @@ jobs:
           GOOGLE_TTS_API_KEY: ${{ secrets.GOOGLE_TTS_API_KEY }}
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID || secrets.TELEGRAM_CHAT_I }}
+      - name: 요즘 터진 먹거리 쇼츠 찾아 보내기 # 채널 평소보다 몇 배인지로(2026-11-09). 실패해도 조회수 기록은 저장해요
+        continue-on-error: true
+        run: python scripts/yt_viral.py
+        env:
+          GOOGLE_TTS_API_KEY: ${{ secrets.GOOGLE_TTS_API_KEY }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID || secrets.TELEGRAM_CHAT_I }}
       - name: 기록 저장
         run: |
           git config user.name "jecheol-feed"
           git config user.email "actions@users.noreply.github.com"
           git add state/yt_stats.json
+          if [ -f state/yt_viral.json ]; then git add state/yt_viral.json; fi
           git diff --cached --quiet || git commit -m "유튜브 조회수 기록"
           python3 scripts/safe_push.py # 받아 다시 얹기·대량 삭제·받지 않은 저장소를 막고 올려요(2026-11-06)
