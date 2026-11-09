@@ -20,9 +20,9 @@
     "credits": [],
     "url": "https://github.com/hong2-kim/jecheol-feed/releases/download/v2026-11-09/2026-11-09-4-find.mp4",
     "seconds": 17.0,
-    "size_mb": 5.1,
+    "size_mb": 5.2,
     "yt_title": "빼빼로데이 편의점 굿즈 세트, 사흘 만에 2억 원어치 팔렸대요",
-    "sha256": "62868a12255bba8c91b4ba9aaae96325da0ac7977e342fbb105c413b7b463339"
+    "sha256": "271afdc0c80b4d45be8bae920dedbf7785557d861b5625dd3bc66ce94d7f6b7e"
   },
   {
     "id": "2026-11-09-3-dinner",
@@ -41,10 +41,11 @@
     "sources": [],
     "credits": [],
     "url": "https://github.com/hong2-kim/jecheol-feed/releases/download/v2026-11-09/2026-11-09-3-dinner.mp4",
-    "seconds": 15.5,
-    "size_mb": 8.2,
+    "seconds": 15.6,
+    "size_mb": 8.3,
     "yt_title": "월요일 저녁 메뉴 뭐 먹지? 순두부찌개·막창구이·크림 파스타·돈가스 중에 골라 줌",
-    "sha256": "5bcb731118d1deb9e554f7566c7d933c45cd7f53f45a13d360b4279d80b38920"
+    "sha256": "22a7ecd8eb77b46025e6d8a6f9814c04ec505e7d9f197e2de8412a99b569a8da",
+    "held": "확인 필요"
   },
   {
     "id": "2026-11-09-2-news",
@@ -112,10 +113,10 @@
       "Adam Pieniazek (CC BY 2.0) · www.flickr.com/photos/7663044@N06/2769034215"
     ],
     "url": "https://github.com/hong2-kim/jecheol-feed/releases/download/v2026-11-09/2026-11-09-10-voice.mp4",
-    "seconds": 41.9,
+    "seconds": 41.0,
     "size_mb": 5.5,
     "yt_title": "편의점 간편식 매출 늘었다, 프로틴 음료 82% 스몰 밀 유행?",
-    "sha256": "03d03b965577ed0a191972f4b4e9b17c7e856acb47db79aa1bf8db2b948acc29"
+    "sha256": "e0b058f99fa076a6edb381fc918c2073aa95d5b068af903c735424042e569500"
   },
   {
     "id": "2026-11-08-4-find",

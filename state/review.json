@@ -545,7 +545,7 @@
   },
   "2026-11-09-10-voice": {
     "verdict": "통과",
-    "hash": "9ba57a4446b5",
+    "hash": "5a1a7d86a606",
     "approved": false,
     "reasons": []
   },
@@ -556,10 +556,12 @@
     "reasons": []
   },
   "2026-11-09-3-dinner": {
-    "verdict": "통과",
+    "verdict": "확인 필요",
     "hash": "153e2b7170f4",
     "approved": false,
-    "reasons": []
+    "reasons": [
+      "[확인] 제작: 시점 검수: 4번 문장: 자막 '고기가 당기면,' 이 0.46초만 보여요"
+    ]
   },
   "2026-11-09-4-find": {
     "verdict": "통과",
