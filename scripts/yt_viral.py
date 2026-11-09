@@ -47,6 +47,14 @@ DEFAULTS = {
     "min_subs": 5000,     # 구독자가 너무 적은 채널은 빼요(숨긴 채널은 둬요)
     # 한국어 제목을 기계로 찍어 내는 해외 채널(11-09 시험에서 절반 가까이)을 채널 이름으로 빼요
     "skip_channel": r"[ăâđêôơưạảấầẩẫậắằẳẵặẹẻẽếềểễệỉịọỏốồổỗộớờởỡợụủứừửữựỳỵỷỹìíòóùúý]|vietnam|việt",
+    # 집밥·살림 꿀팁 쪽은 배수가 쉽게 튀어 목록을 다 차지해요(11-09 시안 7개 중 4개). 우리 방향(젊은 층·편의점·유행)과
+    # 조금 달라서, 이 낱말에서 나왔거나 제목·채널이 이 꼴이면 모두 합쳐 tip_max 개까지만 보여요(11-09 사용자 "다듬어 줘").
+    "tip_queries": ["음식 꿀팁", "제철 음식"],
+    "tip_pattern": r"특효약|독이 ?됩니|건강지킴|건강정보|건강톡|[5-8]0대|시니어|노인|집밥|살림|요리꿀팁|약이 ?됩니",
+    "tip_max": 2,
+    # 2배를 못 넘은 갈래(꿀팁 낱말 빼고)는 그 갈래에서 가장 잘 된 것 하나를 '갈래 1등'으로 따로 보여요.
+    # 평소보다 lead_min 배 이상이고 조회 min_views 이상일 때만.
+    "lead_min": 1.2,
 }
 SHORT_SEC = 180
 # 한국어 제목 꼴. 하나의 제목이 여러 꼴에 들 수 있어요.
@@ -164,6 +172,8 @@ def find(cfg, own_channel):
             continue
         med, n = base[v["ch"]]
         age = (now - datetime.fromisoformat(v["at"].replace("Z", "+00:00"))).total_seconds() / 3600
+        if len(re.sub(r"#\S+", "", html.unescape(v["t"])).strip()) < 4:
+            continue  # 제목이 해시태그뿐이면 무슨 내용인지 알 수 없어 빼요
         rows.append({"id": vid, "title": clean(v["t"]), "channel": v["chn"], "subs": subs.get(v["ch"]), "views": v["v"],
                      "median": int(med), "n": n, "multiple": round(v["v"] / med, 1), "hours": round(age),
                      "formulas": formulas(v["t"]), "query": hit_by.get(vid), "url": f"https://youtube.com/shorts/{vid}"})
@@ -175,19 +185,60 @@ def man(n):
     return f"{n / 10000:.1f}만" if n >= 10000 else f"{n:,}"
 
 
-def report(date, picks, stats, cfg):
+def is_tip(r, cfg):
+    return r["query"] in cfg["tip_queries"] or bool(re.search(cfg["tip_pattern"], r["title"] + " " + r["channel"]))
+
+
+def select(rows, cfg, recent):
+    """배수 큰 차례로: 낱말마다 per_query 개, 한 채널 하나, 꿀팁 쪽은 모두 합쳐 tip_max 개. 그다음 빈 갈래의 1등."""
+    picks, used, per, tips = [], set(), {}, 0
+    for r in rows:
+        if r["id"] in recent or r["channel"] in used or r["views"] < cfg["min_views"] or r["multiple"] < cfg["min_multiple"]:
+            continue
+        if per.get(r["query"], 0) >= cfg["per_query"]:
+            continue
+        tip = is_tip(r, cfg)
+        if tip and tips >= cfg["tip_max"]:
+            continue
+        picks.append(r)
+        used.add(r["channel"])
+        per[r["query"]] = per.get(r["query"], 0) + 1
+        tips += tip
+    picks = picks[:cfg["top"]]
+    leaders = []
+    for q in cfg["queries"]:
+        if q in cfg["tip_queries"] or per.get(q):
+            continue
+        for r in rows:  # rows 는 배수 큰 차례
+            if (r["query"] == q and r["id"] not in recent and r["channel"] not in used and r["views"] >= cfg["min_views"]
+                    and r["multiple"] >= cfg["lead_min"] and not is_tip(r, cfg)):
+                leaders.append(r)
+                used.add(r["channel"])
+                break
+    return picks, leaders
+
+
+def line3(r, i, e):
+    sub = f" · 구독 {man(r['subs'])}" if r.get("subs") else ""
+    return [f"{i}. <b>{r['multiple']:g}배</b> {man(r['views'])}회 (평소 {man(r['median'])}) · {r['hours']}시간 전 · [{e(r['query'] or '')}]",
+            f"   <a href=\"{r['url']}\">{e(r['title'][:44])}</a>",
+            f"   └ {e(r['channel'][:20])}{sub}" + (f" · 꼴: {', '.join(r['formulas'][:3])}" if r["formulas"] else "")]
+
+
+def report(date, picks, leaders, stats, cfg):
     e = html.escape
     lines = [f"<b>🔥 요즘 터진 먹거리 쇼츠</b> ({date})",
              f"최근 {cfg['hours']}시간 · 채널 평소보다 {cfg['min_multiple']:g}배 이상 · 조회 {man(cfg['min_views'])} 이상", ""]
     if not picks:
         lines.append("오늘은 기준을 넘은 쇼츠가 없어요.")
     for i, r in enumerate(picks, 1):
-        sub = f" · 구독 {man(r['subs'])}" if r.get("subs") else ""
-        lines.append(f"{i}. <b>{r['multiple']:g}배</b> {man(r['views'])}회 (평소 {man(r['median'])}) · {r['hours']}시간 전 · [{e(r['query'] or '')}]")
-        lines.append(f"   <a href=\"{r['url']}\">{e(r['title'][:44])}</a>")
-        lines.append(f"   └ {e(r['channel'][:20])}{sub}" + (f" · 꼴: {', '.join(r['formulas'][:3])}" if r["formulas"] else ""))
+        lines += line3(r, i, e)
+    if leaders:
+        lines += ["", f"<b>갈래 1등</b> (2배는 못 넘었지만 그 갈래에서 가장 잘 된 것)"]
+        for i, r in enumerate(leaders, len(picks) + 1):
+            lines += line3(r, i, e)
     counts = {}
-    for r in picks:
+    for r in picks + leaders:
         for f in r["formulas"]:
             counts[f] = counts.get(f, 0) + 1
     if counts:
@@ -216,19 +267,14 @@ def main():
         raise
     recent = {r["id"] for d, day in ledger["days"].items() if d < date and d >= (datetime.strptime(date, "%Y-%m-%d") - timedelta(days=2)).strftime("%Y-%m-%d")
               for r in day.get("picks", [])}
-    picks, used, per = [], set(), {}
-    for r in rows:  # 배수 큰 차례로, 낱말마다 per_query 개, 한 채널에서 하나만
-        if (r["multiple"] >= cfg["min_multiple"] and r["views"] >= cfg["min_views"] and r["id"] not in recent
-                and r["channel"] not in used and per.get(r["query"], 0) < cfg["per_query"]):
-            picks.append(r)
-            used.add(r["channel"])
-            per[r["query"]] = per.get(r["query"], 0) + 1
-    picks = picks[:cfg["top"]]
-    text = report(date, picks, stats, cfg)
+    recent |= {r["id"] for d, day in ledger["days"].items() if d < date and d >= (datetime.strptime(date, "%Y-%m-%d") - timedelta(days=2)).strftime("%Y-%m-%d")
+               for r in day.get("leaders", [])}
+    picks, leaders = select(rows, cfg, recent)
+    text = report(date, picks, leaders, stats, cfg)
     print(text)
     if dry:
         return
-    ledger["days"][date] = {"picks": picks, "stats": stats}
+    ledger["days"][date] = {"picks": picks, "leaders": leaders, "stats": stats}
     ledger["days"] = dict(sorted(ledger["days"].items())[-30:])  # 30일만 남겨요
     write_json(LEDGER, ledger)
     token = os.environ.get("TELEGRAM_BOT_TOKEN", "").strip()
