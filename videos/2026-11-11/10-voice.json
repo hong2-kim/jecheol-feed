@@ -1,0 +1,225 @@
+{
+ "format": "voice",
+ "kind": "해설",
+ "subject": "매운맛 라면 12종 · 소비자원 시험",
+ "title": "매운맛 라면 12종, 맵기는 최대 6.9배 차이 나트륨은 얼마나 될까?",
+ "yt_title": "매운 라면 12종 맵기 최대 6.9배 차이, 나트륨 기준치 넘는 라면도",
+ "headline": "매운맛 라면\n[[최대 6.9배]]",
+ "narrator": "charon",
+ "voice_pick": {
+  "mode": "solo",
+  "voices": [
+   "charon"
+  ],
+  "why": "소비자원 시험 수치(맵기·나트륨)를 정확히 전하는 통계 설명이라 차분한 Charon 솔로"
+ },
+ "thumb": {
+  "sub": "국물까지 먹으면 [[기준치]]?"
+ },
+ "summary": "한국소비자원이 매운맛 라면 12개(국물 7, 볶음 5)를 시험해 11월 10일 발표했어요. 캡사이신류는 94~650mg/kg으로 최대 6.9배 차이였고, 국물 라면 한 봉지 나트륨은 1,611~2,080mg으로 하루 기준치(2,000mg)의 81~104%였어요.",
+ "caption": "매운맛 라면, 제품마다 얼마나 다를까요? 한국소비자원이 소비자 선호도가 높은 매운맛 라면 12개(국물 7개, 볶음 5개)를 시험한 결과를 11월 10일 밝혔어요.\n\n라면수프·소스 기준 캡사이신류는 1kg당 94~650mg으로 제품 간 최대 6.9배 차이였어요. 국물 라면은 틈새라면 빨계떡(650mg)이, 볶음 라면은 불닭볶음면(285mg)이 가장 높았고, 4개 제품이 KS 4단계(매우 매운맛)에 해당했어요. 조리한 면만 보면 20~37mg으로 차이가 최대 1.9배로 줄었어요.\n\n한 봉지 나트륨은 국물 라면이 1,611~2,080mg으로 하루 기준치의 81~104%예요. 신라면 더레드가 2,080mg으로 가장 높아 국물까지 다 먹으면 기준치를 넘고, 소비자원은 수프를 적게 넣거나 국물을 줄이라고 권했어요. 30대 이하 응답자의 42%는 탄산음료와 함께 먹는다고 답했어요. 중금속·유해물질·식중독균 시험은 모든 제품이 적합했어요.\n\n사진은 라면 일반 사진이고 시험 제품이 아니에요.\n\n여러분은 라면 국물까지 드세요, 남기세요?\n\n출처: 한국소비자원(11월 10일), 메디칼월드뉴스(11월 10일)",
+ "tags": [
+  "매운라면",
+  "라면나트륨",
+  "소비자원",
+  "라면"
+ ],
+ "sources": [
+  "https://medicalworldnews.co.kr/m/view.php?idx=1510978374"
+ ],
+ "credits": [
+  "Hyeon-Jeong Suk (CC BY 2.0) · commons.wikimedia.org/?curid=66086628",
+  "Valentin Janiaut (CC BY 2.0) · commons.wikimedia.org/?curid=87844964"
+ ],
+ "yt_keyword": "매운 라면",
+ "yt_related": [
+  "라면 매운맛 순위",
+  "라면 나트륨",
+  "소비자원 라면",
+  "캡사이신",
+  "라면 국물"
+ ],
+ "yt_tags": [
+  "매운 라면",
+  "라면 매운맛 순위",
+  "라면 나트륨",
+  "소비자원 라면 시험",
+  "불닭볶음면",
+  "틈새라면"
+ ],
+ "yt_hashtags": [
+  "매운라면",
+  "라면나트륨",
+  "소비자원"
+ ],
+ "yt_lead": "한국소비자원이 매운맛 라면 12개를 시험하니 맵기는 최대 6.9배, 국물 라면 한 봉지 나트륨은 하루 기준치의 81~104%였어요.",
+ "dates": {
+  "checked": "2026-11-11",
+  "sources": [
+   {
+    "url": "https://medicalworldnews.co.kr/m/view.php?idx=1510978374",
+    "published": "2026-11-10",
+    "modified": "2026-11-10"
+   }
+  ],
+  "stat_period": "한국소비자원 2026년 11월 10일 발표 시험 결과"
+ },
+ "lines": [
+  {
+   "say": "매운맛 라면, 제품마다 [[최대 6.9배]] 차이가 난대요.",
+   "photo": {
+    "url": "https://commons.wikimedia.org/wiki/Special:FilePath/20200804%20033546%20Ramyeon%20IMG%208515.jpg?width=1600",
+    "shows": "흰 그릇에 담긴 국물 라면(라면 일반 사진, 시험 제품 아님)",
+    "match": "같은 종류",
+    "rights": "위키미디어 공용 CC0 · 20200804 033546 Ramyeon IMG 8515.jpg",
+    "general": true
+   },
+   "about": "라면 일반",
+   "general": true,
+   "chip": "매운맛 최대 6.9배",
+   "read": "매운맛 라면, 제품마다 최대 6점 9배 차이가 난대요."
+  },
+  {
+   "say": "끝까지 보면, [[나트륨]] 많은 라면까지 알려 드려요.",
+   "chip": "끝까지 보면 나트륨 많은 라면"
+  },
+  {
+   "say": "한국소비자원이, 매운맛 라면 [[12개]]를 시험했어요.",
+   "photo": {
+    "url": "https://commons.wikimedia.org/wiki/Special:FilePath/20251206%20150237%20Ramyeon%20Store.jpg?width=1600",
+    "shows": "테이블과 라면 진열대가 있는 라면 가게 실내(라면 일반 사진, 시험 제품 아님)",
+    "match": "같은 종류",
+    "rights": "위키미디어 공용 CC0 · 20251206 150237 Ramyeon Store.jpg",
+    "general": true
+   },
+   "about": "라면 일반",
+   "general": true,
+   "chip": "12개 시험"
+  },
+  {
+   "say": "매운맛 성분인 캡사이신류는, [[94에서 650]]밀리그램이었어요.",
+   "card": {
+    "type": "bars",
+    "title": "캡사이신류 [[함량]]",
+    "sub": "mg/kg · 라면수프·소스 기준",
+    "rows": [
+     {
+      "name": "틈새라면 빨계떡",
+      "value": 650,
+      "label": "650 · [[최고]]",
+      "hl": true
+     },
+     {
+      "name": "불닭볶음면",
+      "value": 285,
+      "label": "285"
+     },
+     {
+      "name": "삼양1963",
+      "value": 117,
+      "label": "117"
+     },
+     {
+      "name": "신라면 툼바",
+      "value": 94,
+      "label": "94 · [[최저]]"
+     }
+    ],
+    "scale": 0.55,
+    "src": "한국소비자원 · 11월 10일 발표"
+   }
+  },
+  {
+   "say": "한국 표준의 [[4단계]] 매우 매운맛은, 네 제품이었어요.",
+   "photo": {
+    "url": "vault:photos/ig-17909362880221802.jpg",
+    "shows": "냄비에서 끓는 노란 라면 면발을 젓가락으로 들어 올리는 모습(라면 일반 사진, 매운맛 시험 제품 아님)",
+    "match": "같은 종류",
+    "rights": "사용자 촬영 비공개 보관함",
+    "general": true
+   },
+   "about": "라면 일반",
+   "general": true,
+   "chip": "4단계 4개 제품"
+  },
+  {
+   "say": "그런데 면만 먹으면, 제품 간 차이가 [[1.9배]]로 줄어요.",
+   "photo": {
+    "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Ramyeon%20and%20kimchi.jpg?width=1600",
+    "shows": "냄비에 담긴 계란·대파·고추를 올린 라면과 김치 접시(라면 일반 사진, 시험 제품 아님)",
+    "match": "같은 종류",
+    "rights": "Hyeon-Jeong Suk (CC BY 2.0) · commons.wikimedia.org/?curid=66086628",
+    "general": true
+   },
+   "about": "라면 일반",
+   "general": true,
+   "chip": "면만 먹으면 1.9배",
+   "read": "그런데 면만 먹으면, 제품 간 차이가 1점 9배로 줄어요."
+  },
+  {
+   "say": "나트륨은 국물 라면 한 봉지에, [[천6백에서 2천 밀리그램]]이 넘어요.",
+   "read": "나트륨은 국물 라면 한 봉지에, 천6백에서 2천 밀리그램이 넘어요.",
+   "card": {
+    "type": "bars",
+    "title": "한 봉지 [[나트륨]]",
+    "sub": "mg · 하루 기준치 2,000mg",
+    "rows": [
+     {
+      "name": "신라면 더레드",
+      "value": 2080,
+      "label": "2,080 · [[최고]]",
+      "hl": true
+     },
+     {
+      "name": "삼양라면 매운맛",
+      "value": 1611,
+      "label": "1,611"
+     },
+     {
+      "name": "신라면 툼바(볶음)",
+      "value": 1349,
+      "label": "1,349"
+     },
+     {
+      "name": "참깨라면 볶음면",
+      "value": 1009,
+      "label": "1,009"
+     }
+    ],
+    "scale": 0.5,
+    "src": "한국소비자원 · 11월 10일 발표"
+   }
+  },
+  {
+   "say": "국물까지 다 먹으면, 하루 기준치를 넘는 제품도 있어요.",
+   "photo": {
+    "url": "https://commons.wikimedia.org/wiki/Special:FilePath/2020-03-27%2010.15.13%20%EC%84%B8%EB%B8%90%EC%9D%BC%EB%A0%88%EB%B8%90%20%EC%9B%90%EC%A3%BC%EC%9D%80%ED%96%89%EC%A0%90%20%EC%BB%B5%EB%9D%BC%EB%A9%B4.jpg?width=1600",
+    "shows": "편의점 선반에 줄지어 놓인 컵라면(라면 일반 사진, 시험 제품 아님)",
+    "match": "분위기",
+    "rights": "위키미디어 공용 CC0 · 2020-03-27 10.15.13 세븐일레븐 원주은행점 컵라면.jpg",
+    "general": true
+   },
+   "about": "라면 일반",
+   "general": true
+  },
+  {
+   "say": "30대 이하의 [[42%]]는, 매운 라면에 탄산음료를 곁들인대요.",
+   "photo": {
+    "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Jajang-ramyeon%201.jpg?width=1600",
+    "shows": "계란 프라이를 올린 짜장 볶음 라면 접시(라면 일반 사진, 시험 제품 아님)",
+    "match": "같은 종류",
+    "rights": "Valentin Janiaut (CC BY 2.0) · commons.wikimedia.org/?curid=87844964",
+    "general": true
+   },
+   "about": "라면 일반",
+   "general": true,
+   "chip": "30대 이하 42%"
+  },
+  {
+   "say": "여러분은 라면 국물까지 드세요, 남기세요? [[댓글]]로 알려 주세요."
+  }
+ ],
+ "review": {
+  "photo_sheet": "f0689434caaa"
+ }
+}

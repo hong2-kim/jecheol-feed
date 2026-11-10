@@ -1,0 +1,56 @@
+{
+ "category": "축제",
+ "region": "경북 영주",
+ "subject": "영주사과축제 서울 청계광장 직거래",
+ "angle": "부석 판매행사는 끝, 11월 13~15일 서울 청계광장에서 이어져요",
+ "season": "2026년 11월",
+ "length_sec": 30,
+ "title": "영주사과축제가 11월 13일부터 15일까지 서울 청계광장에서 이어져요",
+ "summary": [
+  "영주시가 2026 영주 사과축제 부석 판매행사를 10월 30일부터 11월 1일까지 열었어요.",
+  "산지 축제의 열기는 서울로 이어져 11월 13일부터 15일까지 청계광장에서 대규모 직거래 행사를 열어요.",
+  "영주시는 도시 소비자에게 영주사과를 알리고 지역 농가의 판로를 넓히려는 행사라고 밝혔어요."
+ ],
+ "facts": [
+  "부석 행사는 유네스코 세계유산 부석사 근처 부석면 미로공원에서 열렸어요.",
+  "행사장에서 시식과 택배 배송 서비스를 운영했다고 보도됐어요."
+ ],
+ "script": {
+  "hook": "영주사과, 서울에서 만나요",
+  "flow": "부석 판매행사|청계광장 13~15일|직거래",
+  "closing": "세부 운영 시간은 영주시 안내를 확인해요."
+ },
+ "visuals": [
+  "영주 사과",
+  "사과 바구니"
+ ],
+ "cautions": [
+  "서울 행사의 운영 시간과 판매 품목은 확인하지 못했어요."
+ ],
+ "sources": [
+  {
+   "name": "경북매일(10월 28일)",
+   "url": "https://www.kbmaeil.com/article/20261028500134",
+   "official": false
+  },
+  {
+   "name": "신아일보(11월 2일)",
+   "url": "https://www.shinailbo.co.kr/news/articleView.html?idxno=5078832",
+   "official": false
+  },
+  {
+   "name": "경북일보(11월 2일)",
+   "url": "https://www.kyongbuk.co.kr/news/articleView.html?idxno=4089334",
+   "official": false
+  }
+ ],
+ "date": "2026-11-11",
+ "checked": "2026-11-11",
+ "pairing": {
+  "drink": "",
+  "note": ""
+ },
+ "country": "한국",
+ "unverified": [],
+ "id": "2026-11-11-kr-yeongju-apple-seoul"
+}
