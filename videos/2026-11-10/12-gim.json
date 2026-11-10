@@ -17,7 +17,7 @@
   "why": "'1등이 일본일까?' 하고 뒤집는 놀라운 사실 이야기라 경쾌한 Puck 솔로"
  },
  "summary": "해양수산부에 따르면 김 수출은 2023년 7억 9300만 달러, 2024년 9억 9700만 달러, 2025년 11억 3000만 달러로 늘었고, 2025년 11월 20일까지 나라별로는 미국 2억 2천만 달러가 일본 2억 1천만 달러를 앞섰어요.",
- "caption": "한국 김을 가장 많이 사 가는 나라, 일본일까요? 해양수산부에 따르면 2025년 11월 20일까지 김 수출은 미국이 2억 2천만 달러로 일본(2억 1천만 달러)을 조금 앞섰어요. 중국은 1억 달러로 36.6% 늘었고요.\n\n김 수출은 2023년 7억 9300만 달러, 2024년 9억 9700만 달러에 이어 2025년 11억 3000만 달러로 처음 10억 달러를 넘었어요. 수산식품 가운데 수출 1위 품목이에요.\n\n여러분은 김, 어떻게 드세요?\n\n출처: 해양수산부 발표(파이낸스스코프 2026년 1월 15일, 데일리안 2025년 12월 23일, 뉴스서울 2025년 11월 23일)\n사진: karendotcom127 (CC BY 2.0) · commons.wikimedia.org, 그 밖 위키미디어 공용 CC0·퍼블릭 도메인",
+ "caption": "한국 김을 가장 많이 사 가는 나라, 일본일까요? 해양수산부에 따르면 2025년 11월 20일까지 김 수출은 미국이 2억 2천만 달러로 일본(2억 1천만 달러)을 조금 앞섰어요. 중국은 1억 달러로 36.6% 늘었고요.\n\n김 수출은 2023년 7억 9300만 달러, 2024년 9억 9700만 달러에 이어 2025년 11억 3000만 달러로 처음 10억 달러를 넘었어요. 수산식품 가운데 수출 1위 품목이에요.\n\n여러분은 김, 어떻게 드세요?\n\n출처: 해양수산부 발표(파이낸스스코프 2026년 1월 15일, 데일리안 2025년 12월 23일, 뉴스서울 2025년 11월 23일)\n사진: CJ제일제당 제공(CJ 뉴스룸 cjnews.cj.net), 그 밖 위키미디어 공용 CC0·퍼블릭 도메인",
  "tags": [
   "김",
   "김수출",
@@ -30,7 +30,7 @@
   "https://newsseoul.co.kr/news/view/1065607847990918"
  ],
  "credits": [
-  "karendotcom127 (CC BY 2.0) · commons.wikimedia.org/wiki/File:Korean_seaweed-packed_gim-01.jpg"
+  "CJ제일제당 제공 · CJ 뉴스룸 포토 아카이브(cjnews.cj.net/photoarchive)"
  ],
  "yt_keyword": "김 수출",
  "yt_related": [
@@ -75,7 +75,7 @@
  },
  "lines": [
   {
-   "say": "한국 김, 제일 많이 사 가는 건 [[일본]]일까요?",
+   "say": "한국 김을 제일 많이 사 가는 건 [[일본]]일까요?",
    "about": "김",
    "general": true,
    "photo": {
@@ -88,7 +88,8 @@
   },
   {
    "say": "끝까지 보면, [[1등 나라]]까지 알려 드려요.",
-   "chip": "끝까지 보면 김 1등 나라"
+   "chip": "끝까지 보면 김 1등 나라",
+   "read": "끝까지 보면, 일등 나라까지 알려 드려요."
   },
   {
    "say": "김은 작년에만, [[11억 3천만 달러]]어치 팔려 나갔어요.",
@@ -155,10 +156,11 @@
     "match": "분위기",
     "rights": "위키미디어 공용 CC0 · Beef kimbap from a DC lunch counter.jpg",
     "general": true
-   }
+   },
+   "read": "그럼 일등은? 바로 미국이에요."
   },
   {
-   "say": "작년 11월 20일까지, 미국이 [[2억 2천만 달러]]로, 일본을 살짝 앞섰어요.",
+   "say": "작년 11월 20일까지, 미국이 [[2억 2천만 달러]]로 일본을 살짝 앞섰어요.",
    "card": {
     "type": "bars",
     "title": "김 많이 사 간 [[나라]]",
@@ -210,20 +212,21 @@
   },
   {
    "say": "업계도 해외 입맛에 맞춘, [[조미김]] 같은 제품을 늘려 왔어요.",
-   "about": "조미김",
-   "general": true,
+   "about": "CJ제일제당 해외용 비비고 김스낵",
    "photo": {
-    "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Korean%20seaweed-packed%20gim-01.jpg?width=1600",
-    "shows": "한국 조미김 한 봉지(도시락김, 일반 사진·특정 수출 상품 아님)",
-    "match": "같은 종류",
+    "url": "https://img.cjnews.cj.net/wp-content/uploads/2020/09/Food-Global-BibigoSeaweed_FoodFood-Service_-2.jpg",
+    "shows": "CJ제일제당 글로벌 비비고 조미김 스낵 3종(불고기·와사비·참기름 맛, 영어 포장 'CRISPY SEAWEED SNACKS')",
+    "match": "정확",
     "fit": "contain",
-    "rights": "karendotcom127 (CC BY 2.0) · Korean seaweed-packed gim-01.jpg",
-    "general": true,
+    "no_grade": true,
+    "rights": "CJ 뉴스룸 포토 아카이브 '비비고 김 글로벌 제품 이미지_02' · 사진: CJ제일제당 제공",
+    "label": "사진: CJ제일제당 제공",
     "terms": {
-     "url": "https://creativecommons.org/licenses/by/2.0/",
-     "checked": "2026-11-09",
-     "scope": "CC BY 2.0, 상업적 이용·수정 가능",
-     "ok": true
+     "ok": true,
+     "url": "https://cjnews.cj.net/%ec%b1%84%eb%84%90cj-%ec%bd%98%ed%85%90%ec%b8%a0-%ec%9d%b4%ec%9a%a9%ec%95%88%eb%82%b4/",
+     "checked": "2026-11-10",
+     "scope": "CJ 뉴스룸 콘텐츠 이용안내: SNS 등에 자유 배포·공유, 'CJ 뉴스룸' 출처와 링크 표기",
+     "note": "변형·임의 가공 금지, 상업적 목적 사용 금지(이용안내). 사용자 결정(2026-11-10 '글로벌 비비고 김 이거 찾아서 저걸로 바꿔줘'). 보정 없이 통째로(contain) 씀. 광고 수익을 켜기 전에 다시 볼 것"
     }
    }
   },
@@ -245,6 +248,6 @@
   "new": "빅맥 값 비교와 달리 김 수출액(2023~2025)과 나라별 순위(미국>일본, 중국 36.6%↑)는 새 사실"
  },
  "review": {
-  "photo_sheet": "c43738cba8ae"
+  "photo_sheet": "cf33eb92ef20"
  }
 }
