@@ -1,0 +1,46 @@
+{
+ "category": "예고",
+ "region": "전국",
+ "subject": "종가 보쌈겉절이 출시",
+ "angle": "김장철에 맞춘 대상 종가의 별미김치 신제품",
+ "season": "2026년 11월",
+ "length_sec": 30,
+ "title": "종가가 김장철에 보쌈겉절이를 새로 내요",
+ "summary": [
+  "대상 김치 브랜드 종가가 김장철을 맞아 별미김치 신제품 '보쌈겉절이'를 출시한다고 11일 전해졌어요.",
+  "갓 담근 듯한 겉절이에 꼬들꼬들한 무말랭이를 더했고 PET 용기에 담겨요.",
+  "배달의민족 B마트를 시작으로 컬리, 쿠팡 등 온라인 채널에서 순차 판매돼요."
+ ],
+ "facts": [
+  "값과 정확한 판매 시작일은 기사에 없어요."
+ ],
+ "script": {
+  "hook": "김장 대신 겉절이?",
+  "flow": "보쌈겉절이|무말랭이|B마트부터",
+  "closing": "값은 판매처에서 확인해 주세요."
+ },
+ "visuals": [
+  "제품"
+ ],
+ "cautions": [
+  "값·출시일 미확인"
+ ],
+ "sources": [
+  {
+   "name": "더퍼블릭(11월 11일)",
+   "url": "https://www.thepublic.kr/news/articleViewAmp.html?idxno=326243",
+   "official": false
+  }
+ ],
+ "date": "2026-11-12",
+ "checked": "2026-11-12",
+ "pairing": {
+  "drink": "",
+  "note": ""
+ },
+ "country": "한국",
+ "unverified": [
+  "값, 출시일"
+ ],
+ "id": "2026-11-12-kr-jongga-bossam"
+}
