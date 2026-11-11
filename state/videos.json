@@ -1,5 +1,40 @@
 [
   {
+    "id": "2026-11-12-7-local",
+    "date": "2026-11-12",
+    "kind": "지역",
+    "title": "겨울 제주 서귀포시 모슬포 가면 방어부터, 방어 알고 먹기",
+    "summary": "제주 모슬포 방어만 골랐어요. 마라도 앞바다 어장, 겨울에 기름이 오르는 까닭, 방어와 부시리 구별법, 11월 19~22일 방어축제예요.",
+    "caption": "겨울 제주 가면 방어부터예요 🐟\n모슬포 방어만 골라 봤어요.\n\n01 모슬포~마라도 앞바다\n모슬포에서 마라도 사이 바다에는 해마다 10월부터 2월까지 방어 어장이 서요. 방어는 10~12월 캄차카반도 쪽에서 남쪽으로 내려와 마라도 근처에서 겨울을 나고, 이듬해 3~4월 동해를 따라 다시 올라가요(최남단방어축제위원회 안내). 제주에서는 자리돔을 미끼로 낚아 '자리 방어'라고도 불러요.\n02 왜 겨울일까\n방어는 찬 바다를 견디고 산란을 준비하려고 몸에 지방을 쌓아서, 11월부터 이듬해 2월까지가 제철이에요(해양수산부). 해수부는 12월부터 1월까지 가장 맛이 좋다고도 소개했어요. 기름기 적은 몸통부터 먹고, 기름 많은 부위를 번갈아 먹으면 맛있대요.\n03 방어 vs 부시리\n식약처가 꼽은 가장 쉬운 구별법은 위턱 끝이에요. 방어는 각지고 부시리는 둥글어요. 방어는 가슴지느러미와 배지느러미가 나란하고, 회로 뜨면 살이 더 붉어요. 부시리는 늦여름이 제철이에요.\n크기는 식약처 자료로 3~6kg 소방어, 6~8kg 중방어, 8kg 이상 대방어이고 클수록 지방이 많아요. 다만 현지에서는 4kg 이상을 대방어로 부르는 경우도 있어 기준이 하나는 아니에요.\n04 제26회 최남단 방어축제\n11월 19일부터 22일까지 서귀포시 대정읍 모슬포항 일원에서 열려요. 방어 맨손잡기와 가두리 방어 낚시는 참가비 2만 원, 어린이 맨손잡기(소방어)는 20~22일 오후 1~3시에 무료로 선착순이에요. 방어 경매 체험도 있어요. 일정은 사정에 따라 바뀔 수 있으니 축제 안내를 한 번 더 확인해 주세요.\n\n국립수산과학원 조사로는 2020~2024년 강원 고성 정치망에서 잡힌 물고기 가운데 방어가 21.6%로 가장 많았어요. 바다가 따뜻해져 방어가 동해 북쪽까지 올라간대요.\n\n방어회, 등살파예요 뱃살파예요?",
+    "tags": [
+      "모슬포방어",
+      "방어축제",
+      "대방어",
+      "제주여행",
+      "먹고갈지도"
+    ],
+    "sources": [
+      "https://www.jeju.go.kr/news/bodo/list.htm?act=view&seq=2040262",
+      "https://www.jejusori.net/news/articleView.html?idxno=508125",
+      "https://www.mof.go.kr/doc/ko/selectDoc.do?docSeq=54157&menuSeq=971&bbsSeq=10",
+      "https://coast.mof.go.kr/coastNews/board/newsBoardView.do?dt2=620&seq=7480&page=9",
+      "https://www.korea.kr/briefing/pressReleaseView.do?newsId=156484492",
+      "https://m.go.seoul.co.kr/news/2014/11/07/20141107029011",
+      "https://m.go.seoul.co.kr/news/2025/12/15/20251215024003",
+      "https://www.nifs.go.kr/news/actionNewsView.do?MENU_ID=M0000307&NEWS_SEQ=4676"
+    ],
+    "credits": [
+      "ⓒ한국관광공사 포토코리아-김계호, 천건엽",
+      "Linusblanket17 (CC BY 2.0) · www.flickr.com/photos/43364899@N03/38830822644",
+      "りなべる (CC BY 4.0) · www.inaturalist.org/photos/110899127"
+    ],
+    "url": "https://github.com/hong2-kim/jecheol-feed/releases/download/v2026-11-12/2026-11-12-7-local.mp4",
+    "seconds": 14.4,
+    "size_mb": 3.4,
+    "yt_title": "모슬포 방어 vs 부시리 차이, 방어축제 11월 19~22일 일정까지",
+    "sha256": "69143df7cfc82fff9f83d5a2835a157289377d6cc2bea88a550b55bc94520f7b"
+  },
+  {
     "id": "2026-11-12-3-dinner",
     "date": "2026-11-12",
     "kind": "저녁",
@@ -17,9 +52,10 @@
     "credits": [],
     "url": "https://github.com/hong2-kim/jecheol-feed/releases/download/v2026-11-12/2026-11-12-3-dinner.mp4",
     "seconds": 17.0,
-    "size_mb": 7.6,
+    "size_mb": 7.3,
     "yt_title": "목요일 저녁 메뉴 뭐 먹지? 순대국밥·오징어볶음·꽃게찜·유부초밥 중에 골라 줌",
-    "sha256": "64300ad9d7b3a4a24a67c8a9405f47372f058deef7597527bf5fec362bd676ca"
+    "sha256": "29f7669820087fa0742f063305a6449007256564098c70a4b625611c46fb7ab1",
+    "held": "확인 필요"
   },
   {
     "id": "2026-11-12-2-news",
@@ -32,7 +68,6 @@
       "김밥값",
       "누들페스타",
       "먹거리뉴스",
-      "외식물가",
       "먹고갈지도"
     ],
     "sources": [
@@ -55,7 +90,7 @@
       "https://github.com/hong2-kim/jecheol-feed/releases/download/v2026-11-12/2026-11-12-2-news-2.jpg",
       "https://github.com/hong2-kim/jecheol-feed/releases/download/v2026-11-12/2026-11-12-2-news-3.jpg"
     ],
-    "sha256": "7a19a3ac09210babfa9ef4d70e471c9df42ac3abdca6afad7775b5d1b1767641"
+    "sha256": "2e732eb512abde2edf94fe453696a32075e840f4dc057f1cef370e0f27d063cd"
   },
   {
     "id": "2026-11-11-4-find",
