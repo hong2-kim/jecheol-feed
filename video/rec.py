@@ -18,6 +18,7 @@ import numpy as np
 HEAD_H = 150  # 도입 뒤 위쪽 작은 제목 띠
 BOX_TOP, BOX_H = HEAD_H, 1290  # 음식 장면 칸
 SUB_Y = 1450  # 자막 띠 가운데
+BAND_ROOM = 18.5  # 흰 띠(745) 자막이 58px 로 한 줄에 들어가는 칸 수. 좌우 36px + 안쪽 34px 여백이라 내레이션 쇼츠(19칸)보다 조금 좁아요(2026-11-12 실측)
 
 CSS = """
 .rhead { position: absolute; left: 0; right: 0; top: 0; height: 150px; background: #17130F; display: flex; align-items: center; gap: 18px; padding: 0 40px; }
@@ -380,9 +381,10 @@ def build_rec(spec, voices, speech, durs, starts, real):
         c = V.who_of(spec, lines[s["line"]])
         # 진행·설명 짝(duo)처럼 cast 에 label 이 없으면 이름표 없이 목소리만 바꿔요 (voice.py 와 같게, 2026-10-28)
         tag = f'<span class="vwho" style="background:{c.get("color", "#333")}">{B.esc(c["label"])}</span>' if c and c.get("label") else ""
-        y = 745 if s["line"] < intro else SUB_Y  # 745 는 흰 띠 위라서 상자 없이 글자만 (2026-10-21 사용자: 테두리 빼)
+        # 745 는 흰 띠 위라서 상자 없이 글자만 (2026-10-21 사용자: 테두리 빼). 띠 자막은 내레이션 쇼츠와 같은 58px(V.BAND_PX, 2026-11-12)
+        y = 745 if s["line"] < intro else SUB_Y
         out.append(f'<section class="scene" data-at="{s["at"]:.2f}" data-dur="{max(0.05, s["end"] - s["at"]):.2f}" data-out="0">'
-                   f'<div class="rsub{" flat" if y == 745 else ""}" style="top:{y - 60}px;height:120px">{tag}<div style="font-size:{V.sub_size(s['text'], 66)}px">{B.rich(s["text"])}</div></div></section>')
+                   f'<div class="rsub{" flat" if y == 745 else ""}" style="top:{y - 60}px;height:120px">{tag}<div style="font-size:{V.BAND_PX if y == 745 else V.sub_size(s['text'], 66)}px">{B.rich(s["text"])}</div></div></section>')
     return out, cuts, sfx, subs
 
 
@@ -410,7 +412,9 @@ def problems(spec, cuts=None, subs=None):
                 must.append(f"{n}번 문장: 자막 '{bare}' 이 한두 글자뿐이에요.")
             elif len(words) == 1 and len(parts) > 1 and re.fullmatch(r"\S{1,4}[요다죠야네까]\W*", bare):
                 must.append(f"{n}번 문장: 자막 '{bare}' 이 서술어만 따로 나와요.")
-            if units(bare) > 15:
+            if n - 1 < int(spec.get("intro", 1)) and units(bare) > BAND_ROOM:  # 흰 띠 자막은 58px 고정이라 넘치면 두 줄이 돼요(2026-11-12)
+                must.append(f"{n}번 문장: 흰 띠 자막 '{bare}' 이 58px 한 줄({BAND_ROOM}칸)보다 길어요({units(bare):.1f}칸). 글씨는 줄이지 않으니 subs 로 나누거나 줄여 주세요.")
+            elif units(bare) > 15:
                 should.append(f"{n}번 문장: 자막 '{bare}' 이 길어요({units(bare):.0f}칸). 한 화면에 13칸쯤이 읽기 좋아요.")
             if k + 1 < len(parts):  # 2026-11-08: 이어진 말('빠질 / 수 없는', '비벼 / 먹으면') 사이에서 나누지 않아요(직접 적은 subs 도)
                 import voice as V

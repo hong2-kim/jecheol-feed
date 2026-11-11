@@ -144,6 +144,11 @@ def check(day):
             elif isinstance(sc.get("score"), (int, float)) and sc["score"] < 7:
                 print(f"꼭 고쳐 주세요: {f.name} 대본 자가 검사가 {sc['score']}점이에요. 7점 아래면 고쳐 쓰거나 주제를 바꿔요 (rules/daily/voice.md \"대본\").")
                 low_script = True
+    # 저녁 추천 메뉴를 후보 사전 점수(dinner_pick.py)로 골랐는지 (2026-11-12). 막지는 않아요
+    f = folder / "3-dinner.json"
+    if f.exists() and not (json.loads(f.read_text(encoding="utf-8")).get("menu_pick") or {}).get("menus"):
+        print("참고: 3-dinner.json 에 menu_pick 칸이 없어요. python3 scripts/dinner_pick.py 후보 18개를 견줘 고른 네 메뉴와 까닭을 적고, "
+              "python3 scripts/dinner_pick.py --save 로 추천 이력을 새로 써요 (rules/daily/dinner.md \"메뉴 고르기\").")
     unchecked = blog_photo_check(day)
     return 1 if found or missing or no_cards or unchecked or low_script else 0
 

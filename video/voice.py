@@ -53,6 +53,11 @@ LOUD = 0.085  # 대화형은 목소리마다 크기가 달라서 이 크기(RMS)
 SHORTEST, LONGEST = 25.0, 59.0
 READ_LIMIT = 56.0  # 호흡 모드 어림의 상한. 어림이 실제보다 2~3초 짧을 때가 있어서 59초보다 낮게 둬요 (10-31: 어림 58.1초, 클라우드 실제 61.6초)
 CHUNK = 14  # 자막 한 번에 보여 줄 칸 수(한글 1칸)
+# 가운데 흰 띠 자막 (2026-11-12 사용자: 영상마다 커지거나 작아지지 않게 모든 쇼츠 58px 로 통일, 기준 "끝까지 보면, 1등 나라까지 알려 드려요.").
+# 글씨를 줄이지 않아요. 한 줄에 안 들어가는 말은 쉼표 자리에서 나눠 차례로 보여 주고, 그래도 길면 검수가 문장을 줄이게 해요.
+# 이 두 값만 바꾸면 내레이션 쇼츠(voice.py)와 저녁·추천 쇼츠(rec.py)의 띠 자막이 같이 바뀌어요.
+BAND_PX = 58
+BAND_ROOM = 19  # 58px 로 띠 안(폭 1080, 좌우 여백 40px → 1000px)에 한 줄로 들어가는 칸 수. 실측 1칸 ≈ 49~51px (2026-11-12)
 
 
 def _key():
@@ -205,7 +210,8 @@ def sub_size(text, base=70, room=CHUNK):
 CSS = """
 .vsub { position: absolute; left: 0; right: 0; top: 680px; height: 130px; background: #fff; display: flex; align-items: center; justify-content: center;
         z-index: 1; }
-.vsub div { font-weight: 900; font-size: 70px; letter-spacing: -2.5px; color: #111; text-align: center; padding: 0 40px; }
+.vsub div { font-weight: 900; font-size: 58px; letter-spacing: -2.5px; color: #111; text-align: center; padding: 0 40px; line-height: 1.06;
+            word-break: keep-all; }
 .vsub .am { color: #D8432B; }
 .vpic { position: absolute; left: 0; right: 0; top: 810px; height: 890px; overflow: hidden; background: #0E0B09; }
 .vpic img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
@@ -611,7 +617,7 @@ def read_line(spec, lines, i, c, pace, rate):
 # ③ 자막이 바뀌는 때를 글자 수 비율로 어림해서, 실제로 말하는 때와 어긋났어요('먹으면 이'). 이제 말 조각마다 실제 시작 때를 재요.
 BREATH = {"hook": 0.08, "fun": 0.1, "react": 0.06, "reveal": 0.14, "number": 0.12, "soft": 0.14, "end": 0.1}  # 쉼표 숨(초). 짧게
 SLOW_PHRASE = 0.72  # 쉼표 앞 조각의 말 빠르기가 나머지 조각들의 이만큼보다 느리면 늘어진 것으로 봐요
-WHOLE = 22  # 자막 한 덩어리 최대 칸. 문장이 이 안이면 통째로(글씨를 44px 까지 줄여요), 넘으면 쉼표·문장부호 자리에서만 나눠요
+WHOLE = BAND_ROOM  # 자막 한 덩어리 최대 칸. 문장이 이 안이면 통째로(58px 한 줄), 넘으면 쉼표·문장부호 자리에서 나눠요. 글씨는 줄이지 않아요(2026-11-12)
 SUB_LEAD = 0.1  # 자막은 그 말이 들리기 이만큼(초) 먼저 바꿔요(말이 시작된 뒤에 바뀌면 늦어 보여요)
 TIGHT = 26  # 쉼표 없이 이보다 긴 조각은 꼭 고쳐요(자막이 이어진 말 가운데서 나뉘어요)
 
@@ -1241,21 +1247,15 @@ def photo_flips(subs, edges, dur, n):
 
 
 def build_voice(spec, work=None):
-    """설계도에 "sub_px" 가 있으면 그 크기로 한 줄에 들어가는 만큼만 한 화면에 보여 줘요(넘으면 자연스러운 자리에서 나눠요).
-    2026-11-09 편의점 간편식: 사용자 "글자 크기는 되도록 통일, 짧은 말이라도 첫 화면 크기로". 그 설정을 적은 영상만 바뀌어요."""
-    global WHOLE
-    keep = WHOLE
-    if spec.get("sub_px"):
-        WHOLE = min(keep, 70 * CHUNK / int(spec["sub_px"]))
-    try:
-        return _build_voice(spec, work)
-    finally:
-        WHOLE = keep
+    """가운데 띠 자막은 모든 영상이 BAND_PX(58px) 한 크기예요(2026-11-12). 예전의 영상별 "sub_px" 는 이제 쓰지 않아요
+    (2026-11-09 편의점 간편식에서 그 영상만 크기를 맞추던 칸. 적혀 있어도 58px 로 나와요)."""
+    return _build_voice(spec, work)
 
 
 def _build_voice(spec, work=None):
     """내레이션 쇼츠 HTML. (HTML, 길이, meta) — meta["voice"] 는 목소리 wav 경로(키가 없으면 None)."""
     import build as B
+    from build import units
 
     spec = with_duo(spec)
     lines = spec["lines"]
@@ -1321,8 +1321,7 @@ def _build_voice(spec, work=None):
         full = spec.get("pic") == "full"
         if full:
             out[1] = out[1].replace("</style>", ".vpic { height: 1110px; } .vchip { font-size: 42px; padding: 6px 22px 11px; }</style>")
-        # "sub_px": 가운데 띠 자막 글자 크기를 그 영상 안에서 하나로 맞춰요. 짧은 말도 커지지 않고, 이보다 긴 덩어리만 한 줄에 들어가게 줄어요
-        # (2026-11-09 편의점 간편식: 사용자 "짧은말이라도 첫 화면 크기로 통일")
+        # 가운데 띠 자막 글자 크기는 모든 영상이 BAND_PX(58px) 하나예요(2026-11-12. 예전 영상별 "sub_px" 는 쓰지 않아요)
         if spec.get("sub_accent"):  # 가운데 띠(자막) 강조 글씨 색을 그 영상만 바꿔요 (2026-11-08 생일 특집: 주황)
             out[1] = out[1].replace("</style>", f".vsub .am {{ color: {spec['sub_accent']}; }}</style>")
         # 자막 나누기·바꾸는 때 (2026-11-08 2차): 뜻·연결 관계로 나눌 후보를 고르고, 실제 목소리에 맞춰 바꾸는 때를 정해요(plan_subs)
@@ -1371,7 +1370,9 @@ def _build_voice(spec, work=None):
                 t1 = parts[k + 1][1] if k + 1 < len(parts) else durs[i]
                 mark = f' data-line-at="{starts[i]:.2f}"' if k == 0 else ""  # 문장이 시작하는 때(검수에서 받아쓰기 시각을 맞출 때 써요)
                 out.append(f'<section class="scene" data-at="{starts[i] + t0:.2f}" data-dur="{max(t1 - t0, 0.05):.2f}" data-out="0"{mark} style="z-index:950">'
-                           f'<div class="vsub"{bar}>{tag}<div style="font-size:{min(int(spec.get("sub_px") or 99), sub_size(p, 62 if c else 70, room))}px">{B.rich(p)}</div></div></section>')
+                           f'<div class="vsub"{bar}>{tag}<div style="font-size:{BAND_PX}px">{B.rich(p)}</div></div></section>')
+                if units(plain(p)) > BAND_ROOM - (CHUNK - room):  # 글씨는 줄이지 않고 띠 안에서 두 줄로 나와요. 검수(sub_problems)가 미리 막지만 혹시 남으면 알려요
+                    timing.append(f"{i + 1}번 문장: 자막 '{plain(p)[:12]}…' 이 58px 한 줄보다 길어 두 줄로 나왔어요. 문장을 줄이거나 쉼표를 넣어 주세요")
                 if k and real:
                     why = mid_speech(voices[i], t0)
                     if why:
