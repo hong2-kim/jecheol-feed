@@ -125,6 +125,83 @@
         "channels": 120,
         "thin": 6
       }
+    },
+    "2026-11-11": {
+      "picks": [
+        {
+          "id": "rd6fVa3xzxU",
+          "title": "김장 어렵다고요? 홍윤화가 알려주는 쉽게 김치 담그는 꿀팁🥬",
+          "channel": "유자픽",
+          "subs": 80200,
+          "views": 56240,
+          "median": 1947,
+          "n": 47,
+          "multiple": 28.9,
+          "hours": 51,
+          "formulas": [
+            "물음",
+            "방법·꿀팁"
+          ],
+          "query": "음식 꿀팁",
+          "url": "https://youtube.com/shorts/rd6fVa3xzxU"
+        },
+        {
+          "id": "KawltGwzQfI",
+          "title": "꼬막 이렇게 삶으면 절대 후회합니다! 쫄깃함이 사라지는 이유",
+          "channel": "새로운 농업",
+          "subs": 11200,
+          "views": 72282,
+          "median": 5239,
+          "n": 32,
+          "multiple": 13.8,
+          "hours": 47,
+          "formulas": [
+            "경고·실수",
+            "몰랐던 사실",
+            "방법·꿀팁"
+          ],
+          "query": "제철 음식",
+          "url": "https://youtube.com/shorts/KawltGwzQfI"
+        },
+        {
+          "id": "WatXH9OrM6Q",
+          "title": "예쁜데 다이어트에도 최고!",
+          "channel": "JJinjubu 찐주부",
+          "subs": 61600,
+          "views": 22327,
+          "median": 10792,
+          "n": 47,
+          "multiple": 2.1,
+          "hours": 65,
+          "formulas": [],
+          "query": "다이어트 음식",
+          "url": "https://youtube.com/shorts/WatXH9OrM6Q"
+        },
+        {
+          "id": "ZzG34GpeJ5E",
+          "title": "코끼리만큼 먹어도 살안찌는 식단 3가지?",
+          "channel": "다이어트 레시피 택배",
+          "subs": 16500,
+          "views": 14855,
+          "median": 7077,
+          "n": 48,
+          "multiple": 2.1,
+          "hours": 65,
+          "formulas": [
+            "숫자·순위",
+            "물음"
+          ],
+          "query": "다이어트 음식",
+          "url": "https://youtube.com/shorts/ZzG34GpeJ5E"
+        }
+      ],
+      "leaders": [],
+      "stats": {
+        "searched": 212,
+        "shorts": 200,
+        "channels": 120,
+        "thin": 4
+      }
     }
   }
 }
