@@ -390,6 +390,10 @@ def build_rec(spec, voices, speech, durs, starts, real):
     return out, cuts, sfx, subs
 
 
+BROAD = {"찌개", "탕·국", "국수", "전골·샤브", "볶음밥·쌀요리", "덮밥", "회", "국밥", "해물찜", "조개", "굴", "전·부침", "생선구이·조림",
+         "소불고기·갈비", "돼지구이", "백반·정식", "도시락", "샐러드·볼", "수프", "죽"}
+
+
 def _plain_key(s):
     return re.sub(r"[\s·\-()\[\]]", "", s or "")
 
@@ -426,10 +430,55 @@ def dinner_photo_problems(spec):
                 out_.update(kk for kk in ks if kk)
         return out_
 
+    try:  # 보관함 사진마다 사용자가 붙인 메모(note). 보관함이 없는 곳(깃허브 작업)에서는 이 대조만 건너뛰어요
+        vault = {"vault:" + x["file"]: x.get("note") or "" for x in json.loads(
+            (Path(__file__).resolve().parent.parent.parent / "jecheol-photos" / "index.json").read_text(encoding="utf-8")) if x.get("file")}
+    except Exception:
+        vault = {}
+
+    def family(text):
+        """그 말이 가리키는 메뉴 계열. 사전 이름이 들어 있으면 그 메뉴의 계열, 아니면 이름으로 어림(scripts/dinner_pick.py)."""
+        n = _plain_key(text)
+        if any(w in n for w in ("닭다리", "후라이드", "프라이드")):
+            return "치킨"
+        best = None
+        for x in menu:
+            for a in [x["name"], *x.get("aka", [])]:
+                kk = _plain_key(a)
+                if kk and kk in n and (best is None or len(kk) > best[0]):
+                    best = (len(kk), x.get("family"))
+        if best:
+            return best[1]
+        try:
+            import sys
+            sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "scripts"))
+            import dinner_pick
+            return dinner_pick.family_of(text)
+        except Exception:
+            return None
+
+    def same_family(name, note):
+        """짜장면 ↔ '중식 세트(짜장·짬뽕·탕수육)', 까르보나라 ↔ 크림 파스타처럼 같은 좁은 계열이면 같은 음식으로 봐요.
+        찌개·탕·국수·전골처럼 넓은 계열은 부대찌개 ↔ 김치찌개가 다른 음식이라 같다고 보지 않아요."""
+        fa = family(name)
+        if not fa or fa in BROAD:
+            return False
+        # 메모에 여러 음식이 적혀 있으면('짜장·짬뽕·탕수육') 하나씩 봐요
+        parts = [p for p in re.split(r"[·,()\s/]+", note or "") if p] + [note]
+        return any(family(p) == fa for p in parts)
+
     for k, cell in enumerate(grid):
         ph = (cell or {}).get("photo") or {}
         url = str(ph.get("url") or "")
-        if not url or url.startswith("vault:") or "visitkorea.or.kr" in url:
+        if url.startswith("vault:"):
+            # 2026-11-12 사용자: 보관함 사진도 실제 음식과 다르면 안 돼요. shows 는 우리가 적는 말이라 틀릴 수 있어서,
+            # 사용자가 직접 붙인 메모와 메뉴 이름을 맞춰 봐요('라면 끓이는 모습' 사진을 짬뽕 칸에 넣으면 막아요)
+            note, ks = vault.get(url), keys(names.get(k, ""))
+            if note and ks and not any(kk in _plain_key(note) for kk in ks) and not same_family(names.get(k, ""), note):
+                out.append(f"4칸 중 {k + 1}번 칸('{names.get(k, '')}') 보관함 사진의 메모는 '{note[:30]}' 이에요. 메뉴와 다른 음식일 수 있어요. "
+                           "그 메뉴 사진으로 바꾸거나, 사진이 맞으면 메뉴를 사진에 맞춰요.")
+            continue
+        if not url or "visitkorea.or.kr" in url:
             continue
         shows = _plain_key(ph.get("shows"))
         ks = keys(names.get(k, ""))
