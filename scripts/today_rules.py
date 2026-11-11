@@ -123,6 +123,13 @@ def check(day):
         print("꼭 만들어 주세요: 오늘 10-voice.json(내레이션 쇼츠)이 없어요. 지금 만든 뒤 끝내요. "
               "시간·턴이 모자란 것은 건너뛸 까닭이 아니에요(PROMPT.md \"만드는 영상\", rules/daily/voice.md). "
               "후보를 3개 넘게 확인했는데도 겹치지 않는 확인된 주제가 없을 때만 건너뛰고, 본 후보와 까닭을 마지막 보고에 적어요.")
+    # 터진 쇼츠에서 고른 내레이션 쇼츠인지 (2026-11-11). 막지는 않고 마지막 보고에 적게만 해요
+    voice = folder / "10-voice.json"
+    if voice.exists() and viral_picks(day)[1]:
+        spec = json.loads(voice.read_text(encoding="utf-8"))
+        if not spec.get("inspired"):
+            print("참고: 오늘 터진 쇼츠 후보가 있었는데 10-voice.json 에 inspired 칸이 없어요. 터진 쇼츠에서 골랐으면 적고, "
+                  "안 골랐으면 본 후보와 안 쓴 까닭을 마지막 보고에 한 줄 적어요 (rules/daily/shorts.md).")
     unchecked = blog_photo_check(day)
     return 1 if found or missing or no_cards or unchecked else 0
 
@@ -185,6 +192,31 @@ def main():
     for path, why in maybe:
         print(f"  {path}  ({why})")
     print("rules/_hold/ 는 보류 중인 규칙이라 읽지 않아요.")
+    viral_hint(day)
+
+
+def viral_picks(day):
+    """state/yt_viral.json 에서 오늘 아침에 볼 가장 최근 기록(오늘 날짜보다 앞)의 날짜와 picks·leaders 를 줘요."""
+    try:
+        days = (read_json(ROOT / "state" / "yt_viral.json", {}) or {}).get("days") or {}
+    except Exception:
+        return None, []
+    keys = sorted(k for k in days if k <= day.isoformat())
+    if not keys:
+        return None, []
+    rec = days[keys[-1]] or {}
+    return keys[-1], list(rec.get("picks") or []) + [dict(p, leader=True) for p in rec.get("leaders") or []]
+
+
+def viral_hint(day):
+    """내레이션 쇼츠는 터진 쇼츠에서 먼저 골라요 (2026-11-11, rules/daily/shorts.md). 후보를 여기서 바로 보여 줘요."""
+    when, picks = viral_picks(day)
+    if not picks:
+        return
+    print(f"터진 쇼츠 후보 (state/yt_viral.json {when}, 내레이션 쇼츠 주제는 여기서 먼저 고르기 — rules/daily/shorts.md 다섯 단계):")
+    for p in picks[:8]:
+        tag = "leaders" if p.get("leader") else f"평소의 {p.get('multiple')}배"
+        print(f"  [{tag}] {str(p.get('title', ''))[:50]} — {p.get('query', '')} · id {p.get('id', '')}")
 
 
 if __name__ == "__main__":
