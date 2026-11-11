@@ -123,15 +123,29 @@ def check(day):
         print("꼭 만들어 주세요: 오늘 10-voice.json(내레이션 쇼츠)이 없어요. 지금 만든 뒤 끝내요. "
               "시간·턴이 모자란 것은 건너뛸 까닭이 아니에요(PROMPT.md \"만드는 영상\", rules/daily/voice.md). "
               "후보를 3개 넘게 확인했는데도 겹치지 않는 확인된 주제가 없을 때만 건너뛰고, 본 후보와 까닭을 마지막 보고에 적어요.")
-    # 터진 쇼츠에서 고른 내레이션 쇼츠인지 (2026-11-11). 막지는 않고 마지막 보고에 적게만 해요
-    voice = folder / "10-voice.json"
-    if voice.exists() and viral_picks(day)[1]:
-        spec = json.loads(voice.read_text(encoding="utf-8"))
-        if not spec.get("inspired"):
-            print("참고: 오늘 터진 쇼츠 후보가 있었는데 10-voice.json 에 inspired 칸이 없어요. 터진 쇼츠에서 골랐으면 적고, "
-                  "안 골랐으면 본 후보와 안 쓴 까닭을 마지막 보고에 한 줄 적어요 (rules/daily/shorts.md).")
+    # 시스메이커 자료에서 가져온 세 가지를 실제로 썼는지 (2026-11-11). 막지는 않고 그 자리에서 채우게 해요
+    #   inspired = 터진 쇼츠 소재(2번 yt-viral) · title_pick = 제목 판정(5번 title-judge) · script_check = 대본 자가 검사(17·1번)
+    low_script = False
+    for name in ("10-voice", "4-find", "6-story", "7-local"):
+        f = folder / f"{name}.json"
+        if not f.exists():
+            continue
+        spec = json.loads(f.read_text(encoding="utf-8"))
+        if name == "10-voice" and viral_picks(day)[1] and not spec.get("inspired"):
+            print(f"참고: 오늘 터진 쇼츠 후보가 있었는데 {f.name} 에 inspired 칸이 없어요. 터진 쇼츠에서 골랐으면 적고, "
+                  "안 골랐으면 본 후보와 안 쓴 까닭을 마지막 보고에 한 줄 적어요 (rules/daily/shorts.md \"주제 고르기\").")
+        if not spec.get("title_pick"):
+            print(f"참고: {f.name} 에 title_pick 칸이 없어요. 제목 후보 2~3개를 python3 scripts/title_report.py 성적표로 견줘 "
+                  "고르고 적어요 (rules/daily/shorts.md \"제목\").")
+        if name == "10-voice":
+            sc = spec.get("script_check") or {}
+            if not sc:
+                print(f"참고: {f.name} 에 script_check 칸이 없어요. 대본 자가 검사 여섯 가지로 10점 만점을 매겨 적어요 (rules/daily/voice.md \"대본\").")
+            elif isinstance(sc.get("score"), (int, float)) and sc["score"] < 7:
+                print(f"꼭 고쳐 주세요: {f.name} 대본 자가 검사가 {sc['score']}점이에요. 7점 아래면 고쳐 쓰거나 주제를 바꿔요 (rules/daily/voice.md \"대본\").")
+                low_script = True
     unchecked = blog_photo_check(day)
-    return 1 if found or missing or no_cards or unchecked else 0
+    return 1 if found or missing or no_cards or unchecked or low_script else 0
 
 
 # 사진 검수 시트·shows·match 는 매일 실행이 직접 채울 수 있어요. 나머지 '확인 필요'(이력 겹침, 이용 조건 등)는 사람 몫이라 막지 않아요.
