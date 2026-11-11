@@ -211,7 +211,7 @@ CSS = """
 .vsub { position: absolute; left: 0; right: 0; top: 680px; height: 130px; background: #fff; display: flex; align-items: center; justify-content: center;
         z-index: 1; }
 .vsub div { font-weight: 900; font-size: 58px; letter-spacing: -2.5px; color: #111; text-align: center; padding: 0 40px; line-height: 1.06;
-            word-break: keep-all; }
+            word-break: keep-all; overflow-wrap: anywhere; }
 .vsub .am { color: #D8432B; }
 .vpic { position: absolute; left: 0; right: 0; top: 810px; height: 890px; overflow: hidden; background: #0E0B09; }
 .vpic img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }

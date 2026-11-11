@@ -12,6 +12,7 @@
 """
 import json
 import re
+from pathlib import Path
 
 import numpy as np
 
@@ -383,9 +384,64 @@ def build_rec(spec, voices, speech, durs, starts, real):
         tag = f'<span class="vwho" style="background:{c.get("color", "#333")}">{B.esc(c["label"])}</span>' if c and c.get("label") else ""
         # 745 는 흰 띠 위라서 상자 없이 글자만 (2026-10-21 사용자: 테두리 빼). 띠 자막은 내레이션 쇼츠와 같은 58px(V.BAND_PX, 2026-11-12)
         y = 745 if s["line"] < intro else SUB_Y
+        px = V.BAND_PX if y == 745 else V.sub_size(s["text"], 66)  # f-문자열 밖에서 정해요(클라우드 Python 3.11 은 f'' 안의 '' 를 못 읽어요)
         out.append(f'<section class="scene" data-at="{s["at"]:.2f}" data-dur="{max(0.05, s["end"] - s["at"]):.2f}" data-out="0">'
-                   f'<div class="rsub{" flat" if y == 745 else ""}" style="top:{y - 60}px;height:120px">{tag}<div style="font-size:{V.BAND_PX if y == 745 else V.sub_size(s['text'], 66)}px">{B.rich(s["text"])}</div></div></section>')
+                   f'<div class="rsub{" flat" if y == 745 else ""}" style="top:{y - 60}px;height:120px">{tag}<div style="font-size:{px}px">{B.rich(s["text"])}</div></div></section>')
     return out, cuts, sfx, subs
+
+
+def _plain_key(s):
+    return re.sub(r"[\s·\-()\[\]]", "", s or "")
+
+
+def dinner_photo_problems(spec):
+    """저녁 추천 4칸 사진이 정말 그 메뉴인지 (2026-11-12 사용자: 영어로 찾은 비슷한 다른 음식 사진이 저절로 쓰이지 않게).
+    보관함(vault:)·한국관광공사 사진은 예전 그대로 두고, 그 밖의 바깥 사진(Unsplash·Pexels·위키미디어·오픈버스 등)은
+    눈으로 확인한 shows 에 그 칸의 메뉴 이름(사전의 aka 도 됨)이 있어야 해요. 없으면 '꼭 고칠 것' → 매일 실행이 고치고,
+    그래도 남으면 gate 가 '승인 전 시안'으로 보내요(제작은 멈추지 않아요)."""
+    out = []
+    lines = spec.get("lines") or []
+    grid = next((l["show"]["grid"] for l in lines if isinstance(l.get("show"), dict) and l["show"].get("grid")), None)
+    if not grid:
+        return out
+    picked = (spec.get("menu_pick") or {}).get("menus") or []
+    names = {}
+    for k in range(len(grid)):
+        if k < len(picked):
+            names[k] = picked[k]
+            continue
+        say = next((l.get("say", "") for l in lines if isinstance(l.get("show"), dict) and l["show"].get("hl") == k), "")
+        names[k] = re.sub(r"[.!?~]", "", say.split(",")[-1]).strip() if say else ""
+    try:
+        menu = json.loads((Path(__file__).resolve().parent.parent / "ideas" / "dinner_menu.json").read_text(encoding="utf-8"))["items"]
+    except Exception:
+        menu = []
+
+    def keys(name):
+        n = _plain_key(name)
+        out_ = {n} if n else set()
+        for x in menu:
+            ks = [_plain_key(a) for a in [x["name"], *x.get("aka", [])]]
+            if any(kk and kk in n for kk in ks):  # '얼큰한 순대국밥' → 순대국밥·순댓국
+                out_.update(kk for kk in ks if kk)
+        return out_
+
+    for k, cell in enumerate(grid):
+        ph = (cell or {}).get("photo") or {}
+        url = str(ph.get("url") or "")
+        if not url or url.startswith("vault:") or "visitkorea.or.kr" in url:
+            continue
+        shows = _plain_key(ph.get("shows"))
+        ks = keys(names.get(k, ""))
+        eng = ph.get("query") and not re.search(r"[가-힣]", str(ph["query"]))
+        where = f"4칸 중 {k + 1}번 칸('{names.get(k, '')}') 사진"
+        if not shows:
+            out.append(f"{where}에 shows(사진에 실제로 찍힌 것)가 없어요. 사진을 열어 보고 그 메뉴가 맞는지 적어 주세요"
+                       + ("(영어 검색으로 찾은 사진이에요)" if eng else "") + ". 맞는 사진이 없으면 다른 사진이나 다른 후보 메뉴로 바꿔요.")
+        elif ks and not any(kk in shows for kk in ks):
+            out.append(f"{where}의 shows('{ph.get('shows')}')에 메뉴 이름이 없어요. 비슷한 다른 음식 사진일 수 있어요"
+                       + ("(영어 검색으로 찾은 사진)" if eng else "") + ". 그 메뉴가 맞으면 shows 에 이름을 적고, 아니면 사진이나 메뉴를 바꿔요.")
+    return out
 
 
 def problems(spec, cuts=None, subs=None):
@@ -425,6 +481,8 @@ def problems(spec, cuts=None, subs=None):
                 nxt = parts[k + 1].replace("[[", "").strip()
                 if re.search(r"[\d만천백]$", bare) or (nxt and any(nxt.startswith(u) for u in UNITS) and re.search(r"\d", bare.split()[-1])):
                     must.append(f"{n}번 문장: 숫자와 단위가 나뉘어요 ('{bare}' / '{nxt}').")
+    if spec.get("kind") == "저녁":
+        must += dinner_photo_problems(spec)
     for c in cuts or []:
         if c["kind"] in ("product", "set") and c["dur"] > 3.2:
             should.append(f"{c['at']:.1f}초 {c['kind']} 화면이 {c['dur']:.1f}초 머물러요. 3초 안쪽으로.")

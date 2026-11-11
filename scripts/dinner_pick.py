@@ -327,6 +327,7 @@ def score_all(db, day, hist, weather=None):
                     x = by.get(norm(m))
                     react.setdefault(x["name"] if x else m, []).append(h["views"] / med)
     seed = int(hashlib.md5(day.isoformat().encode()).hexdigest(), 16)
+    notes = vault_notes()
     out = []
     for x in items(db):
         s, why = TIER_BASE.get(x.get("tier"), 0.8), []
@@ -373,8 +374,13 @@ def score_all(db, day, hist, weather=None):
             bonus = max(-0.15, min(0.2, 0.25 * math.log2(statistics.mean(r))))
             s += bonus
             why.append(f"예전 반응 {statistics.mean(r):.2f}배 {bonus:+.2f}")
+        ease, plabel = photo_ease(x, notes)
+        if ease:
+            s += ease
+            why.append(f"{plabel} {ease:+.2f}")
         s += ((seed >> (hash_id(x["name"]) % 97)) % 1000) / 1000 * 0.3 - 0.15  # 날마다 조금씩 달라지게
-        out.append({**x, "score": round(s, 3), "kind": tier, "why": why, "last": ld.isoformat() if ld else None})
+        out.append({**x, "score": round(s, 3), "kind": tier, "why": why, "last": ld.isoformat() if ld else None,
+                    "photo": plabel, "ease": ease})
     out.sort(key=lambda r: -r["score"])
     return out, share
 
@@ -393,6 +399,27 @@ def vault_notes():
 
 
 SEA = {"해산물", "생선"}
+# 관광공사·보관함에 사진이 흔한 갈래(한식·분식·대중 중식·일식·대중 양식·해산물·죽): 따로 재지 않아도 사진 걱정이 적어요
+EASY_CATS = {1, 2, 3, 4, 5, 6, 8, 9, 10, 12, 13, 20, 22}
+KOREAN_CATS = {1, 2, 3, 4, 5, 12, 20, 22}
+HARD = -0.4  # 사진을 거의 못 찾는 메뉴(감점만, 후보에서 빼지 않아요)
+
+
+def photo_ease(x, notes):
+    """사진 확보 가능성 점수 (2026-11-12 사용자: 다양화 때문에 사진 찾기 어려운 생소한 메뉴만 고르지 않게).
+    ① 비공개 보관함에 그 메뉴 사진이 있으면 + ② 사전의 photo_n(위키미디어에서 영어로 찾아 이름이 맞은 사진 수, --probe-photos 로 잼)
+    0장이면 크게 −, 1~2장이면 − ③ 잰 값이 없으면 한식·대중 갈래는 그대로, 그 밖의 해외·새로운 메뉴는 조금 −. (점수, 표시)"""
+    keys = [norm(k) for k in [x["name"], *x.get("aka", [])]]
+    if notes and any(k and k in nn for k in keys for nn in notes):
+        return 0.15, "📷보관함"
+    n = x.get("photo_n")
+    if n is not None:
+        if n == 0 and x["cat"] in KOREAN_CATS:  # 한식은 위키미디어보다 관광공사에 사진이 많아요. 위키 0장만으로 크게 깎지 않아요
+            return -0.1, "위키 0장·관광공사 확인"
+        return (HARD, "사진 거의 없음") if n == 0 else (-0.15, f"사진 적음({n})") if n < 3 else (0.05, f"사진 넉넉({n})")
+    if x["cat"] in EASY_CATS and x.get("tier") != "new":
+        return 0.0, "관광공사·보관함"
+    return -0.15, "사진 미확인"
 
 
 def candidates(scored, n=18):
@@ -417,13 +444,17 @@ def candidates(scored, n=18):
 
 def combo(cands, share=None):
     """4칸: 계열·칸 갈래(국물·면·바삭·고기…)가 모두 다르게. 익숙한 인기 메뉴를 하나 넘게(모자라면 둘), 새로운 것과 제철은 하나까지,
-    한식은 셋까지, 분식·간편식은 하나까지, 해산물·생선은 둘까지. 맞는 게 없으면 조건을 풀어요(막지 않아요)."""
+    한식은 셋까지, 분식·간편식은 하나까지, 해산물·생선은 둘까지. 맞는 게 없으면 조건을 풀어요(막지 않아요).
+    대중성·사진 균형(2026-11-12): '새로운' 메뉴는 제철로 잡혀도 하루 하나까지(풀 때는 넘어도 돼요). 사진 확보는 점수(photo_ease)에만 넣고
+    조합에서 빼지 않아요(2026-11-12 사용자: 사진이 어렵다는 이유만으로 완전히 제외하지 않는다)."""
     need_pop = 2 if share and share.get("popular", 0) < 0.3 else 1
     for strict in (True, False):
         best = []
         for r in cands:
             if len(best) == 4:
                 break
+            if strict and r.get("tier") == "new" and sum(1 for x in best if x.get("tier") == "new") >= 1:
+                continue
             k = Counter(x["kind"] for x in best)
             g = Counter(GROUP.get(x["cat"], "") for x in best)
             slot = SLOT.get(r.get("how"), "기타")
@@ -453,16 +484,11 @@ def show(day, weather, n=18):
     hist = history(db)
     scored, share = score_all(db, day, hist, weather)
     cands = candidates(scored, n)
-    notes = vault_notes()
     print(f"■ {day} 저녁 추천 후보 (날씨 {weather or default_weather(day)}, 사전 {len(items(db))}개 중, 지난 기록 {len(hist)}일)")
     print("  지난 30번 비율: " + " · ".join(f"{TIER_KO[k]} {share[k] * 100:.0f}%(목표 {TARGET[k] * 100:.0f}%)" for k in TARGET))
     for i, r in enumerate(cands, 1):
-        has = ""
-        if notes is not None:
-            key = norm(r["name"])
-            has = " 📷보관함" if any(key in nn for nn in notes) else ""
-        print(f"{i:2}. {r['name']} [{cat_name(db, r['cat'])} · {r['family']} · {r['how']} · {TIER_KO[r['kind']]}] "
-              f"{r['score']:.2f}{has}  — {'; '.join(r['why'])}  en: {', '.join(r.get('en') or [])}")
+        print(f"{i:2}. {r['name']} [{cat_name(db, r['cat'])} · {r['family']} · {r['how']} · {TIER_KO[r['kind']]} · {r['photo']}] "
+              f"{r['score']:.2f}  — {'; '.join(r['why'])}  en: {', '.join(r.get('en') or [])}")
     c = combo(cands, share)
     print("■ 추천 4칸(점수 높은 차례로 칸 갈래가 다르게): " + " / ".join(f"{r['name']}({SLOT.get(r['how'], '기타')})" for r in c))
     print("  고르는 법: 위 후보 중 그날 가장 추천하기 좋은 4개를 고른다(사진·날씨·화제를 보고 바꿔도 된다). 반복은 점수일 뿐 금지가 아니다.\n"
@@ -484,7 +510,7 @@ def simulate(days, start=None, weather=None):
         if len(cands) < 15:
             blocked += 1
         pick = combo(cands, share)
-        sim.append({"day": day.isoformat(), "menus": [r["name"] for r in pick], "kinds": [r["kind"] for r in pick], "views": None, "title": ""})
+        sim.append({"day": day.isoformat(), "menus": [r["name"] for r in pick], "kinds": [r["kind"] for r in pick], "photos": [r["photo"].split("(")[0] for r in pick], "views": None, "title": ""})
     return db, hist, sim, blocked
 
 
@@ -511,6 +537,9 @@ def report(db, rows, label):
     rows = [h for h in rows if h["menus"]]
     print(f"■ {label}: {len(rows)}일 · 메뉴 {len(menus)}번 · 서로 다른 메뉴 {len(cnt)}개 · 서로 다른 계열 {len(fam)}개")
     print(f"  같은 메뉴 30일 안 다시: {rep30}번 · 같은 계열 7일 안 다시: {rep7}번")
+    ph = Counter(p for h in rows for p in (h.get("photos") or []))
+    if ph:
+        print("  사진: " + ", ".join(f"{k} {v}" for k, v in ph.most_common()))
     print("  가장 많이: " + ", ".join(f"{k} {v}" for k, v in cnt.most_common(8)))
     print("  계열 많이: " + ", ".join(f"{k} {v}" for k, v in fam.most_common(6)))
     print("  음식 나라: " + ", ".join(f"{k} {v * 100 / n:.0f}%" for k, v in grp.most_common()))
@@ -525,6 +554,38 @@ def write_db(db):
     txt = "{\n" + ",\n".join(f' "{k}": {json.dumps(v, ensure_ascii=False)}' for k, v in db.items() if k != "items")
     txt += ',\n "items": [\n' + ",\n".join("  " + json.dumps(x, ensure_ascii=False) for x in db["items"]) + "\n ]\n}\n"
     DB.write_text(txt, encoding="utf-8")
+
+
+def probe_photos(limit=40):
+    """해외·새로운 메뉴 중 photo_n 이 없는 것을 limit 개까지 위키미디어(키 없음)에서 영어로 찾아, 파일 이름에 검색어 낱말이 든
+    사진 수를 적어요. 같은 곳에 너무 자주 묻지 않게 photos.py(web.py)의 간격을 따라요. 여러 번 나눠 돌려도 돼요."""
+    sys.path.insert(0, str(ROOT / "scripts"))
+    import photos
+    stop = {"korean", "with", "and", "soup", "rice", "style", "stew", "fried", "grilled", "spicy", "the", "noodles", "noodle", "bowl"}
+    db, done = load_db(), 0
+    for x in db["items"]:
+        if done >= limit:
+            break
+        if not x.get("meal", True) or "photo_n" in x or (x.get("tier") != "new" and x["cat"] not in (16, 17, 18, 19, 24)):
+            continue
+        best = 0
+        for term in (x.get("en") or [])[:2]:
+            words = [w for w in re.findall(r"[a-z]+", term.lower()) if len(w) >= 4 and w not in stop] or [term.lower().split()[0]]
+            try:
+                rows = photos.cached("commons", term, photos.commons_rows)
+            except Exception as e:
+                print(f"{x['name']}: 못 읽었어요({str(e)[:60]}), 다음에 다시 재요")
+                best = None
+                break
+            best = max(best, sum(1 for r in rows if any(w in r["title"].lower() for w in words)))
+            if best >= 5:
+                break
+        if best is None:
+            continue
+        x["photo_n"] = best
+        done += 1
+        print(f"{x['name']}: {best}장")
+    write_db(db)
 
 
 def add(args):
@@ -561,9 +622,12 @@ def main():
     ap.add_argument("--stats", action="store_true")
     ap.add_argument("-n", type=int, default=18)
     ap.add_argument("--json", action="store_true")
+    ap.add_argument("--probe-photos", type=int, metavar="N", help="해외·새로운 메뉴 N개의 사진 수를 재서 사전에 적어요")
     a = ap.parse_args()
     day = date.fromisoformat(a.day) if a.day else today_kst()
     db = load_db()
+    if a.probe_photos:
+        return probe_photos(a.probe_photos)
     if a.stats:
         c = Counter(x["cat"] for x in db["items"])
         meal = sum(1 for x in db["items"] if x.get("meal", True))
