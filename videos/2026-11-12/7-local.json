@@ -1,0 +1,280 @@
+{
+ "title_pick": {
+  "candidates": [
+   "모슬포 방어 제철은 언제? 대방어 기준·방어축제 11월 19일 개막",
+   "모슬포 방어 vs 부시리 차이, 방어축제 11월 19~22일 일정까지",
+   "모슬포 방어축제 2026 일정, 11월 19~22일 맨손잡기·가두리 낚시"
+  ],
+  "pick": "모슬포 방어 vs 부시리 차이, 방어축제 11월 19~22일 일정까지",
+  "like": "똑같은 갈치인데 왜 색깔이 다를까? 은갈치 먹갈치 차이 (3.7배), 가리비 vs 해만가리비 (3.0배), 구미라면축제 2026 일정 (3.2배)",
+  "sure": "중간"
+ },
+ "kind": "지역",
+ "subject": "제주 모슬포 방어",
+ "title": "겨울 제주 서귀포시 모슬포 가면 방어부터, 방어 알고 먹기",
+ "yt_title": "모슬포 방어 vs 부시리 차이, 방어축제 11월 19~22일 일정까지",
+ "yt_keyword": "모슬포 방어",
+ "yt_related": [
+  "방어축제",
+  "대방어",
+  "방어 제철",
+  "방어 부시리 구별",
+  "제주 방어"
+ ],
+ "yt_tags": [
+  "모슬포 방어",
+  "모슬포 방어 축제",
+  "제주도 모슬포 방어",
+  "방어축제",
+  "최남단 방어축제",
+  "대방어",
+  "대방어회",
+  "방어 제철",
+  "방어 부시리 구별",
+  "제주 겨울 여행"
+ ],
+ "yt_hashtags": [
+  "모슬포방어",
+  "방어축제",
+  "대방어"
+ ],
+ "yt_lead": "모슬포 방어는 10~2월 마라도 앞바다에 어장이 서고, 11월 19~22일 모슬포항에서 제26회 최남단 방어축제가 열려요.",
+ "thumb": {
+  "head": "겨울 제주는\n[[모슬포 방어]]",
+  "sub": "방어축제 [[11월 19일]] 개막",
+  "photo": {
+   "url": "https://live.staticflickr.com/4731/38830822644_ffe9e8d11c_b.jpg",
+   "shows": "물고기 모양 접시에 붉은 속살과 흰 뱃살을 함께 담은 방어회와 초장·양념장(촬영지 미상, 모슬포 사진 아님)",
+   "match": "같은 종류",
+   "general": true,
+   "about": "방어회 일반",
+   "label": "방어회 사진",
+   "rights": "플리커 CC BY 2.0 · Linusblanket17",
+   "page": "https://www.flickr.com/photos/43364899@N03/38830822644",
+   "terms": {
+    "url": "https://creativecommons.org/licenses/by/2.0/",
+    "checked": "2026-11-12",
+    "scope": "CC BY 2.0, 상업적 이용·수정 가능",
+    "ok": true
+   },
+   "credit": "Linusblanket17 (CC BY 2.0) · www.flickr.com/photos/43364899@N03/38830822644"
+  }
+ },
+ "summary": "제주 모슬포 방어만 골랐어요. 마라도 앞바다 어장, 겨울에 기름이 오르는 까닭, 방어와 부시리 구별법, 11월 19~22일 방어축제예요.",
+ "followup": {
+  "of": "2026-10-12/items/preview-kr-mosulpo-bangeo",
+  "new": "제주도 보도자료로 확정된 11월 19~22일 일정과 체험 참가비(맨손잡기·가두리 낚시 2만 원), 식약처 대방어 기준(8kg 이상)·방어와 부시리 구별법"
+ },
+ "region": {
+  "title_scope": "제주 서귀포시 모슬포",
+  "places": [
+   {
+    "name": "모슬포항",
+    "address": "제주특별자치도 서귀포시 대정읍 모슬포항 일원",
+    "admin": "제주특별자치도 서귀포시",
+    "source": "제주도 보도자료 2026-11-06"
+   }
+  ],
+  "foods": [
+   {
+    "name": "방어",
+    "why": "모슬포~마라도 주변 바다에 해마다 10~2월 방어 어장이 서고, 방어는 마라도에서 겨울을 나요. 1999년부터 모슬포항에서 최남단 방어축제가 열려요",
+    "source": "서울신문 2014-11-07, 최남단방어축제위원회 리플릿 2026, 제주도 보도자료 2025-11-19"
+   }
+  ]
+ },
+ "scenes": [
+  {
+   "type": "cover",
+   "dur": 2.0,
+   "photo": {
+    "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Bangeo-hoe.jpg?width=1600",
+    "shows": "얼음 깔린 접시에 두툼하게 썬 방어회(2015년 촬영, 촬영지 미상, 모슬포 사진 아님)",
+    "match": "같은 종류",
+    "general": true,
+    "about": "방어회 일반",
+    "label": "방어회 사진",
+    "rights": "위키미디어 공용 CC0 · Bangeo-hoe.jpg (Pixabay cleansea16160)"
+   },
+   "kicker": "맛을 찾아 떠나는 여행 · 제주 서귀포시 모슬포",
+   "title": "겨울 제주 가면?\n[[먹고갈지도]]에서\n방어 볼까?",
+   "size": 100
+  },
+  {
+   "type": "card",
+   "dur": 2.4,
+   "photo": {
+    "url": "https://tong.visitkorea.or.kr/cms2/website/89/3515389.jpg",
+    "shows": "모슬포 앞바다에 떠 있는 가파도와 멀리 산방산·한라산(2025년 5월, 서귀포시 대정읍)",
+    "match": "분위기",
+    "label": "가파도 · 한국관광공사",
+    "rights": "한국관광공사 포토코리아 공공누리 1유형",
+    "credit": "ⓒ한국관광공사 포토코리아-김계호"
+   },
+   "chip": "01 · 모슬포~마라도 앞바다",
+   "headline": "겨울엔\n[[모슬포 방어]]",
+   "line": "10~2월 마라도 앞에 어장이 서요"
+  },
+  {
+   "type": "card",
+   "dur": 2.4,
+   "photo": {
+    "url": "https://live.staticflickr.com/4731/38830822644_ffe9e8d11c_b.jpg",
+    "shows": "물고기 모양 접시에 붉은 속살과 흰 뱃살을 함께 담은 방어회와 초장·양념장(촬영지 미상, 모슬포 사진 아님)",
+    "match": "같은 종류",
+    "general": true,
+    "about": "방어회 일반",
+    "label": "방어회 사진",
+    "rights": "플리커 CC BY 2.0 · Linusblanket17",
+    "page": "https://www.flickr.com/photos/43364899@N03/38830822644",
+    "terms": {
+     "url": "https://creativecommons.org/licenses/by/2.0/",
+     "checked": "2026-11-12",
+     "scope": "CC BY 2.0, 상업적 이용·수정 가능",
+     "ok": true
+    },
+    "credit": "Linusblanket17 (CC BY 2.0) · www.flickr.com/photos/43364899@N03/38830822644"
+   },
+   "chip": "02 · 왜 겨울일까",
+   "headline": "찬 바다에\n[[기름이 올라요]]",
+   "line": "11월부터 2월까지가 제철이래요"
+  },
+  {
+   "type": "card",
+   "dur": 2.6,
+   "photo": {
+    "url": "https://inaturalist-open-data.s3.amazonaws.com/photos/110899127/original.jpg",
+    "shows": "바닷가에서 낚싯바늘에 걸어 든 은빛 몸에 노란 줄이 있는 방어 한 마리(촬영지 미상, 제주 사진 아님)",
+    "match": "같은 종류",
+    "general": true,
+    "about": "방어 일반",
+    "label": "방어 사진",
+    "rights": "iNaturalist CC BY 4.0 · りなべる",
+    "page": "https://www.inaturalist.org/photos/110899127",
+    "terms": {
+     "url": "https://creativecommons.org/licenses/by/4.0/",
+     "checked": "2026-11-12",
+     "scope": "CC BY 4.0, 상업적 이용·수정 가능",
+     "ok": true
+    },
+    "credit": "りなべる (CC BY 4.0) · www.inaturalist.org/photos/110899127"
+   },
+   "chip": "03 · 방어 vs 부시리",
+   "headline": "위턱 끝이\n[[각지면 방어]]",
+   "line": "부시리는 위턱 끝이 둥글어요"
+  },
+  {
+   "type": "card",
+   "dur": 2.6,
+   "photo": {
+    "url": "https://tong.visitkorea.or.kr/cms2/website/82/4062982.jpg",
+    "shows": "모슬포항 가까운 송악산 둘레길 나무 데크와 바다(2025년 10월, 서귀포시 대정읍, 축제 현장 아님)",
+    "match": "분위기",
+    "label": "송악산 · 한국관광공사",
+    "rights": "한국관광공사 포토코리아 공공누리 1유형",
+    "credit": "ⓒ한국관광공사 포토코리아-천건엽"
+   },
+   "chip": "04 · 모슬포항 11월 19~22일",
+   "headline": "제26회\n[[방어축제]]",
+   "line": "맨손잡기·가두리 낚시 2만 원"
+  }
+ ],
+ "caption": "겨울 제주 가면 방어부터예요 🐟\n모슬포 방어만 골라 봤어요.\n\n01 모슬포~마라도 앞바다\n모슬포에서 마라도 사이 바다에는 해마다 10월부터 2월까지 방어 어장이 서요. 방어는 10~12월 캄차카반도 쪽에서 남쪽으로 내려와 마라도 근처에서 겨울을 나고, 이듬해 3~4월 동해를 따라 다시 올라가요(최남단방어축제위원회 안내). 제주에서는 자리돔을 미끼로 낚아 '자리 방어'라고도 불러요.\n02 왜 겨울일까\n방어는 찬 바다를 견디고 산란을 준비하려고 몸에 지방을 쌓아서, 11월부터 이듬해 2월까지가 제철이에요(해양수산부). 해수부는 12월부터 1월까지 가장 맛이 좋다고도 소개했어요. 기름기 적은 몸통부터 먹고, 기름 많은 부위를 번갈아 먹으면 맛있대요.\n03 방어 vs 부시리\n식약처가 꼽은 가장 쉬운 구별법은 위턱 끝이에요. 방어는 각지고 부시리는 둥글어요. 방어는 가슴지느러미와 배지느러미가 나란하고, 회로 뜨면 살이 더 붉어요. 부시리는 늦여름이 제철이에요.\n크기는 식약처 자료로 3~6kg 소방어, 6~8kg 중방어, 8kg 이상 대방어이고 클수록 지방이 많아요. 다만 현지에서는 4kg 이상을 대방어로 부르는 경우도 있어 기준이 하나는 아니에요.\n04 제26회 최남단 방어축제\n11월 19일부터 22일까지 서귀포시 대정읍 모슬포항 일원에서 열려요. 방어 맨손잡기와 가두리 방어 낚시는 참가비 2만 원, 어린이 맨손잡기(소방어)는 20~22일 오후 1~3시에 무료로 선착순이에요. 방어 경매 체험도 있어요. 일정은 사정에 따라 바뀔 수 있으니 축제 안내를 한 번 더 확인해 주세요.\n\n국립수산과학원 조사로는 2020~2024년 강원 고성 정치망에서 잡힌 물고기 가운데 방어가 21.6%로 가장 많았어요. 바다가 따뜻해져 방어가 동해 북쪽까지 올라간대요.\n\n방어회, 등살파예요 뱃살파예요?",
+ "tags": [
+  "모슬포방어",
+  "방어축제",
+  "대방어",
+  "제주여행"
+ ],
+ "sources": [
+  "https://www.jeju.go.kr/news/bodo/list.htm?act=view&seq=2040262",
+  "https://www.jejusori.net/news/articleView.html?idxno=508125",
+  "https://www.mof.go.kr/doc/ko/selectDoc.do?docSeq=54157&menuSeq=971&bbsSeq=10",
+  "https://coast.mof.go.kr/coastNews/board/newsBoardView.do?dt2=620&seq=7480&page=9",
+  "https://www.korea.kr/briefing/pressReleaseView.do?newsId=156484492",
+  "https://m.go.seoul.co.kr/news/2014/11/07/20141107029011",
+  "https://m.go.seoul.co.kr/news/2025/12/15/20251215024003",
+  "https://www.nifs.go.kr/news/actionNewsView.do?MENU_ID=M0000307&NEWS_SEQ=4676"
+ ],
+ "credits": [
+  "ⓒ한국관광공사 포토코리아-김계호, 천건엽",
+  "Linusblanket17 (CC BY 2.0) · www.flickr.com/photos/43364899@N03/38830822644",
+  "りなべる (CC BY 4.0) · www.inaturalist.org/photos/110899127"
+ ],
+ "dates": {
+  "checked": "2026-11-12",
+  "sources": [
+   {
+    "url": "https://www.jeju.go.kr/news/bodo/list.htm?act=view&seq=2040262",
+    "published": "2026-11-06",
+    "modified": "2026-11-06"
+   },
+   {
+    "url": "https://www.jejusori.net/news/articleView.html?idxno=508125",
+    "published": "2026-11-08",
+    "modified": "2026-11-08"
+   },
+   {
+    "url": "https://www.mof.go.kr/doc/ko/selectDoc.do?docSeq=54157&menuSeq=971&bbsSeq=10",
+    "published": "2023-11-30",
+    "modified": "2023-11-30"
+   },
+   {
+    "url": "https://coast.mof.go.kr/coastNews/board/newsBoardView.do?dt2=620&seq=7480&page=9",
+    "published": "2021-01-04",
+    "modified": "2021-01-04"
+   },
+   {
+    "url": "https://www.korea.kr/briefing/pressReleaseView.do?newsId=156484492",
+    "published": "2021-12-06",
+    "modified": "2021-12-06"
+   },
+   {
+    "url": "https://m.go.seoul.co.kr/news/2014/11/07/20141107029011",
+    "published": "2014-11-07",
+    "modified": "2014-11-07"
+   },
+   {
+    "url": "https://m.go.seoul.co.kr/news/2025/12/15/20251215024003",
+    "published": "2025-12-15",
+    "modified": "2025-12-15"
+   },
+   {
+    "url": "https://www.nifs.go.kr/news/actionNewsView.do?MENU_ID=M0000307&NEWS_SEQ=4676",
+    "published": "2025-06-12",
+    "modified": "2025-06-12"
+   }
+  ],
+  "event": {
+   "name": "제26회 최남단 방어축제",
+   "start": "2026-11-19",
+   "end": "2026-11-22"
+  },
+  "stat_period": "국립수산과학원 2020~2024년 정치망 어획물"
+ },
+ "photo_missing": [
+  {
+   "scene": "모슬포 방어·방어축제 현장",
+   "tried": "한국관광공사 포토코리아(모슬포·방어축제 0건, 방어는 통영 다찌만), 제주도 보도자료 첨부(2024 개막식 내빈 사진·2026 포스터뿐), 제주도 포토뉴스('방어' 0건), 서귀포시 누리집(접속 차단), 위키미디어(모슬포항 사진은 CC BY-SA 4.0이라 뺌, 방어 사진은 일본·대만 촬영), 오픈버스 → 방어 일반 사진과 대정읍 풍경으로 대신"
+  }
+ ],
+ "photo_candidates": [
+  {
+   "scene": "축제 04 · 지난 회차 현장",
+   "from": "제주도 보도자료(공공누리 1유형)",
+   "page": "https://www.jeju.go.kr/news/bodo/list.htm?act=view&seq=1487727",
+   "url": "https://www.jeju.go.kr/files/board/08fe73d8-14ab-4f3a-8791-f5afc63b1594.jpg",
+   "why": "2024 개막식 단상 사진(내빈 얼굴 중심)이라 먹거리 장면에 맞지 않음"
+  },
+  {
+   "scene": "01 · 모슬포항",
+   "from": "위키미디어 공용",
+   "page": "https://commons.wikimedia.org/wiki/File:Moseulpo_Port_01.jpg",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/4/4d/Moseulpo_Port_01.jpg",
+   "why": "CC BY-SA 4.0(동일조건변경허락) — 쓰는 기준에 없는 라이선스라 넣지 않음, 열람도 요청 제한으로 못 함"
+  }
+ ],
+ "review": {
+  "photo_sheet": "847404fbc0cc"
+ }
+}
