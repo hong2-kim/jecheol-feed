@@ -630,5 +630,17 @@
     "hash": "ab416fa0895b",
     "approved": false,
     "reasons": []
+  },
+  "2026-11-12-2-news": {
+    "verdict": "통과",
+    "hash": "2b2e429f7d96",
+    "approved": false,
+    "reasons": []
+  },
+  "2026-11-12-3-dinner": {
+    "verdict": "통과",
+    "hash": "499a2d1a7669",
+    "approved": false,
+    "reasons": []
   }
 }
