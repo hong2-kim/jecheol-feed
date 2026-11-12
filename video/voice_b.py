@@ -15,8 +15,6 @@ config.json youtube.style_b.apply_to 에 적힌 설계도(10-voice·3-dinner)에
 import json
 import os
 import re
-import tempfile
-import wave
 from pathlib import Path
 
 import numpy as np
@@ -66,19 +64,14 @@ def _asr_model():
 
 
 def heard(x):
+    """받아쓰기 글. 파일로 쓰지 않고 16kHz 소리를 바로 넘겨요(클라우드의 PyAV 판에서 파일 열기가 깨졌어요, 2026-11-13)."""
     m = _asr_model()
     if m is None:
         return None
-    with tempfile.NamedTemporaryFile(suffix=".wav", delete=False) as f:
-        p = f.name
-    try:
-        with wave.open(p, "wb") as w:
-            w.setnchannels(1); w.setsampwidth(2); w.setframerate(V.SR)
-            w.writeframes((np.clip(x, -1, 1) * 32767).astype(np.int16).tobytes())
-        segs, _ = m.transcribe(p, language="ko", beam_size=5, vad_filter=False, condition_on_previous_text=False)
-        return " ".join(s.text.strip() for s in segs)
-    finally:
-        os.unlink(p)
+    n = int(len(x) * 16000 / V.SR)
+    y = np.interp(np.linspace(0, len(x) - 1, n), np.arange(len(x)), x).astype(np.float32)
+    segs, _ = m.transcribe(y, language="ko", beam_size=5, vad_filter=False, condition_on_previous_text=False)
+    return " ".join(s.text.strip() for s in segs)
 
 
 UNITS = (("kcal", "킬로칼로리"), ("mg", "밀리그램"), ("kg", "킬로그램"), ("km", "킬로미터"), ("ml", "밀리리터"), ("g", "그램"), ("%", "퍼센트"))
