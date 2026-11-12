@@ -6,17 +6,20 @@
   python scripts/photos.py openverse "tteokbokki"  오픈버스(플리커·위키미디어 등) CC0·퍼블릭 도메인·CC BY 사진 (키 없이 돼요. 영어로 찾아야 잘 나와요, 2026-10-24)
   python scripts/photos.py pexels "grilled pork belly"  Pexels 무료 사진 (인스타·쇼츠·블로그 모두 돼요. 영어로 찾아야 잘 나와요)
   python scripts/photos.py unsplash "bibimbap"     Unsplash 무료 사진 (상업적 이용·수정 가능. Unsplash+ 유료 사진은 빼요, 2026-11-07)
-  python scripts/photos.py food "짬뽕" [--en "jjamppong"]   음식 사진 한 번에: 보관함 → 관광공사 → Unsplash·Pexels → 오픈버스·위키미디어.
-                                                  한국어로 모자라면 영어 이름(ideas/dinner_menu.json 의 en)으로 바꿔 더 찾아요 (2026-11-12)
-  python scripts/photos.py en "짬뽕"                그 음식의 영어 검색어
+  python scripts/photos.py pixabay "oysters"       Pixabay 무료 사진 (상업적 이용·수정 가능, 표기 없어도 돼요. AI 그림은 빼요, 2026-11-13)
+  python scripts/photos.py food "짬뽕" [--en "Korean spicy seafood noodle soup;jjamppong"]   음식 사진 한 번에:
+                                                  보관함 → 관광공사 → Unsplash·Pexels·Pixabay → 오픈버스·위키미디어 (2026-11-12)
+  python scripts/photos.py en "굴"                  그 음식·재료의 영어 검색어(ideas/dinner_menu.json·ideas/food_en.json)
   python scripts/photos.py festival 20261012      그날 이후 열리는 축제 (한국관광공사, 공식 일정)
   python scripts/photos.py get <주소> <저장할 파일>   사진을 내려받아 직접 눈으로 확인할 때
   python scripts/photos.py sheet tour 굴구이 15 /tmp/s.jpg   후보 여러 장을 번호를 붙여 한 장에 모아요 (commons·openverse 도 된다)
   python scripts/photos.py leads festival "죽변항 수산물축제" 2026   넓게 찾을 검색어(뉴스·블로그·SNS·유튜브·지난 회차) + 이미 확인한 출처 + 확인 차례
   python scripts/photos.py exif 사진.jpg              촬영일(EXIF) — 지난 축제 사진의 연도 확인
 
-tour, festival 은 환경 변수 TOUR_API_KEY, pexels 는 PEXELS_API_KEY, unsplash 는 UNSPLASH_ACCESS_KEY 가 있어야 해요. 결과는 한 줄에 하나씩 JSON으로 나와요.
-unsplash·pexels·openverse·commons 에 한국어로 찾았는데 6장보다 적게 나오면 영어 검색어로 저절로 더 찾아요(그 줄에 "query"·"check" 가 붙어요).
+tour, festival 은 환경 변수 TOUR_API_KEY, pexels 는 PEXELS_API_KEY, unsplash 는 UNSPLASH_ACCESS_KEY, pixabay 는 PIXABAY_API_KEY 가 있어야 해요.
+결과는 한 줄에 하나씩 JSON으로 나와요.
+unsplash·pexels·pixabay·openverse·commons 는 영어로 찾아야 사진이 많이 나와서(2026-11-13 사용자), 한국어 이름을 주면 영어 검색어로
+먼저 찾고 한국어 결과는 뒤에 붙여요(영어로 찾은 줄에 "query"·"check" 가 붙어요). 영어 검색어는 사전에서 찾고, 없으면 --en 으로 줘요.
 영어로 찾은 사진은 검색어가 비슷할 뿐이라, 사진 속 음식이 정말 그 음식인지 눈으로 보고 shows·match 를 적어요(짬뽕을 찾다 나온 라면 사진은 쓰지 않아요).
 tour·commons 검색 결과는 임시 폴더에 6시간 저장해 같은 검색어를 다시 묻지 않아요. 내려받기는 scripts/web.py 로 해요
 (같은 곳에 너무 자주 묻지 않고, 요청 제한(429)에는 Retry-After 를 지켜 세 번까지만 다시 해요. 2026-10-19).
@@ -39,7 +42,9 @@ SEARCH_TTL = 6 * 3600
 
 
 MENU = Path(__file__).resolve().parent.parent / "ideas" / "dinner_menu.json"
-FEW = 6  # 한국어 검색 결과가 이보다 적으면 영어로 더 찾아요
+FOOD_EN = Path(__file__).resolve().parent.parent / "ideas" / "food_en.json"  # 제철 재료·간식 영어 이름(2026-11-13)
+FEW = 6  # 검색 결과가 이보다 적으면 다른 말로 더 찾아요
+EN_FIRST = {"unsplash", "pexels", "pixabay", "openverse", "commons"}  # 영어로 먼저 찾는 곳(2026-11-13 사용자)
 
 
 def hangul(text):
@@ -51,45 +56,81 @@ def _n(s):
 
 
 def en_terms(name):
-    """음식 이름의 영어 검색어(대표 영문명 → 설명형 영문명). 메뉴 사전(ideas/dinner_menu.json)의 이름·aka 로 찾고,
-    없으면 이름 안에 든 가장 긴 메뉴 이름으로 찾아요('얼큰한 순대국밥' → 순대국밥). 못 찾으면 []."""
-    try:
-        items = json.loads(MENU.read_text(encoding="utf-8"))["items"]
-    except Exception:
-        return []
+    """음식 이름의 영어 검색어(흔한 영문명 → 정확한 영문명). 메뉴 사전(ideas/dinner_menu.json)과 제철 재료 사전(ideas/food_en.json)의
+    이름·aka 로 찾고, 없으면 이름 안에 든 가장 긴 이름으로 찾아요('얼큰한 순대국밥' → 순대국밥, '영덕 대게찜' → 대게).
+    한 글자 이름(굴·밤·무·감)은 통째로 같을 때만 써요('무화과'가 '무'로 잡히지 않게). 못 찾으면 []."""
+    items = []
+    for f in (MENU, FOOD_EN):
+        try:
+            items += json.loads(f.read_text(encoding="utf-8"))["items"]
+        except Exception:
+            continue
     key, best = _n(name), None
     for x in items:
         for k in [x["name"], *x.get("aka", [])]:
             kk = _n(k)
             if kk == key:
                 return list(x.get("en") or [])
-            if kk and kk in key and (best is None or len(kk) > len(best[0])):
+            if len(kk) >= 2 and kk in key and (best is None or len(kk) > len(best[0])):
                 best = (kk, x)
-    return list(best[1].get("en") or []) if best else []
+    if best:
+        return list(best[1].get("en") or [])
+    words = name.split()  # '통영 굴' → 띄어 쓴 낱말이 사전 이름과 통째로 같으면('굴') 그것으로
+    if len(words) > 1:
+        for w in reversed(words):
+            got = en_terms(w)
+            if got:
+                return got
+    return []
+
+
+def _english_rows(rows, seen, term, query, rows_fn):
+    try:
+        more = rows_fn(term)
+    except (WebError, ValueError):
+        return
+    for r in more:
+        if r.get("url") in seen:
+            continue
+        seen.add(r.get("url"))
+        rows.append({**r, "query": term, "check": f"영어 검색어 '{term}' 로 찾은 사진이에요. 사진 속 음식이 정말 '{query}' 인지 "
+                                                 "눈으로 보고 shows·match 를 적어요(비슷한 다른 음식이면 쓰지 않아요)"})
 
 
 def with_english(source, query, rows_fn, en=None):
-    """한국어 검색 결과가 FEW 장보다 적으면 영어 검색어로 더 찾아 붙여요. 같은 사진은 한 번만."""
+    """한국어 이름으로 찾을 때 영어 검색어를 함께 써요. 같은 사진은 한 번만.
+    Unsplash·Pexels·Pixabay·오픈버스·위키미디어(EN_FIRST)는 영어로 찾아야 사진이 많이 나와서(2026-11-13 사용자) 영어 검색어를 모두 먼저 찾고
+    한국어 결과를 뒤에 붙여요. 다른 곳은 한국어로 찾고 FEW 장보다 적을 때만 영어로 더 찾아요."""
+    if not hangul(query):
+        return list(rows_fn(query))
+    terms = en or en_terms(query)
+    if not terms and source in EN_FIRST:
+        print(json.dumps({"출처": source, "알림": f"'{query}' 의 영어 검색어가 사전에 없어요. 이 곳은 영어로 찾아야 사진이 많이 나와요 — "
+                                                "영어 이름으로 다시 찾거나(food 는 --en '흔한 영어 이름;정확한 영어 이름'), ideas/food_en.json 에 더해요"},
+                         ensure_ascii=False), file=sys.stderr)
+    rows, seen = [], set()
+    if source in EN_FIRST:
+        for term in terms:
+            _english_rows(rows, seen, term, query, rows_fn)
+        if len(rows) < FEW * 2:
+            try:
+                for r in rows_fn(query):
+                    if r.get("url") not in seen:
+                        seen.add(r.get("url"))
+                        rows.append(r)
+            except (WebError, ValueError):  # 키가 없으면(SystemExit) 그 안내를 그대로 보여 줘요
+                if not rows and not terms:
+                    raise
+        return rows
     try:
         rows = list(rows_fn(query))
-    except (WebError, ValueError):  # 키가 없으면(SystemExit) 그 안내를 그대로 보여 줘요
-        if not hangul(query):
-            raise
+    except (WebError, ValueError):
         rows = []  # 한국어 검색이 실패해도 영어로는 찾아봐요
-    if not hangul(query) or len(rows) >= FEW:
+    if len(rows) >= FEW:
         return rows
     seen = {r.get("url") for r in rows}
-    for term in (en or en_terms(query)):
-        try:
-            more = rows_fn(term)
-        except (WebError, ValueError):
-            continue
-        for r in more:
-            if r.get("url") in seen:
-                continue
-            seen.add(r.get("url"))
-            rows.append({**r, "query": term, "check": f"영어 검색어 '{term}' 로 찾은 사진이에요. 사진 속 음식이 정말 '{query}' 인지 "
-                                                     "눈으로 보고 shows·match 를 적어요(비슷한 다른 음식이면 쓰지 않아요)"})
+    for term in terms:
+        _english_rows(rows, seen, term, query, rows_fn)
         if len(rows) >= FEW * 2:
             break
     return rows
@@ -103,7 +144,8 @@ def cached(kind, query, fn):
     """같은 검색어는 6시간 동안 다시 묻지 않아요."""
     CACHE.mkdir(exist_ok=True)
     path = CACHE / f"{kind}-{hashlib.sha1(query.encode()).hexdigest()[:16]}.json"
-    if path.exists() and time.time() - path.stat().st_mtime < SEARCH_TTL:
+    ttl = 24 * 3600 if kind == "pixabay" else SEARCH_TTL  # Pixabay API 는 검색 결과를 24시간 저장해 쓰라고 해요
+    if path.exists() and time.time() - path.stat().st_mtime < ttl:
         return json.loads(path.read_text(encoding="utf-8"))
     data = fn(query)
     path.write_text(json.dumps(data, ensure_ascii=False), encoding="utf-8")
@@ -220,7 +262,7 @@ def pexels_rows(query):
     """Pexels 는 누구나 무료로 쓸 수 있고 AI로 만든 그림은 받지 않아요. API로 찾은 사진은 찍은 사람과 Pexels 를 적어 줘요."""
     key = os.environ.get("PEXELS_API_KEY", "").strip()
     if not key:
-        sys.exit("PEXELS_API_KEY 가 없어요. Pexels 사진은 찾을 수 없어요. 다른 곳에서 찾아 주세요.")
+        sys.exit("PEXELS_API_KEY 가 없어요. " + NO_KEY["pexels"])
     url = "https://api.pexels.com/v1/search?" + urllib.parse.urlencode({"query": query, "per_page": 20})
     data = json.loads(web_get(url, timeout=40, headers={"Authorization": key}))
     return [{"url": p["src"]["large2x"], "title": p.get("alt") or "", "size": f"{p['width']}x{p['height']}",
@@ -241,8 +283,7 @@ def unsplash_rows(query):
     사진 속 사람 얼굴·상표·작품은 라이선스와 따로라 열어 보고 판단해요. 실제 그 축제·그 제품 사진이 아니면 '같은 종류'·'분위기'로만 적어요."""
     key = os.environ.get("UNSPLASH_ACCESS_KEY", "").strip()
     if not key:
-        sys.exit("UNSPLASH_ACCESS_KEY 가 없어요. Unsplash 는 WebSearch 'site:unsplash.com/photos 영어 검색어' 로 찾고, 사진 페이지에서 "
-                 "Unsplash+ 가 아닌지(주소가 plus.unsplash.com 이 아닌지) 본 뒤 images.unsplash.com 주소와 page 를 적어요.")
+        sys.exit("UNSPLASH_ACCESS_KEY 가 없어요. " + NO_KEY["unsplash"])
     url = "https://api.unsplash.com/search/photos?" + urllib.parse.urlencode({"query": query, "per_page": 30, "content_filter": "high"})
     data = json.loads(web_get(url, timeout=40, headers={"Authorization": f"Client-ID {key}", "Accept-Version": "v1"}))
     rows, today, track = [], time.strftime("%Y-%m-%d"), {}
@@ -271,6 +312,48 @@ def unsplash(query):
         print(json.dumps(row, ensure_ascii=False))
 
 
+PIXABAY_TERMS = "Pixabay 콘텐츠 라이선스: 무료, 상업적 이용·수정 가능, 출처 표시 없어도 됨. 사진만 그대로 되팔기 금지. 사진 속 인물·상표·작품은 따로 확인"
+
+
+def pixabay_rows(query):
+    """Pixabay 무료 사진(2026-11-03·11-13 사용자). 사진만(그림·벡터 빼고) 받고, 태그에 AI 표시가 있으면 빼요.
+    사진 속 사람 얼굴·상표는 라이선스와 따로라 열어 보고 판단해요. 실제 그 축제·그 제품 사진이 아니면 '같은 종류'·'분위기'로만 적어요."""
+    key = os.environ.get("PIXABAY_API_KEY", "").strip()
+    if not key:
+        sys.exit("PIXABAY_API_KEY 가 없어요. " + NO_KEY["pixabay"])
+    url = "https://pixabay.com/api/?" + urllib.parse.urlencode({"key": key, "q": query[:100], "image_type": "photo", "lang": "en",
+                                                                 "safesearch": "true", "per_page": 30, "min_width": 1200})
+    data = json.loads(web_get(url, timeout=40))
+    rows, today = [], time.strftime("%Y-%m-%d")
+    for h in data.get("hits", []):
+        tags = (h.get("tags") or "").lower()
+        if "ai generated" in tags or "ai-generated" in tags or h.get("isAiGenerated") or h.get("ai_generated"):
+            continue
+        rows.append({"url": h.get("largeImageURL") or h.get("webformatURL"), "title": h.get("tags") or "",
+                     "size": f"{h.get('imageWidth')}x{h.get('imageHeight')}", "license": "Pixabay", "from": "pixabay",
+                     "page": h.get("pageURL") or "", "credit": f"사진: {(h.get('user') or '작자 미상')[:50]} / Pixabay",
+                     "terms": {"url": "https://pixabay.com/service/license-summary/", "checked": today, "scope": PIXABAY_TERMS, "ok": True},
+                     "note": "무료 사진이에요. 고르면 바로 내려받아요(주소가 오래가지 않아요). 사람 얼굴·상표가 크게 보이거나 AI 그림이면 쓰지 않아요"})
+    return rows
+
+
+def pixabay(query):
+    for row in with_english("pixabay", query, lambda q: cached("pixabay", q, pixabay_rows)):
+        print(json.dumps(row, ensure_ascii=False))
+
+
+# 키가 없을 때 대신 찾는 법(사이트 검색도 영어로)
+NO_KEY = {
+    "unsplash": "Unsplash 는 WebSearch 'site:unsplash.com/photos 영어 검색어' 로 찾고, 사진 페이지에서 Unsplash+ 가 아닌지"
+                "(주소가 plus.unsplash.com 이 아닌지) 본 뒤 images.unsplash.com 주소와 page 를 적어요.",
+    "pexels": "Pexels 는 WebSearch 'site:pexels.com/photo 영어 검색어' 로 찾고, 사진 페이지 주소 끝 번호(ID)로 "
+              "https://images.pexels.com/photos/ID/pexels-photo-ID.jpeg?auto=compress&cs=tinysrgb&w=1880 을 url 로, 사진 페이지를 page 로, "
+              "'사진: 찍은 사람 / Pexels' 를 credit 으로 적어요.",
+    "pixabay": "Pixabay 는 WebSearch 'site:pixabay.com/photos 영어 검색어' 로 찾고, 사진 페이지에서 사진(그림·AI 아님)인지 본 뒤 "
+               "cdn.pixabay.com 사진 주소와 page, '사진: 올린 사람 / Pixabay' 를 적어요. 페이지가 안 열리면 다른 곳으로 넘어가요.",
+}
+
+
 def vault_hits(name):
     """비공개 보관함(../jecheol-photos/index.json)에서 note 에 그 음식 이름이 든 사진(ask·skip 빼고)."""
     p = Path(__file__).resolve().parent.parent.parent / "jecheol-photos" / "index.json"
@@ -285,23 +368,25 @@ def vault_hits(name):
 
 def food(name, en=None, n=6):
     """음식 사진을 한 번에 찾아요(2026-11-12 사용자: 사진을 못 찾아 소재가 좁아지지 않게, Unsplash·영어 검색까지).
-    차례: ① 비공개 보관함 ② 한국관광공사(한국어) ③ Unsplash ④ Pexels ⑤ 오픈버스·위키미디어. ③~⑤는 한국어로 모자라면 영어로 더 찾아요.
+    차례: ① 비공개 보관함 ② 한국관광공사(한국어) ③ Unsplash ④ Pexels·Pixabay ⑤ 오픈버스·위키미디어. ③~⑤는 영어로 먼저 찾아요(2026-11-13).
     키가 없는 곳은 건너뛰고 알려 줘요(멈추지 않아요). 사진은 고르기 전에 sheet·get 으로 꼭 열어 보고, 음식이 맞는지·사람 얼굴·상표를 봐요."""
     en = en or en_terms(name)
-    print(json.dumps({"음식": name, "영어 검색어": en or "사전에 없어요 — --en '영어 이름' 을 주거나 dinner_pick.py add 로 사전에 더해요"}, ensure_ascii=False))
+    print(json.dumps({"음식": name, "영어 검색어": en or "사전에 없어요 — Unsplash·Pexels·Pixabay 는 영어로 찾아야 사진이 많이 나와요. "
+                      "--en '흔한 영어 이름;정확한 영어 이름' 으로 다시 찾고, 재료는 ideas/food_en.json·메뉴는 dinner_pick.py add 로 사전에 더해요"},
+                     ensure_ascii=False))
     v = vault_hits(name)
     if v:
         print(json.dumps({"출처": "① 비공개 보관함", "장수": len(v), "사진": v[:n]}, ensure_ascii=False))
     steps = [("② 한국관광공사", "tour", "TOUR_API_KEY", tour_rows),
              ("③ Unsplash", "unsplash", "UNSPLASH_ACCESS_KEY", unsplash_rows),
              ("④ Pexels", "pexels", "PEXELS_API_KEY", pexels_rows),
+             ("④ Pixabay", "pixabay", "PIXABAY_API_KEY", pixabay_rows),
              ("⑤ 오픈버스(플리커·위키미디어)", "openverse", "", openverse_rows),
              ("⑤ 위키미디어", "commons", "", commons_rows)]
     found = 0
     for label, src, key, fn in steps:
         if key and not os.environ.get(key, "").strip():
-            hint = (f"WebSearch 'site:unsplash.com/photos {en[0] if en else name}' 로 찾고, 사진 페이지가 Unsplash+(plus.unsplash.com) 가 아닌지 봐요"
-                    if src == "unsplash" else "다음 곳으로 넘어가요")
+            hint = NO_KEY[src].replace("영어 검색어", en[0] if en else "영어 검색어") if src in NO_KEY else "다음 곳으로 넘어가요"
             print(json.dumps({"출처": label, "건너뜀": f"{key} 가 없어요", "대신": hint}, ensure_ascii=False))
             continue
         try:
@@ -318,7 +403,7 @@ def food(name, en=None, n=6):
                           "사진": [{k: r.get(k) for k in ("url", "title", "size", "license", "credit", "page", "query", "check") if r.get(k)} for r in rows[:n]]},
                          ensure_ascii=False))
     print(json.dumps({"모두": found, "다음": "후보는 sheet 로 모아 열어 보고(python scripts/photos.py sheet 출처 검색어 15 그림.jpg), 음식이 같은지 확인한 것만 써요. "
-                              "credit 이 있으면 credits 에 글자 그대로, Unsplash·Pexels 는 page 를 함께 적어요. 맞는 사진이 없으면 다른 메뉴로 바꿔요(비슷한 다른 음식 사진으로 채우지 않아요)."},
+                              "credit 이 있으면 credits 에 글자 그대로, Unsplash·Pexels·Pixabay 는 page 를 함께 적어요. 맞는 사진이 없으면 다른 메뉴로 바꿔요(비슷한 다른 음식 사진으로 채우지 않아요)."},
                      ensure_ascii=False))
 
 
@@ -368,7 +453,7 @@ def sheet(source, query, n=15, out=None):
     CACHE.mkdir(exist_ok=True)
     rows = (cached("tour", query, tour_rows)["rows"] if source == "tour"
             else with_english(source, query, lambda q: cached(source, q, {"openverse": openverse_rows, "unsplash": unsplash_rows,
-                                                                          "pexels": pexels_rows}.get(source, commons_rows))))[:n]
+                                                                          "pexels": pexels_rows, "pixabay": pixabay_rows}.get(source, commons_rows))))[:n]
     out = Path(out or CACHE / f"sheet-{source}-{hashlib.sha1(query.encode()).hexdigest()[:8]}.jpg")
     # 관광공사는 함께 받아도 되고, 위키미디어는 web.py 가 1초 간격을 지켜요
     with ThreadPoolExecutor(max_workers=6 if source == "tour" else 2) as pool:
@@ -475,6 +560,8 @@ def run(cmd, arg):
         pexels(arg)
     elif cmd == "unsplash":
         unsplash(arg)
+    elif cmd == "pixabay":
+        pixabay(arg)
     elif cmd == "food":
         en = sys.argv[sys.argv.index("--en") + 1].split(";") if "--en" in sys.argv else None
         food(arg, [e.strip() for e in en] if en else None)
@@ -496,8 +583,8 @@ def run(cmd, arg):
     elif cmd == "exif":
         exif_date(arg)
     elif cmd == "sheet":
-        if len(sys.argv) < 4 or arg not in ("tour", "commons", "openverse"):
-            sys.exit("python scripts/photos.py sheet tour|commons|openverse 검색어 [장 수] [저장할 파일]")
+        if len(sys.argv) < 4 or arg not in ("tour", "commons", "openverse", "unsplash", "pexels", "pixabay"):
+            sys.exit("python scripts/photos.py sheet tour|commons|openverse|unsplash|pexels|pixabay 검색어 [장 수] [저장할 파일]")
         sheet(arg, sys.argv[3], int(sys.argv[4]) if len(sys.argv) > 4 else 15, sys.argv[5] if len(sys.argv) > 5 else None)
     else:
         sys.exit(__doc__)

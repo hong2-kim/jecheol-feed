@@ -60,7 +60,7 @@
     1. 사용자가 보낸 사진 (표기 없음)
     2. 한국관광공사 `python scripts/photos.py tour 검색어` — 국내 산지, 시장, 축제, 한식
     3. 위키미디어 공용 `python scripts/photos.py commons "검색어"` — CC0·퍼블릭 도메인과 **CC BY 까지** 쓴다. 해외 음식과 축제에 좋다.
-    4. 무료 사진: Unsplash `python scripts/photos.py unsplash "영어 검색어"`(Unsplash+ 유료 제외)·Pexels `photos.py pexels`·Pixabay·오픈버스 — 삼겹살, 회, 국물 요리처럼 어디서 찍었는지가 중요하지 않은 음식 사진. 키가 없다는 말이 나오면 다른 곳으로 넘어간다.
+    4. 무료 사진: Unsplash `python scripts/photos.py unsplash "영어 검색어"`(Unsplash+ 유료 제외)·Pexels `photos.py pexels`·Pixabay `photos.py pixabay`·오픈버스 — 제철 재료(굴·꽁치·귤·고구마), 삼겹살, 회, 국물 요리처럼 어디서 찍었는지가 중요하지 않은 음식 사진. **영어로 찾는다**(2026-11-13 사용자. 한국어 이름을 주면 도구가 영어로 먼저 찾는다). 키가 없다는 말이 나오면 도구가 알려 주는 WebSearch `site:… 영어 검색어` 로 찾는다.
     5. 그 밖의 곳(공유마당, 블로그·유튜브·SNS)은 PROMPT.md "사진은 끝까지 찾는다"대로: 이용 조건이나 작성자 허락이 확인돼 `terms` 를 적은 것만 넣고, 불분명하면 넣지 않고 `photo_candidates` 에 원본 링크와 함께 후보로 적는다(2026-11-07). 기사 사진, 검색 사이트의 그림은 쓰지 않는다.
   - Unsplash·Pexels 같은 무료 사진으로는 특정 산지·시장·축제를 말하지 않는다. 어디서 찍었는지 알 수 없는 사진이다. "소래포구 대하" 같은 사진은 관광공사나 위키미디어에서 찾는다. 사람 얼굴이 크게 나온 사진, 상표가 크게 보이는 사진은 쓰지 않는다.
   - `credit` 은 `photos.py` 가 알려 준 글자 그대로 적는다. 사진 바로 아래 설명으로 들어간다. 줄이거나 고치지 않는다. 표기가 필요 없는 사진은 `credit` 을 빼고 적는다.
