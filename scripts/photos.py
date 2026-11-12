@@ -16,7 +16,9 @@
   python scripts/photos.py leads festival "죽변항 수산물축제" 2026   넓게 찾을 검색어(뉴스·블로그·SNS·유튜브·지난 회차) + 이미 확인한 출처 + 확인 차례
   python scripts/photos.py exif 사진.jpg              촬영일(EXIF) — 지난 축제 사진의 연도 확인
 
-tour, festival 은 환경 변수 TOUR_API_KEY, pexels 는 PEXELS_API_KEY, unsplash 는 UNSPLASH_ACCESS_KEY, pixabay 는 PIXABAY_API_KEY 가 있어야 해요.
+tour, festival 은 환경 변수 TOUR_API_KEY, pexels 는 PEXELS_API_KEY, pixabay 는 PIXABAY_API_KEY 가 있어야 해요.
+unsplash 는 키가 없어도 돼요(2026-11-13 사용자: API 신경 쓰지 말고 그냥 써): 영어 검색 페이지 주소를 알려 주니 WebFetch 로 열어
+images.unsplash.com 사진 주소·사진 페이지·찍은 사람을 읽고 get 으로 받아요. 키가 있으면 API 로 바로 찾아요.
 결과는 한 줄에 하나씩 JSON으로 나와요.
 unsplash·pexels·pixabay·openverse·commons 는 영어로 찾아야 사진이 많이 나와서(2026-11-13 사용자), 한국어 이름을 주면 영어 검색어로
 먼저 찾고 한국어 결과는 뒤에 붙여요(영어로 찾은 줄에 "query"·"check" 가 붙어요). 영어 검색어는 사전에서 찾고, 없으면 --en 으로 줘요.
@@ -278,6 +280,12 @@ def pexels(query):
 UNSPLASH_TERMS = "Unsplash 라이선스: 무료, 상업적 이용·수정 가능, 출처 표시 없어도 됨. 사진만 그대로 되팔기·비슷한 사진 서비스 금지. 사진 속 인물·상표·작품은 따로 확인"
 
 
+def unsplash_links(query, en=None):
+    """키 없이 Unsplash 를 쓰는 길(2026-11-13): 영어 검색 페이지 주소(무료 사진만). WebFetch 로 열면 사진 주소가 그대로 나와요."""
+    terms = [query] if not hangul(query) else (en or en_terms(query))
+    return [f"https://unsplash.com/s/photos/{urllib.parse.quote(re.sub(r'\s+', '-', t.strip().lower()))}?license=free" for t in terms]
+
+
 def unsplash_rows(query):
     """Unsplash 무료 사진(2026-11-07 사용자가 더함). Unsplash+(유료) 사진은 빼요(plus·premium 표시, plus.unsplash.com 주소).
     사진 속 사람 얼굴·상표·작품은 라이선스와 따로라 열어 보고 판단해요. 실제 그 축제·그 제품 사진이 아니면 '같은 종류'·'분위기'로만 적어요."""
@@ -308,6 +316,11 @@ def unsplash_rows(query):
 
 
 def unsplash(query):
+    if not os.environ.get("UNSPLASH_ACCESS_KEY", "").strip():
+        links = unsplash_links(query)
+        print(json.dumps({"출처": "Unsplash", "WebFetch": links or f"'{query}' 의 영어 이름으로 다시 찾아요",
+                          "할 일": NO_KEY["unsplash"]}, ensure_ascii=False))
+        return
     for row in with_english("unsplash", query, lambda q: cached("unsplash", q, unsplash_rows)):
         print(json.dumps(row, ensure_ascii=False))
 
@@ -344,8 +357,9 @@ def pixabay(query):
 
 # 키가 없을 때 대신 찾는 법(사이트 검색도 영어로)
 NO_KEY = {
-    "unsplash": "Unsplash 는 WebSearch 'site:unsplash.com/photos 영어 검색어' 로 찾고, 사진 페이지에서 Unsplash+ 가 아닌지"
-                "(주소가 plus.unsplash.com 이 아닌지) 본 뒤 images.unsplash.com 주소와 page 를 적어요.",
+    "unsplash": "Unsplash 는 키 없이 써요: 아래 'WebFetch' 주소(영어 검색 페이지, 무료 사진만)를 WebFetch 로 열어 "
+                "images.unsplash.com/photo-… 사진 주소·사진 페이지(page)·찍은 사람을 읽어요. plus.unsplash.com·premium_photo(Unsplash+)는 빼요. "
+                "고른 사진은 python scripts/photos.py get '사진 주소?w=2000&q=85&fm=jpg' 파일 로 받아 열어 보고, credit 은 '사진: 이름 / Unsplash'.",
     "pexels": "Pexels 는 WebSearch 'site:pexels.com/photo 영어 검색어' 로 찾고, 사진 페이지 주소 끝 번호(ID)로 "
               "https://images.pexels.com/photos/ID/pexels-photo-ID.jpeg?auto=compress&cs=tinysrgb&w=1880 을 url 로, 사진 페이지를 page 로, "
               "'사진: 찍은 사람 / Pexels' 를 credit 으로 적어요.",
@@ -385,6 +399,10 @@ def food(name, en=None, n=6):
              ("⑤ 위키미디어", "commons", "", commons_rows)]
     found = 0
     for label, src, key, fn in steps:
+        if src == "unsplash" and not os.environ.get(key, "").strip():
+            print(json.dumps({"출처": label, "WebFetch": unsplash_links(name, en) or "영어 이름(--en)을 주면 주소를 만들어요",
+                              "할 일": NO_KEY["unsplash"]}, ensure_ascii=False))
+            continue
         if key and not os.environ.get(key, "").strip():
             hint = NO_KEY[src].replace("영어 검색어", en[0] if en else "영어 검색어") if src in NO_KEY else "다음 곳으로 넘어가요"
             print(json.dumps({"출처": label, "건너뜀": f"{key} 가 없어요", "대신": hint}, ensure_ascii=False))
