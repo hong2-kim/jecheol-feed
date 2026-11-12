@@ -202,6 +202,96 @@
         "channels": 120,
         "thin": 4
       }
+    },
+    "2026-11-12": {
+      "picks": [
+        {
+          "id": "cj0CgZKZhWc",
+          "title": "DQC- 한음 식 # 건강정보 * 제 철음식",
+          "channel": "꼭 알아두세요",
+          "subs": 9550,
+          "views": 48396,
+          "median": 4284,
+          "n": 39,
+          "multiple": 11.3,
+          "hours": 51,
+          "formulas": [],
+          "query": "제철 음식",
+          "url": "https://youtube.com/shorts/cj0CgZKZhWc"
+        },
+        {
+          "id": "ZfjbyKbInLc",
+          "title": "영양소: 전분(찹쌀), 단백질(돼지고기, 그린빈), 지방(지방이 많은 고기), 비타민 및 미네랄(양파, 동잎) 등 4가지 물질을 모두 제공합니다.",
+          "channel": "Namvlogs",
+          "subs": 17700,
+          "views": 12811,
+          "median": 1536,
+          "n": 18,
+          "multiple": 8.3,
+          "hours": 71,
+          "formulas": [
+            "숫자·순위"
+          ],
+          "query": "제철 음식",
+          "url": "https://youtube.com/shorts/ZfjbyKbInLc"
+        },
+        {
+          "id": "WZSlFyMQIu4",
+          "title": "절대 생으로 먹지 마세요 가장 위 험한 해산물 3가지",
+          "channel": "LYN123",
+          "subs": 41400,
+          "views": 21300,
+          "median": 4780,
+          "n": 11,
+          "multiple": 4.5,
+          "hours": 39,
+          "formulas": [
+            "숫자·순위",
+            "경고·실수"
+          ],
+          "query": "해외 음식",
+          "url": "https://youtube.com/shorts/WZSlFyMQIu4"
+        },
+        {
+          "id": "_e_56mngbKU",
+          "title": "다이어트 할따 빵 참지 말고 맘껏드세요",
+          "channel": "찬밥",
+          "subs": 33200,
+          "views": 33383,
+          "median": 7635,
+          "n": 47,
+          "multiple": 4.4,
+          "hours": 45,
+          "formulas": [
+            "비교",
+            "경고·실수",
+            "방법·꿀팁"
+          ],
+          "query": "다이어트 음식",
+          "url": "https://youtube.com/shorts/_e_56mngbKU"
+        },
+        {
+          "id": "RKwEukaPlaY",
+          "title": "다이어트 빼빼로의 신강자💦 안먹어보면 후회함!!",
+          "channel": "워나 WANNA",
+          "subs": 67700,
+          "views": 138215,
+          "median": 70018,
+          "n": 48,
+          "multiple": 2.0,
+          "hours": 61,
+          "formulas": [],
+          "query": "다이어트 음식",
+          "url": "https://youtube.com/shorts/RKwEukaPlaY"
+        }
+      ],
+      "leaders": [],
+      "stats": {
+        "searched": 205,
+        "shorts": 193,
+        "channels": 120,
+        "thin": 3
+      }
     }
   }
 }
