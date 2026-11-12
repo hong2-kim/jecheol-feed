@@ -1256,6 +1256,7 @@ def _build_voice(spec, work=None):
     """내레이션 쇼츠 HTML. (HTML, 길이, meta) — meta["voice"] 는 목소리 wav 경로(키가 없으면 None)."""
     import build as B
     from build import units
+    import voice_b as style_b
 
     spec = with_duo(spec)
     lines = spec["lines"]
@@ -1263,7 +1264,10 @@ def _build_voice(spec, work=None):
     narr = spec.get("narrator") or {}  # 혼자 읽는 영상의 목소리를 채널 목소리와 다르게 할 때 {"voice": ..., "rate": ...}
     for i, l in enumerate(lines):
         c = who_of(spec, l) or narr
-        if breathing(spec):  # 2026-10-28: 문장 나눠 읽기·쉼표 쉼·말투별 빠르기
+        if breathing(spec) and style_b.applies(spec):  # 2026-11-12 사용자 승인 B안 말투·호흡(10-voice·3-dinner, config youtube.style_b)
+            v, r = style_b.speak(spec, lines, i, c, prev=voices[-1] if voices else None)
+            logs.append(r)
+        elif breathing(spec):  # 2026-10-28: 문장 나눠 읽기·쉼표 쉼·말투별 빠르기
             v, r = speak(spec, lines, i, c)
             logs.append(r)
         else:
