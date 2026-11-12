@@ -663,5 +663,29 @@
     "hash": "0c981572646e",
     "approved": false,
     "reasons": []
+  },
+  "2026-11-13-10-voice": {
+    "verdict": "통과",
+    "hash": "c0842d46a7d5",
+    "approved": false,
+    "reasons": []
+  },
+  "2026-11-13-2-news": {
+    "verdict": "통과",
+    "hash": "8bfd4d2b3a85",
+    "approved": false,
+    "reasons": []
+  },
+  "2026-11-13-3-dinner": {
+    "verdict": "통과",
+    "hash": "466a0cfa0ac2",
+    "approved": false,
+    "reasons": []
+  },
+  "2026-11-13-4-find": {
+    "verdict": "통과",
+    "hash": "815a402a68ac",
+    "approved": false,
+    "reasons": []
   }
 }
