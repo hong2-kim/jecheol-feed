@@ -1,0 +1,46 @@
+# 2026-11-12, B안 말투(video/voice_b.py)가 클라우드에서 도는지 한 번만 시험해요. 영상·텔레그램 없음. 받아쓰기 모델 보관(cache)도 미리 채워요. 끝나면 지워요.
+name: voice-b-test
+
+on:
+  push:
+    branches: [main]
+    paths: [".github/workflows/voice-b-test.yml"]
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: 받아쓰기 모델 보관
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/huggingface
+          key: whisper-medium-v1
+      - name: 도구 설치
+        run: pip install --quiet numpy requests faster-whisper
+      - name: 한 문장 B안 읽기
+        env:
+          GOOGLE_TTS_API_KEY: ${{ secrets.GOOGLE_TTS_API_KEY }}
+        run: |
+          cd video
+          python - <<'PY'
+          import json, time
+          import voice as V, voice_b as B
+          C = json.load(open("../config.json", encoding="utf-8"))["youtube"]["voices"]["puck"]
+          spec = {"_name": "10-voice", "voice_pick": {"mode": "solo", "voices": ["puck"], "why": "시험"}, "narrator": C,
+                  "lines": [{"say": "제주에서 방어축제에, 20만 명 가까이 모인다고요?"}, {"say": "올해는 11월 19일부터 22일까지 제주 모슬포항에서 열립니다."}]}
+          assert B.applies(spec)
+          t = time.time(); prev = None
+          for i in range(2):
+              v, r = B.speak(spec, spec["lines"], i, C, prev=prev); prev = v
+              print(r["sec"], r["tts"], r["why"], r["warn"], flush=True)
+          print("받아쓰기 모델:", "없음" if B._ASR["failed"] else "있음", "· 걸린 시간", round(time.time() - t, 1), "초")
+          assert not B._ASR["failed"]
+          PY
