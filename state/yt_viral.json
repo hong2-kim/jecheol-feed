@@ -292,6 +292,85 @@
         "channels": 120,
         "thin": 3
       }
+    },
+    "2026-11-13": {
+      "picks": [
+        {
+          "id": "QtK80E737Lk",
+          "title": "우거지 삶을 때 이것 넣으세요🍀요리꿀팁/건강정보/음식/집밥/건강한 밥상",
+          "channel": "식물조아~ ☘️",
+          "subs": 116000,
+          "views": 47162,
+          "median": 6019,
+          "n": 19,
+          "multiple": 7.8,
+          "hours": 71,
+          "formulas": [
+            "방법·꿀팁"
+          ],
+          "query": "음식 꿀팁",
+          "url": "https://youtube.com/shorts/QtK80E737Lk"
+        },
+        {
+          "id": "uQDJaEIS4n8",
+          "title": "김장김치 육수 10배맛있게하는방법",
+          "channel": "나의 꽃🌹집밥이 건강지킴",
+          "subs": 231000,
+          "views": 33765,
+          "median": 7196,
+          "n": 35,
+          "multiple": 4.7,
+          "hours": 71,
+          "formulas": [
+            "숫자·순위",
+            "방법·꿀팁"
+          ],
+          "query": "제철 음식",
+          "url": "https://youtube.com/shorts/uQDJaEIS4n8"
+        },
+        {
+          "id": "fQ-iZY21XVc",
+          "title": "-6키로 뺄때 저녁은 밥 대신 이렇게 먹었어요",
+          "channel": "찬밥",
+          "subs": 33200,
+          "views": 22431,
+          "median": 7664,
+          "n": 48,
+          "multiple": 2.9,
+          "hours": 42,
+          "formulas": [
+            "방법·꿀팁"
+          ],
+          "query": "다이어트 음식",
+          "url": "https://youtube.com/shorts/fQ-iZY21XVc"
+        }
+      ],
+      "leaders": [
+        {
+          "id": "Uqp61Nb-wUM",
+          "title": "해외에서 난리난 고구마 레시피",
+          "channel": "하루세끼 daily meals",
+          "subs": 292000,
+          "views": 34794,
+          "median": 28616,
+          "n": 49,
+          "multiple": 1.2,
+          "hours": 65,
+          "formulas": [
+            "방법·꿀팁",
+            "해외·여행",
+            "감탄·강조"
+          ],
+          "query": "해외 음식",
+          "url": "https://youtube.com/shorts/Uqp61Nb-wUM"
+        }
+      ],
+      "stats": {
+        "searched": 207,
+        "shorts": 195,
+        "channels": 120,
+        "thin": 6
+      }
     }
   }
 }
