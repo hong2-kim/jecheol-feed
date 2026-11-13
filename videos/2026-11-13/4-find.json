@@ -1,39 +1,51 @@
 {
  "kind": "발견",
- "subject": "진안고원 김치보쌈축제 · 김장 주말",
- "title": "11월 14~15일 진안고원 김치보쌈축제, 김장체험 420가정에 천원막걸리까지",
- "summary": "전북 진안군이 11월 14~15일 진안로컬푸드직매장 일원에서 제8회 진안고원 김치보쌈축제를 열어요. 사전예약 420가정이 김장을 담그고, 김치는 한 포기부터 20kg까지 살 수 있고, 막걸리 6종을 1,000원에 맛보는 존도 있어요.",
+ "subject": "진안고원 김치보쌈축제 · 김장하고 수육 먹는 주말",
+ "title": "김장했으면 수육 먹어야죠, 이번 주말 진안고원 김치보쌈축제",
+ "summary": "제8회 진안고원 김치보쌈축제가 11월 14~15일 진안로컬푸드직매장 앞에서 열려요. 김장 체험은 420가구 사전예약으로 일찍 마감됐지만, 입장은 무료이고 흑돼지 수육·로컬바비큐·천원막걸리·고원구이존·현장 김치 판매는 누구나 즐길 수 있어요.",
  "thumb": {
-  "head": "이번 주말\n[[진안 김장]]",
-  "sub": "김장 [[420가정]]이 담가요",
+  "head": "이번 주말,\n[[김장하러 갈래요?]]",
+  "sub": "김치에 흑돼지 [[수육]]까지!",
   "photo": {
-   "url": "https://tong.visitkorea.or.kr/cms2/website/53/2706753.jpg",
-   "shows": "양손으로 빨간 양념을 버무리는 김장 김치 포기(2020년 촬영, 진안 현장 사진 아님)",
+   "url": "compose/2026-11-13-kimchi-suyuk.jpg",
+   "shows": "위: 검은 그릇에 담긴 쪽파 올린 빨간 양념 배추김치 / 아래: 흰 접시에 두툼하게 썬 돼지고기 수육 — 두 장을 위아래로 이어 붙인 조합 그림(일반 사진, 진안 축제 음식 아님)",
    "match": "같은 종류",
-   "rights": "한국관광공사 포토코리아 공공누리 1유형 · ⓒ알렉스 분도",
+   "rights": "Unsplash 라이선스 두 장(Portuguese Gravity, lee seunghyub)을 직접 이어 붙임",
    "general": true,
-   "label": "김장·수육 사진 · 한국관광공사",
-   "fit": "cover"
+   "no_grade": true,
+   "fit": "cover",
+   "about": "김치와 수육 일반",
+   "parts": [
+    "https://unsplash.com/photos/M_mDgb8guhA",
+    "https://unsplash.com/photos/2An8fq23o"
+   ]
   }
  },
  "tags": [
   "김치보쌈축제",
   "진안",
   "김장",
+  "수육",
   "주말가볼만한곳"
  ],
  "sources": [
-  "https://www.asiatoday.co.kr/kn/view.php?key=20261112010004706",
-  "https://www.todayan.com/news/articleView.html?idxno=636870"
+  "https://www.jinan.go.kr/board/view.jinan?boardId=BBS_0000026&dataSid=217224&menuCd=DOM_000000107001001000",
+  "https://jinankimchi.kr/page/festival01/festival02.jsp",
+  "https://www.yna.co.kr/view/AKR20261110134500055",
+  "https://m.newspim.com/news/view/20261110000969",
+  "https://www.mcst.go.kr/site/s_culture/festival/festivalView.jsp?pRo=5&pSeq=12006"
  ],
  "credits": [
-  "ⓒ한국관광공사 포토코리아-알렉스 분도, 황성훈"
+  "사진: Portuguese Gravity · lee seunghyub · Daniel · 大胡子 · huiyeon kim · Julia Panasiuk · charlesdeluvio / Unsplash",
+  "수육 사진: 위키미디어 공용 CC0",
+  "막걸리 사진: Jon Åslund (CC BY 2.0) · flickr.com/photos/45074090@N00/4667067262"
  ],
- "yt_title": "진안 김치보쌈축제 2026, 11월 14~15일 김장체험·천원막걸리",
+ "yt_title": "김장했으면 수육 먹어야죠! 진안 김치보쌈축제 11월 14~15일",
  "yt_keyword": "진안 김치보쌈축제",
  "yt_related": [
   "진안고원",
-  "김장체험",
+  "흑돼지 수육",
+  "김장 보쌈",
   "11월 축제",
   "주말 가볼만한 곳",
   "천원막걸리"
@@ -41,28 +53,40 @@
  "yt_tags": [
   "진안 김치보쌈축제",
   "진안고원 김치보쌈축제",
-  "김장체험",
+  "김장 수육",
+  "김치 보쌈",
   "11월 축제",
   "천원막걸리"
  ],
  "yt_hashtags": [
   "진안김치보쌈축제",
-  "김장체험",
+  "김장수육",
   "11월축제"
  ],
- "yt_lead": "진안 김치보쌈축제가 11월 14~15일 열려요, 김장체험은 사전예약 420가정이에요.",
+ "yt_lead": "진안 김치보쌈축제가 11월 14~15일 열려요. 김장 체험은 사전예약 마감, 수육·막걸리·김치 구매는 누구나 현장에서 돼요.",
  "dates": {
   "checked": "2026-11-13",
   "sources": [
    {
-    "url": "https://www.asiatoday.co.kr/kn/view.php?key=20261112010004706",
-    "published": "2026-11-12",
-    "modified": "2026-11-12"
+    "url": "https://www.jinan.go.kr/board/view.jinan?boardId=BBS_0000026&dataSid=217224&menuCd=DOM_000000107001001000",
+    "published": "2026-11-03",
+    "modified": "2026-11-03"
    },
    {
-    "url": "https://www.todayan.com/news/articleView.html?idxno=636870",
-    "published": "2026-11-11",
-    "modified": "2026-11-11"
+    "url": "https://www.yna.co.kr/view/AKR20261110134500055",
+    "published": "2026-11-10",
+    "modified": "2026-11-10"
+   },
+   {
+    "url": "https://m.newspim.com/news/view/20261110000969",
+    "published": "2026-11-10",
+    "modified": "2026-11-10"
+   },
+   {
+    "url": "https://www.mcst.go.kr/site/s_culture/festival/festivalView.jsp?pRo=5&pSeq=12006",
+    "published": "2026-11-13",
+    "modified": "2026-11-13",
+    "note": "문화체육관광부 지역축제 페이지(게시일 표시 없음, 2026-11-13 열람): 2026.11.14~15 10:30~17:00, 무료(일부 체험 유료)"
    }
   ],
   "event": {
@@ -71,117 +95,174 @@
    "end": "2026-11-15"
   }
  },
- "caption": "올해 김장, 아직이세요? 이번 주말 김장하고 보쌈 먹는 축제가 열려요.\n\n전북 진안군이 11월 14일부터 15일까지 진안로컬푸드직매장 일원에서 제8회 진안고원 김치보쌈축제를 연다고 12일 밝혔어요. 김장체험 '우리집 김치담그기'는 사전예약한 420가정이 이틀 동안 참여해요. 예약을 놓쳐도 김치를 한 포기부터 20kg까지 살 수 있고, 파김치·꼬들빼기 같은 김치도 있어요.\n\n먹거리는 진안 흑돼지로 만든 보쌈과 두부를 파는 부스가 있고, 진안 주조장 막걸리 6종을 1,000원에 맛보는 천원막걸리존이 열려요. 15일에는 홍삼 칵테일 이벤트(무알코올 가능)도 있어요. 김장 골든벨과 'SHOW ME THE 김장' 같은 무대 행사도 열려요.\n\n프로그램은 군 발표 기준이라 현장에서 달라질 수 있어요. 사진은 김장·수육 일반 사진이고 이번 축제 현장이 아니에요.\n\n더 자세한 이야기는 프로필 링크의 블로그에 있어요.\n\n이번 주말 김장하러 가실래요, 보쌈 먹으러 가실래요?\n\n출처: 아시아투데이(11월 12일), 투데이안(11월 11일)",
+ "caption": "김장했으면 수육 먹어야죠! 이번 주말 진안에서 김치랑 수육 먹는 축제가 열려요.\n\n제8회 진안고원 김치보쌈축제가 11월 14일(토)부터 15일(일)까지 진안로컬푸드직매장 앞 일대(전북 진안군 진안읍 진무로 1166)에서 열려요. 운영 시간은 10:30~17:00, 입장은 무료예요(일부 체험만 유료).\n\n올해 김장 체험 '우리집 김치담그기'는 420가구 사전예약으로 마감됐어요. 축제 구경과 먹거리는 예약 없이 누구나 즐길 수 있고, 현장에서 김치를 한 접시부터 반 포기, 한 포기, 10kg, 20kg까지 살 수 있어요.\n\n먹거리는 진안 흑돼지로 만든 수육과 갓 담근 김치, 로컬바비큐존, 진안 주조장 막걸리를 1,000원에 즐기는 천원막걸리존이 있어요. 아이와 함께라면 팡팡놀이터, 떡·마시멜로를 구워 먹는 고원구이존, 김치마을 팝업존도 있고, 김장 골든벨·SHOW ME THE 김장·음악 공연이 이어져요.\n\n프로그램은 군 발표 기준이라 현장에서 달라질 수 있어요. 영상 속 사진은 모두 김치·수육·막걸리 등 일반 음식 사진이고 이번 축제 현장 사진이 아니에요.\n\n더 자세한 이야기는 프로필 링크의 블로그에 있어요.\n\n김장 김치에 수육, 여러분은 무슨 김치랑 드세요?\n\n출처: 진안군 공지(11월 3일), 진안고원 김치보쌈축제 누리집, 연합뉴스·뉴스핌(11월 10일), 문화체육관광부 지역축제 정보(운영 시간·입장료)\n📷 Unsplash(Portuguese Gravity, lee seunghyub, Daniel, 大胡子, huiyeon kim, Julia Panasiuk, charlesdeluvio), 수육 위키미디어 CC0, 막걸리 Jon Åslund CC BY 2.0",
  "scenes": [
   {
    "type": "cover",
    "photo": {
-    "url": "https://tong.visitkorea.or.kr/cms2/website/52/2706752.jpg",
-    "shows": "칼로 반으로 가른 배추 단면(2020년 촬영, 진안 현장 사진 아님)",
+    "url": "compose/2026-11-13-kimchi-suyuk-tall.jpg",
+    "shows": "위: 놋그릇에 담긴 빨간 양념 배추김치 / 아래: 접시에 얇게 썬 돼지고기 수육과 상추 — 두 장을 위아래로 이어 붙인 조합 그림(일반 사진, 진안 축제 음식·흑돼지 아님)",
     "match": "같은 종류",
-    "rights": "한국관광공사 포토코리아 공공누리 1유형 · ⓒ알렉스 분도",
+    "rights": "Unsplash 라이선스 두 장(Daniel, 大胡子)을 직접 이어 붙임",
     "general": true,
-    "label": "김장·수육 사진 · 한국관광공사"
+    "no_grade": true,
+    "fit": "cover",
+    "about": "김치와 수육 일반",
+    "parts": [
+     "https://unsplash.com/photos/l6bme6oCSBE",
+     "https://unsplash.com/photos/OdP8B2X98as"
+    ]
    },
    "general": true,
-   "dur": 2.0,
-   "kicker": "올해 김장",
-   "title": "아직\n[[못 담갔어요]]?",
+   "dur": 2.6,
+   "kicker": "이번 주말 진안에서 만나요",
+   "title": "갓 담근 김치에\n[[흑돼지 수육]]",
    "size": 104
   },
   {
-   "type": "cover",
-   "photo": {
-    "url": "https://tong.visitkorea.or.kr/cms2/website/47/2706747.jpg",
-    "shows": "김장 재료인 큼직한 배추 한 포기와 무(2020년 촬영, 진안 현장 사진 아님)",
-    "match": "같은 종류",
-    "rights": "한국관광공사 포토코리아 공공누리 1유형 · ⓒ알렉스 분도",
-    "general": true,
-    "label": "김장·수육 사진 · 한국관광공사"
-   },
-   "general": true,
-   "dur": 1.8,
-   "kicker": "이번 주말 진안에서",
-   "title": "김장하고\n[[보쌈]] 먹는 곳",
-   "size": 88,
-   "in": "push"
-  },
-  {
-   "type": "cover",
-   "photo": {
-    "url": "https://tong.visitkorea.or.kr/cms2/website/98/3567098.jpg",
-    "shows": "접시에 담긴 돼지고기 수육과 오이채·빨간 무생채(강원 속초 식당, 2025년 촬영, 진안 흑돼지 보쌈 아님)",
-    "match": "같은 종류",
-    "rights": "한국관광공사 포토코리아 공공누리 1유형 · ⓒ황성훈",
-    "general": true,
-    "label": "김장·수육 사진 · 한국관광공사"
-   },
-   "general": true,
-   "dur": 2.0,
-   "kicker": "오늘의 한 가지 · 진안 보쌈",
-   "title": "11월 14~15일\n[[진안고원]]",
-   "size": 96
-  },
-  {
    "type": "card",
    "photo": {
-    "url": "https://tong.visitkorea.or.kr/cms2/website/56/2706756.jpg",
-    "shows": "손으로 쥔 빨간 양념 배추김치 포기(2020년 촬영, 진안 현장 사진 아님)",
+    "url": "https://images.unsplash.com/photo-1703046598921-01b2b97bcafa?w=2000&q=85&fm=jpg",
+    "page": "https://unsplash.com/photos/s4LWG2kQn7w",
+    "shows": "빨간 고무장갑 낀 손이 절인 배추에 김칫소를 버무리는 김장 모습(일반 김장 사진, 진안 축제 현장 아님, 얼굴 없음)",
     "match": "같은 종류",
-    "rights": "한국관광공사 포토코리아 공공누리 1유형 · ⓒ알렉스 분도",
+    "rights": "Unsplash 라이선스(무료, 상업적 이용·수정 가능) · 사진: huiyeon kim / Unsplash",
     "general": true,
-    "label": "김장·수육 사진 · 한국관광공사"
+    "about": "김장 일반"
    },
    "general": true,
    "dur": 2.8,
-   "chip": "체험 신청",
-   "headline": "사전예약\n[[420가정]]",
-   "line": "이틀 동안 우리집 김치담그기"
+   "chip": "김장 체험",
+   "headline": "올해 420가구\n[[사전예약 마감]]",
+   "line": "축제 구경·먹거리는 누구나 OK"
   },
   {
    "type": "card",
    "photo": {
-    "url": "https://tong.visitkorea.or.kr/cms2/website/55/2706755.jpg",
-    "shows": "항아리 위에서 양념한 배추김치 포기를 손으로 든 모습(2020년 촬영, 진안 현장 사진 아님)",
+    "url": "https://commons.wikimedia.org/wiki/Special:FilePath/2015%EB%85%84%2011%EC%9B%94%20%EA%B0%95%EC%9B%90%EB%8F%84%20%EB%8F%99%ED%95%B4%EC%8B%9C%20%EB%A7%88%EB%8B%B9%EC%87%A0%EB%B3%B4%EC%8C%88%2020151108%20DSC04851.JPG?width=1600",
+    "page": "https://commons.wikimedia.org/wiki/File:2015%EB%85%84_11%EC%9B%94_%EA%B0%95%EC%9B%90%EB%8F%84_%EB%8F%99%ED%95%B4%EC%8B%9C_%EB%A7%88%EB%8B%B9%EC%87%A0%EB%B3%B4%EC%8C%88_20151108_DSC04851.JPG",
+    "shows": "흰 접시에 가지런히 썬 돼지고기 수육과 보쌈김치·무김치, 샐러드(2015년 강원 동해 식당 사진, 진안 흑돼지·축제 음식 아님, 상표·얼굴 없음)",
     "match": "같은 종류",
-    "rights": "한국관광공사 포토코리아 공공누리 1유형 · ⓒ알렉스 분도",
+    "rights": "위키미디어 공용 CC0(퍼블릭 도메인 기증) · 출처 표시 의무 없음",
+    "terms": {
+     "url": "https://creativecommons.org/publicdomain/zero/1.0/deed.en",
+     "checked": "2026-11-13",
+     "scope": "CC0, 상업적 이용·수정 가능",
+     "ok": true
+    },
     "general": true,
-    "label": "김장·수육 사진 · 한국관광공사"
+    "about": "수육과 김치 일반"
    },
    "general": true,
-   "dur": 2.8,
-   "chip": "예약 놓쳤다면",
-   "headline": "김치 [[한 포기]]부터\n20kg까지",
-   "line": "축제장에서 살 수 있어요"
+   "dur": 2.6,
+   "chip": "현장 먹거리",
+   "headline": "진안 특산\n[[흑돼지 수육]]",
+   "line": "갓 담근 김치랑 같이 맛봐요"
   },
   {
    "type": "card",
    "photo": {
-    "url": "https://tong.visitkorea.or.kr/cms2/website/06/3567106.jpg",
-    "shows": "접시에 담긴 돼지고기 수육과 오이채·빨간 무생채, 다른 각도(강원 속초 식당, 2025년 촬영, 진안 흑돼지 보쌈 아님)",
+    "url": "https://live.staticflickr.com/1276/4667067262_0997d926c5_b.jpg",
+    "page": "https://www.flickr.com/photos/45074090@N00/4667067262",
+    "shows": "주전자에서 따른 막걸리 사발 둘을 맞대는 손(일반 막걸리 사진, 진안 막걸리·축제 현장 아님, 얼굴 없음)",
     "match": "같은 종류",
-    "rights": "한국관광공사 포토코리아 공공누리 1유형 · ⓒ황성훈",
+    "rights": "CC BY 2.0 · Jon Åslund (flickr) · 출처 표시 필요",
+    "credit": "Jon Åslund (CC BY 2.0) · www.flickr.com/photos/45074090@N00/4667067262",
     "general": true,
-    "label": "김장·수육 사진 · 한국관광공사"
+    "about": "막걸리 일반",
+    "terms": {
+     "url": "https://creativecommons.org/licenses/by/2.0/",
+     "checked": "2026-11-13",
+     "scope": "CC BY 2.0, 상업적 이용·수정 가능(저작자 표시)",
+     "ok": true
+    }
    },
    "general": true,
-   "dur": 3.0,
-   "chip": "먹거리",
-   "headline": "막걸리 6종\n[[1,000원]]",
-   "line": "흑돼지 보쌈 부스도 열려요"
+   "dur": 2.6,
+   "chip": "천원막걸리존",
+   "headline": "진안 막걸리\n[[1,000원]]",
+   "line": "진안 주조장에서 빚은 막걸리"
+  },
+  {
+   "type": "card",
+   "photo": {
+    "url": "https://images.unsplash.com/photo-1760046001098-a08375cece11?w=2000&q=85&fm=jpg",
+    "page": "https://unsplash.com/photos/3idq0qumY1A",
+    "shows": "숯불 화로 위에서 꼬치에 꽂은 마시멜로를 굽는 손들(일반 사진, 진안 고원구이존 아님, 얼굴 없음)",
+    "match": "같은 종류",
+    "rights": "Unsplash 라이선스(무료, 상업적 이용·수정 가능) · 사진: Julia Panasiuk / Unsplash",
+    "general": true,
+    "about": "마시멜로 굽기 일반"
+   },
+   "general": true,
+   "dur": 2.6,
+   "chip": "아이랑 같이",
+   "headline": "떡·마시멜로\n[[직접 구워요]]",
+   "line": "팡팡놀이터 · 김치마을 팝업존 · 공연"
+  },
+  {
+   "type": "info",
+   "photo": {
+    "url": "https://images.unsplash.com/photo-1703046598922-396d60875f7d?w=2000&q=85&fm=jpg",
+    "page": "https://unsplash.com/photos/3IrDYv-malg",
+    "shows": "비닐 위에 줄지어 놓인 소금에 절인 배추 포기들(일반 김장 준비 사진, 진안 축제 현장 아님, 얼굴 없음)",
+    "match": "같은 종류",
+    "rights": "Unsplash 라이선스(무료, 상업적 이용·수정 가능) · 사진: huiyeon kim / Unsplash",
+    "general": true,
+    "about": "절임배추 일반"
+   },
+   "general": true,
+   "dur": 3.2,
+   "kicker": "방문 정보",
+   "title": "11.14(토)~15(일)\n10:30~17:00",
+   "big": "입장 무료",
+   "sub": "진안읍 진무로 1166 · 일부 체험 유료"
+  },
+  {
+   "type": "cover",
+   "photo": {
+    "url": "https://images.unsplash.com/photo-1540162621994-4b096ef8523b?w=2000&q=85&fm=jpg",
+    "page": "https://unsplash.com/photos/jdMEMbsWd70",
+    "shows": "흰 그릇에 담긴 깨 뿌린 배추김치와 젓가락(일반 김치 사진, 진안 축제 김치 아님)",
+    "match": "같은 종류",
+    "rights": "Unsplash 라이선스(무료, 상업적 이용·수정 가능) · 사진: charlesdeluvio / Unsplash",
+    "general": true,
+    "about": "배추김치 일반"
+   },
+   "general": true,
+   "dur": 2.6,
+   "kicker": "현장에서 김치도 사 가요",
+   "title": "[[김치]] 사 들고\n수육 먹으러!",
+   "line": "한 접시·반 포기부터 20kg까지",
+   "size": 104
   }
  ],
  "review": {
-  "photo_sheet": "5206606bbe09"
+  "photo_sheet": "7a41e6b19086"
  },
  "title_pick": {
   "candidates": [
-   "진안 김치보쌈축제 2026, 11월 14~15일 김장체험·천원막걸리",
-   "이번 주말 김장하고 보쌈 먹는 곳, 진안 축제 총정리",
-   "김장 420가정이 담근다? 진안 김치보쌈축제"
+   "김장했으면 수육 먹어야죠! 진안 김치보쌈축제 11월 14~15일",
+   "이번 주말 김장하러 갈래요? 진안 김치보쌈축제",
+   "김장은 핑계, 보쌈이 진짜? 진안 김치보쌈축제"
   ],
-  "pick": "진안 김치보쌈축제 2026, 11월 14~15일 김장체험·천원막걸리",
-  "like": "2026-10-30 구미라면축제 2026 일정 (3.2배)",
-  "sure": "낮음"
- }
+  "pick": "김장했으면 수육 먹어야죠! 진안 김치보쌈축제 11월 14~15일",
+  "why": "벤치마킹에서 김치+수육 먹방형이 축제 안내형보다 조회수가 수십~수백 배. '김장하러 갈래요?'는 마감된 체험을 지금 할 수 있는 것처럼 읽혀서 뺌",
+  "sure": "보통"
+ },
+ "revised": {
+  "date": "2026-11-13",
+  "by": "사용자 지시서(진안 김치보쌈축제 전면 보완)",
+  "before_thumb": {
+   "head": "이번 주말\n[[진안 김장]]",
+   "sub": "김장 [[420가정]]이 담가요"
+  }
+ },
+ "photo_candidates": [
+  {
+   "scene": "축제 현장(지난 회차)",
+   "link": "https://jinankimchi.kr/?hongsam=12O2OO",
+   "why": "축제 누리집 갤러리, 'All Right Reserved' 표기라 허락 없이 못 씀"
+  }
+ ]
 }
