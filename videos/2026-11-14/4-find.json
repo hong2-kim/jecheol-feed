@@ -1,0 +1,242 @@
+{
+ "kind": "발견",
+ "subject": "홍합 · 이름에 '붉을 홍'이 들어간 까닭",
+ "title": "홍합은 왜 홍합일까? 까만 껍데기 속 붉은 속살",
+ "summary": "홍합은 해수부 이달의 수산물 자료에서 붉은 속살을 가진 조개라 '홍합'이라 부른다고 소개돼요. 담치·섭조개라고도 불리고, 탕·전·파스타에 잘 어울리며 타우린과 베타인이 많다고 해요.",
+ "plan_hook": {
+  "pick": "호기심",
+  "why": "누구나 먹는 홍합인데 이름 뜻을 아는 사람이 적고, 해양수산부 자료로 답이 확인돼 짧게 풀 수 있음",
+  "others": [
+   "먹거리",
+   "가격"
+  ]
+ },
+ "title_pick": {
+  "candidates": [
+   "홍합은 왜 홍합일까? 까만 껍데기 속 붉은 속살",
+   "홍합탕 먹기 전에 알아 두면 좋은 이름 뜻",
+   "겨울 홍합 제철, 담치·섭조개는 같은 걸까?"
+  ],
+  "pick": "홍합 이름 뜻, 왜 홍합일까? 까만 껍데기 속 붉은 속살",
+  "like": "가리비 제철 11월, 참가리비 vs 해만가리비 뭐가 다를까? (3.5배) · 똑같은 갈치인데 왜 색깔이 다를까? (4.3배)",
+  "why": "이 채널에서 '왜 ~일까/뭐가 다를까' 꼴 발견형이 3배 넘게 나옴. 내용(이름 뜻)과 약속이 같음",
+  "sure": "보통"
+ },
+ "thumb": {
+  "head": "홍합은 왜\n[[홍합일까?]]",
+  "sub": "까만 껍데기 속 [[붉은 속살]]",
+  "photo": {
+   "url": "https://images.unsplash.com/photo-1756365364878-1d858d555f32?w=2000&q=85&fm=jpg",
+   "page": "https://unsplash.com/photos/dw01Ws2MZDg",
+   "shows": "윤기 나는 까만 홍합(담치류) 껍데기가 가득 쌓인 모습(일반 사진)",
+   "match": "같은 종류",
+   "rights": "Unsplash 라이선스(무료, 상업적 이용·수정 가능) · 사진: engin akyurt / Unsplash",
+   "general": true,
+   "about": "홍합 껍데기",
+   "fit": "cover"
+  }
+ },
+ "tags": [
+  "홍합",
+  "홍합탕",
+  "홍합밥",
+  "홍합요리"
+ ],
+ "sources": [
+  "https://www.korea.kr/news/policyNewsView.do?newsId=148897652",
+  "https://www.incheon.go.kr/fish/FI020401/11109",
+  "https://www.webeconomy.co.kr/news/articleView.html?idxno=2375282"
+ ],
+ "credits": [
+  "사진: engin akyurt · Lisha Riabinina · Julia Taubitz · Vitalii Kyktov / Unsplash",
+  "ⓒ한국관광공사 포토코리아-IR 스튜디오, 김지호"
+ ],
+ "yt_title": "홍합 이름 뜻, 왜 홍합일까? 까만 껍데기 속 붉은 속살",
+ "yt_keyword": "홍합 이름 뜻",
+ "yt_related": [
+  "홍합",
+  "홍합탕",
+  "담치",
+  "섭조개",
+  "이달의 수산물",
+  "홍합밥"
+ ],
+ "yt_tags": [
+  "홍합 이름 뜻",
+  "홍합 제철",
+  "홍합 담치 차이",
+  "홍합탕",
+  "홍합밥",
+  "이달의 수산물"
+ ],
+ "yt_hashtags": [
+  "홍합",
+  "홍합탕",
+  "홍합밥"
+ ],
+ "yt_lead": "홍합 이름 뜻이 궁금했다면, 해양수산부가 소개한 '붉은 속살' 이야기를 짧게 알려 드려요.",
+ "dates": {
+  "checked": "2026-11-14",
+  "sources": [
+   {
+    "url": "https://www.korea.kr/news/policyNewsView.do?newsId=148897652",
+    "published": "2022-01-04",
+    "modified": "2022-01-04",
+    "note": "해수부 이달의 수산물(2022년 1월) 소개 글, 이름 뜻·영양·먹는 법"
+   },
+   {
+    "url": "https://www.incheon.go.kr/fish/FI020401/11109",
+    "published": "2017-11-07",
+    "modified": "2017-11-07",
+    "note": "해수부 2017년 11월 이달의 수산물(고등어·홍합) 안내, 다른 이름·영양"
+   },
+   {
+    "url": "https://www.webeconomy.co.kr/news/articleView.html?idxno=2375282",
+    "published": "2026-11-13",
+    "modified": "2026-11-13"
+   }
+  ],
+  "event": {
+   "name": "제4회 창원홍합축제",
+   "start": "2026-11-21",
+   "end": "2026-11-21"
+  }
+ },
+ "caption": "홍합탕 먹다가 '왜 홍합이지?' 궁금했던 적 있나요? 까만 껍데기 속에 붉은 속살이 있어서 홍합이래요.\n\n해수부의 이달의 수산물 소개 글에는 붉은 속살을 가진 조개라 홍합이라고 부른다고 적혀 있어요. 담치, 담채, 섭조개라고도 한대요. 해수부는 홍합을 2017년 11월과 2022년 1월 이달의 수산물로 소개했어요.\n\n먹는 법은 탕, 전, 파스타가 어울린다고 소개했고, 관광공사 사진 속 울릉도 식당에는 홍합밥도 있어요. 영양 정보: 해수부 이달의 수산물 자료에 따르면 홍합에는 다른 조개처럼 타우린이 많고 베타인도 많아요.\n\n마침 11월 21일에는 창원 3·15해양누리공원에서 제4회 창원홍합축제가 열려요(마산수협 주최, 창원시 발표). 영상 속 사진은 모두 일반 홍합·홍합 요리 사진이고 이번 축제 현장 사진이 아니에요.\n\n여러분은 홍합, 탕으로 드세요 찜으로 드세요?\n\n출처: 해수부 이달의 수산물(정책브리핑 2022년 1월 4일, 인천시 수산자원연구소 게재 2017년 11월 7일), 웹이코노미(11월 13일)\n📷 Unsplash(engin akyurt, Lisha Riabinina, Julia Taubitz, Vitalii Kyktov), ⓒ한국관광공사 포토코리아-IR 스튜디오, 김지호",
+ "scenes": [
+  {
+   "type": "cover",
+   "general": true,
+   "dur": 2.0,
+   "photo": {
+    "url": "https://commons.wikimedia.org/wiki/Special:FilePath/CornishMussels.JPG?width=1600",
+    "page": "https://commons.wikimedia.org/wiki/File:CornishMussels.JPG",
+    "shows": "바위에 붙어 있는 까만 홍합 무리(자연 서식 모습, 일반 사진)",
+    "match": "같은 종류",
+    "rights": "위키미디어 공용 Public domain · 출처 표시 의무 없음",
+    "terms": {
+     "url": "https://commons.wikimedia.org/wiki/File:CornishMussels.JPG",
+     "checked": "2026-11-14",
+     "scope": "Public domain, 상업적 이용·수정 가능",
+     "ok": true
+    },
+    "general": true,
+    "about": "홍합 서식"
+   },
+   "kicker": "여러분",
+   "title": "홍합탕 먹다\n[[이름]] 궁금했죠?",
+   "size": 96,
+   "line": null,
+   "headline": null
+  },
+  {
+   "type": "cover",
+   "general": true,
+   "dur": 1.8,
+   "photo": {
+    "url": "https://images.unsplash.com/photo-1756365364878-1d858d555f32?w=2000&q=85&fm=jpg",
+    "page": "https://unsplash.com/photos/dw01Ws2MZDg",
+    "shows": "윤기 나는 까만 홍합(담치류) 껍데기가 가득 쌓인 모습(일반 사진)",
+    "match": "같은 종류",
+    "rights": "Unsplash 라이선스(무료, 상업적 이용·수정 가능) · 사진: engin akyurt / Unsplash",
+    "general": true,
+    "about": "홍합 껍데기"
+   },
+   "kicker": "저도 오늘 알았어요",
+   "title": "껍데기는 [[까만데]]\n왜 붉을 홍(紅)?",
+   "size": 88,
+   "in": "push",
+   "line": null,
+   "headline": null
+  },
+  {
+   "type": "cover",
+   "general": true,
+   "dur": 2.0,
+   "photo": {
+    "url": "https://images.unsplash.com/photo-1710775694428-5f6e66ae6a4c?w=2000&q=85&fm=jpg",
+    "page": "https://unsplash.com/photos/A55vhZCfPsI",
+    "shows": "흰 접시에 담긴 익은 홍합과 레몬 조각, 구운 빵(일반 사진, 서양식 조리)",
+    "match": "같은 종류",
+    "rights": "Unsplash 라이선스(무료, 상업적 이용·수정 가능) · 사진: Lisha Riabinina / Unsplash",
+    "general": true,
+    "about": "익힌 홍합"
+   },
+   "kicker": "그래서 찾아봤어요 · 홍합",
+   "title": "까만 껍데기 속\n[[붉은 속살]]",
+   "size": 100,
+   "line": null,
+   "headline": null
+  },
+  {
+   "type": "card",
+   "general": true,
+   "dur": 2.8,
+   "photo": {
+    "url": "https://tong.visitkorea.or.kr/cms2/website/56/2539056.jpg",
+    "shows": "부산 자갈치시장 좌판에 홍합이 수북하게 담긴 모습(2017년 촬영, 상인 일부 보임, 얼굴 크게 아님)",
+    "match": "같은 종류",
+    "rights": "한국관광공사 포토코리아 공공누리 1유형 · ⓒ한국관광공사 포토코리아-IR 스튜디오",
+    "general": true,
+    "about": "홍합 시장",
+    "pos": "30% 70%"
+   },
+   "chip": "이름 유래",
+   "headline": "붉은 속살 조개라\n[[홍합]]이래요",
+   "line": "해수부가 소개한 이름 뜻이에요"
+  },
+  {
+   "type": "card",
+   "general": true,
+   "dur": 2.8,
+   "photo": {
+    "url": "https://images.unsplash.com/photo-1761473463061-b519f9588311?w=2000&q=85&fm=jpg",
+    "page": "https://unsplash.com/photos/tOtLBcYbWW8",
+    "shows": "푸른빛 껍데기 홍합(담치·섭조개) 무더기와 주황색 불가사리 하나(일반 사진)",
+    "match": "같은 종류",
+    "rights": "Unsplash 라이선스(무료, 상업적 이용·수정 가능) · 사진: Julia Taubitz / Unsplash",
+    "general": true,
+    "about": "홍합 무더기"
+   },
+   "chip": "별명",
+   "headline": "담치·섭조개도\n[[같은 조개]]예요",
+   "line": "홍합의 별명 같은 이름이에요"
+  },
+  {
+   "type": "card",
+   "general": true,
+   "dur": 2.8,
+   "photo": {
+    "url": "https://tong.visitkorea.or.kr/cms2/website/97/1131897.jpg",
+    "shows": "울릉도 식당의 홍합밥: 밥 위에 톳(해초) 무침과 양념을 올린 모습(2010년 촬영)",
+    "match": "같은 종류",
+    "rights": "한국관광공사 포토코리아 공공누리 1유형 · ⓒ한국관광공사 포토코리아-김지호",
+    "general": true,
+    "about": "홍합밥"
+   },
+   "chip": "먹는 법",
+   "headline": "탕·전·파스타,\n울릉도엔 [[홍합밥]]",
+   "line": "탕·전·파스타는 해수부 소개예요"
+  },
+  {
+   "type": "card",
+   "general": true,
+   "dur": 3.0,
+   "photo": {
+    "url": "https://images.unsplash.com/photo-1765100479761-2359e22fbe16?w=2000&q=85&fm=jpg",
+    "page": "https://unsplash.com/photos/2xd9c6jQhGs",
+    "shows": "새우·가리비와 함께 담긴 홍합 수산물 모둠 접시(일반 사진)",
+    "match": "같은 종류",
+    "rights": "Unsplash 라이선스(무료, 상업적 이용·수정 가능) · 사진: Vitalii Kyktov / Unsplash",
+    "general": true,
+    "about": "홍합 포함 해산물"
+   },
+   "chip": "이달의 수산물",
+   "headline": "11월·1월에 뽑힌\n[[이달의 수산물]]",
+   "line": "해수부가 2017·2022년에 소개했어요"
+  }
+ ],
+ "review": {
+  "photo_sheet": "53308d4454bc"
+ }
+}

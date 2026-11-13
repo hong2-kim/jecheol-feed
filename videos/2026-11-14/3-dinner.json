@@ -1,0 +1,396 @@
+{
+ "format": "voice",
+ "layout": "rec",
+ "kind": "저녁",
+ "subject": "토요일 저녁 (꼬막비빔밥·아귀찜·대하구이·팥죽)",
+ "title": "비 오는 토요일 저녁, 꼬막비빔밥·아귀찜·대하구이·팥죽 이거 생각나죠?",
+ "summary": "비 오는 토요일 저녁, 꼬막비빔밥·아귀찜·대하구이·팥죽 넷을 추천해요.",
+ "headline": "비 오는 토요일\n[[이거 생각나죠]]",
+ "small": "비 오는 토요일 저녁, 오늘의 넷",
+ "intro": 7,
+ "length": [
+  20,
+  30
+ ],
+ "narrator": "achird",
+ "voice_pick": {
+  "mode": "solo",
+  "voices": [
+   "achird"
+  ],
+  "why": "비 오는 주말 저녁 메뉴를 친구에게 권하듯 알려 주는 친근한 Achird 솔로"
+ },
+ "thumb": {
+  "head": "비 오는 토요일\n[[이거 생각나죠]]",
+  "sub": "비 오는 날 [[딱 넷]]만 추천",
+  "photo": {
+   "url": "https://tong.visitkorea.or.kr/cms2/website/25/2824125.jpg",
+   "shows": "스테인리스 그릇에 밥 위로 붉은 양념 꼬막과 김가루를 얹은 꼬막비빔밥",
+   "match": "정확",
+   "credit": "ⓒ한국관광공사 포토코리아-스튜디오 4cats",
+   "rights": "한국관광공사 공공누리 1유형"
+  }
+ },
+ "yt_title": "비 오는 토요일 저녁 메뉴 뭐 먹지? 꼬막비빔밥·아귀찜·대하구이·팥죽 중에 골라요",
+ "yt_keyword": "토요일 저녁 메뉴",
+ "yt_related": [
+  "저녁 메뉴 추천",
+  "오늘 뭐 먹지",
+  "비 오는 날 음식",
+  "꼬막비빔밥",
+  "아귀찜"
+ ],
+ "yt_tags": [
+  "토요일 저녁 메뉴",
+  "저녁 메뉴 추천",
+  "오늘 뭐 먹지",
+  "비 오는 날 음식",
+  "꼬막비빔밥",
+  "아귀찜",
+  "대하구이",
+  "팥죽"
+ ],
+ "yt_hashtags": [
+  "토요일저녁메뉴",
+  "오늘뭐먹지",
+  "저녁메뉴추천"
+ ],
+ "yt_lead": "비 오는 토요일 저녁 메뉴 고민될 때, 꼬막비빔밥·아귀찜·대하구이·팥죽 넷을 추천해요.",
+ "caption": "비 오는 토요일 저녁, 뭐 먹을지 못 정했다면?\n\n제철 꼬막을 얹은 꼬막비빔밥\n소스 듬뿍 매콤한 아귀찜\n지글지글 구운 대하구이\n쌀쌀한 날 따끈한 팥죽\n\n여러분의 오늘 저녁은 어느 쪽이에요? 댓글로 알려 주세요.",
+ "tags": [
+  "토요일저녁메뉴",
+  "저녁메뉴추천",
+  "오늘뭐먹지",
+  "꼬막비빔밥"
+ ],
+ "sources": [],
+ "credits": [
+  "ⓒ한국관광공사 포토코리아-스튜디오 4cats, 이범수, 천준교, 토라이 리퍼블릭"
+ ],
+ "dates": {
+  "checked": "2026-11-14"
+ },
+ "title_pick": {
+  "candidates": [
+   "비 오는 토요일 저녁 메뉴 뭐 먹지? 꼬막비빔밥·아귀찜·대하구이·팥죽 중에 골라요",
+   "토요일 저녁 아직 못 골랐어? 꼬막비빔밥·아귀찜·대하구이·팥죽",
+   "비 오는 저녁 이거 생각나죠, 꼬막비빔밥·아귀찜·대하구이·팥죽"
+  ],
+  "pick": "비 오는 토요일 저녁 메뉴 뭐 먹지? 꼬막비빔밥·아귀찜·대하구이·팥죽 중에 골라요",
+  "like": "금요일 저녁 메뉴 뭐 먹지? 닭갈비·광어회·함박스테이크·해물 토마토 파스타 (우리 저녁 영상 평소 수준)",
+  "sure": "낮음"
+ },
+ "lines": [
+  {
+   "say": "비 오는 토요일 저녁, 이거 생각나죠!",
+   "nosub": true,
+   "show": {
+    "thumb": true
+   }
+  },
+  {
+   "say": "오늘 후보는 이 넷이에요.",
+   "show": {
+    "grid": [
+     {
+      "photo": {
+       "url": "https://tong.visitkorea.or.kr/cms2/website/25/2824125.jpg",
+       "shows": "스테인리스 그릇에 밥 위로 붉은 양념 꼬막과 김가루를 얹은 꼬막비빔밥",
+       "match": "정확",
+       "credit": "ⓒ한국관광공사 포토코리아-스튜디오 4cats",
+       "rights": "한국관광공사 공공누리 1유형"
+      }
+     },
+     {
+      "photo": {
+       "url": "https://tong.visitkorea.or.kr/cms2/website/03/2609503.jpg",
+       "shows": "하얀 접시에 담긴 매콤한 양념 아귀찜 한 접시",
+       "match": "정확",
+       "credit": "ⓒ한국관광공사 포토코리아-이범수",
+       "rights": "한국관광공사 공공누리 1유형"
+      }
+     },
+     {
+      "photo": {
+       "url": "https://tong.visitkorea.or.kr/cms2/website/35/3052835.jpg",
+       "shows": "은박지 위에 소금과 함께 구운 대하구이",
+       "match": "정확",
+       "credit": "ⓒ한국관광공사 포토코리아-천준교",
+       "rights": "한국관광공사 공공누리 1유형"
+      }
+     },
+     {
+      "photo": {
+       "url": "https://tong.visitkorea.or.kr/cms2/website/77/3106477.jpg",
+       "shows": "새알심을 올린 따끈한 팥죽 한 그릇",
+       "match": "정확",
+       "credit": "ⓒ한국관광공사 포토코리아-토라이 리퍼블릭",
+       "rights": "한국관광공사 공공누리 1유형"
+      }
+     }
+    ],
+    "dir": "2x2",
+    "fade": 0.45
+   }
+  },
+  {
+   "say": "양념 얹은 꼬막비빔밥으로 든든하게!",
+   "show": {
+    "grid": [
+     {
+      "photo": {
+       "url": "https://tong.visitkorea.or.kr/cms2/website/25/2824125.jpg",
+       "shows": "스테인리스 그릇에 밥 위로 붉은 양념 꼬막과 김가루를 얹은 꼬막비빔밥",
+       "match": "정확",
+       "credit": "ⓒ한국관광공사 포토코리아-스튜디오 4cats",
+       "rights": "한국관광공사 공공누리 1유형"
+      }
+     },
+     {
+      "photo": {
+       "url": "https://tong.visitkorea.or.kr/cms2/website/03/2609503.jpg",
+       "shows": "하얀 접시에 담긴 매콤한 양념 아귀찜 한 접시",
+       "match": "정확",
+       "credit": "ⓒ한국관광공사 포토코리아-이범수",
+       "rights": "한국관광공사 공공누리 1유형"
+      }
+     },
+     {
+      "photo": {
+       "url": "https://tong.visitkorea.or.kr/cms2/website/35/3052835.jpg",
+       "shows": "은박지 위에 소금과 함께 구운 대하구이",
+       "match": "정확",
+       "credit": "ⓒ한국관광공사 포토코리아-천준교",
+       "rights": "한국관광공사 공공누리 1유형"
+      }
+     },
+     {
+      "photo": {
+       "url": "https://tong.visitkorea.or.kr/cms2/website/77/3106477.jpg",
+       "shows": "새알심을 올린 따끈한 팥죽 한 그릇",
+       "match": "정확",
+       "credit": "ⓒ한국관광공사 포토코리아-토라이 리퍼블릭",
+       "rights": "한국관광공사 공공누리 1유형"
+      }
+     }
+    ],
+    "dir": "2x2",
+    "hl": 0
+   }
+  },
+  {
+   "say": "소스 듬뿍 매콤한 아귀찜 한 접시!",
+   "subs": [
+    "소스 듬뿍 매콤한",
+    "아귀찜 한 접시!"
+   ],
+   "show": {
+    "grid": [
+     {
+      "photo": {
+       "url": "https://tong.visitkorea.or.kr/cms2/website/25/2824125.jpg",
+       "shows": "스테인리스 그릇에 밥 위로 붉은 양념 꼬막과 김가루를 얹은 꼬막비빔밥",
+       "match": "정확",
+       "credit": "ⓒ한국관광공사 포토코리아-스튜디오 4cats",
+       "rights": "한국관광공사 공공누리 1유형"
+      }
+     },
+     {
+      "photo": {
+       "url": "https://tong.visitkorea.or.kr/cms2/website/03/2609503.jpg",
+       "shows": "하얀 접시에 담긴 매콤한 양념 아귀찜 한 접시",
+       "match": "정확",
+       "credit": "ⓒ한국관광공사 포토코리아-이범수",
+       "rights": "한국관광공사 공공누리 1유형"
+      }
+     },
+     {
+      "photo": {
+       "url": "https://tong.visitkorea.or.kr/cms2/website/35/3052835.jpg",
+       "shows": "은박지 위에 소금과 함께 구운 대하구이",
+       "match": "정확",
+       "credit": "ⓒ한국관광공사 포토코리아-천준교",
+       "rights": "한국관광공사 공공누리 1유형"
+      }
+     },
+     {
+      "photo": {
+       "url": "https://tong.visitkorea.or.kr/cms2/website/77/3106477.jpg",
+       "shows": "새알심을 올린 따끈한 팥죽 한 그릇",
+       "match": "정확",
+       "credit": "ⓒ한국관광공사 포토코리아-토라이 리퍼블릭",
+       "rights": "한국관광공사 공공누리 1유형"
+      }
+     }
+    ],
+    "dir": "2x2",
+    "hl": 1
+   }
+  },
+  {
+   "say": "지글지글 구운 대하구이, 껍질 까는 재미까지 있죠.",
+   "subs": [
+    "지글지글 구운 대하구이,",
+    "껍질 까는 재미까지 있죠."
+   ],
+   "show": {
+    "grid": [
+     {
+      "photo": {
+       "url": "https://tong.visitkorea.or.kr/cms2/website/25/2824125.jpg",
+       "shows": "스테인리스 그릇에 밥 위로 붉은 양념 꼬막과 김가루를 얹은 꼬막비빔밥",
+       "match": "정확",
+       "credit": "ⓒ한국관광공사 포토코리아-스튜디오 4cats",
+       "rights": "한국관광공사 공공누리 1유형"
+      }
+     },
+     {
+      "photo": {
+       "url": "https://tong.visitkorea.or.kr/cms2/website/03/2609503.jpg",
+       "shows": "하얀 접시에 담긴 매콤한 양념 아귀찜 한 접시",
+       "match": "정확",
+       "credit": "ⓒ한국관광공사 포토코리아-이범수",
+       "rights": "한국관광공사 공공누리 1유형"
+      }
+     },
+     {
+      "photo": {
+       "url": "https://tong.visitkorea.or.kr/cms2/website/35/3052835.jpg",
+       "shows": "은박지 위에 소금과 함께 구운 대하구이",
+       "match": "정확",
+       "credit": "ⓒ한국관광공사 포토코리아-천준교",
+       "rights": "한국관광공사 공공누리 1유형"
+      }
+     },
+     {
+      "photo": {
+       "url": "https://tong.visitkorea.or.kr/cms2/website/77/3106477.jpg",
+       "shows": "새알심을 올린 따끈한 팥죽 한 그릇",
+       "match": "정확",
+       "credit": "ⓒ한국관광공사 포토코리아-토라이 리퍼블릭",
+       "rights": "한국관광공사 공공누리 1유형"
+      }
+     }
+    ],
+    "dir": "2x2",
+    "hl": 2
+   }
+  },
+  {
+   "say": "쌀쌀한 날엔, 새알심 올린 팥죽 어때요?",
+   "subs": [
+    "쌀쌀한 날엔,",
+    "새알심 올린 팥죽 어때요?"
+   ],
+   "show": {
+    "grid": [
+     {
+      "photo": {
+       "url": "https://tong.visitkorea.or.kr/cms2/website/25/2824125.jpg",
+       "shows": "스테인리스 그릇에 밥 위로 붉은 양념 꼬막과 김가루를 얹은 꼬막비빔밥",
+       "match": "정확",
+       "credit": "ⓒ한국관광공사 포토코리아-스튜디오 4cats",
+       "rights": "한국관광공사 공공누리 1유형"
+      }
+     },
+     {
+      "photo": {
+       "url": "https://tong.visitkorea.or.kr/cms2/website/03/2609503.jpg",
+       "shows": "하얀 접시에 담긴 매콤한 양념 아귀찜 한 접시",
+       "match": "정확",
+       "credit": "ⓒ한국관광공사 포토코리아-이범수",
+       "rights": "한국관광공사 공공누리 1유형"
+      }
+     },
+     {
+      "photo": {
+       "url": "https://tong.visitkorea.or.kr/cms2/website/35/3052835.jpg",
+       "shows": "은박지 위에 소금과 함께 구운 대하구이",
+       "match": "정확",
+       "credit": "ⓒ한국관광공사 포토코리아-천준교",
+       "rights": "한국관광공사 공공누리 1유형"
+      }
+     },
+     {
+      "photo": {
+       "url": "https://tong.visitkorea.or.kr/cms2/website/77/3106477.jpg",
+       "shows": "새알심을 올린 따끈한 팥죽 한 그릇",
+       "match": "정확",
+       "credit": "ⓒ한국관광공사 포토코리아-토라이 리퍼블릭",
+       "rights": "한국관광공사 공공누리 1유형"
+      }
+     }
+    ],
+    "dir": "2x2",
+    "hl": 3
+   },
+   "read": "쌀쌀한 날에는, 새알심 올린 팥죽 어때요?"
+  },
+  {
+   "say": "여러분의 오늘 저녁은 어느 쪽이에요? 댓글로 알려 주세요.",
+   "subs": [
+    "여러분의 오늘 저녁은 어느 쪽이에요?",
+    "댓글로 알려 주세요."
+   ],
+   "show": {
+    "grid": [
+     {
+      "photo": {
+       "url": "https://tong.visitkorea.or.kr/cms2/website/25/2824125.jpg",
+       "shows": "스테인리스 그릇에 밥 위로 붉은 양념 꼬막과 김가루를 얹은 꼬막비빔밥",
+       "match": "정확",
+       "credit": "ⓒ한국관광공사 포토코리아-스튜디오 4cats",
+       "rights": "한국관광공사 공공누리 1유형"
+      }
+     },
+     {
+      "photo": {
+       "url": "https://tong.visitkorea.or.kr/cms2/website/03/2609503.jpg",
+       "shows": "하얀 접시에 담긴 매콤한 양념 아귀찜 한 접시",
+       "match": "정확",
+       "credit": "ⓒ한국관광공사 포토코리아-이범수",
+       "rights": "한국관광공사 공공누리 1유형"
+      }
+     },
+     {
+      "photo": {
+       "url": "https://tong.visitkorea.or.kr/cms2/website/35/3052835.jpg",
+       "shows": "은박지 위에 소금과 함께 구운 대하구이",
+       "match": "정확",
+       "credit": "ⓒ한국관광공사 포토코리아-천준교",
+       "rights": "한국관광공사 공공누리 1유형"
+      }
+     },
+     {
+      "photo": {
+       "url": "https://tong.visitkorea.or.kr/cms2/website/77/3106477.jpg",
+       "shows": "새알심을 올린 따끈한 팥죽 한 그릇",
+       "match": "정확",
+       "credit": "ⓒ한국관광공사 포토코리아-토라이 리퍼블릭",
+       "rights": "한국관광공사 공공누리 1유형"
+      }
+     }
+    ],
+    "dir": "2x2"
+   }
+  }
+ ],
+ "menu_pick": {
+  "menus": [
+   "꼬막비빔밥",
+   "아귀찜",
+   "대하구이",
+   "팥죽"
+  ],
+  "from": "dinner_pick(후보 18개 확인, 비 오는 12℃ 날씨·갈래 분산 고려해 조정)",
+  "why": {
+   "꼬막비빔밥": "지금 제철인 꼬막으로 든든한 한 끼, 후보 1번",
+   "아귀찜": "비 오는 날 매콤한 찜, 후보 10번",
+   "대하구이": "가을~겨울 제철 새우 구이, 후보 5번",
+   "팥죽": "쌀쌀하고 비 오는 날 따끈한 죽, 후보 6번"
+  }
+ },
+ "review": {
+  "photo_sheet": "ef6e1edb0fe0"
+ }
+}

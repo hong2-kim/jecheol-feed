@@ -1,0 +1,271 @@
+{
+ "format": "voice",
+ "kind": "해설",
+ "subject": "고구마 · 국산 품종 점유율",
+ "inspired": {
+  "from": "yt_viral 2026-11-13",
+  "id": "Uqp61Nb-wUM",
+  "food": "고구마"
+ },
+ "plan_hook": {
+  "pick": "호기심",
+  "why": "국산 품종 점유율이 10년 새 14.9%에서 41.1%로 뛴 농촌진흥청 숫자가 받치고, 고구마 사진이 많고 최근 14일 우리 콘텐츠와 안 겹침",
+  "others": [
+   "먹거리",
+   "가격"
+  ]
+ },
+ "script_check": {
+  "score": 8,
+  "fix": "첫 문장을 물음(국산 품종 몇 %)으로 열고 숫자는 3번 문장부터, 1위 품종 이름을 6번 문장에서 약속대로 공개. 점유율은 자료마다 달라(YTN 44%) 농진청 41.1%만 쓰고 caption 에 밝힘"
+ },
+ "title_pick": {
+  "candidates": [
+   "고구마 품종, 국산은 몇 %일까? 14.9%에서 41.1%로",
+   "고구마 품종 1등은 국산 호풍미? 국산 점유율 41.1%",
+   "호박고구마 vs 밤고구마, 요즘 인기 품종은?"
+  ],
+  "pick": "고구마 품종, 국산은 몇 %일까? 14.9%에서 41.1%로",
+  "like": "가리비 제철 11월, 참가리비 vs 해만가리비 뭐가 다를까? (3.5배) / 똑같은 갈치인데 왜 색깔이 다를까? 은갈치 먹갈치 차이 (4.3배)",
+  "sure": "중간"
+ },
+ "title": "마트 고구마, 국산 품종은 몇 %일까? 10년 새 14.9%에서 41.1%로",
+ "yt_title": "고구마 품종, 국산은 몇 %일까? 14.9%에서 41.1%로",
+ "headline": "고구마 국산\n[[품종 몇 %?]]",
+ "thumb": {
+  "sub": "10년 새 [[2.8배]]"
+ },
+ "narrator": "charon",
+ "voice_pick": {
+  "mode": "solo",
+  "voices": [
+   "charon"
+  ],
+  "why": "점유율·재배 면적 같은 통계 비교가 중심이라 차분하고 정확한 Charon 솔로"
+ },
+ "summary": "농촌진흥청에 따르면 국산 고구마 품종 점유율은 2016년 14.9%에서 2025년 41.1%로 올랐고, 재배 면적은 2,548헥타르에서 7,151헥타르로 약 2.8배 늘었어요. 단일 품종 1위는 국산 호박고구마 호풍미(16.5%)예요.",
+ "caption": "마트에서 파는 고구마, 국산 품종은 몇 %일까요? 농촌진흥청에 따르면 국산 품종 점유율은 2016년 14.9%에서 2025년 41.1%로 올랐어요. 같은 기간 재배 면적도 2,548헥타르에서 7,151헥타르로 약 2.8배 늘었고요.\n\n단일 품종 1위는 국산 호박고구마 호풍미로, 보급 4년 만에 전체 재배 면적의 16.5%(2,860.7헥타르)를 차지했어요. 소담미(7.2%), 진율미(6.6%), 호풍미 세 품종이 국산 재배 면적의 73.5%예요. 밤고구마 대표 품종은 일본 품종 베니하루카로 알려져 있어요. 농촌진흥청은 2030년까지 국산 점유율을 50%로 높이는 것이 목표라고 밝혔어요.\n\n※ 점유율은 2025년 농촌진흥청 발표 기준이고, 자료마다 수치가 조금 달라요(2026년 10월 YTN 보도는 44%).\n\n여러분은 호박고구마파예요, 밤고구마파예요?\n\n출처: 농촌진흥청 발표(데일리안 2025년 11월 27일, 디지털데일리 2026년 8월 16일), 한국경제 2025년 11월 19일, YTN 2026년 10월 8일",
+ "tags": [
+  "고구마",
+  "고구마품종",
+  "호박고구마",
+  "11월제철음식"
+ ],
+ "sources": [
+  "https://www.dailian.co.kr/news/view/1579044",
+  "https://www.ddaily.co.kr/page/view/2026081610095366546",
+  "https://www.hankyung.com/article/2025111939101",
+  "https://www.ytn.co.kr/_ln/0115_202610080835237325"
+ ],
+ "credits": [
+  "사진: Glen Hayoge / Unsplash",
+  "사진: Juno Jo / Unsplash",
+  "사진: Yender Fonseca / Unsplash",
+  "사진: Yen Vu - 烟雨 / Unsplash",
+  "사진: Daij / Unsplash",
+  "사진: Anthony Camp / Unsplash",
+  "사진: Student LunchBox / Unsplash",
+  "사진: Mary Potoplyak / Unsplash",
+  "ⓒ한국관광공사 포토코리아-알렉스분도"
+ ],
+ "yt_keyword": "고구마 품종",
+ "yt_related": [
+  "국산 고구마",
+  "호풍미",
+  "호박고구마",
+  "밤고구마",
+  "고구마 종류"
+ ],
+ "yt_tags": [
+  "고구마 품종",
+  "국산 고구마",
+  "호풍미",
+  "호박고구마",
+  "밤고구마",
+  "고구마 종류",
+  "소담미",
+  "진율미"
+ ],
+ "yt_hashtags": [
+  "고구마품종",
+  "국산고구마",
+  "호풍미"
+ ],
+ "yt_lead": "고구마 품종 가운데 국산 점유율은 2016년 14.9%에서 2025년 41.1%로 올랐고, 단일 품종 1위는 국산 호풍미예요.",
+ "dates": {
+  "checked": "2026-11-14",
+  "sources": [
+   {
+    "url": "https://www.dailian.co.kr/news/view/1579044",
+    "published": "2025-11-27"
+   },
+   {
+    "url": "https://www.ddaily.co.kr/page/view/2026081610095366546",
+    "published": "2026-08-16"
+   },
+   {
+    "url": "https://www.hankyung.com/article/2025111939101",
+    "published": "2025-11-19"
+   },
+   {
+    "url": "https://www.ytn.co.kr/_ln/0115_202610080835237325",
+    "published": "2026-10-08"
+   }
+  ],
+  "stat_period": "점유율·재배 면적은 2016년과 2025년 기준(농촌진흥청 2025년 11월 발표)"
+ },
+ "lines": [
+  {
+   "say": "마트에서 파는 고구마, 국산 품종은 [[몇 %]]일까요?",
+   "about": "고구마 일반",
+   "general": true,
+   "photo": {
+    "url": "https://images.unsplash.com/photo-1730815048561-45df6f7f331d?w=2000&q=85&fm=jpg",
+    "page": "https://unsplash.com/photos/a-pile-of-pink-and-yellow-sweet-potatoes-k0MigzUz-vI",
+    "shows": "붉은 껍질과 노란 껍질 고구마가 수북이 쌓인 모습(품종은 알 수 없음, 일반 사진)",
+    "match": "같은 종류",
+    "rights": "Unsplash 라이선스(무료, 상업적 이용·수정 가능) · 사진: Glen Hayoge / Unsplash",
+    "general": true,
+    "credit": "사진: Glen Hayoge / Unsplash"
+   }
+  },
+  {
+   "say": "끝까지 보면, [[1등 품종]] 이름까지 알려 드려요.",
+   "chip": "끝까지 보면 1등 품종 이름"
+  },
+  {
+   "say": "10년 전엔, 국산 품종이 [[14.9%]]뿐이었어요.",
+   "about": "고구마 일반",
+   "general": true,
+   "photo": {
+    "url": "https://images.unsplash.com/photo-1771340224790-9a8cc4a9a24a?w=2000&q=85&fm=jpg",
+    "page": "https://unsplash.com/photos/pile-of-fresh-sweet-potatoes-in-a-market-kyetyQadwkU",
+    "shows": "갈색 껍질 고구마가 쌓인 시장 모습(품종은 알 수 없음, 일반 사진)",
+    "match": "같은 종류",
+    "rights": "Unsplash 라이선스(무료, 상업적 이용·수정 가능) · 사진: Yender Fonseca / Unsplash",
+    "general": true,
+    "credit": "사진: Yender Fonseca / Unsplash"
+   },
+   "chip": "2016년 국산 품종 14.9%",
+   "read": "십 년 전엔, 국산 품종이 십사 점 구 퍼센트뿐이었어요."
+  },
+  {
+   "say": "지금도 밤고구마 대표는, 일본 품종 [[베니하루카]]예요.",
+   "about": "고구마 일반",
+   "general": true,
+   "photos": [
+    {
+     "url": "https://images.unsplash.com/photo-1570723735746-c9bd51bd7c40?w=2000&q=85&fm=jpg",
+     "page": "https://unsplash.com/photos/sweet-potatoes-Sp67-UQeynY",
+     "shows": "시장 매대 상자에 담긴 붉은 껍질 고구마(품종은 알 수 없음, 일반 사진)",
+     "match": "같은 종류",
+     "rights": "Unsplash 라이선스(무료, 상업적 이용·수정 가능) · 사진: Juno Jo / Unsplash",
+     "general": true,
+     "credit": "사진: Juno Jo / Unsplash"
+    },
+    {
+     "url": "https://images.unsplash.com/photo-1673533537845-7f7498faf85f?w=2000&q=85&fm=jpg",
+     "page": "https://unsplash.com/photos/a-pile-of-sweet-potatoes-sitting-next-to-each-other-iyY6U6TAXoM",
+     "shows": "연한 갈색 껍질 고구마가 수북한 모습(품종은 알 수 없음, 일반 사진)",
+     "match": "같은 종류",
+     "rights": "Unsplash 라이선스(무료, 상업적 이용·수정 가능) · 사진: Anthony Camp / Unsplash",
+     "general": true,
+     "credit": "사진: Anthony Camp / Unsplash"
+    }
+   ],
+   "chip": "밤고구마 대표 베니하루카"
+  },
+  {
+   "say": "그런데 2025년엔, 국산 품종이 [[41.1%]]까지 올랐어요.",
+   "about": "고구마 일반",
+   "general": true,
+   "card": {
+    "type": "bars",
+    "title": "국산 고구마 품종 [[점유율]]",
+    "sub": "단위: %",
+    "rows": [
+     {
+      "name": "2016년",
+      "value": 14.9,
+      "label": "14.9"
+     },
+     {
+      "name": "2025년",
+      "value": 41.1,
+      "label": "41.1 · [[2.8배]]",
+      "hl": true
+     }
+    ],
+    "scale": 0.55,
+    "src": "농촌진흥청 발표"
+   },
+   "read": "그런데 2025년엔, 국산 품종이 사십일 점 일 퍼센트까지 올랐어요."
+  },
+  {
+   "say": "단일 품종 1위는, 국산 호박고구마 [[호풍미]]예요.",
+   "about": "고구마 일반",
+   "general": true,
+   "photo": {
+    "url": "https://images.unsplash.com/photo-1744659749700-c4213f840355?w=2000&q=85&fm=jpg",
+    "page": "https://unsplash.com/photos/a-pile-of-sweet-potatoes-in-a-basket-eB2X4DnIk4c",
+    "shows": "주황빛 껍질 고구마가 상자에 쌓인 일반 사진(호풍미 실물 사진은 아님, 품종은 알 수 없음)",
+    "match": "같은 종류",
+    "rights": "Unsplash 라이선스(무료, 상업적 이용·수정 가능) · 사진: Yen Vu - 烟雨 / Unsplash",
+    "general": true,
+    "credit": "사진: Yen Vu - 烟雨 / Unsplash"
+   },
+   "chip": "1위 호풍미"
+  },
+  {
+   "say": "보급 4년 만에, 전체 재배 면적의 [[16.5%]]를 차지했어요.",
+   "about": "고구마 일반",
+   "general": true,
+   "photo": {
+    "url": "https://images.unsplash.com/photo-1747503331142-27f458a1498c?w=2000&q=85&fm=jpg",
+    "page": "https://unsplash.com/photos/sweet-potatoes-and-other-produce-are-for-sale-ho7FbFUy4gc",
+    "shows": "녹색 바구니에 담긴 주황빛 고구마 매대(품종은 알 수 없음, 일반 사진)",
+    "match": "같은 종류",
+    "rights": "Unsplash 라이선스(무료, 상업적 이용·수정 가능) · 사진: Daij / Unsplash",
+    "general": true,
+    "credit": "사진: Daij / Unsplash"
+   },
+   "chip": "재배 면적 16.5%",
+   "read": "보급 사 년 만에, 전체 재배 면적의 십육 점 오 퍼센트를 차지했어요."
+  },
+  {
+   "say": "농촌진흥청은, 2030년까지 [[50%]]를 목표로 해요.",
+   "about": "고구마 일반",
+   "general": true,
+   "photo": {
+    "url": "https://tong.visitkorea.or.kr/cms2/website/24/2821224.jpg",
+    "shows": "장갑 낀 손이 군고구마 통에서 고구마를 집는 모습(2021년 촬영, 품종은 알 수 없음)",
+    "match": "같은 종류",
+    "rights": "한국관광공사 포토코리아 공공누리 1유형 · ⓒ알렉스분도",
+    "general": true,
+    "credit": "ⓒ한국관광공사 포토코리아-알렉스분도"
+   },
+   "chip": "2030년 목표 50%"
+  },
+  {
+   "say": "살 때 품종 이름이 보이면, 호풍미·소담미·진율미는 [[국산]]이에요.",
+   "about": "고구마 일반",
+   "general": true,
+   "photo": {
+    "url": "https://images.unsplash.com/photo-1680472628312-9ff2605ee718?w=2000&q=85&fm=jpg",
+    "page": "https://unsplash.com/photos/a-brown-paper-bag-filled-with-sweet-potatoes-otPE4-2onfI",
+    "shows": "갈색 종이봉투에 담긴 자주빛 껍질 고구마 일반 사진(국산 품종(호풍미·소담미·진율미) 실물 사진은 아님, 품종은 알 수 없음)",
+    "match": "같은 종류",
+    "rights": "Unsplash 라이선스(무료, 상업적 이용·수정 가능) · 사진: Mary Potoplyak / Unsplash",
+    "general": true,
+    "credit": "사진: Mary Potoplyak / Unsplash"
+   },
+   "chip": "호풍미·소담미·진율미 = 국산"
+  },
+  {
+   "say": "여러분은 [[호박고구마파]]예요, [[밤고구마파]]예요? 댓글로 알려 주세요."
+  }
+ ],
+ "review": {
+  "photo_sheet": "531b0962a50d"
+ }
+}
