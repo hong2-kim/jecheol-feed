@@ -9,6 +9,7 @@
   python scripts/photos.py pixabay "oysters"       Pixabay 무료 사진 (상업적 이용·수정 가능, 표기 없어도 돼요. AI 그림은 빼요, 2026-11-13)
   python scripts/photos.py food "짬뽕" [--en "Korean spicy seafood noodle soup;jjamppong"]   음식 사진 한 번에:
                                                   보관함 → 관광공사 → Unsplash·Pexels·Pixabay → 오픈버스·위키미디어 (2026-11-12)
+                                                  --vault-last: 보관함을 맨 뒤로(저녁 추천, 2026-11-13: 바깥 사진에 맞는 게 없을 때만 보관함)
   python scripts/photos.py en "굴"                  그 음식·재료의 영어 검색어(ideas/dinner_menu.json·ideas/food_en.json)
   python scripts/photos.py festival 20261012      그날 이후 열리는 축제 (한국관광공사, 공식 일정)
   python scripts/photos.py get <주소> <저장할 파일>   사진을 내려받아 직접 눈으로 확인할 때
@@ -380,7 +381,7 @@ def vault_hits(name):
             for x in idx if x.get("type") == "photo" and not x.get("skip") and not x.get("ask") and key and key in _n(x.get("note"))]
 
 
-def food(name, en=None, n=6):
+def food(name, en=None, n=6, vault_last=False):
     """음식 사진을 한 번에 찾아요(2026-11-12 사용자: 사진을 못 찾아 소재가 좁아지지 않게, Unsplash·영어 검색까지).
     차례: ① 비공개 보관함 ② 한국관광공사(한국어) ③ Unsplash ④ Pexels·Pixabay ⑤ 오픈버스·위키미디어. ③~⑤는 영어로 먼저 찾아요(2026-11-13).
     키가 없는 곳은 건너뛰고 알려 줘요(멈추지 않아요). 사진은 고르기 전에 sheet·get 으로 꼭 열어 보고, 음식이 맞는지·사람 얼굴·상표를 봐요."""
@@ -389,7 +390,7 @@ def food(name, en=None, n=6):
                       "--en '흔한 영어 이름;정확한 영어 이름' 으로 다시 찾고, 재료는 ideas/food_en.json·메뉴는 dinner_pick.py add 로 사전에 더해요"},
                      ensure_ascii=False))
     v = vault_hits(name)
-    if v:
+    if v and not vault_last:
         print(json.dumps({"출처": "① 비공개 보관함", "장수": len(v), "사진": v[:n]}, ensure_ascii=False))
     steps = [("② 한국관광공사", "tour", "TOUR_API_KEY", tour_rows),
              ("③ Unsplash", "unsplash", "UNSPLASH_ACCESS_KEY", unsplash_rows),
@@ -420,6 +421,9 @@ def food(name, en=None, n=6):
         print(json.dumps({"출처": label, "한국어로": ko, "영어로 더": len(rows) - ko,
                           "사진": [{k: r.get(k) for k in ("url", "title", "size", "license", "credit", "page", "query", "check") if r.get(k)} for r in rows[:n]]},
                          ensure_ascii=False))
+    if v and vault_last:  # 저녁 추천(2026-11-13 사용자): 메뉴를 먼저 고르고 바깥 사진을 찾은 뒤, 맞는 게 없을 때만 보관함
+        print(json.dumps({"출처": "⑥ 비공개 보관함(마지막)", "장수": len(v), "사진": v[:n],
+                          "언제": "위 바깥 사진 가운데 그 메뉴가 정확히 맞는 것이 없을 때만 써요(비슷한 다른 음식 사진은 맞는 것이 아니에요)"}, ensure_ascii=False))
     print(json.dumps({"모두": found, "다음": "후보는 sheet 로 모아 열어 보고(python scripts/photos.py sheet 출처 검색어 15 그림.jpg), 음식이 같은지 확인한 것만 써요. "
                               "credit 이 있으면 credits 에 글자 그대로, Unsplash·Pexels·Pixabay 는 page 를 함께 적어요. 맞는 사진이 없으면 다른 메뉴로 바꿔요(비슷한 다른 음식 사진으로 채우지 않아요)."},
                      ensure_ascii=False))
@@ -582,7 +586,7 @@ def run(cmd, arg):
         pixabay(arg)
     elif cmd == "food":
         en = sys.argv[sys.argv.index("--en") + 1].split(";") if "--en" in sys.argv else None
-        food(arg, [e.strip() for e in en] if en else None)
+        food(arg, [e.strip() for e in en] if en else None, vault_last="--vault-last" in sys.argv)
     elif cmd == "en":
         print(json.dumps({"음식": arg, "영어 검색어": en_terms(arg)}, ensure_ascii=False))
     elif cmd == "festival":

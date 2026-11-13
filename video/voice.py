@@ -1003,6 +1003,9 @@ def find_edges(v, said, c, rate):
     return comma_breath(v, said, c, rate, "fun", fix=False)[1]
 
 
+REC_GAP, REC_GAP_Q = 0.34, 0.4  # 방어축제 승인본의 문장 사이 쉼(숫자 뒤 0.26·끝 0.3·물음 뒤 0.4)과 사용자 녹음(0.33~0.9초)을 보고 정했어요
+
+
 def breath_gaps(spec, lines, paces):
     """문장 사이 쉼(초). 모두 같게 두지 않아요: 물음 뒤·화자 바뀜·숫자·반전 앞은 길게, 짧은 맞장구는 짧게. "gap" 을 적으면 그게 먼저."""
     out = []
@@ -1029,6 +1032,8 @@ def breath_gaps(spec, lines, paces):
             g += 0.06
         if i + 1 == len(lines) - 1:
             g += 0.08
+        if spec.get("kind") == "저녁" and i > 0:  # 저녁 추천만: 메뉴 하나하나가 들리게 승인본(방어축제)처럼 문장 사이를 둬요(2026-11-13, 0.2초 → 0.34초 이상)
+            g = max(g, REC_GAP_Q if l["say"].rstrip().endswith("?") else REC_GAP)
         out.append(round(min(0.7, max(0.15, g)), 2))
     return out
 
@@ -1409,7 +1414,8 @@ def _build_voice(spec, work=None):
             w.setnchannels(1), w.setsampwidth(2), w.setframerate(SR), w.writeframes(pcm.tobytes())
     meta = {"music": B.song(spec), "sfx": sfx or [], "ambience": [], "voice": str(voice_path) if voice_path else None}
     for r in logs:  # 쉼표 앞을 늘여 읽은 문장은 다시 읽어도 남으면 사람이 들어 봐요
-        timing += [f"{r['n']}번 문장: {w}" for w in r.get("warn", []) if w.startswith("쉼표 앞이 늘어져요")]
+        timing += [f"{r['n']}번 문장: {w}" for w in r.get("warn", []) if w.startswith("쉼표 앞이 늘어져요")
+                   or w.startswith("받아쓰기에 안 들린")]  # 다시 합성해도 낱말이 안 들리면 승인 전 시안(2026-11-13, 모든 B안 나레이션)
     meta["timing"] = timing
     if timing:
         print("  시점 검수:", "; ".join(timing))

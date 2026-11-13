@@ -493,6 +493,134 @@ def dinner_photo_problems(spec):
     return out
 
 
+def _spec_day(spec):
+    from datetime import date, datetime, timedelta, timezone
+    d = spec.get("_day") or (spec.get("dates") or {}).get("checked")
+    try:
+        return date.fromisoformat(str(d)[:10])
+    except Exception:
+        return (datetime.now(timezone.utc) + timedelta(hours=9)).date()
+
+
+def _recent_dinners(day, days=7):
+    """day 앞 days 일의 저녁 추천 설계도 [(날짜, spec)]."""
+    from datetime import timedelta
+    out = []
+    root = Path(__file__).resolve().parent.parent / "videos"
+    for k in range(1, days + 1):
+        f = root / (day - timedelta(days=k)).isoformat() / "3-dinner.json"
+        try:
+            out.append(((day - timedelta(days=k)).isoformat(), json.loads(f.read_text(encoding="utf-8"))))
+        except Exception:
+            pass
+    return out
+
+
+def _plain(t):
+    return re.sub(r"\[\[|\]\]", "", str(t or "")).strip()
+
+
+DINNER_END = re.compile(r"[.!?~…\s]+$")
+
+
+def dinner_script_problems(spec):
+    """메뉴 소개 문장이 같은 틀로 되풀이되지 않는지 (2026-11-13 사용자: '○○ 당기면 이거!'만 반복하면 AI가 기계적으로 추천하는 느낌).
+    메뉴 문장(hl 이 있는 문장)끼리 ① '당기면' 두 번 넘게 ② 끝 어미(마지막 두 글자) 겹침 ③ 쉼표 앞 말 겹침 → 꼭 고칠 것.
+    ④ 첫 낱말 겹침 ⑤ 네 문장이 모두 같은 꼴(물음만·마침표만) → 보면 좋은 것. ⑥ 메뉴 이름이 그 문장에 없으면 꼭 고칠 것."""
+    must, should = [], []
+    lines = spec.get("lines") or []
+    menu = [(l["show"]["hl"], l) for l in lines if isinstance(l.get("show"), dict) and isinstance(l["show"].get("hl"), int)]
+    if len(menu) < 2:
+        return must, should
+    says = [(k, _plain(l.get("say"))) for k, l in menu]
+    if sum(t.count("당기면") for _, t in says) >= 2:
+        must.append("메뉴 문장에 '당기면'이 두 번 넘게 나와요. 메뉴마다 맛·식감·조리 장면·함께 먹는 사람·계절·분위기 가운데 다른 것으로 소개해요.")
+    ends, fronts, firsts, kinds = {}, {}, {}, set()
+    for k, t in says:
+        last = re.split(r"(?<=[.!?])\s+", t.strip())[-1]
+        tail = re.sub(r"[^가-힣]", "", DINNER_END.sub("", last))[-2:]
+        ends.setdefault(tail, []).append(k)
+        if "," in t:
+            fw = t.split(",")[0].split()[-1:]
+            if fw:
+                fronts.setdefault(fw[0], []).append(k)
+        first = t.split()[0] if t.split() else ""
+        firsts.setdefault(re.sub(r"[^가-힣A-Za-z0-9]", "", first), []).append(k)
+        kinds.add(t.strip()[-1:] if t.strip()[-1:] in "?!" else ".")
+    for tail, ks in ends.items():
+        if tail and len(ks) >= 2:
+            must.append(f"메뉴 문장 {len(ks)}개가 같은 어미 '~{tail}'로 끝나요(칸 {', '.join(str(x + 1) for x in ks)}). 물음·감탄·권유·짧은 한마디로 끝을 바꿔요.")
+    for w, ks in fronts.items():
+        if len(ks) >= 2:
+            must.append(f"메뉴 문장 {len(ks)}개가 '… {w},' 같은 틀이에요(칸 {', '.join(str(x + 1) for x in ks)}). 문장 짜임을 다르게 써요.")
+    for w, ks in firsts.items():
+        if w and len(ks) >= 2:
+            should.append(f"메뉴 문장 {len(ks)}개가 '{w}'(으)로 시작해요. 시작을 바꾸면 덜 기계적으로 들려요.")
+    if len(kinds) == 1 and len(says) >= 3:
+        should.append("메뉴 문장이 모두 같은 꼴(물음·감탄·평서 중 하나)이에요. 섞어 주세요.")
+    if len(lines) >= 3:  # 여는 말(2번)·끝 물음(마지막)이 지난 사흘과 같으면 날마다 같은 영상처럼 들려요
+        for d, past in _recent_dinners(_spec_day(spec), 3):
+            pl = past.get("lines") or []
+            if len(pl) >= 3:
+                for name, a_, b_ in (("2번 문장", lines[1], pl[1]), ("마지막 문장", lines[-1], pl[-1])):
+                    if _plain(a_.get("say")) == _plain(b_.get("say")):
+                        should.append(f"{name} '{_plain(a_.get('say'))}'이 {d} 저녁과 같아요. 날마다 말을 바꿔요.")
+    for k, l in menu:  # 줄임 조사('불금엔', '주말엔')는 TTS 가 뭉개요. 대사는 두고 read 칸에 풀어 써요(2026-11-13)
+        hard = [w for w in re.findall(r"[가-힣]+(?:엔|겐|껜)(?=\s|[,.!?]|$)", _plain(l.get("say"))) if len(w) >= 2]
+        if hard and not l.get("read"):
+            must.append(f"{k + 1}번 칸 문장의 '{', '.join(hard)}' 는 TTS 가 뭉개기 쉬워요('불금엔→불구멘'). \"read\" 칸에 '…에는'처럼 풀어 써 주세요.")
+    picked = (spec.get("menu_pick") or {}).get("menus") or []
+    for k, t in says:
+        if k < len(picked):
+            name = re.sub(r"\s", "", picked[k])
+            if name and name not in re.sub(r"\s", "", t) and name[-3:] not in re.sub(r"\s", "", t):
+                must.append(f"{k + 1}번 칸 문장에 메뉴 이름 '{picked[k]}'이 없어요. 띠 자막으로 메뉴를 알 수 있게 이름을 넣어요.")
+    return must, should
+
+
+def dinner_thumb_problems(spec):
+    """썸네일 문구가 최근 저녁 영상과 같은 말을 되풀이하지 않는지 (2026-11-13 사용자: '불금 저녁 내가 골라줌' 같은 문구만 반복하지 말 것).
+    지난 7일 저녁 썸네일과 ① 둘째 줄이 같거나 ② '골라'가 또 들어가거나 ③ 흰 띠 글이 같으면 꼭 고칠 것."""
+    import thumb
+    must = list(thumb.grid_problems(spec))  # 4칸·2×2·빈칸 없음 (2026-11-13 사용자)
+    t = spec.get("thumb") or {}
+    head = _plain(t.get("head") or spec.get("headline"))
+    sub = _plain(t.get("sub"))
+    if not head:
+        return must
+    line2 = head.split(chr(10))[-1].strip()
+    for d, past in _recent_dinners(_spec_day(spec)):
+        pt = past.get("thumb") or {}
+        ph = _plain(pt.get("head") or past.get("headline"))
+        if ph and line2 and line2 == ph.split(chr(10))[-1].strip():
+            must.append(f"썸네일 둘째 줄 '{line2}'이 {d} 저녁 썸네일과 같아요. 요일·날씨·계절·메뉴 특징에 맞는 새 문구로 바꿔요.")
+        elif "골라" in head and "골라" in ph:
+            must.append(f"썸네일에 '골라'가 또 들어가요({d}: '{ph.replace(chr(10), ' ')}'). '골라 줌·골라 줄게'만 되풀이하지 않게 상황(퇴근·주말·야식·비·추위)으로 후킹해요.")
+        if sub and sub == _plain(pt.get("sub")):
+            must.append(f"썸네일 흰 띠 글 '{sub}'이 {d} 와 같아요. 이 영상에 맞는 말로 바꿔요.")
+    seen, out = set(), []
+    for m in must:  # 같은 말을 날마다 되풀이해 적지 않게
+        k = m.split("(")[0][:30]
+        if k not in seen:
+            seen.add(k)
+            out.append(m)
+    return out[:6]
+
+
+def dinner_menu_problems(spec):
+    """고른 메뉴가 최근 저녁 영상과 겹치는지·사진 때문에 골랐는지 (scripts/dinner_pick.py menu_problems, 2026-11-13)."""
+    mp = spec.get("menu_pick") or {}
+    if not mp.get("menus"):
+        return [], []
+    try:
+        import sys
+        sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "scripts"))
+        import dinner_pick
+        return dinner_pick.menu_problems(mp["menus"], _spec_day(spec), mp.get("why"), mp.get("again"))
+    except Exception as e:  # 검사 도구가 실패해도 제작은 멈추지 않아요
+        return [], [f"메뉴 겹침 검사를 못 했어요: {e}"]
+
+
 def problems(spec, cuts=None, subs=None):
     """추천 쇼츠 검사. 자막 조각(한 글자·숫자와 단위 끊김·서술어만 남음·너무 김), 장면이 없는 문장,
     한 장면이 오래 머무는지, 가격표·묶음 화면이 오래 머무는지. (꼭 고칠 것, 보면 좋은 것)"""
@@ -532,6 +660,11 @@ def problems(spec, cuts=None, subs=None):
                     must.append(f"{n}번 문장: 숫자와 단위가 나뉘어요 ('{bare}' / '{nxt}').")
     if spec.get("kind") == "저녁":
         must += dinner_photo_problems(spec)
+        for fn_ in (dinner_script_problems, dinner_menu_problems):
+            m_, s_ = fn_(spec)
+            must += m_
+            should += s_
+        must += dinner_thumb_problems(spec)
     for c in cuts or []:
         if c["kind"] in ("product", "set") and c["dur"] > 3.2:
             should.append(f"{c['at']:.1f}초 {c['kind']} 화면이 {c['dur']:.1f}초 머물러요. 3초 안쪽으로.")

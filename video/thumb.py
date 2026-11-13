@@ -55,11 +55,12 @@ CSS = """
 .bbar svg { width: 46px; height: 58px; } .bbar b { color: #FF6B4A; }
 .bwm { position: absolute; left: -100px; right: -100px; top: 1170px; text-align: center; z-index: 903; font-weight: 900; font-size: 140px;
        color: rgba(255,255,255,.3); transform: rotate(-14deg); letter-spacing: -4px; white-space: nowrap; }
-.bh .ln { position: absolute; left: 0; right: 0; text-align: center; white-space: nowrap; font-family: "Thumb Title", "Noto Sans KR", sans-serif;
+.bh .ln { position: absolute; left: 0; right: 0; text-align: center; white-space: nowrap; font-family: "Thumb Title", "Noto Sans KR", "Noto Color Emoji", "Segoe UI Emoji", "Apple Color Emoji", sans-serif;
           line-height: 1; letter-spacing: -1px; color: #fff; z-index: 1; filter: drop-shadow(0 8px 0 rgba(0,0,0,.35)); }
 /* 테두리는 같은 글을 뒤에 한 벌 더 깔아서 그려요 (글자 위에 바로 그리면 획이 겹친 곳에 검은 줄이 생겨요) */
 .bh .ln::before { content: attr(data-t); position: absolute; left: 0; right: 0; top: 0; z-index: -1; color: #000; -webkit-text-stroke: 12px #000; }
 .bh .ln.l2, .bh .ln .am { color: var(--hc, #FFB23E); }
+.bh .ln .emo { font-family: "Noto Color Emoji", "Segoe UI Emoji", "Apple Color Emoji", sans-serif; display: inline-block; width: 1em; font-size: .92em; }
 .bh .ln.l2 .am { color: #fff; }
 .bstrip { position: absolute; left: 0; right: 0; top: 680px; height: 130px; background: #fff; display: flex; align-items: center; justify-content: center; z-index: 901; }
 .bstrip div { font-weight: 900; font-size: 58px; letter-spacing: -2px; color: #111; text-align: center; padding: 0 40px; white-space: nowrap; }
@@ -112,8 +113,14 @@ def _font():
     return ImageFont.truetype(str(font_file()), 100)
 
 
+EMOJI = __import__("re").compile("[\U0001F300-\U0001FAFF\u2600-\u27BF\uFE0F\u200D]")
+
+
 def width(line, size):
-    return _font().getlength(line.replace("[[", "").replace("]]", "")) * size / 100
+    """제목 한 줄 폭. 이모지(🤤 등)는 제목 글꼴에 없어서 글자 하나(1em)로 쳐요(2026-11-13)."""
+    t = line.replace("[[", "").replace("]]", "")
+    emo = len([c for c in EMOJI.findall(t) if c not in "\uFE0F\u200D"])
+    return (_font().getlength(EMOJI.sub("", t)) + 100 * emo) * size / 100
 
 
 PIN_BOWL = ('<svg viewBox="0 0 200 250"><path d="M100 244C100 244 16 150 16 92a84 84 0 01168 0c0 58-84 152-84 152z" fill="#D8432B"/>'
@@ -150,7 +157,11 @@ def head_html(text, name="먹고갈지도", hc=AC, bg=BG, brand=None):
     for i, (l, s) in enumerate(zip(lines, ss)):
         two = i == 1 and "[[" not in text  # [[ ]] 가 없으면 둘째 줄 전체가 강조색
         plain = B.esc(l.replace("[[", "").replace("]]", ""))
-        out.append(f'<div class="ln{" l2" if two else ""}" data-t="{plain}" style="top:{y:.0f}px;font-size:{s}px">{B.rich(l)}</div>')
+        body = B.rich(l)
+        if EMOJI.search(plain):  # 이모지는 검은 테두리 층에서 빼고(같은 폭의 빈칸), 그림 글자 그대로 둬요
+            plain = EMOJI.sub(lambda m: "" if m.group() in "\uFE0F\u200D" else "\u2003", plain)
+            body = EMOJI.sub(lambda m: m.group() if m.group() in "\uFE0F\u200D" else f'<span class="emo">{m.group()}</span>', body)
+        out.append(f'<div class="ln{" l2" if two else ""}" data-t="{plain}" style="top:{y:.0f}px;font-size:{s}px">{body}</div>')
         y += s + 26
     return "".join(out) + "</div>"
 
@@ -217,8 +228,104 @@ def photo_share(spec):
     return (w * k) * (h * k) / (PIC_W * PIC_H)
 
 
+# ── 저녁 추천 썸네일: 메뉴 4가지를 한 화면 2×2 로 (2026-11-13 사용자: 추천 음식 4가지가 반드시 한 화면에 모두 보이게) ──
+# 사진 칸(810~1920)을 영상의 4칸과 같은 차례·같은 사진으로 나눠요. 칸마다 같은 사진을 흐리게 깔고, 그 위에 사진을 통째로(contain) 두되
+# TGRID_ZOOM 배까지만 키워요(가로·세로 모두 원본의 TGRID_KEEP 이상이 보여야 해요 → 주요 음식이 잘리지 않게).
+TGRID_ZOOM = 1.1
+TGRID_KEEP = 0.85
+TGRID_CELL = ((1080 - 6) / 2, (1110 - 6) / 2)
+TGRID_CSS = (".tgrid { position: absolute; left: 0; right: 0; top: 810px; height: 1110px; display: flex; flex-wrap: wrap; gap: 6px; background: #0E0B09; }"
+             ".tgrid .c { position: relative; flex: 0 0 calc(50% - 3px); height: calc(50% - 3px); overflow: hidden; background: #0E0B09; }"
+             ".tgrid .c img { position: absolute; inset: 0; width: 100%; height: 100%; }"
+             ".tgrid .c img.bg { object-fit: cover; }"
+             ".tgrid .c img.fg { object-fit: contain; }")
+
+
+def grid_of(spec):
+    """저녁 추천의 4칸 [칸 dict…] (영상에서 처음 나오는 2×2). 저녁 추천이 아니거나 없으면 None."""
+    if spec.get("kind") != "저녁" or spec.get("layout") != "rec":
+        return None
+    for l in spec.get("lines") or []:
+        sh = l.get("show") if isinstance(l.get("show"), dict) else {}
+        if sh.get("grid") and sh.get("dir") == "2x2":
+            return sh["grid"]
+    return None
+
+
+def grid_zoom(B, photo):
+    """칸 안에서 사진을 키우는 배수(통째로=1). 칸을 꽉 채우는 배수와 TGRID_ZOOM 중 작은 것."""
+    w, h = B.SIZES[B.photo_key(photo)]
+    cw, ch = TGRID_CELL
+    cover = max(cw / w, ch / h) / min(cw / w, ch / h)
+    return min(TGRID_ZOOM, cover)
+
+
+def grid_html(B, grid):
+    cells = []
+    for c in grid:
+        p = (c or {}).get("photo")
+        if not p:
+            cells.append('<div class="c empty"></div>')
+            continue
+        src, pos = B.fetch_photo(p)
+        z = grid_zoom(B, p)
+        cells.append(f'<div class="c"><img class="bg" src="{B.backdrop(p)}">'
+                     f'<img class="fg" src="{src}" data-z="{z:.3f}" style="transform:scale({z:.3f});transform-origin:{pos}"></div>')
+    return f'<div class="tgrid">{"".join(cells)}</div><style>{TGRID_CSS}</style>'
+
+
+def grid_problems(spec):
+    """설계도만 보고: 4칸·2×2·빈칸 없음 (꼭 고칠 것). 메뉴와 사진이 맞는지는 rec.dinner_photo_problems 가 봐요."""
+    if spec.get("kind") != "저녁" or spec.get("layout") != "rec":
+        return []
+    g = grid_of(spec)
+    if not g:
+        return ['썸네일에 쓸 2×2 4칸이 없어요(첫 4칸 장면에 "dir": "2x2"). 추천 음식 4가지가 썸네일 한 화면에 모두 보여야 해요.']
+    out = []
+    if len(g) != 4:
+        out.append(f"4칸이어야 하는데 {len(g)}칸이에요.")
+    for k, c in enumerate(g):
+        if not ((c or {}).get("photo") or {}).get("url"):
+            out.append(f"{k + 1}번 칸에 사진이 없어요(빈칸). 그 메뉴 사진을 찾거나, 없으면 메뉴를 다시 골라요.")
+    return out
+
+
+# 다 그린 썸네일을 열어 봐요: 4칸, 사진이 다 열렸는지, 칸마다 원본이 얼마나 보이는지, 칸이 비어 보이지 않는지
+GRID_JS = """() => [...document.querySelectorAll('.tgrid .c')].map(c => {
+  const i = c.querySelector('img.fg'); const r = c.getBoundingClientRect();
+  if (!i) return {empty: true, x: r.left, y: r.top, w: r.width, h: r.height};
+  const z = parseFloat(i.dataset.z || '1'), nw = i.naturalWidth, nh = i.naturalHeight;
+  const s = Math.min(r.width / nw, r.height / nh) * z;
+  const dw = Math.min(r.width, nw * s), dh = Math.min(r.height, nh * s);  // 칸 안에 실제로 보이는 사진 자리(가운데 기준)
+  return {empty: false, ok: i.complete && nw > 0, keep_x: Math.min(1, r.width / (nw * s)), keep_y: Math.min(1, r.height / (nh * s)),
+          x: r.left, y: r.top, w: r.width, h: r.height, px: r.left + (r.width - dw) / 2, py: r.top + (r.height - dh) / 2, pw: dw, ph: dh};
+})"""
+
+
+def grid_check(page, shot):
+    """썸네일 그림(shot)과 열린 페이지로 4칸을 확인해요. (문제 목록(비면 통과), 칸별 값)"""
+    from PIL import Image, ImageStat
+    cells = page.evaluate(GRID_JS)
+    out = []
+    if len(cells) != 4:
+        out.append(f"썸네일 4칸 검사: 칸이 {len(cells)}개예요(4개여야 해요).")
+    with Image.open(shot) as im:
+        g = im.convert("L")
+        for k, c in enumerate(cells):
+            x, y, w, h = (c["px"], c["py"], c["pw"], c["ph"]) if "pw" in c else (c["x"], c["y"], c["w"], c["h"])  # 흐린 바탕 말고 사진 자리만 재요
+            box = tuple(int(v) for v in (x + 10, y + 10, x + w - 10, y + h - 10))
+            c["stdev"] = round(ImageStat.Stat(g.crop(box)).stddev[0], 1)
+            if c.get("empty") or not c.get("ok"):
+                out.append(f"썸네일 4칸 검사: {k + 1}번 칸에 사진이 없거나 열리지 않았어요.")
+            elif min(c["keep_x"], c["keep_y"]) < TGRID_KEEP:
+                out.append(f"썸네일 4칸 검사: {k + 1}번 칸 사진이 많이 잘려요(원본의 가로 {c['keep_x']:.0%}·세로 {c['keep_y']:.0%}만 보여요).")
+            if c["stdev"] < 12:
+                out.append(f"썸네일 4칸 검사: {k + 1}번 칸이 거의 한 색이에요(빈칸처럼 보여요).")
+    return out, cells
+
+
 def body(spec):
-    """썸네일 한 장면(머리 + 띠 + 사진)."""
+    """썸네일 한 장면(머리 + 띠 + 사진). 저녁 추천은 사진 자리에 메뉴 4칸(2×2)."""
     import build as B
     head, sub, photo = parts(spec)
     name = json.loads((HERE.parent / "config.json").read_text(encoding="utf-8")).get("account") or "먹고갈지도"
@@ -226,6 +333,11 @@ def body(spec):
     ref = ref_tag(photo)
     if t.get("list"):
         return (list_html(B, photo, t["list"], t.get("list_tag", "")) + ref
+                + f'<div class="bstrip{" logo" if BRAND == "strip" else ""}"><div style="font-size:{strip_size(sub)}px">{B.rich(sub)}</div></div>'
+                + brand_marks(name) + head_html(head, name, t.get("color", AC)))
+    g = grid_of(spec)
+    if g:
+        return (grid_html(B, g)
                 + f'<div class="bstrip{" logo" if BRAND == "strip" else ""}"><div style="font-size:{strip_size(sub)}px">{B.rich(sub)}</div></div>'
                 + brand_marks(name) + head_html(head, name, t.get("color", AC)))
     return (f'<div class="bback"><img src="{B.backdrop(photo)}"></div>{photo_html(B, photo)}{ref}'
@@ -292,7 +404,7 @@ def page(spec):
 
 def has(spec):
     head, _, photo = parts(spec)
-    return bool(head and photo)
+    return bool(head and (photo or grid_of(spec)))
 
 
 def spec_problems(spec):

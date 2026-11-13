@@ -25,6 +25,8 @@ REF_SPS = {"ask": 6.5, "say": 7.1}
 APPROVED = {"rise": 4.8, "front": (1.1, -3.9)}  # 사용자가 고른 B안 1번 문장에서 잰 값(물음 끝, 쉼표 앞 첫 말 높이·끝 내려감)  # 방어축제 승인본(사용자 녹음)에서 잰 쉼 뺀 음절/초
 RATE_STEPS = (0.9, 0.96, 1.02, 1.08, 1.14)  # 말투별 기본 빠르기에 곱해요
 TAKES = (None, 2)
+REC_BREATH = 0.34  # 저녁 추천 한 줄 안 문장 사이 쉼(초)
+MORE_TAKES = (3, 4, 5)  # 받아쓰기에 안 들린 말이 남았을 때 더 읽혀 보는 차례
 SPLIT_FRONT = (0.92, 1.0)  # 쉼표 앞 조각 빠르기(배): 기본 빠르기에 곱해요
 SPLIT_BACK = (0.94, 0.98)
 SPLIT_BREATH = 0.15
@@ -40,7 +42,13 @@ def conf():
 
 
 def applies(spec):
-    return V.breathing(spec) and spec.get("_name") in (conf().get("apply_to") or [])
+    """B안을 쓰는 설계도인지. apply_to 에 "*" 가 있으면 목소리를 고른(voice_pick) 모든 나레이션(2026-11-13 사용자: 나레이션이 들어가는 모든 콘텐츠)."""
+    to = conf().get("apply_to") or []
+    if not (V.breathing(spec) and ("*" in to or spec.get("_name") in to)):
+        return False
+    sp = V.with_duo(spec)  # 직접 녹음한 목소리('user-recording', 방어축제)처럼 TTS 가 아닌 목소리는 건드리지 않아요
+    voices = [(sp.get("narrator") or {}).get("voice")] + [(c or {}).get("voice") for c in (sp.get("cast") or {}).values()]
+    return all(v is None or str(v).startswith("ko-KR-") for v in voices) and any(voices)
 
 
 # ── 받아쓰기 ──
@@ -91,12 +99,55 @@ def _near(w, got, least=0.8):
     return any(SequenceMatcher(None, w, got[k: k + n]).ratio() >= least for k in range(max(1, len(got) - n + 1)))
 
 
+# ── 소리대로 견주기 (2026-11-13: 모든 나레이션에 발음 검사를 넓히며) ──
+# 받아쓰기는 들린 소리대로 적어요: '반각굴이'→'반각구리'(연음), '홈부터'→'놈부터'(ㅎ 약화), '피꼬막'→'핏꼬막'(사이시옷).
+# 글자로만 견주면 바르게 읽은 말도 '안 들림'이 돼서, 자모로 풀어 소리가 같으면 들린 것으로 쳐요. '불금엔→불구멘'(모음이 바뀜)·
+# '광어회→광어에'·'당기면→단기면'처럼 소리가 달라진 것은 그대로 잡혀요.
+_CHO = "ㄱㄲㄴㄷㄸㄹㅁㅂㅃㅅㅆㅇㅈㅉㅊㅋㅌㅍㅎ"
+_JUNG = "ㅏㅐㅑㅒㅓㅔㅕㅖㅗㅘㅙㅚㅛㅜㅝㅞㅟㅠㅡㅢㅣ"
+_JONG = ["", "ㄱ", "ㄲ", "ㄳ", "ㄴ", "ㄵ", "ㄶ", "ㄷ", "ㄹ", "ㄺ", "ㄻ", "ㄼ", "ㄽ", "ㄾ", "ㄿ", "ㅀ", "ㅁ", "ㅂ", "ㅄ", "ㅅ", "ㅆ", "ㅇ", "ㅈ", "ㅊ", "ㅋ", "ㅌ", "ㅍ", "ㅎ"]
+_TENSE = set("ㄲㄸㅃㅆㅉ")
+
+
+def sound(t):
+    """한글을 소리 자모로: 초성 ㅇ·ㅎ 은 빼고(연음·ㅎ 약화), 된소리 앞 받침 ㅅ 은 빼요(사이시옷). 한글 아닌 글자는 버려요."""
+    out = []
+    for ch in t:
+        k = ord(ch) - 0xAC00
+        if not 0 <= k < 11172:
+            continue
+        cho, jung, jong = _CHO[k // 588], _JUNG[(k % 588) // 28], _JONG[k % 28]
+        if cho not in "ㅇㅎ":
+            out.append(cho)
+        out.append(jung)
+        out.append(jong)
+    s = "".join(out)
+    return "".join(c for i, c in enumerate(s) if not (c == "ㅅ" and i + 1 < len(s) and s[i + 1] in _TENSE))
+
+
+NUM_WORD = re.compile(r"^(?:[영일이삼사오육칠팔구십백천만억]|하나|둘|셋|넷|다섯|여섯|일곱|여덟|아홉|열|스물|스무|서른|마흔|쉰|예순|일흔|여든|아흔|한|두|세|네)+"
+                      r"(?:등|개|월|일|년|시|분|명|원|달러|도|위|번|째|살|배|곳|가지|퍼센트)?"
+                      r"(?:은|는|이|가|을|를|에|에서|부터|까지|도|만|의|쯤|정도|남짓|이요|예요|이에요)?$")
+
+
+def heard_as_number(w, transcript):
+    """대본은 '열일곱에서'·'십일월부터'처럼 우리말 수로 읽혔는데 받아쓰기는 '17에서'·'11월부터'로 적은 경우."""
+    return bool(re.search(r"\d", transcript)) and bool(NUM_WORD.match(w))
+
+
 def missing(text, transcript):
-    """대본(숫자 없는 낱말만)에서 받아쓰기에 안 들린 낱말들. 숫자가 든 낱말은 받아쓰기 표기가 달라 빼요."""
+    """대본(숫자 없는 낱말만)에서 받아쓰기에 안 들린 낱말들. 숫자가 든 낱말은 받아쓰기 표기가 달라 빼요.
+    글자가 달라도 소리가 같으면(연음·ㅎ 약화·사이시옷) 들린 것으로, 우리말 수로 읽은 숫자는 받아쓰기가 숫자로 적었으면 들린 것으로 쳐요."""
     got = _norm(transcript)
+    got_s = sound(transcript)
     out = []
     for w in re.sub(r"\[\[|\]\]", "", text).split():
         w2 = _norm(w)
+        ws = sound(w2)
+        if len(ws) >= 3 and ws in got_s:
+            continue
+        if heard_as_number(w2, transcript):
+            continue
         if len(w2) >= 2 and not re.search(r"[0-9A-Za-z]", w2) and w2 not in got and not (len(w2) >= 4 and _near(w2, got)):
             out.append(w)
     return out
@@ -114,6 +165,21 @@ def spaced(text, words):
                 break
         if len(stem) >= 4 and stem[-1] in PLACE_END:
             new = new.replace(stem, stem[:-1] + " " + stem[-1], 1)
+    return new
+
+
+CONTRACT = (("엔", "에는"), ("겐", "게는"), ("껜", "께는"))  # 줄임 조사: TTS 가 뭉개요('불금엔→불구멘', 2026-11-13)
+
+
+def unpacked(text, words):
+    """안 들린 낱말이 줄임 조사로 끝나면 풀어 읽혀요: '불금엔' → '불금에는'. 자막(say)은 그대로예요."""
+    new = text
+    for w in words:
+        core = re.sub(r"[^가-힣]", "", w)
+        for a, b in CONTRACT:
+            if len(core) >= 2 and core.endswith(a):
+                new = new.replace(core, core[: -len(a)] + b, 1)
+                break
     return new
 
 
@@ -190,11 +256,11 @@ def _loud(v):
     return v * min(V.LOUD / max(1e-9, np.sqrt(np.mean(v ** 2))), 0.98 / max(1e-9, np.abs(v).max()))
 
 
-def candidates(s, c, rate, pace, last_line):
+def candidates(s, c, rate, pace, last_line, takes=None):
     out = []
     for k in RATE_STEPS:
         r = round(rate * k, 3)
-        for t in TAKES:
+        for t in (takes or TAKES):
             x = V.tts(s, c.get("voice"), r, take=t, tail=0.12)
             if x is None:
                 return None
@@ -207,7 +273,7 @@ def candidates(s, c, rate, pace, last_line):
                 m["score"] += 1
             out.append({"x": y, "edges": starts, "rate": r, "take": t or 1, "how": f"빠르기 {r}·{t or 1}번째 읽기", "m": m, "comma": max([0.0] + breaths)})
     ps = V.phrases(s)
-    if s.endswith("?") and len(ps) == 2:  # 쉼표 앞·뒤 따로 읽기(1번 '제주에서 방어축제에,' 고친 방법)
+    if s.endswith("?") and len(ps) == 2 and not takes:  # 쉼표 앞·뒤 따로 읽기(1번 '제주에서 방어축제에,' 고친 방법)
         front = ps[0].strip()
         front = front if front.endswith(",") else front + ","
         back = ps[-1].strip()
@@ -282,6 +348,21 @@ def speak(spec, lines, i, c, prev=None):
                 if b2 is not None and (not m2 or len(m2) < len(miss)) and b2.get("match", 0) >= best.get("match", 0):
                     why.append(f"받아쓰기에 안 들린 '{' '.join(miss)}' 를 띄어 읽음")
                     best, miss, used = b2, m2, s2
+        if miss:  # 모든 B안 나레이션(2026-11-13 사용자: 발음 검사 공통). 처음엔 저녁 추천에서: '불금엔→불구멘', '광어회→광어에'가 경고만 남고 그대로 나갔어요
+            u = unpacked(used, miss)  # ① 줄임 조사를 풀어 다시 합성('불금엔'→'불금에는'), 받아쓰기도 푼 말로 견줘요
+            if u != used:
+                c4 = candidates(u, c, rate, pace, last_line)
+                b4, m4 = choose(c4, unpacked(checks[k], miss), ctx, ctx_text) if c4 else (None, miss)
+                if b4 is not None and (not m4 or len(m4) < len(miss)):
+                    why.append(f"받아쓰기에 안 들린 '{' '.join(miss)}' 를 풀어 읽음({u})")
+                    best, miss, used = b4, m4, u
+        if miss:  # ② 같은 글로 다른 읽기를 더 만들어 한 번 더 골라요
+            more = candidates(used, c, rate, pace, last_line, takes=MORE_TAKES)
+            if more:
+                b3, m3 = choose(more, checks[k] if used == s else unpacked(checks[k], miss), ctx, ctx_text)
+                if b3 is not None and (not m3 or len(m3) < len(miss)):
+                    why.append(f"받아쓰기에 안 들린 '{' '.join(miss)}' 때문에 다시 읽혀 고름")
+                    best, miss = b3, m3
         if miss:
             warn.append(f"받아쓰기에 안 들린 낱말: {', '.join(miss)} (들린 말: {(best.get('heard') or '')[-40:]})")
         m = best["m"]
@@ -299,6 +380,8 @@ def speak(spec, lines, i, c, prev=None):
         at += len(best["x"]) / V.SR
         if k < len(parts) - 1:
             g = int(V.SR * (0.24 if s.endswith("?") else 0.2))
+            if spec.get("kind") == "저녁":  # 저녁 추천: 한 문장 안 두 마디('두툼한 함박스테이크. / 든든한 한 끼가…') 사이에 숨 쉴 틈(2026-11-13 사용자: "숨넘어가")
+                g = max(g, int(V.SR * REC_BREATH))
             pieces.append(np.zeros(g))
             at += g / V.SR
     v = _loud(np.concatenate(pieces))

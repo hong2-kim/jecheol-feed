@@ -207,7 +207,7 @@ COVER_SEC, CARD_SEC, FADE_SEC, THUMB_SEC = 3.0, 4.0, 0.4, 1.2  # 카드 쇼츠: 
 THUMB_HOLD, THUMB_FADE = 3.0, 0.9  # 카드 쇼츠 맨 앞 썸네일: 머무는 시간, 다음 장으로 천천히 넘어가는 시간 (2026-10-21 사용자: 너무 빨라)
 
 
-def render_thumb(spec, name, browser):
+def render_thumb(spec, name, browser, warns=None):
     """썸네일 그림 한 장(dist/날짜-이름-thumb.jpg). 큰 두 줄 제목 + 사진 한 장이에요. (2026-10-17 사용자가 정함, thumb.py)"""
     html_path = ROOT / "build" / f"{name}-thumb.html"
     html_path.parent.mkdir(exist_ok=True)
@@ -220,11 +220,15 @@ def render_thumb(spec, name, browser):
         page.evaluate("document.fonts.ready")
         page.wait_for_function("[...document.images].every(i => i.complete && i.naturalWidth > 0)", timeout=30000)
         page.screenshot(path=str(out), type="jpeg", quality=93)
+        if warns is not None and thumb.grid_of(spec):  # 저녁 추천: 4칸이 다 보이는지 그린 그림으로 확인 (2026-11-13 사용자)
+            probs, _ = thumb.grid_check(page, out)
+            warns.extend(probs)
     finally:
         page.close()
     return out.name
 
 
+PRON_WARNS = []  # 카드 나레이션에서 다시 합성해도 안 들린 낱말 → 그 영상 warns(승인 전 시안)
 SAY_LEAD, SAY_TAIL, SAY_FADE = 0.25, 0.3, 0.08  # 내레이션 자막 장: 말 앞뒤 여유, 자막이 바뀔 때 겹치는 시간
 
 
@@ -248,7 +252,12 @@ def card_segments(files, name, spec, front=None):
         for k, line in enumerate(c["lines"], 1):
             if spec.get("voice_pick"):  # 2026-11-08: 내레이션 쇼츠와 같은 읽기(쉼표 숨·늘어짐 다시 읽기, 배속 일괄 금지)
                 sp = voice.with_duo(spec)
-                sound, _ = voice.speak(sp, c["lines"], k - 1, sp.get("narrator") or {})
+                import voice_b
+                if voice_b.applies(sp):  # 2026-11-13 사용자: 카드 속 나레이션도 B안 말투·발음 검사
+                    sound, r = voice_b.speak(sp, c["lines"], k - 1, voice.who_of(sp, line) or sp.get("narrator") or {}, prev=said[-1][1] if said else None)
+                    PRON_WARNS.extend(f"카드 {i}장 {k}번 말: {w}" for w in r.get("warn", []) if w.startswith("받아쓰기에 안 들린"))
+                else:
+                    sound, _ = voice.speak(sp, c["lines"], k - 1, sp.get("narrator") or {})
             else:
                 sound = voice.tts(voice.spoken(line))
             sec = len(sound) / voice.SR if sound is not None else voice.estimate(voice.spoken(line))
@@ -366,7 +375,10 @@ def main():
                 entry["yt_category"], entry["yt_category_id"] = build.youtube_category(spec)  # 텔레그램 안내에만 가요(설명에는 안 넣어요)
                 if thumb.has(spec):
                     try:  # 썸네일이 안 만들어져도 영상은 그대로 만들어요
-                        entry["thumb"] = render_thumb(spec, name, browser)
+                        tw = []
+                        entry["thumb"] = render_thumb(spec, name, browser, tw)
+                        if tw:
+                            entry["thumb_warns"] = tw
                     except Exception as e:
                         log_error(f"thumb:{name}", e)
                         print(f"썸네일을 만들지 못했어요: {name} — {e}")
@@ -393,14 +405,17 @@ def main():
                     entry.update({"ok": True, "format": "cards", "file": files[0], "files": files, "size_mb": round(size / 1e6, 1)})
                     print(f"만들었어요: {name} 카드 {len(files)}장")
                     try:  # 쇼츠 영상이 안 만들어져도 인스타용 카드는 그대로 보내요
+                        PRON_WARNS.clear()
                         short, sec = cards_short(files, name, spec, entry.get("thumb"))
+                        if PRON_WARNS:
+                            entry["warns"] = (entry.get("warns") or []) + [f"발음 검사: {w}" for w in PRON_WARNS[:4]]
                         entry.update({"short": short.name, "short_seconds": round(sec, 1)})
                         print(f"만들었어요: {short.name} ({sec:.1f}초, 유튜브 쇼츠용)")
                     except Exception as e:
                         log_error(f"short:{name}", e)
                         print(f"쇼츠 영상을 만들지 못했어요: {name} — {e}")
                 else:
-                    warns = []
+                    warns = list(entry.get("thumb_warns") or [])  # 썸네일 4칸 검사에 걸린 것도 '승인 전 시안'으로
                     out, duration = render(spec, name, browser, warns)
                     if warns:
                         entry["warns"] = warns

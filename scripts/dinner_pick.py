@@ -7,14 +7,15 @@
   python scripts/dinner_pick.py --save                 기록을 state/dinner_history.json 에 써요(아침 실행이 저녁을 만든 뒤)
   python scripts/dinner_pick.py --simulate 30          발행 없이 30일 치를 이어서 골라 보고 반복·비율을 세요(시험 A)
   python scripts/dinner_pick.py --stats                메뉴 사전의 갈래·메뉴 수
+  python scripts/dinner_pick.py 2026-11-13 --check 닭갈비 광어회 …   고른 메뉴가 최근 영상과 겹치는지(비슷한 음식 10일 안은 꼭 바꿈)
   python scripts/dinner_pick.py add "이름" --cat 7 --en "english name" [--tier new] [--snack]
                                                        사전에 없는 실제 음식을 더해요(계열·재료·조리는 이름으로 어림)
 
 메뉴 사전은 ideas/dinner_menu.json(갈래 24개). 이름·갈래·계열·주재료·조리 방식·익숙함(popular 익숙한 인기 /
 nostalgic 오랜만에 먹고 싶은 / new 새로운)·한 끼 여부(meal)·영어 검색어(en, Unsplash·Pexels·위키미디어용)·제철 달을 적어요.
 
-반복은 막지 않고 점수에만 넣어요(권장 기준, 강제 차단 아님):
-  같은 메뉴 30일 안 ↓, 같은 계열 7일 안 ↓, 같은 갈래 사흘 연속 ↓, 같은 주재료·조리 방식 몰림 ↓, 오래 안 나온 메뉴 ↑,
+반복은 점수에 넣고(2026-11-13부터 계열 단위로도), 고른 뒤 --check·rec.py 가 비슷한 음식 10일 안을 '꼭 고칠 것'으로 봐요:
+  같은 메뉴 30일 안 ↓, 같은 계열 7일 안 ↓, 이름만 다른 비슷한 음식 14일 안 ↓, 같은 계열 30일 안 2번 넘게 ↓, 보관함 사진 가점 없음, 같은 갈래 사흘 연속 ↓, 같은 주재료·조리 방식 몰림 ↓, 오래 안 나온 메뉴 ↑,
   제철·날씨 ↑, 예전 반응(조회수) 좋았던 메뉴 ↑, 지난 30번의 익숙함 비율이 목표(40·25·20·15%)보다 모자란 쪽 ↑.
 그래서 어제 짬뽕이 나와도 오늘 짬뽕이 후보에서 빠지지 않아요. 다만 점수가 내려가 다른 메뉴와 견줘 보게 돼요.
 한 끼가 안 되는 간식·디저트(meal=false)는 저녁 추천 후보에 넣지 않아요(rules/daily/dinner.md, 2026-11-09 사용자).
@@ -292,6 +293,7 @@ def score_all(db, day, hist, weather=None):
     by = name_index(db)
     past = [h for h in hist if h["day"] < day.isoformat()]
     last_day, fam_days, cat_days, ing_cnt, how_cnt = {}, Counter(), {}, Counter(), Counter()
+    fam_last, fam30 = {}, Counter()  # 계열별 마지막 날·30일 안 횟수 (2026-11-13: '일본식함박스테이크'가 '함박스테이크' 반복 감점을 빠져나갔어요)
     for h in past:
         d = date.fromisoformat(h["day"])
         ago = (day - d).days
@@ -300,6 +302,9 @@ def score_all(db, day, hist, weather=None):
             name = x["name"] if x else m
             last_day[name] = max(last_day.get(name, d), d)
             fam = (x or {}).get("family") or family_of(m)
+            fam_last[fam] = max(fam_last.get(fam, d), d)
+            if ago <= 30:
+                fam30[fam] += 1
             if ago <= 7:
                 fam_days[fam] += 1
                 for i in (x or {}).get("ing") or ing_of(m):
@@ -348,6 +353,16 @@ def score_all(db, day, hist, weather=None):
         if f:
             s -= 0.3 * f
             why.append(f"같은 계열({x['family']}) 7일 안 {f}번 -{0.3 * f:.2f}")
+        fl = fam_last.get(x["family"])
+        fam_ago = (day - fl).days if fl else None
+        if fam_ago is not None and fam_ago <= FAMILY_DAYS and not (ld and ld == fl):  # 이름만 다른 같은 음식(함박스테이크·일본식함박스테이크)
+            cut = 0.9 if fam_ago <= 7 else 0.9 * (FAMILY_DAYS + 1 - fam_ago) / (FAMILY_DAYS - 6)
+            s -= cut
+            why.append(f"비슷한 음식({x['family']}) {fam_ago}일 전 -{cut:.2f}")
+        if fam30.get(x["family"], 0) >= 2:  # 닭갈비·치킨·파스타·돈가스처럼 한 계열로 몰리지 않게 (2026-11-13 사용자)
+            cut = 0.12 * (fam30[x["family"]] - 1)
+            s -= cut
+            why.append(f"30일 안 같은 계열 {fam30[x['family']]}번 -{cut:.2f}")
         if len(cat_days.get(x["cat"], ())) >= 2:
             s -= 0.3
             why.append("같은 갈래가 요 며칠 계속 -0.3")
@@ -380,7 +395,7 @@ def score_all(db, day, hist, weather=None):
             why.append(f"{plabel} {ease:+.2f}")
         s += ((seed >> (hash_id(x["name"]) % 97)) % 1000) / 1000 * 0.3 - 0.15  # 날마다 조금씩 달라지게
         out.append({**x, "score": round(s, 3), "kind": tier, "why": why, "last": ld.isoformat() if ld else None,
-                    "photo": plabel, "ease": ease})
+                    "photo": plabel, "ease": ease, "fam_ago": fam_ago})
     out.sort(key=lambda r: -r["score"])
     return out, share
 
@@ -403,21 +418,26 @@ SEA = {"해산물", "생선"}
 EASY_CATS = {1, 2, 3, 4, 5, 6, 8, 9, 10, 12, 13, 20, 22}
 KOREAN_CATS = {1, 2, 3, 4, 5, 12, 20, 22}
 HARD = -0.4  # 사진을 거의 못 찾는 메뉴(감점만, 후보에서 빼지 않아요)
+FAMILY_DAYS = 14  # 비슷한 음식(같은 계열) 감점 기간
+REPEAT_MUST = 10  # 같은 계열이 이 날수 안에 나왔으면 고른 뒤 검사(--check, rec.py)가 '꼭 고칠 것'으로 막아요(2026-11-13)
+PHOTO_WHY = re.compile(r"사진|보관함|📷")
 
 
 def photo_ease(x, notes):
     """사진 확보 가능성 점수 (2026-11-12 사용자: 다양화 때문에 사진 찾기 어려운 생소한 메뉴만 고르지 않게).
-    ① 비공개 보관함에 그 메뉴 사진이 있으면 + ② 사전의 photo_n(위키미디어에서 영어로 찾아 이름이 맞은 사진 수, --probe-photos 로 잼)
+    2026-11-13 사용자: 보관함 사진이 많다고 가점을 주지 않아요(보관함 사진 위주로 닭갈비·돈가스·파스타가 되풀이됐어요).
+    보관함은 바깥 사진이 없을 때의 마지막 길로만 봐요(감점을 막아 줄 뿐 더하지 않아요). ② 사전의 photo_n(위키미디어에서 영어로 찾아 이름이 맞은 사진 수, --probe-photos 로 잼)
     0장이면 크게 −, 1~2장이면 − ③ 잰 값이 없으면 한식·대중 갈래는 그대로, 그 밖의 해외·새로운 메뉴는 조금 −. (점수, 표시)"""
     keys = [norm(k) for k in [x["name"], *x.get("aka", [])]]
-    if notes and any(k and k in nn for k in keys for nn in notes):
-        return 0.15, "📷보관함"
+    vault = bool(notes and any(k and k in nn for k in keys for nn in notes))
     n = x.get("photo_n")
     if n is not None:
         if n == 0 and x["cat"] in KOREAN_CATS:  # 한식은 위키미디어보다 관광공사에 사진이 많아요. 위키 0장만으로 크게 깎지 않아요
             return -0.1, "위키 0장·관광공사 확인"
-        return (HARD, "사진 거의 없음") if n == 0 else (-0.15, f"사진 적음({n})") if n < 3 else (0.05, f"사진 넉넉({n})")
-    if x["cat"] in EASY_CATS and x.get("tier") != "new":
+        if vault:  # 바깥 사진이 적어도 보관함이 마지막 길이 돼요(가점은 없어요)
+            return 0.0, f"바깥 사진 {n}장·보관함 있음"
+        return (HARD, "사진 거의 없음") if n == 0 else (-0.15, f"사진 적음({n})") if n < 3 else (0.0, f"사진 넉넉({n})")
+    if vault or (x["cat"] in EASY_CATS and x.get("tier") != "new"):
         return 0.0, "관광공사·보관함"
     return -0.15, "사진 미확인"
 
@@ -426,6 +446,10 @@ def candidates(scored, n=18):
     """서로 다른 계열에서 n개(한 갈래는 4개까지). 익숙한 인기·오랜만에·새로운·제철이 고루 들어가게 먼저 몇 개씩 챙겨요."""
     def ok(r, out):
         return r["family"] not in {x["family"] for x in out} and sum(1 for x in out if x["cat"] == r["cat"]) < 4
+    # 최근 7일 안에 나온 계열(이름만 다른 비슷한 음식 포함)은 후보에서 먼저 빼요(2026-11-13 사용자: 최근 영상 음식은 우선 제외).
+    # 후보가 모자라면 다시 넣어요(막지 않아요)
+    fresh = [r for r in scored if r.get("fam_ago") is None or r["fam_ago"] > 7]
+    scored = fresh if len({r["family"] for r in fresh}) >= n else scored
     out = []
     for kind, k in (("popular", 6), ("nostalgic", 4), ("new", 3), ("season", 3)):
         for r in scored:
@@ -491,10 +515,49 @@ def show(day, weather, n=18):
               f"{r['score']:.2f}  — {'; '.join(r['why'])}  en: {', '.join(r.get('en') or [])}")
     c = combo(cands, share)
     print("■ 추천 4칸(점수 높은 차례로 칸 갈래가 다르게): " + " / ".join(f"{r['name']}({SLOT.get(r['how'], '기타')})" for r in c))
-    print("  고르는 법: 위 후보 중 그날 가장 추천하기 좋은 4개를 고른다(사진·날씨·화제를 보고 바꿔도 된다). 반복은 점수일 뿐 금지가 아니다.\n"
-          "  설계도에 \"menu_pick\": {\"menus\": [4개], \"from\": \"dinner_pick\", \"why\": {메뉴: 한 줄 까닭}} 을 적는다.\n"
-          "  사진이 보관함에 없으면 관광공사 → python scripts/photos.py food \"메뉴\" (한국어로 모자라면 영어로 Unsplash·Pexels·위키미디어를 찾아요).")
+    print("  고르는 법: 위 후보 중 그날 가장 추천하기 좋은 4개를 고른다(날씨·요일·화제로 바꿔도 되지만 보관함 사진이 있다는 이유로 바꾸지 않는다).\n"
+          "  고른 뒤 python3 scripts/dinner_pick.py --check 메뉴1 메뉴2 메뉴3 메뉴4 로 최근 영상과 겹치는지 본다(비슷한 음식 10일 안은 바꾼다).\n"
+          "  설계도에 \"menu_pick\": {\"menus\": [4개], \"from\": \"dinner_pick\", \"why\": {메뉴: 한 줄 까닭}} 을 적는다(까닭에 사진 이야기는 쓰지 않는다).\n"
+          "  사진은 메뉴를 정한 뒤 찾는다: python3 scripts/photos.py food \"메뉴\" --vault-last (Unsplash 영어 검색 → 관광공사·Pexels·위키미디어 → 마지막에 보관함).")
     return c
+
+
+def menu_problems(menus, day, why=None, again=None):
+    """고른 네 메뉴를 최근 저녁 영상과 견줘요(2026-11-13 사용자: 최근 영상 음식은 우선 제외, 이름만 다른 비슷한 음식도, 사진 때문에 고르지 않기).
+    (꼭 고칠 것, 보면 좋은 것). rec.py 검사(매일 실행·gate)와 --check 가 같이 써요.
+    again: {"메뉴": "다시 추천하는 까닭"} — 제철·화제·예전 반응처럼 사진이 아닌 까닭이 있으면 10일 안이라도 막지 않아요."""
+    db = load_db()
+    by = name_index(db)
+    hist = history(db, upto=day.isoformat())
+    must, should = [], []
+    for m in menus:
+        x = by.get(norm(m))
+        fam = (x or {}).get("family") or family_of(m)
+        hits = []
+        for h in hist:
+            for pm in h["menus"]:
+                px = by.get(norm(pm))
+                if ((px or {}).get("family") or family_of(pm)) == fam:
+                    hits.append((h["day"], pm))
+        if hits:
+            last_day, last_m = max(hits)
+            ago = (day - date.fromisoformat(last_day)).days
+            n30 = sum(1 for d_, _ in hits if (day - date.fromisoformat(d_)).days <= 30)
+            reason = str((again or {}).get(m) or "")
+            lx = by.get(norm(last_m))
+            same = "같은 메뉴" if norm(last_m) == norm(m) or (lx and x and lx["name"] == x["name"]) else "비슷한 음식이"
+            if ago <= REPEAT_MUST and not (reason and not PHOTO_WHY.search(reason)):
+                must.append(f"'{m}' — {ago}일 전({last_day}) 영상의 '{last_m}' 과 {same.rstrip('이')}{'이에요' if same.endswith('이') else '예요'}(계열 {fam}). 다른 후보로 바꾸거나, 꼭 다시 추천할 까닭"
+                            f"(제철·화제·예전 반응)이 있으면 menu_pick.again 에 적어요.")
+            elif ago <= FAMILY_DAYS:
+                should.append(f"'{m}' — {ago}일 전({last_day}) 영상의 '{last_m}' 과 {same.rstrip('이')}{'이에요' if same.endswith('이') else '예요'}(계열 {fam}).")
+            if n30 >= 3:
+                should.append(f"'{m}' 계열({fam})이 30일 안에 {n30}번 나왔어요. 한 계열로 몰리지 않게 다른 갈래를 먼저 봐요.")
+    for m, w in (why or {}).items() if isinstance(why, dict) else []:
+        if PHOTO_WHY.search(str(w)):
+            must.append(f"menu_pick.why 의 '{m}' 까닭에 사진 이야기가 있어요('{w}'). 메뉴는 계절·요일·다양성으로 고르고, 사진은 고른 뒤 찾아요"
+                        "(보관함은 바깥 사진이 없을 때만).")
+    return must, should
 
 
 # ── 시험 A: 발행 없이 30일 ─────────────────────────────────────────────
@@ -623,8 +686,17 @@ def main():
     ap.add_argument("-n", type=int, default=18)
     ap.add_argument("--json", action="store_true")
     ap.add_argument("--probe-photos", type=int, metavar="N", help="해외·새로운 메뉴 N개의 사진 수를 재서 사전에 적어요")
+    ap.add_argument("--check", nargs="+", metavar="메뉴", help="고른 메뉴가 최근 저녁 영상과 겹치는지 봐요(날짜는 day)")
     a = ap.parse_args()
     day = date.fromisoformat(a.day) if a.day else today_kst()
+    if a.check:
+        must, should = menu_problems(a.check, day)
+        for t in must:
+            print("꼭 고칠 것:", t)
+        for t in should:
+            print("참고:", t)
+        print("겹침 없음" if not must and not should else "")
+        return 1 if must else 0
     db = load_db()
     if a.probe_photos:
         return probe_photos(a.probe_photos)
@@ -659,4 +731,4 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    sys.exit(main() or 0)

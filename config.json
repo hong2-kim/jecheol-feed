@@ -45,7 +45,7 @@
       "laomedeia": {"voice": "ko-KR-Chirp3-HD-Laomedeia", "rate": 1.05, "sex": "여", "use": "B조합: 친구 대화·취향 비교"}
     },
     "pairs": {"A": ["puck", "erinome"], "B": ["achird", "laomedeia"]},
-    "style_b": {"apply_to": ["10-voice", "3-dinner"], "asr_model": "medium", "note": "2026-11-12 사용자 승인 B안 말투·호흡(video/voice_b.py, 받아쓰기는 medium: small 은 탄산음료→음류 같은 뭉갬을 못 가림): 같은 목소리(voices·pairs)로 빠르기 여러 가지·두 번 읽기·쉼표 앞뒤 따로 읽기 후보를 만들고, 승인본 말 빠르기·물음 억양·받아쓰기로 골라요. 끄려면 apply_to 를 [] 로"},
+    "style_b": {"apply_to": ["*"], "asr_model": "medium", "note": "2026-11-13 사용자: 나레이션이 들어가는 모든 콘텐츠에 적용(*: 목소리를 고른 모든 나레이션, 카드 속 나레이션 포함, 예전처럼 좁히려면 [\"10-voice\", \"3-dinner\"]). 안 들린 낱말은 줄임 조사를 풀어 다시 합성·다른 읽기로 다시 고르고, 그래도 남으면 승인 전 시안. 2026-11-12 사용자 승인 B안 말투·호흡(video/voice_b.py, 받아쓰기는 medium: small 은 탄산음료→음류 같은 뭉갬을 못 가림): 같은 목소리(voices·pairs)로 빠르기 여러 가지·두 번 읽기·쉼표 앞뒤 따로 읽기 후보를 만들고, 승인본 말 빠르기·물음 억양·받아쓰기로 골라요. 끄려면 apply_to 를 [] 로"},
     "handle": "@meokgomap",
     "viral": {"enabled": true, "note": "2026-11-09 사용자가 부탁함: 매일 09시 ytstats 가 scripts/yt_viral.py 로 '채널 평소보다 몇 배' 터진 먹거리 쇼츠를 텔레그램으로 보내요. 낱말(queries)·기준(min_multiple, min_views, per_query, top)은 여기에 적으면 기본값 대신 써요."}
   }
