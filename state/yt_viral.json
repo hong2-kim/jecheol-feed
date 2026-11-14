@@ -371,6 +371,113 @@
         "channels": 120,
         "thin": 6
       }
+    },
+    "2026-11-14": {
+      "picks": [
+        {
+          "id": "gcz8BJEffg0",
+          "title": "무나물 볶을 때 제발 기름에 바로 볶지마세요 🍀요리꿀팁/건강정보/음식/집밥/건강한 밥상",
+          "channel": "식물조아~ ☘️",
+          "subs": 116000,
+          "views": 27720,
+          "median": 3354,
+          "n": 20,
+          "multiple": 8.3,
+          "hours": 67,
+          "formulas": [
+            "경고·실수",
+            "방법·꿀팁"
+          ],
+          "query": "음식 꿀팁",
+          "url": "https://youtube.com/shorts/gcz8BJEffg0"
+        },
+        {
+          "id": "pxjJGUQInys",
+          "title": "이거 알고 빵집 끊었어요! 🍪 1분 완성 다이어트 간식 레시피",
+          "channel": "일등감의 쉬운 레시피",
+          "subs": 277000,
+          "views": 272259,
+          "median": 51586,
+          "n": 48,
+          "multiple": 5.3,
+          "hours": 16,
+          "formulas": [
+            "방법·꿀팁"
+          ],
+          "query": "다이어트 음식",
+          "url": "https://youtube.com/shorts/pxjJGUQInys"
+        },
+        {
+          "id": "FBNP9vKKRg0",
+          "title": "깊은맛의 김장양념 황금레시피! 이렇게 해보세요",
+          "channel": "순덕이네 반찬가게",
+          "subs": 58100,
+          "views": 17561,
+          "median": 3504,
+          "n": 36,
+          "multiple": 5.0,
+          "hours": 41,
+          "formulas": [
+            "방법·꿀팁"
+          ],
+          "query": "제철 음식",
+          "url": "https://youtube.com/shorts/FBNP9vKKRg0"
+        },
+        {
+          "id": "K55tEeuq6cU",
+          "title": "절대 살이 찔 수 없는 계란빵!! 다이어트 간식",
+          "channel": "쑤미쿡",
+          "subs": 91600,
+          "views": 80981,
+          "median": 26816,
+          "n": 49,
+          "multiple": 3.0,
+          "hours": 41,
+          "formulas": [
+            "경고·실수"
+          ],
+          "query": "다이어트 음식",
+          "url": "https://youtube.com/shorts/K55tEeuq6cU"
+        }
+      ],
+      "leaders": [
+        {
+          "id": "FdXeK5hVtbg",
+          "title": "상금에 초인적인 먹방 스킬 발휘한 엄마",
+          "channel": "애니소환",
+          "subs": 21300,
+          "views": 51192,
+          "median": 43880,
+          "n": 45,
+          "multiple": 1.2,
+          "hours": 26,
+          "formulas": [],
+          "query": "먹방 쇼츠",
+          "url": "https://youtube.com/shorts/FdXeK5hVtbg"
+        },
+        {
+          "id": "LvbkNxZJ9Kg",
+          "title": "코스트코 신상 나오자마자 담았다는 디저트템",
+          "channel": "코코왕",
+          "subs": 7350,
+          "views": 43459,
+          "median": 24388,
+          "n": 14,
+          "multiple": 1.8,
+          "hours": 43,
+          "formulas": [
+            "신상·한정"
+          ],
+          "query": "디저트 신상",
+          "url": "https://youtube.com/shorts/LvbkNxZJ9Kg"
+        }
+      ],
+      "stats": {
+        "searched": 212,
+        "shorts": 201,
+        "channels": 120,
+        "thin": 4
+      }
     }
   }
 }
