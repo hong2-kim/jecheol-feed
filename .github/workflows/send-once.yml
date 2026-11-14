@@ -1,6 +1,6 @@
-# 2026-11-13, 사용자가 승인한 금요일 저녁 추천 수정본(3차 최종본 21초: 메뉴마다 다른 소개·2×2 썸네일)을 비공개 보관함에서 받아 텔레그램으로 한 번만 보내요.
-# 오늘 아침 자동으로 간 원래 저녁 추천(2026-11-13-3-dinner)은 다시 보내지 않아요. 사진은 Unsplash 무료 라이선스 3장 + 사용자 사진이라 공개 릴리스에도 올려요.
-# 보낸 뒤 state/sent.json 에 표시를 남겨 다시 보내지 않아요. 끝나면 지워요.
+# 2026-11-14, 사용자가 승인한("보내") 토요일 저녁 추천 수정본(썸네일·첫 문장을 '토요일 저녁 아직 못 골랐어?'로, 23.7초)을 비공개 보관함에서 받아 텔레그램으로 한 번만 보내요.
+# 오늘 아침 자동으로 간 원래 저녁 추천(2026-11-14-3-dinner)은 다시 보내지 않아요. 사진은 한국관광공사 공공누리 1유형이라 공개 릴리스에도 올려요.
+# 보낸 뒤 state/sent.json 에 표시를 남겨 다시 보내지 않아요.
 name: send-once
 
 on:
@@ -24,24 +24,24 @@ jobs:
       - name: 날짜·중복 확인
         run: |
           d="$(TZ=Asia/Seoul date +%F)"
-          [ "$d" = "2026-11-13" ] || [ "$d" = "2026-11-14" ]
-          if grep -q '"2026-11-13-3-dinner-v2"' state/sent.json; then echo "이미 보냈어요"; exit 1; fi
+          [ "$d" = "2026-11-14" ] || [ "$d" = "2026-11-15" ]
+          if grep -q '"2026-11-14-3-dinner-v2"' state/sent.json; then echo "이미 보냈어요"; exit 1; fi
       - name: 비공개 보관함에서 받기
         env:
           PHOTOS_TOKEN: ${{ secrets.PHOTOS_TOKEN }}
         run: |
           for f in mp4 jpg html; do
             curl -fsSL -H "Authorization: Bearer $PHOTOS_TOKEN" -H "Accept: application/vnd.github.raw" \
-              -o "s.$f" "https://api.github.com/repos/hong2-kim/jecheol-photos/contents/send/2026-11-13-3-dinner-v2.$f"
+              -o "s.$f" "https://api.github.com/repos/hong2-kim/jecheol-photos/contents/send/2026-11-14-3-dinner-v2.$f"
           done
           ls -la s.*
-          [ "$(md5sum s.mp4 | cut -d' ' -f1)" = "3089ebce7d9fbe42ee12cc1246175ddc" ]
+          [ "$(md5sum s.mp4 | cut -d' ' -f1)" = "3fd4a2771a513240b6edb89713b1e6ad" ]
       - name: 공개 릴리스에 올리기(내려받기 주소)
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          cp s.mp4 2026-11-13-3-dinner-v2.mp4
-          gh release upload v2026-11-13 2026-11-13-3-dinner-v2.mp4 --clobber --repo "$GITHUB_REPOSITORY"
+          cp s.mp4 2026-11-14-3-dinner-v2.mp4
+          gh release upload v2026-11-14 2026-11-14-3-dinner-v2.mp4 --clobber --repo "$GITHUB_REPOSITORY" || gh release create v2026-11-14 2026-11-14-3-dinner-v2.mp4 --title v2026-11-14 --notes "" --repo "$GITHUB_REPOSITORY"
       - name: 텔레그램으로 보내기
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
@@ -49,8 +49,8 @@ jobs:
         run: |
           API="https://api.telegram.org/bot$TELEGRAM_BOT_TOKEN"
           curl -fsS -o v.json "$API/sendVideo" --form-string "chat_id=$TELEGRAM_CHAT_ID" \
-            --form-string "caption=[유튜브 쇼츠 · 저녁 추천 · 수정본] 불금 저녁 이건 못 참지🤤 닭갈비·광어회·함박스테이크·해물 토마토 파스타" \
-            --form-string "supports_streaming=true" -F "width=1080" -F "height=1920" -F "duration=21" -F "video=@s.mp4;type=video/mp4"
+            --form-string "caption=[유튜브 쇼츠 · 저녁 추천 · 수정본] 토요일 저녁 아직 못 골랐어? 꼬막비빔밥·아귀찜·대하구이·팥죽 중에 골라 줄게" \
+            --form-string "supports_streaming=true" -F "width=1080" -F "height=1920" -F "duration=24" -F "video=@s.mp4;type=video/mp4"
           python3 -c "import json;r=json.load(open('v.json'));assert r['ok'];print('영상 message_id',r['result']['message_id'])"
           curl -fsS -o p.json "$API/sendPhoto" --form-string "chat_id=$TELEGRAM_CHAT_ID" \
             --form-string "caption=저녁 추천 수정본 썸네일(메뉴 4칸)" -F "photo=@s.jpg;type=image/jpeg"
@@ -68,8 +68,8 @@ jobs:
           import json
           p = "state/sent.json"
           d = json.load(open(p, encoding="utf-8"))
-          if "2026-11-13-3-dinner-v2" not in d:
-              d.append("2026-11-13-3-dinner-v2")
+          if "2026-11-14-3-dinner-v2" not in d:
+              d.append("2026-11-14-3-dinner-v2")
           json.dump(d, open(p, "w", encoding="utf-8"), ensure_ascii=False, indent=2)
           open(p, "a", encoding="utf-8").write("\n")
           EOF
