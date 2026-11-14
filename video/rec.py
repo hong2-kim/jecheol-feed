@@ -578,9 +578,13 @@ def dinner_script_problems(spec):
     return must, should
 
 
+DINNER_HEAD2 = ("아직못골랐어?", "아직못골랐어", "내가골라줄게")  # 저녁 썸네일 둘째 줄은 이 둘만 (2026-11-14 사용자)
+
+
 def dinner_thumb_problems(spec):
-    """썸네일 문구가 최근 저녁 영상과 같은 말을 되풀이하지 않는지 (2026-11-13 사용자: '불금 저녁 내가 골라줌' 같은 문구만 반복하지 말 것).
-    지난 7일 저녁 썸네일과 ① 둘째 줄이 같거나 ② '골라'가 또 들어가거나 ③ 흰 띠 글이 같으면 꼭 고칠 것."""
+    """저녁 썸네일 문구 검사 (2026-11-14 사용자: "저번처럼 '토요일 저녁 아직 못 골랐어?' 아니면 '내가 골라 줄게'로").
+    ① 두 줄 제목은 '{요일} 저녁' + '아직 못 골랐어?' 또는 '내가 골라 줄게' 만, 요일은 그날 요일
+    ② 지난 7일 저녁 썸네일과 흰 띠 글이 같으면 꼭 고칠 것. (11-13의 '골라' 되풀이 금지는 11-14에 그만둠)"""
     import thumb
     must = list(thumb.grid_problems(spec))  # 4칸·2×2·빈칸 없음 (2026-11-13 사용자)
     t = spec.get("thumb") or {}
@@ -588,14 +592,13 @@ def dinner_thumb_problems(spec):
     sub = _plain(t.get("sub"))
     if not head:
         return must
-    line2 = head.split(chr(10))[-1].strip()
+    day = "월화수목금토일"[_spec_day(spec).weekday()] + "요일 저녁"
+    rows = [re.sub(r"[\s,.!~]+$", "", r).strip() for r in head.split(chr(10))]
+    if len(rows) != 2 or rows[0] != day or rows[1].replace(" ", "") not in DINNER_HEAD2:
+        must.append(f"썸네일 제목 '{head.replace(chr(10), ' / ')}' → '{day} / 아직 못 골랐어?' 또는 '{day} / 내가 골라 줄게' 둘 중 하나로 써요"
+                    f" (headline·thumb.head 같게, 1번 문장도 같은 말). 꾸밈말(불금·비 오는)은 흰 띠 글에 써요.")
     for d, past in _recent_dinners(_spec_day(spec)):
         pt = past.get("thumb") or {}
-        ph = _plain(pt.get("head") or past.get("headline"))
-        if ph and line2 and line2 == ph.split(chr(10))[-1].strip():
-            must.append(f"썸네일 둘째 줄 '{line2}'이 {d} 저녁 썸네일과 같아요. 요일·날씨·계절·메뉴 특징에 맞는 새 문구로 바꿔요.")
-        elif "골라" in head and "골라" in ph:
-            must.append(f"썸네일에 '골라'가 또 들어가요({d}: '{ph.replace(chr(10), ' ')}'). '골라 줌·골라 줄게'만 되풀이하지 않게 상황(퇴근·주말·야식·비·추위)으로 후킹해요.")
         if sub and sub == _plain(pt.get("sub")):
             must.append(f"썸네일 흰 띠 글 '{sub}'이 {d} 와 같아요. 이 영상에 맞는 말로 바꿔요.")
     seen, out = set(), []
