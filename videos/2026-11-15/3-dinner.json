@@ -1,0 +1,402 @@
+{
+ "format": "voice",
+ "layout": "rec",
+ "kind": "저녁",
+ "subject": "일요일 저녁 (곰탕·찜닭·햄버거·불고기)",
+ "title": "일요일 저녁 아직 못 골랐어? 곰탕·찜닭·햄버거·불고기 중에 골라 줄게",
+ "summary": "일요일 저녁, 곰탕·찜닭·햄버거·불고기 넷을 추천해요.",
+ "headline": "일요일 저녁\n[[아직 못 골랐어?]]",
+ "small": "일요일 저녁, 오늘의 넷",
+ "intro": 7,
+ "length": [
+  20,
+  30
+ ],
+ "narrator": "achird",
+ "voice_pick": {
+  "mode": "solo",
+  "voices": [
+   "achird"
+  ],
+  "why": "일요일 저녁 메뉴를 친구에게 권하듯 알려 주는 친근한 Achird 솔로"
+ },
+ "thumb": {
+  "head": "일요일 저녁\n[[아직 못 골랐어?]]",
+  "sub": "국물파·고기파 [[다 있음]]",
+  "photo": {
+   "url": "https://tong.visitkorea.or.kr/cms2/website/52/3367852.jpg",
+   "shows": "나주곰탕 한 그릇, 옆에 김치와 오이고추 곁들임",
+   "match": "정확",
+   "credit": "ⓒ한국관광공사 포토코리아-황성훈",
+   "rights": "한국관광공사 공공누리 1유형"
+  }
+ },
+ "yt_title": "일요일 저녁 아직 못 골랐어? 곰탕·찜닭·햄버거·불고기 중에 골라 줄게",
+ "yt_keyword": "일요일 저녁",
+ "yt_related": [
+  "저녁 메뉴 추천",
+  "오늘 뭐 먹지",
+  "일요일 저녁 메뉴",
+  "곰탕",
+  "불고기"
+ ],
+ "yt_tags": [
+  "일요일 저녁 메뉴",
+  "저녁 메뉴 추천",
+  "오늘 뭐 먹지",
+  "저녁 뭐 먹지",
+  "곰탕",
+  "찜닭",
+  "햄버거",
+  "불고기"
+ ],
+ "yt_hashtags": [
+  "일요일저녁메뉴",
+  "오늘뭐먹지",
+  "저녁메뉴추천"
+ ],
+ "yt_lead": "일요일 저녁 메뉴 고민될 때, 곰탕·찜닭·햄버거·불고기 넷 중에 하나만 골라요.",
+ "caption": "일요일 저녁, 뭐 먹을지 아직 못 정했다면?\n\n뽀얀 국물 곰탕\n양념 밴 찜닭\n두툼한 패티 햄버거\n달큰한 불고기\n\n오늘은 어느 쪽이에요? 댓글로 알려 주세요.",
+ "tags": [
+  "일요일저녁메뉴",
+  "저녁메뉴추천",
+  "오늘뭐먹지",
+  "곰탕"
+ ],
+ "sources": [],
+ "credits": [
+  "ⓒ한국관광공사 포토코리아-황성훈, 디엔에이스튜디오, 김지호, 알렉스분도"
+ ],
+ "dates": {
+  "checked": "2026-11-15"
+ },
+ "title_pick": {
+  "candidates": [
+   "일요일 저녁 아직 못 골랐어? 곰탕·찜닭·햄버거·불고기 중에 골라 줄게",
+   "일요일 저녁 내가 골라 줄게, 곰탕·찜닭·햄버거·불고기"
+  ],
+  "pick": "일요일 저녁 아직 못 골랐어? 곰탕·찜닭·햄버거·불고기 중에 골라 줄게",
+  "like": "전날 토요일 저녁 영상(우리 저녁 영상 평소 수준)",
+  "sure": "낮음"
+ },
+ "menu_pick": {
+  "menus": [
+   "곰탕",
+   "찜닭",
+   "햄버거",
+   "불고기"
+  ],
+  "from": "dinner_pick(후보 18개 확인, 한 끼가 되는 익숙한 메뉴로 갈래 분산)",
+  "why": {
+   "곰탕": "쌀쌀한 일요일 저녁 따끈한 국물, 오랜만",
+   "찜닭": "아직 안 나온 찜 갈래, 12일 전 닭볶음탕과 겹침은 참고 수준",
+   "햄버거": "가볍게 먹는 양식 한 끼, 12일 전 수제버거와 겹침은 참고 수준",
+   "불고기": "달큰한 고기 갈래, 일요일 저녁 밥반찬"
+  }
+ },
+ "again": {
+  "찜닭": "닭볶음탕 이후 11일, 안동찜닭은 다른 요리",
+  "햄버거": "수제버거 이후 12일, 다른 갈래 분산 목적"
+ },
+ "lines": [
+  {
+   "say": "일요일 저녁, 아직 못 골랐어?",
+   "nosub": true,
+   "show": {
+    "thumb": true
+   }
+  },
+  {
+   "say": "내가 골라 줄게. 오늘은 이 넷!",
+   "show": {
+    "grid": [
+     {
+      "photo": {
+       "url": "https://tong.visitkorea.or.kr/cms2/website/52/3367852.jpg",
+       "shows": "나주곰탕 한 그릇, 옆에 김치와 오이고추 곁들임",
+       "match": "정확",
+       "credit": "ⓒ한국관광공사 포토코리아-황성훈",
+       "rights": "한국관광공사 공공누리 1유형"
+      }
+     },
+     {
+      "photo": {
+       "url": "https://tong.visitkorea.or.kr/cms2/website/07/2825907.jpg",
+       "shows": "당면과 당근·감자가 든 갈색 양념 안동찜닭 한 접시",
+       "match": "정확",
+       "credit": "ⓒ한국관광공사 포토코리아-디엔에이스튜디오",
+       "rights": "한국관광공사 공공누리 1유형"
+      }
+     },
+     {
+      "photo": {
+       "url": "https://tong.visitkorea.or.kr/cms2/website/62/1443362.jpg",
+       "shows": "참깨 빵 사이에 패티와 토마토·양상추가 든 햄버거",
+       "match": "정확",
+       "credit": "ⓒ한국관광공사 포토코리아-김지호",
+       "rights": "한국관광공사 공공누리 1유형"
+      }
+     },
+     {
+      "photo": {
+       "url": "https://tong.visitkorea.or.kr/cms2/website/26/2822426.jpg",
+       "shows": "놋그릇에 담은 양파·당근과 소고기 불고기",
+       "match": "정확",
+       "credit": "ⓒ한국관광공사 포토코리아-알렉스분도",
+       "rights": "한국관광공사 공공누리 1유형"
+      }
+     }
+    ],
+    "dir": "2x2",
+    "fade": 0.45
+   }
+  },
+  {
+   "say": "뽀얀 국물에 고기 듬뿍, 곰탕 한 그릇이면 든든하죠.",
+   "subs": [
+    "뽀얀 국물에 고기 듬뿍,",
+    "곰탕 한 그릇이면 든든하죠."
+   ],
+   "show": {
+    "grid": [
+     {
+      "photo": {
+       "url": "https://tong.visitkorea.or.kr/cms2/website/52/3367852.jpg",
+       "shows": "나주곰탕 한 그릇, 옆에 김치와 오이고추 곁들임",
+       "match": "정확",
+       "credit": "ⓒ한국관광공사 포토코리아-황성훈",
+       "rights": "한국관광공사 공공누리 1유형"
+      }
+     },
+     {
+      "photo": {
+       "url": "https://tong.visitkorea.or.kr/cms2/website/07/2825907.jpg",
+       "shows": "당면과 당근·감자가 든 갈색 양념 안동찜닭 한 접시",
+       "match": "정확",
+       "credit": "ⓒ한국관광공사 포토코리아-디엔에이스튜디오",
+       "rights": "한국관광공사 공공누리 1유형"
+      }
+     },
+     {
+      "photo": {
+       "url": "https://tong.visitkorea.or.kr/cms2/website/62/1443362.jpg",
+       "shows": "참깨 빵 사이에 패티와 토마토·양상추가 든 햄버거",
+       "match": "정확",
+       "credit": "ⓒ한국관광공사 포토코리아-김지호",
+       "rights": "한국관광공사 공공누리 1유형"
+      }
+     },
+     {
+      "photo": {
+       "url": "https://tong.visitkorea.or.kr/cms2/website/26/2822426.jpg",
+       "shows": "놋그릇에 담은 양파·당근과 소고기 불고기",
+       "match": "정확",
+       "credit": "ⓒ한국관광공사 포토코리아-알렉스분도",
+       "rights": "한국관광공사 공공누리 1유형"
+      }
+     }
+    ],
+    "dir": "2x2",
+    "hl": 0
+   }
+  },
+  {
+   "say": "달큰짭짤 양념 배인 찜닭, 당면부터 건져 볼까요?",
+   "subs": [
+    "달큰짭짤 양념 배인 찜닭,",
+    "당면부터 건져 볼까요?"
+   ],
+   "show": {
+    "grid": [
+     {
+      "photo": {
+       "url": "https://tong.visitkorea.or.kr/cms2/website/52/3367852.jpg",
+       "shows": "나주곰탕 한 그릇, 옆에 김치와 오이고추 곁들임",
+       "match": "정확",
+       "credit": "ⓒ한국관광공사 포토코리아-황성훈",
+       "rights": "한국관광공사 공공누리 1유형"
+      }
+     },
+     {
+      "photo": {
+       "url": "https://tong.visitkorea.or.kr/cms2/website/07/2825907.jpg",
+       "shows": "당면과 당근·감자가 든 갈색 양념 안동찜닭 한 접시",
+       "match": "정확",
+       "credit": "ⓒ한국관광공사 포토코리아-디엔에이스튜디오",
+       "rights": "한국관광공사 공공누리 1유형"
+      }
+     },
+     {
+      "photo": {
+       "url": "https://tong.visitkorea.or.kr/cms2/website/62/1443362.jpg",
+       "shows": "참깨 빵 사이에 패티와 토마토·양상추가 든 햄버거",
+       "match": "정확",
+       "credit": "ⓒ한국관광공사 포토코리아-김지호",
+       "rights": "한국관광공사 공공누리 1유형"
+      }
+     },
+     {
+      "photo": {
+       "url": "https://tong.visitkorea.or.kr/cms2/website/26/2822426.jpg",
+       "shows": "놋그릇에 담은 양파·당근과 소고기 불고기",
+       "match": "정확",
+       "credit": "ⓒ한국관광공사 포토코리아-알렉스분도",
+       "rights": "한국관광공사 공공누리 1유형"
+      }
+     }
+    ],
+    "dir": "2x2",
+    "hl": 1
+   }
+  },
+  {
+   "say": "오늘은 가볍게, 두툼한 패티 햄버거 어때요?",
+   "subs": [
+    "오늘은 가볍게,",
+    "두툼한 패티 햄버거 어때요?"
+   ],
+   "show": {
+    "grid": [
+     {
+      "photo": {
+       "url": "https://tong.visitkorea.or.kr/cms2/website/52/3367852.jpg",
+       "shows": "나주곰탕 한 그릇, 옆에 김치와 오이고추 곁들임",
+       "match": "정확",
+       "credit": "ⓒ한국관광공사 포토코리아-황성훈",
+       "rights": "한국관광공사 공공누리 1유형"
+      }
+     },
+     {
+      "photo": {
+       "url": "https://tong.visitkorea.or.kr/cms2/website/07/2825907.jpg",
+       "shows": "당면과 당근·감자가 든 갈색 양념 안동찜닭 한 접시",
+       "match": "정확",
+       "credit": "ⓒ한국관광공사 포토코리아-디엔에이스튜디오",
+       "rights": "한국관광공사 공공누리 1유형"
+      }
+     },
+     {
+      "photo": {
+       "url": "https://tong.visitkorea.or.kr/cms2/website/62/1443362.jpg",
+       "shows": "참깨 빵 사이에 패티와 토마토·양상추가 든 햄버거",
+       "match": "정확",
+       "credit": "ⓒ한국관광공사 포토코리아-김지호",
+       "rights": "한국관광공사 공공누리 1유형"
+      }
+     },
+     {
+      "photo": {
+       "url": "https://tong.visitkorea.or.kr/cms2/website/26/2822426.jpg",
+       "shows": "놋그릇에 담은 양파·당근과 소고기 불고기",
+       "match": "정확",
+       "credit": "ⓒ한국관광공사 포토코리아-알렉스분도",
+       "rights": "한국관광공사 공공누리 1유형"
+      }
+     }
+    ],
+    "dir": "2x2",
+    "hl": 2
+   }
+  },
+  {
+   "say": "달큰한 양념 불고기, 밥 한 숟갈 올리고 싶을 때!",
+   "subs": [
+    "달큰한 양념 불고기,",
+    "밥 한 숟갈 올리고 싶을 때!"
+   ],
+   "show": {
+    "grid": [
+     {
+      "photo": {
+       "url": "https://tong.visitkorea.or.kr/cms2/website/52/3367852.jpg",
+       "shows": "나주곰탕 한 그릇, 옆에 김치와 오이고추 곁들임",
+       "match": "정확",
+       "credit": "ⓒ한국관광공사 포토코리아-황성훈",
+       "rights": "한국관광공사 공공누리 1유형"
+      }
+     },
+     {
+      "photo": {
+       "url": "https://tong.visitkorea.or.kr/cms2/website/07/2825907.jpg",
+       "shows": "당면과 당근·감자가 든 갈색 양념 안동찜닭 한 접시",
+       "match": "정확",
+       "credit": "ⓒ한국관광공사 포토코리아-디엔에이스튜디오",
+       "rights": "한국관광공사 공공누리 1유형"
+      }
+     },
+     {
+      "photo": {
+       "url": "https://tong.visitkorea.or.kr/cms2/website/62/1443362.jpg",
+       "shows": "참깨 빵 사이에 패티와 토마토·양상추가 든 햄버거",
+       "match": "정확",
+       "credit": "ⓒ한국관광공사 포토코리아-김지호",
+       "rights": "한국관광공사 공공누리 1유형"
+      }
+     },
+     {
+      "photo": {
+       "url": "https://tong.visitkorea.or.kr/cms2/website/26/2822426.jpg",
+       "shows": "놋그릇에 담은 양파·당근과 소고기 불고기",
+       "match": "정확",
+       "credit": "ⓒ한국관광공사 포토코리아-알렉스분도",
+       "rights": "한국관광공사 공공누리 1유형"
+      }
+     }
+    ],
+    "dir": "2x2",
+    "hl": 3
+   }
+  },
+  {
+   "say": "오늘은 어느 쪽이에요? 한 표 남겨 주세요.",
+   "subs": [
+    "오늘은 어느 쪽이에요?",
+    "한 표 남겨 주세요."
+   ],
+   "show": {
+    "grid": [
+     {
+      "photo": {
+       "url": "https://tong.visitkorea.or.kr/cms2/website/52/3367852.jpg",
+       "shows": "나주곰탕 한 그릇, 옆에 김치와 오이고추 곁들임",
+       "match": "정확",
+       "credit": "ⓒ한국관광공사 포토코리아-황성훈",
+       "rights": "한국관광공사 공공누리 1유형"
+      }
+     },
+     {
+      "photo": {
+       "url": "https://tong.visitkorea.or.kr/cms2/website/07/2825907.jpg",
+       "shows": "당면과 당근·감자가 든 갈색 양념 안동찜닭 한 접시",
+       "match": "정확",
+       "credit": "ⓒ한국관광공사 포토코리아-디엔에이스튜디오",
+       "rights": "한국관광공사 공공누리 1유형"
+      }
+     },
+     {
+      "photo": {
+       "url": "https://tong.visitkorea.or.kr/cms2/website/62/1443362.jpg",
+       "shows": "참깨 빵 사이에 패티와 토마토·양상추가 든 햄버거",
+       "match": "정확",
+       "credit": "ⓒ한국관광공사 포토코리아-김지호",
+       "rights": "한국관광공사 공공누리 1유형"
+      }
+     },
+     {
+      "photo": {
+       "url": "https://tong.visitkorea.or.kr/cms2/website/26/2822426.jpg",
+       "shows": "놋그릇에 담은 양파·당근과 소고기 불고기",
+       "match": "정확",
+       "credit": "ⓒ한국관광공사 포토코리아-알렉스분도",
+       "rights": "한국관광공사 공공누리 1유형"
+      }
+     }
+    ],
+    "dir": "2x2"
+   }
+  }
+ ],
+ "review": {
+  "photo_sheet": "470070d17510"
+ }
+}
