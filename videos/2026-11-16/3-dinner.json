@@ -1,0 +1,388 @@
+{
+ "format": "voice",
+ "layout": "rec",
+ "kind": "저녁",
+ "subject": "월요일 저녁 (굴국밥·소고기쌀국수·갈비찜·콩나물밥)",
+ "title": "월요일 저녁 내가 골라 줄게! 굴국밥·소고기쌀국수·갈비찜·콩나물밥",
+ "summary": "월요일 저녁, 굴국밥·소고기쌀국수·갈비찜·콩나물밥 넷을 추천해요.",
+ "headline": "월요일 저녁\n[[내가 골라 줄게]]",
+ "small": "월요일 저녁, 오늘의 넷",
+ "intro": 7,
+ "length": [
+  20,
+  30
+ ],
+ "narrator": "achird",
+ "voice_pick": {
+  "mode": "solo",
+  "voices": [
+   "achird"
+  ],
+  "why": "월요일 저녁 메뉴를 친구에게 권하듯 알려 주는 친근한 Achird 솔로"
+ },
+ "thumb": {
+  "head": "월요일 저녁\n[[내가 골라 줄게]]",
+  "sub": "월요일 퇴근길 [[딱 넷]]",
+  "photo": {
+   "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Korean%20soup-Gulgukbap-01.jpg?width=1600",
+   "shows": "검은 뚝배기에 굴과 파가 가득 담긴 굴국밥 한 그릇, 옆에 김치와 고추 곁들임",
+   "match": "정확",
+   "credit": "by lwy (CC BY 2.0) · commons.wikimedia.org/?curid=3413003",
+   "rights": "위키미디어 공용 CC BY 2.0"
+  }
+ },
+ "yt_title": "월요일 저녁 메뉴 내가 골라 줄게, 굴국밥·소고기쌀국수·갈비찜·콩나물밥",
+ "yt_keyword": "월요일 저녁 메뉴",
+ "yt_related": [
+  "저녁 메뉴 추천",
+  "오늘 뭐 먹지",
+  "굴국밥",
+  "소고기쌀국수",
+  "갈비찜"
+ ],
+ "yt_tags": [
+  "월요일 저녁 메뉴",
+  "저녁 메뉴 추천",
+  "오늘 뭐 먹지",
+  "저녁 뭐 먹지",
+  "굴국밥",
+  "소고기쌀국수",
+  "갈비찜",
+  "콩나물밥"
+ ],
+ "yt_hashtags": [
+  "월요일저녁메뉴",
+  "오늘뭐먹지",
+  "저녁메뉴추천"
+ ],
+ "yt_lead": "월요일 저녁 메뉴 고민될 때, 굴국밥·소고기쌀국수·갈비찜·콩나물밥 넷 중에 하나만 골라요.",
+ "caption": "월요일 저녁, 내가 골라 줄게!\n\n굴 가득 굴국밥\n맑은 국물 소고기쌀국수\n윤기 도는 갈비찜\n고슬고슬 콩나물밥\n\n넷 중에 뭐가 끌려요? 댓글로 알려 주세요.",
+ "tags": [
+  "월요일저녁메뉴",
+  "저녁메뉴추천",
+  "오늘뭐먹지",
+  "굴국밥"
+ ],
+ "sources": [],
+ "credits": [
+  "by lwy (CC BY 2.0) · commons.wikimedia.org/?curid=3413003",
+  "Tayzar44 (CC BY 4.0) · commons.wikimedia.org/?curid=159735076",
+  "ⓒ한국관광공사 포토코리아-토라이 리퍼블릭"
+ ],
+ "dates": {
+  "checked": "2026-11-16"
+ },
+ "title_pick": {
+  "candidates": [
+   "월요일 저녁 내가 골라 줄게, 굴국밥·소고기쌀국수·갈비찜·콩나물밥 중에 골라 봐",
+   "월요일 저녁 아직 못 골랐어? 굴국밥·소고기쌀국수·갈비찜·콩나물밥"
+  ],
+  "pick": "월요일 저녁 메뉴 내가 골라 줄게, 굴국밥·소고기쌀국수·갈비찜·콩나물밥",
+  "like": "전날 일요일 저녁 영상(우리 저녁 영상 평소 수준), 어제와 다른 쪽 문구로 번갈아",
+  "sure": "낮음"
+ },
+ "menu_pick": {
+  "menus": [
+   "굴국밥",
+   "소고기쌀국수",
+   "갈비찜",
+   "콩나물밥"
+  ],
+  "from": "dinner_pick(후보 18개 확인, 탕·국 계열과 족발·보쌈 계열을 피해 갈래 분산)",
+  "why": {
+   "굴국밥": "11월 제철 굴, 쌀쌀한 월요일 따끈한 국물",
+   "소고기쌀국수": "맑은 국물 면 갈래, 아직 안 나옴",
+   "갈비찜": "찜 갈래, 든든한 한 끼, 오랜만",
+   "콩나물밥": "밥 갈래, 오랜만에 담백한 한 끼"
+  }
+ },
+ "lines": [
+  {
+   "say": "월요일 저녁, 내가 골라 줄게!",
+   "nosub": true,
+   "show": {
+    "thumb": true
+   }
+  },
+  {
+   "say": "퇴근길에 딱 떠오를 넷이에요.",
+   "show": {
+    "grid": [
+     {
+      "photo": {
+       "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Korean%20soup-Gulgukbap-01.jpg?width=1600",
+       "shows": "검은 뚝배기에 굴과 파가 가득 담긴 굴국밥 한 그릇, 옆에 김치와 고추 곁들임",
+       "match": "정확",
+       "credit": "by lwy (CC BY 2.0) · commons.wikimedia.org/?curid=3413003",
+       "rights": "위키미디어 공용 CC BY 2.0"
+      }
+     },
+     {
+      "photo": {
+       "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Pho%2C%20popular%20Vietnamese%20noodle%20soup.jpg?width=1600",
+       "shows": "파란 그릇에 담긴 소고기 쌀국수, 쌀국수 면과 고기와 파가 보이는 맑은 국물",
+       "match": "정확",
+       "credit": "Tayzar44 (CC BY 4.0) · commons.wikimedia.org/?curid=159735076",
+       "rights": "위키미디어 공용 CC BY 4.0"
+      }
+     },
+     {
+      "photo": {
+       "url": "https://tong.visitkorea.or.kr/cms2/website/99/3105599.jpg",
+       "shows": "그릇에 담긴 소고기 갈비찜, 당근과 감자와 흰 쌀밥이 함께 있는 모습",
+       "match": "정확",
+       "credit": "ⓒ한국관광공사 포토코리아-토라이 리퍼블릭",
+       "rights": "한국관광공사 공공누리 1유형"
+      }
+     },
+     {
+      "photo": {
+       "url": "vault:photos/ig-17877533212108148.jpg",
+       "shows": "큰 그릇에 담긴 콩나물밥, 콩나물과 흰 쌀밥",
+       "match": "정확"
+      }
+     }
+    ],
+    "dir": "2x2",
+    "fade": 0.45
+   }
+  },
+  {
+   "say": "굴 가득 굴국밥, 쌀쌀한 날 딱이에요!",
+   "subs": [
+    "굴 가득 굴국밥,",
+    "쌀쌀한 날 딱이에요!"
+   ],
+   "show": {
+    "grid": [
+     {
+      "photo": {
+       "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Korean%20soup-Gulgukbap-01.jpg?width=1600",
+       "shows": "검은 뚝배기에 굴과 파가 가득 담긴 굴국밥 한 그릇, 옆에 김치와 고추 곁들임",
+       "match": "정확",
+       "credit": "by lwy (CC BY 2.0) · commons.wikimedia.org/?curid=3413003",
+       "rights": "위키미디어 공용 CC BY 2.0"
+      }
+     },
+     {
+      "photo": {
+       "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Pho%2C%20popular%20Vietnamese%20noodle%20soup.jpg?width=1600",
+       "shows": "파란 그릇에 담긴 소고기 쌀국수, 쌀국수 면과 고기와 파가 보이는 맑은 국물",
+       "match": "정확",
+       "credit": "Tayzar44 (CC BY 4.0) · commons.wikimedia.org/?curid=159735076",
+       "rights": "위키미디어 공용 CC BY 4.0"
+      }
+     },
+     {
+      "photo": {
+       "url": "https://tong.visitkorea.or.kr/cms2/website/99/3105599.jpg",
+       "shows": "그릇에 담긴 소고기 갈비찜, 당근과 감자와 흰 쌀밥이 함께 있는 모습",
+       "match": "정확",
+       "credit": "ⓒ한국관광공사 포토코리아-토라이 리퍼블릭",
+       "rights": "한국관광공사 공공누리 1유형"
+      }
+     },
+     {
+      "photo": {
+       "url": "vault:photos/ig-17877533212108148.jpg",
+       "shows": "큰 그릇에 담긴 콩나물밥, 콩나물과 흰 쌀밥",
+       "match": "정확"
+      }
+     }
+    ],
+    "dir": "2x2",
+    "hl": 0
+   }
+  },
+  {
+   "say": "맑은 국물 소고기쌀국수, 가볍게 어때요?",
+   "subs": [
+    "맑은 국물 소고기쌀국수,",
+    "가볍게 어때요?"
+   ],
+   "show": {
+    "grid": [
+     {
+      "photo": {
+       "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Korean%20soup-Gulgukbap-01.jpg?width=1600",
+       "shows": "검은 뚝배기에 굴과 파가 가득 담긴 굴국밥 한 그릇, 옆에 김치와 고추 곁들임",
+       "match": "정확",
+       "credit": "by lwy (CC BY 2.0) · commons.wikimedia.org/?curid=3413003",
+       "rights": "위키미디어 공용 CC BY 2.0"
+      }
+     },
+     {
+      "photo": {
+       "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Pho%2C%20popular%20Vietnamese%20noodle%20soup.jpg?width=1600",
+       "shows": "파란 그릇에 담긴 소고기 쌀국수, 쌀국수 면과 고기와 파가 보이는 맑은 국물",
+       "match": "정확",
+       "credit": "Tayzar44 (CC BY 4.0) · commons.wikimedia.org/?curid=159735076",
+       "rights": "위키미디어 공용 CC BY 4.0"
+      }
+     },
+     {
+      "photo": {
+       "url": "https://tong.visitkorea.or.kr/cms2/website/99/3105599.jpg",
+       "shows": "그릇에 담긴 소고기 갈비찜, 당근과 감자와 흰 쌀밥이 함께 있는 모습",
+       "match": "정확",
+       "credit": "ⓒ한국관광공사 포토코리아-토라이 리퍼블릭",
+       "rights": "한국관광공사 공공누리 1유형"
+      }
+     },
+     {
+      "photo": {
+       "url": "vault:photos/ig-17877533212108148.jpg",
+       "shows": "큰 그릇에 담긴 콩나물밥, 콩나물과 흰 쌀밥",
+       "match": "정확"
+      }
+     }
+    ],
+    "dir": "2x2",
+    "hl": 1
+   }
+  },
+  {
+   "say": "윤기 도는 갈비찜에 흰 쌀밥, 생각나지 않나요?",
+   "subs": [
+    "윤기 도는 갈비찜에 흰 쌀밥,",
+    "생각나지 않나요?"
+   ],
+   "show": {
+    "grid": [
+     {
+      "photo": {
+       "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Korean%20soup-Gulgukbap-01.jpg?width=1600",
+       "shows": "검은 뚝배기에 굴과 파가 가득 담긴 굴국밥 한 그릇, 옆에 김치와 고추 곁들임",
+       "match": "정확",
+       "credit": "by lwy (CC BY 2.0) · commons.wikimedia.org/?curid=3413003",
+       "rights": "위키미디어 공용 CC BY 2.0"
+      }
+     },
+     {
+      "photo": {
+       "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Pho%2C%20popular%20Vietnamese%20noodle%20soup.jpg?width=1600",
+       "shows": "파란 그릇에 담긴 소고기 쌀국수, 쌀국수 면과 고기와 파가 보이는 맑은 국물",
+       "match": "정확",
+       "credit": "Tayzar44 (CC BY 4.0) · commons.wikimedia.org/?curid=159735076",
+       "rights": "위키미디어 공용 CC BY 4.0"
+      }
+     },
+     {
+      "photo": {
+       "url": "https://tong.visitkorea.or.kr/cms2/website/99/3105599.jpg",
+       "shows": "그릇에 담긴 소고기 갈비찜, 당근과 감자와 흰 쌀밥이 함께 있는 모습",
+       "match": "정확",
+       "credit": "ⓒ한국관광공사 포토코리아-토라이 리퍼블릭",
+       "rights": "한국관광공사 공공누리 1유형"
+      }
+     },
+     {
+      "photo": {
+       "url": "vault:photos/ig-17877533212108148.jpg",
+       "shows": "큰 그릇에 담긴 콩나물밥, 콩나물과 흰 쌀밥",
+       "match": "정확"
+      }
+     }
+    ],
+    "dir": "2x2",
+    "hl": 2
+   }
+  },
+  {
+   "say": "고슬고슬 콩나물밥으로 마무리해 볼까요?",
+   "subs": [
+    "고슬고슬 콩나물밥으로",
+    "마무리해 볼까요?"
+   ],
+   "show": {
+    "grid": [
+     {
+      "photo": {
+       "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Korean%20soup-Gulgukbap-01.jpg?width=1600",
+       "shows": "검은 뚝배기에 굴과 파가 가득 담긴 굴국밥 한 그릇, 옆에 김치와 고추 곁들임",
+       "match": "정확",
+       "credit": "by lwy (CC BY 2.0) · commons.wikimedia.org/?curid=3413003",
+       "rights": "위키미디어 공용 CC BY 2.0"
+      }
+     },
+     {
+      "photo": {
+       "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Pho%2C%20popular%20Vietnamese%20noodle%20soup.jpg?width=1600",
+       "shows": "파란 그릇에 담긴 소고기 쌀국수, 쌀국수 면과 고기와 파가 보이는 맑은 국물",
+       "match": "정확",
+       "credit": "Tayzar44 (CC BY 4.0) · commons.wikimedia.org/?curid=159735076",
+       "rights": "위키미디어 공용 CC BY 4.0"
+      }
+     },
+     {
+      "photo": {
+       "url": "https://tong.visitkorea.or.kr/cms2/website/99/3105599.jpg",
+       "shows": "그릇에 담긴 소고기 갈비찜, 당근과 감자와 흰 쌀밥이 함께 있는 모습",
+       "match": "정확",
+       "credit": "ⓒ한국관광공사 포토코리아-토라이 리퍼블릭",
+       "rights": "한국관광공사 공공누리 1유형"
+      }
+     },
+     {
+      "photo": {
+       "url": "vault:photos/ig-17877533212108148.jpg",
+       "shows": "큰 그릇에 담긴 콩나물밥, 콩나물과 흰 쌀밥",
+       "match": "정확"
+      }
+     }
+    ],
+    "dir": "2x2",
+    "hl": 3
+   }
+  },
+  {
+   "say": "넷 중에 뭐가 끌려요? 댓글로 알려 주세요.",
+   "subs": [
+    "넷 중에 뭐가 끌려요?",
+    "댓글로 알려 주세요."
+   ],
+   "show": {
+    "grid": [
+     {
+      "photo": {
+       "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Korean%20soup-Gulgukbap-01.jpg?width=1600",
+       "shows": "검은 뚝배기에 굴과 파가 가득 담긴 굴국밥 한 그릇, 옆에 김치와 고추 곁들임",
+       "match": "정확",
+       "credit": "by lwy (CC BY 2.0) · commons.wikimedia.org/?curid=3413003",
+       "rights": "위키미디어 공용 CC BY 2.0"
+      }
+     },
+     {
+      "photo": {
+       "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Pho%2C%20popular%20Vietnamese%20noodle%20soup.jpg?width=1600",
+       "shows": "파란 그릇에 담긴 소고기 쌀국수, 쌀국수 면과 고기와 파가 보이는 맑은 국물",
+       "match": "정확",
+       "credit": "Tayzar44 (CC BY 4.0) · commons.wikimedia.org/?curid=159735076",
+       "rights": "위키미디어 공용 CC BY 4.0"
+      }
+     },
+     {
+      "photo": {
+       "url": "https://tong.visitkorea.or.kr/cms2/website/99/3105599.jpg",
+       "shows": "그릇에 담긴 소고기 갈비찜, 당근과 감자와 흰 쌀밥이 함께 있는 모습",
+       "match": "정확",
+       "credit": "ⓒ한국관광공사 포토코리아-토라이 리퍼블릭",
+       "rights": "한국관광공사 공공누리 1유형"
+      }
+     },
+     {
+      "photo": {
+       "url": "vault:photos/ig-17877533212108148.jpg",
+       "shows": "큰 그릇에 담긴 콩나물밥, 콩나물과 흰 쌀밥",
+       "match": "정확"
+      }
+     }
+    ],
+    "dir": "2x2"
+   }
+  }
+ ],
+ "review": {
+  "photo_sheet": "b2381c05f06e"
+ }
+}

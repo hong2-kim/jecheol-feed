@@ -1,0 +1,47 @@
+{
+  "category": "축제",
+  "country": "한국",
+  "region": "경남 창원",
+  "subject": "제4회 창원홍합축제 11월 21일",
+  "angle": "제철 홍합 요리 시식과 할인 판매",
+  "season": "11월~1월 홍합 제철, 2026년 11월 21일 개최",
+  "length_sec": 25,
+  "title": "11월 21일 창원 3·15해양누리공원에서 홍합축제가 열려요",
+  "summary": [
+    "창원특례시가 제4회 창원홍합축제를 11월 21일 3·15해양누리공원 일원에서 연다고 밝혔어요.",
+    "마산수협이 주최하고, 홍합은 11월부터 1월까지가 제철이라고 소개했어요.",
+    "홍합타르트, 홍합또띠아, 홍합탕, 홍합비빔밥, 홍합카츠 같은 요리가 준비돼요."
+  ],
+  "facts": [
+    "홍합 요리 무료 시식회와 홍보관이 운영돼요.",
+    "행사장에서는 창원 홍합을 할인 판매한다고 해요."
+  ],
+  "script": {
+    "hook": "홍합이 비빔밥도 되고 카츠도 된대요",
+    "flow": "축제 날짜|홍합 요리|무료 시식",
+    "closing": "시간·장소는 창원시 공지로 한 번 더 확인하세요."
+  },
+  "visuals": [
+    "일반 홍합 사진(관광공사)"
+  ],
+  "cautions": [
+    "창원시 원문은 확인 못 함, 진주뉴스 한 곳 보도"
+  ],
+  "sources": [
+    {
+      "name": "진주뉴스(11월 15일)",
+      "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTFBINWlfeUlaaWhpYjhPWWNhWkw4MURqM3NWM093My1hMkUxVmJsNVBYazhUOEVIOS1pZ0w0V1g0RkFXaEwxem1VYk4xMU9rTjNGMDM5MWRwZ3VOQUtqWTBIcUN1VDd4OGllbUE?oc=5",
+      "official": false
+    }
+  ],
+  "unverified": [
+    "보도 2곳, 행사 시간표는 확인 못 함"
+  ],
+  "date": "2026-11-16",
+  "checked": "2026-11-16",
+  "id": "2026-11-16-kr-changwon-mussel-festival",
+  "pairing": {
+    "drink": "",
+    "note": ""
+  }
+}

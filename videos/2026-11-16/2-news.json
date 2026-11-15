@@ -1,0 +1,251 @@
+{
+ "kind": "소식",
+ "format": "cards",
+ "mode": "story",
+ "pill": "이슈",
+ "subject": "2026-11-16 이슈 · 김장비용 내렸는데 사 먹는 김치 늘어",
+ "title": "김장비용은 9% 줄었는데 사 먹는 김치는 41.4%로 늘었어요",
+ "summary": "aT는 4인 가족 김장비용이 199,456원으로 지난해보다 9% 줄었다고 밝혔어요. 한국농촌경제연구원 조사에서 사 먹는 김치 비중은 41.4%로 지난해 35.9%보다 늘었어요.",
+ "kicker": "11월 16일 월요일",
+ "meta": {
+  "angle": "역전·비교",
+  "fallback": "",
+  "click": "김장비용이 싸졌다는데 사 먹는 김치가 늘었다니, 우리 집은 어느 쪽인지 궁금해서 가족 단톡방에 보냄",
+  "exclude": "값 소식이라 조회가 낮았던 갈래이고 사 먹는 김치 보도는 10일부터 여러 곳이 다뤘음",
+  "others": [
+   {
+    "name": "CU 생초코모찌 수능 선물",
+    "click": "수험생 가족이 보냄",
+    "exclude": "10-30 수능 선물 카드와 겹치고 회사 사진을 못 씀"
+   },
+   {
+    "name": "서울시 그래놀라 서울에디션",
+    "click": "건강식 관심층",
+    "exclude": "기관 협업 제품 한 건이라 파급이 작음"
+   }
+  ]
+ },
+ "thumb": {
+  "head": "사 먹는 김치\n[[41.4%]]",
+  "sub": "[[11월 9일]] aT 조사 기준",
+  "photo": {
+   "url": "https://tong.visitkorea.or.kr/cms2/website/56/2706756.jpg",
+   "shows": "빨간 양념을 버무린 김장 배추김치를 손으로 들어 올린 모습, 김치 사 먹는",
+   "match": "같은 종류",
+   "credit": "ⓒ한국관광공사 포토코리아-알렉스 분도",
+   "rights": "한국관광공사 공공누리 1유형",
+   "general": true,
+   "fit": "cover"
+  }
+ },
+ "cover": {
+  "label": "오늘의 먹거리 이슈",
+  "title": "김장비용 9% 내렸는데\n[[김치는 왜 사 먹어?]]",
+  "photo": {
+   "url": "https://tong.visitkorea.or.kr/cms2/website/56/2706756.jpg",
+   "shows": "빨간 양념을 버무린 김장 배추김치를 손으로 들어 올린 모습, 김치 사 먹는",
+   "match": "같은 종류",
+   "credit": "ⓒ한국관광공사 포토코리아-알렉스 분도",
+   "rights": "한국관광공사 공공누리 1유형",
+   "general": true
+  }
+ },
+ "cards": [
+  {
+   "type": "compare",
+   "tag": "가격",
+   "headline": "김장비용,\n[[작년보다 2만 원 싸졌어요]]",
+   "sides": [
+    {
+     "label": "작년",
+     "value": "219,071원",
+     "note": "4인 가족",
+     "photo": {
+      "url": "https://tong.visitkorea.or.kr/cms2/website/47/2706747.jpg",
+      "shows": "김장 재료인 속이 노란 배추 한 포기와 무가 놓인 모습, 김장비용",
+      "match": "같은 종류",
+      "credit": "ⓒ한국관광공사 포토코리아-알렉스 분도",
+      "rights": "한국관광공사 공공누리 1유형",
+      "general": true
+     }
+    },
+    {
+     "label": "올해",
+     "value": "199,456원",
+     "note": "9% ↓",
+     "photo": {
+      "url": "https://tong.visitkorea.or.kr/cms2/website/54/2706754.jpg",
+      "shows": "김장 배추김치 한 포기를 손으로 든 모습, 김장비용",
+      "match": "같은 종류",
+      "credit": "ⓒ한국관광공사 포토코리아-알렉스 분도",
+      "rights": "한국관광공사 공공누리 1유형",
+      "general": true
+     }
+    }
+   ],
+   "arrow": true,
+   "hi": 1,
+   "why": [
+    "13개 품목, 20포기 기준 실제 판매값이에요"
+   ],
+   "basis": "작년 같은 기간 대비 · 전통시장·대형유통업체 판매값",
+   "src": "aT 김장재료 13개 품목 조사 · 11월 9일",
+   "q": "김장비용은 얼마야?"
+  },
+  {
+   "type": "chart",
+   "tag": "소비",
+   "headline": "사 먹는 김치 비중,\n[[1년 새 늘었어요]]",
+   "chart": {
+    "unit": "%",
+    "note": "가정의 김치 조달 방식 중 사 먹는 비중",
+    "bars": [
+     {
+      "label": "지난해",
+      "value": 35.9
+     },
+     {
+      "label": "올해",
+      "value": 41.4
+     }
+    ],
+    "hi": 1
+   },
+   "why": [
+    "1,000가구 온라인 조사, 5.5%p 늘었어요"
+   ],
+   "src": "한국농촌경제연구원 · 10월 2~12일 조사",
+   "q": "사 먹는 사람은 얼마나 늘어?"
+  },
+  {
+   "type": "chart",
+   "tag": "까닭",
+   "headline": "사 먹는 까닭은\n[[값보다 편해서]]",
+   "chart": {
+    "unit": "%",
+    "note": "김치를 사 먹는 이유(433명 응답)",
+    "bars": [
+     {
+      "label": "필요한 만큼",
+      "value": 43.9
+     },
+     {
+      "label": "번거로워서",
+      "value": 34.4
+     },
+     {
+      "label": "더 저렴해서",
+      "value": 9
+     }
+    ],
+    "hi": 0
+   },
+   "why": [
+    "'더 저렴해서'는 9%에 그쳤어요"
+   ],
+   "src": "한국농촌경제연구원 · 10월 2~12일 조사",
+   "q": "왜 사 먹는데?"
+  },
+  {
+   "tag": "수급",
+   "headline": "마늘만\n[[작년보다 비싸요]]",
+   "big": "21.6% ↑",
+   "photo": {
+    "url": "https://tong.visitkorea.or.kr/cms2/website/48/2706748.jpg",
+    "shows": "김장 재료 마늘, 나무 도마 위 통마늘 여러 통, 깐마늘",
+    "match": "같은 종류",
+    "credit": "ⓒ한국관광공사 포토코리아-알렉스 분도",
+    "rights": "한국관광공사 공공누리 1유형",
+    "general": true
+   },
+   "why": [
+    "깐마늘 1.3kg 15,571원, 작년보다 21.6% ↑",
+    "생산·재고가 줄어서예요"
+   ],
+   "basis": "작년 같은 기간 대비 · 11월 9일",
+   "src": "aT 김장재료 조사 · 11월 9일",
+   "q": "오른 재료는 없어?"
+  },
+  {
+   "type": "summary",
+   "tag": "정리",
+   "headline": "재료값은 ↓\n[[사 먹는 집은 ↑]]",
+   "points": [
+    "김장비용 199,456원, 작년보다 9% ↓",
+    "사 먹는 김치 41.4%, 5.5%p ↑",
+    "깐마늘만 21.6% ↑"
+   ],
+   "ask": "올해 김장, 담그세요 사 드세요?",
+   "photo": {
+    "url": "https://tong.visitkorea.or.kr/cms2/website/55/2706755.jpg",
+    "shows": "항아리 위에서 김장김치 한 포기를 손으로 든 모습, 늘어 이슈",
+    "match": "같은 종류",
+    "credit": "ⓒ한국관광공사 포토코리아-알렉스 분도",
+    "rights": "한국관광공사 공공누리 1유형",
+    "general": true
+   }
+  }
+ ],
+ "caption": "김장비용 9% 내렸다며, 사 먹는 김치는 왜 늘었어?\n김장비용 · 사 먹는 김치, 11월 16일 먹거리 이슈\n\naT가 11월 9일 기준으로 조사한 4인 가족 김장비용은 199,456원으로 지난해(219,071원)보다 9% 줄었어요. 배추 20포기 값이 54,980원으로 작년보다 26.5% 내린 영향이에요. 깐마늘(1.3kg)만 15,571원으로 21.6% 올랐어요.\n\n그런데 한국농촌경제연구원 조사에서 가정의 김치 조달 방식 중 사 먹는 비중은 41.4%로 지난해 35.9%보다 5.5%p 늘었어요. 사 먹는 이유는 '필요한 만큼 살 수 있어서'가 43.9%, '담그기 번거로워서'가 34.4%였고 '더 저렴해서'는 9%였어요.\n\n값은 조사한 날 기준이라 지금과 다를 수 있어요.\n\n올해 김장, 담그세요 사 드세요? 댓글로 알려 주세요.\n\n출처: 한국농어민신문(11월 13일), 이데일리(11월 10일), 연합뉴스TV(11월 15일), aT, 한국농촌경제연구원",
+ "tags": [
+  "김장비용",
+  "사먹는김치",
+  "김장",
+  "장바구니물가"
+ ],
+ "sources": [
+  "https://news.google.com/rss/articles/CBMibEFVX3lxTE41ei1NSllzWUJLc0FtR1RkU0hibHVEcHJiWld5b1FKUUVjWWJSRnZfVDJGYkxNMWRFZGktemVYU3J4M2xNTWpZWk10RU1jUjRzYmlRMEFNaFExWlJzMEpqcWpnSXFLRUZONFVtSg?oc=5",
+  "https://news.google.com/rss/articles/CBMigAFBVV95cUxQMHFpOTc4NENXdmEyaks4MnQxZ1prOWRvcXZpM3RoOGhoTTBqT3JlNVN1dUd3aUFwTU1JczdpV2tyTkI2Y1BXN2xLMlF6eVFLeWRUa19LWE5kYWttZVY1WFFKVnRlLTlyX05BUWpuSWJXQ1hLNV9IaTYzaDRRVHNBcg?oc=5",
+  "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE8yMUtBcGRkY3BORFE3R2ZiMHpuSC14WXo3eW9pSmpDUkJ6ZGNTMndsMXF3SWpkbDBsWGhuUTd5VU13SUE3bHE4V0V2MFlBQlphaGdlQllJQTZBT1Y5dGxMYUFNdHI2V3M?oc=5"
+ ],
+ "credits": [
+  "ⓒ한국관광공사 포토코리아-알렉스 분도"
+ ],
+ "yt_title": "김장비용 9% 내렸는데 사 먹는 김치는 왜 늘었을까? 김장 이야기",
+ "yt_keyword": "김장비용",
+ "yt_related": [
+  "올해 김장비용",
+  "사 먹는 김치",
+  "김장 배추값",
+  "깐마늘 가격"
+ ],
+ "yt_tags": [
+  "김장비용",
+  "올해 김장비용",
+  "사 먹는 김치",
+  "배추값",
+  "깐마늘 가격",
+  "먹거리 이슈"
+ ],
+ "yt_hashtags": [
+  "김장비용",
+  "사먹는김치",
+  "김장"
+ ],
+ "yt_lead": "올해 김장비용은 9% 줄었는데 사 먹는 김치 비중은 41.4%로 늘었어요, 까닭을 정리했어요.",
+ "dates": {
+  "checked": "2026-11-16",
+  "sources": [
+   {
+    "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE8yMUtBcGRkY3BORFE3R2ZiMHpuSC14WXo3eW9pSmpDUkJ6ZGNTMndsMXF3SWpkbDBsWGhuUTd5VU13SUE3bHE4V0V2MFlBQlphaGdlQllJQTZBT1Y5dGxMYUFNdHI2V3M?oc=5",
+    "published": "2026-11-15"
+   },
+   {
+    "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE41ei1NSllzWUJLc0FtR1RkU0hibHVEcHJiWld5b1FKUUVjWWJSRnZfVDJGYkxNMWRFZGktemVYU3J4M2xNTWpZWk10RU1jUjRzYmlRMEFNaFExWlJzMEpqcWpnSXFLRUZONFVtSg?oc=5",
+    "published": "2026-11-13"
+   },
+   {
+    "url": "https://news.google.com/rss/articles/CBMigAFBVV95cUxQMHFpOTc4NENXdmEyaks4MnQxZ1prOWRvcXZpM3RoOGhoTTBqT3JlNVN1dUd3aUFwTU1JczdpV2tyTkI2Y1BXN2xLMlF6eVFLeWRUa19LWE5kYWttZVY1WFFKVnRlLTlyX05BUWpuSWJXQ1hLNV9IaTYzaDRRVHNBcg?oc=5",
+    "published": "2026-11-10"
+   }
+  ],
+  "stat_period": "2026년 11월 9일 기준"
+ },
+ "followup": {
+  "of": "2026-11-13/2-news",
+  "new": "11월 9일 기준 김장비용 199,456원, 깐마늘 21.6%↑, 사 먹는 이유 조사"
+ },
+ "review": {
+  "photo_sheet": "5c180d7085c0"
+ }
+}

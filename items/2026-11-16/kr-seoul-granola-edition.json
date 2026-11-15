@@ -1,0 +1,48 @@
+{
+  "category": "한국 제철",
+  "country": "한국",
+  "region": "서울",
+  "subject": "서울시 그래놀라 서울에디션",
+  "angle": "도시브랜드 협업 고단백 그래놀라",
+  "season": "2026년 11월 16일 판매 시작",
+  "length_sec": 25,
+  "title": "서울시가 단백질 19g 그래놀라를 팔아요",
+  "summary": [
+    "서울시가 그래놀라하우스와 협업한 '그래놀라 서울에디션'을 11월 16일부터 판매한다고 15일 밝혔어요.",
+    "귀리를 주원료로 호두·아몬드·해바라기씨·호박씨를 넣었고, 100g당 단백질 19g·식이섬유 10g을 담았다고 해요.",
+    "협업 제품은 서울의 도시브랜드를 일상 소비로 넓히려는 취지라고 서울시가 설명했어요.",
+    "포장에는 서울 관광명소를 활용한 디자인을 넣었다고 해요."
+  ],
+  "facts": [
+    "판매가는 1만 4,200원이고 서울마이소울샵 7곳과 그래놀라하우스 네이버 스마트스토어에서 살 수 있어요.",
+    "포장에는 DDP와 서울달 같은 서울 명소 디자인을 넣었어요."
+  ],
+  "script": {
+    "hook": "서울시가 만든 그래놀라가 나왔어요",
+    "flow": "16일 판매|단백질 19g|1만 4,200원",
+    "closing": "영양 수치는 서울시가 밝힌 값이에요."
+  },
+  "visuals": [
+    "일반 그래놀라 사진"
+  ],
+  "cautions": [
+    "서울시 원문은 확인 못 함, 상품 권유처럼 쓰지 않아요."
+  ],
+  "sources": [
+    {
+      "name": "천지일보(11월 15일)",
+      "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTFBYdHRTMGN5RHVRYWhOM0VzazBIaU9LZmRwSUw4OVVYV2dzd2FVV2hMdnlLaEVnRTJmdmxLX0N2WTM0U2lVTkxBLU1NUGRYNndzMXlIMGduSnF4Q2ZObkRZQUpNbGNWV1doUVE?oc=5",
+      "official": false
+    }
+  ],
+  "unverified": [
+    "3곳 보도"
+  ],
+  "date": "2026-11-16",
+  "checked": "2026-11-16",
+  "id": "2026-11-16-kr-seoul-granola-edition",
+  "pairing": {
+    "drink": "",
+    "note": ""
+  }
+}

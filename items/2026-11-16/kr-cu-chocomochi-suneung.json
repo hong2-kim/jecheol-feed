@@ -1,0 +1,46 @@
+{
+  "category": "한국 제철",
+  "country": "한국",
+  "region": "전국",
+  "subject": "CU 생초코모찌 수능 시즌 매출",
+  "angle": "엿·찹쌀떡 대신 초코모찌, 10대와 40대 구매 증가",
+  "season": "2026년 11월 1~13일 기준",
+  "length_sec": 25,
+  "title": "수능 선물, 찹쌀떡에서 초코모찌로 넓어졌대요",
+  "summary": [
+    "CU에 따르면 11월 1~13일 떡 관련 상품 매출이 전월 같은 기간보다 49.6% 늘었어요.",
+    "생초코모찌 2종(초코·말차)은 누적 판매 80만 개를 넘었고 매출이 전월보다 116.9% 늘었다고 해요.",
+    "생초코모찌 10대 구매 비중은 3.6%에서 12.6%로, 40대는 13.0%에서 25.0%로 늘었어요."
+  ],
+  "facts": [
+    "CU는 포켓CU 앱 수험생 응원 이벤트를 16일부터 18일까지 연다고 밝혔어요."
+  ],
+  "script": {
+    "hook": "수능 선물이 찹쌀떡에서 바뀌었대요",
+    "flow": "떡 매출 49.6%↑|생초코모찌 116.9%↑|10대·40대 비중",
+    "closing": "숫자는 CU가 밝힌 값이에요."
+  },
+  "visuals": [
+    "일반 찹쌀떡 사진(회사 사진은 이용 조건 확인 필요)"
+  ],
+  "cautions": [
+    "이미 10-30 수능 선물 카드에서 다룬 소재의 새 숫자예요."
+  ],
+  "sources": [
+    {
+      "name": "팝콘뉴스(11월 15일)",
+      "url": "https://news.google.com/rss/articles/CBMickFVX3lxTFAya0N4N3lHSDBucDhpd3FFTUU0c0NQX29yVEI3Y1lGMFpTRFhUbGRRSFN4bDdseWJRTkdncXloOHRaWTd2SDhodUV2NUJiUEVaREI0WGZKYjdCSjhPaGhJMV9hcHpQUFJDdzBnanZ0NUlJUdIBckFVX3lxTFAya0N4N3lHSDBucDhpd3FFTUU0c0NQX29yVEI3Y1lGMFpTRFhUbGRRSFN4bDdseWJRTkdncXloOHRaWTd2SDhodUV2NUJiUEVaREI0WGZKYjdCSjhPaGhJMV9hcHpQUFJDdzBnanZ0NUlJUQ?oc=5",
+      "official": false
+    }
+  ],
+  "unverified": [
+    "CU 원문은 확인 못 함, 4곳 보도"
+  ],
+  "date": "2026-11-16",
+  "checked": "2026-11-16",
+  "id": "2026-11-16-kr-cu-chocomochi-suneung",
+  "pairing": {
+    "drink": "",
+    "note": ""
+  }
+}
