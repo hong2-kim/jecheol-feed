@@ -478,6 +478,129 @@
         "channels": 120,
         "thin": 4
       }
+    },
+    "2026-11-15": {
+      "picks": [
+        {
+          "id": "7wyQJI8UiLk",
+          "title": "근육 빠질때 비싼 소고기 대신 이것 드세요 # 컨트리 스타일·",
+          "channel": "응오트랑",
+          "subs": 25700,
+          "views": 104987,
+          "median": 7677,
+          "n": 27,
+          "multiple": 13.7,
+          "hours": 47,
+          "formulas": [
+            "방법·꿀팁"
+          ],
+          "query": "제철 음식",
+          "url": "https://youtube.com/shorts/7wyQJI8UiLk"
+        },
+        {
+          "id": "koLxgW5xzs0",
+          "title": "씨유에 코쟁이 클리커 나옴",
+          "channel": "김면주",
+          "subs": 5280,
+          "views": 22659,
+          "median": 2651,
+          "n": 43,
+          "multiple": 8.5,
+          "hours": 46,
+          "formulas": [],
+          "query": "편의점 신상",
+          "url": "https://youtube.com/shorts/koLxgW5xzs0"
+        },
+        {
+          "id": "hzik8TU1T0E",
+          "title": "계란을 튀길 때 절대로 식용유를 넣지 마세요. 침",
+          "channel": "건강비밀",
+          "subs": 6310,
+          "views": 23338,
+          "median": 3639,
+          "n": 35,
+          "multiple": 6.4,
+          "hours": 23,
+          "formulas": [
+            "경고·실수"
+          ],
+          "query": "제철 음식",
+          "url": "https://youtube.com/shorts/hzik8TU1T0E"
+        },
+        {
+          "id": "ElOF3eHOzyA",
+          "title": "다이어트 할때는 호떡 이렇게 드세요!",
+          "channel": "구아카",
+          "subs": 44800,
+          "views": 44553,
+          "median": 7368,
+          "n": 47,
+          "multiple": 6.0,
+          "hours": 69,
+          "formulas": [
+            "방법·꿀팁"
+          ],
+          "query": "다이어트 음식",
+          "url": "https://youtube.com/shorts/ElOF3eHOzyA"
+        },
+        {
+          "id": "S4ANv9x2llQ",
+          "title": "30kg 감량한 제가 아침마다 먹는 이유! 🥗💚👍",
+          "channel": "나의새벽",
+          "subs": 52400,
+          "views": 16016,
+          "median": 3878,
+          "n": 30,
+          "multiple": 4.1,
+          "hours": 52,
+          "formulas": [
+            "몰랐던 사실"
+          ],
+          "query": "다이어트 음식",
+          "url": "https://youtube.com/shorts/S4ANv9x2llQ"
+        },
+        {
+          "id": "KngBTJmiWCk",
+          "title": "해외에서 화제가된 한국 식당 1인분에 충격받은 외국인 반응",
+          "channel": "한국의얼",
+          "subs": 54700,
+          "views": 106345,
+          "median": 29331,
+          "n": 32,
+          "multiple": 3.6,
+          "hours": 15,
+          "formulas": [
+            "해외·여행",
+            "감탄·강조"
+          ],
+          "query": "해외 음식",
+          "url": "https://youtube.com/shorts/KngBTJmiWCk"
+        }
+      ],
+      "leaders": [
+        {
+          "id": "w60jEb24sX0",
+          "title": "요즘 난리난 800만뷰 캔참치 먹는법!",
+          "channel": "빵터진 엄마",
+          "subs": 10300,
+          "views": 12503,
+          "median": 8162,
+          "n": 48,
+          "multiple": 1.5,
+          "hours": 43,
+          "formulas": [
+            "감탄·강조"
+          ],
+          "query": "요즘 유행 음식",
+          "url": "https://youtube.com/shorts/w60jEb24sX0"
+        }
+      ],
+      "stats": {
+        "searched": 219,
+        "shorts": 208,
+        "channels": 120,
+        "thin": 3
+      }
     }
   }
 }
