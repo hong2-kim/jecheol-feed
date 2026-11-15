@@ -1,5 +1,129 @@
 [
   {
+    "id": "2026-11-16-4-find",
+    "date": "2026-11-16",
+    "kind": "발견",
+    "title": "편의점 제철 비빔밥 100만 개 팔렸대, 이번엔 새꼬막 18일 출시",
+    "summary": "세븐일레븐이 성시경과 만든 제철 비빔밥 시리즈가 11월 13일까지 누적 100만 개 팔렸다고 밝혔어요. 후속으로 새꼬막을 넣은 비빔밥이 18일 출시 예정이에요.",
+    "caption": "편의점 비빔밥이 100만 개 팔렸다는 소식, 들으셨어요? 세븐일레븐이 15일 밝힌 바로는 9월 출시한 제철 비빔밥 시리즈가 11월 13일까지 누적 100만 개 팔렸고, 올해 도시락 매출은 작년 같은 기간보다 23% 늘었어요.\n\n후속으로 18일 남해안 새꼬막을 넣은 '시경 픽 남해안제철꼬막비빔밥'이 나와요. 회사는 여수 새꼬막이 전국 꼬막 생산량의 73%를 차지한다고 밝혔어요. 비빔밥 카테고리에서 외국인 고객 매출은 217% 늘었고 여성 구매 비중은 42%예요.\n\n※ 숫자는 모두 회사가 밝힌 값이고, 화면 사진은 꼬막비빔밥 일반 사진이에요. 협찬이나 광고가 아니에요. 더 자세한 이야기는 프로필 링크의 블로그에 있어요.\n\n여러분은 꼬막비빔밥, 먹어 보셨어요?\n\n출처: 뉴시스(11월 15일)",
+    "tags": [
+      "꼬막비빔밥",
+      "편의점도시락",
+      "시경픽",
+      "제철음식",
+      "먹고갈지도"
+    ],
+    "sources": [
+      "https://news.google.com/rss/articles/CBMieEFVX3lxTE8xczVmeEhTQnVHQjEzSERGWEdaN3BvUElBZldsVUFyTDZCaGVxdkUtMHk4ZVZuaXhHZTg5dDI3akNMUDhjdGJaX0lpQy1KMUZCT3hYSTNBbzg0cDJGY2w1MGNSSUJYWTB3a0VuZkVLMlBRME9Qb3FzNNIBeEFVX3lxTE8xczVmeEhTQnVHQjEzSERGWEdaN3BvUElBZldsVUFyTDZCaGVxdkUtMHk4ZVZuaXhHZTg5dDI3akNMUDhjdGJaX0lpQy1KMUZCT3hYSTNBbzg0cDJGY2w1MGNSSUJYWTB3a0VuZkVLMlBRME9Qb3FzNA?oc=5"
+    ],
+    "credits": [
+      "ⓒ한국관광공사 포토코리아-스튜디오 4cats"
+    ],
+    "url": "https://github.com/hong2-kim/jecheol-feed/releases/download/v2026-11-16/2026-11-16-4-find.mp4",
+    "seconds": 14.8,
+    "size_mb": 3.7,
+    "yt_title": "편의점 꼬막비빔밥 18일 출시, 제철 비빔밥 100만 개 팔렸대",
+    "sha256": "aaf0d207135666918e05897d1e4daa04b2572e0295f02cc7a667841e6d42b0d6"
+  },
+  {
+    "id": "2026-11-16-3-dinner",
+    "date": "2026-11-16",
+    "kind": "저녁",
+    "title": "월요일 저녁 내가 골라 줄게! 굴국밥·소고기쌀국수·갈비찜·콩나물밥",
+    "summary": "월요일 저녁, 굴국밥·소고기쌀국수·갈비찜·콩나물밥 넷을 추천해요.",
+    "caption": "월요일 저녁, 내가 골라 줄게!\n\n굴 가득 굴국밥\n맑은 국물 소고기쌀국수\n윤기 도는 갈비찜\n고슬고슬 콩나물밥\n\n넷 중에 뭐가 끌려요? 댓글로 알려 주세요.",
+    "tags": [
+      "월요일저녁메뉴",
+      "저녁메뉴추천",
+      "오늘뭐먹지",
+      "굴국밥",
+      "먹고갈지도"
+    ],
+    "sources": [],
+    "credits": [
+      "by lwy (CC BY 2.0) · commons.wikimedia.org/?curid=3413003",
+      "Tayzar44 (CC BY 4.0) · commons.wikimedia.org/?curid=159735076",
+      "ⓒ한국관광공사 포토코리아-토라이 리퍼블릭"
+    ],
+    "url": "https://github.com/hong2-kim/jecheol-feed/releases/download/v2026-11-16/2026-11-16-3-dinner.mp4",
+    "seconds": 21.8,
+    "size_mb": 8.0,
+    "yt_title": "월요일 저녁 메뉴 내가 골라 줄게, 굴국밥·소고기쌀국수·갈비찜·콩나물밥",
+    "sha256": "f000fd38d7bd4d53f75f1341c2d0c9a748b14375a360063ef88c5f420883125f",
+    "held": "확인 필요"
+  },
+  {
+    "id": "2026-11-16-2-news",
+    "date": "2026-11-16",
+    "kind": "소식",
+    "title": "김장비용은 9% 줄었는데 사 먹는 김치는 41.4%로 늘었어요",
+    "summary": "aT는 4인 가족 김장비용이 199,456원으로 지난해보다 9% 줄었다고 밝혔어요. 한국농촌경제연구원 조사에서 사 먹는 김치 비중은 41.4%로 지난해 35.9%보다 늘었어요.",
+    "caption": "김장비용 9% 내렸다며, 사 먹는 김치는 왜 늘었어?\n김장비용 · 사 먹는 김치, 11월 16일 먹거리 이슈\n\naT가 11월 9일 기준으로 조사한 4인 가족 김장비용은 199,456원으로 지난해(219,071원)보다 9% 줄었어요. 배추 20포기 값이 54,980원으로 작년보다 26.5% 내린 영향이에요. 깐마늘(1.3kg)만 15,571원으로 21.6% 올랐어요.\n\n그런데 한국농촌경제연구원 조사에서 가정의 김치 조달 방식 중 사 먹는 비중은 41.4%로 지난해 35.9%보다 5.5%p 늘었어요. 사 먹는 이유는 '필요한 만큼 살 수 있어서'가 43.9%, '담그기 번거로워서'가 34.4%였고 '더 저렴해서'는 9%였어요.\n\n값은 조사한 날 기준이라 지금과 다를 수 있어요.\n\n올해 김장, 담그세요 사 드세요? 댓글로 알려 주세요.\n\n출처: 한국농어민신문(11월 13일), 이데일리(11월 10일), 연합뉴스TV(11월 15일), aT, 한국농촌경제연구원",
+    "tags": [
+      "김장비용",
+      "사먹는김치",
+      "김장",
+      "장바구니물가",
+      "먹고갈지도"
+    ],
+    "sources": [
+      "https://news.google.com/rss/articles/CBMibEFVX3lxTE41ei1NSllzWUJLc0FtR1RkU0hibHVEcHJiWld5b1FKUUVjWWJSRnZfVDJGYkxNMWRFZGktemVYU3J4M2xNTWpZWk10RU1jUjRzYmlRMEFNaFExWlJzMEpqcWpnSXFLRUZONFVtSg?oc=5",
+      "https://news.google.com/rss/articles/CBMigAFBVV95cUxQMHFpOTc4NENXdmEyaks4MnQxZ1prOWRvcXZpM3RoOGhoTTBqT3JlNVN1dUd3aUFwTU1JczdpV2tyTkI2Y1BXN2xLMlF6eVFLeWRUa19LWE5kYWttZVY1WFFKVnRlLTlyX05BUWpuSWJXQ1hLNV9IaTYzaDRRVHNBcg?oc=5",
+      "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE8yMUtBcGRkY3BORFE3R2ZiMHpuSC14WXo3eW9pSmpDUkJ6ZGNTMndsMXF3SWpkbDBsWGhuUTd5VU13SUE3bHE4V0V2MFlBQlphaGdlQllJQTZBT1Y5dGxMYUFNdHI2V3M?oc=5"
+    ],
+    "credits": [
+      "ⓒ한국관광공사 포토코리아-알렉스 분도"
+    ],
+    "url": "https://github.com/hong2-kim/jecheol-feed/releases/download/v2026-11-16/2026-11-16-2-news-1.jpg",
+    "seconds": null,
+    "size_mb": 1.5,
+    "yt_title": "김장비용 9% 내렸는데 사 먹는 김치는 왜 늘었을까? 김장 이야기",
+    "format": "cards",
+    "files": [
+      "2026-11-16-2-news-1.jpg",
+      "2026-11-16-2-news-2.jpg",
+      "2026-11-16-2-news-3.jpg",
+      "2026-11-16-2-news-4.jpg",
+      "2026-11-16-2-news-5.jpg",
+      "2026-11-16-2-news-6.jpg"
+    ],
+    "urls": [
+      "https://github.com/hong2-kim/jecheol-feed/releases/download/v2026-11-16/2026-11-16-2-news-1.jpg",
+      "https://github.com/hong2-kim/jecheol-feed/releases/download/v2026-11-16/2026-11-16-2-news-2.jpg",
+      "https://github.com/hong2-kim/jecheol-feed/releases/download/v2026-11-16/2026-11-16-2-news-3.jpg",
+      "https://github.com/hong2-kim/jecheol-feed/releases/download/v2026-11-16/2026-11-16-2-news-4.jpg",
+      "https://github.com/hong2-kim/jecheol-feed/releases/download/v2026-11-16/2026-11-16-2-news-5.jpg",
+      "https://github.com/hong2-kim/jecheol-feed/releases/download/v2026-11-16/2026-11-16-2-news-6.jpg"
+    ],
+    "sha256": "20f04d8fe3075f87ccd94e44e3b9a31b5b3fb01f45e5b348af183db352a0e1b1"
+  },
+  {
+    "id": "2026-11-16-10-voice",
+    "date": "2026-11-16",
+    "kind": "해설",
+    "title": "과자에 라면 수프 뿌려 먹던 조합이 진짜 신제품이 됐어요",
+    "summary": null,
+    "caption": "라면 수프를 과자에 뿌려 먹던 조합, 진짜 신제품이 됐대요.\n\n세계일보 11월 15일 보도에 따르면 농심은 소비자가 SNS에 공유한 조리법을 반영해 10월 12일 너구리와 양파링을 합친 신제품을 냈어요. 배스킨라빈스 공모전에는 4만 3천여 건의 아이디어가 접수됐고 투표에는 64만 7천여 표가 참여해 1·2위 작품이 10월 신제품이 됐어요. CU는 요리 고등학교 학생 레시피를 9월 10일 간편식으로 출시했어요.\n\n※ 화면 사진은 라면·아이스크림 일반 사진이에요. 협찬이나 광고가 아니에요.\n\n여러분만의 조합이 있나요? 댓글로 알려 주세요.\n\n출처: 세계일보(2026년 11월 15일)",
+    "tags": [
+      "라면조합",
+      "모디슈머",
+      "신제품",
+      "편의점신상",
+      "먹고갈지도"
+    ],
+    "sources": [
+      "https://m.segye.com/daumview/20261115502357"
+    ],
+    "credits": [
+      "ⓒ한국관광공사 포토코리아-알렉스 분도, 김지호, 이범수"
+    ],
+    "url": "https://github.com/hong2-kim/jecheol-feed/releases/download/v2026-11-16/2026-11-16-10-voice.mp4",
+    "seconds": 40.6,
+    "size_mb": 4.4,
+    "yt_title": "모디슈머 신제품, 과자에 라면 수프 뿌려 먹던 조합이 진짜 나왔대요",
+    "sha256": "8e9ca8849d576e10a16ab92276ff8ed7d4615e1fe99b94ceb99b0e73f3b226df"
+  },
+  {
     "id": "2026-11-15-4-find",
     "date": "2026-11-15",
     "kind": "발견",
