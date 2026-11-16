@@ -22,6 +22,8 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 from history import DATES_FROM, SYN, words  # 같은 낱말 다듬기·같은 말 묶음을 다시 써요
 
 ROOT = Path(__file__).resolve().parent.parent
+sys.path.insert(0, str(ROOT / "video"))
+import marks  # 화면에 보일 사진 표기(축제 연도·블로그 출처)를 엔진과 같게 읽어요 (2026-11-16)
 PHOTO_KEYS = {"photo", "photo2", "photos", "photo_top", "photo_bottom", "inset", "logo", "video"}
 TEXT_KEYS = ("title", "headline", "say", "line", "chip", "fact", "why", "note", "label", "name", "k", "v", "item", "big", "ribbon", "head", "sub", "q")
 MATCH = ("정확", "같은 종류", "분위기")
@@ -161,6 +163,8 @@ def brands_in(text):
     return {b for b in found if not any(b != o and b in o for o in found)}  # '이마트24' 가 있으면 '이마트' 는 따로 세지 않아요
 
 
+FEST_SHOWN = re.compile(r"20\d\d년|과거 축제 자료사진")
+YEAR_SHOWN = re.compile(r"(20\d\d)년")
 STOCK = re.compile(r"unsplash\.com|pexels\.com|pixabay\.com")  # 무료 사진 사이트 (2026-11-07)
 
 
@@ -365,17 +369,21 @@ def photo_lines(spec, day, platforms=("instagram", "youtube")):
         if "참고" in str(p.get("ref") or ""):
             out.append(("사진 표기", f"{where}: '참고 사진' 딱지(ref)는 2026-11-06부터 쓰지 않아요. 사진 성격을 label 에 적어요(예: '2025년 축제 현장 · 울진군', '사진: ○○ 제공')", "참고"))
         festival_here = festival_scene(spec, where, text) and not where.startswith("thumb")
+        shown = marks.marks(p)[0]  # 화면에 실제로 보일 표기 (festival 칸 → '2024년 축제 현장'·'과거 축제 자료사진', label 의 출처 부분은 빠짐)
         food = set(name_words(shows)) & (set(name_words(text)) - GENERIC - PLACES - {"축제", "현장", "사진"})
-        if festival_here and "축제" not in shows and general and match == "같은 종류" and food and not re.search(r"축제|현장", str(p.get("label") or "")):
+        if festival_here and "축제" not in shows and general and match == "같은 종류" and food and not re.search(r"축제|현장", shown):
             # 2026-11-07 사용자: 쓸 수 있는 현장 사진이 없으면 소식을 빼지 않고 대표 음식·식재료 사진으로 살린다(축제 현장처럼 표기하지 않음)
             out.append(("사진 일치", f"{where}: 축제 현장 사진 대신 대표 음식 사진({'·'.join(sorted(food))})을 썼어요. 사진 보고에 '축제 현장 사진 미확보'와 찾아본 곳을 적어요", "참고"))
-        elif festival_here and "축제" not in shows and general and re.search(r"축제|현장", str(p.get("label") or "")):
-            out.append(("사진 표기", f"{where}: 음식 일반 사진인데 label 에 '축제·현장'을 적었어요(label: {p.get('label')}). 축제 현장처럼 표현하지 말고 '가리비 사진 · 출처'처럼 적어요", "확인"))
+        elif festival_here and "축제" not in shows and general and re.search(r"축제|현장", shown):
+            out.append(("사진 표기", f"{where}: 음식 일반 사진인데 화면 표기가 축제 사진처럼 나와요({shown}). festival 칸을 빼고 label 은 비우거나 '가리비 사진'처럼 적어요", "확인"))
         elif festival_here and "축제" not in shows:
             # 2026-11-06 사용자: 축제 소식은 실제 축제 현장 사진(올해 → 지난해·이전 회차). 생선 말리기·항구·관광지 사진에 표기만 붙여 대신하지 않아요
             out.append(("사진 일치", f"{where}: 축제 소식인데 축제 현장 사진이 아니에요(shows: {shows[:30]}). 같은 축제의 올해·지난해 현장 사진(전경·부스·방문객·판매장·공연·현수막)을 찾고 shows 에 '2024 죽변항 수산물축제 …'처럼 적어요. 못 찾으면 '축제 현장 사진 미확보'로 보고해요", "확인"))
-        elif "축제" in shows and not re.search(r"20\d\d", str(p.get("label") or "") + shows):
-            out.append(("사진 표기", f"{where}: 축제 현장 사진이면 촬영 연도(확인된 것만)를 label 에 적어요(예: '2024년 축제 현장 · 울진군')", "참고"))
+        if "축제" in shows and p.get("festival") is None and FEST_SHOWN.search(shown) is None:
+            out.append(("사진 표기", f"{where}: 축제 사진인데 화면에 연도 표기가 없어요. \"festival\": 연도(모르면 true)를 적어요 (2026-11-16 사용자: 축제 사진은 행사 연도를 먼저)", "참고"))
+        ys = re.findall(r"(20\d\d)", shows)
+        if isinstance(p.get("festival"), (int, dict)) and not isinstance(p.get("festival"), bool) and ys and YEAR_SHOWN.search(shown) and YEAR_SHOWN.search(shown)[1] not in ys:
+            out.append(("사진 표기", f"{where}: 화면 연도({shown})가 사진 설명(shows: {shows[:30]})의 연도와 달라요. 실제 행사 연도를 다시 확인해요", "확인"))
         if STOCK.search(url) and shows:
             # 2026-11-07 사용자: Unsplash 등 무료 사진은 적극 쓰되, 실제 음식·행사와 다른 사진을 그 현장·그 제품 사진처럼 쓰지 않아요
             if festival_scene(spec, where, text) and "축제" in shows:

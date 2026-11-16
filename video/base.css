@@ -265,3 +265,9 @@ body { background: #0E0B09; color: #fff; font-family: "Noto Sans KR", sans-serif
   white-space: pre-line; text-shadow: 0 6px 30px rgba(0,0,0,.7); }
 .vs-ask .am { color: var(--ac); }
 .vs-sub { position: absolute; left: 60px; right: 60px; top: 1665px; text-align: center; font-size: 40px; font-weight: 700; color: rgba(255,255,255,.8); }
+
+/* 사진 표기 (2026-11-16 사용자, 규칙은 video/marks.py): 축제 연도는 알아보게, 블로그·인스타 출처는 아주 작고 흐리게 구석에 */
+.scene .smark { position: absolute; right: 36px; top: 330px; z-index: 6; padding: 5px 16px 8px; border-radius: 10px; background: rgba(10,8,6,.66);
+  color: rgba(255,255,255,.92); font-weight: 700; font-size: 30px; letter-spacing: -.5px; white-space: nowrap; }
+.scene .ssrc { position: absolute; right: 28px; bottom: 22px; z-index: 6; font-weight: 600; font-size: 19px; letter-spacing: -.3px; white-space: nowrap;
+  color: rgba(255,255,255,.5); text-shadow: 0 1px 3px rgba(0,0,0,.55); pointer-events: none; }

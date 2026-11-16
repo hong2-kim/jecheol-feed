@@ -221,6 +221,8 @@ CSS = """
 .vpic.whole img.bg { object-fit: cover; }
 .vpic.pack { background: #fff; }
 .vpic.pack img { object-fit: contain; padding: 34px 56px; }
+.vpic .vref { position: absolute; right: 26px; top: 26px; z-index: 3; padding: 5px 16px 8px; border-radius: 10px; background: rgba(10,8,6,.66); color: rgba(255,255,255,.92); font-weight: 700; font-size: 32px; letter-spacing: -.5px; white-space: nowrap; }
+.vpic .vsrc { position: absolute; right: 22px; bottom: 16px; z-index: 3; font-weight: 600; font-size: 20px; letter-spacing: -.3px; white-space: nowrap; color: rgba(255,255,255,.5); text-shadow: 0 1px 3px rgba(0,0,0,.6); }
 .vchip { position: absolute; left: 44px; top: 850px; padding: 8px 26px 14px; border-radius: 999px; background: #D8432B; color: #fff; font-weight: 900; font-size: 54px; letter-spacing: -1.5px; box-shadow: 0 6px 20px rgba(0,0,0,.35); }
 .vline { position: absolute; left: 0; right: 0; }
 .vback.dark { background: #0E0B09; }
@@ -305,13 +307,15 @@ def is_pack(B, photo):
 
 
 def pic_html(B, photo):
+    import marks
+    mk = marks.html_of(photo, "vref", "vsrc", festival_only=True)  # 축제 연도·블로그·인스타 출처 (2026-11-16 사용자, 해당 사진이 아니면 빈 글)
     if is_pack(B, photo):
-        return f'<div class="vpic pack"><img src="{B.pack_photo(photo)}"></div>'
+        return f'<div class="vpic pack"><img src="{B.pack_photo(photo)}">{mk}</div>'
     src, pos = B.fetch_photo(photo)
     if B.zoomed(photo) or B.fills(photo):  # 음식 사진은 칸을 꽉 채워요 (2026-10-28 사용자 승인, 가장자리만 잘려요. 핵심 위치는 pos)
-        return f'<div class="vpic"><img src="{src}" style="object-position:{pos}"></div>'
+        return f'<div class="vpic"><img src="{src}" style="object-position:{pos}">{mk}</div>'
     # 포스터·안내문처럼 전체가 중요한 사진("fit": "contain", "kind": "poster")은 잘리지 않게 통째로 (2026-10-17 사용자가 정함)
-    return f'<div class="vpic whole"><img class="bg" src="{B.backdrop(photo)}"><img src="{src}"></div>'
+    return f'<div class="vpic whole"><img class="bg" src="{B.backdrop(photo)}"><img src="{src}">{mk}</div>'
 
 
 def line_photos(lines):

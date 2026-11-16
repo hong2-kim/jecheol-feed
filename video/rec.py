@@ -30,6 +30,9 @@ CSS = """
 .rbox { position: absolute; left: 0; right: 0; overflow: hidden; }
 .rbox img.m { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
 .rbox.contain img.m { object-fit: contain; }
+.rbox .pref, .rgrid .c .pref { position: absolute; right: 26px; top: 26px; z-index: 3; padding: 5px 16px 8px; border-radius: 10px; background: rgba(10,8,6,.66); color: rgba(255,255,255,.92); font-weight: 700; font-size: 30px; letter-spacing: -.5px; white-space: nowrap; }
+.rbox .psrc, .rgrid .c .psrc { position: absolute; right: 20px; bottom: 14px; z-index: 3; font-weight: 600; font-size: 19px; letter-spacing: -.3px; white-space: nowrap; color: rgba(255,255,255,.5); text-shadow: 0 1px 3px rgba(0,0,0,.6); }
+.rbox .psrc { right: auto; left: 20px; }
 .rsub { position: absolute; left: 36px; right: 36px; display: flex; align-items: center; justify-content: center; gap: 18px; }
 .rsub div { background: #fff; color: #111; font-weight: 900; font-size: 66px; letter-spacing: -2.5px; padding: 10px 34px 18px; border-radius: 22px;
             box-shadow: 0 8px 24px rgba(0,0,0,.35); text-align: center; line-height: 1.12; }
@@ -230,13 +233,14 @@ def _cover_scale(B, photo, vis, h):
 
 def vis_html(B, vis, top, h, dur, note):
     """장면 하나의 HTML (칸 위치 top, 높이 h)."""
+    import marks  # 사진 표기: 축제 연도·블로그·인스타 출처 (2026-11-16 사용자)
     out = []
     if vis.get("photo"):
         p = vis["photo"]
         src, pos = B.fetch_photo(p)
         fit = _fit(B, p)
         out.append(f'<div class="rbg" style="top:{top}px"><img src="{B.backdrop(p)}"></div>')  # 칸 아래 빈 곳도 같은 사진을 흐리게
-        out.append(f'<div class="rbox{" contain" if fit == "contain" else ""}" style="top:{top}px;height:{h}px"><img class="m" src="{src}" style="object-position:{pos}"></div>')
+        out.append(f'<div class="rbox{" contain" if fit == "contain" else ""}" style="top:{top}px;height:{h}px"><img class="m" src="{src}" style="object-position:{pos}">{marks.html_of(p, "pref", "psrc", festival_only=True)}</div>')
     elif vis.get("video"):
         v = vis["video"]
         # "zoom": 1.7, "origin": "65% 90%" — 영상 속 행동(팬 등)이 작게 찍혔을 때 그 부분을 키워요
@@ -279,7 +283,7 @@ def vis_html(B, vis, top, h, dur, note):
             if not c.get("photo"):  # 상품 칸: 이름표 · 상품 · 값을 위에서 아래로
                 img = f'<img src="{product_img(B, c["img"])}">'
             mark = "" if hl is None else (" on" if k == hl else " dim")
-            cells.append(f'<div class="c{"" if c.get("photo") else " pd"}{mark}">{img}' + (f'<div class="lb">{B.esc(c["label"])}</div>' if c.get("label") else "")
+            cells.append(f'<div class="c{"" if c.get("photo") else " pd"}{mark}">{img}{marks.html_of(c.get("photo"), "pref", "psrc", festival_only=True)}' + (f'<div class="lb">{B.esc(c["label"])}</div>' if c.get("label") else "")
                          + (f'<div class="lp">{B.esc(c["price"])}</div>' if c.get("price") else "") + "</div>")
         first = vis["grid"][0]
         if first.get("photo"):

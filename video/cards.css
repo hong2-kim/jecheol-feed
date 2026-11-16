@@ -172,6 +172,13 @@ body { color: #fff; font-family: "Noto Sans KR", sans-serif; word-break: keep-al
 .nc .ref.ph-ref { right: 56px; bottom: auto; top: 118px; }
 .nc .cm-it { position: relative; }
 .nc .ref.cm-ref { right: 14px; bottom: auto; top: 76px; font-size: 26px; }
+/* 블로그·인스타 사진의 작은 출처 (2026-11-16 사용자: 아주 작게·흐리게·구석에, 출처를 적었다는 정도만). 표기 규칙은 video/marks.py */
+.nc .psrc, .hero .psrc { position: absolute; left: 16px; bottom: 12px; z-index: 4; font-weight: 600; font-size: 19px; letter-spacing: -.3px; white-space: nowrap;
+  color: rgba(255,255,255,.5); text-shadow: 0 1px 3px rgba(0,0,0,.55); pointer-events: none; }
+.nc .psrc.ph-src { left: auto; right: 58px; bottom: auto; top: 124px; }
+.nc .ref.ph-ref + .psrc.ph-src { top: 178px; }
+.nc .psrc.cm-src { left: auto; right: 16px; bottom: auto; top: 80px; }
+.nc .ref.cm-ref + .psrc.cm-src { top: 126px; }
 /* 상품 포장 사진은 흰 판에 통째로 (hero) */
 .hero .hpics > div.pk { background: #fff; }
 .hero .hpics > div.pk img { object-fit: contain; padding: 18px 40px; box-sizing: border-box; }

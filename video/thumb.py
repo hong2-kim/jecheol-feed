@@ -71,6 +71,8 @@ CSS = """
 /* 흰 바탕 상품 사진은 위에 붙이면 아래가 텅 비어 보여서 가운데에 둬요 (2026-10-21 빅아치) */
 .bpic.pack { background: #fff; } .bpic.pack img { padding: 30px 56px; object-position: 50% 50%; }
 .tref { position: absolute; right: 24px; top: 832px; z-index: 903; padding: 8px 22px 12px; border-radius: 12px; background: rgba(10,8,6,.74); color: #fff; font-weight: 800; font-size: 40px; letter-spacing: -1px; white-space: nowrap; }
+.tsrc { position: absolute; right: 26px; top: 832px; z-index: 903; font-weight: 600; font-size: 22px; letter-spacing: -.3px; white-space: nowrap; color: rgba(255,255,255,.5); text-shadow: 0 1px 3px rgba(0,0,0,.6); }
+.tref + .tsrc { top: 906px; }
 .bback { position: absolute; left: 0; right: 0; top: 1700px; bottom: 0; overflow: hidden; }
 /* 사진 아래 목록 (thumb.list). 사진은 띠 바로 아래에 통째로 붙고, 남은 아래 칸에 소식 목록이 들어가요 (2026-10-21 빅아치 소식 카드) */
 .blist { position: absolute; left: 0; right: 0; bottom: 0; z-index: 902; background: #1F2A1A; display: flex; align-items: center; padding: 0 70px; }
@@ -346,12 +348,10 @@ def body(spec):
 
 
 def ref_tag(photo):
-    """사진 오른쪽 위 작은 표기. 사진에 적은 "label"(사진 성격·출처·촬영 연도)을 그대로 보여 줘요 (2026-11-06 사용자).
-    label 이 없으면 붙이지 않아요. 예전의 '참고 사진' 딱지("ref")는 더 쓰지 않아요."""
-    if not isinstance(photo, dict) or not str(photo.get("label") or "").strip():
-        return ""
-    import build as B
-    return f'<div class="tref">{B.esc(str(photo["label"]).strip())}</div>'
+    """사진 오른쪽 위 표기. 무엇을 보여 줄지는 marks.py 가 정해요 (2026-11-16 사용자):
+    축제 사진은 행사 연도, 블로그·인스타 사진은 그 아래 아주 작고 흐린 출처, 그 밖의 사진은 화면 출처 없음."""
+    import marks
+    return marks.html_of(photo, "tref", "tsrc").replace("<span", "<div").replace("</span>", "</div>")
 
 
 def list_html(B, photo, items, tag=""):

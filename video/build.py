@@ -713,6 +713,7 @@ def build_html(spec):
     frames = [("thumb", thumb.body(spec), thumb.THUMB_SEC)] if front else []
     for i, s in enumerate(scenes):
         kind, body = SCENES[s["type"]](s, i, ctx)
+        body += scene_marks(s)  # 축제 연도·블로그 출처 (2026-11-16, 해당 사진이 아니면 빈 글)
         if inline:
             theme = spec.get("theme") or INLINE_BRAND[s["type"]]
             body = brand_map(theme) + body + brand_foot(theme, lines)
@@ -1147,7 +1148,7 @@ def news_cover(cover, total, when, name, pill, label, weekly=False, story=False,
         top = f'<div class="ph"><img src="{backdrop(p)}"><img src="{pack_photo(p)}" style="object-fit:contain;filter:brightness(.4)"></div>'  # 표기는 날짜와 겹쳐 소식 장·게시글에만
     elif cover.get("photo"):
         src, pos = fetch_photo(cover["photo"])
-        top = f'<div class="ph"><img src="{src}" style="object-position:{pos}"></div>{ref_label(cover["photo"]).replace("ref", "ref ph-ref", 1)}'
+        top = f'<div class="ph"><img src="{src}" style="object-position:{pos}"></div>{ref_label(cover["photo"], "ph")}'
     else:
         top = f'<div class="ph">{NEWS_MAP}</div>'
     items = (cover.get("items") or [])[:3] if story else cover["items"]
@@ -1216,7 +1217,7 @@ def compare_html(c):
         pic = ""
         if s.get("photo"):
             src, pos = fetch_photo(s["photo"])
-            pic = f'<img src="{src}" style="object-position:{pos}">{ref_label(s["photo"]).replace("ref", "ref cm-ref", 1)}'
+            pic = f'<img src="{src}" style="object-position:{pos}">{ref_label(s["photo"], "cm")}'
         note = f'<i class="cm-n">{rich(s["note"])}</i>' if s.get("note") else ""
         return (f'<div class="cm-it{" hi" if i == hi else ""}"><span class="cm-lb">{rich(s["label"])}</span>{pic}'
                 f'<b class="cm-v" style="font-size:{size}px">{rich(s["value"])}</b>{note}</div>')
@@ -1314,13 +1315,20 @@ def hero_lines(headline):
     return lines
 
 
-def ref_label(p):
-    """사진 위 작은 표기. 사진에 적은 "label" 을 그대로 보여 줘요(2026-11-06 사용자: '참고 사진'·'실제 제품 아님'을 되풀이하지 말고
-    사진 성격대로 — 예: "2025년 축제 현장 · 울진군", "사진: 풀무원 제공", "축제가 열리는 죽변항"). label 이 없으면 아무것도 붙이지 않아요.
-    예전 설계도의 "ref"('참고 사진' 딱지)는 더 쓰지 않아요."""
-    if not isinstance(p, dict) or not str(p.get("label") or "").strip():
-        return ""
-    return f'<span class="ref">{esc(str(p["label"]).strip())}</span>'
+def ref_label(p, where=""):
+    """사진 위 표기. 무엇을 보여 줄지는 marks.py 가 정해요(2026-11-16 사용자):
+    축제 사진은 행사 연도("2024년 축제 현장", 모르면 "과거 축제 자료사진"), 블로그·인스타 사진은 구석에 아주 작고 흐린 출처,
+    그 밖의 사진에는 화면 출처를 넣지 않아요(label 의 " · 울진군", "사진: ○○ 제공" 같은 출처 부분은 빼요).
+    where: "" (사진 칸 안), "ph"(카드 위쪽 큰 사진), "cm"(비교 칸)."""
+    import marks
+    suffix = f" {where}-ref" if where else ""
+    return marks.html_of(p, "ref" + suffix, "psrc" + (f" {where}-src" if where else ""))
+
+
+def scene_marks(s):
+    """릴스 장면(순위·확인 등)의 큰 사진에도 같은 표기를 얹어요. 축제·블로그·인스타 사진이 아니면 아무것도 붙지 않아요."""
+    import marks
+    return marks.html_of(s.get("photo"), "smark", "ssrc", festival_only=True) if isinstance(s, dict) else ""
 
 
 def hero_more(c):
@@ -1887,11 +1895,11 @@ def news_card(c, n, total, when, name, pill, nxt=None, story=False):
         top = f'<div class="ph">{NEWS_MAP}</div>' + flow_html(c["flow"])
     elif c.get("big") and c.get("photo"):  # 숫자 강조 장: 그 음식 사진을 어둡게 깔고 큰 숫자를 얹어요 (2026-10-19 5단계)
         src, pos = fetch_photo(c["photo"])
-        top = (f'<div class="ph numbg"><img src="{src}" style="object-position:{pos}"></div>{ref_label(c["photo"]).replace("ref", "ref ph-ref", 1)}'
+        top = (f'<div class="ph numbg"><img src="{src}" style="object-position:{pos}"></div>{ref_label(c["photo"], "ph")}'
                f'<div class="bignum" style="font-size:{fit_size(c["big"], 230, 950)}px">{rich(c["big"])}</div>')
     elif c.get("photo"):
         src, pos = fetch_photo(c["photo"])
-        top = f'<div class="ph"><img src="{src}" style="object-position:{pos}"></div>{ref_label(c["photo"]).replace("ref", "ref ph-ref", 1)}'
+        top = f'<div class="ph"><img src="{src}" style="object-position:{pos}"></div>{ref_label(c["photo"], "ph")}'
     else:  # 맞는 사진이 없는 소식은 지도 바탕에 큰 숫자를 얹어요
         big = f'<div class="bignum" style="font-size:{fit_size(c["big"], 230, 950)}px">{rich(c["big"])}</div>' if c.get("big") else ""
         top = f'<div class="ph">{NEWS_MAP}</div>{big}'
@@ -1924,7 +1932,7 @@ def top5_card(c, n, total, when, name, pill, kind="추천"):
         mark, nxt = f'<em>추천</em><b>{no}</b>', ("" if n == total else f"다음 · 추천 {no + 1}")
     return (
         f'<section class="nc rk" id="c{n + 1}">'
-        f'<div class="ph"><img src="{src}" style="object-position:{pos}"></div>'
+        f'<div class="ph"><img src="{src}" style="object-position:{pos}"></div>{ref_label(c["photo"], "ph")}'
         f'<div class="mast"><div class="brand">{OUTRO_PIN}<span>{name}</span><i>{pill}</i></div><div class="when">{esc(when)}</div></div>'
         f'<div class="txt"><div class="rank">{mark}</div>'
         f'<div class="hl" style="font-size:{fit_size(c["name"], 120, 950)}px">{rich(c["name"])}</div>'
