@@ -1,0 +1,149 @@
+{
+ "kind": "이야기",
+ "subject": "곶감 흰 가루 · 곰팡이인가",
+ "title": "곶감 위 하얀 가루, 곰팡이일까 당분일까?",
+ "yt_title": "곶감 흰 가루 정체, 곰팡이와 구별하는 법",
+ "summary": "곶감 표면의 하얀 가루는 건조 중 감 속 포도당과 과당이 나와 굳은 시상(백분)일 수 있다고 식품안전정보원이 안내했어요. 다만 솜털처럼 뭉쳐 보이거나 퀴퀴한 냄새가 나면 곰팡이를 의심해야 해요.",
+ "scenes": [
+  {
+   "type": "cover",
+   "dur": 2.0,
+   "photo": {
+    "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Gotgam%20%28dried%20persimmon%29.jpg?width=1600",
+    "shows": "접시에 놓인 흰 가루가 앉은 곶감 두 개",
+    "match": "정확",
+    "credit": "Hyeon-Jeong Suk (CC BY 2.0) · commons.wikimedia.org/?curid=54787629",
+    "rights": "위키미디어 공용 CC BY 2.0"
+   },
+   "kicker": "맛의 이야기 · 곶감",
+   "title": "곶감 흰 가루\n[[곰팡이일까?]]",
+   "size": 100
+  },
+  {
+   "type": "card",
+   "dur": 2.6,
+   "photo": {
+    "url": "https://commons.wikimedia.org/wiki/Special:FilePath/%E1%80%90%E1%80%9A%E1%80%BA%E1%80%9E%E1%80%AE%E1%80%B8%E1%80%9A%E1%80%AD%E1%80%AF%E1%80%81%E1%80%BC%E1%80%B1%E1%80%AC%E1%80%80%E1%80%BA.jpg?width=1600",
+    "shows": "표면에 흰 가루가 내려앉은 둥근 곶감 한 개 가까이",
+    "match": "정확",
+    "rights": "위키미디어 공용 CC0"
+   },
+   "chip": "정체",
+   "headline": "흰 가루는\n[[당분 결정]]일 수 있어요",
+   "line": "포도당·과당이 굳은 시상이에요"
+  },
+  {
+   "type": "card",
+   "dur": 2.6,
+   "photo": {
+    "url": "https://tong.visitkorea.or.kr/cms2/website/73/2787873.jpg",
+    "shows": "상주곶감공원의 곶감 건조 시설(초가지붕 건물 안 곶감이 걸린 모습)",
+    "match": "분위기",
+    "rights": "한국관광공사 포토코리아 공공누리 1유형 · ⓒ한국관광공사 포토코리아-이범수"
+   },
+   "chip": "왜",
+   "headline": "말리는 동안\n[[속 당분]]이 나와요",
+   "line": "표면에서 굳어 가루처럼 보여요"
+  },
+  {
+   "type": "card",
+   "dur": 2.6,
+   "photo": {
+    "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Dried%20persimmon%20cakes%20%2820241111%29.jpg?width=1600",
+    "shows": "상자에 가지런히 담긴 곶감들",
+    "match": "같은 종류",
+    "rights": "위키미디어 공용 CC0"
+   },
+   "chip": "확인",
+   "headline": "모양과 냄새를\n[[꼭 확인]]해요",
+   "line": "솜털처럼 뭉치면 먹지 마세요"
+  },
+  {
+   "type": "card",
+   "dur": 2.6,
+   "photo": {
+    "url": "https://commons.wikimedia.org/wiki/Special:FilePath/%E6%9F%BF%E9%A5%BC.jpg?width=1600",
+    "shows": "겹겹이 쌓인 곶감들, 표면이 붉은 갈색을 띤 모습",
+    "match": "같은 종류",
+    "rights": "위키미디어 공용 CC0"
+   },
+   "chip": "그래서",
+   "headline": "갈색 변색은\n[[탄닌]] 산화예요",
+   "line": "곰팡이가 의심되면 통째로 버려요"
+  }
+ ],
+ "caption": "곶감 위 하얀 가루, 먹어도 되는 걸까요?\n\n곶감 표면의 하얀 가루는 건조 과정에서 감 속 포도당과 과당이 표면으로 나와 굳은 '시상(백분)'일 수 있어요. 식품안전정보원은 이를 곶감 표면에 나타날 수 있는 자연스러운 변화로 안내했어요.\n\n다만 흰 부분이 솜털처럼 뭉쳐 보이거나 퀴퀴한 냄새가 나면 곰팡이를 의심해야 해요. 곰팡이가 조금이라도 의심되면 그 부분만 떼어 먹지 말고 곶감 전체를 버리라고 안내했어요. 감의 탄닌이 산화해 표면이 갈색이나 검은색으로 변하는 것은 자연스러운 변색이고요.\n\n곶감, 하얀 가루 많은 게 좋으세요 적은 게 좋으세요?\n\n출처: 식품안전정보원 안내(쿡앤셰프 10월 7일, 비건뉴스 10월 6일)",
+ "tags": [
+  "곶감",
+  "곶감흰가루",
+  "겨울간식",
+  "11월제철음식"
+ ],
+ "sources": [
+  "https://cooknchefnews.com/news/view/1065587670760988",
+  "https://www.vegannews.co.kr/news/article.html?no=391476"
+ ],
+ "credits": [
+  "Hyeon-Jeong Suk (CC BY 2.0) · commons.wikimedia.org/?curid=54787629",
+  "ⓒ한국관광공사 포토코리아-이범수"
+ ],
+ "yt_keyword": "곶감 흰 가루",
+ "yt_related": [
+  "곶감 곰팡이",
+  "곶감 시상",
+  "곶감 먹는 법",
+  "곶감 제철"
+ ],
+ "yt_tags": [
+  "곶감 흰 가루",
+  "곶감 곰팡이 구별",
+  "곶감 시상",
+  "곶감 제철",
+  "곶감 백분"
+ ],
+ "yt_hashtags": [
+  "곶감",
+  "곶감흰가루",
+  "겨울간식"
+ ],
+ "yt_lead": "곶감 흰 가루의 정체와 곰팡이와 구별하는 법을 정리했어요.",
+ "dates": {
+  "checked": "2026-11-17",
+  "sources": [
+   {
+    "url": "https://cooknchefnews.com/news/view/1065587670760988",
+    "published": "2026-10-07",
+    "modified": "2026-10-07"
+   },
+   {
+    "url": "https://www.vegannews.co.kr/news/article.html?no=391476",
+    "published": "2026-10-06",
+    "modified": "2026-10-06"
+   }
+  ]
+ },
+ "thumb": {
+  "head": "곶감 흰 가루\n[[곰팡이일까?]]",
+  "sub": "정체는 [[당분 결정]]?",
+  "photo": {
+   "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Gotgam%20%28dried%20persimmon%29.jpg?width=1600",
+   "shows": "접시에 놓인 흰 가루가 앉은 곶감 두 개",
+   "match": "정확",
+   "credit": "Hyeon-Jeong Suk (CC BY 2.0) · commons.wikimedia.org/?curid=54787629",
+   "rights": "위키미디어 공용 CC BY 2.0",
+   "fit": "cover"
+  }
+ },
+ "review": {
+  "photo_sheet": "12f47cc8b2aa"
+ },
+ "title_pick": {
+  "candidates": [
+   "곶감 흰 가루 정체, 곰팡이와 구별하는 법",
+   "곶감 위 하얀 가루, 먹어도 될까?"
+  ],
+  "pick": "곶감 흰 가루 정체, 곰팡이와 구별하는 법",
+  "like": "우리 채널 성적표는 열지 못함(성적표 미확인), 검색어 앞세운 제목 규칙으로 고름",
+  "sure": "낮음"
+ }
+}

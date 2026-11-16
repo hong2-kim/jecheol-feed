@@ -1,0 +1,390 @@
+{
+ "format": "voice",
+ "layout": "rec",
+ "kind": "저녁",
+ "subject": "화요일 저녁 (탄탄멘·탕수육·연어덮밥·오므라이스)",
+ "title": "화요일 저녁 아직 못 골랐어? 탄탄멘·탕수육·연어덮밥·오므라이스 중에 골라 줄게",
+ "summary": "비 오는 화요일 저녁, 탄탄멘·탕수육·연어덮밥·오므라이스 넷을 추천해요.",
+ "headline": "화요일 저녁\n[[아직 못 골랐어?]]",
+ "small": "화요일 저녁, 오늘의 넷",
+ "intro": 7,
+ "length": [
+  20,
+  30
+ ],
+ "narrator": "puck",
+ "voice_pick": {
+  "mode": "solo",
+  "voices": [
+   "puck"
+  ],
+  "why": "비 오는 화요일 저녁 메뉴를 경쾌하게 권하는 Puck 솔로(어제 Achird 와 다르게)"
+ },
+ "thumb": {
+  "head": "화요일 저녁\n[[아직 못 골랐어?]]",
+  "sub": "국물파·바삭파 [[다 있음]]",
+  "photo": {
+   "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Dandan%20noodles%20in%20Japan%20-%20tantanmen%20-%20September%202014.jpg?width=1600",
+   "shows": "흰 그릇에 담긴 붉은 국물 탄탄멘, 다진 고기와 푸른 채소가 올라간 모습",
+   "match": "정확",
+   "credit": "nesnad (CC BY 3.0) · commons.wikimedia.org/?curid=35451547",
+   "rights": "위키미디어 공용 CC BY 3.0"
+  }
+ },
+ "yt_title": "화요일 저녁 아직 못 골랐어? 탄탄멘·탕수육·연어덮밥·오므라이스 중에 골라 줄게",
+ "yt_keyword": "화요일 저녁 메뉴",
+ "yt_related": [
+  "저녁 메뉴 추천",
+  "오늘 뭐 먹지",
+  "비 오는 날 음식",
+  "탄탄멘",
+  "탕수육"
+ ],
+ "yt_tags": [
+  "화요일 저녁 메뉴",
+  "저녁 메뉴 추천",
+  "오늘 뭐 먹지",
+  "비 오는 날 음식",
+  "탄탄멘",
+  "탕수육",
+  "연어덮밥",
+  "오므라이스"
+ ],
+ "yt_hashtags": [
+  "화요일저녁메뉴",
+  "오늘뭐먹지",
+  "저녁메뉴추천"
+ ],
+ "yt_lead": "화요일 저녁 메뉴 고민될 때, 탄탄멘·탕수육·연어덮밥·오므라이스 넷 중에 하나만 골라요.",
+ "caption": "화요일 저녁, 아직 못 골랐어?\n\n얼큰한 탄탄멘\n새콤달콤 소스 탕수육\n촉촉한 연어덮밥\n폭신한 오므라이스\n\n오늘은 어느 쪽이에요? 댓글로 알려 주세요.",
+ "tags": [
+  "화요일저녁메뉴",
+  "저녁메뉴추천",
+  "오늘뭐먹지",
+  "비오는날음식"
+ ],
+ "sources": [],
+ "credits": [
+  "nesnad (CC BY 3.0) · commons.wikimedia.org/?curid=35451547",
+  "ノボホショコロトソ (CC BY 4.0) · commons.wikimedia.org/?curid=180443126",
+  "Kanesue (CC BY 2.0) · commons.wikimedia.org/?curid=138694850"
+ ],
+ "dates": {
+  "checked": "2026-11-17"
+ },
+ "title_pick": {
+  "candidates": [
+   "화요일 저녁 아직 못 골랐어? 탄탄멘·탕수육·연어덮밥·오므라이스 중에 골라 줄게",
+   "화요일 저녁 내가 골라 줄게, 비 오는 날 탄탄멘·탕수육·연어덮밥·오므라이스"
+  ],
+  "pick": "화요일 저녁 아직 못 골랐어? 탄탄멘·탕수육·연어덮밥·오므라이스 중에 골라 줄게",
+  "like": "11-13 금요일 저녁 영상(같은 꼴, 어제 '내가 골라 줄게'와 번갈아)",
+  "sure": "낮음"
+ },
+ "menu_pick": {
+  "menus": [
+   "탄탄멘",
+   "탕수육",
+   "연어덮밥",
+   "오므라이스"
+  ],
+  "from": "dinner_pick(후보 18개 확인, 날씨 rain, 찌개·국밥 계열 최근 몰림을 피해 갈래 분산)",
+  "why": {
+   "탄탄멘": "비 오는 날 따끈한 얼큰 국물, 새로운 갈래",
+   "탕수육": "튀김 갈래, 익숙한 인기 메뉴",
+   "연어덮밥": "밥 갈래, 담백한 한 끼, 아직 안 나옴",
+   "오므라이스": "밥 갈래 중 달걀 요리, 아직 안 나옴"
+  }
+ },
+ "lines": [
+  {
+   "say": "화요일 저녁, 아직 못 골랐어?",
+   "nosub": true,
+   "show": {
+    "thumb": true
+   }
+  },
+  {
+   "say": "내가 골라 줄게. 후보는 딱 넷, 하나씩 볼까요?",
+   "show": {
+    "grid": [
+     {
+      "photo": {
+       "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Dandan%20noodles%20in%20Japan%20-%20tantanmen%20-%20September%202014.jpg?width=1600",
+       "shows": "흰 그릇에 담긴 붉은 국물 탄탄멘, 다진 고기와 푸른 채소가 올라간 모습",
+       "match": "정확",
+       "credit": "nesnad (CC BY 3.0) · commons.wikimedia.org/?curid=35451547",
+       "rights": "위키미디어 공용 CC BY 3.0"
+      }
+     },
+     {
+      "photo": {
+       "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Tangsuyuk.jpg?width=1600",
+       "shows": "소스를 입힌 튀김 고기에 파인애플·오이·목이버섯이 어우러진 탕수육 한 접시",
+       "match": "정확",
+       "rights": "위키미디어 공용 CC0"
+      }
+     },
+     {
+      "photo": {
+       "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Salmon%20don%20of%20Nakau%2002.jpg?width=1600",
+       "shows": "흰 밥 위에 연어 회와 파·깨를 올린 연어덮밥 한 그릇",
+       "match": "정확",
+       "credit": "ノボホショコロトソ (CC BY 4.0) · commons.wikimedia.org/?curid=180443126",
+       "rights": "위키미디어 공용 CC BY 4.0"
+      }
+     },
+     {
+      "photo": {
+       "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Omurice%20%2851878073678%29.jpg?width=1600",
+       "shows": "노란 달걀 지단에 데미글라스 소스를 얹은 오므라이스 한 접시",
+       "match": "정확",
+       "credit": "Kanesue (CC BY 2.0) · commons.wikimedia.org/?curid=138694850",
+       "rights": "위키미디어 공용 CC BY 2.0"
+      }
+     }
+    ],
+    "dir": "2x2",
+    "fade": 0.45
+   }
+  },
+  {
+   "say": "비 오는 날 얼큰한 탄탄멘, 한 그릇 어때요?",
+   "subs": [
+    "비 오는 날 얼큰한 탄탄멘,",
+    "한 그릇 어때요?"
+   ],
+   "show": {
+    "grid": [
+     {
+      "photo": {
+       "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Dandan%20noodles%20in%20Japan%20-%20tantanmen%20-%20September%202014.jpg?width=1600",
+       "shows": "흰 그릇에 담긴 붉은 국물 탄탄멘, 다진 고기와 푸른 채소가 올라간 모습",
+       "match": "정확",
+       "credit": "nesnad (CC BY 3.0) · commons.wikimedia.org/?curid=35451547",
+       "rights": "위키미디어 공용 CC BY 3.0"
+      }
+     },
+     {
+      "photo": {
+       "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Tangsuyuk.jpg?width=1600",
+       "shows": "소스를 입힌 튀김 고기에 파인애플·오이·목이버섯이 어우러진 탕수육 한 접시",
+       "match": "정확",
+       "rights": "위키미디어 공용 CC0"
+      }
+     },
+     {
+      "photo": {
+       "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Salmon%20don%20of%20Nakau%2002.jpg?width=1600",
+       "shows": "흰 밥 위에 연어 회와 파·깨를 올린 연어덮밥 한 그릇",
+       "match": "정확",
+       "credit": "ノボホショコロトソ (CC BY 4.0) · commons.wikimedia.org/?curid=180443126",
+       "rights": "위키미디어 공용 CC BY 4.0"
+      }
+     },
+     {
+      "photo": {
+       "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Omurice%20%2851878073678%29.jpg?width=1600",
+       "shows": "노란 달걀 지단에 데미글라스 소스를 얹은 오므라이스 한 접시",
+       "match": "정확",
+       "credit": "Kanesue (CC BY 2.0) · commons.wikimedia.org/?curid=138694850",
+       "rights": "위키미디어 공용 CC BY 2.0"
+      }
+     }
+    ],
+    "dir": "2x2",
+    "hl": 0
+   }
+  },
+  {
+   "say": "바삭한 탕수육에 새콤달콤 소스!",
+   "show": {
+    "grid": [
+     {
+      "photo": {
+       "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Dandan%20noodles%20in%20Japan%20-%20tantanmen%20-%20September%202014.jpg?width=1600",
+       "shows": "흰 그릇에 담긴 붉은 국물 탄탄멘, 다진 고기와 푸른 채소가 올라간 모습",
+       "match": "정확",
+       "credit": "nesnad (CC BY 3.0) · commons.wikimedia.org/?curid=35451547",
+       "rights": "위키미디어 공용 CC BY 3.0"
+      }
+     },
+     {
+      "photo": {
+       "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Tangsuyuk.jpg?width=1600",
+       "shows": "소스를 입힌 튀김 고기에 파인애플·오이·목이버섯이 어우러진 탕수육 한 접시",
+       "match": "정확",
+       "rights": "위키미디어 공용 CC0"
+      }
+     },
+     {
+      "photo": {
+       "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Salmon%20don%20of%20Nakau%2002.jpg?width=1600",
+       "shows": "흰 밥 위에 연어 회와 파·깨를 올린 연어덮밥 한 그릇",
+       "match": "정확",
+       "credit": "ノボホショコロトソ (CC BY 4.0) · commons.wikimedia.org/?curid=180443126",
+       "rights": "위키미디어 공용 CC BY 4.0"
+      }
+     },
+     {
+      "photo": {
+       "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Omurice%20%2851878073678%29.jpg?width=1600",
+       "shows": "노란 달걀 지단에 데미글라스 소스를 얹은 오므라이스 한 접시",
+       "match": "정확",
+       "credit": "Kanesue (CC BY 2.0) · commons.wikimedia.org/?curid=138694850",
+       "rights": "위키미디어 공용 CC BY 2.0"
+      }
+     }
+    ],
+    "dir": "2x2",
+    "hl": 1
+   }
+  },
+  {
+   "say": "촉촉한 연어를 올린 연어덮밥, 깔끔한 선택이죠.",
+   "subs": [
+    "촉촉한 연어를 올린 연어덮밥,",
+    "깔끔한 선택이죠."
+   ],
+   "show": {
+    "grid": [
+     {
+      "photo": {
+       "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Dandan%20noodles%20in%20Japan%20-%20tantanmen%20-%20September%202014.jpg?width=1600",
+       "shows": "흰 그릇에 담긴 붉은 국물 탄탄멘, 다진 고기와 푸른 채소가 올라간 모습",
+       "match": "정확",
+       "credit": "nesnad (CC BY 3.0) · commons.wikimedia.org/?curid=35451547",
+       "rights": "위키미디어 공용 CC BY 3.0"
+      }
+     },
+     {
+      "photo": {
+       "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Tangsuyuk.jpg?width=1600",
+       "shows": "소스를 입힌 튀김 고기에 파인애플·오이·목이버섯이 어우러진 탕수육 한 접시",
+       "match": "정확",
+       "rights": "위키미디어 공용 CC0"
+      }
+     },
+     {
+      "photo": {
+       "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Salmon%20don%20of%20Nakau%2002.jpg?width=1600",
+       "shows": "흰 밥 위에 연어 회와 파·깨를 올린 연어덮밥 한 그릇",
+       "match": "정확",
+       "credit": "ノボホショコロトソ (CC BY 4.0) · commons.wikimedia.org/?curid=180443126",
+       "rights": "위키미디어 공용 CC BY 4.0"
+      }
+     },
+     {
+      "photo": {
+       "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Omurice%20%2851878073678%29.jpg?width=1600",
+       "shows": "노란 달걀 지단에 데미글라스 소스를 얹은 오므라이스 한 접시",
+       "match": "정확",
+       "credit": "Kanesue (CC BY 2.0) · commons.wikimedia.org/?curid=138694850",
+       "rights": "위키미디어 공용 CC BY 2.0"
+      }
+     }
+    ],
+    "dir": "2x2",
+    "hl": 2
+   }
+  },
+  {
+   "say": "폭신한 오므라이스로 마무리해 볼까요?",
+   "subs": [
+    "폭신한 오므라이스로",
+    "마무리해 볼까요?"
+   ],
+   "show": {
+    "grid": [
+     {
+      "photo": {
+       "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Dandan%20noodles%20in%20Japan%20-%20tantanmen%20-%20September%202014.jpg?width=1600",
+       "shows": "흰 그릇에 담긴 붉은 국물 탄탄멘, 다진 고기와 푸른 채소가 올라간 모습",
+       "match": "정확",
+       "credit": "nesnad (CC BY 3.0) · commons.wikimedia.org/?curid=35451547",
+       "rights": "위키미디어 공용 CC BY 3.0"
+      }
+     },
+     {
+      "photo": {
+       "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Tangsuyuk.jpg?width=1600",
+       "shows": "소스를 입힌 튀김 고기에 파인애플·오이·목이버섯이 어우러진 탕수육 한 접시",
+       "match": "정확",
+       "rights": "위키미디어 공용 CC0"
+      }
+     },
+     {
+      "photo": {
+       "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Salmon%20don%20of%20Nakau%2002.jpg?width=1600",
+       "shows": "흰 밥 위에 연어 회와 파·깨를 올린 연어덮밥 한 그릇",
+       "match": "정확",
+       "credit": "ノボホショコロトソ (CC BY 4.0) · commons.wikimedia.org/?curid=180443126",
+       "rights": "위키미디어 공용 CC BY 4.0"
+      }
+     },
+     {
+      "photo": {
+       "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Omurice%20%2851878073678%29.jpg?width=1600",
+       "shows": "노란 달걀 지단에 데미글라스 소스를 얹은 오므라이스 한 접시",
+       "match": "정확",
+       "credit": "Kanesue (CC BY 2.0) · commons.wikimedia.org/?curid=138694850",
+       "rights": "위키미디어 공용 CC BY 2.0"
+      }
+     }
+    ],
+    "dir": "2x2",
+    "hl": 3
+   }
+  },
+  {
+   "say": "오늘은 어느 쪽이에요? 댓글로 알려 주세요.",
+   "subs": [
+    "오늘은 어느 쪽이에요?",
+    "댓글로 알려 주세요."
+   ],
+   "show": {
+    "grid": [
+     {
+      "photo": {
+       "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Dandan%20noodles%20in%20Japan%20-%20tantanmen%20-%20September%202014.jpg?width=1600",
+       "shows": "흰 그릇에 담긴 붉은 국물 탄탄멘, 다진 고기와 푸른 채소가 올라간 모습",
+       "match": "정확",
+       "credit": "nesnad (CC BY 3.0) · commons.wikimedia.org/?curid=35451547",
+       "rights": "위키미디어 공용 CC BY 3.0"
+      }
+     },
+     {
+      "photo": {
+       "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Tangsuyuk.jpg?width=1600",
+       "shows": "소스를 입힌 튀김 고기에 파인애플·오이·목이버섯이 어우러진 탕수육 한 접시",
+       "match": "정확",
+       "rights": "위키미디어 공용 CC0"
+      }
+     },
+     {
+      "photo": {
+       "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Salmon%20don%20of%20Nakau%2002.jpg?width=1600",
+       "shows": "흰 밥 위에 연어 회와 파·깨를 올린 연어덮밥 한 그릇",
+       "match": "정확",
+       "credit": "ノボホショコロトソ (CC BY 4.0) · commons.wikimedia.org/?curid=180443126",
+       "rights": "위키미디어 공용 CC BY 4.0"
+      }
+     },
+     {
+      "photo": {
+       "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Omurice%20%2851878073678%29.jpg?width=1600",
+       "shows": "노란 달걀 지단에 데미글라스 소스를 얹은 오므라이스 한 접시",
+       "match": "정확",
+       "credit": "Kanesue (CC BY 2.0) · commons.wikimedia.org/?curid=138694850",
+       "rights": "위키미디어 공용 CC BY 2.0"
+      }
+     }
+    ],
+    "dir": "2x2"
+   }
+  }
+ ],
+ "review": {
+  "photo_sheet": "df6cb3b60edf"
+ }
+}
