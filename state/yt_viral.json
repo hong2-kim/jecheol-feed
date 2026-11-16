@@ -601,6 +601,98 @@
         "channels": 120,
         "thin": 3
       }
+    },
+    "2026-11-16": {
+      "picks": [
+        {
+          "id": "uHY40KCs3Dw",
+          "title": "자주 품절되는 쿠팡 다이어트 고기꿀템",
+          "channel": "장수집밥",
+          "subs": 15700,
+          "views": 19913,
+          "median": 1898,
+          "n": 45,
+          "multiple": 10.5,
+          "hours": 45,
+          "formulas": [
+            "신상·한정"
+          ],
+          "query": "다이어트 음식",
+          "url": "https://youtube.com/shorts/uHY40KCs3Dw"
+        },
+        {
+          "id": "c83SLwEbzk4",
+          "title": "시래기된장국에 된장만 넣지 마세요 #",
+          "channel": "바람이될거야 꽃이될거야",
+          "subs": 33700,
+          "views": 12830,
+          "median": 1808,
+          "n": 46,
+          "multiple": 7.1,
+          "hours": 38,
+          "formulas": [
+            "경고·실수"
+          ],
+          "query": "제철 음식",
+          "url": "https://youtube.com/shorts/c83SLwEbzk4"
+        },
+        {
+          "id": "POWVRHIQ7h4",
+          "title": "전자렌지 15분이면 야들야들한 수육 완성",
+          "channel": "찬밥",
+          "subs": 33300,
+          "views": 22407,
+          "median": 7797,
+          "n": 48,
+          "multiple": 2.9,
+          "hours": 67,
+          "formulas": [],
+          "query": "다이어트 음식",
+          "url": "https://youtube.com/shorts/POWVRHIQ7h4"
+        },
+        {
+          "id": "qgHtilbk1bU",
+          "title": "우사기 먹방 소리, 음식마다 왜 달라ㅋㅋ | 요구르트 vs 피자만두 한일 더빙",
+          "channel": "틀딱감성",
+          "subs": 25400,
+          "views": 23207,
+          "median": 9983,
+          "n": 44,
+          "multiple": 2.3,
+          "hours": 19,
+          "formulas": [
+            "물음",
+            "비교"
+          ],
+          "query": "먹방 쇼츠",
+          "url": "https://youtube.com/shorts/qgHtilbk1bU"
+        }
+      ],
+      "leaders": [
+        {
+          "id": "eNU6FuXbPHU",
+          "title": "gs25 신상..이거 뭐냐 ㄷㄷ",
+          "channel": "냠냠",
+          "subs": 412000,
+          "views": 417793,
+          "median": 222837,
+          "n": 47,
+          "multiple": 1.9,
+          "hours": 68,
+          "formulas": [
+            "신상·한정",
+            "감탄·강조"
+          ],
+          "query": "편의점 신상",
+          "url": "https://youtube.com/shorts/eNU6FuXbPHU"
+        }
+      ],
+      "stats": {
+        "searched": 220,
+        "shorts": 208,
+        "channels": 120,
+        "thin": 2
+      }
     }
   }
 }
