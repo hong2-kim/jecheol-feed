@@ -11,3 +11,15 @@
 {"time": "2026-11-06T12:47:30+09:00", "where": "video:2026-11-06-8-trend", "message": "카드 검수: 보류하고 나면 0장만 남아요"}
 {"time": "2026-11-09T08:27:37+09:00", "where": "fetch:mfds-notice", "message": "<urlopen error timed out>"}
 {"time": "2026-11-15T08:42:49+09:00", "where": "fetch:weather", "message": "HTTP Error 429: Too Many Requests"}
+{"time": "2026-11-17T11:48:20+09:00", "where": "fetch:news:식품 신제품 출시", "message": "HTTP Error 429: Too Many Requests"}
+{"time": "2026-11-17T11:48:23+09:00", "where": "fetch:news:장바구니 물가", "message": "HTTP Error 429: Too Many Requests"}
+{"time": "2026-11-17T11:48:24+09:00", "where": "fetch:news:닭고기 치킨 가격", "message": "HTTP Error 429: Too Many Requests"}
+{"time": "2026-11-17T11:48:27+09:00", "where": "fetch:news:외식 프랜차이즈 가격", "message": "HTTP Error 429: Too Many Requests"}
+{"time": "2026-11-17T11:48:30+09:00", "where": "fetch:news:해외 화제 음식", "message": "HTTP Error 429: Too Many Requests"}
+{"time": "2026-11-17T11:48:34+09:00", "where": "fetch:news:음식 축제 개최", "message": "HTTP Error 429: Too Many Requests"}
+{"time": "2026-11-17T11:48:37+09:00", "where": "fetch:news:수산물 축제", "message": "HTTP Error 429: Too Many Requests"}
+{"time": "2026-11-17T11:48:41+09:00", "where": "fetch:news:\"이마트24\" 출시 먹거리", "message": "HTTP Error 429: Too Many Requests"}
+{"time": "2026-11-17T11:48:46+09:00", "where": "fetch:news:맘스터치 OR 롯데리아 OR 맥도날드 OR 버거킹 신메뉴", "message": "HTTP Error 429: Too Many Requests"}
+{"time": "2026-11-17T11:48:46+09:00", "where": "fetch:news:스타벅스 OR 투썸플레이스 OR 메가커피 신메뉴", "message": "HTTP Error 429: Too Many Requests"}
+{"time": "2026-11-17T11:48:47+09:00", "where": "fetch:news:흑백요리사 셰프", "message": "HTTP Error 429: Too Many Requests"}
+{"time": "2026-11-17T11:48:49+09:00", "where": "fetch:news:가정간편식 OR HMR 매출", "message": "HTTP Error 429: Too Many Requests"}
