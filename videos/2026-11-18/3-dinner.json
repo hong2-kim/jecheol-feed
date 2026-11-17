@@ -1,0 +1,531 @@
+{
+ "format": "voice",
+ "layout": "rec",
+ "kind": "저녁",
+ "subject": "수요일 저녁 (마파두부·팟타이·철판볶음밥·떡볶이)",
+ "title": "수요일 저녁 내가 골라 줄게! 마파두부·팟타이·철판볶음밥·떡볶이",
+ "summary": "수요일 저녁 메뉴로 마파두부·팟타이·철판볶음밥·떡볶이 넷을 추천해요.",
+ "headline": "수요일 저녁\n[[내가 골라 줄게]]",
+ "small": "수요일 저녁, 오늘의 넷",
+ "intro": 7,
+ "length": [
+  20,
+  30
+ ],
+ "narrator": "achird",
+ "voice_pick": {
+  "mode": "solo",
+  "voices": [
+   "achird"
+  ],
+  "why": "수요일 저녁 메뉴를 친구에게 권하듯 알려 주는 친근한 Achird 솔로(어제 Puck 과 다르게)"
+ },
+ "thumb": {
+  "head": "수요일 저녁\n[[내가 골라 줄게]]",
+  "sub": "매콤파·볶음파 [[다 있음]]",
+  "photo": {
+   "url": "vault:photos/ig-17852142433164173.jpg",
+   "shows": "달걀 지단을 두른 철판 위 닭고기 볶음밥",
+   "match": "정확",
+   "rights": "사용자가 직접 찍은 사진(비공개 보관함)",
+   "own": true
+  }
+ },
+ "yt_title": "수요일 저녁 내가 골라 줄게! 마파두부·팟타이·철판볶음밥·떡볶이 중에 뭐 먹을래?",
+ "yt_keyword": "수요일 저녁 메뉴",
+ "yt_related": [
+  "저녁 메뉴 추천",
+  "오늘 뭐 먹지",
+  "마파두부",
+  "팟타이",
+  "철판볶음밥"
+ ],
+ "yt_tags": [
+  "수요일 저녁 메뉴",
+  "저녁 메뉴 추천",
+  "오늘 뭐 먹지",
+  "마파두부",
+  "팟타이",
+  "철판볶음밥",
+  "떡볶이"
+ ],
+ "yt_hashtags": [
+  "수요일저녁메뉴",
+  "오늘뭐먹지",
+  "저녁메뉴추천"
+ ],
+ "yt_lead": "수요일 저녁 메뉴 고민될 때, 마파두부·팟타이·철판볶음밥·떡볶이 넷 중에 하나만 골라요.",
+ "caption": "수요일 저녁, 내가 골라 줄게!\n\n얼얼한 소스에 부드러운 마파두부\n땅콩 가루 솔솔 팟타이\n고소한 철판 볶음밥\n매콤한 떡볶이\n\n넷 중에 오늘 뭐 먹을래? 댓글로 알려 줘.",
+ "tags": [
+  "수요일저녁메뉴",
+  "저녁메뉴추천",
+  "오늘뭐먹지",
+  "팟타이"
+ ],
+ "sources": [],
+ "credits": [
+  "crd! (CC BY 2.0) · www.flickr.com/photos/61324768@N00/5007261302",
+  "Steve Snodgrass (CC BY 2.0) · www.flickr.com/photos/10710442@N08/4807280458",
+  "Ten-ele-ven (CC BY 2.0) · www.flickr.com/photos/38902706@N03/5389478835"
+ ],
+ "dates": {
+  "checked": "2026-11-18"
+ },
+ "title_pick": {
+  "candidates": [
+   "수요일 저녁 내가 골라 줄게! 마파두부·팟타이·철판볶음밥·떡볶이",
+   "수요일 저녁 아직 못 골랐어? 마파두부·팟타이·철판볶음밥·떡볶이 중에 골라 줄게"
+  ],
+  "pick": "수요일 저녁 내가 골라 줄게! 마파두부·팟타이·철판볶음밥·떡볶이 중에 뭐 먹을래?",
+  "like": "11-16 월요일 저녁 '내가 골라 줄게'(어제 '아직 못 골랐어?'와 번갈아)",
+  "sure": "낮음"
+ },
+ "menu_pick": {
+  "menus": [
+   "마파두부",
+   "팟타이",
+   "철판볶음밥",
+   "떡볶이"
+  ],
+  "from": "dinner_pick(후보 18개 확인, 날씨 정보 없음, 최근 국밥·찌개·파스타·돈가스·튀김 몰림을 피해 갈래 분산)",
+  "why": {
+   "마파두부": "중식 두부 요리, 최근 안 나온 갈래",
+   "팟타이": "해외 면 요리, 아직 안 나옴",
+   "철판볶음밥": "밥 갈래, 든든한 한 끼",
+   "떡볶이": "분식 갈래, 익숙한 인기 메뉴"
+  }
+ },
+ "lines": [
+  {
+   "say": "수요일 저녁, 내가 골라 줄게!",
+   "nosub": true,
+   "show": {
+    "thumb": true
+   }
+  },
+  {
+   "say": "후보는 딱 넷이에요, 하나씩 볼까요?",
+   "subs": [
+    "후보는 딱 넷이에요,",
+    "하나씩 볼까요?"
+   ],
+   "show": {
+    "grid": [
+     {
+      "photo": {
+       "url": "https://live.staticflickr.com/4108/5007261302_6087cdd8cd_b.jpg",
+       "shows": "흰 접시에 담긴 빨간 소스 마파두부, 네모난 두부와 다진 고기·파가 보임",
+       "match": "정확",
+       "credit": "crd! (CC BY 2.0) · www.flickr.com/photos/61324768@N00/5007261302",
+       "rights": "플리커 CC BY 2.0 (오픈버스)",
+       "page": "https://www.flickr.com/photos/61324768@N00/5007261302",
+       "terms": {
+        "url": "https://creativecommons.org/licenses/by/2.0/",
+        "checked": "2026-11-18",
+        "scope": "CC BY 2.0, 상업적 이용·수정 가능",
+        "ok": true
+       }
+      }
+     },
+     {
+      "photo": {
+       "url": "https://live.staticflickr.com/4118/4807280458_528e5b4c7b_b.jpg",
+       "shows": "숙주·땅콩 가루·고수가 올라간 팟타이 볶음 쌀국수와 새우 한 점",
+       "match": "정확",
+       "credit": "Steve Snodgrass (CC BY 2.0) · www.flickr.com/photos/10710442@N08/4807280458",
+       "rights": "플리커 CC BY 2.0 (오픈버스)",
+       "page": "https://www.flickr.com/photos/10710442@N08/4807280458",
+       "terms": {
+        "url": "https://creativecommons.org/licenses/by/2.0/",
+        "checked": "2026-11-18",
+        "scope": "CC BY 2.0, 상업적 이용·수정 가능",
+        "ok": true
+       }
+      }
+     },
+     {
+      "photo": {
+       "url": "vault:photos/ig-17852142433164173.jpg",
+       "shows": "달걀 지단을 두른 철판 위 닭고기 볶음밥",
+       "match": "정확",
+       "rights": "사용자가 직접 찍은 사진(비공개 보관함)",
+       "own": true
+      }
+     },
+     {
+      "photo": {
+       "url": "https://live.staticflickr.com/5298/5389478835_e4f41d9d63_b.jpg",
+       "shows": "빨간 양념에 버무린 떡볶이 한 그릇과 튀김 한 조각",
+       "match": "정확",
+       "credit": "Ten-ele-ven (CC BY 2.0) · www.flickr.com/photos/38902706@N03/5389478835",
+       "rights": "플리커 CC BY 2.0 (오픈버스)",
+       "page": "https://www.flickr.com/photos/38902706@N03/5389478835",
+       "terms": {
+        "url": "https://creativecommons.org/licenses/by/2.0/",
+        "checked": "2026-11-18",
+        "scope": "CC BY 2.0, 상업적 이용·수정 가능",
+        "ok": true
+       }
+      }
+     }
+    ],
+    "dir": "2x2",
+    "own": true,
+    "fade": 0.45
+   }
+  },
+  {
+   "say": "얼얼한 소스에 부드러운 두부, 마파두부 어때요?",
+   "subs": [
+    "얼얼한 소스에 부드러운 두부,",
+    "마파두부 어때요?"
+   ],
+   "show": {
+    "grid": [
+     {
+      "photo": {
+       "url": "https://live.staticflickr.com/4108/5007261302_6087cdd8cd_b.jpg",
+       "shows": "흰 접시에 담긴 빨간 소스 마파두부, 네모난 두부와 다진 고기·파가 보임",
+       "match": "정확",
+       "credit": "crd! (CC BY 2.0) · www.flickr.com/photos/61324768@N00/5007261302",
+       "rights": "플리커 CC BY 2.0 (오픈버스)",
+       "page": "https://www.flickr.com/photos/61324768@N00/5007261302",
+       "terms": {
+        "url": "https://creativecommons.org/licenses/by/2.0/",
+        "checked": "2026-11-18",
+        "scope": "CC BY 2.0, 상업적 이용·수정 가능",
+        "ok": true
+       }
+      }
+     },
+     {
+      "photo": {
+       "url": "https://live.staticflickr.com/4118/4807280458_528e5b4c7b_b.jpg",
+       "shows": "숙주·땅콩 가루·고수가 올라간 팟타이 볶음 쌀국수와 새우 한 점",
+       "match": "정확",
+       "credit": "Steve Snodgrass (CC BY 2.0) · www.flickr.com/photos/10710442@N08/4807280458",
+       "rights": "플리커 CC BY 2.0 (오픈버스)",
+       "page": "https://www.flickr.com/photos/10710442@N08/4807280458",
+       "terms": {
+        "url": "https://creativecommons.org/licenses/by/2.0/",
+        "checked": "2026-11-18",
+        "scope": "CC BY 2.0, 상업적 이용·수정 가능",
+        "ok": true
+       }
+      }
+     },
+     {
+      "photo": {
+       "url": "vault:photos/ig-17852142433164173.jpg",
+       "shows": "달걀 지단을 두른 철판 위 닭고기 볶음밥",
+       "match": "정확",
+       "rights": "사용자가 직접 찍은 사진(비공개 보관함)",
+       "own": true
+      }
+     },
+     {
+      "photo": {
+       "url": "https://live.staticflickr.com/5298/5389478835_e4f41d9d63_b.jpg",
+       "shows": "빨간 양념에 버무린 떡볶이 한 그릇과 튀김 한 조각",
+       "match": "정확",
+       "credit": "Ten-ele-ven (CC BY 2.0) · www.flickr.com/photos/38902706@N03/5389478835",
+       "rights": "플리커 CC BY 2.0 (오픈버스)",
+       "page": "https://www.flickr.com/photos/38902706@N03/5389478835",
+       "terms": {
+        "url": "https://creativecommons.org/licenses/by/2.0/",
+        "checked": "2026-11-18",
+        "scope": "CC BY 2.0, 상업적 이용·수정 가능",
+        "ok": true
+       }
+      }
+     }
+    ],
+    "dir": "2x2",
+    "own": true,
+    "hl": 0
+   }
+  },
+  {
+   "say": "새콤달콤 땅콩 가루 솔솔, 팟타이로 기분 전환!",
+   "subs": [
+    "새콤달콤 땅콩 가루 솔솔,",
+    "팟타이로 기분 전환!"
+   ],
+   "show": {
+    "grid": [
+     {
+      "photo": {
+       "url": "https://live.staticflickr.com/4108/5007261302_6087cdd8cd_b.jpg",
+       "shows": "흰 접시에 담긴 빨간 소스 마파두부, 네모난 두부와 다진 고기·파가 보임",
+       "match": "정확",
+       "credit": "crd! (CC BY 2.0) · www.flickr.com/photos/61324768@N00/5007261302",
+       "rights": "플리커 CC BY 2.0 (오픈버스)",
+       "page": "https://www.flickr.com/photos/61324768@N00/5007261302",
+       "terms": {
+        "url": "https://creativecommons.org/licenses/by/2.0/",
+        "checked": "2026-11-18",
+        "scope": "CC BY 2.0, 상업적 이용·수정 가능",
+        "ok": true
+       }
+      }
+     },
+     {
+      "photo": {
+       "url": "https://live.staticflickr.com/4118/4807280458_528e5b4c7b_b.jpg",
+       "shows": "숙주·땅콩 가루·고수가 올라간 팟타이 볶음 쌀국수와 새우 한 점",
+       "match": "정확",
+       "credit": "Steve Snodgrass (CC BY 2.0) · www.flickr.com/photos/10710442@N08/4807280458",
+       "rights": "플리커 CC BY 2.0 (오픈버스)",
+       "page": "https://www.flickr.com/photos/10710442@N08/4807280458",
+       "terms": {
+        "url": "https://creativecommons.org/licenses/by/2.0/",
+        "checked": "2026-11-18",
+        "scope": "CC BY 2.0, 상업적 이용·수정 가능",
+        "ok": true
+       }
+      }
+     },
+     {
+      "photo": {
+       "url": "vault:photos/ig-17852142433164173.jpg",
+       "shows": "달걀 지단을 두른 철판 위 닭고기 볶음밥",
+       "match": "정확",
+       "rights": "사용자가 직접 찍은 사진(비공개 보관함)",
+       "own": true
+      }
+     },
+     {
+      "photo": {
+       "url": "https://live.staticflickr.com/5298/5389478835_e4f41d9d63_b.jpg",
+       "shows": "빨간 양념에 버무린 떡볶이 한 그릇과 튀김 한 조각",
+       "match": "정확",
+       "credit": "Ten-ele-ven (CC BY 2.0) · www.flickr.com/photos/38902706@N03/5389478835",
+       "rights": "플리커 CC BY 2.0 (오픈버스)",
+       "page": "https://www.flickr.com/photos/38902706@N03/5389478835",
+       "terms": {
+        "url": "https://creativecommons.org/licenses/by/2.0/",
+        "checked": "2026-11-18",
+        "scope": "CC BY 2.0, 상업적 이용·수정 가능",
+        "ok": true
+       }
+      }
+     }
+    ],
+    "dir": "2x2",
+    "own": true,
+    "hl": 1
+   }
+  },
+  {
+   "say": "철판 볶음밥 한 판이면 든든하죠!",
+   "show": {
+    "grid": [
+     {
+      "photo": {
+       "url": "https://live.staticflickr.com/4108/5007261302_6087cdd8cd_b.jpg",
+       "shows": "흰 접시에 담긴 빨간 소스 마파두부, 네모난 두부와 다진 고기·파가 보임",
+       "match": "정확",
+       "credit": "crd! (CC BY 2.0) · www.flickr.com/photos/61324768@N00/5007261302",
+       "rights": "플리커 CC BY 2.0 (오픈버스)",
+       "page": "https://www.flickr.com/photos/61324768@N00/5007261302",
+       "terms": {
+        "url": "https://creativecommons.org/licenses/by/2.0/",
+        "checked": "2026-11-18",
+        "scope": "CC BY 2.0, 상업적 이용·수정 가능",
+        "ok": true
+       }
+      }
+     },
+     {
+      "photo": {
+       "url": "https://live.staticflickr.com/4118/4807280458_528e5b4c7b_b.jpg",
+       "shows": "숙주·땅콩 가루·고수가 올라간 팟타이 볶음 쌀국수와 새우 한 점",
+       "match": "정확",
+       "credit": "Steve Snodgrass (CC BY 2.0) · www.flickr.com/photos/10710442@N08/4807280458",
+       "rights": "플리커 CC BY 2.0 (오픈버스)",
+       "page": "https://www.flickr.com/photos/10710442@N08/4807280458",
+       "terms": {
+        "url": "https://creativecommons.org/licenses/by/2.0/",
+        "checked": "2026-11-18",
+        "scope": "CC BY 2.0, 상업적 이용·수정 가능",
+        "ok": true
+       }
+      }
+     },
+     {
+      "photo": {
+       "url": "vault:photos/ig-17852142433164173.jpg",
+       "shows": "달걀 지단을 두른 철판 위 닭고기 볶음밥",
+       "match": "정확",
+       "rights": "사용자가 직접 찍은 사진(비공개 보관함)",
+       "own": true
+      }
+     },
+     {
+      "photo": {
+       "url": "https://live.staticflickr.com/5298/5389478835_e4f41d9d63_b.jpg",
+       "shows": "빨간 양념에 버무린 떡볶이 한 그릇과 튀김 한 조각",
+       "match": "정확",
+       "credit": "Ten-ele-ven (CC BY 2.0) · www.flickr.com/photos/38902706@N03/5389478835",
+       "rights": "플리커 CC BY 2.0 (오픈버스)",
+       "page": "https://www.flickr.com/photos/38902706@N03/5389478835",
+       "terms": {
+        "url": "https://creativecommons.org/licenses/by/2.0/",
+        "checked": "2026-11-18",
+        "scope": "CC BY 2.0, 상업적 이용·수정 가능",
+        "ok": true
+       }
+      }
+     }
+    ],
+    "dir": "2x2",
+    "own": true,
+    "hl": 2
+   }
+  },
+  {
+   "say": "매콤한 떡볶이로 마무리해 볼까요?",
+   "subs": [
+    "매콤한 떡볶이로",
+    "마무리해 볼까요?"
+   ],
+   "show": {
+    "grid": [
+     {
+      "photo": {
+       "url": "https://live.staticflickr.com/4108/5007261302_6087cdd8cd_b.jpg",
+       "shows": "흰 접시에 담긴 빨간 소스 마파두부, 네모난 두부와 다진 고기·파가 보임",
+       "match": "정확",
+       "credit": "crd! (CC BY 2.0) · www.flickr.com/photos/61324768@N00/5007261302",
+       "rights": "플리커 CC BY 2.0 (오픈버스)",
+       "page": "https://www.flickr.com/photos/61324768@N00/5007261302",
+       "terms": {
+        "url": "https://creativecommons.org/licenses/by/2.0/",
+        "checked": "2026-11-18",
+        "scope": "CC BY 2.0, 상업적 이용·수정 가능",
+        "ok": true
+       }
+      }
+     },
+     {
+      "photo": {
+       "url": "https://live.staticflickr.com/4118/4807280458_528e5b4c7b_b.jpg",
+       "shows": "숙주·땅콩 가루·고수가 올라간 팟타이 볶음 쌀국수와 새우 한 점",
+       "match": "정확",
+       "credit": "Steve Snodgrass (CC BY 2.0) · www.flickr.com/photos/10710442@N08/4807280458",
+       "rights": "플리커 CC BY 2.0 (오픈버스)",
+       "page": "https://www.flickr.com/photos/10710442@N08/4807280458",
+       "terms": {
+        "url": "https://creativecommons.org/licenses/by/2.0/",
+        "checked": "2026-11-18",
+        "scope": "CC BY 2.0, 상업적 이용·수정 가능",
+        "ok": true
+       }
+      }
+     },
+     {
+      "photo": {
+       "url": "vault:photos/ig-17852142433164173.jpg",
+       "shows": "달걀 지단을 두른 철판 위 닭고기 볶음밥",
+       "match": "정확",
+       "rights": "사용자가 직접 찍은 사진(비공개 보관함)",
+       "own": true
+      }
+     },
+     {
+      "photo": {
+       "url": "https://live.staticflickr.com/5298/5389478835_e4f41d9d63_b.jpg",
+       "shows": "빨간 양념에 버무린 떡볶이 한 그릇과 튀김 한 조각",
+       "match": "정확",
+       "credit": "Ten-ele-ven (CC BY 2.0) · www.flickr.com/photos/38902706@N03/5389478835",
+       "rights": "플리커 CC BY 2.0 (오픈버스)",
+       "page": "https://www.flickr.com/photos/38902706@N03/5389478835",
+       "terms": {
+        "url": "https://creativecommons.org/licenses/by/2.0/",
+        "checked": "2026-11-18",
+        "scope": "CC BY 2.0, 상업적 이용·수정 가능",
+        "ok": true
+       }
+      }
+     }
+    ],
+    "dir": "2x2",
+    "own": true,
+    "hl": 3
+   }
+  },
+  {
+   "say": "넷 중에 오늘 뭐 먹을래? 댓글로 알려 줘.",
+   "subs": [
+    "넷 중에 오늘 뭐 먹을래?",
+    "댓글로 알려 줘."
+   ],
+   "show": {
+    "grid": [
+     {
+      "photo": {
+       "url": "https://live.staticflickr.com/4108/5007261302_6087cdd8cd_b.jpg",
+       "shows": "흰 접시에 담긴 빨간 소스 마파두부, 네모난 두부와 다진 고기·파가 보임",
+       "match": "정확",
+       "credit": "crd! (CC BY 2.0) · www.flickr.com/photos/61324768@N00/5007261302",
+       "rights": "플리커 CC BY 2.0 (오픈버스)",
+       "page": "https://www.flickr.com/photos/61324768@N00/5007261302",
+       "terms": {
+        "url": "https://creativecommons.org/licenses/by/2.0/",
+        "checked": "2026-11-18",
+        "scope": "CC BY 2.0, 상업적 이용·수정 가능",
+        "ok": true
+       }
+      }
+     },
+     {
+      "photo": {
+       "url": "https://live.staticflickr.com/4118/4807280458_528e5b4c7b_b.jpg",
+       "shows": "숙주·땅콩 가루·고수가 올라간 팟타이 볶음 쌀국수와 새우 한 점",
+       "match": "정확",
+       "credit": "Steve Snodgrass (CC BY 2.0) · www.flickr.com/photos/10710442@N08/4807280458",
+       "rights": "플리커 CC BY 2.0 (오픈버스)",
+       "page": "https://www.flickr.com/photos/10710442@N08/4807280458",
+       "terms": {
+        "url": "https://creativecommons.org/licenses/by/2.0/",
+        "checked": "2026-11-18",
+        "scope": "CC BY 2.0, 상업적 이용·수정 가능",
+        "ok": true
+       }
+      }
+     },
+     {
+      "photo": {
+       "url": "vault:photos/ig-17852142433164173.jpg",
+       "shows": "달걀 지단을 두른 철판 위 닭고기 볶음밥",
+       "match": "정확",
+       "rights": "사용자가 직접 찍은 사진(비공개 보관함)",
+       "own": true
+      }
+     },
+     {
+      "photo": {
+       "url": "https://live.staticflickr.com/5298/5389478835_e4f41d9d63_b.jpg",
+       "shows": "빨간 양념에 버무린 떡볶이 한 그릇과 튀김 한 조각",
+       "match": "정확",
+       "credit": "Ten-ele-ven (CC BY 2.0) · www.flickr.com/photos/38902706@N03/5389478835",
+       "rights": "플리커 CC BY 2.0 (오픈버스)",
+       "page": "https://www.flickr.com/photos/38902706@N03/5389478835",
+       "terms": {
+        "url": "https://creativecommons.org/licenses/by/2.0/",
+        "checked": "2026-11-18",
+        "scope": "CC BY 2.0, 상업적 이용·수정 가능",
+        "ok": true
+       }
+      }
+     }
+    ],
+    "dir": "2x2",
+    "own": true
+   }
+  }
+ ],
+ "review": {
+  "photo_sheet": "2360512398b9"
+ }
+}

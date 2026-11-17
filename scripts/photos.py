@@ -284,7 +284,8 @@ UNSPLASH_TERMS = "Unsplash 라이선스: 무료, 상업적 이용·수정 가능
 def unsplash_links(query, en=None):
     """키 없이 Unsplash 를 쓰는 길(2026-11-13): 영어 검색 페이지 주소(무료 사진만). WebFetch 로 열면 사진 주소가 그대로 나와요."""
     terms = [query] if not hangul(query) else (en or en_terms(query))
-    return [f"https://unsplash.com/s/photos/{urllib.parse.quote(re.sub(r'\s+', '-', t.strip().lower()))}?license=free" for t in terms]
+    _ws = re.compile(r'\s+')
+    return [f"https://unsplash.com/s/photos/{urllib.parse.quote(_ws.sub('-', t.strip().lower()))}?license=free" for t in terms]
 
 
 def unsplash_rows(query):
