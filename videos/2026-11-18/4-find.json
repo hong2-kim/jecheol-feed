@@ -1,0 +1,221 @@
+{
+ "kind": "발견",
+ "subject": "매생이 · 김 안 나는데 뜨거운 까닭",
+ "title": "매생이국은 왜 김이 안 나는데 뜨거울까?",
+ "summary": "매생이는 해수부 이달의 수산물 자료에서 11월 말부터 이듬해 2월까지 채취하는 해조류로 소개돼요. 한 신문 보도에 따르면 끓이면 잎 조직이 촘촘히 뭉쳐 열을 가두고 김이 적어서, 식은 줄 알고 먹다 입천장을 데기 쉬워요.",
+ "plan_hook": {
+  "pick": "호기심",
+  "why": "매생이국 먹다 데인 경험이 흔해 '왜 김이 안 나는데 뜨거운가'가 누구나 궁금한 물음이고 신문 보도와 해수부 자료로 답이 확인됨",
+  "others": [
+   "먹거리",
+   "유머"
+  ]
+ },
+ "title_pick": {
+  "candidates": [
+   "매생이국은 왜 김이 안 나는데 뜨거울까?",
+   "매생이 제철, 김양식장 잡초였던 해초",
+   "겨울 매생이국 먹기 전에 알아 둘 것"
+  ],
+  "pick": "매생이국은 왜 김이 안 나는데 뜨거울까?",
+  "like": "홍합은 왜 홍합일까? (11-14) · 똑같은 갈치인데 왜 색깔이 다를까? (4.3배)",
+  "why": "'왜 ~일까' 꼴이 이 채널에서 3배 넘게 나왔고, 약속(뜨거운 까닭)이 영상에 그대로 나옴",
+  "sure": "보통"
+ },
+ "thumb": {
+  "head": "매생이국\n[[왜 안 식어?]]",
+  "sub": "김 안 나도 [[속은 펄펄]]",
+  "photo": {
+   "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Maesaengi-guk.jpg?width=1600",
+   "page": "https://commons.wikimedia.org/wiki/File:Maesaengi-guk.jpg",
+   "shows": "검은 돌솥에 담긴 매생이국, 위에 깨를 뿌린 모습",
+   "match": "정확",
+   "rights": "위키미디어 공용 CC BY 2.0 · lazy fri13th",
+   "credit": "lazy fri13th (CC BY 2.0) · commons.wikimedia.org/?curid=88401594",
+   "terms": {
+    "url": "https://creativecommons.org/licenses/by/2.0/",
+    "checked": "2026-11-18",
+    "scope": "CC BY 2.0, 상업적 이용·수정 가능",
+    "ok": true
+   },
+   "about": "매생이국",
+   "fit": "cover"
+  }
+ },
+ "tags": [
+  "매생이",
+  "매생이국",
+  "겨울제철음식",
+  "매생이굴국밥"
+ ],
+ "sources": [
+  "https://www.incheon.go.kr/fish/FI020401/2064090",
+  "https://twig24.com/news/lifestyle/trip/2021/02/22/20210222017003"
+ ],
+ "credits": [
+  "ⓒ한국관광공사 포토코리아-서영석, 신승희, 이범수",
+  "lazy fri13th (CC BY 2.0) · commons.wikimedia.org/?curid=88401594",
+  "차차PD (CC BY 4.0) · commons.wikimedia.org/?curid=69460321"
+ ],
+ "yt_title": "매생이국 뜨거운 이유, 김이 안 나는데 왜 입천장 델까?",
+ "yt_keyword": "매생이국 뜨거운 이유",
+ "yt_related": [
+  "매생이",
+  "매생이국",
+  "매생이 제철",
+  "매생이굴국밥",
+  "매생이전",
+  "장흥 매생이"
+ ],
+ "yt_tags": [
+  "매생이국 뜨거운 이유",
+  "매생이 제철",
+  "매생이국",
+  "매생이굴국밥",
+  "매생이전",
+  "장흥 매생이",
+  "이달의 수산물"
+ ],
+ "yt_hashtags": [
+  "매생이",
+  "매생이국",
+  "겨울제철"
+ ],
+ "yt_lead": "매생이국이 김이 안 나는데도 뜨거운 이유와 매생이 제철을 짧게 알려 드려요.",
+ "dates": {
+  "checked": "2026-11-18",
+  "sources": [
+   {
+    "url": "https://www.incheon.go.kr/fish/FI020401/2064090",
+    "published": "2021-01-05",
+    "modified": "2021-01-05",
+    "note": "해수부 이달의 수산물 2021년 1월(방어·매생이), 제철·이름"
+   },
+   {
+    "url": "https://twig24.com/news/lifestyle/trip/2021/02/22/20210222017003",
+    "published": "2021-02-21",
+    "modified": "2021-02-22",
+    "note": "서울신문 계열 보도, 김 안 나는 까닭·산지·김양식 이야기"
+   }
+  ]
+ },
+ "caption": "매생이국, 김이 안 나서 식은 줄 알고 한입 먹었다가 입천장 데어 본 적 있나요?\n\n매생이국이 왜 김이 안 나는데 뜨거운지, 매생이 제철은 언제인지 찾아봤어요. 11월 매생이 이야기예요.\n\n한 신문 보도(2021년)에 따르면 매생이는 끓이면 잎 모양 조직이 머리카락처럼 촘촘히 뭉치면서 열기를 속에 가둬요. 김이 적고 색이 검푸르러서 차갑다고 착각하기 쉽다고 해요.\n\n해수부 이달의 수산물 자료에는 매생이를 찬바람이 불기 시작하는 11월 말부터 이듬해 2월까지 채취한다고 적혀 있고, 이름은 '생생한 이끼를 바로 뜯는다'는 뜻의 순우리말이라고 소개돼 있어요. 같은 보도에는 한때 김 양식장의 잡초 취급을 받았다는 이야기도 나와요.\n\n먹는 방식도 다양해서 국 말고 전이나 굴국밥으로도 먹는대요. 영상 속 사진은 매생이 양식장과 매생이 음식 사진이에요.\n\n여러분은 매생이국 먹다 데어 본 적 있어요?\n\n더 자세한 이야기는 프로필 링크의 블로그에 있어요.\n\n출처: 해양수산부 이달의 수산물(2021년 1월, 인천시 수산자원연구소 게재), 서울신문(2021년 2월 22일)\n📷 ⓒ한국관광공사 포토코리아-서영석, 신승희, 이범수, lazy fri13th (CC BY 2.0), 차차PD (CC BY 4.0)",
+ "scenes": [
+  {
+   "type": "cover",
+   "general": true,
+   "dur": 2.0,
+   "photo": {
+    "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Maesaengi-guk.jpg?width=1600",
+    "page": "https://commons.wikimedia.org/wiki/File:Maesaengi-guk.jpg",
+    "shows": "검은 돌솥에 담긴 매생이국, 위에 깨를 뿌린 모습",
+    "match": "정확",
+    "rights": "위키미디어 공용 CC BY 2.0 · lazy fri13th",
+    "credit": "lazy fri13th (CC BY 2.0) · commons.wikimedia.org/?curid=88401594",
+    "terms": {
+     "url": "https://creativecommons.org/licenses/by/2.0/",
+     "checked": "2026-11-18",
+     "scope": "CC BY 2.0, 상업적 이용·수정 가능",
+     "ok": true
+    },
+    "about": "매생이국"
+   },
+   "kicker": "먹다가 데어 본 적",
+   "title": "김 안 나는데\n[[왜 뜨거워]]?",
+   "size": 92,
+   "line": null,
+   "headline": null
+  },
+  {
+   "type": "cover",
+   "dur": 1.8,
+   "photo": {
+    "url": "https://tong.visitkorea.or.kr/cms2/website/71/2563871.jpg",
+    "shows": "썰물 갯벌에 대나무 발을 길게 세운 장흥 대덕읍 매생이 양식장과 작업하는 사람(2018년 촬영, 멀리서 찍혀 얼굴 안 보임)",
+    "match": "정확",
+    "rights": "한국관광공사 포토코리아 공공누리 1유형 · ⓒ한국관광공사 포토코리아-서영석",
+    "credit": "ⓒ한국관광공사 포토코리아-서영석",
+    "about": "매생이 양식장",
+    "pos": "50% 60%"
+   },
+   "kicker": "저도 궁금했어요",
+   "title": "겨울 갯벌에서\n[[키우는]] 해초",
+   "size": 92,
+   "in": "push",
+   "line": null,
+   "headline": null
+  },
+  {
+   "type": "cover",
+   "dur": 2.0,
+   "photo": {
+    "url": "https://tong.visitkorea.or.kr/cms2/website/29/1883029.jpg",
+    "shows": "상에 차린 당진 매생이굴국밥: 뚝배기, 밥, 반찬(2013년 12월 촬영)",
+    "match": "정확",
+    "rights": "한국관광공사 포토코리아 공공누리 1유형 · ⓒ한국관광공사 포토코리아-이범수",
+    "credit": "ⓒ한국관광공사 포토코리아-이범수",
+    "about": "매생이굴국밥"
+   },
+   "kicker": "그래서 찾아봤어요 · 매생이",
+   "title": "김 안 나도\n[[속은 펄펄]]",
+   "size": 100,
+   "line": null,
+   "headline": null
+  },
+  {
+   "type": "card",
+   "dur": 2.8,
+   "photo": {
+    "url": "https://tong.visitkorea.or.kr/cms2/website/31/1883031.jpg",
+    "shows": "뚝배기에 끓는 매생이굴국밥 가까이 본 모습, 굴과 파가 보임(2013년 12월 촬영)",
+    "match": "정확",
+    "rights": "한국관광공사 포토코리아 공공누리 1유형 · ⓒ한국관광공사 포토코리아-이범수",
+    "credit": "ⓒ한국관광공사 포토코리아-이범수",
+    "about": "매생이굴국밥"
+   },
+   "chip": "김이 안 나요",
+   "headline": "촘촘히 뭉쳐\n[[열을 가둬요]]",
+   "line": "김이 적어 식은 줄 알기 쉬워요"
+  },
+  {
+   "type": "card",
+   "dur": 2.8,
+   "photo": {
+    "url": "https://tong.visitkorea.or.kr/cms2/website/73/3414873.jpg",
+    "shows": "바둑판처럼 나뉜 완도 매생이 양식장을 위에서 본 모습, 작은 배 한 척(2024년 2월 촬영)",
+    "match": "정확",
+    "rights": "한국관광공사 포토코리아 공공누리 1유형 · ⓒ한국관광공사 포토코리아-신승희",
+    "credit": "ⓒ한국관광공사 포토코리아-신승희",
+    "about": "매생이 양식장"
+   },
+   "chip": "제철",
+   "headline": "11월 말부터\n[[2월까지]] 채취",
+   "line": "해양수산부 자료예요"
+  },
+  {
+   "type": "card",
+   "dur": 3.0,
+   "photo": {
+    "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Maesaengi-jeon.jpg?width=1600",
+    "page": "https://commons.wikimedia.org/wiki/File:Maesaengi-jeon.jpg",
+    "shows": "흰 접시 위 초록빛 매생이전 한 장",
+    "match": "정확",
+    "rights": "위키미디어 공용 CC BY 4.0 · 차차PD",
+    "credit": "차차PD (CC BY 4.0) · commons.wikimedia.org/?curid=69460321",
+    "terms": {
+     "url": "https://creativecommons.org/licenses/by/4.0/",
+     "checked": "2026-11-18",
+     "scope": "CC BY 4.0, 상업적 이용·수정 가능",
+     "ok": true
+    },
+    "about": "매생이전"
+   },
+   "chip": "먹는 방식",
+   "headline": "국만 있나?\n[[전]]으로도 먹어요",
+   "line": "굴국밥·전에도 잘 어울려요"
+  }
+ ],
+ "review": {
+  "photo_sheet": "0e3ec9001b78"
+ }
+}
