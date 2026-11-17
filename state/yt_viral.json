@@ -693,6 +693,80 @@
         "channels": 120,
         "thin": 2
       }
+    },
+    "2026-11-17": {
+      "picks": [
+        {
+          "id": "aYxW3hWC8Rc",
+          "title": "시원하고 깊은맛의 김장양념 황금레시피(절임배추3Kg기준) 이렇게 만드세요",
+          "channel": "순덕이네 반찬가게",
+          "subs": 60300,
+          "views": 40743,
+          "median": 3930,
+          "n": 39,
+          "multiple": 10.4,
+          "hours": 19,
+          "formulas": [
+            "방법·꿀팁"
+          ],
+          "query": "제철 음식",
+          "url": "https://youtube.com/shorts/aYxW3hWC8Rc"
+        },
+        {
+          "id": "8L2jpNTUcTE",
+          "title": "맛살리는황금비법",
+          "channel": "써니온데이🦋건강톡",
+          "subs": 88900,
+          "views": 41496,
+          "median": 5106,
+          "n": 35,
+          "multiple": 8.1,
+          "hours": 34,
+          "formulas": [
+            "방법·꿀팁"
+          ],
+          "query": "음식 꿀팁",
+          "url": "https://youtube.com/shorts/8L2jpNTUcTE"
+        },
+        {
+          "id": "iOUeuF2ZDv0",
+          "title": "잼토스트엔 울라~ 컵라면 먹을 땐?ㅋㅋ | 우사기 먹방 한일 더빙 비교",
+          "channel": "틀딱감성",
+          "subs": 25500,
+          "views": 34905,
+          "median": 11405,
+          "n": 44,
+          "multiple": 3.1,
+          "hours": 21,
+          "formulas": [
+            "물음",
+            "비교"
+          ],
+          "query": "먹방 쇼츠",
+          "url": "https://youtube.com/shorts/iOUeuF2ZDv0"
+        },
+        {
+          "id": "DOugtNODrzQ",
+          "title": "식빵 대신 먹었더니 칼로리가 반토막! 🥪 초간단 다이어트 간식 샌드위치 만들기",
+          "channel": "일등감의 쉬운 레시피",
+          "subs": 277000,
+          "views": 119010,
+          "median": 52710,
+          "n": 49,
+          "multiple": 2.3,
+          "hours": 41,
+          "formulas": [],
+          "query": "다이어트 음식",
+          "url": "https://youtube.com/shorts/DOugtNODrzQ"
+        }
+      ],
+      "leaders": [],
+      "stats": {
+        "searched": 220,
+        "shorts": 209,
+        "channels": 120,
+        "thin": 7
+      }
     }
   }
 }
