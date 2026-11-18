@@ -287,7 +287,52 @@ CSS = """
         font-size: 78px; font-weight: 900; line-height: 1.22; letter-spacing: -3px; color: #1d1a16; }
 .vmid .am { color: #D8432B; }
 .vcard.collage .vsrc { color: #b9c7ae; text-align: center; margin-top: 18px; }
+/* 2026-11-18 시험(인기 쇼츠 기법): 사진 확대·이동("move"), 번호 표시("badge"), 위아래 비교 카드("split"). 적은 영상만 써요 */
+.vpic img.kbv.a { animation-name: kbv; animation-timing-function: cubic-bezier(.33,0,.67,1); }
+@keyframes kbv { from { transform: scale(var(--s0)); transform-origin: var(--o0); } to { transform: scale(var(--s1)); transform-origin: var(--o1); } }
+.vbadge { position: absolute; right: 40px; top: 846px; z-index: 4; min-width: 128px; height: 128px; padding: 0 22px; border-radius: 64px; background: #FFD43B;
+          color: #1d1a16; display: flex; align-items: baseline; justify-content: center; gap: 2px; padding-top: 10px; font-weight: 900;
+          box-shadow: 0 6px 20px rgba(0,0,0,.35); border: 6px solid #fff; }
+.vbadge b { font-size: 84px; letter-spacing: -3px; line-height: 1; }
+.vbadge small { font-size: 40px; color: #6d5f4c; }
+.vcard.split { padding: 0; background: #0E0B09; }
+.vhalf { position: absolute; left: 0; right: 0; height: 441px; overflow: hidden; background: #0E0B09; }
+.vhalf.top { top: 0; } .vhalf.bot { bottom: 0; }
+.vhalf img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.vhalf.pack { background: #fff; } .vhalf.pack img { object-fit: contain; padding: 18px 40px; }
+.vlab { position: absolute; left: 34px; bottom: 26px; z-index: 2; display: flex; align-items: baseline; gap: 18px; padding: 10px 30px 16px; border-radius: 22px;
+        background: rgba(14,11,9,.82); color: #fff; font-weight: 900; letter-spacing: -1.5px; }
+.vlab span { font-size: 46px; } .vlab b { font-size: 70px; font-variant-numeric: tabular-nums; }
+.vhalf.hl .vlab { background: #D8432B; } .vhalf.hl .vlab b { color: #FFE27A; }
+.vlab s { font-size: 46px; color: rgba(255,255,255,.6); }
+.vmidv { position: absolute; left: 50%; top: 445px; z-index: 3; width: 132px; height: 132px; margin: -66px 0 0 -66px; border-radius: 50%; background: #FFD43B;
+         color: #1d1a16; border: 7px solid #fff; display: flex; align-items: center; justify-content: center; font-size: 52px; font-weight: 900; letter-spacing: -2px; }
+.vcard.split .vsrc { position: absolute; right: 22px; top: 14px; z-index: 3; margin: 0; font-size: 24px; color: rgba(255,255,255,.75); text-shadow: 0 1px 3px rgba(0,0,0,.7); }
 """
+
+# 사진 움직임 미리 정한 것 (2026-11-18 시험). 직접 적을 때는 {"zoom": [처음, 끝], "focus": ["처음 x% y%", "끝 x% y%"]}
+MOVES = {"in": ([1.0, 1.16], ["50% 50%", "50% 50%"]), "out": ([1.16, 1.0], ["50% 50%", "50% 50%"]),
+         "left": ([1.14, 1.14], ["70% 50%", "30% 50%"]), "right": ([1.14, 1.14], ["30% 50%", "70% 50%"]),
+         "up": ([1.14, 1.14], ["50% 70%", "50% 30%"]), "down": ([1.14, 1.14], ["50% 30%", "50% 70%"])}
+
+
+def move_style(photo, dur):
+    """사진에 "move" 가 있으면 확대·이동 애니메이션 (클래스, style). 없으면 ("", "") — 예전 영상은 그대로예요."""
+    mv = photo.get("move") if isinstance(photo, dict) else None
+    if not mv or not dur:
+        return "", ""
+    zoom, focus = MOVES[mv] if isinstance(mv, str) else (mv.get("zoom", [1.0, 1.15]), mv.get("focus", ["50% 50%", "50% 50%"]))
+    if isinstance(focus, str):
+        focus = [focus, focus]
+    return " kbv a", (f"--s0:{zoom[0]};--s1:{zoom[1]};--o0:{focus[0]};--o1:{focus[1]};--d:{dur:.2f}s;--dl:0s;")
+
+
+def badge_html(B, badge):
+    """번호 표시 "badge": "1/3" (지금 몇 번째인지 / 모두 몇 개인지). 사진 칸 오른쪽 위."""
+    if not badge:
+        return ""
+    no, _, of = str(badge).partition("/")
+    return f'<div class="vbadge"><b>{B.esc(no)}</b>{f"<small>/{B.esc(of)}</small>" if of else ""}</div>'
 PIN = ('<svg viewBox="0 0 200 250"><path d="M100 244C100 244 16 150 16 92a84 84 0 01168 0c0 58-84 152-84 152z" fill="#D8432B"/>'
        '<circle cx="100" cy="92" r="60" fill="#FFFDF5"/><path d="M62 84h76c0 26-16 42-38 42S62 110 62 84z" fill="#D8432B"/>'
        '<rect x="55" y="78" width="90" height="9" rx="4.5" fill="#D8432B"/></svg>')
@@ -306,16 +351,17 @@ def is_pack(B, photo):
     return (edge > 225).mean() > 0.6
 
 
-def pic_html(B, photo):
+def pic_html(B, photo, dur=None):
     import marks
     mk = marks.html_of(photo, "vref", "vsrc", festival_only=True)  # 축제 연도·블로그·인스타 출처 (2026-11-16 사용자, 해당 사진이 아니면 빈 글)
+    kb, kbs = move_style(photo, dur)  # "move" 를 적은 사진만 확대·이동 (2026-11-18 시험)
     if is_pack(B, photo):
-        return f'<div class="vpic pack"><img src="{B.pack_photo(photo)}">{mk}</div>'
+        return f'<div class="vpic pack"><img class="{kb.strip()}" style="{kbs}" src="{B.pack_photo(photo)}">{mk}</div>'
     src, pos = B.fetch_photo(photo)
     if B.zoomed(photo) or B.fills(photo):  # 음식 사진은 칸을 꽉 채워요 (2026-10-28 사용자 승인, 가장자리만 잘려요. 핵심 위치는 pos)
-        return f'<div class="vpic"><img src="{src}" style="object-position:{pos}">{mk}</div>'
+        return f'<div class="vpic"><img class="{kb.strip()}" src="{src}" style="object-position:{pos};{kbs}">{mk}</div>'
     # 포스터·안내문처럼 전체가 중요한 사진("fit": "contain", "kind": "poster")은 잘리지 않게 통째로 (2026-10-17 사용자가 정함)
-    return f'<div class="vpic whole"><img class="bg" src="{B.backdrop(photo)}"><img src="{src}">{mk}</div>'
+    return f'<div class="vpic whole"><img class="bg" src="{B.backdrop(photo)}"><img class="{kb.strip()}" style="{kbs}" src="{src}">{mk}</div>'
 
 
 def line_photos(lines):
@@ -1191,6 +1237,20 @@ def card_html(B, card, beats):
             t = _at(r, k, beats, step=0.45)
             body.append(f'<div class="vshop a rise" style="--dl:{t:.2f}s;--d:.3s"><i style="background:{r.get("color", colors[k % 5])}">{esc(r["region"]).replace(chr(10), "<br>")}</i>'
                         f'<div><b>{esc(r["name"])}</b><span>{rich(r["menu"])}</span></div></div>')
+    elif kind == "split":  # 위아래 비교 (2026-11-18 시험): "rows": [위, 아래] 마다 {"photo", "label", "value", "was"(지운 값), "hl"}, "mid": "VS"
+        for k, r in enumerate(card["rows"][:2]):  # 아랫줄 이름표는 묶음의 둘째 문장(beat 1)이 시작될 때 나와요
+            t = 0.15 if k == 0 else _at(r, 1, beats, step=0.0, first=(beats[1] + 0.1) if len(beats) > 1 else 0.9)
+            photo = r["photo"]
+            pack = is_pack(B, photo)
+            pic, pos = (B.pack_photo(photo), "50% 50%") if pack else B.fetch_photo(photo)
+            kb, kbs = move_style(photo, sum(beats[-1:]) + 4.0)
+            was = f'<s>{rich(r["was"])}</s>' if r.get("was") else ""
+            body.append(f'<div class="vhalf {("top", "bot")[k]}{" pack" if pack else ""}{" hl" if r.get("hl") else ""}">'
+                        f'<img class="{kb.strip()}" src="{pic}" style="object-position:{pos};{kbs}">'
+                        f'<div class="vlab a pop" style="--dl:{t:.2f}s;--d:.3s"><span>{rich(r.get("label", ""))}</span>{was}<b>{rich(r.get("value", ""))}</b></div></div>')
+        if card.get("mid"):
+            body.append(f'<div class="vmidv a pop" style="--dl:.45s;--d:.3s">{esc(card["mid"])}</div>')
+        return f'<div class="vcard split">{"".join(body)}{src}</div>'
     elif kind == "collage":  # 끝 화면: 가운데 큰 물음, 둘레에 가게 이름표. "names" 12개 안팎(위 6 · 아래 6)
         names = card["names"]
         half = (len(names) + 1) // 2
@@ -1368,7 +1428,7 @@ def _build_voice(spec, work=None):
                 mark = "" if isinstance(photo, dict) and photo.get("own") else note  # "own": 그 음식을 찍은 사진이면 예시 표시를 안 해요
                 back = "" if full else f'<div class="vback"><img src="{B.backdrop(photo)}"></div>'
                 out.append(f'<section class="scene{first if not k else ""}" data-at="{pa:.2f}" data-dur="{pd:.2f}" data-out="0"{anim if (n or k) else ""}>'
-                           f'{back}{pic_html(B, photo)}{chip}{mark}</section>')
+                           f'{back}{pic_html(B, photo, pd)}{chip}{badge_html(B, lines[a].get("badge"))}{mark}</section>')
             last_photo = photos[-1]
         for i, l in enumerate(lines):
             # 자막: 문장을 덩어리로 나눠 읽는 속도에 맞춰 차례로 바꿔요. 대화형은 말하는 사람 이름표와 색 띠를 붙여요

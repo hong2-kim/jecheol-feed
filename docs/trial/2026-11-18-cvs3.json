@@ -1,0 +1,528 @@
+{
+ "format": "voice",
+ "kind": "해설",
+ "subject": "편의점 신상 3 · GS25 브리오슈번+치즈쏙치킨 · 세븐일레븐 쫀득모찌크림산도 · 다쿠아즈생딸기샌드",
+ "title": "빵에 치킨을 끼운다? 이번 주 편의점 신상 3",
+ "headline": "빵에 치킨을?\n[[편의점 신상 3]]",
+ "length": [
+  50,
+  55
+ ],
+ "trial": "2026-11-18 시험 영상(올리지 않음). 인기 쇼츠 기법: move·badge·split",
+ "narrator": "achird",
+ "voice_pick": {
+  "mode": "solo",
+  "voices": [
+   "achird"
+  ],
+  "why": "편의점 신상 세 가지를 친구에게 빠르게 알려 주는 발견 이야기라 Achird 솔로"
+ },
+ "script_check": {
+  "score": 8,
+  "fix": "1번 훅을 의외성(빵에 치킨)으로, 2번 예고(반값 한정판)를 14~15번에서 공개, 숫자는 3번 문장부터, 끝 물음은 셋 중 고르기"
+ },
+ "lines": [
+  {
+   "say": "편의점 빵에, 갓 튀긴 치킨을 끼운다고요?",
+   "chip": "끝까지 보면 반값 한정판",
+   "photo": {
+    "url": "build/trial_src/gs_press_hi.jpg",
+    "crop": [
+     330,
+     1380,
+     1230,
+     2120
+    ],
+    "no_grade": true,
+    "move": {
+     "zoom": [
+      1.0,
+      1.22
+     ],
+     "focus": [
+      "50% 50%",
+      "45% 55%"
+     ]
+    },
+    "shows": "브리오슈번 사이에 치즈쏙치킨을 끼운 버거를 손에 든 모습",
+    "match": "정확",
+    "about": "GS25 브리오슈번+치즈쏙치킨",
+    "credit": "사진: GS리테일 제공",
+    "rights": "회사 보도자료 사진(sources.json: 확인 필요)",
+    "source_url": "https://stqnq5ux4599.edge.naverncp.com/data2/content/image/2026/11/17/20261117500047.jpg"
+   }
+  },
+  {
+   "say": "끝까지 보면, [[반값 한정판]]까지 알려 드려요.",
+   "chip": "끝까지 보면 반값 한정판",
+   "photo": {
+    "url": "build/trial_src/seven_press_hi.jpg",
+    "crop": [
+     1150,
+     700,
+     1900,
+     1320
+    ],
+    "no_grade": true,
+    "move": "in",
+    "shows": "케이크 받침 위 하트 모양 딸기 단면의 다쿠아즈생딸기샌드",
+    "match": "정확",
+    "about": "세븐일레븐 다쿠아즈생딸기샌드",
+    "credit": "사진: 세븐일레븐 제공",
+    "rights": "회사 보도자료 사진(sources.json: 확인 필요)",
+    "source_url": "https://stqnq5ux4599.edge.naverncp.com/data2/content/image/2026/11/17/20261117500052.jpg"
+   }
+  },
+  {
+   "say": "첫 번째, GS25가 [[20일]], 내놓는 브리오슈번이에요.",
+   "read": "첫 번째, 지에스 이십오가 이십일, 내놓는 브리오슈 번이에요.",
+   "badge": "1/3",
+   "photo": {
+    "url": "build/trial_src/gs_press_hi.jpg",
+    "crop": [
+     1450,
+     1240,
+     2470,
+     2080
+    ],
+    "no_grade": true,
+    "move": "right",
+    "shows": "브리오슈번 포장 봉지(제품명 글자가 보임)",
+    "match": "정확",
+    "about": "GS25 브리오슈번",
+    "credit": "사진: GS리테일 제공",
+    "rights": "회사 보도자료 사진(sources.json: 확인 필요)",
+    "source_url": "https://stqnq5ux4599.edge.naverncp.com/data2/content/image/2026/11/17/20261117500047.jpg"
+   }
+  },
+  {
+   "say": "치즈쏙치킨을, 패티처럼 넣어 먹는 거예요.",
+   "read": "치즈 쏙 치킨을, 패티처럼 넣어 먹는 거예요.",
+   "badge": "1/3",
+   "chip": "수제버거처럼",
+   "photos": [
+    {
+     "url": "build/trial_src/gs_press_mt.jpg",
+     "crop": [
+      470,
+      300,
+      1200,
+      747
+     ],
+     "no_grade": true,
+     "move": "in",
+     "shows": "집게로 든 치즈쏙치킨과 손에 든 브리오슈번",
+     "match": "정확",
+     "about": "GS25 치즈쏙치킨·브리오슈번",
+     "credit": "사진: GS리테일 제공",
+     "rights": "회사 보도자료 사진(sources.json: 확인 필요)",
+     "source_url": "https://thumb.mt.co.kr/21/2026/11/2026111610035598700_1.jpg",
+     "fit": "contain"
+    },
+    {
+     "url": "build/trial_src/gs_press_hi.jpg",
+     "crop": [
+      2000,
+      1550,
+      3700,
+      2746
+     ],
+     "no_grade": true,
+     "move": "left",
+     "shows": "GS25 매장 즉석 치킨 진열대(치킨·버거)",
+     "match": "같은 매장",
+     "about": "GS25 즉석 치킨",
+     "credit": "사진: GS리테일 제공",
+     "rights": "회사 보도자료 사진(sources.json: 확인 필요)",
+     "source_url": "https://stqnq5ux4599.edge.naverncp.com/data2/content/image/2026/11/17/20261117500047.jpg"
+    }
+   ]
+  },
+  {
+   "say": "번 800원, 치킨 2,800원, 따로 사면 [[3,600원]].",
+   "read": "번 팔백 원, 치킨 이천팔백 원, 따로 사면 삼천육백 원.",
+   "card": {
+    "type": "split",
+    "mid": "VS",
+    "src": "GS25 발표(11월 16일), 행사 11월 20일~12월 15일",
+    "rows": [
+     {
+      "label": "따로 사면",
+      "value": "3,600원",
+      "photo": {
+       "url": "build/trial_src/gs_press_mt.jpg",
+       "crop": [
+        470,
+        330,
+        1200,
+        628
+       ],
+       "no_grade": true,
+       "move": "in",
+       "source_url": "https://thumb.mt.co.kr/21/2026/11/2026111610035598700_1.jpg"
+      }
+     },
+     {
+      "label": "같이 사면",
+      "was": "3,600원",
+      "value": "2,300원",
+      "hl": true,
+      "photo": {
+       "url": "build/trial_src/gs_press_hi.jpg",
+       "crop": [
+        330,
+        1380,
+        1230,
+        2120
+       ],
+       "no_grade": true,
+       "move": "in",
+       "source_url": "https://stqnq5ux4599.edge.naverncp.com/data2/content/image/2026/11/17/20261117500047.jpg"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "say": "같이 사면 [[2,300원]], 1,300원이 빠져요.",
+   "read": "같이 사면 이천삼백 원, 천삼백 원이 빠져요."
+  },
+  {
+   "say": "두 번째, 세븐일레븐이 [[18일]] 내놓은 쫀득모찌크림산도.",
+   "read": "두 번째, 세븐일레븐이 십팔일 내놓은 쫀득 모찌 크림 산도.",
+   "badge": "2/3",
+   "photo": {
+    "url": "build/trial_src/seven_products.jpg",
+    "crop": [
+     370,
+     40,
+     585,
+     385
+    ],
+    "no_grade": true,
+    "move": "in",
+    "shows": "쫀득모찌 크림산도 포장(₩3,600 표시, 모찌·통단팥 단면)",
+    "match": "정확",
+    "about": "세븐일레븐 쫀득모찌크림산도",
+    "credit": "사진: 세븐일레븐 제공",
+    "rights": "회사 보도자료 사진(sources.json: 확인 필요)",
+    "source_url": "https://cdn.slist.kr/news/photo/202611/782304_1194743_144.jpeg"
+   }
+  },
+  {
+   "say": "찹쌀 모찌에 크림과 통단팥, [[3,600원]]이에요.",
+   "badge": "2/3",
+   "read": "찹쌀 모찌에 크림과 통단팥, 삼천육백 원이에요.",
+   "photos": [
+    {
+     "url": "build/trial_src/seven_press_hi.jpg",
+     "crop": [
+      900,
+      930,
+      1300,
+      1397
+     ],
+     "fit": "contain",
+     "no_grade": true,
+     "move": "up",
+     "shows": "매장 진열대 위 쫀득모찌 크림산도 포장",
+     "match": "정확",
+     "about": "세븐일레븐 쫀득모찌크림산도",
+     "credit": "사진: 세븐일레븐 제공",
+     "rights": "회사 보도자료 사진(sources.json: 확인 필요)",
+     "source_url": "https://stqnq5ux4599.edge.naverncp.com/data2/content/image/2026/11/17/20261117500052.jpg"
+    },
+    {
+     "url": "build/trial_src/seven_products.jpg",
+     "crop": [
+      0,
+      0,
+      600,
+      429
+     ],
+     "no_grade": true,
+     "move": {
+      "zoom": [
+       1.0,
+       1.25
+      ],
+      "focus": [
+       "50% 50%",
+       "80% 50%"
+      ]
+     },
+     "shows": "다쿠아즈생딸기샌드 상자와 쫀득모찌크림산도 포장 제품 사진(흰 바탕)",
+     "match": "정확",
+     "about": "세븐일레븐 신제품 2종",
+     "credit": "사진: 세븐일레븐 제공",
+     "rights": "회사 보도자료 사진(sources.json: 확인 필요)",
+     "source_url": "https://cdn.slist.kr/news/photo/202611/782304_1194743_144.jpeg"
+    }
+   ]
+  },
+  {
+   "say": "올해 떡 매출이, [[65%]] 늘었다고 밝혔어요.",
+   "card": {
+    "type": "bars",
+    "title": "세븐일레븐 [[떡 매출]]",
+    "sub": "1월 1일~11월 15일, 전년 같은 기간 = 100",
+    "rows": [
+     {
+      "name": "작년",
+      "value": 100,
+      "label": "100"
+     },
+     {
+      "name": "올해",
+      "value": 165,
+      "label": "165 · [[65%↑]]",
+      "hl": true
+     }
+    ],
+    "scale": 0.55,
+    "src": "세븐일레븐 발표(11월 17일)"
+   }
+  },
+  {
+   "say": "마지막은 [[1,000개]]만 파는, 다쿠아즈생딸기샌드예요.",
+   "read": "마지막은 천 개만 파는, 다쿠아즈 생딸기 샌드예요.",
+   "badge": "3/3",
+   "chip": "1,000개 한정",
+   "photo": {
+    "url": "build/trial_src/seven_daq_mt.jpg",
+    "crop": [
+     600,
+     330,
+     1200,
+     800
+    ],
+    "no_grade": true,
+    "move": "in",
+    "shows": "케이크 받침 위 하트 모양 딸기 단면의 다쿠아즈생딸기샌드",
+    "match": "정확",
+    "about": "세븐일레븐 다쿠아즈생딸기샌드",
+    "credit": "사진: 세븐일레븐 제공",
+    "rights": "회사 보도자료 사진(sources.json: 확인 필요)",
+    "source_url": "https://thumb.mt.co.kr/21/2026/11/2026111709514313245_1.jpg"
+   }
+  },
+  {
+   "say": "식빵 대신 다쿠아즈 사이에, 설향 딸기를 넣었어요.",
+   "read": "식빵 대신 다쿠아즈 사이에, 설향 딸기를 넣었어요.",
+   "badge": "3/3",
+   "photo": {
+    "url": "build/trial_src/seven_products.jpg",
+    "crop": [
+     10,
+     95,
+     315,
+     335
+    ],
+    "no_grade": true,
+    "move": "in",
+    "shows": "다쿠아즈생딸기샌드 상자(하트 모양 딸기 단면, 제품명 글자)",
+    "match": "정확",
+    "about": "세븐일레븐 다쿠아즈생딸기샌드",
+    "credit": "사진: 세븐일레븐 제공",
+    "rights": "회사 보도자료 사진(sources.json: 확인 필요)",
+    "source_url": "https://cdn.slist.kr/news/photo/202611/782304_1194743_144.jpeg"
+   }
+  },
+  {
+   "say": "정가 [[7,900원]], 세븐앱 예약하면 [[3,950원]]이에요.",
+   "read": "정가 칠천구백 원, 세븐앱 예약하면 삼천구백오십 원이에요.",
+   "card": {
+    "type": "split",
+    "mid": "VS",
+    "src": "세븐일레븐 발표(11월 17일), 세븐앱 예약 11월 23~26일",
+    "rows": [
+     {
+      "label": "정가",
+      "value": "7,900원",
+      "photo": {
+       "url": "build/trial_src/seven_products.jpg",
+       "crop": [
+        10,
+        95,
+        315,
+        335
+       ],
+       "no_grade": true,
+       "move": "in",
+       "source_url": "https://cdn.slist.kr/news/photo/202611/782304_1194743_144.jpeg"
+      }
+     },
+     {
+      "label": "예약하면",
+      "was": "7,900원",
+      "value": "3,950원",
+      "hl": true,
+      "photo": {
+       "url": "build/trial_src/seven_daq_mt.jpg",
+       "crop": [
+        600,
+        330,
+        1200,
+        800
+       ],
+       "no_grade": true,
+       "move": "in",
+       "source_url": "https://thumb.mt.co.kr/21/2026/11/2026111709514313245_1.jpg"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "say": "셋 중에 뭐부터 드실 거예요? 댓글로 골라 주세요.",
+   "photo": {
+    "url": "build/trial_src/gs_press_hi.jpg",
+    "crop": [
+     250,
+     1300,
+     2450,
+     2746
+    ],
+    "no_grade": true,
+    "move": {
+     "zoom": [
+      1.0,
+      2.1
+     ],
+     "focus": [
+      "40% 50%",
+      "14% 33%"
+     ]
+    },
+    "shows": "버거와 브리오슈번 포장을 함께 든 모습(끝에서 첫 화면 버거로 다가감)",
+    "match": "정확",
+    "about": "GS25 브리오슈번+치즈쏙치킨",
+    "credit": "사진: GS리테일 제공",
+    "rights": "회사 보도자료 사진(sources.json: 확인 필요)",
+    "source_url": "https://stqnq5ux4599.edge.naverncp.com/data2/content/image/2026/11/17/20261117500047.jpg"
+   }
+  }
+ ],
+ "facts": [
+  {
+   "id": "bun",
+   "what": "GS25 브리오슈번",
+   "value": 800,
+   "unit": "원",
+   "src": "뉴스와이어 GS리테일 보도자료(11월 16일)",
+   "url": "https://www.newswire.co.kr/newsRead.php?no=1047242",
+   "checked": "2026-11-18",
+   "status": "확인"
+  },
+  {
+   "id": "chicken",
+   "what": "GS25 치즈쏙치킨",
+   "value": 2800,
+   "unit": "원",
+   "src": "뉴스와이어 GS리테일 보도자료(11월 16일)",
+   "url": "https://www.newswire.co.kr/newsRead.php?no=1047242",
+   "checked": "2026-11-18",
+   "status": "확인"
+  },
+  {
+   "id": "separate",
+   "what": "두 상품 따로 사면(800+2,800, 우리가 더함)",
+   "value": 3600,
+   "unit": "원",
+   "src": "위 두 값을 더함",
+   "checked": "2026-11-18",
+   "status": "확인"
+  },
+  {
+   "id": "set",
+   "what": "두 상품 함께 구매 행사가(11/20~12/15)",
+   "value": 2300,
+   "unit": "원",
+   "src": "뉴스와이어 GS리테일 보도자료(11월 16일)",
+   "url": "https://www.newswire.co.kr/newsRead.php?no=1047242",
+   "checked": "2026-11-18",
+   "status": "확인"
+  },
+  {
+   "id": "save",
+   "what": "따로 살 때보다 싼 값(3,600-2,300, 우리가 뺌)",
+   "value": 1300,
+   "unit": "원",
+   "src": "위 두 값을 뺌",
+   "checked": "2026-11-18",
+   "status": "확인"
+  },
+  {
+   "id": "sando",
+   "what": "세븐일레븐 쫀득모찌크림산도(18일 출시)",
+   "value": 3600,
+   "unit": "원",
+   "src": "핀포인트뉴스·스마트비즈·싱글리스트(11월 17일), 제품 포장 ₩3,600",
+   "url": "https://www.pinpointnews.co.kr/news/articleView.html?idxno=504941",
+   "checked": "2026-11-18",
+   "status": "확인"
+  },
+  {
+   "id": "daq",
+   "what": "다쿠아즈생딸기샌드 정가",
+   "value": 7900,
+   "unit": "원",
+   "src": "핀포인트뉴스·스마트비즈·싱글리스트(11월 17일)",
+   "url": "https://www.smartbizn.com/news/articleView.html?idxno=159714",
+   "checked": "2026-11-18",
+   "status": "확인"
+  },
+  {
+   "id": "daq_half",
+   "what": "다쿠아즈생딸기샌드 예약가(50% 쿠폰, 11/23~26 세븐앱)",
+   "value": 3950,
+   "unit": "원",
+   "src": "핀포인트뉴스·스마트비즈·싱글리스트(11월 17일)",
+   "url": "https://www.smartbizn.com/news/articleView.html?idxno=159714",
+   "checked": "2026-11-18",
+   "status": "확인"
+  }
+ ],
+ "caption": "빵에 치킨을 끼운다? 이번 주 편의점 신상 3가지예요 🍔🍡🍓\n\n01 GS25 브리오슈번+치즈쏙치킨 (11월 20일)\n브리오슈번 800원, 치즈쏙치킨 2,800원. 갓 튀긴 치킨을 패티처럼 넣어 수제버거로 먹는 조합이에요. 11월 20일~12월 15일 둘을 같이 사면 2,300원, 행사용 펩시 캔(210ml)까지 3,000원이래요.\n02 세븐일레븐 쫀득모찌크림산도 (11월 18일)\n국내산 찹쌀가루 모찌에 크림과 통단팥을 넣은 3,600원 디저트예요. 세븐일레븐 떡 매출은 올해 1월 1일~11월 15일 작년보다 65% 늘었대요.\n03 세븐일레븐 다쿠아즈생딸기샌드 (1,000개 한정)\n식빵 대신 다쿠아즈 시트에 논산 설향 딸기와 생크림. 정가 7,900원, 11월 23~26일 세븐앱 예약 때 50% 쿠폰으로 3,950원, 12월 3~4일 고른 점포에서 받아요.\n\n셋 중에 뭐부터 드실 거예요?",
+ "tags": [
+  "편의점신상",
+  "GS25",
+  "세븐일레븐",
+  "딸기샌드위치"
+ ],
+ "sources": [
+  "https://www.newswire.co.kr/newsRead.php?no=1047242",
+  "https://www.pinpointnews.co.kr/news/articleView.html?idxno=504941",
+  "https://www.smartbizn.com/news/articleView.html?idxno=159714",
+  "https://www.slist.kr/news/articleView.html?idxno=782304",
+  "https://www.viva100.com/article/20261117500057"
+ ],
+ "credits": [
+  "사진: GS리테일 제공",
+  "사진: 세븐일레븐 제공"
+ ],
+ "yt_title": "빵에 치킨을 끼운다? GS25 브리오슈번·세븐일레븐 1,000개 한정 딸기샌드까지 편의점 신상 3",
+ "yt_keyword": "편의점 신상",
+ "yt_related": [
+  "GS25 브리오슈번",
+  "치즈쏙치킨",
+  "쫀득모찌크림산도",
+  "다쿠아즈생딸기샌드",
+  "세븐앱 예약"
+ ],
+ "yt_tags": [
+  "편의점 신상",
+  "GS25 신상",
+  "세븐일레븐 신상",
+  "브리오슈번",
+  "치즈쏙치킨",
+  "다쿠아즈생딸기샌드"
+ ],
+ "yt_hashtags": [
+  "편의점신상",
+  "GS25",
+  "세븐일레븐"
+ ],
+ "yt_lead": "이번 주 편의점 신상 3가지를 값과 한정 수량까지 정리했어요.",
+ "basis": "1개 값, 행사가는 회사 발표 기준(GS25 11/20~12/15 두 상품 함께 구매, 세븐일레븐 11/23~26 세븐앱 예약 50% 쿠폰)"
+}
