@@ -1,0 +1,498 @@
+{
+ "format": "voice",
+ "layout": "rec",
+ "kind": "저녁",
+ "subject": "목요일 저녁 (샤브샤브·족발·전복죽·잔치국수)",
+ "title": "목요일 저녁 아직 못 골랐어? 샤브샤브·족발·전복죽·잔치국수",
+ "summary": "목요일 저녁 메뉴로 샤브샤브·족발·전복죽·잔치국수 넷을 추천해요.",
+ "headline": "목요일 저녁\n[[아직 못 골랐어?]]",
+ "small": "목요일 저녁, 오늘의 넷",
+ "intro": 7,
+ "length": [
+  20,
+  30
+ ],
+ "narrator": "aoede",
+ "voice_pick": {
+  "mode": "solo",
+  "voices": [
+   "aoede"
+  ],
+  "why": "쌀쌀한 늦가을 저녁, 따뜻한 국물·죽 위주라 부드러운 Aoede 솔로(어제 Achird 와 다르게)"
+ },
+ "thumb": {
+  "head": "목요일 저녁\n[[아직 못 골랐어?]]",
+  "sub": "쌀쌀한 날 [[따끈한 넷]]",
+  "photo": {
+   "url": "https://images.unsplash.com/photo-1773969416268-aa4c032d8de2?w=1600&q=85&fm=jpg",
+   "shows": "질냄비에 얇게 썬 돼지고기와 파·채소를 올린 샤브샤브 냄비",
+   "match": "정확",
+   "credit": "사진: MChe Lee / Unsplash",
+   "rights": "Unsplash 라이선스(무료)",
+   "page": "https://unsplash.com/photos/m9I_lyi-v-8",
+   "terms": {
+    "url": "https://unsplash.com/license",
+    "checked": "2026-11-19",
+    "scope": "Unsplash 라이선스, 상업적 이용·수정 가능",
+    "ok": true
+   }
+  }
+ },
+ "yt_title": "목요일 저녁 아직 못 골랐어? 샤브샤브·족발·전복죽·잔치국수 중에 골라 줄게",
+ "yt_keyword": "목요일 저녁 메뉴",
+ "yt_related": [
+  "저녁 메뉴 추천",
+  "오늘 뭐 먹지",
+  "샤브샤브",
+  "전복죽",
+  "잔치국수"
+ ],
+ "yt_tags": [
+  "목요일 저녁 메뉴",
+  "저녁 메뉴 추천",
+  "오늘 뭐 먹지",
+  "샤브샤브",
+  "족발",
+  "전복죽",
+  "잔치국수"
+ ],
+ "yt_hashtags": [
+  "목요일저녁메뉴",
+  "오늘뭐먹지",
+  "저녁메뉴추천"
+ ],
+ "yt_lead": "목요일 저녁 메뉴 고민될 때, 샤브샤브·족발·전복죽·잔치국수 넷 중에 하나만 골라요.",
+ "caption": "목요일 저녁, 아직 못 골랐어?\n\n김 모락모락 샤브샤브\n쫀득한 족발 한 접시\n고소한 전복죽\n따끈한 잔치국수\n\n오늘은 넷 중에 뭐가 끌려요? 댓글 남겨 줘.",
+ "tags": [
+  "목요일저녁메뉴",
+  "저녁메뉴추천",
+  "오늘뭐먹지",
+  "샤브샤브"
+ ],
+ "sources": [],
+ "credits": [
+  "사진: MChe Lee / Unsplash",
+  "사진: note thanun / Unsplash"
+ ],
+ "dates": {
+  "checked": "2026-11-19"
+ },
+ "title_pick": {
+  "candidates": [
+   "목요일 저녁 아직 못 골랐어? 샤브샤브·족발·전복죽·잔치국수 중에 골라 줄게",
+   "목요일 저녁 내가 골라 줄게! 샤브샤브·족발·전복죽·잔치국수"
+  ],
+  "pick": "목요일 저녁 아직 못 골랐어? 샤브샤브·족발·전복죽·잔치국수 중에 골라 줄게",
+  "like": "11-17 화요일 저녁 '아직 못 골랐어?'(어제 '내가 골라 줄게'와 번갈아)",
+  "sure": "낮음"
+ },
+ "menu_pick": {
+  "menus": [
+   "샤브샤브",
+   "족발",
+   "전복죽",
+   "잔치국수"
+  ],
+  "from": "dinner_pick(후보 18개 확인, 날씨 정보 없음·늦가을 기준, 최근 국밥·찌개·파스타·돈가스·튀김 몰림을 피해 갈래 분산)",
+  "why": {
+   "샤브샤브": "추운 날 국물 전골 갈래, 14일 전 칼국수전골 이후",
+   "족발": "고기 갈래, 목요일 든든한 한 끼(30일 안 계열 3번째라 참고만 뜸)",
+   "전복죽": "죽 갈래, 아직 안 나옴·오랜만에",
+   "잔치국수": "따뜻한 국수 갈래, 11일 전 비빔국수와 다른 따뜻한 국물"
+  }
+ },
+ "lines": [
+  {
+   "say": "목요일 저녁, 아직 못 골랐어?",
+   "nosub": true,
+   "show": {
+    "thumb": true
+   }
+  },
+  {
+   "say": "내가 골라 줄게. 오늘은 이 넷!",
+   "show": {
+    "dir": "2x2",
+    "own": true,
+    "grid": [
+     {
+      "photo": {
+       "url": "https://images.unsplash.com/photo-1773969416268-aa4c032d8de2?w=1600&q=85&fm=jpg",
+       "shows": "질냄비에 얇게 썬 돼지고기와 파·채소를 올린 샤브샤브 냄비",
+       "match": "정확",
+       "credit": "사진: MChe Lee / Unsplash",
+       "rights": "Unsplash 라이선스(무료)",
+       "page": "https://unsplash.com/photos/m9I_lyi-v-8",
+       "terms": {
+        "url": "https://unsplash.com/license",
+        "checked": "2026-11-19",
+        "scope": "Unsplash 라이선스, 상업적 이용·수정 가능",
+        "ok": true
+       }
+      }
+     },
+     {
+      "photo": {
+       "url": "vault:photos/ig-17842894804168160.jpg",
+       "shows": "포장 용기에 담긴 썰어 낸 족발과 무침·소스 곁들임(족발·보쌈 배달)",
+       "match": "정확",
+       "rights": "사용자가 직접 찍은 사진(비공개 보관함)",
+       "own": true
+      }
+     },
+     {
+      "photo": {
+       "url": "https://images.unsplash.com/photo-1775883375112-64fe8e37a9e1?w=1600&q=85&fm=jpg",
+       "shows": "녹색 빛 전복죽 위에 얇게 썬 전복과 노른자를 올린 한 그릇과 반찬 세 가지",
+       "match": "정확",
+       "credit": "사진: note thanun / Unsplash",
+       "rights": "Unsplash 라이선스(무료)",
+       "page": "https://unsplash.com/photos/3JiQYHSQvGs",
+       "terms": {
+        "url": "https://unsplash.com/license",
+        "checked": "2026-11-19",
+        "scope": "Unsplash 라이선스, 상업적 이용·수정 가능",
+        "ok": true
+       }
+      }
+     },
+     {
+      "photo": {
+       "url": "vault:photos/ig-17842267153074714.jpg",
+       "shows": "맑은 멸치 육수에 소면과 애호박·당근 고명을 올린 잔치국수 한 그릇",
+       "match": "정확",
+       "rights": "사용자가 직접 찍은 사진(비공개 보관함)",
+       "own": true
+      }
+     }
+    ],
+    "fade": 0.45
+   }
+  },
+  {
+   "say": "김 모락모락 샤브샤브로 몸부터 녹여 볼까요?",
+   "subs": [
+    "김 모락모락 샤브샤브로",
+    "몸부터 녹여 볼까요?"
+   ],
+   "show": {
+    "dir": "2x2",
+    "own": true,
+    "grid": [
+     {
+      "photo": {
+       "url": "https://images.unsplash.com/photo-1773969416268-aa4c032d8de2?w=1600&q=85&fm=jpg",
+       "shows": "질냄비에 얇게 썬 돼지고기와 파·채소를 올린 샤브샤브 냄비",
+       "match": "정확",
+       "credit": "사진: MChe Lee / Unsplash",
+       "rights": "Unsplash 라이선스(무료)",
+       "page": "https://unsplash.com/photos/m9I_lyi-v-8",
+       "terms": {
+        "url": "https://unsplash.com/license",
+        "checked": "2026-11-19",
+        "scope": "Unsplash 라이선스, 상업적 이용·수정 가능",
+        "ok": true
+       }
+      }
+     },
+     {
+      "photo": {
+       "url": "vault:photos/ig-17842894804168160.jpg",
+       "shows": "포장 용기에 담긴 썰어 낸 족발과 무침·소스 곁들임(족발·보쌈 배달)",
+       "match": "정확",
+       "rights": "사용자가 직접 찍은 사진(비공개 보관함)",
+       "own": true
+      }
+     },
+     {
+      "photo": {
+       "url": "https://images.unsplash.com/photo-1775883375112-64fe8e37a9e1?w=1600&q=85&fm=jpg",
+       "shows": "녹색 빛 전복죽 위에 얇게 썬 전복과 노른자를 올린 한 그릇과 반찬 세 가지",
+       "match": "정확",
+       "credit": "사진: note thanun / Unsplash",
+       "rights": "Unsplash 라이선스(무료)",
+       "page": "https://unsplash.com/photos/3JiQYHSQvGs",
+       "terms": {
+        "url": "https://unsplash.com/license",
+        "checked": "2026-11-19",
+        "scope": "Unsplash 라이선스, 상업적 이용·수정 가능",
+        "ok": true
+       }
+      }
+     },
+     {
+      "photo": {
+       "url": "vault:photos/ig-17842267153074714.jpg",
+       "shows": "맑은 멸치 육수에 소면과 애호박·당근 고명을 올린 잔치국수 한 그릇",
+       "match": "정확",
+       "rights": "사용자가 직접 찍은 사진(비공개 보관함)",
+       "own": true
+      }
+     }
+    ],
+    "hl": 0
+   }
+  },
+  {
+   "say": "든든하게 갈 거면 쫀득한 족발 한 접시!",
+   "subs": [
+    "든든하게 갈 거면",
+    "쫀득한 족발 한 접시!"
+   ],
+   "show": {
+    "dir": "2x2",
+    "own": true,
+    "grid": [
+     {
+      "photo": {
+       "url": "https://images.unsplash.com/photo-1773969416268-aa4c032d8de2?w=1600&q=85&fm=jpg",
+       "shows": "질냄비에 얇게 썬 돼지고기와 파·채소를 올린 샤브샤브 냄비",
+       "match": "정확",
+       "credit": "사진: MChe Lee / Unsplash",
+       "rights": "Unsplash 라이선스(무료)",
+       "page": "https://unsplash.com/photos/m9I_lyi-v-8",
+       "terms": {
+        "url": "https://unsplash.com/license",
+        "checked": "2026-11-19",
+        "scope": "Unsplash 라이선스, 상업적 이용·수정 가능",
+        "ok": true
+       }
+      }
+     },
+     {
+      "photo": {
+       "url": "vault:photos/ig-17842894804168160.jpg",
+       "shows": "포장 용기에 담긴 썰어 낸 족발과 무침·소스 곁들임(족발·보쌈 배달)",
+       "match": "정확",
+       "rights": "사용자가 직접 찍은 사진(비공개 보관함)",
+       "own": true
+      }
+     },
+     {
+      "photo": {
+       "url": "https://images.unsplash.com/photo-1775883375112-64fe8e37a9e1?w=1600&q=85&fm=jpg",
+       "shows": "녹색 빛 전복죽 위에 얇게 썬 전복과 노른자를 올린 한 그릇과 반찬 세 가지",
+       "match": "정확",
+       "credit": "사진: note thanun / Unsplash",
+       "rights": "Unsplash 라이선스(무료)",
+       "page": "https://unsplash.com/photos/3JiQYHSQvGs",
+       "terms": {
+        "url": "https://unsplash.com/license",
+        "checked": "2026-11-19",
+        "scope": "Unsplash 라이선스, 상업적 이용·수정 가능",
+        "ok": true
+       }
+      }
+     },
+     {
+      "photo": {
+       "url": "vault:photos/ig-17842267153074714.jpg",
+       "shows": "맑은 멸치 육수에 소면과 애호박·당근 고명을 올린 잔치국수 한 그릇",
+       "match": "정확",
+       "rights": "사용자가 직접 찍은 사진(비공개 보관함)",
+       "own": true
+      }
+     }
+    ],
+    "hl": 1
+   }
+  },
+  {
+   "say": "속 편하고 싶다면 고소한 전복죽 어때요?",
+   "subs": [
+    "속 편하고 싶다면",
+    "고소한 전복죽 어때요?"
+   ],
+   "show": {
+    "dir": "2x2",
+    "own": true,
+    "grid": [
+     {
+      "photo": {
+       "url": "https://images.unsplash.com/photo-1773969416268-aa4c032d8de2?w=1600&q=85&fm=jpg",
+       "shows": "질냄비에 얇게 썬 돼지고기와 파·채소를 올린 샤브샤브 냄비",
+       "match": "정확",
+       "credit": "사진: MChe Lee / Unsplash",
+       "rights": "Unsplash 라이선스(무료)",
+       "page": "https://unsplash.com/photos/m9I_lyi-v-8",
+       "terms": {
+        "url": "https://unsplash.com/license",
+        "checked": "2026-11-19",
+        "scope": "Unsplash 라이선스, 상업적 이용·수정 가능",
+        "ok": true
+       }
+      }
+     },
+     {
+      "photo": {
+       "url": "vault:photos/ig-17842894804168160.jpg",
+       "shows": "포장 용기에 담긴 썰어 낸 족발과 무침·소스 곁들임(족발·보쌈 배달)",
+       "match": "정확",
+       "rights": "사용자가 직접 찍은 사진(비공개 보관함)",
+       "own": true
+      }
+     },
+     {
+      "photo": {
+       "url": "https://images.unsplash.com/photo-1775883375112-64fe8e37a9e1?w=1600&q=85&fm=jpg",
+       "shows": "녹색 빛 전복죽 위에 얇게 썬 전복과 노른자를 올린 한 그릇과 반찬 세 가지",
+       "match": "정확",
+       "credit": "사진: note thanun / Unsplash",
+       "rights": "Unsplash 라이선스(무료)",
+       "page": "https://unsplash.com/photos/3JiQYHSQvGs",
+       "terms": {
+        "url": "https://unsplash.com/license",
+        "checked": "2026-11-19",
+        "scope": "Unsplash 라이선스, 상업적 이용·수정 가능",
+        "ok": true
+       }
+      }
+     },
+     {
+      "photo": {
+       "url": "vault:photos/ig-17842267153074714.jpg",
+       "shows": "맑은 멸치 육수에 소면과 애호박·당근 고명을 올린 잔치국수 한 그릇",
+       "match": "정확",
+       "rights": "사용자가 직접 찍은 사진(비공개 보관함)",
+       "own": true
+      }
+     }
+    ],
+    "hl": 2
+   }
+  },
+  {
+   "say": "후루룩 넘어가는 따끈한 잔치국수도 있어요.",
+   "subs": [
+    "후루룩 넘어가는",
+    "따끈한 잔치국수도 있어요."
+   ],
+   "show": {
+    "dir": "2x2",
+    "own": true,
+    "grid": [
+     {
+      "photo": {
+       "url": "https://images.unsplash.com/photo-1773969416268-aa4c032d8de2?w=1600&q=85&fm=jpg",
+       "shows": "질냄비에 얇게 썬 돼지고기와 파·채소를 올린 샤브샤브 냄비",
+       "match": "정확",
+       "credit": "사진: MChe Lee / Unsplash",
+       "rights": "Unsplash 라이선스(무료)",
+       "page": "https://unsplash.com/photos/m9I_lyi-v-8",
+       "terms": {
+        "url": "https://unsplash.com/license",
+        "checked": "2026-11-19",
+        "scope": "Unsplash 라이선스, 상업적 이용·수정 가능",
+        "ok": true
+       }
+      }
+     },
+     {
+      "photo": {
+       "url": "vault:photos/ig-17842894804168160.jpg",
+       "shows": "포장 용기에 담긴 썰어 낸 족발과 무침·소스 곁들임(족발·보쌈 배달)",
+       "match": "정확",
+       "rights": "사용자가 직접 찍은 사진(비공개 보관함)",
+       "own": true
+      }
+     },
+     {
+      "photo": {
+       "url": "https://images.unsplash.com/photo-1775883375112-64fe8e37a9e1?w=1600&q=85&fm=jpg",
+       "shows": "녹색 빛 전복죽 위에 얇게 썬 전복과 노른자를 올린 한 그릇과 반찬 세 가지",
+       "match": "정확",
+       "credit": "사진: note thanun / Unsplash",
+       "rights": "Unsplash 라이선스(무료)",
+       "page": "https://unsplash.com/photos/3JiQYHSQvGs",
+       "terms": {
+        "url": "https://unsplash.com/license",
+        "checked": "2026-11-19",
+        "scope": "Unsplash 라이선스, 상업적 이용·수정 가능",
+        "ok": true
+       }
+      }
+     },
+     {
+      "photo": {
+       "url": "vault:photos/ig-17842267153074714.jpg",
+       "shows": "맑은 멸치 육수에 소면과 애호박·당근 고명을 올린 잔치국수 한 그릇",
+       "match": "정확",
+       "rights": "사용자가 직접 찍은 사진(비공개 보관함)",
+       "own": true
+      }
+     }
+    ],
+    "hl": 3
+   }
+  },
+  {
+   "say": "오늘은 넷 중에 뭐가 끌려요? 댓글 남겨 줘.",
+   "subs": [
+    "오늘은 넷 중에 뭐가 끌려요?",
+    "댓글 남겨 줘."
+   ],
+   "show": {
+    "dir": "2x2",
+    "own": true,
+    "grid": [
+     {
+      "photo": {
+       "url": "https://images.unsplash.com/photo-1773969416268-aa4c032d8de2?w=1600&q=85&fm=jpg",
+       "shows": "질냄비에 얇게 썬 돼지고기와 파·채소를 올린 샤브샤브 냄비",
+       "match": "정확",
+       "credit": "사진: MChe Lee / Unsplash",
+       "rights": "Unsplash 라이선스(무료)",
+       "page": "https://unsplash.com/photos/m9I_lyi-v-8",
+       "terms": {
+        "url": "https://unsplash.com/license",
+        "checked": "2026-11-19",
+        "scope": "Unsplash 라이선스, 상업적 이용·수정 가능",
+        "ok": true
+       }
+      }
+     },
+     {
+      "photo": {
+       "url": "vault:photos/ig-17842894804168160.jpg",
+       "shows": "포장 용기에 담긴 썰어 낸 족발과 무침·소스 곁들임(족발·보쌈 배달)",
+       "match": "정확",
+       "rights": "사용자가 직접 찍은 사진(비공개 보관함)",
+       "own": true
+      }
+     },
+     {
+      "photo": {
+       "url": "https://images.unsplash.com/photo-1775883375112-64fe8e37a9e1?w=1600&q=85&fm=jpg",
+       "shows": "녹색 빛 전복죽 위에 얇게 썬 전복과 노른자를 올린 한 그릇과 반찬 세 가지",
+       "match": "정확",
+       "credit": "사진: note thanun / Unsplash",
+       "rights": "Unsplash 라이선스(무료)",
+       "page": "https://unsplash.com/photos/3JiQYHSQvGs",
+       "terms": {
+        "url": "https://unsplash.com/license",
+        "checked": "2026-11-19",
+        "scope": "Unsplash 라이선스, 상업적 이용·수정 가능",
+        "ok": true
+       }
+      }
+     },
+     {
+      "photo": {
+       "url": "vault:photos/ig-17842267153074714.jpg",
+       "shows": "맑은 멸치 육수에 소면과 애호박·당근 고명을 올린 잔치국수 한 그릇",
+       "match": "정확",
+       "rights": "사용자가 직접 찍은 사진(비공개 보관함)",
+       "own": true
+      }
+     }
+    ]
+   }
+  }
+ ],
+ "again": {
+  "족발": "목요일 고기 갈래 후보 중 보관함에서 정확한 족발 사진이 있고 국물 메뉴와 겹치지 않아 다시 추천"
+ },
+ "review": {
+  "photo_sheet": "4164c5799c79"
+ }
+}
