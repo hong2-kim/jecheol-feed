@@ -767,6 +767,66 @@
         "channels": 120,
         "thin": 7
       }
+    },
+    "2026-11-18": {
+      "picks": [
+        {
+          "id": "VvCPxVwOPjU",
+          "title": "가을무 사오자마자 제발 그냥 넣어두지 마세요 오래보관 꿀팁 바람안들게보관법",
+          "channel": "순덕이네 반찬가게",
+          "subs": 61200,
+          "views": 47582,
+          "median": 4541,
+          "n": 37,
+          "multiple": 10.5,
+          "hours": 19,
+          "formulas": [
+            "경고·실수",
+            "방법·꿀팁"
+          ],
+          "query": "제철 음식",
+          "url": "https://youtube.com/shorts/VvCPxVwOPjU"
+        },
+        {
+          "id": "IiQWNC7-OII",
+          "title": "김치냉장고 없는 집, 김치 보관 꿀팁",
+          "channel": "지식과몰입",
+          "subs": 146000,
+          "views": 12613,
+          "median": 1482,
+          "n": 10,
+          "multiple": 8.5,
+          "hours": 46,
+          "formulas": [
+            "방법·꿀팁"
+          ],
+          "query": "음식 꿀팁",
+          "url": "https://youtube.com/shorts/IiQWNC7-OII"
+        },
+        {
+          "id": "epiP-jkFbvQ",
+          "title": "아침엔 샐러드 드세요",
+          "channel": "찬밥",
+          "subs": 33300,
+          "views": 17433,
+          "median": 8113,
+          "n": 48,
+          "multiple": 2.1,
+          "hours": 19,
+          "formulas": [
+            "방법·꿀팁"
+          ],
+          "query": "다이어트 음식",
+          "url": "https://youtube.com/shorts/epiP-jkFbvQ"
+        }
+      ],
+      "leaders": [],
+      "stats": {
+        "searched": 219,
+        "shorts": 211,
+        "channels": 120,
+        "thin": 5
+      }
     }
   }
 }
