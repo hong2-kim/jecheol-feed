@@ -51,7 +51,7 @@ def render(spec, name, browser, warns=None):
     html_path = work / f"{name}.html"
     html_path.write_text(page_html, encoding="utf-8")
     wav = work / f"{name}.wav"
-    audio.build(meta["music"], meta["sfx"], duration, wav, meta["ambience"], meta.get("voice"))
+    mix_audio(spec, meta, duration, wav, warns)
 
     out = ROOT / "dist" / f"{name}.mp4"
     out.parent.mkdir(exist_ok=True)
@@ -81,6 +81,79 @@ def render(spec, name, browser, warns=None):
         warns.extend(final_check(out, duration, meta.get("voice")))
     (ROOT / "dist" / f"{name}.txt").write_text(build.description(spec), encoding="utf-8")
     return out, duration
+
+
+DUCK_GAIN = 0.1  # 음악에 묻힌 문장 구간의 배경음악 배율 (2026-11-18 실측: 0.3·0.15 배로는 부족, 0.1 배부터 들림)
+
+
+def mix_audio(spec, meta, duration, wav, warns=None):
+    """배경음악·효과음·목소리를 섞고, 섞은 소리를 문장마다 받아쓰기해요(2026-11-18 사용자: "그 구간만 배경 줄이기, 다음에 이런 구간이 나오면 그렇게 해줘").
+    목소리만일 때는 들리던 낱말이 음악에 묻혀 안 들리면 대본은 그대로 두고 그 문장 구간만 음악을 DUCK_GAIN 배로 줄여 다시 섞어요.
+    줄여도 안 들리면 warns 에 남겨 승인 전 시안이 돼요. 설계도 "duck": [[시작, 끝, 배율]] 로 직접 줄일 수도 있어요.
+    받아쓰기를 못 쓰는 곳(모델 없음)이나 검사 중 오류가 나면 줄이지 않고 그대로 섞어 만들어요(영상 제작은 멈추지 않아요)."""
+    base = [list(d) for d in (spec.get("duck") or [])]
+    audio.DUCK = base
+    try:
+        audio.build(meta["music"], meta["sfx"], duration, wav, meta["ambience"], meta.get("voice"))
+        spans = meta.get("spans")
+        if not spans or not meta.get("voice") or meta.get("music") == "none":
+            return
+        import voice_b
+        if voice_b._asr_model() is None:
+            return
+        masked = _masked(wav, spans, voice_b, meta.get("voice"))
+        if not masked:
+            return
+        audio.DUCK = base + [[a - 0.15, a + d + 0.15, DUCK_GAIN] for a, d, _, _ in masked]
+        audio.build(meta["music"], meta["sfx"], duration, wav, meta["ambience"], meta.get("voice"))
+        print("  음악에 묻힌 문장 → 그 구간만 배경음악 " + str(DUCK_GAIN) + "배: " + ", ".join(f"{a:.1f}~{a + d:.1f}초 '{t[:12]}…'({', '.join(m)})" for a, d, t, m in masked))
+        still = _masked(wav, [[a, d, t] for a, d, t, _ in masked], voice_b, meta.get("voice"))
+        if still and warns is not None:
+            warns.extend(f"음악을 줄여도 안 들린 낱말: '{t[:14]}…' ({', '.join(m)})" for _, _, t, m in still)
+    except Exception as e:  # 검사 때문에 영상이 빠지면 안 돼요
+        print(f"  음악 묻힘 검사를 못 했어요({type(e).__name__}: {str(e)[:80]}) → 그대로 섞어요")
+        audio.DUCK = base
+        audio.build(meta["music"], meta["sfx"], duration, wav, meta["ambience"], meta.get("voice"))
+    finally:
+        audio.DUCK = []
+
+
+def _masked(wav, spans, voice_b, voice_wav=None):
+    """섞은 wav 에서 문장마다 받아쓰기해, 목소리만일 때는 들리던 낱말이 빠진 문장 [[시작, 길이, 대본, 빠진 낱말], …].
+    대본과만 견주면 소리가 같은 글('익었을'↔'이거 쓸')을 들린 것으로 쳐서 못 잡아요(2026-11-18). 그래서 같은 구간의 목소리만 받아쓰기와 견줘요."""
+    import wave as W
+    import numpy as np
+
+    def load(path):
+        with W.open(str(path), "rb") as w:
+            sr = w.getframerate()
+            x = np.frombuffer(w.readframes(w.getnframes()), dtype=np.int16).astype(np.float32) / 32768
+            if w.getnchannels() == 2:
+                x = x.reshape(-1, 2).mean(axis=1)
+        return x, sr
+
+    x, sr = load(wav)
+    v = load(voice_wav)[0] if voice_wav else None
+    out = []
+    for a, d, text in spans:
+        cut = lambda y: y[max(0, int((a - 0.1) * sr)): int((a + d + 0.15) * sr)]
+        seg = cut(x)
+        if len(seg) < sr * 0.3:
+            continue
+        got = voice_b.heard(seg)
+        if got is None:
+            return []
+        miss = list(voice_b.missing(text, got))
+        if v is not None:
+            clean = voice_b.heard(cut(v)) or ""
+            mixed = voice_b._norm(got)
+            for w in clean.split():
+                w2 = voice_b._norm(w)
+                if len(w2) >= 2 and not any(ch.isdigit() for ch in w2) and w2 not in mixed and w not in miss:
+                    miss.append(w)
+        if miss:
+            out.append([a, d, text, miss])
+    return out
 
 
 def final_check(mp4, duration, voice_wav=None):

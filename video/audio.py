@@ -324,6 +324,26 @@ def _score(rms, s, width, block, means, peak_mean, onset, last):
 VOICE_BED = 0.35  # 내레이션이 있으면 배경음악을 이만큼으로 줄여요 (말이 또렷하게)
 
 
+DUCK = []  # [[시작초, 끝초, 음악 배율], ...] 그 구간만 배경음악을 줄여요. produce.mix_audio 가 채워요(2026-11-18 사용자)
+
+
+def duck(music, regions, ramp=0.3):
+    """정해진 구간만 배경음악 크기를 낮춰요. 앞뒤 ramp 초 동안 부드럽게 줄였다 되돌려요.
+    (2026-11-18 삼겹살 vs 목살: 음악에 묻힌 "익었을 수"가 0.3배·0.15배로는 그대로였고 0.1배부터 바르게 들렸어요)"""
+    g = np.ones(len(music))
+    r = int(SR * ramp)
+    for a, b, gain in regions:
+        i, j = max(0, int(SR * a)), min(len(music), int(SR * b))
+        if j <= i:
+            continue
+        g[i:j] = np.minimum(g[i:j], gain)
+        lo = max(0, i - r)
+        g[lo:i] = np.minimum(g[lo:i], np.linspace(1, gain, i - lo))
+        hi = min(len(music), j + r)
+        g[j:hi] = np.minimum(g[j:hi], np.linspace(gain, 1, hi - j))
+    return music * g
+
+
 def build(mood, sfx, dur, path, ambience=(), voice=None):
     """mood 가 "file:이름" 이면 audio/이름.wav 를, "lib:키" 면 오디오 보관함 곡을 배경음악으로 써요.
     ambience 는 [[시작, 끝, 이름, 크기], ...] 로, 장면 밑에 까는 현장 소리예요. voice 는 내레이션 wav 경로예요."""
@@ -358,6 +378,8 @@ def build(mood, sfx, dur, path, ambience=(), voice=None):
         fade_in, fade_out = int(SR * 0.3), int(SR * (0.4 if mood.startswith("file:brand-") else 1.6))
         music[:fade_in] *= np.linspace(0, 1, fade_in)
         music[-fade_out:] *= np.linspace(1, 0, fade_out)
+    if DUCK:
+        music = duck(music, DUCK)
     fx = np.zeros(n)
     for at, name in sfx:
         put(fx, at, SFX[name](), 0.55)

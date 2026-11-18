@@ -1417,6 +1417,8 @@ def _build_voice(spec, work=None):
         with wave.open(str(voice_path), "wb") as w:
             w.setnchannels(1), w.setsampwidth(2), w.setframerate(SR), w.writeframes(pcm.tobytes())
     meta = {"music": B.song(spec), "sfx": sfx or [], "ambience": [], "voice": str(voice_path) if voice_path else None}
+    if real:  # 문장마다 [시작초, 말 길이, 들려야 할 말]. 완성 소리에서 음악에 묻힌 문장을 찾을 때 써요(produce.mix_audio, 2026-11-18)
+        meta["spans"] = [[round(starts[i], 2), round(speech[i], 2), plain(l.get("read") or l["say"])] for i, l in enumerate(lines)]
     for r in logs:  # 쉼표 앞을 늘여 읽은 문장은 다시 읽어도 남으면 사람이 들어 봐요
         timing += [f"{r['n']}번 문장: {w}" for w in r.get("warn", []) if w.startswith("쉼표 앞이 늘어져요")
                    or w.startswith("받아쓰기에 안 들린")]  # 다시 합성해도 낱말이 안 들리면 승인 전 시안(2026-11-13, 모든 B안 나레이션)
