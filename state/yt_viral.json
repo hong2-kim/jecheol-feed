@@ -827,6 +827,100 @@
         "channels": 120,
         "thin": 5
       }
+    },
+    "2026-11-19": {
+      "picks": [
+        {
+          "id": "C0fgKC-nh_w",
+          "title": "무우나물 절대 기름에 볶지마세요",
+          "channel": "나의 꽃🌹집밥이 건강지킴",
+          "subs": 232000,
+          "views": 157037,
+          "median": 10062,
+          "n": 36,
+          "multiple": 15.6,
+          "hours": 48,
+          "formulas": [
+            "경고·실수"
+          ],
+          "query": "제철 음식",
+          "url": "https://youtube.com/shorts/C0fgKC-nh_w"
+        },
+        {
+          "id": "hoPMfXrU_iw",
+          "title": "세상에서 가장 간단한 동치미 레시피",
+          "channel": "갓잇꿀템",
+          "subs": 20800,
+          "views": 17758,
+          "median": 1226,
+          "n": 48,
+          "multiple": 14.5,
+          "hours": 40,
+          "formulas": [
+            "방법·꿀팁"
+          ],
+          "query": "음식 꿀팁",
+          "url": "https://youtube.com/shorts/hoPMfXrU_iw"
+        },
+        {
+          "id": "JYoQcfbAtgc",
+          "title": "다이어트할 때 배고프게 먹지 마세요! 🥬 양배추 한 통 순삭 레시피 2가지",
+          "channel": "온꾸리마더",
+          "subs": 17100,
+          "views": 35007,
+          "median": 5672,
+          "n": 49,
+          "multiple": 6.2,
+          "hours": 40,
+          "formulas": [
+            "숫자·순위",
+            "경고·실수",
+            "방법·꿀팁"
+          ],
+          "query": "다이어트 음식",
+          "url": "https://youtube.com/shorts/JYoQcfbAtgc"
+        },
+        {
+          "id": "ZPAP9XaP4LU",
+          "title": "뚜레쥬르 ㄹㅇ 맛도리 신상 빵 3가지",
+          "channel": "딩굴다현",
+          "subs": 19100,
+          "views": 19901,
+          "median": 6695,
+          "n": 48,
+          "multiple": 3.0,
+          "hours": 40,
+          "formulas": [
+            "숫자·순위",
+            "신상·한정"
+          ],
+          "query": "디저트 신상",
+          "url": "https://youtube.com/shorts/ZPAP9XaP4LU"
+        },
+        {
+          "id": "YuPscRqnxIo",
+          "title": "이 상황에서도 피클을 먹는다고?",
+          "channel": "쇼츠플래닛",
+          "subs": 42800,
+          "views": 99739,
+          "median": 43690,
+          "n": 47,
+          "multiple": 2.3,
+          "hours": 43,
+          "formulas": [
+            "물음"
+          ],
+          "query": "먹방 쇼츠",
+          "url": "https://youtube.com/shorts/YuPscRqnxIo"
+        }
+      ],
+      "leaders": [],
+      "stats": {
+        "searched": 217,
+        "shorts": 205,
+        "channels": 120,
+        "thin": 7
+      }
     }
   }
 }
