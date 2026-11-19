@@ -1,0 +1,587 @@
+{
+ "format": "voice",
+ "layout": "rec",
+ "kind": "저녁",
+ "subject": "금요일 저녁 (어묵탕·탄두리치킨·돼지갈비·삼계탕)",
+ "title": "금요일 저녁 내가 골라 줄게! 어묵탕·탄두리치킨·돼지갈비·삼계탕",
+ "summary": "금요일 저녁 메뉴로 어묵탕·탄두리치킨·돼지갈비·삼계탕 넷을 추천해요.",
+ "headline": "금요일 저녁\n[[내가 골라 줄게]]",
+ "small": "금요일 저녁, 오늘의 넷",
+ "intro": 7,
+ "length": [
+  20,
+  30
+ ],
+ "narrator": "achird",
+ "voice_pick": {
+  "mode": "solo",
+  "voices": [
+   "achird"
+  ],
+  "why": "금요일 저녁 친구에게 권하듯 하는 친근한 추천이라 Achird 솔로(어제 Aoede 와 다르게)"
+ },
+ "thumb": {
+  "head": "금요일 저녁\n[[내가 골라 줄게]]",
+  "sub": "한 주 끝 [[든든한 넷]]",
+  "photo": {
+   "url": "https://live.staticflickr.com/3396/3268339088_382e862e63_b.jpg",
+   "shows": "밥과 완두콩 위에 올린 숯 자국 난 탄두리치킨 다리 두 조각",
+   "match": "정확",
+   "credit": "thebittenword.com (CC BY 2.0) · www.flickr.com/photos/22198928@N00/3268339088",
+   "license": "CC BY 2.0",
+   "rights": "오픈버스(플리커) CC BY 2.0",
+   "page": "https://www.flickr.com/photos/22198928@N00/3268339088",
+   "terms": {
+    "url": "https://creativecommons.org/licenses/by/2.0/",
+    "checked": "2026-11-20",
+    "scope": "CC BY 2.0, 상업적 이용·수정 가능",
+    "ok": true
+   },
+   "pos": "50% 50%"
+  }
+ },
+ "yt_title": "금요일 저녁 메뉴 뭐 먹지? 어묵탕·탄두리치킨·돼지갈비·삼계탕 중에 골라 줄게",
+ "yt_keyword": "금요일 저녁 메뉴",
+ "yt_related": [
+  "저녁 메뉴 추천",
+  "오늘 뭐 먹지",
+  "어묵탕",
+  "탄두리치킨",
+  "삼계탕"
+ ],
+ "yt_tags": [
+  "금요일 저녁 메뉴",
+  "저녁 메뉴 추천",
+  "오늘 뭐 먹지",
+  "어묵탕",
+  "탄두리치킨",
+  "돼지갈비",
+  "삼계탕"
+ ],
+ "yt_hashtags": [
+  "금요일저녁메뉴",
+  "오늘뭐먹지",
+  "저녁메뉴추천"
+ ],
+ "yt_lead": "금요일 저녁 메뉴 고민될 때, 어묵탕·탄두리치킨·돼지갈비·삼계탕 넷 중에 하나만 골라요.",
+ "caption": "금요일 저녁, 내가 골라 줄게!\n\n어묵탕 국물에 푹 익은 무\n향신료에 재워 구운 탄두리치킨\n달큰하게 구운 돼지갈비\n한 마리 푹 끓인 삼계탕\n\n여러분은 오늘 어느 쪽이에요? 댓글로 알려 주세요.",
+ "tags": [
+  "금요일저녁메뉴",
+  "저녁메뉴추천",
+  "오늘뭐먹지",
+  "삼계탕"
+ ],
+ "sources": [],
+ "credits": [
+  "Chloe Lim (CC BY 2.0) · commons.wikimedia.org/?curid=57390367",
+  "thebittenword.com (CC BY 2.0) · www.flickr.com/photos/22198928@N00/3268339088",
+  "egg (Hong, Yun Seon) (CC BY 2.0) · commons.wikimedia.org/?curid=4218338"
+ ],
+ "dates": {
+  "checked": "2026-11-20"
+ },
+ "title_pick": {
+  "candidates": [
+   "금요일 저녁 메뉴 뭐 먹지? 어묵탕·탄두리치킨·돼지갈비·삼계탕 중에 골라 줄게",
+   "금요일 저녁 내가 골라 줄게! 어묵탕·탄두리치킨·돼지갈비·삼계탕"
+  ],
+  "pick": "금요일 저녁 메뉴 뭐 먹지? 어묵탕·탄두리치킨·돼지갈비·삼계탕 중에 골라 줄게",
+  "like": "11-07 토요일 저녁 메뉴 뭐 먹지? … 골라 줌 (2.8배)",
+  "sure": "낮음"
+ },
+ "menu_pick": {
+  "menus": [
+   "어묵탕",
+   "탄두리치킨",
+   "돼지갈비",
+   "삼계탕"
+  ],
+  "from": "dinner_pick(후보 18개 확인, 날씨 정보 없음·늦가을 기준, 최근 국밥·파스타·돈가스·튀김 몰림을 피해 갈래 분산)",
+  "why": {
+   "어묵탕": "국물 갈래, 아직 안 나옴·쌀쌀한 늦가을 저녁",
+   "탄두리치킨": "구이 갈래, 새로운 해외 메뉴 1개, 아직 안 나옴",
+   "돼지갈비": "고기 갈래, 금요일 든든한 한 끼(30일 안 계열 3번째라 참고만 뜸)",
+   "삼계탕": "탕 갈래, 아직 안 나옴·오랜만에 든든한 한 그릇"
+  }
+ },
+ "lines": [
+  {
+   "say": "금요일 저녁, 내가 골라 줄게!",
+   "nosub": true,
+   "show": {
+    "thumb": true
+   }
+  },
+  {
+   "say": "오늘 후보는 이 넷이에요.",
+   "show": {
+    "dir": "2x2",
+    "own": true,
+    "grid": [
+     {
+      "photo": {
+       "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Eomuk-tang.jpg?width=1600",
+       "shows": "뚝배기 국물에 어묵 꼬치와 무, 빨간 고추를 올린 어묵탕",
+       "match": "정확",
+       "rights": "위키미디어 공용 CC BY 2.0",
+       "terms": {
+        "url": "https://commons.wikimedia.org/",
+        "checked": "2026-11-20",
+        "scope": "CC BY 2.0, 상업적 이용·수정 가능",
+        "ok": true
+       },
+       "credit": "Chloe Lim (CC BY 2.0) · commons.wikimedia.org/?curid=57390367",
+       "pos": "50% 50%"
+      }
+     },
+     {
+      "photo": {
+       "url": "https://live.staticflickr.com/3396/3268339088_382e862e63_b.jpg",
+       "shows": "밥과 완두콩 위에 올린 숯 자국 난 탄두리치킨 다리 두 조각",
+       "match": "정확",
+       "credit": "thebittenword.com (CC BY 2.0) · www.flickr.com/photos/22198928@N00/3268339088",
+       "license": "CC BY 2.0",
+       "rights": "오픈버스(플리커) CC BY 2.0",
+       "page": "https://www.flickr.com/photos/22198928@N00/3268339088",
+       "terms": {
+        "url": "https://creativecommons.org/licenses/by/2.0/",
+        "checked": "2026-11-20",
+        "scope": "CC BY 2.0, 상업적 이용·수정 가능",
+        "ok": true
+       },
+       "pos": "50% 50%"
+      }
+     },
+     {
+      "photo": {
+       "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Korean%20barbecue-Dwaeji%20galbi-01.jpg?width=1600",
+       "shows": "접시에 수북이 담은 참깨 뿌린 구운 돼지갈비",
+       "match": "정확",
+       "rights": "위키미디어 공용 CC BY 2.0",
+       "terms": {
+        "url": "https://commons.wikimedia.org/",
+        "checked": "2026-11-20",
+        "scope": "CC BY 2.0, 상업적 이용·수정 가능",
+        "ok": true
+       },
+       "credit": "egg (Hong, Yun Seon) (CC BY 2.0) · commons.wikimedia.org/?curid=4218338",
+       "pos": "50% 60%"
+      }
+     },
+     {
+      "photo": {
+       "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Samgye-tang%202.jpg?width=1600",
+       "shows": "하얀 사발에 담긴 삼계탕 한 마리와 인삼·대추·마늘",
+       "match": "정확",
+       "rights": "위키미디어 공용 CC0",
+       "terms": {
+        "url": "https://commons.wikimedia.org/",
+        "checked": "2026-11-20",
+        "scope": "CC0, 상업적 이용·수정 가능",
+        "ok": true
+       },
+       "pos": "50% 50%"
+      }
+     }
+    ],
+    "fade": 0.45
+   }
+  },
+  {
+   "say": "어묵탕 국물에 푹 익은 무까지, 속부터 따뜻해져요.",
+   "subs": [
+    "어묵탕 국물에 푹 익은 무까지,",
+    "속부터 따뜻해져요."
+   ],
+   "show": {
+    "dir": "2x2",
+    "own": true,
+    "grid": [
+     {
+      "photo": {
+       "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Eomuk-tang.jpg?width=1600",
+       "shows": "뚝배기 국물에 어묵 꼬치와 무, 빨간 고추를 올린 어묵탕",
+       "match": "정확",
+       "rights": "위키미디어 공용 CC BY 2.0",
+       "terms": {
+        "url": "https://commons.wikimedia.org/",
+        "checked": "2026-11-20",
+        "scope": "CC BY 2.0, 상업적 이용·수정 가능",
+        "ok": true
+       },
+       "credit": "Chloe Lim (CC BY 2.0) · commons.wikimedia.org/?curid=57390367",
+       "pos": "50% 50%"
+      }
+     },
+     {
+      "photo": {
+       "url": "https://live.staticflickr.com/3396/3268339088_382e862e63_b.jpg",
+       "shows": "밥과 완두콩 위에 올린 숯 자국 난 탄두리치킨 다리 두 조각",
+       "match": "정확",
+       "credit": "thebittenword.com (CC BY 2.0) · www.flickr.com/photos/22198928@N00/3268339088",
+       "license": "CC BY 2.0",
+       "rights": "오픈버스(플리커) CC BY 2.0",
+       "page": "https://www.flickr.com/photos/22198928@N00/3268339088",
+       "terms": {
+        "url": "https://creativecommons.org/licenses/by/2.0/",
+        "checked": "2026-11-20",
+        "scope": "CC BY 2.0, 상업적 이용·수정 가능",
+        "ok": true
+       },
+       "pos": "50% 50%"
+      }
+     },
+     {
+      "photo": {
+       "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Korean%20barbecue-Dwaeji%20galbi-01.jpg?width=1600",
+       "shows": "접시에 수북이 담은 참깨 뿌린 구운 돼지갈비",
+       "match": "정확",
+       "rights": "위키미디어 공용 CC BY 2.0",
+       "terms": {
+        "url": "https://commons.wikimedia.org/",
+        "checked": "2026-11-20",
+        "scope": "CC BY 2.0, 상업적 이용·수정 가능",
+        "ok": true
+       },
+       "credit": "egg (Hong, Yun Seon) (CC BY 2.0) · commons.wikimedia.org/?curid=4218338",
+       "pos": "50% 60%"
+      }
+     },
+     {
+      "photo": {
+       "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Samgye-tang%202.jpg?width=1600",
+       "shows": "하얀 사발에 담긴 삼계탕 한 마리와 인삼·대추·마늘",
+       "match": "정확",
+       "rights": "위키미디어 공용 CC0",
+       "terms": {
+        "url": "https://commons.wikimedia.org/",
+        "checked": "2026-11-20",
+        "scope": "CC0, 상업적 이용·수정 가능",
+        "ok": true
+       },
+       "pos": "50% 50%"
+      }
+     }
+    ],
+    "hl": 0
+   }
+  },
+  {
+   "say": "향신료에 재워 구운 탄두리치킨, 오늘은 이국적으로 어때요?",
+   "subs": [
+    "향신료에 재워 구운 탄두리치킨,",
+    "오늘은 이국적으로 어때요?"
+   ],
+   "show": {
+    "dir": "2x2",
+    "own": true,
+    "grid": [
+     {
+      "photo": {
+       "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Eomuk-tang.jpg?width=1600",
+       "shows": "뚝배기 국물에 어묵 꼬치와 무, 빨간 고추를 올린 어묵탕",
+       "match": "정확",
+       "rights": "위키미디어 공용 CC BY 2.0",
+       "terms": {
+        "url": "https://commons.wikimedia.org/",
+        "checked": "2026-11-20",
+        "scope": "CC BY 2.0, 상업적 이용·수정 가능",
+        "ok": true
+       },
+       "credit": "Chloe Lim (CC BY 2.0) · commons.wikimedia.org/?curid=57390367",
+       "pos": "50% 50%"
+      }
+     },
+     {
+      "photo": {
+       "url": "https://live.staticflickr.com/3396/3268339088_382e862e63_b.jpg",
+       "shows": "밥과 완두콩 위에 올린 숯 자국 난 탄두리치킨 다리 두 조각",
+       "match": "정확",
+       "credit": "thebittenword.com (CC BY 2.0) · www.flickr.com/photos/22198928@N00/3268339088",
+       "license": "CC BY 2.0",
+       "rights": "오픈버스(플리커) CC BY 2.0",
+       "page": "https://www.flickr.com/photos/22198928@N00/3268339088",
+       "terms": {
+        "url": "https://creativecommons.org/licenses/by/2.0/",
+        "checked": "2026-11-20",
+        "scope": "CC BY 2.0, 상업적 이용·수정 가능",
+        "ok": true
+       },
+       "pos": "50% 50%"
+      }
+     },
+     {
+      "photo": {
+       "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Korean%20barbecue-Dwaeji%20galbi-01.jpg?width=1600",
+       "shows": "접시에 수북이 담은 참깨 뿌린 구운 돼지갈비",
+       "match": "정확",
+       "rights": "위키미디어 공용 CC BY 2.0",
+       "terms": {
+        "url": "https://commons.wikimedia.org/",
+        "checked": "2026-11-20",
+        "scope": "CC BY 2.0, 상업적 이용·수정 가능",
+        "ok": true
+       },
+       "credit": "egg (Hong, Yun Seon) (CC BY 2.0) · commons.wikimedia.org/?curid=4218338",
+       "pos": "50% 60%"
+      }
+     },
+     {
+      "photo": {
+       "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Samgye-tang%202.jpg?width=1600",
+       "shows": "하얀 사발에 담긴 삼계탕 한 마리와 인삼·대추·마늘",
+       "match": "정확",
+       "rights": "위키미디어 공용 CC0",
+       "terms": {
+        "url": "https://commons.wikimedia.org/",
+        "checked": "2026-11-20",
+        "scope": "CC0, 상업적 이용·수정 가능",
+        "ok": true
+       },
+       "pos": "50% 50%"
+      }
+     }
+    ],
+    "hl": 1
+   }
+  },
+  {
+   "say": "달큰하게 구운 돼지갈비는 밥도둑이죠!",
+   "show": {
+    "dir": "2x2",
+    "own": true,
+    "grid": [
+     {
+      "photo": {
+       "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Eomuk-tang.jpg?width=1600",
+       "shows": "뚝배기 국물에 어묵 꼬치와 무, 빨간 고추를 올린 어묵탕",
+       "match": "정확",
+       "rights": "위키미디어 공용 CC BY 2.0",
+       "terms": {
+        "url": "https://commons.wikimedia.org/",
+        "checked": "2026-11-20",
+        "scope": "CC BY 2.0, 상업적 이용·수정 가능",
+        "ok": true
+       },
+       "credit": "Chloe Lim (CC BY 2.0) · commons.wikimedia.org/?curid=57390367",
+       "pos": "50% 50%"
+      }
+     },
+     {
+      "photo": {
+       "url": "https://live.staticflickr.com/3396/3268339088_382e862e63_b.jpg",
+       "shows": "밥과 완두콩 위에 올린 숯 자국 난 탄두리치킨 다리 두 조각",
+       "match": "정확",
+       "credit": "thebittenword.com (CC BY 2.0) · www.flickr.com/photos/22198928@N00/3268339088",
+       "license": "CC BY 2.0",
+       "rights": "오픈버스(플리커) CC BY 2.0",
+       "page": "https://www.flickr.com/photos/22198928@N00/3268339088",
+       "terms": {
+        "url": "https://creativecommons.org/licenses/by/2.0/",
+        "checked": "2026-11-20",
+        "scope": "CC BY 2.0, 상업적 이용·수정 가능",
+        "ok": true
+       },
+       "pos": "50% 50%"
+      }
+     },
+     {
+      "photo": {
+       "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Korean%20barbecue-Dwaeji%20galbi-01.jpg?width=1600",
+       "shows": "접시에 수북이 담은 참깨 뿌린 구운 돼지갈비",
+       "match": "정확",
+       "rights": "위키미디어 공용 CC BY 2.0",
+       "terms": {
+        "url": "https://commons.wikimedia.org/",
+        "checked": "2026-11-20",
+        "scope": "CC BY 2.0, 상업적 이용·수정 가능",
+        "ok": true
+       },
+       "credit": "egg (Hong, Yun Seon) (CC BY 2.0) · commons.wikimedia.org/?curid=4218338",
+       "pos": "50% 60%"
+      }
+     },
+     {
+      "photo": {
+       "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Samgye-tang%202.jpg?width=1600",
+       "shows": "하얀 사발에 담긴 삼계탕 한 마리와 인삼·대추·마늘",
+       "match": "정확",
+       "rights": "위키미디어 공용 CC0",
+       "terms": {
+        "url": "https://commons.wikimedia.org/",
+        "checked": "2026-11-20",
+        "scope": "CC0, 상업적 이용·수정 가능",
+        "ok": true
+       },
+       "pos": "50% 50%"
+      }
+     }
+    ],
+    "hl": 2
+   }
+  },
+  {
+   "say": "한 마리 푹 끓인 삼계탕으로 든든하게 마무리해요.",
+   "subs": [
+    "한 마리 푹 끓인 삼계탕으로",
+    "든든하게 마무리해요."
+   ],
+   "show": {
+    "dir": "2x2",
+    "own": true,
+    "grid": [
+     {
+      "photo": {
+       "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Eomuk-tang.jpg?width=1600",
+       "shows": "뚝배기 국물에 어묵 꼬치와 무, 빨간 고추를 올린 어묵탕",
+       "match": "정확",
+       "rights": "위키미디어 공용 CC BY 2.0",
+       "terms": {
+        "url": "https://commons.wikimedia.org/",
+        "checked": "2026-11-20",
+        "scope": "CC BY 2.0, 상업적 이용·수정 가능",
+        "ok": true
+       },
+       "credit": "Chloe Lim (CC BY 2.0) · commons.wikimedia.org/?curid=57390367",
+       "pos": "50% 50%"
+      }
+     },
+     {
+      "photo": {
+       "url": "https://live.staticflickr.com/3396/3268339088_382e862e63_b.jpg",
+       "shows": "밥과 완두콩 위에 올린 숯 자국 난 탄두리치킨 다리 두 조각",
+       "match": "정확",
+       "credit": "thebittenword.com (CC BY 2.0) · www.flickr.com/photos/22198928@N00/3268339088",
+       "license": "CC BY 2.0",
+       "rights": "오픈버스(플리커) CC BY 2.0",
+       "page": "https://www.flickr.com/photos/22198928@N00/3268339088",
+       "terms": {
+        "url": "https://creativecommons.org/licenses/by/2.0/",
+        "checked": "2026-11-20",
+        "scope": "CC BY 2.0, 상업적 이용·수정 가능",
+        "ok": true
+       },
+       "pos": "50% 50%"
+      }
+     },
+     {
+      "photo": {
+       "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Korean%20barbecue-Dwaeji%20galbi-01.jpg?width=1600",
+       "shows": "접시에 수북이 담은 참깨 뿌린 구운 돼지갈비",
+       "match": "정확",
+       "rights": "위키미디어 공용 CC BY 2.0",
+       "terms": {
+        "url": "https://commons.wikimedia.org/",
+        "checked": "2026-11-20",
+        "scope": "CC BY 2.0, 상업적 이용·수정 가능",
+        "ok": true
+       },
+       "credit": "egg (Hong, Yun Seon) (CC BY 2.0) · commons.wikimedia.org/?curid=4218338",
+       "pos": "50% 60%"
+      }
+     },
+     {
+      "photo": {
+       "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Samgye-tang%202.jpg?width=1600",
+       "shows": "하얀 사발에 담긴 삼계탕 한 마리와 인삼·대추·마늘",
+       "match": "정확",
+       "rights": "위키미디어 공용 CC0",
+       "terms": {
+        "url": "https://commons.wikimedia.org/",
+        "checked": "2026-11-20",
+        "scope": "CC0, 상업적 이용·수정 가능",
+        "ok": true
+       },
+       "pos": "50% 50%"
+      }
+     }
+    ],
+    "hl": 3
+   }
+  },
+  {
+   "say": "여러분은 오늘 어느 쪽이에요? 댓글로 알려 주세요.",
+   "subs": [
+    "여러분은 오늘 어느 쪽이에요?",
+    "댓글로 알려 주세요."
+   ],
+   "show": {
+    "dir": "2x2",
+    "own": true,
+    "grid": [
+     {
+      "photo": {
+       "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Eomuk-tang.jpg?width=1600",
+       "shows": "뚝배기 국물에 어묵 꼬치와 무, 빨간 고추를 올린 어묵탕",
+       "match": "정확",
+       "rights": "위키미디어 공용 CC BY 2.0",
+       "terms": {
+        "url": "https://commons.wikimedia.org/",
+        "checked": "2026-11-20",
+        "scope": "CC BY 2.0, 상업적 이용·수정 가능",
+        "ok": true
+       },
+       "credit": "Chloe Lim (CC BY 2.0) · commons.wikimedia.org/?curid=57390367",
+       "pos": "50% 50%"
+      }
+     },
+     {
+      "photo": {
+       "url": "https://live.staticflickr.com/3396/3268339088_382e862e63_b.jpg",
+       "shows": "밥과 완두콩 위에 올린 숯 자국 난 탄두리치킨 다리 두 조각",
+       "match": "정확",
+       "credit": "thebittenword.com (CC BY 2.0) · www.flickr.com/photos/22198928@N00/3268339088",
+       "license": "CC BY 2.0",
+       "rights": "오픈버스(플리커) CC BY 2.0",
+       "page": "https://www.flickr.com/photos/22198928@N00/3268339088",
+       "terms": {
+        "url": "https://creativecommons.org/licenses/by/2.0/",
+        "checked": "2026-11-20",
+        "scope": "CC BY 2.0, 상업적 이용·수정 가능",
+        "ok": true
+       },
+       "pos": "50% 50%"
+      }
+     },
+     {
+      "photo": {
+       "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Korean%20barbecue-Dwaeji%20galbi-01.jpg?width=1600",
+       "shows": "접시에 수북이 담은 참깨 뿌린 구운 돼지갈비",
+       "match": "정확",
+       "rights": "위키미디어 공용 CC BY 2.0",
+       "terms": {
+        "url": "https://commons.wikimedia.org/",
+        "checked": "2026-11-20",
+        "scope": "CC BY 2.0, 상업적 이용·수정 가능",
+        "ok": true
+       },
+       "credit": "egg (Hong, Yun Seon) (CC BY 2.0) · commons.wikimedia.org/?curid=4218338",
+       "pos": "50% 60%"
+      }
+     },
+     {
+      "photo": {
+       "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Samgye-tang%202.jpg?width=1600",
+       "shows": "하얀 사발에 담긴 삼계탕 한 마리와 인삼·대추·마늘",
+       "match": "정확",
+       "rights": "위키미디어 공용 CC0",
+       "terms": {
+        "url": "https://commons.wikimedia.org/",
+        "checked": "2026-11-20",
+        "scope": "CC0, 상업적 이용·수정 가능",
+        "ok": true
+       },
+       "pos": "50% 50%"
+      }
+     }
+    ]
+   }
+  }
+ ],
+ "again": {
+  "돼지갈비": "금요일 든든한 고기 한 끼 후보 중 정확한 사진이 있고 국물·해외 메뉴와 겹치지 않아 다시 추천"
+ },
+ "review": {
+  "photo_sheet": "a520facfab0c"
+ }
+}

@@ -1,0 +1,48 @@
+{
+  "category": "해외 제철",
+  "country": "프랑스",
+  "region": "보졸레",
+  "subject": "보졸레 누보 출시일과 지난해 판매",
+  "angle": "햇와인 출시 날",
+  "season": "2026년 11월 19일",
+  "length_sec": 25,
+  "title": "11월 셋째 목요일, 올해 보졸레 누보가 풀렸어요",
+  "summary": [
+    "보졸레 누보는 해마다 11월 셋째 목요일에 나와요. 올해는 19일이었어요.",
+    "지난해에는 보졸레·보졸레 빌라주 누보가 104,000헥토리터, 약 1,380만 병 팔렸대요.",
+    "수출은 100여 나라로 나갔고 일본이 180만 병으로 첫손에 꼽혀요.",
+    "올해도 보졸레 곳곳과 프랑스 와인 가게에서 행사가 열려요."
+  ],
+  "facts": [
+    "보졸레 업계는 이날을 '프랑스식 성 패트릭 데이'에 견줘요.",
+    "보졸레 포도밭은 1만 1,600헥타르, 85개 마을이에요."
+  ],
+  "script": {
+    "hook": "햇와인이 나오는 날이 정해져 있다고?",
+    "flow": "셋째 목요일|1,380만 병|일본 180만 병",
+    "closing": "햇와인 마셔 보셨어요?"
+  },
+  "visuals": [
+    "와인 사진"
+  ],
+  "cautions": [
+    "술 이야기라 권하지 않고 사실만 전해요. 숫자는 2025년 기준이에요."
+  ],
+  "unverified": [
+    "올해 작황·판매 전망"
+  ],
+  "pairing": {
+    "drink": "와인",
+    "note": ""
+  },
+  "sources": [
+    {
+      "name": "Lyon Mag(9월 17일)",
+      "url": "https://www.lyonmag.com/article/154026/beaujolais-nouveau-2026-rendez-vous-le-19-novembre-pour-le-lancement-du-nouveau-millesime",
+      "official": false
+    }
+  ],
+  "date": "2026-11-20",
+  "checked": "2026-11-20",
+  "id": "2026-11-20-fr-beaujolais-nouveau-release"
+}

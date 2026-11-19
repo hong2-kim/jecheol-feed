@@ -1,0 +1,291 @@
+{
+ "format": "voice",
+ "kind": "해설",
+ "subject": "소비기한 · 흰 우유만 2031년",
+ "inspired": {
+  "from": "yt_viral 2026-11-19",
+  "id": "hoPMfXrU_iw",
+  "food": "식품 날짜 표시(후보 동치미·양배추는 공식 숫자 미확인으로 접음)"
+ },
+ "plan_hook": {
+  "pick": "호기심",
+  "why": "식약처 Q&A 로 2023년 시행·흰 우유 2031년 유예·품질유지기한 대상이 확인되고, 최근 60일 안에 날짜 표시 소재가 없음. 첫 장면에 사진이 있는 우유",
+  "others": [
+   "먹거리",
+   "가격"
+  ]
+ },
+ "script_check": {
+  "score": 8,
+  "fix": "2번 예고를 9번 문장에서 공개하고 숫자는 3번 문장부터, 날짜·개수만 써서 효능·값 단정을 뺌. 2031년은 2023.1 식약처 Q&A 기준이라 설명란에 기준일을 밝힘"
+ },
+ "title_pick": {
+  "candidates": [
+   "소비기한 나왔는데 흰 우유는 왜 아직 유통기한? 2031년부터",
+   "유통기한 vs 소비기한 차이, 흰 우유만 2031년부터",
+   "우유 날짜 표시 소비기한은 언제부터? 가공유는 2023년"
+  ],
+  "pick": "소비기한 나왔는데 흰 우유는 왜 아직 유통기한? 2031년부터",
+  "like": "배추는 반값인데 무는 왜 안 싸? (11-19, 물음으로 뒤집기), 계란 난각번호 읽는 법 (3.2배, 생활 제도 정보)",
+  "sure": "낮음"
+ },
+ "title": "소비기한 나왔는데 흰 우유는 왜 아직 유통기한일까요?",
+ "yt_title": "소비기한 나왔는데 흰 우유는 왜 아직 유통기한? 2031년부터",
+ "headline": "소비기한 시대인데\n[[흰 우유는 왜]]",
+ "thumb": {
+  "sub": "흰 우유만 [[2031년]]부터"
+ },
+ "narrator": "charon",
+ "voice_pick": {
+  "mode": "solo",
+  "voices": [
+   "charon"
+  ],
+  "why": "제도 시행일과 품목 숫자를 정확히 짚는 설명이라 차분하고 정확한 Charon 솔로"
+ },
+ "lines": [
+  {
+   "about": "우유 일반",
+   "general": true,
+   "say": "소비기한 표시가 생겼는데, [[흰 우유]]는 왜 아직 유통기한일까요?",
+   "photo": {
+    "url": "https://images.unsplash.com/photo-1550583724-b2692b85b150?w=2000&q=85&fm=jpg",
+    "shows": "유리 주전자에서 유리컵으로 흰 우유를 따르는 모습(우유 일반 사진)",
+    "match": "같은 종류",
+    "general": true,
+    "about": "우유 일반",
+    "rights": "Unsplash 무료 라이선스",
+    "page": "https://unsplash.com/photos/_8bnn1GqX70",
+    "credit": "사진: Eiliv Aceron / Unsplash",
+    "terms": {
+     "url": "https://unsplash.com/license",
+     "checked": "2026-11-20",
+     "scope": "Unsplash 무료 라이선스, 상업적 이용·수정 가능",
+     "ok": true
+    }
+   }
+  },
+  {
+   "about": "우유 일반",
+   "general": true,
+   "say": "끝까지 보면, 소비기한을 [[안 쓰는 먹거리]]까지 알려 드려요.",
+   "chip": "끝까지 보면 소비기한 안 쓰는 먹거리",
+   "photo": {
+    "url": "https://images.unsplash.com/photo-1517448931760-9bf4414148c5?w=2000&q=85&fm=jpg",
+    "shows": "나무 탁자 위 흰 우유가 담긴 유리컵(우유 일반 사진 · 소비기한 설명용 일반 사진, 날짜 표시 글자는 안 보임)",
+    "match": "같은 종류",
+    "general": true,
+    "about": "우유 일반",
+    "rights": "Unsplash 무료 라이선스",
+    "page": "https://unsplash.com/photos/p3ViLmVgVJ4",
+    "credit": "사진: Kim Leary / Unsplash",
+    "terms": {
+     "url": "https://unsplash.com/license",
+     "checked": "2026-11-20",
+     "scope": "Unsplash 무료 라이선스, 상업적 이용·수정 가능",
+     "ok": true
+    }
+   }
+  },
+  {
+   "about": "냉장 보관 일반",
+   "general": true,
+   "say": "식약처는 [[2023년 1월 1일]]부터, 먹거리 날짜 표시를 소비기한으로 바꿨어요.",
+   "chip": "2023년 1월 1일",
+   "photo": {
+    "url": "https://images.unsplash.com/photo-1737363625082-8bbbb821286e?w=2000&q=85&fm=jpg",
+    "shows": "문 열린 냉장고 안 병조림·과일·고추·토마토가 든 칸(냉장 보관 일반 사진 · 소비기한 설명용 일반 사진, 날짜 표시 글자는 안 보임)",
+    "match": "같은 종류",
+    "general": true,
+    "about": "냉장 보관 일반",
+    "rights": "Unsplash 무료 라이선스",
+    "page": "https://unsplash.com/photos/a-refrigerator-filled-with-lots-of-different-types-of-food-XIMl4Crm1GQ",
+    "credit": "사진: Onur Burak Akın / Unsplash",
+    "terms": {
+     "url": "https://unsplash.com/license",
+     "checked": "2026-11-20",
+     "scope": "Unsplash 무료 라이선스, 상업적 이용·수정 가능",
+     "ok": true
+    }
+   },
+   "read": "식약처는 이천이십삼 년 일월 일 일부터, 먹거리 날짜 표시를 소비기한으로 바꿨어요."
+  },
+  {
+   "about": "식품 일반",
+   "general": true,
+   "say": "유통기한은 판매를 허용하는 기한, 소비기한은 [[안전하게 먹을 수 있는]] 기한이에요.",
+   "photo": {
+    "url": "https://images.unsplash.com/photo-1534620808146-d33bb39128b2?w=2000&q=85&fm=jpg",
+    "shows": "흰 바탕에 길게 늘어놓은 얇게 썬 통곡물 빵 조각(식품 일반 사진 · 소비기한·유통기한 설명용 일반 사진, 날짜 표시 글자는 안 보임)",
+    "match": "같은 종류",
+    "general": true,
+    "about": "식품 일반",
+    "rights": "Unsplash 무료 라이선스",
+    "page": "https://unsplash.com/photos/sliced-breads-on-white-surface-WHJTaLqonkU",
+    "credit": "사진: Louise Lyshøj / Unsplash",
+    "terms": {
+     "url": "https://unsplash.com/license",
+     "checked": "2026-11-20",
+     "scope": "Unsplash 무료 라이선스, 상업적 이용·수정 가능",
+     "ok": true
+    }
+   }
+  },
+  {
+   "about": "유제품 일반",
+   "general": true,
+   "say": "딸기 맛 우유 같은 가공유는, 2023년부터 바로 소비기한을 써요.",
+   "photo": {
+    "url": "https://images.unsplash.com/photo-1585083969600-495ee7e3604b?w=2000&q=85&fm=jpg",
+    "shows": "흰 액체가 든 하얀 병이 나무 위에 놓인 모습(유제품 병 일반 사진, 상표 없음 · 소비기한·우유 설명용 일반 사진, 날짜 표시 글자는 안 보임)",
+    "match": "같은 종류",
+    "general": true,
+    "about": "유제품 일반",
+    "rights": "Unsplash 무료 라이선스",
+    "page": "https://unsplash.com/photos/7IO2SZYWbp4",
+    "credit": "사진: Luis Quintero / Unsplash",
+    "terms": {
+     "url": "https://unsplash.com/license",
+     "checked": "2026-11-20",
+     "scope": "Unsplash 무료 라이선스, 상업적 이용·수정 가능",
+     "ok": true
+    }
+   },
+   "read": "딸기 맛 우유 같은 가공유는, 이천이십삼 년부터 바로 소비기한을 써요."
+  },
+  {
+   "about": "마트 냉장 진열 일반",
+   "general": true,
+   "say": "하지만 냉장 흰 우유는, 냉장 환경을 개선한 뒤, [[2031년 1월 1일]]부터예요.",
+   "chip": "흰 우유 2031년 1월 1일",
+   "photo": {
+    "url": "https://images.unsplash.com/photo-1601599561096-f87c95fff1e9?w=2000&q=85&fm=jpg",
+    "shows": "마트 냉장 진열대에 음료와 유제품이 가득한 모습(해외 마트 일반 사진 · 우유 설명용 일반 사진, 날짜 표시 글자는 안 보임)",
+    "match": "같은 종류",
+    "general": true,
+    "about": "마트 냉장 진열 일반",
+    "rights": "Unsplash 무료 라이선스",
+    "page": "https://unsplash.com/photos/a-grocery-store-filled-with-lots-of-drinks-ouNWk-_iTmM",
+    "credit": "사진: Eduardo Soares / Unsplash",
+    "terms": {
+     "url": "https://unsplash.com/license",
+     "checked": "2026-11-20",
+     "scope": "Unsplash 무료 라이선스, 상업적 이용·수정 가능",
+     "ok": true
+    }
+   },
+   "read": "하지만 냉장 흰 우유는, 냉장 환경을 개선한 뒤, 이천삼십일 년 일월 일 일부터예요."
+  },
+  {
+   "about": "식품 일반",
+   "general": true,
+   "say": "소비기한을 안 쓰는 먹거리도 있어요. 맥주, 장류, 식초, 절임류는 [[품질유지기한]]을 써요.",
+   "chip": "맥주·장류·식초·절임류",
+   "photos": [
+    {
+     "url": "https://images.unsplash.com/photo-1632173517757-1e87c79de596?w=2000&q=85&fm=jpg",
+     "shows": "탁자 위 거품이 얹힌 맥주 한 잔(맥주 일반 사진 · 소비기한·품질유지기한 설명용 일반 사진, 날짜 표시 글자는 안 보임)",
+     "match": "같은 종류",
+     "general": true,
+     "about": "맥주 일반",
+     "rights": "Unsplash 무료 라이선스",
+     "page": "https://unsplash.com/photos/a-glass-of-beer-sitting-on-top-of-a-table-Qlt7AQ8BWI0",
+     "credit": "사진: Josh Olalde / Unsplash",
+     "terms": {
+      "url": "https://unsplash.com/license",
+      "checked": "2026-11-20",
+      "scope": "Unsplash 무료 라이선스, 상업적 이용·수정 가능",
+      "ok": true
+     }
+    },
+    {
+     "url": "https://images.unsplash.com/photo-1737363625103-de62618722e8?w=2000&q=85&fm=jpg",
+     "shows": "냉장고 윗칸에 완두콩·피클·고추 절임 같은 병조림이 놓인 모습(절임류 일반 사진 · 소비기한·품질유지기한 설명용 일반 사진, 날짜 표시 글자는 안 보임)",
+     "match": "같은 종류",
+     "general": true,
+     "about": "절임류 일반",
+     "rights": "Unsplash 무료 라이선스",
+     "page": "https://unsplash.com/photos/a-refrigerator-filled-with-lots-of-food-and-condiments-GylmdwgWBtQ",
+     "credit": "사진: Onur Burak Akın / Unsplash",
+     "terms": {
+      "url": "https://unsplash.com/license",
+      "checked": "2026-11-20",
+      "scope": "Unsplash 무료 라이선스, 상업적 이용·수정 가능",
+      "ok": true
+     }
+    }
+   ]
+  },
+  {
+   "about": "식품 일반",
+   "general": true,
+   "say": "지금 우유 날짜는 아직 유통기한이에요. 여러분은 냉장고에서 찾아보셨어요? [[댓글]]로 알려 주세요."
+  }
+ ],
+ "summary": "식약처 안내(2023년 1월 기준): 소비기한은 2023년 1월 1일 시행, 냉장 흰 우유는 2031년 1월 1일부터, 맥주·장류·식초·절임류는 품질유지기한을 써요.",
+ "caption": "소비기한 표시가 생겼는데 흰 우유는 왜 아직 유통기한일까요? 식품의약품안전처는 2023년 1월 1일부터 식품 날짜 표시를 소비기한으로 바꿨어요. 소비기한은 표시된 보관방법을 지키면 안전하게 먹을 수 있는 기한이고, 유통기한은 판매가 허용되는 기한이에요.\n\n딸기 맛 우유 같은 가공유는 2023년 1월 1일부터 소비기한을 쓰지만, 냉장 보관하는 흰 우유는 냉장 환경을 개선한 뒤 2031년 1월 1일부터 적용하기로 했어요. 맥주, 장류(메주 제외), 식초, 절임류는 소비기한 대신 품질유지기한을 써요. 위 내용은 식약처가 2023년 1월 30일 게재한 안내 기준이라 이후 바뀐 것이 있는지는 식약처 공지로 확인해 주세요.\n\n여러분은 냉장고 우유 날짜, 확인해 보셨어요?",
+ "tags": [
+  "소비기한",
+  "유통기한",
+  "우유",
+  "식품표시"
+ ],
+ "sources": [
+  "https://www.korea.kr/news/healthView.do?newsId=148911057",
+  "https://www.mfds.go.kr/brd/m_827/view.do?seq=3610"
+ ],
+ "credits": [
+  "사진: Eiliv Aceron / Unsplash",
+  "사진: Kim Leary / Unsplash",
+  "사진: Onur Burak Akın / Unsplash",
+  "사진: Louise Lyshøj / Unsplash",
+  "사진: Kamala Bright / Unsplash",
+  "사진: Luis Quintero / Unsplash",
+  "사진: Eduardo Soares / Unsplash",
+  "사진: Josh Olalde / Unsplash"
+ ],
+ "yt_keyword": "소비기한",
+ "yt_related": [
+  "유통기한",
+  "흰 우유 소비기한",
+  "소비기한 표시제",
+  "품질유지기한",
+  "식약처"
+ ],
+ "yt_tags": [
+  "소비기한",
+  "소비기한 유통기한",
+  "흰 우유 소비기한",
+  "소비기한 표시제",
+  "품질유지기한",
+  "우유 유통기한"
+ ],
+ "yt_hashtags": [
+  "소비기한",
+  "유통기한",
+  "우유"
+ ],
+ "yt_lead": "식약처가 소비기한을 도입했는데 냉장 흰 우유는 2031년 1월 1일부터라서, 유통기한과 소비기한의 차이를 짚어요.",
+ "dates": {
+  "checked": "2026-11-20",
+  "sources": [
+   {
+    "url": "https://www.korea.kr/news/healthView.do?newsId=148911057",
+    "published": "2023-01-30",
+    "modified": "2023-01-30"
+   },
+   {
+    "url": "https://www.mfds.go.kr/brd/m_827/view.do?seq=3610",
+    "published": "2022-07-20",
+    "modified": "2022-07-20"
+   }
+  ],
+  "stat_period": "2023년 1월 18일 기준 식약처 안내"
+ },
+ "unverified": [
+  "흰 우유 2031년 적용은 2023-01 식약처 Q&A 기준. 2026년 법 개정 논의 보도가 있어 최신 고시 미확인(설명란에 기준일 표기)"
+ ],
+ "review": {
+  "photo_sheet": "5852acdd1ebd"
+ }
+}
