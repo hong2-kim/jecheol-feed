@@ -921,6 +921,100 @@
         "channels": 120,
         "thin": 7
       }
+    },
+    "2026-11-20": {
+      "picks": [
+        {
+          "id": "Eij25nMFY3U",
+          "title": "시원하고 깊은맛의 김장김치 황금레시피",
+          "channel": "순덕이네 반찬가게",
+          "subs": 62900,
+          "views": 128080,
+          "median": 5273,
+          "n": 37,
+          "multiple": 24.3,
+          "hours": 43,
+          "formulas": [
+            "방법·꿀팁"
+          ],
+          "query": "제철 음식",
+          "url": "https://youtube.com/shorts/Eij25nMFY3U"
+        },
+        {
+          "id": "ic7jWeLNxgI",
+          "title": "과일 자르는 방법 #",
+          "channel": "hewady bwq",
+          "subs": 72700,
+          "views": 126494,
+          "median": 10457,
+          "n": 46,
+          "multiple": 12.1,
+          "hours": 53,
+          "formulas": [
+            "방법·꿀팁"
+          ],
+          "query": "음식 꿀팁",
+          "url": "https://youtube.com/shorts/ic7jWeLNxgI"
+        },
+        {
+          "id": "es4yR1TXp4A",
+          "title": "집에서 싸게 씨푸드보일 하는법",
+          "channel": "Show_Good",
+          "subs": 71800,
+          "views": 192577,
+          "median": 16797,
+          "n": 47,
+          "multiple": 11.5,
+          "hours": 31,
+          "formulas": [
+            "가격·돈",
+            "방법·꿀팁"
+          ],
+          "query": "먹방 쇼츠",
+          "url": "https://youtube.com/shorts/es4yR1TXp4A"
+        },
+        {
+          "id": "11F3FDoROYk",
+          "title": "다이어트 양배추요리 제발 이렇게 하세요! 양배추 사과 샐러드 만들기 레시피",
+          "channel": "램블부부 Ramble Couple",
+          "subs": 317000,
+          "views": 34878,
+          "median": 8636,
+          "n": 47,
+          "multiple": 4.0,
+          "hours": 48,
+          "formulas": [
+            "경고·실수",
+            "방법·꿀팁"
+          ],
+          "query": "다이어트 음식",
+          "url": "https://youtube.com/shorts/11F3FDoROYk"
+        }
+      ],
+      "leaders": [
+        {
+          "id": "AgWDyyY-bYk",
+          "title": "요즘은 이게 또 유행…? : 🍰찰리케이크 (둘세데레체 케이크)",
+          "channel": "조빵이Jo_BB",
+          "subs": 84400,
+          "views": 15061,
+          "median": 9698,
+          "n": 27,
+          "multiple": 1.6,
+          "hours": 44,
+          "formulas": [
+            "물음"
+          ],
+          "query": "요즘 유행 음식",
+          "url": "https://youtube.com/shorts/AgWDyyY-bYk"
+        }
+      ],
+      "stats": {
+        "searched": 215,
+        "shorts": 208,
+        "channels": 120,
+        "thin": 5
+      }
     }
   }
 }
