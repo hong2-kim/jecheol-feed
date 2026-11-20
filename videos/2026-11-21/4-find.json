@@ -1,0 +1,226 @@
+{
+ "kind": "발견",
+ "subject": "짬뽕 라면 · 11월에 몰린 이유",
+ "title": "짬뽕 라면이 11월에 줄줄이 나와요, 셋 다 바지락·해물이에요",
+ "plan_hook": {
+  "pick": "호기심",
+  "why": "한 달 안에 팔도·세븐일레븐·농심이 모두 짬뽕 라면을 냈다는 겹침이 가장 눈길을 끈다. 팔도는 3주 100만 개라는 숫자까지 있어 새 사실이 확인됨",
+  "others": [
+   "먹거리",
+   "가격"
+  ]
+ },
+ "summary": "팔도 바지락 짬뽕(10월 26일)은 3주 만에 100만 개, 세븐일레븐 시경 pick 놀면리얼바지락짬뽕라면은 11월 19일, 농심 누들핏W 광동짬뽕은 11월 23일 출시 예정이에요. 세 제품 모두 해물 국물이 중심이에요.",
+ "thumb": {
+  "head": "짬뽕 라면\n[[셋이나?]]",
+  "sub": "팔도 [[3주 100만 개]]",
+  "photo": {
+   "url": "https://tong.visitkorea.or.kr/cms2/website/97/1940397.jpg",
+   "shows": "홍합이 가득 얹힌 빨간 국물 해물짬뽕 한 그릇(라면 제품 아님, 일반 짬뽕)",
+   "match": "같은 종류",
+   "general": true,
+   "about": "짬뽕 일반",
+   "rights": "한국관광공사 포토코리아 공공누리 1유형 · ⓒ이범수",
+   "credit": "ⓒ한국관광공사 포토코리아-이범수",
+   "fit": "cover"
+  }
+ },
+ "scenes": [
+  {
+   "type": "cover",
+   "photo": {
+    "url": "https://tong.visitkorea.or.kr/cms2/website/97/1940397.jpg",
+    "shows": "홍합이 가득 얹힌 빨간 국물 해물짬뽕 한 그릇(라면 제품 아님, 일반 짬뽕)",
+    "match": "같은 종류",
+    "general": true,
+    "about": "짬뽕 일반",
+    "rights": "한국관광공사 포토코리아 공공누리 1유형 · ⓒ이범수",
+    "credit": "ⓒ한국관광공사 포토코리아-이범수"
+   },
+   "general": true,
+   "dur": 2.6,
+   "kicker": "요즘 편의점·마트 라면",
+   "title": "짬뽕 라면이\n[[3개나]] 줄줄이?",
+   "size": 104
+  },
+  {
+   "type": "card",
+   "photo": {
+    "url": "https://tong.visitkorea.or.kr/cms2/website/35/1942335.jpg",
+    "shows": "빨간 국물 짬뽕 한 그릇 위쪽에서 찍은 모습(일반 짬뽕, 팔도 제품 아님)",
+    "match": "같은 종류",
+    "general": true,
+    "about": "짬뽕 일반",
+    "rights": "한국관광공사 포토코리아 공공누리 1유형 · ⓒ김지호",
+    "credit": "ⓒ한국관광공사 포토코리아-김지호"
+   },
+   "general": true,
+   "dur": 2.8,
+   "chip": "팔도 · 10월 26일",
+   "headline": "출시 3주 만에\n[[100만 개]]",
+   "line": "팔도 바지락 짬뽕, 18일 발표"
+  },
+  {
+   "type": "card",
+   "photo": {
+    "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Vongole%2002%20-%20Wiki%20Loves%20Sicilia.jpg?width=1600",
+    "shows": "접시에 수북이 담긴 껍질째 바지락(이탈리아 시칠리아에서 찍은 사진, 라면 재료 아님)",
+    "match": "같은 종류",
+    "general": true,
+    "about": "바지락 일반",
+    "rights": "위키미디어 공용 CC0(Wiki Loves Sicilia)",
+    "page": "https://commons.wikimedia.org/wiki/File:Vongole_02_-_Wiki_Loves_Sicilia.jpg"
+   },
+   "general": true,
+   "dur": 2.8,
+   "chip": "공통점",
+   "headline": "바지락을\n[[라면에 넣었어요]]",
+   "line": "팔도는 동결건조 바지락살"
+  },
+  {
+   "type": "card",
+   "photo": {
+    "url": "https://tong.visitkorea.or.kr/cms2/website/63/1861963.jpg",
+    "shows": "그릇에 담긴 빨간 국물 짬뽕과 단무지·김치 반찬이 놓인 식탁(제주 한 중식당, 일반 짬뽕, 세븐일레븐 제품 아님)",
+    "match": "같은 종류",
+    "general": true,
+    "about": "짬뽕 일반",
+    "rights": "한국관광공사 포토코리아 공공누리 1유형 · ⓒ이범수",
+    "credit": "ⓒ한국관광공사 포토코리아-이범수"
+   },
+   "general": true,
+   "dur": 2.8,
+   "chip": "면도 달라요",
+   "headline": "면 전분\n[[약 5%p↑]]",
+   "line": "일반 유탕면보다, 컵라면 기준"
+  },
+  {
+   "type": "card",
+   "photo": {
+    "url": "https://tong.visitkorea.or.kr/cms2/website/32/1942332.jpg",
+    "shows": "젓가락으로 면과 새우를 들어 올린 짬뽕(일반 짬뽕, 누들핏 제품 아님)",
+    "match": "같은 종류",
+    "general": true,
+    "about": "짬뽕 면발 일반",
+    "rights": "한국관광공사 포토코리아 공공누리 1유형 · ⓒ김지호",
+    "credit": "ⓒ한국관광공사 포토코리아-김지호"
+   },
+   "general": true,
+   "dur": 2.8,
+   "chip": "농심 · 11월 23일",
+   "headline": "넓적한 면\n[[100kcal 짬뽕]]",
+   "line": "넓은 면에 해산물 국물, 두 제품 모두 100kcal"
+  },
+  {
+   "type": "cover",
+   "photo": {
+    "url": "https://tong.visitkorea.or.kr/cms2/website/52/2488452.jpg",
+    "shows": "하얀 그릇에 새우·홍합이 얹힌 빨간 국물 짬뽕(일반 짬뽕, 제품 아님)",
+    "match": "같은 종류",
+    "general": true,
+    "about": "짬뽕 일반",
+    "rights": "한국관광공사 포토코리아 공공누리 1유형 · ⓒ김지호",
+    "credit": "ⓒ한국관광공사 포토코리아-김지호"
+   },
+   "general": true,
+   "dur": 2.6,
+   "kicker": "쌀쌀한 요즘",
+   "title": "여러분은\n[[어느 짬뽕]]?",
+   "line": "셋 중 하나만 고른다면요",
+   "size": 104
+  }
+ ],
+ "caption": "짬뽕 라면이 한 달 사이에 셋이나 나와요. 여러분은 어느 쪽이 끌려요?\n\n팔도 바지락 짬뽕은 10월 26일에 나와 3주 만에 누적 판매 100만 개를 넘었다고 팔도가 18일 밝혔어요. 동결건조한 바지락살을 넣은 짬뽕 라면이에요. 세븐일레븐은 가수 성시경이 메뉴 선정과 레시피 개발에 참여한 바지락짬뽕라면을 11월 19일에 냈고, 껍질 있는 바지락을 통째로 넣고 면의 전분 함량을 일반 유탕면보다 약 5%포인트 높였다고 해요. 농심 누들핏W 광동짬뽕은 11월 23일 출시 예정이고, 넓적한 건면에 열량은 100kcal라고 밝혔어요.\n\n영상 속 사진은 모두 일반 짬뽕·바지락 사진이고 각 제품 사진이 아니에요. 협찬이나 광고가 아니에요.\n\n더 자세한 이야기는 프로필 링크의 블로그에 있어요.\n\n짬뽕 라면, 여러분은 어느 쪽이 끌려요?\n\n출처: 연합뉴스(11월 18일), 파이낸셜포스트(11월 12일), 직썰(11월 13일)",
+ "tags": [
+  "짬뽕라면",
+  "바지락짬뽕",
+  "편의점신상",
+  "누들핏"
+ ],
+ "sources": [
+  "https://www.yna.co.kr/view/AKR20261118082800030",
+  "https://www.financialpost.co.kr/news/articleView.html?idxno=300412",
+  "https://www.ziksir.com/news/articleView.html?idxno=153318"
+ ],
+ "credits": [
+  "사진: ⓒ한국관광공사 포토코리아-이범수, 김지호"
+ ],
+ "products": [
+  "팔도 바지락 짬뽕",
+  "시경 pick 놀면리얼바지락짬뽕라면",
+  "누들핏W 광동짬뽕"
+ ],
+ "yt_title": "짬뽕 라면 줄줄이 나와요! 팔도 바지락 짬뽕 3주 100만 개, 세븐일레븐·농심도",
+ "yt_keyword": "짬뽕 라면",
+ "yt_related": [
+  "바지락 짬뽕",
+  "편의점 신상 라면",
+  "누들핏W",
+  "팔도 신제품"
+ ],
+ "yt_tags": [
+  "짬뽕 라면",
+  "바지락 짬뽕",
+  "팔도 바지락 짬뽕",
+  "시경 pick 짬뽕라면",
+  "누들핏W 광동짬뽕",
+  "편의점 신상 라면"
+ ],
+ "yt_hashtags": [
+  "짬뽕라면",
+  "바지락짬뽕",
+  "신상라면"
+ ],
+ "yt_lead": "짬뽕 라면이 11월에 팔도·세븐일레븐·농심에서 줄줄이 나와요. 팔도 바지락 짬뽕은 3주 만에 100만 개를 넘었어요.",
+ "dates": {
+  "checked": "2026-11-21",
+  "sources": [
+   {
+    "url": "https://www.yna.co.kr/view/AKR20261118082800030",
+    "published": "2026-11-18",
+    "modified": "2026-11-18"
+   },
+   {
+    "url": "https://www.financialpost.co.kr/news/articleView.html?idxno=300412",
+    "published": "2026-11-12",
+    "modified": "2026-11-12"
+   },
+   {
+    "url": "https://www.ziksir.com/news/articleView.html?idxno=153318",
+    "published": "2026-11-13",
+    "modified": "2026-11-13"
+   }
+  ],
+  "released": {
+   "name": "누들핏W 광동짬뽕",
+   "date": "2026-11-23",
+   "state": "출시 예정"
+  },
+  "stat_period": "출시 10월 26일~11월 18일(3주)"
+ },
+ "title_pick": {
+  "candidates": [
+   "짬뽕 라면 줄줄이 나와요! 팔도 바지락 짬뽕 3주 100만 개, 세븐일레븐·농심도",
+   "팔도 바지락 짬뽕 3주 100만 개, 짬뽕 라면이 갑자기 늘어난 이유",
+   "편의점·마트 짬뽕 라면 3종 비교, 바지락 넣은 곳은?"
+  ],
+  "pick": "짬뽕 라면 줄줄이 나와요! 팔도 바지락 짬뽕 3주 100만 개, 세븐일레븐·농심도",
+  "like": "2026-11-20 8-trend 라면 카드(채널 기록상 신상 라면 갈래)",
+  "sure": "낮음"
+ },
+ "photo_candidates": [
+  {
+   "scene": "장면 2~5 · 제품",
+   "from": "회사 보도자료·뉴스룸",
+   "page": "https://www.kfenews.co.kr/news/articleView.html?idxno=668113",
+   "why": "팔도·세븐일레븐·농심 제품 사진 이용 조건 미확인(연합뉴스 사진 쓰지 않음). 일반 짬뽕 사진으로 대신함"
+  }
+ ],
+ "followup": {
+  "of": "2026-10-27/items/kr-paldo-clam-jjamppong",
+  "new": "출시 3주 만에 누적 100만 개(11월 18일 발표), 세븐일레븐·농심도 짬뽕 라면을 내놓음(숫자: 3종, 면 전분 약 5%p)"
+ },
+ "review": {
+  "photo_sheet": "924b13f9c80d"
+ }
+}

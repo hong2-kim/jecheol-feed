@@ -1,0 +1,296 @@
+{
+ "format": "voice",
+ "kind": "해설",
+ "subject": "씨푸드보일 · 미국 남부 크로퍼시 보일",
+ "inspired": {
+  "from": "yt_viral 2026-11-20",
+  "id": "es4yR1TXp4A",
+  "food": "씨푸드보일(음식만, 우리 각도: 미국 남부 보일 문화와 한 사람 몫)"
+ },
+ "plan_hook": {
+  "pick": "호기심",
+  "why": "공식 관광청·인문학 기관 자료로 재료·양·역사 숫자가 확인되고, 첫 화면에 실사 사진이 크게 나옴. 최근 60일 겹침 없음",
+  "others": [
+   "먹거리",
+   "가족 체험"
+  ]
+ },
+ "script_check": {
+  "score": 8,
+  "fix": "2번 예고(한 사람 몫)를 9번 문장에서 공개, 숫자는 3번 문장부터. 한국 씨푸드보일과의 관계는 단정하지 않고 미국 남부식으로만 말함"
+ },
+ "title_pick": {
+  "candidates": [
+   "씨푸드보일 미국 남부식, 한 사람 몫이 3파운드래요",
+   "씨푸드보일 원조 느낌 크로퍼시 보일, 가난한 사람 음식이었다고?",
+   "씨푸드보일 신문지 위에 쏟아 먹는 이유"
+  ],
+  "pick": "씨푸드보일 미국 남부식, 한 사람 몫이 3파운드래요",
+  "like": "가리비 제철 11월 참가리비 vs 해만가리비 (3.0배, 음식 하나+숫자), 일본 1위 감자스틱 (3.1배, 해외 음식)",
+  "sure": "낮음"
+ },
+ "title": "씨푸드보일, 미국 남부에서는 한 사람 몫이 3파운드래요",
+ "yt_title": "씨푸드보일 미국 남부식, 한 사람 몫이 3파운드래요",
+ "headline": "미국 남부 보일\n[[한 사람 3파운드]]",
+ "thumb": {
+  "sub": "가난한 음식에서 [[10만 명 축제]]로"
+ },
+ "narrator": "achird",
+ "voice_pick": {
+  "mode": "solo",
+  "voices": [
+   "achird"
+  ],
+  "why": "해외 음식 문화를 친구에게 알려 주는 발견 이야기라 친근한 Achird 솔로"
+ },
+ "lines": [
+  {
+   "about": "씨푸드 보일 일반",
+   "general": true,
+   "say": "씨푸드보일, 미국 남부에서는 어떻게 먹을까요?",
+   "photo": {
+    "url": "https://images.unsplash.com/photo-1655992829046-ae2d44d205f7?w=2000&q=85&fm=jpg",
+    "shows": "새우·게다리·옥수수·소시지·감자를 한꺼번에 삶아 쌓아 둔 씨푸드 보일(미국 남부식 일반 사진)",
+    "match": "같은 종류",
+    "general": true,
+    "about": "씨푸드 보일 일반",
+    "rights": "Unsplash 무료 라이선스",
+    "page": "https://unsplash.com/photos/QZ5BHtltNHo",
+    "credit": "사진: Sunira Moses / Unsplash",
+    "terms": {
+     "url": "https://unsplash.com/license",
+     "checked": "2026-11-21",
+     "scope": "Unsplash 무료 라이선스, 상업적 이용·수정 가능",
+     "ok": true
+    }
+   }
+  },
+  {
+   "about": "크로퍼시 보일 일반",
+   "general": true,
+   "say": "끝까지 보면, 한 사람 몫이 [[얼마나 되는지]]까지 알려 드려요.",
+   "photo": {
+    "url": "https://images.unsplash.com/photo-1559685516-2602ebf3002b?w=2000&q=85&fm=jpg",
+    "shows": "크로퍼시와 옥수수, 감자가 수북이 쌓인 테이블에서 손으로 집는 모습(크로퍼시 보일 일반 사진)",
+    "match": "같은 종류",
+    "general": true,
+    "about": "크로퍼시 보일 일반",
+    "rights": "Unsplash 무료 라이선스",
+    "page": "https://unsplash.com/photos/VxCzzBrgai4",
+    "credit": "사진: Logan Ellzey / Unsplash",
+    "terms": {
+     "url": "https://unsplash.com/license",
+     "checked": "2026-11-21",
+     "scope": "Unsplash 무료 라이선스, 상업적 이용·수정 가능",
+     "ok": true
+    }
+   },
+   "chip": "끝까지 보면 한 사람 몫"
+  },
+  {
+   "about": "크로퍼시 보일 일반",
+   "general": true,
+   "say": "루이지애나에서는, 가재류인 [[크로퍼시]]를, 옥수수·감자와 함께 삶는 보일이 유명해요.",
+   "photo": {
+    "url": "https://images.unsplash.com/photo-1650290373703-45dcf099d275?w=2000&q=85&fm=jpg",
+    "shows": "국물 속 크로퍼시와 옥수수가 함께 삶아지는 모습(크로퍼시 보일 일반 사진)",
+    "match": "같은 종류",
+    "general": true,
+    "about": "크로퍼시 보일 일반",
+    "rights": "Unsplash 무료 라이선스",
+    "page": "https://unsplash.com/photos/rQhKjAWjgBA",
+    "credit": "사진: Fujiphilm / Unsplash",
+    "terms": {
+     "url": "https://unsplash.com/license",
+     "checked": "2026-11-21",
+     "scope": "Unsplash 무료 라이선스, 상업적 이용·수정 가능",
+     "ok": true
+    }
+   },
+   "read": "루이지애나에서는, 가재류인 크로퍼시를, 옥수수 감자와 함께 삶는 보일이 유명해요."
+  },
+  {
+   "about": "크로퍼시 일반",
+   "general": true,
+   "say": "살아 있는 크로퍼시는, 보통 [[40파운드]] 자루로 와서 소금물에 해감해요.",
+   "photo": {
+    "url": "https://images.unsplash.com/photo-1792046169057-dd3bc2211818?w=2000&q=85&fm=jpg",
+    "shows": "손으로 집은 살아 있는 붉은 크로퍼시(가재류) 한 마리(일반 사진)",
+    "match": "같은 종류",
+    "general": true,
+    "about": "크로퍼시 일반",
+    "rights": "Unsplash 무료 라이선스",
+    "page": "https://unsplash.com/photos/oA57XGp3PgI",
+    "credit": "사진: Richard Stovall / Unsplash",
+    "terms": {
+     "url": "https://unsplash.com/license",
+     "checked": "2026-11-21",
+     "scope": "Unsplash 무료 라이선스, 상업적 이용·수정 가능",
+     "ok": true
+    }
+   },
+   "chip": "40파운드 자루"
+  },
+  {
+   "about": "크로퍼시 보일 일반",
+   "general": true,
+   "say": "식탁에 신문지를 깔고, 삶은 걸 그대로 쏟아 놓고 손으로 먹기도 해요.",
+   "photo": {
+    "url": "https://images.unsplash.com/photo-1715609374487-4d0d5f520903?w=2000&q=85&fm=jpg",
+    "shows": "야외 식탁 위 쟁반에 쌓인 삶은 크로퍼시와 흰 천(크로퍼시 보일 일반 사진)",
+    "match": "같은 종류",
+    "general": true,
+    "about": "크로퍼시 보일 일반",
+    "rights": "Unsplash 무료 라이선스",
+    "page": "https://unsplash.com/photos/v4oqy8wu33Y",
+    "credit": "사진: Carly Mackler / Unsplash",
+    "terms": {
+     "url": "https://unsplash.com/license",
+     "checked": "2026-11-21",
+     "scope": "Unsplash 무료 라이선스, 상업적 이용·수정 가능",
+     "ok": true
+    }
+   }
+  },
+  {
+   "about": "크로퍼시 일반",
+   "general": true,
+   "say": "그런데 예전엔 이 음식에, [[가난한 사람의 음식]]이라는 낙인이 있었어요.",
+   "photo": {
+    "url": "https://images.unsplash.com/photo-1778783383528-6a8bfa7f5122?w=2000&q=85&fm=jpg",
+    "shows": "노란 그릇에 담긴 삶은 붉은 크로퍼시(일반 사진)",
+    "match": "같은 종류",
+    "general": true,
+    "about": "크로퍼시 일반",
+    "rights": "Unsplash 무료 라이선스",
+    "page": "https://unsplash.com/photos/CfmsLiZthOo",
+    "credit": "사진: Christy Fontenot / Unsplash",
+    "terms": {
+     "url": "https://unsplash.com/license",
+     "checked": "2026-11-21",
+     "scope": "Unsplash 무료 라이선스, 상업적 이용·수정 가능",
+     "ok": true
+    }
+   },
+   "chip": "가난한 사람의 음식"
+  },
+  {
+   "about": "크로퍼시 보일 일반",
+   "general": true,
+   "say": "1959년 축제가, 인식을 바꾸는 데 한몫했고, 지금은 [[10만 명]] 넘게 모여요.",
+   "photo": {
+    "url": "https://images.unsplash.com/photo-1715609374302-011ced3e8a9e?w=2000&q=85&fm=jpg",
+    "shows": "큰 삶는 통(보일 포트) 앞에 선 사람, 통 안은 붉은 국물(크로퍼시 보일 일반 사진, 얼굴 안 보임)",
+    "match": "같은 종류",
+    "general": true,
+    "about": "크로퍼시 보일 일반",
+    "rights": "Unsplash 무료 라이선스",
+    "page": "https://unsplash.com/photos/CyZvM8V9mzw",
+    "credit": "사진: Carly Mackler / Unsplash",
+    "terms": {
+     "url": "https://unsplash.com/license",
+     "checked": "2026-11-21",
+     "scope": "Unsplash 무료 라이선스, 상업적 이용·수정 가능",
+     "ok": true
+    }
+   },
+   "chip": "축제 10만 명 넘게",
+   "read": "천구백오십구 년 축제가, 인식을 바꾸는 데 한몫했고, 지금은 십만 명 넘게 모여요."
+  },
+  {
+   "about": "크로퍼시 보일 일반",
+   "general": true,
+   "say": "식당에서 한 사람 몫은 [[3파운드]], 그러니까 약 1.4킬로그램이에요.",
+   "photo": {
+    "url": "https://images.unsplash.com/photo-1523920625794-b8cd4b38eb00?w=2000&q=85&fm=jpg",
+    "shows": "옥수수와 감자가 곁들여진 삶은 크로퍼시 한 그릇을 든 사람(일반 사진, 얼굴 안 보임)",
+    "match": "같은 종류",
+    "general": true,
+    "about": "크로퍼시 보일 일반",
+    "rights": "Unsplash 무료 라이선스",
+    "page": "https://unsplash.com/photos/rBPtiHOY7nI",
+    "credit": "사진: Sidney Pearce / Unsplash",
+    "terms": {
+     "url": "https://unsplash.com/license",
+     "checked": "2026-11-21",
+     "scope": "Unsplash 무료 라이선스, 상업적 이용·수정 가능",
+     "ok": true
+    }
+   },
+   "chip": "3파운드 ≈ 1.4kg",
+   "read": "식당에서 한 사람 몫은 삼 파운드, 그러니까 약 일 점 사 킬로그램이에요."
+  },
+  {
+   "about": "크로퍼시 보일 일반",
+   "general": true,
+   "say": "여러분은 보일에 뭘 제일 먼저 건지세요? [[댓글]]로 알려 주세요."
+  }
+ ],
+ "summary": "미국 루이지애나 크로퍼시 보일: 옥수수·감자·소시지와 함께 삶고, 생물은 40파운드 자루, 한 사람 몫 3~5파운드.",
+ "caption": "씨푸드보일, 미국 남부에서는 어떻게 먹을까요? 루이지애나에서는 가재류인 크로퍼시를 양념한 물에 옥수수·감자·소시지 등과 함께 삶아 먹어요. 살아 있는 크로퍼시는 보통 40파운드 자루로 들어오고, 보일 가게에서는 한 사람 몫을 3파운드(약 1.4킬로그램)나 5파운드로 내요.\n\n예전에는 '가난한 사람의 음식'이라는 인식이 있었는데, 1959년에 시작된 브로 브리지 크로퍼시 축제가 인식을 바꾸는 데 한몫했고 지금은 10만 명 넘게 모인대요. 위 내용은 루이지애나 관광청과 64 Parishes(루이지애나 인문학재단) 자료 기준이고, 우리나라 씨푸드보일과 같은 음식이라는 뜻은 아니에요.\n\n여러분은 보일에 뭘 제일 먼저 건지세요?\n\n출처: 루이지애나 관광청(ExploreLouisiana), 64 Parishes(2016, 2019 수정)",
+ "tags": [
+  "씨푸드보일",
+  "크로퍼시",
+  "해외음식",
+  "오늘뭐먹지"
+ ],
+ "sources": [
+  "https://www.explorelouisiana.com/articles/louisiana-crawfish-101",
+  "https://64parishes.org/entry/crawfish-boils"
+ ],
+ "credits": [
+  "사진: Carly Mackler / Unsplash",
+  "사진: Christy Fontenot / Unsplash",
+  "사진: Fujiphilm / Unsplash",
+  "사진: Logan Ellzey / Unsplash",
+  "사진: Richard Stovall / Unsplash",
+  "사진: Sidney Pearce / Unsplash",
+  "사진: Sunira Moses / Unsplash"
+ ],
+ "yt_keyword": "씨푸드보일",
+ "yt_related": [
+  "씨푸드보일 만들기",
+  "씨푸드 보일링",
+  "루이지애나 가재",
+  "크로퍼시 보일",
+  "미국 남부 음식"
+ ],
+ "yt_tags": [
+  "씨푸드보일",
+  "씨푸드 보일링",
+  "씨푸드보일 만들기",
+  "루이지애나 가재",
+  "크로퍼시 보일",
+  "미국 남부 음식"
+ ],
+ "yt_hashtags": [
+  "씨푸드보일",
+  "해외음식",
+  "루이지애나"
+ ],
+ "yt_lead": "씨푸드보일을 미국 남부 루이지애나에서는 어떻게 먹는지, 한 사람 몫과 역사까지 짚어요.",
+ "dates": {
+  "checked": "2026-11-21",
+  "sources": [
+   {
+    "url": "https://64parishes.org/entry/crawfish-boils",
+    "published": "2016-05-09",
+    "modified": "2019-03-28"
+   },
+   {
+    "url": "https://www.explorelouisiana.com/articles/louisiana-crawfish-101",
+    "published": "2026-11-21",
+    "modified": "2026-11-21"
+   }
+  ],
+  "stat_period": "관광청 안내 2026년 기준, 64 Parishes 2019년 수정본"
+ },
+ "unverified": [
+  "우리나라 씨푸드보일과의 관계는 확인 못 해 단정하지 않음",
+  "explorelouisiana 글은 게재일 표시 없음(발행일을 확인일로 적음)",
+  "3파운드=1.4kg 은 환산"
+ ],
+ "review": {
+  "photo_sheet": "1abcb2ddc9de"
+ }
+}

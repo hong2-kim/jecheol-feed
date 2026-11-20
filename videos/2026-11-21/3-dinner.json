@@ -1,0 +1,541 @@
+{
+ "format": "voice",
+ "layout": "rec",
+ "kind": "저녁",
+ "subject": "토요일 저녁 (해물전골·카오만가이·제육볶음·해산물리소토)",
+ "title": "토요일 저녁 아직 못 골랐어? 해물전골·카오만가이·제육볶음·해산물리소토",
+ "summary": "토요일 저녁 메뉴로 해물전골·카오만가이·제육볶음·해산물리소토 넷을 추천해요.",
+ "headline": "토요일 저녁\n[[아직 못 골랐어?]]",
+ "small": "토요일 저녁, 오늘의 넷",
+ "intro": 7,
+ "length": [
+  20,
+  30
+ ],
+ "narrator": "puck",
+ "voice_pick": {
+  "mode": "solo",
+  "voices": [
+   "puck"
+  ],
+  "why": "토요일 저녁 가볍게 권하는 경쾌한 추천이라 Puck 솔로(어제 Achird 와 다르게)"
+ },
+ "thumb": {
+  "head": "토요일 저녁\n[[아직 못 골랐어?]]",
+  "sub": "국물파·밥파 [[다 있음]]",
+  "photo": {
+   "url": "https://tong.visitkorea.or.kr/cms2/website/82/1828082.jpg",
+   "shows": "전골냄비에 조개·두부·팽이버섯·쑥갓·표고를 둘러 담은 해물전골",
+   "match": "정확",
+   "credit": "ⓒ한국관광공사 포토코리아-김지호",
+   "rights": "한국관광공사 공공누리 1유형"
+  }
+ },
+ "yt_title": "토요일 저녁 메뉴 아직 못 골랐어? 해물전골·카오만가이·제육볶음·해산물리소토 중에 골라 보세요",
+ "yt_keyword": "토요일 저녁 메뉴",
+ "yt_related": [
+  "저녁 메뉴 추천",
+  "오늘 뭐 먹지",
+  "해물전골",
+  "제육볶음",
+  "해산물 리소토"
+ ],
+ "yt_tags": [
+  "토요일 저녁 메뉴",
+  "저녁 메뉴 추천",
+  "오늘 뭐 먹지",
+  "해물전골",
+  "카오만가이",
+  "제육볶음",
+  "해산물 리소토"
+ ],
+ "yt_hashtags": [
+  "토요일저녁메뉴",
+  "오늘뭐먹지",
+  "저녁메뉴추천"
+ ],
+ "yt_lead": "토요일 저녁 메뉴 고민될 때, 해물전골·카오만가이·제육볶음·해산물리소토 넷 중에 하나만 골라요.",
+ "caption": "토요일 저녁, 아직 못 골랐어?\n\n보글보글 끓는 해물전골\n닭고기 올린 태국식 카오만가이\n지글지글 매콤한 제육볶음\n홍합 새우 듬뿍 해산물 리소토\n\n넷 중에 오늘은 뭐가 끌려요? 댓글로 알려 주세요.",
+ "tags": [
+  "토요일저녁메뉴",
+  "저녁메뉴추천",
+  "오늘뭐먹지",
+  "해물전골"
+ ],
+ "sources": [],
+ "credits": [
+  "G4GTi (CC BY 2.0) · www.flickr.com/photos/41634028@N07/53948446877",
+  "Kimtaro (CC BY 2.0) · www.flickr.com/photos/51035729853@N01/4630695299",
+  "adactio (CC BY 2.0) · www.flickr.com/photos/74105777@N00/3660604750",
+  "ⓒ한국관광공사 포토코리아-김지호"
+ ],
+ "dates": {
+  "checked": "2026-11-21"
+ },
+ "menu_pick": {
+  "menus": [
+   "해물전골",
+   "카오만가이",
+   "제육볶음",
+   "해산물리소토"
+  ],
+  "from": "dinner_pick(후보 18개 확인, 추운 날씨 기준, 최근 국밥·돈가스·족발·떡볶이 몰림을 피해 갈래 분산. 제육덮밥은 맞는 사진이 없어 같은 계열 제육볶음으로 바꿈)",
+  "why": {
+   "해물전골": "국물 갈래, 아직 안 나옴·추운 날 오랜만에",
+   "카오만가이": "밥 갈래, 새로운 해외 메뉴 1개, 아직 안 나옴",
+   "제육볶음": "볶음 갈래, 누구나 아는 인기 메뉴, 아직 안 나옴",
+   "해산물리소토": "양식 밥 갈래, 오랜만에 분위기 내는 한 끼"
+  }
+ },
+ "lines": [
+  {
+   "say": "토요일 저녁, 아직 못 골랐어?",
+   "nosub": true,
+   "show": {
+    "thumb": true
+   }
+  },
+  {
+   "say": "골라 보세요, 넷 중 하나!",
+   "show": {
+    "dir": "2x2",
+    "own": true,
+    "grid": [
+     {
+      "photo": {
+       "url": "https://tong.visitkorea.or.kr/cms2/website/82/1828082.jpg",
+       "shows": "전골냄비에 조개·두부·팽이버섯·쑥갓·표고를 둘러 담은 해물전골",
+       "match": "정확",
+       "credit": "ⓒ한국관광공사 포토코리아-김지호",
+       "rights": "한국관광공사 공공누리 1유형"
+      }
+     },
+     {
+      "photo": {
+       "url": "https://live.staticflickr.com/65535/53948446877_275a42d96b_b.jpg",
+       "shows": "파란 무늬 접시 밥 위에 삶은 닭고기를 올리고 소스를 곁들인 카오만가이",
+       "match": "정확",
+       "credit": "G4GTi (CC BY 2.0) · www.flickr.com/photos/41634028@N07/53948446877",
+       "license": "CC BY 2.0",
+       "rights": "오픈버스(플리커) CC BY 2.0",
+       "page": "https://www.flickr.com/photos/41634028@N07/53948446877",
+       "terms": {
+        "url": "https://creativecommons.org/licenses/by/2.0/",
+        "checked": "2026-11-21",
+        "scope": "CC BY 2.0, 상업적 이용·수정 가능",
+        "ok": true
+       }
+      }
+     },
+     {
+      "photo": {
+       "url": "https://live.staticflickr.com/4015/4630695299_b0a51e3e16_b.jpg",
+       "shows": "팬에서 대파·양파와 볶은 매콤한 제육볶음",
+       "match": "정확",
+       "credit": "Kimtaro (CC BY 2.0) · www.flickr.com/photos/51035729853@N01/4630695299",
+       "license": "CC BY 2.0",
+       "rights": "오픈버스(플리커) CC BY 2.0",
+       "page": "https://www.flickr.com/photos/51035729853@N01/4630695299",
+       "terms": {
+        "url": "https://creativecommons.org/licenses/by/2.0/",
+        "checked": "2026-11-21",
+        "scope": "CC BY 2.0, 상업적 이용·수정 가능",
+        "ok": true
+       }
+      }
+     },
+     {
+      "photo": {
+       "url": "https://live.staticflickr.com/3302/3660604750_bef8676bde_b.jpg",
+       "shows": "홍합과 새우가 든 해산물 리소토 클로즈업",
+       "match": "정확",
+       "credit": "adactio (CC BY 2.0) · www.flickr.com/photos/74105777@N00/3660604750",
+       "license": "CC BY 2.0",
+       "rights": "오픈버스(플리커) CC BY 2.0",
+       "page": "https://www.flickr.com/photos/74105777@N00/3660604750",
+       "terms": {
+        "url": "https://creativecommons.org/licenses/by/2.0/",
+        "checked": "2026-11-21",
+        "scope": "CC BY 2.0, 상업적 이용·수정 가능",
+        "ok": true
+       }
+      }
+     }
+    ],
+    "fade": 0.45
+   }
+  },
+  {
+   "say": "채소 수북, 조개 가득! 보글보글 해물전골 어때요?",
+   "subs": [
+    "채소 수북, 조개 가득!",
+    "보글보글 해물전골 어때요?"
+   ],
+   "show": {
+    "dir": "2x2",
+    "own": true,
+    "grid": [
+     {
+      "photo": {
+       "url": "https://tong.visitkorea.or.kr/cms2/website/82/1828082.jpg",
+       "shows": "전골냄비에 조개·두부·팽이버섯·쑥갓·표고를 둘러 담은 해물전골",
+       "match": "정확",
+       "credit": "ⓒ한국관광공사 포토코리아-김지호",
+       "rights": "한국관광공사 공공누리 1유형"
+      }
+     },
+     {
+      "photo": {
+       "url": "https://live.staticflickr.com/65535/53948446877_275a42d96b_b.jpg",
+       "shows": "파란 무늬 접시 밥 위에 삶은 닭고기를 올리고 소스를 곁들인 카오만가이",
+       "match": "정확",
+       "credit": "G4GTi (CC BY 2.0) · www.flickr.com/photos/41634028@N07/53948446877",
+       "license": "CC BY 2.0",
+       "rights": "오픈버스(플리커) CC BY 2.0",
+       "page": "https://www.flickr.com/photos/41634028@N07/53948446877",
+       "terms": {
+        "url": "https://creativecommons.org/licenses/by/2.0/",
+        "checked": "2026-11-21",
+        "scope": "CC BY 2.0, 상업적 이용·수정 가능",
+        "ok": true
+       }
+      }
+     },
+     {
+      "photo": {
+       "url": "https://live.staticflickr.com/4015/4630695299_b0a51e3e16_b.jpg",
+       "shows": "팬에서 대파·양파와 볶은 매콤한 제육볶음",
+       "match": "정확",
+       "credit": "Kimtaro (CC BY 2.0) · www.flickr.com/photos/51035729853@N01/4630695299",
+       "license": "CC BY 2.0",
+       "rights": "오픈버스(플리커) CC BY 2.0",
+       "page": "https://www.flickr.com/photos/51035729853@N01/4630695299",
+       "terms": {
+        "url": "https://creativecommons.org/licenses/by/2.0/",
+        "checked": "2026-11-21",
+        "scope": "CC BY 2.0, 상업적 이용·수정 가능",
+        "ok": true
+       }
+      }
+     },
+     {
+      "photo": {
+       "url": "https://live.staticflickr.com/3302/3660604750_bef8676bde_b.jpg",
+       "shows": "홍합과 새우가 든 해산물 리소토 클로즈업",
+       "match": "정확",
+       "credit": "adactio (CC BY 2.0) · www.flickr.com/photos/74105777@N00/3660604750",
+       "license": "CC BY 2.0",
+       "rights": "오픈버스(플리커) CC BY 2.0",
+       "page": "https://www.flickr.com/photos/74105777@N00/3660604750",
+       "terms": {
+        "url": "https://creativecommons.org/licenses/by/2.0/",
+        "checked": "2026-11-21",
+        "scope": "CC BY 2.0, 상업적 이용·수정 가능",
+        "ok": true
+       }
+      }
+     }
+    ],
+    "hl": 0
+   }
+  },
+  {
+   "say": "촉촉한 닭고기에 소스 곁들인 카오만가이, 태국 한 접시.",
+   "subs": [
+    "촉촉한 닭고기에 소스 곁들인",
+    "카오만가이, 태국 한 접시."
+   ],
+   "show": {
+    "dir": "2x2",
+    "own": true,
+    "grid": [
+     {
+      "photo": {
+       "url": "https://tong.visitkorea.or.kr/cms2/website/82/1828082.jpg",
+       "shows": "전골냄비에 조개·두부·팽이버섯·쑥갓·표고를 둘러 담은 해물전골",
+       "match": "정확",
+       "credit": "ⓒ한국관광공사 포토코리아-김지호",
+       "rights": "한국관광공사 공공누리 1유형"
+      }
+     },
+     {
+      "photo": {
+       "url": "https://live.staticflickr.com/65535/53948446877_275a42d96b_b.jpg",
+       "shows": "파란 무늬 접시 밥 위에 삶은 닭고기를 올리고 소스를 곁들인 카오만가이",
+       "match": "정확",
+       "credit": "G4GTi (CC BY 2.0) · www.flickr.com/photos/41634028@N07/53948446877",
+       "license": "CC BY 2.0",
+       "rights": "오픈버스(플리커) CC BY 2.0",
+       "page": "https://www.flickr.com/photos/41634028@N07/53948446877",
+       "terms": {
+        "url": "https://creativecommons.org/licenses/by/2.0/",
+        "checked": "2026-11-21",
+        "scope": "CC BY 2.0, 상업적 이용·수정 가능",
+        "ok": true
+       }
+      }
+     },
+     {
+      "photo": {
+       "url": "https://live.staticflickr.com/4015/4630695299_b0a51e3e16_b.jpg",
+       "shows": "팬에서 대파·양파와 볶은 매콤한 제육볶음",
+       "match": "정확",
+       "credit": "Kimtaro (CC BY 2.0) · www.flickr.com/photos/51035729853@N01/4630695299",
+       "license": "CC BY 2.0",
+       "rights": "오픈버스(플리커) CC BY 2.0",
+       "page": "https://www.flickr.com/photos/51035729853@N01/4630695299",
+       "terms": {
+        "url": "https://creativecommons.org/licenses/by/2.0/",
+        "checked": "2026-11-21",
+        "scope": "CC BY 2.0, 상업적 이용·수정 가능",
+        "ok": true
+       }
+      }
+     },
+     {
+      "photo": {
+       "url": "https://live.staticflickr.com/3302/3660604750_bef8676bde_b.jpg",
+       "shows": "홍합과 새우가 든 해산물 리소토 클로즈업",
+       "match": "정확",
+       "credit": "adactio (CC BY 2.0) · www.flickr.com/photos/74105777@N00/3660604750",
+       "license": "CC BY 2.0",
+       "rights": "오픈버스(플리커) CC BY 2.0",
+       "page": "https://www.flickr.com/photos/74105777@N00/3660604750",
+       "terms": {
+        "url": "https://creativecommons.org/licenses/by/2.0/",
+        "checked": "2026-11-21",
+        "scope": "CC BY 2.0, 상업적 이용·수정 가능",
+        "ok": true
+       }
+      }
+     }
+    ],
+    "hl": 1
+   }
+  },
+  {
+   "say": "지글지글 매콤한 제육볶음, 밥 한 공기 금방이죠!",
+   "subs": [
+    "지글지글 매콤한 제육볶음,",
+    "밥 한 공기 금방이죠!"
+   ],
+   "show": {
+    "dir": "2x2",
+    "own": true,
+    "grid": [
+     {
+      "photo": {
+       "url": "https://tong.visitkorea.or.kr/cms2/website/82/1828082.jpg",
+       "shows": "전골냄비에 조개·두부·팽이버섯·쑥갓·표고를 둘러 담은 해물전골",
+       "match": "정확",
+       "credit": "ⓒ한국관광공사 포토코리아-김지호",
+       "rights": "한국관광공사 공공누리 1유형"
+      }
+     },
+     {
+      "photo": {
+       "url": "https://live.staticflickr.com/65535/53948446877_275a42d96b_b.jpg",
+       "shows": "파란 무늬 접시 밥 위에 삶은 닭고기를 올리고 소스를 곁들인 카오만가이",
+       "match": "정확",
+       "credit": "G4GTi (CC BY 2.0) · www.flickr.com/photos/41634028@N07/53948446877",
+       "license": "CC BY 2.0",
+       "rights": "오픈버스(플리커) CC BY 2.0",
+       "page": "https://www.flickr.com/photos/41634028@N07/53948446877",
+       "terms": {
+        "url": "https://creativecommons.org/licenses/by/2.0/",
+        "checked": "2026-11-21",
+        "scope": "CC BY 2.0, 상업적 이용·수정 가능",
+        "ok": true
+       }
+      }
+     },
+     {
+      "photo": {
+       "url": "https://live.staticflickr.com/4015/4630695299_b0a51e3e16_b.jpg",
+       "shows": "팬에서 대파·양파와 볶은 매콤한 제육볶음",
+       "match": "정확",
+       "credit": "Kimtaro (CC BY 2.0) · www.flickr.com/photos/51035729853@N01/4630695299",
+       "license": "CC BY 2.0",
+       "rights": "오픈버스(플리커) CC BY 2.0",
+       "page": "https://www.flickr.com/photos/51035729853@N01/4630695299",
+       "terms": {
+        "url": "https://creativecommons.org/licenses/by/2.0/",
+        "checked": "2026-11-21",
+        "scope": "CC BY 2.0, 상업적 이용·수정 가능",
+        "ok": true
+       }
+      }
+     },
+     {
+      "photo": {
+       "url": "https://live.staticflickr.com/3302/3660604750_bef8676bde_b.jpg",
+       "shows": "홍합과 새우가 든 해산물 리소토 클로즈업",
+       "match": "정확",
+       "credit": "adactio (CC BY 2.0) · www.flickr.com/photos/74105777@N00/3660604750",
+       "license": "CC BY 2.0",
+       "rights": "오픈버스(플리커) CC BY 2.0",
+       "page": "https://www.flickr.com/photos/74105777@N00/3660604750",
+       "terms": {
+        "url": "https://creativecommons.org/licenses/by/2.0/",
+        "checked": "2026-11-21",
+        "scope": "CC BY 2.0, 상업적 이용·수정 가능",
+        "ok": true
+       }
+      }
+     }
+    ],
+    "hl": 2
+   }
+  },
+  {
+   "say": "홍합에 새우 듬뿍, 해산물 리소토로 분위기 내볼까요?",
+   "subs": [
+    "홍합에 새우 듬뿍,",
+    "해산물 리소토로 분위기 내볼까요?"
+   ],
+   "show": {
+    "dir": "2x2",
+    "own": true,
+    "grid": [
+     {
+      "photo": {
+       "url": "https://tong.visitkorea.or.kr/cms2/website/82/1828082.jpg",
+       "shows": "전골냄비에 조개·두부·팽이버섯·쑥갓·표고를 둘러 담은 해물전골",
+       "match": "정확",
+       "credit": "ⓒ한국관광공사 포토코리아-김지호",
+       "rights": "한국관광공사 공공누리 1유형"
+      }
+     },
+     {
+      "photo": {
+       "url": "https://live.staticflickr.com/65535/53948446877_275a42d96b_b.jpg",
+       "shows": "파란 무늬 접시 밥 위에 삶은 닭고기를 올리고 소스를 곁들인 카오만가이",
+       "match": "정확",
+       "credit": "G4GTi (CC BY 2.0) · www.flickr.com/photos/41634028@N07/53948446877",
+       "license": "CC BY 2.0",
+       "rights": "오픈버스(플리커) CC BY 2.0",
+       "page": "https://www.flickr.com/photos/41634028@N07/53948446877",
+       "terms": {
+        "url": "https://creativecommons.org/licenses/by/2.0/",
+        "checked": "2026-11-21",
+        "scope": "CC BY 2.0, 상업적 이용·수정 가능",
+        "ok": true
+       }
+      }
+     },
+     {
+      "photo": {
+       "url": "https://live.staticflickr.com/4015/4630695299_b0a51e3e16_b.jpg",
+       "shows": "팬에서 대파·양파와 볶은 매콤한 제육볶음",
+       "match": "정확",
+       "credit": "Kimtaro (CC BY 2.0) · www.flickr.com/photos/51035729853@N01/4630695299",
+       "license": "CC BY 2.0",
+       "rights": "오픈버스(플리커) CC BY 2.0",
+       "page": "https://www.flickr.com/photos/51035729853@N01/4630695299",
+       "terms": {
+        "url": "https://creativecommons.org/licenses/by/2.0/",
+        "checked": "2026-11-21",
+        "scope": "CC BY 2.0, 상업적 이용·수정 가능",
+        "ok": true
+       }
+      }
+     },
+     {
+      "photo": {
+       "url": "https://live.staticflickr.com/3302/3660604750_bef8676bde_b.jpg",
+       "shows": "홍합과 새우가 든 해산물 리소토 클로즈업",
+       "match": "정확",
+       "credit": "adactio (CC BY 2.0) · www.flickr.com/photos/74105777@N00/3660604750",
+       "license": "CC BY 2.0",
+       "rights": "오픈버스(플리커) CC BY 2.0",
+       "page": "https://www.flickr.com/photos/74105777@N00/3660604750",
+       "terms": {
+        "url": "https://creativecommons.org/licenses/by/2.0/",
+        "checked": "2026-11-21",
+        "scope": "CC BY 2.0, 상업적 이용·수정 가능",
+        "ok": true
+       }
+      }
+     }
+    ],
+    "hl": 3
+   }
+  },
+  {
+   "say": "넷 중에 오늘은 뭐가 끌려요? 댓글로 알려 주세요.",
+   "subs": [
+    "넷 중에 오늘은 뭐가 끌려요?",
+    "댓글로 알려 주세요."
+   ],
+   "show": {
+    "dir": "2x2",
+    "own": true,
+    "grid": [
+     {
+      "photo": {
+       "url": "https://tong.visitkorea.or.kr/cms2/website/82/1828082.jpg",
+       "shows": "전골냄비에 조개·두부·팽이버섯·쑥갓·표고를 둘러 담은 해물전골",
+       "match": "정확",
+       "credit": "ⓒ한국관광공사 포토코리아-김지호",
+       "rights": "한국관광공사 공공누리 1유형"
+      }
+     },
+     {
+      "photo": {
+       "url": "https://live.staticflickr.com/65535/53948446877_275a42d96b_b.jpg",
+       "shows": "파란 무늬 접시 밥 위에 삶은 닭고기를 올리고 소스를 곁들인 카오만가이",
+       "match": "정확",
+       "credit": "G4GTi (CC BY 2.0) · www.flickr.com/photos/41634028@N07/53948446877",
+       "license": "CC BY 2.0",
+       "rights": "오픈버스(플리커) CC BY 2.0",
+       "page": "https://www.flickr.com/photos/41634028@N07/53948446877",
+       "terms": {
+        "url": "https://creativecommons.org/licenses/by/2.0/",
+        "checked": "2026-11-21",
+        "scope": "CC BY 2.0, 상업적 이용·수정 가능",
+        "ok": true
+       }
+      }
+     },
+     {
+      "photo": {
+       "url": "https://live.staticflickr.com/4015/4630695299_b0a51e3e16_b.jpg",
+       "shows": "팬에서 대파·양파와 볶은 매콤한 제육볶음",
+       "match": "정확",
+       "credit": "Kimtaro (CC BY 2.0) · www.flickr.com/photos/51035729853@N01/4630695299",
+       "license": "CC BY 2.0",
+       "rights": "오픈버스(플리커) CC BY 2.0",
+       "page": "https://www.flickr.com/photos/51035729853@N01/4630695299",
+       "terms": {
+        "url": "https://creativecommons.org/licenses/by/2.0/",
+        "checked": "2026-11-21",
+        "scope": "CC BY 2.0, 상업적 이용·수정 가능",
+        "ok": true
+       }
+      }
+     },
+     {
+      "photo": {
+       "url": "https://live.staticflickr.com/3302/3660604750_bef8676bde_b.jpg",
+       "shows": "홍합과 새우가 든 해산물 리소토 클로즈업",
+       "match": "정확",
+       "credit": "adactio (CC BY 2.0) · www.flickr.com/photos/74105777@N00/3660604750",
+       "license": "CC BY 2.0",
+       "rights": "오픈버스(플리커) CC BY 2.0",
+       "page": "https://www.flickr.com/photos/74105777@N00/3660604750",
+       "terms": {
+        "url": "https://creativecommons.org/licenses/by/2.0/",
+        "checked": "2026-11-21",
+        "scope": "CC BY 2.0, 상업적 이용·수정 가능",
+        "ok": true
+       }
+      }
+     }
+    ]
+   }
+  }
+ ],
+ "review": {
+  "photo_sheet": "c756e28393df"
+ }
+}
