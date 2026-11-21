@@ -25,7 +25,7 @@
     "seconds": 18.8,
     "size_mb": 4.0,
     "yt_title": "짬뽕 라면 줄줄이 나와요! 팔도 바지락 짬뽕 3주 100만 개, 세븐일레븐·농심도",
-    "sha256": "453242763845162a020b68b91aa489ade572dec6372dcecfb54a55e81efd2ae1"
+    "sha256": "0bf6e07ab5ca72932907c569d43a1afe649526eb44f49173f8e31768945a2bd1"
   },
   {
     "id": "2026-11-21-3-dinner",
@@ -45,15 +45,14 @@
     "credits": [
       "G4GTi (CC BY 2.0) · www.flickr.com/photos/41634028@N07/53948446877",
       "Kimtaro (CC BY 2.0) · www.flickr.com/photos/51035729853@N01/4630695299",
-      "adactio (CC BY 2.0) · www.flickr.com/photos/74105777@N00/3660604750",
+      "ultrakml (CC BY 2.0) · www.flickr.com/photos/34948727@N00/8208329538",
       "ⓒ한국관광공사 포토코리아-김지호"
     ],
     "url": "https://github.com/hong2-kim/jecheol-feed/releases/download/v2026-11-21/2026-11-21-3-dinner.mp4",
     "seconds": 24.8,
-    "size_mb": 7.5,
+    "size_mb": 9.0,
     "yt_title": "토요일 저녁 메뉴 아직 못 골랐어? 해물전골·카오만가이·제육볶음·해산물리소토 중에 골라 보세요",
-    "sha256": "d72ab6764eaa94464720b61b85ab68ee9c9afaaba8ac58a5ab1dcebe2fa884b4",
-    "held": "확인 필요"
+    "sha256": "bf262d7d8da33ef9a26b13a14f5cc12f669deff16fcdad95d4b47ba6c753c1aa"
   },
   {
     "id": "2026-11-21-2-news",
@@ -123,10 +122,10 @@
       "사진: Sunira Moses / Unsplash"
     ],
     "url": "https://github.com/hong2-kim/jecheol-feed/releases/download/v2026-11-21/2026-11-21-10-voice.mp4",
-    "seconds": 44.4,
-    "size_mb": 5.2,
+    "seconds": 43.1,
+    "size_mb": 5.0,
     "yt_title": "씨푸드보일 미국 남부식, 한 사람 몫이 3파운드래요",
-    "sha256": "5ff2a8abdf2db5b1cc6388861fcf1b04549e4b85567c116cfb55910c5848d29d",
+    "sha256": "f8c61f06ea7282c08b229b3d8758a027bd535f84292b0e76b2eba5ccfd3667c7",
     "held": "확인 필요"
   },
   {
