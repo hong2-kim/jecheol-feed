@@ -1015,6 +1015,80 @@
         "channels": 120,
         "thin": 5
       }
+    },
+    "2026-11-21": {
+      "picks": [
+        {
+          "id": "mx9gTQOo72I",
+          "title": "도토리묵 계속 젓지 않아도 쫀득 하게 쑤는 비법",
+          "channel": "건강과 삶",
+          "subs": 39900,
+          "views": 66679,
+          "median": 2883,
+          "n": 18,
+          "multiple": 23.1,
+          "hours": 45,
+          "formulas": [
+            "방법·꿀팁"
+          ],
+          "query": "제철 음식",
+          "url": "https://youtube.com/shorts/mx9gTQOo72I"
+        },
+        {
+          "id": "K3qhO6xyWzQ",
+          "title": "시원하고 깊은맛의 김장양념황금레시피 이렇게 만드세요",
+          "channel": "순덕이네 반찬가게",
+          "subs": 63700,
+          "views": 86951,
+          "median": 5912,
+          "n": 37,
+          "multiple": 14.7,
+          "hours": 42,
+          "formulas": [
+            "방법·꿀팁"
+          ],
+          "query": "제철 음식",
+          "url": "https://youtube.com/shorts/K3qhO6xyWzQ"
+        },
+        {
+          "id": "uu5qYb02TW0",
+          "title": "마지막 식사입니다.. 너무 슬퍼",
+          "channel": "이루징💕",
+          "subs": 31500,
+          "views": 109974,
+          "median": 53119,
+          "n": 48,
+          "multiple": 2.1,
+          "hours": 41,
+          "formulas": [],
+          "query": "다이어트 음식",
+          "url": "https://youtube.com/shorts/uu5qYb02TW0"
+        }
+      ],
+      "leaders": [
+        {
+          "id": "1t6VwkUG_lg",
+          "title": "하정우가 먹방 찍을 때마다 소품팀에 초비상 걸린 이유",
+          "channel": "종이인형",
+          "subs": 9600,
+          "views": 41370,
+          "median": 32098,
+          "n": 44,
+          "multiple": 1.3,
+          "hours": 55,
+          "formulas": [
+            "몰랐던 사실"
+          ],
+          "query": "먹방 쇼츠",
+          "url": "https://youtube.com/shorts/1t6VwkUG_lg"
+        }
+      ],
+      "stats": {
+        "searched": 208,
+        "shorts": 202,
+        "channels": 120,
+        "thin": 5
+      }
     }
   }
 }
