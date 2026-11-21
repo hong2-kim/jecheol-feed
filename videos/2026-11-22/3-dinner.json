@@ -1,0 +1,406 @@
+{
+ "format": "voice",
+ "layout": "rec",
+ "kind": "저녁",
+ "subject": "일요일 저녁 (갈치조림·장어구이·파전·바비큐브리스킷)",
+ "title": "일요일 저녁 내가 골라 줄게, 갈치조림·장어구이·파전·바비큐 브리스킷",
+ "summary": "일요일 저녁 메뉴로 갈치조림·장어구이·파전·바비큐 브리스킷 넷을 추천해요.",
+ "headline": "일요일 저녁\n[[내가 골라 줄게]]",
+ "small": "일요일 저녁, 오늘의 넷",
+ "intro": 7,
+ "length": [
+  20,
+  30
+ ],
+ "narrator": "achird",
+ "voice_pick": {
+  "mode": "solo",
+  "voices": [
+   "achird"
+  ],
+  "why": "일요일 저녁 메뉴를 친구에게 권하는 친근한 추천이라 Achird 솔로(어제 Puck 과 다르게)"
+ },
+ "thumb": {
+  "head": "일요일 저녁\n[[내가 골라 줄게]]",
+  "sub": "주말 마무리 [[든든한 넷]]",
+  "photo": {
+   "url": "https://tong.visitkorea.or.kr/cms2/website/98/2814598.jpg",
+   "shows": "검은 돌솥에 갈치 토막과 붉은 고추·양념을 졸인 제주 갈치조림",
+   "match": "정확",
+   "credit": "ⓒ한국관광공사 포토코리아-김지호",
+   "rights": "한국관광공사 공공누리 1유형"
+  }
+ },
+ "yt_title": "일요일 저녁 메뉴 내가 골라 줄게! 갈치조림·장어구이·파전·바비큐 브리스킷 중에 골라 보세요",
+ "yt_keyword": "일요일 저녁 메뉴",
+ "yt_related": [
+  "저녁 메뉴 추천",
+  "오늘 뭐 먹지",
+  "갈치조림",
+  "장어구이",
+  "바비큐 브리스킷"
+ ],
+ "yt_tags": [
+  "일요일 저녁 메뉴",
+  "저녁 메뉴 추천",
+  "오늘 뭐 먹지",
+  "갈치조림",
+  "장어구이",
+  "파전",
+  "바비큐 브리스킷"
+ ],
+ "yt_hashtags": [
+  "일요일저녁메뉴",
+  "오늘뭐먹지",
+  "저녁메뉴추천"
+ ],
+ "yt_lead": "일요일 저녁 메뉴 고민될 때, 갈치조림·장어구이·파전·바비큐 브리스킷 넷 중에 하나만 골라요.",
+ "caption": "일요일 저녁, 내가 골라 줄게!\n\n돌솥에 자작하게 졸인 갈치조림\n노릇하게 구운 장어구이에 쌈 한 장\n넓게 부친 파전 한 장\n겉은 까맣게 훈연한 바비큐 브리스킷\n\n넷 중에 오늘은 뭐가 끌려요? 댓글로 알려 주세요.",
+ "tags": [
+  "일요일저녁메뉴",
+  "저녁메뉴추천",
+  "오늘뭐먹지",
+  "갈치조림"
+ ],
+ "sources": [],
+ "credits": [
+  "ⓒ한국관광공사 포토코리아-김지호, 스튜디오 4cats, IR 스튜디오",
+  "사진: Luis Santoyo / Unsplash"
+ ],
+ "dates": {
+  "checked": "2026-11-22"
+ },
+ "menu_pick": {
+  "again": {
+   "갈치조림": "제철 생선, 추운 날 따끈한 조림이 어울림(14일 전 생선구이정식과 다른 조림 메뉴)"
+  },
+  "menus": [
+   "갈치조림",
+   "장어구이",
+   "파전",
+   "바비큐브리스킷"
+  ],
+  "from": "dinner_pick(후보 18개 확인, 추운 날씨 기준. 해물탕은 어제 해물전골과 같은 계열이라, 감자탕은 곰탕 계열이라 빼고 갈래 분산)",
+  "why": {
+   "갈치조림": "조림 갈래, 제철 생선·추운 날 따끈한 한 냄비",
+   "장어구이": "구이 갈래, 오랜만에 나오는 든든한 보양 메뉴",
+   "파전": "전 갈래, 누구나 아는 익숙한 메뉴",
+   "바비큐브리스킷": "해외 고기 갈래, 아직 안 나온 새로운 메뉴 1개"
+  }
+ },
+ "lines": [
+  {
+   "say": "일요일 저녁, 내가 골라 줄게!",
+   "nosub": true,
+   "show": {
+    "thumb": true
+   }
+  },
+  {
+   "say": "주말 끝자락에 어울릴 넷이에요.",
+   "show": {
+    "dir": "2x2",
+    "own": true,
+    "grid": [
+     {
+      "photo": {
+       "url": "https://tong.visitkorea.or.kr/cms2/website/98/2814598.jpg",
+       "shows": "검은 돌솥에 갈치 토막과 붉은 고추·양념을 졸인 제주 갈치조림",
+       "match": "정확",
+       "credit": "ⓒ한국관광공사 포토코리아-김지호",
+       "rights": "한국관광공사 공공누리 1유형"
+      }
+     },
+     {
+      "photo": {
+       "url": "https://tong.visitkorea.or.kr/cms2/website/09/2822909.jpg",
+       "shows": "불판 위에 올린 양념 장어구이와 쌈채소·반찬이 놓인 장어구이 한 상",
+       "match": "정확",
+       "credit": "ⓒ한국관광공사 포토코리아-스튜디오 4cats",
+       "rights": "한국관광공사 공공누리 1유형"
+      }
+     },
+     {
+      "photo": {
+       "url": "https://tong.visitkorea.or.kr/cms2/website/92/2538892.jpg",
+       "shows": "놋쟁반에 담긴 둥글고 넓은 동래파전 한 장과 양념장",
+       "match": "정확",
+       "credit": "ⓒ한국관광공사 포토코리아-IR 스튜디오",
+       "rights": "한국관광공사 공공누리 1유형"
+      }
+     },
+     {
+      "photo": {
+       "url": "https://images.unsplash.com/photo-1623174025518-b49000fb653d?w=1600&q=85&fm=jpg",
+       "shows": "나무 도마 위에 겉이 까맣게 훈연된 바비큐 브리스킷을 얇게 썰어 놓은 모습",
+       "match": "정확",
+       "credit": "사진: Luis Santoyo / Unsplash",
+       "rights": "Unsplash 라이선스(무료)",
+       "page": "https://unsplash.com/photos/IePWXTF3-0Y"
+      }
+     }
+    ],
+    "fade": 0.45
+   }
+  },
+  {
+   "say": "돌솥에 자작하게 졸인 갈치조림, 밥 한 공기 뚝딱이죠!",
+   "subs": [
+    "돌솥에 자작하게 졸인 갈치조림,",
+    "밥 한 공기 뚝딱이죠!"
+   ],
+   "show": {
+    "dir": "2x2",
+    "own": true,
+    "grid": [
+     {
+      "photo": {
+       "url": "https://tong.visitkorea.or.kr/cms2/website/98/2814598.jpg",
+       "shows": "검은 돌솥에 갈치 토막과 붉은 고추·양념을 졸인 제주 갈치조림",
+       "match": "정확",
+       "credit": "ⓒ한국관광공사 포토코리아-김지호",
+       "rights": "한국관광공사 공공누리 1유형"
+      }
+     },
+     {
+      "photo": {
+       "url": "https://tong.visitkorea.or.kr/cms2/website/09/2822909.jpg",
+       "shows": "불판 위에 올린 양념 장어구이와 쌈채소·반찬이 놓인 장어구이 한 상",
+       "match": "정확",
+       "credit": "ⓒ한국관광공사 포토코리아-스튜디오 4cats",
+       "rights": "한국관광공사 공공누리 1유형"
+      }
+     },
+     {
+      "photo": {
+       "url": "https://tong.visitkorea.or.kr/cms2/website/92/2538892.jpg",
+       "shows": "놋쟁반에 담긴 둥글고 넓은 동래파전 한 장과 양념장",
+       "match": "정확",
+       "credit": "ⓒ한국관광공사 포토코리아-IR 스튜디오",
+       "rights": "한국관광공사 공공누리 1유형"
+      }
+     },
+     {
+      "photo": {
+       "url": "https://images.unsplash.com/photo-1623174025518-b49000fb653d?w=1600&q=85&fm=jpg",
+       "shows": "나무 도마 위에 겉이 까맣게 훈연된 바비큐 브리스킷을 얇게 썰어 놓은 모습",
+       "match": "정확",
+       "credit": "사진: Luis Santoyo / Unsplash",
+       "rights": "Unsplash 라이선스(무료)",
+       "page": "https://unsplash.com/photos/IePWXTF3-0Y"
+      }
+     }
+    ],
+    "hl": 0
+   }
+  },
+  {
+   "say": "숯불 향 솔솔 장어구이, 쌈 싸 볼까요?",
+   "subs": [
+    "숯불 향 솔솔 장어구이,",
+    "쌈 싸 볼까요?"
+   ],
+   "show": {
+    "dir": "2x2",
+    "own": true,
+    "grid": [
+     {
+      "photo": {
+       "url": "https://tong.visitkorea.or.kr/cms2/website/98/2814598.jpg",
+       "shows": "검은 돌솥에 갈치 토막과 붉은 고추·양념을 졸인 제주 갈치조림",
+       "match": "정확",
+       "credit": "ⓒ한국관광공사 포토코리아-김지호",
+       "rights": "한국관광공사 공공누리 1유형"
+      }
+     },
+     {
+      "photo": {
+       "url": "https://tong.visitkorea.or.kr/cms2/website/09/2822909.jpg",
+       "shows": "불판 위에 올린 양념 장어구이와 쌈채소·반찬이 놓인 장어구이 한 상",
+       "match": "정확",
+       "credit": "ⓒ한국관광공사 포토코리아-스튜디오 4cats",
+       "rights": "한국관광공사 공공누리 1유형"
+      }
+     },
+     {
+      "photo": {
+       "url": "https://tong.visitkorea.or.kr/cms2/website/92/2538892.jpg",
+       "shows": "놋쟁반에 담긴 둥글고 넓은 동래파전 한 장과 양념장",
+       "match": "정확",
+       "credit": "ⓒ한국관광공사 포토코리아-IR 스튜디오",
+       "rights": "한국관광공사 공공누리 1유형"
+      }
+     },
+     {
+      "photo": {
+       "url": "https://images.unsplash.com/photo-1623174025518-b49000fb653d?w=1600&q=85&fm=jpg",
+       "shows": "나무 도마 위에 겉이 까맣게 훈연된 바비큐 브리스킷을 얇게 썰어 놓은 모습",
+       "match": "정확",
+       "credit": "사진: Luis Santoyo / Unsplash",
+       "rights": "Unsplash 라이선스(무료)",
+       "page": "https://unsplash.com/photos/IePWXTF3-0Y"
+      }
+     }
+    ],
+    "hl": 1
+   }
+  },
+  {
+   "say": "바삭하게 부쳐 낸 파전은 어때요? 가볍게 한 판이요.",
+   "subs": [
+    "바삭하게 부쳐 낸 파전은 어때요?",
+    "가볍게 한 판이요."
+   ],
+   "read": "바삭하게 부쳐 낸 파전은 어때요? 가볍게 한 판이요.",
+   "show": {
+    "dir": "2x2",
+    "own": true,
+    "grid": [
+     {
+      "photo": {
+       "url": "https://tong.visitkorea.or.kr/cms2/website/98/2814598.jpg",
+       "shows": "검은 돌솥에 갈치 토막과 붉은 고추·양념을 졸인 제주 갈치조림",
+       "match": "정확",
+       "credit": "ⓒ한국관광공사 포토코리아-김지호",
+       "rights": "한국관광공사 공공누리 1유형"
+      }
+     },
+     {
+      "photo": {
+       "url": "https://tong.visitkorea.or.kr/cms2/website/09/2822909.jpg",
+       "shows": "불판 위에 올린 양념 장어구이와 쌈채소·반찬이 놓인 장어구이 한 상",
+       "match": "정확",
+       "credit": "ⓒ한국관광공사 포토코리아-스튜디오 4cats",
+       "rights": "한국관광공사 공공누리 1유형"
+      }
+     },
+     {
+      "photo": {
+       "url": "https://tong.visitkorea.or.kr/cms2/website/92/2538892.jpg",
+       "shows": "놋쟁반에 담긴 둥글고 넓은 동래파전 한 장과 양념장",
+       "match": "정확",
+       "credit": "ⓒ한국관광공사 포토코리아-IR 스튜디오",
+       "rights": "한국관광공사 공공누리 1유형"
+      }
+     },
+     {
+      "photo": {
+       "url": "https://images.unsplash.com/photo-1623174025518-b49000fb653d?w=1600&q=85&fm=jpg",
+       "shows": "나무 도마 위에 겉이 까맣게 훈연된 바비큐 브리스킷을 얇게 썰어 놓은 모습",
+       "match": "정확",
+       "credit": "사진: Luis Santoyo / Unsplash",
+       "rights": "Unsplash 라이선스(무료)",
+       "page": "https://unsplash.com/photos/IePWXTF3-0Y"
+      }
+     }
+    ],
+    "hl": 2
+   }
+  },
+  {
+   "say": "겉은 까맣게 훈연한 소고기, 바비큐 브리스킷!",
+   "subs": [
+    "겉은 까맣게 훈연한 소고기,",
+    "바비큐 브리스킷!"
+   ],
+   "read": "겉은 까맣게 훈연한 소고기. 바비큐 브리스킷!",
+   "show": {
+    "dir": "2x2",
+    "own": true,
+    "grid": [
+     {
+      "photo": {
+       "url": "https://tong.visitkorea.or.kr/cms2/website/98/2814598.jpg",
+       "shows": "검은 돌솥에 갈치 토막과 붉은 고추·양념을 졸인 제주 갈치조림",
+       "match": "정확",
+       "credit": "ⓒ한국관광공사 포토코리아-김지호",
+       "rights": "한국관광공사 공공누리 1유형"
+      }
+     },
+     {
+      "photo": {
+       "url": "https://tong.visitkorea.or.kr/cms2/website/09/2822909.jpg",
+       "shows": "불판 위에 올린 양념 장어구이와 쌈채소·반찬이 놓인 장어구이 한 상",
+       "match": "정확",
+       "credit": "ⓒ한국관광공사 포토코리아-스튜디오 4cats",
+       "rights": "한국관광공사 공공누리 1유형"
+      }
+     },
+     {
+      "photo": {
+       "url": "https://tong.visitkorea.or.kr/cms2/website/92/2538892.jpg",
+       "shows": "놋쟁반에 담긴 둥글고 넓은 동래파전 한 장과 양념장",
+       "match": "정확",
+       "credit": "ⓒ한국관광공사 포토코리아-IR 스튜디오",
+       "rights": "한국관광공사 공공누리 1유형"
+      }
+     },
+     {
+      "photo": {
+       "url": "https://images.unsplash.com/photo-1623174025518-b49000fb653d?w=1600&q=85&fm=jpg",
+       "shows": "나무 도마 위에 겉이 까맣게 훈연된 바비큐 브리스킷을 얇게 썰어 놓은 모습",
+       "match": "정확",
+       "credit": "사진: Luis Santoyo / Unsplash",
+       "rights": "Unsplash 라이선스(무료)",
+       "page": "https://unsplash.com/photos/IePWXTF3-0Y"
+      }
+     }
+    ],
+    "hl": 3
+   }
+  },
+  {
+   "say": "넷 중에 뭐가 끌려요? 댓글로 골라 줘요.",
+   "subs": [
+    "넷 중에 뭐가 끌려요?",
+    "댓글로 골라 줘요."
+   ],
+   "show": {
+    "dir": "2x2",
+    "own": true,
+    "grid": [
+     {
+      "photo": {
+       "url": "https://tong.visitkorea.or.kr/cms2/website/98/2814598.jpg",
+       "shows": "검은 돌솥에 갈치 토막과 붉은 고추·양념을 졸인 제주 갈치조림",
+       "match": "정확",
+       "credit": "ⓒ한국관광공사 포토코리아-김지호",
+       "rights": "한국관광공사 공공누리 1유형"
+      }
+     },
+     {
+      "photo": {
+       "url": "https://tong.visitkorea.or.kr/cms2/website/09/2822909.jpg",
+       "shows": "불판 위에 올린 양념 장어구이와 쌈채소·반찬이 놓인 장어구이 한 상",
+       "match": "정확",
+       "credit": "ⓒ한국관광공사 포토코리아-스튜디오 4cats",
+       "rights": "한국관광공사 공공누리 1유형"
+      }
+     },
+     {
+      "photo": {
+       "url": "https://tong.visitkorea.or.kr/cms2/website/92/2538892.jpg",
+       "shows": "놋쟁반에 담긴 둥글고 넓은 동래파전 한 장과 양념장",
+       "match": "정확",
+       "credit": "ⓒ한국관광공사 포토코리아-IR 스튜디오",
+       "rights": "한국관광공사 공공누리 1유형"
+      }
+     },
+     {
+      "photo": {
+       "url": "https://images.unsplash.com/photo-1623174025518-b49000fb653d?w=1600&q=85&fm=jpg",
+       "shows": "나무 도마 위에 겉이 까맣게 훈연된 바비큐 브리스킷을 얇게 썰어 놓은 모습",
+       "match": "정확",
+       "credit": "사진: Luis Santoyo / Unsplash",
+       "rights": "Unsplash 라이선스(무료)",
+       "page": "https://unsplash.com/photos/IePWXTF3-0Y"
+      }
+     }
+    ]
+   }
+  }
+ ],
+ "review": {
+  "photo_sheet": "5fa2d6348b48"
+ }
+}

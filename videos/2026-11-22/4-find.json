@@ -1,0 +1,261 @@
+{
+ "kind": "발견",
+ "subject": "도루묵 · 묵이 아니라 생선인 까닭",
+ "title": "도루묵은 묵이 아니라 생선이에요, 겨울 동해안 도루묵 축제는 11월 27일부터",
+ "plan_hook": {
+  "pick": "호기심",
+  "why": "'묵'인 줄 아는 사람이 많은 이름이라 '묵이 아니라 생선'이 첫 화면 호기심이 되고, 고성 오호항 도루묵 축제(11월 27~29일)가 지금 이야기해야 할 까닭이 된다",
+  "others": [
+   "먹거리",
+   "가족 체험"
+  ]
+ },
+ "summary": "도루묵은 묵이 아니라 겨울에 동해안에서 많이 잡히는 생선이에요. 선조 임금과 얽힌 이름 이야기가 전해지고, 강원 고성 오호항에서 11월 27~29일 도루묵 축제가 열려요.",
+ "thumb": {
+  "head": "도루묵은\n[[묵 아니야?]]",
+  "sub": "[[11월 27일]] 고성에서",
+  "photo": {
+   "url": "https://inaturalist-open-data.s3.amazonaws.com/photos/54663467/original.jpeg",
+   "shows": "검은 모래 위에 놓인 도루묵 한 마리(아이내추럴리스트에 도루묵으로 올라온 사진)",
+   "match": "정확",
+   "about": "도루묵",
+   "rights": "iNaturalist CC BY 4.0",
+   "credit": "Dmitry Kulakov (CC BY 4.0) · www.inaturalist.org/photos/54663467",
+   "page": "https://www.inaturalist.org/photos/54663467",
+   "license": "CC BY 4.0",
+   "terms": {
+    "url": "http://creativecommons.org/licenses/by/4.0/",
+    "checked": "2026-11-22",
+    "scope": "CC BY 4.0, 상업적 이용·수정 가능",
+    "ok": true
+   },
+   "fit": "cover"
+  }
+ },
+ "scenes": [
+  {
+   "type": "cover",
+   "photo": {
+    "url": "https://inaturalist-open-data.s3.amazonaws.com/photos/54663467/original.jpeg",
+    "shows": "검은 모래 위에 놓인 도루묵 한 마리(아이내추럴리스트에 도루묵으로 올라온 사진)",
+    "match": "정확",
+    "about": "도루묵",
+    "rights": "iNaturalist CC BY 4.0",
+    "credit": "Dmitry Kulakov (CC BY 4.0) · www.inaturalist.org/photos/54663467",
+    "page": "https://www.inaturalist.org/photos/54663467",
+    "license": "CC BY 4.0",
+    "terms": {
+     "url": "http://creativecommons.org/licenses/by/4.0/",
+     "checked": "2026-11-22",
+     "scope": "CC BY 4.0, 상업적 이용·수정 가능",
+     "ok": true
+    }
+   },
+   "dur": 2.6,
+   "kicker": "오늘의 한 가지 · 도루묵",
+   "title": "도루묵, 이름은\n[[묵]]인데\n생선이라고?",
+   "size": 104
+  },
+  {
+   "type": "card",
+   "photo": {
+    "url": "https://live.staticflickr.com/4683/38912622412_f68e665bb3_b.jpg",
+    "shows": "석쇠 그물 위에 나란히 놓인 도루묵 네 마리",
+    "match": "정확",
+    "about": "도루묵",
+    "rights": "오픈버스(플리커) CC BY 2.0",
+    "credit": "압박의 달인 (CC BY 2.0) · www.flickr.com/photos/103629201@N02/38912622412",
+    "page": "https://www.flickr.com/photos/103629201@N02/38912622412",
+    "license": "CC BY 2.0",
+    "terms": {
+     "url": "https://creativecommons.org/licenses/by/2.0/",
+     "checked": "2026-11-22",
+     "scope": "CC BY 2.0, 상업적 이용·수정 가능",
+     "ok": true
+    }
+   },
+   "dur": 2.8,
+   "chip": "이름 이야기",
+   "headline": "[[도로 묵]]이\n도루묵이 됐대요",
+   "line": "선조 임금 이야기로 전해져요"
+  },
+  {
+   "type": "card",
+   "photo": {
+    "url": "https://live.staticflickr.com/4633/38948948641_82bab3c44f_b.jpg",
+    "shows": "그물 위에 세로로 나란히 놓인 도루묵 네 마리",
+    "match": "정확",
+    "about": "도루묵",
+    "rights": "오픈버스(플리커) CC BY 2.0",
+    "credit": "압박의 달인 (CC BY 2.0) · www.flickr.com/photos/103629201@N02/38948948641",
+    "page": "https://www.flickr.com/photos/103629201@N02/38948948641",
+    "license": "CC BY 2.0",
+    "terms": {
+     "url": "https://creativecommons.org/licenses/by/2.0/",
+     "checked": "2026-11-22",
+     "scope": "CC BY 2.0, 상업적 이용·수정 가능",
+     "ok": true
+    }
+   },
+   "dur": 2.8,
+   "chip": "왜 지금",
+   "headline": "찬 바람 불면\n[[알을 품어요]]",
+   "line": "찬 바다에서 늦가을~겨울 많이 잡혀요"
+  },
+  {
+   "type": "card",
+   "photo": {
+    "url": "https://live.staticflickr.com/4589/38912618162_600bc5aebf_b.jpg",
+    "shows": "프라이팬에서 김을 내며 익는 도루묵",
+    "match": "정확",
+    "about": "도루묵",
+    "rights": "오픈버스(플리커) CC BY 2.0",
+    "credit": "압박의 달인 (CC BY 2.0) · www.flickr.com/photos/103629201@N02/38912618162",
+    "page": "https://www.flickr.com/photos/103629201@N02/38912618162",
+    "license": "CC BY 2.0",
+    "terms": {
+     "url": "https://creativecommons.org/licenses/by/2.0/",
+     "checked": "2026-11-22",
+     "scope": "CC BY 2.0, 상업적 이용·수정 가능",
+     "ok": true
+    }
+   },
+   "dur": 2.8,
+   "chip": "먹는 법",
+   "headline": "구이·찌개\n[[튀김·조림]]까지",
+   "line": "소금 뿌려 석쇠에 굽거나 알과 끓여요"
+  },
+  {
+   "type": "card",
+   "photo": {
+    "url": "https://live.staticflickr.com/4601/38948945781_e4683150aa_b.jpg",
+    "shows": "숯불 위에 올린 그물에서 구워지는 도루묵 네 마리(일반 사진, 고성 행사 현장 아님)",
+    "match": "같은 종류",
+    "about": "도루묵",
+    "rights": "오픈버스(플리커) CC BY 2.0",
+    "credit": "압박의 달인 (CC BY 2.0) · www.flickr.com/photos/103629201@N02/38948945781",
+    "page": "https://www.flickr.com/photos/103629201@N02/38948945781",
+    "license": "CC BY 2.0",
+    "terms": {
+     "url": "https://creativecommons.org/licenses/by/2.0/",
+     "checked": "2026-11-22",
+     "scope": "CC BY 2.0, 상업적 이용·수정 가능",
+     "ok": true
+    },
+    "general": true
+   },
+   "dur": 2.8,
+   "chip": "고성 · 11월 27~29일",
+   "headline": "오호항 도루묵\n[[27일 개막]]",
+   "line": "숯불에 직접 구워 먹는 체험이 있어요",
+   "general": true
+  },
+  {
+   "type": "cover",
+   "photo": {
+    "url": "https://live.staticflickr.com/4635/27171938529_9febd8828e_b.jpg",
+    "shows": "투명 봉지에 담긴 손질 전 도루묵 여러 마리",
+    "match": "정확",
+    "about": "도루묵",
+    "rights": "오픈버스(플리커) CC BY 2.0",
+    "credit": "압박의 달인 (CC BY 2.0) · www.flickr.com/photos/103629201@N02/27171938529",
+    "page": "https://www.flickr.com/photos/103629201@N02/27171938529",
+    "license": "CC BY 2.0",
+    "terms": {
+     "url": "https://creativecommons.org/licenses/by/2.0/",
+     "checked": "2026-11-22",
+     "scope": "CC BY 2.0, 상업적 이용·수정 가능",
+     "ok": true
+    }
+   },
+   "dur": 2.6,
+   "kicker": "겨울 동해안 별미",
+   "title": "여러분은\n[[구이? 찌개?]]",
+   "line": "도루묵, 어느 쪽이 끌려요?",
+   "size": 104
+  }
+ ],
+ "caption": "도루묵, 묵의 한 종류인 줄 알았다면 손? 사실은 겨울 동해안에서 많이 잡히는 생선이에요. 겨울 도루묵 얘기예요\n\n선조 임금이 피난길에 먹고 '은어'라 부르게 했다가 환도 뒤 맛이 달라 '도로 묵'이라 했고, 그 말이 도루묵이 됐다는 이야기가 전해져요. 정확한 유래는 전해 오는 이야기라 설이 여럿이에요. 도루묵은 강원 고성·속초·동해·삼척 일대가 대표 산지로 알려져 있고, 겨울에 알을 품기 시작해 알도루묵을 별미로 쳐요. 소금 뿌려 석쇠에 굽거나 찌개, 튀김, 조림으로 먹어요.\n\n강원 고성군은 11월 27~29일 죽왕면 오호항 일원에서 제5회 오호항 도루묵 축제를 열어요. 도루묵·양미리를 숯불에 직접 구워 먹는 체험과 알도루묵 찌개 같은 겨울 먹거리가 마련된다고 해요. 영상 속 사진은 일반 도루묵 사진이고 고성 행사 현장 사진이 아니에요. 협찬이나 광고가 아니에요.\n\n도루묵, 구이파예요 찌개파예요?\n\n출처: 뉴스티앤티(11월 21일), 이투데이(2025년 1월 27일)",
+ "tags": [
+  "도루묵",
+  "겨울제철음식",
+  "도루묵축제",
+  "동해안"
+ ],
+ "sources": [
+  "https://www.newstnt.com/news/articleView.html?idxno=729664",
+  "https://www.etoday.co.kr/news/view/2440818"
+ ],
+ "credits": [
+  "Dmitry Kulakov (CC BY 4.0) · www.inaturalist.org/photos/54663467",
+  "압박의 달인 (CC BY 2.0) · www.flickr.com/photos/103629201@N02/38912622412",
+  "압박의 달인 (CC BY 2.0) · www.flickr.com/photos/103629201@N02/38948945781",
+  "압박의 달인 (CC BY 2.0) · www.flickr.com/photos/103629201@N02/38912618162",
+  "압박의 달인 (CC BY 2.0) · www.flickr.com/photos/103629201@N02/38948948641",
+  "압박의 달인 (CC BY 2.0) · www.flickr.com/photos/103629201@N02/27171938529"
+ ],
+ "yt_title": "도루묵은 묵이 아니라 생선? 이름 유래와 겨울 도루묵 축제 11월 27일 고성",
+ "yt_keyword": "도루묵",
+ "yt_related": [
+  "도루묵 유래",
+  "도루묵 축제",
+  "고성 오호항",
+  "알도루묵",
+  "겨울 제철 생선"
+ ],
+ "yt_tags": [
+  "도루묵",
+  "도루묵 유래",
+  "알도루묵",
+  "고성 도루묵 축제",
+  "오호항 도루묵 축제",
+  "겨울 제철 생선"
+ ],
+ "yt_hashtags": [
+  "도루묵",
+  "겨울제철음식",
+  "도루묵축제"
+ ],
+ "yt_lead": "도루묵은 묵이 아니라 겨울 동해안 생선이에요. 고성 오호항 도루묵 축제는 11월 27~29일에 열려요.",
+ "dates": {
+  "checked": "2026-11-22",
+  "sources": [
+   {
+    "url": "https://www.newstnt.com/news/articleView.html?idxno=729664",
+    "published": "2026-11-21",
+    "modified": "2026-11-21"
+   },
+   {
+    "url": "https://www.etoday.co.kr/news/view/2440818",
+    "published": "2025-01-27",
+    "modified": "2025-01-27"
+   }
+  ],
+  "event": {
+   "name": "2026 제5회 오호항 도루묵 축제",
+   "start": "2026-11-27",
+   "end": "2026-11-29"
+  }
+ },
+ "title_pick": {
+  "candidates": [
+   "도루묵은 묵이 아니라 생선? 이름 유래와 겨울 도루묵 축제 11월 27일 고성",
+   "말짱 도루묵 그 도루묵, 겨울에 알 품는 생선이래요",
+   "고성 도루묵 축제 11월 27~29일, 숯불에 직접 구워 먹는 체험"
+  ],
+  "pick": "도루묵은 묵이 아니라 생선? 이름 유래와 겨울 도루묵 축제 11월 27일 고성",
+  "like": "2026-11-18 매생이 발견형(겨울 해산물 의문형 제목)",
+  "sure": "낮음"
+ },
+ "photo_candidates": [
+  {
+   "scene": "장면 5 · 고성 오호항 도루묵 축제",
+   "from": "고성군 누리집·보도자료",
+   "page": "https://www.newstnt.com/news/articleView.html?idxno=729664",
+   "why": "축제가 11월 27일 개막 전이라 쓸 수 있는 공식 현장 사진이 아직 없어 숯불에 굽는 일반 도루묵 사진으로 대신함(행사 현장 아님)"
+  }
+ ],
+ "review": {
+  "photo_sheet": "653515b4893f"
+ }
+}
