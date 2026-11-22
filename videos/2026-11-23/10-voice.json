@@ -1,0 +1,305 @@
+{
+ "format": "voice",
+ "kind": "해설",
+ "subject": "삶은 달걀 vs 달걀프라이 · 열량 61kcal 차이",
+ "inspired": {
+  "from": "yt_viral 2026-11-22",
+  "id": "gdLGzdXnbiM",
+  "food": "계란(시오콘부 간장계란밥 쇼츠에서 음식만, 우리 각도 농진청 성분표 100g 비교)"
+ },
+ "plan_hook": {
+  "pick": "호기심",
+  "why": "간장계란밥에 올리는 달걀을 삶을지 부칠지, 열량 61kcal 차이라는 숫자 하나가 첫 화면에 걸리고 끝에 까닭(기름·수분)을 줌. 계란은 10-18 난각번호 이후 36일이라 14일 규칙 밖이고 각도(조리법별 성분)가 다름",
+  "others": [
+   "먹거리",
+   "가격"
+  ]
+ },
+ "script_check": {
+  "score": 8,
+  "fix": "숫자는 3번 문장 뒤(4번)부터, 2번 예고를 8번 문장에서 공개, 수치는 100g 기준·보도 날짜 명시, 효능 말 없이 숫자만"
+ },
+ "title_pick": {
+  "candidates": [
+   "삶은 달걀 vs 달걀프라이, 열량이 61킬로칼로리 다른 까닭",
+   "간장계란밥에 올릴 달걀, 삶은 것 vs 프라이 100g 열량 비교",
+   "달걀프라이가 삶은 달걀보다 열량이 더 나가는 이유"
+  ],
+  "pick": "삶은 달걀 vs 달걀프라이, 열량이 61킬로칼로리 다른 까닭",
+  "like": "2026-11-22 군고구마 vs 찐고구마(비교 꼴), 2026-10-18 계란 난각번호(해설 3.2배)",
+  "sure": "낮음"
+ },
+ "title": "삶은 달걀과 달걀프라이, 100g 열량이 61kcal 달라요",
+ "yt_title": "삶은 달걀 vs 달걀프라이, 열량이 61킬로칼로리 다른 까닭",
+ "headline": "삶은 달걀 vs\n[[달걀프라이]]",
+ "thumb": {
+  "sub": "열량 [[61]]킬로칼로리 차이"
+ },
+ "narrator": "achird",
+ "voice_pick": {
+  "mode": "solo",
+  "voices": [
+   "achird"
+  ],
+  "why": "간장계란밥을 친구에게 권하듯 친근하게 숫자를 풀어 주는 일반 음식 이야기라 Achird 솔로(어제 Charon 과 다르게)"
+ },
+ "lines": [
+  {
+   "say": "달걀프라이랑 삶은 달걀, 100그램 숫자가 [[이렇게 달라요]]?",
+   "photo": {
+    "url": "https://images.unsplash.com/photo-1612487439139-c2d7bac13577?w=2000&q=85&fm=jpg",
+    "shows": "검은 프라이팬에서 부쳐지는 달걀프라이 한 개",
+    "match": "정확",
+    "about": "달걀프라이",
+    "rights": "Unsplash 무료 라이선스",
+    "page": "https://unsplash.com/photos/sunny-side-up-egg-on-black-frying-pan-n1jhtaEHIhg",
+    "credit": "사진: Nathan Dumlao / Unsplash",
+    "terms": {
+     "url": "https://unsplash.com/license",
+     "checked": "2026-11-23",
+     "scope": "Unsplash 무료 라이선스, 상업적 이용·수정 가능",
+     "ok": true
+    }
+   },
+   "about": "달걀프라이"
+  },
+  {
+   "say": "끝까지 보면, 프라이가 [[더 나가는 까닭]]까지 알려 드려요.",
+   "chip": "끝까지 보면 열량이 벌어지는 까닭",
+   "about": "달걀프라이"
+  },
+  {
+   "say": "간장계란밥에 올리기 전에, 껍질 뺀 [[100그램]]씩 견줘 볼게요.",
+   "photo": {
+    "url": "https://images.unsplash.com/photo-1774428755031-0991c8901f08?w=2000&q=85&fm=jpg",
+    "shows": "밥 위에 달걀프라이를 올린 덮밥 한 그릇(간장계란밥 아님, 달걀 올린 밥 일반 사진)",
+    "match": "같은 종류",
+    "about": "달걀밥 일반",
+    "general": true,
+    "rights": "Unsplash 무료 라이선스",
+    "page": "https://unsplash.com/photos/IlJhW2ScTqw",
+    "credit": "사진: You Le / Unsplash",
+    "terms": {
+     "url": "https://unsplash.com/license",
+     "checked": "2026-11-23",
+     "scope": "Unsplash 무료 라이선스, 상업적 이용·수정 가능",
+     "ok": true
+    }
+   },
+   "chip": "농진청 식품성분표 100g 기준",
+   "about": "달걀밥 일반",
+   "general": true
+  },
+  {
+   "say": "삶은 달걀은 [[145킬로칼로리]]예요.",
+   "chip": "삶은 달걀 145kcal",
+   "about": "삶은 달걀",
+   "photo": {
+    "url": "https://images.unsplash.com/photo-1577111064880-4601019411fe?w=2000&q=85&fm=jpg",
+    "shows": "반으로 가른 완숙 삶은 달걀 네 개",
+    "match": "정확",
+    "about": "삶은 달걀",
+    "rights": "Unsplash 무료 라이선스",
+    "page": "https://unsplash.com/photos/pVO700FnVH8",
+    "credit": "사진: Faris Mohammed / Unsplash",
+    "terms": {
+     "url": "https://unsplash.com/license",
+     "checked": "2026-11-23",
+     "scope": "Unsplash 무료 라이선스, 상업적 이용·수정 가능",
+     "ok": true
+    }
+   }
+  },
+  {
+   "say": "달걀프라이는 [[206킬로칼로리]], 삶은 쪽보다 [[61킬로칼로리]]가 더 많아요.",
+   "card": {
+    "type": "bars",
+    "title": "달걀 100g당 [[열량]]",
+    "sub": "농촌진흥청 국가표준식품성분표 기준",
+    "rows": [
+     {
+      "name": "삶은 달걀",
+      "value": 145,
+      "label": "145kcal"
+     },
+     {
+      "name": "달걀프라이",
+      "value": 206,
+      "label": "206kcal · [[+61]]",
+      "hl": true
+     }
+    ],
+    "scale": 0.55,
+    "src": "코메디닷컴 2023년 12월 11일 보도(농진청 성분표 기준)"
+   },
+   "about": "달걀 일반",
+   "general": true
+  },
+  {
+   "say": "지방도 삶은 달걀은 [[8.68그램]], 프라이는 [[13.5그램]]이에요.",
+   "read": "지방도 삶은 달걀은 8점 68그램, 프라이는 13점 5그램이에요.",
+   "photo": {
+    "url": "https://images.unsplash.com/photo-1760192716247-382af2aa9b35?w=2000&q=85&fm=jpg",
+    "shows": "검은 팬에서 기름에 지글거리는 달걀프라이 두 개",
+    "match": "정확",
+    "about": "달걀프라이",
+    "rights": "Unsplash 무료 라이선스",
+    "page": "https://unsplash.com/photos/two-fried-eggs-sizzling-in-a-black-pan-erKGr4qNOH8",
+    "credit": "사진: hartono subagio / Unsplash",
+    "terms": {
+     "url": "https://unsplash.com/license",
+     "checked": "2026-11-23",
+     "scope": "Unsplash 무료 라이선스, 상업적 이용·수정 가능",
+     "ok": true
+    }
+   },
+   "chip": "지방 8.68g vs 13.5g",
+   "about": "달걀프라이"
+  },
+  {
+   "say": "수분은 반대로, 삶은 달걀이 [[75.6퍼센트]], 프라이가 [[66.6퍼센트]]예요.",
+   "read": "수분은 반대로, 삶은 달걀이 75점 6퍼센트, 프라이가 66점 6퍼센트예요.",
+   "photo": {
+    "url": "https://images.unsplash.com/photo-1680987398307-e1ae27a6ed67?w=2000&q=85&fm=jpg",
+    "shows": "쟁반 위에 반으로 가른 삶은 달걀(반숙 노른자)",
+    "match": "같은 종류",
+    "about": "삶은 달걀 일반",
+    "general": true,
+    "rights": "Unsplash 무료 라이선스",
+    "page": "https://unsplash.com/photos/3VwmIANzmNQ",
+    "credit": "사진: Alexander Belov / Unsplash",
+    "terms": {
+     "url": "https://unsplash.com/license",
+     "checked": "2026-11-23",
+     "scope": "Unsplash 무료 라이선스, 상업적 이용·수정 가능",
+     "ok": true
+    }
+   },
+   "chip": "수분 75.6% vs 66.6%",
+   "about": "삶은 달걀 일반",
+   "general": true
+  },
+  {
+   "say": "기름을 두르고 부치는 만큼, 숫자가 올라가는 거예요.",
+   "photo": {
+    "url": "https://images.unsplash.com/photo-1562918005-50afb98e5d32?w=2000&q=85&fm=jpg",
+    "shows": "토스트 위에 올린 달걀프라이 두 개",
+    "match": "정확",
+    "about": "달걀프라이",
+    "rights": "Unsplash 무료 라이선스",
+    "page": "https://unsplash.com/photos/two-fried-eggs-osPCHdpXKxk",
+    "credit": "사진: Laura Lauch / Unsplash",
+    "terms": {
+     "url": "https://unsplash.com/license",
+     "checked": "2026-11-23",
+     "scope": "Unsplash 무료 라이선스, 상업적 이용·수정 가능",
+     "ok": true
+    }
+   },
+   "about": "달걀프라이"
+  },
+  {
+   "say": "그러니 달걀밥에 올릴 때도, 어느 쪽이냐에 따라 숫자가 달라져요.",
+   "photo": {
+    "url": "https://images.unsplash.com/photo-1761064776495-357b1f05dcca?w=2000&q=85&fm=jpg",
+    "shows": "밥 위에 거품 낸 흰자와 노른자를 올린 달걀밥 한 그릇",
+    "match": "같은 종류",
+    "about": "달걀밥 일반",
+    "general": true,
+    "rights": "Unsplash 무료 라이선스",
+    "page": "https://unsplash.com/photos/rbQ76SnKJLk",
+    "credit": "사진: Nicholas Ng / Unsplash",
+    "terms": {
+     "url": "https://unsplash.com/license",
+     "checked": "2026-11-23",
+     "scope": "Unsplash 무료 라이선스, 상업적 이용·수정 가능",
+     "ok": true
+    }
+   },
+   "about": "달걀밥 일반",
+   "general": true
+  },
+  {
+   "say": "여러분은 간장계란밥에, 삶은 달걀? 프라이? [[댓글]]로 알려 주세요.",
+   "photo": {
+    "url": "https://images.unsplash.com/photo-1635439811833-777cd1135214?w=2000&q=85&fm=jpg",
+    "shows": "파란 무늬 접시에 올린 반으로 가른 삶은 달걀(반숙)",
+    "match": "같은 종류",
+    "about": "삶은 달걀",
+    "rights": "Unsplash 무료 라이선스",
+    "page": "https://unsplash.com/photos/kzzx_gCE75s",
+    "credit": "사진: Alex 張飛 / Unsplash",
+    "terms": {
+     "url": "https://unsplash.com/license",
+     "checked": "2026-11-23",
+     "scope": "Unsplash 무료 라이선스, 상업적 이용·수정 가능",
+     "ok": true
+    },
+    "general": true
+   },
+   "about": "삶은 달걀 일반",
+   "general": true
+  }
+ ],
+ "summary": "껍질 뺀 100g 기준 삶은 달걀은 145kcal·지방 8.68g·수분 75.6g, 달걀프라이는 206kcal·13.5g·66.6g이에요.",
+ "caption": "삶은 달걀이랑 달걀프라이, 열량이 얼마나 다를까요? 농촌진흥청 국가표준식품성분표 기준 100그램으로 견주면 삶은 달걀은 145kcal, 지방 8.68g, 수분 75.6g이고 달걀프라이는 206kcal, 지방 13.5g, 수분 66.6g이에요. 열량은 프라이가 61kcal 더 많아요. 기름을 두르고 부치는 만큼 열량과 지방이 올라가는 거예요.\n\n수치는 코메디닷컴(2023년 12월 11일)이 농진청 성분표를 인용해 보도한 값이고, 조리법과 달걀 크기에 따라 다를 수 있어요.\n\n여러분은 간장계란밥에 삶은 달걀? 프라이?\n\n출처: 코메디닷컴(2023년 12월 11일)",
+ "tags": [
+  "달걀프라이",
+  "삶은달걀",
+  "계란칼로리",
+  "간장계란밥"
+ ],
+ "sources": [
+  "https://v.daum.net/v/GZnVdFo5fx?f=p"
+ ],
+ "credits": [
+  "사진: Nathan Dumlao / Unsplash",
+  "사진: You Le / Unsplash",
+  "사진: Faris Mohammed / Unsplash",
+  "사진: hartono subagio / Unsplash",
+  "사진: Alexander Belov / Unsplash",
+  "사진: Laura Lauch / Unsplash",
+  "사진: Nicholas Ng / Unsplash",
+  "사진: Alex 張飛 / Unsplash"
+ ],
+ "yt_keyword": "삶은 달걀 vs 달걀프라이",
+ "yt_related": [
+  "달걀 칼로리",
+  "달걀프라이 칼로리",
+  "삶은 달걀 칼로리",
+  "간장계란밥",
+  "달걀 지방"
+ ],
+ "yt_tags": [
+  "삶은 달걀 vs 달걀프라이",
+  "달걀 칼로리",
+  "달걀프라이 칼로리",
+  "삶은 달걀 칼로리",
+  "간장계란밥",
+  "계란 영양"
+ ],
+ "yt_hashtags": [
+  "달걀프라이",
+  "삶은달걀",
+  "달걀칼로리"
+ ],
+ "yt_lead": "삶은 달걀과 달걀프라이를 100g로 견주면 열량은 145kcal 대 206kcal, 61kcal 차이예요.",
+ "dates": {
+  "checked": "2026-11-23",
+  "sources": [
+   {
+    "url": "https://v.daum.net/v/GZnVdFo5fx?f=p",
+    "published": "2023-12-11",
+    "modified": "2023-12-11"
+   }
+  ],
+  "stat_period": "국가표준식품성분표(기사 기준, 개정판 미표기)"
+ },
+ "unverified": [
+  "농진청 성분표 원본은 열지 못해 코메디닷컴 기사 수치를 인용함(2023년 보도)",
+  "단백질 수치는 출처마다 달라 쓰지 않음"
+ ],
+ "review": {
+  "photo_sheet": "9a372c82e970"
+ }
+}

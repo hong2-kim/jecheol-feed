@@ -1,0 +1,230 @@
+{
+ "kind": "발견",
+ "subject": "굴 · 어리굴젓과 굴 보쌈",
+ "title": "굴로 담근 어리굴젓 들어 봤어요? 서산 간월도 이야기와 겨울 굴 보쌈",
+ "plan_hook": {
+  "pick": "호기심",
+  "why": "원할머니 보쌈족발 '어리굴젓 보쌈'이 11월 23일 출시돼 '어리굴젓이 뭔데?'가 지금 궁금한 소재이고, 최근 14일 우리 영상은 굴 자체를 다루지 않았다(11-11 블로그만 굴 위생 검사)",
+  "others": [
+   "먹거리",
+   "가격"
+  ]
+ },
+ "summary": "어리굴젓은 굴을 절여 고춧가루로 버무리는 서산 간월도의 굴젓이에요. 굴은 10월부터 이듬해 5월까지 거두고, 원할머니 보쌈족발은 11월 23일 겨울 한정 '어리굴젓 보쌈'을 내놨어요.",
+ "thumb": {
+  "head": "굴로 담근\n[[어리굴젓]]",
+  "sub": "굴젓 [[이야기]]와 굴 보쌈",
+  "photo": {
+   "url": "https://images.unsplash.com/photo-1729269524124-1645db0b0ff5?w=1600&q=85&fm=jpg",
+   "shows": "어리굴젓의 재료인 굴을 얼음 위에 껍데기째 담고 레몬 조각을 곁들인 일반 굴 사진(어리굴젓·서산 간월도 사진 아님)",
+   "match": "같은 종류",
+   "about": "굴 일반",
+   "general": true,
+   "credit": "사진: Mitili Mitili / Unsplash",
+   "rights": "Unsplash 라이선스(무료)",
+   "page": "https://unsplash.com/photos/TnZnJO4DSdQ",
+   "fit": "cover"
+  }
+ },
+ "scenes": [
+  {
+   "type": "cover",
+   "photo": {
+    "url": "https://images.unsplash.com/photo-1729269524124-1645db0b0ff5?w=1600&q=85&fm=jpg",
+    "shows": "어리굴젓의 재료인 굴을 얼음 위에 껍데기째 담고 레몬 조각을 곁들인 일반 굴 사진(어리굴젓·서산 간월도 사진 아님)",
+    "match": "같은 종류",
+    "about": "굴 일반",
+    "general": true,
+    "credit": "사진: Mitili Mitili / Unsplash",
+    "rights": "Unsplash 라이선스(무료)",
+    "page": "https://unsplash.com/photos/TnZnJO4DSdQ"
+   },
+   "dur": 2.6,
+   "kicker": "오늘의 한 가지 · 굴",
+   "title": "굴로 담근\n[[어리굴젓]]\n들어 봤어요?",
+   "size": 104
+  },
+  {
+   "type": "card",
+   "photo": {
+    "url": "https://tong.visitkorea.or.kr/cms2/website/09/1414209.jpg",
+    "shows": "해 질 녘 바다 위 굴 양식 시설과 지나가는 배(부산 굴양식장, 올해 촬영 아님)",
+    "match": "분위기",
+    "about": "굴 양식장",
+    "rights": "한국관광공사 포토코리아 공공누리 1유형 · ⓒ김경순",
+    "credit": "ⓒ한국관광공사 포토코리아-김경순",
+    "general": true
+   },
+   "dur": 2.8,
+   "chip": "왜 지금",
+   "headline": "굴은 [[찬 물]]에서\n거둬요",
+   "line": "굴은 10월~이듬해 5월에 거둬요(간월도 기준)"
+  },
+  {
+   "type": "card",
+   "photo": {
+    "url": "https://images.unsplash.com/photo-1633321094192-388268512e0f?w=1600&q=85&fm=jpg",
+    "shows": "어리굴젓의 재료인 굴을 얼음 위에 껍데기째 올린 일반 굴 사진(어리굴젓·간월도 사진 아님)",
+    "match": "같은 종류",
+    "about": "굴 일반",
+    "general": true,
+    "credit": "사진: Anima Visual / Unsplash",
+    "rights": "Unsplash 라이선스(무료)",
+    "page": "https://unsplash.com/photos/XaLh3Nakkz4"
+   },
+   "dur": 2.8,
+   "chip": "어리굴젓",
+   "headline": "굴을 절여\n[[고춧가루]]로 버무려요",
+   "line": "어리굴젓은 임금님께 바쳤다고 전해져요"
+  },
+  {
+   "type": "card",
+   "photo": {
+    "url": "https://tong.visitkorea.or.kr/cms2/website/35/1193735.jpg",
+    "shows": "불판 위에 올려 굽는 껍데기째 굴(충남 보령 굴구이, 2011년 촬영)",
+    "match": "같은 종류",
+    "about": "굴구이 일반",
+    "rights": "한국관광공사 포토코리아 공공누리 1유형 · ⓒ김지호",
+    "credit": "ⓒ한국관광공사 포토코리아-김지호",
+    "general": true
+   },
+   "dur": 2.8,
+   "chip": "먹는 법",
+   "headline": "구이·전·국밥\n[[젓갈]]까지",
+   "line": "같은 굴, 먹는 방식이 이렇게 많아요"
+  },
+  {
+   "type": "card",
+   "photo": {
+    "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Gul-bossam%202.jpg?width=1600",
+    "shows": "삶은 돼지고기 편육, 배춧잎, 무채 양념, 뒤쪽에 굴이 보이는 굴보쌈 한 접시(일반 사진, 특정 브랜드 제품 아님)",
+    "match": "같은 종류",
+    "about": "굴 보쌈 일반",
+    "general": true,
+    "rights": "위키미디어 CC BY 2.0",
+    "credit": "lazy fri13th (CC BY 2.0) · commons.wikimedia.org/?curid=88310335",
+    "page": "https://commons.wikimedia.org/?curid=88310335",
+    "license": "CC BY 2.0",
+    "terms": {
+     "url": "https://creativecommons.org/licenses/by/2.0/",
+     "checked": "2026-11-23",
+     "scope": "CC BY 2.0, 상업적 이용·수정 가능",
+     "ok": true
+    }
+   },
+   "dur": 2.8,
+   "chip": "굴 보쌈",
+   "headline": "굴 곁들인\n[[보쌈]]도 있어요",
+   "line": "삶은 고기에 굴과 양념을 함께 쌈 싸요"
+  },
+  {
+   "type": "cover",
+   "photo": {
+    "url": "https://tong.visitkorea.or.kr/cms2/website/41/1178441.jpg",
+    "shows": "접시에 담긴 노릇한 굴전(경남 통영 굴전, 2010년 촬영)",
+    "match": "같은 종류",
+    "about": "굴전 일반",
+    "rights": "한국관광공사 포토코리아 공공누리 1유형 · ⓒ김지호",
+    "credit": "ⓒ한국관광공사 포토코리아-김지호",
+    "general": true
+   },
+   "dur": 2.6,
+   "kicker": "굴 이야기",
+   "title": "여러분은\n[[굴 어떻게]]\n먹어요?",
+   "line": "구이? 전? 젓갈?",
+   "size": 104
+  }
+ ],
+ "caption": "어리굴젓, 이름은 들어 봤어도 뭔지는 모르겠다면? 겨울 굴 얘기예요\n\n어리굴젓은 굴을 절여 고춧가루로 버무려 담근 굴젓이고, 충남 서산 간월도 것이 이름났어요. 옛날에 임금님께 바쳤다고 전해지고, 한국민족문화대백과사전은 굴 거두는 때를 10월부터 이듬해 5월까지로 적고 있어요. 이름의 '어리'가 무슨 뜻인지는 자료마다 설명이 달라 확정하기 어려워요.\n\n요즘은 굴을 곁들인 보쌈도 눈에 띄어요. 원할머니 보쌈족발이 김희은 셰프와 만든 겨울 한정 '어리굴젓 보쌈'을 11월 23일 출시한다고 밝혔고, 통영산 햇굴로 만든 어리굴젓에 궁채를 더했다고 해요. 영상 속 사진은 일반 굴·굴 보쌈 사진이고 이 제품 사진이 아니에요. 협찬이나 광고가 아니에요.\n\n굴은 구이파예요 전파예요 젓갈파예요?\n\n더 자세한 이야기는 프로필 링크의 블로그에 있어요.\n\n출처: 한국경제(11월 21일), 아이뉴스24(11월 21일)",
+ "tags": [
+  "어리굴젓",
+  "굴",
+  "굴요리",
+  "보쌈"
+ ],
+ "sources": [
+  "https://encykorea.aks.ac.kr/Article/E0000559",
+  "https://www.hankyung.com/article/202611211381i",
+  "https://www.inews24.com/v/2028905"
+ ],
+ "credits": [
+  "사진: Mitili Mitili / Unsplash",
+  "사진: Anima Visual / Unsplash",
+  "ⓒ한국관광공사 포토코리아-김경순",
+  "ⓒ한국관광공사 포토코리아-김지호",
+  "lazy fri13th (CC BY 2.0) · commons.wikimedia.org/?curid=88310335"
+ ],
+ "yt_title": "어리굴젓이 뭐예요? 서산 간월도 굴젓 이야기와 겨울 굴 보쌈",
+ "yt_keyword": "어리굴젓",
+ "yt_related": [
+  "서산 간월도",
+  "제철 굴",
+  "굴 보쌈",
+  "굴젓",
+  "굴 먹는 법"
+ ],
+ "yt_tags": [
+  "어리굴젓",
+  "어리굴젓이란",
+  "서산 간월도",
+  "굴젓",
+  "제철 굴",
+  "굴 보쌈"
+ ],
+ "yt_hashtags": [
+  "어리굴젓",
+  "굴요리",
+  "굴보쌈"
+ ],
+ "yt_lead": "어리굴젓은 굴을 절여 고춧가루로 버무린 서산 간월도의 굴젓이에요.",
+ "followup": {
+  "of": "2026-11-13/items/kr-ganwoldo-eorigul",
+  "new": "원할머니 보쌈족발 겨울 한정 어리굴젓 보쌈 11월 23일 출시(11월 21일 발표)"
+ },
+ "dates": {
+  "checked": "2026-11-23",
+  "sources": [
+   {
+    "url": "https://encykorea.aks.ac.kr/Article/E0000559",
+    "published": "백과사전 항목(발행일 표시 없음)",
+    "modified": "백과사전 항목(발행일 표시 없음)"
+   },
+   {
+    "url": "https://www.hankyung.com/article/202611211381i",
+    "published": "2026-11-21",
+    "modified": "2026-11-21"
+   },
+   {
+    "url": "https://www.inews24.com/v/2028905",
+    "published": "2026-11-21",
+    "modified": "2026-11-21"
+   }
+  ],
+  "released": {
+   "name": "원할머니 보쌈족발 어리굴젓 보쌈",
+   "date": "2026-11-23",
+   "state": "판매 중"
+  }
+ },
+ "title_pick": {
+  "candidates": [
+   "어리굴젓이 뭐예요? 서산 간월도 굴젓 이야기와 겨울 굴 보쌈",
+   "굴 겨울 제철, 어리굴젓과 굴 보쌈까지 먹는 법",
+   "어리굴젓 임금님께 바쳤다는 서산 간월도 굴젓"
+  ],
+  "pick": "어리굴젓이 뭐예요? 서산 간월도 굴젓 이야기와 겨울 굴 보쌈",
+  "like": "2026-11-22 4-find 도루묵(이름·유래 의문형)",
+  "sure": "낮음"
+ },
+ "photo_candidates": [
+  {
+   "scene": "겨울 별미 장면 · 어리굴젓 보쌈 제품",
+   "from": "원할머니 보쌈족발 보도자료",
+   "page": "https://www.inews24.com/v/2028905",
+   "why": "원할머니 사진은 photo_rights 이용 조건 미확인이라 제품 사진은 쓰지 않고 일반 굴 보쌈 사진으로 대신함"
+  }
+ ],
+ "review": {
+  "photo_sheet": "5e7d387ea8e0"
+ }
+}

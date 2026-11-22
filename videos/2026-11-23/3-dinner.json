@@ -1,0 +1,427 @@
+{
+ "format": "voice",
+ "layout": "rec",
+ "kind": "저녁",
+ "subject": "월요일 저녁 (비빔밥·홍합찜·파히타·텐동)",
+ "title": "월요일 저녁 아직 못 골랐어? 비빔밥·홍합찜·파히타·텐동",
+ "summary": "월요일 저녁 메뉴로 비빔밥·홍합찜·파히타·텐동 넷을 추천해요.",
+ "headline": "월요일 저녁\n[[아직 못 골랐어?]]",
+ "small": "월요일 저녁, 오늘의 넷",
+ "intro": 7,
+ "length": [
+  20,
+  30
+ ],
+ "narrator": "puck",
+ "voice_pick": {
+  "mode": "solo",
+  "voices": [
+   "puck"
+  ],
+  "why": "월요일 퇴근길 메뉴를 경쾌하게 권하는 추천이라 Puck 솔로(어제 Achird 와 다르게)"
+ },
+ "thumb": {
+  "head": "월요일 저녁\n[[아직 못 골랐어?]]",
+  "sub": "퇴근길 [[딱 넷]]만 추천",
+  "photo": {
+   "url": "https://images.unsplash.com/photo-1741295017668-c8132acd6fc0?w=1600&q=85&fm=jpg",
+   "shows": "검은 돌솥에 나물·소고기·달걀 노른자를 둘러 담은 돌솥 비빔밥",
+   "match": "정확",
+   "credit": "사진: Dmitry Pavlovsky / Unsplash",
+   "rights": "Unsplash 라이선스(무료)",
+   "page": "https://unsplash.com/s/photos/bibimbap?license=free"
+  }
+ },
+ "yt_title": "월요일 저녁 메뉴 아직 못 골랐어? 비빔밥·홍합찜·파히타·텐동 중에 골라 줄게",
+ "yt_keyword": "월요일 저녁 메뉴",
+ "yt_related": [
+  "저녁 메뉴 추천",
+  "오늘 뭐 먹지",
+  "비빔밥",
+  "홍합찜",
+  "파히타",
+  "텐동"
+ ],
+ "yt_tags": [
+  "월요일 저녁 메뉴",
+  "저녁 메뉴 추천",
+  "오늘 뭐 먹지",
+  "비빔밥",
+  "홍합찜",
+  "파히타",
+  "텐동"
+ ],
+ "yt_hashtags": [
+  "월요일저녁메뉴",
+  "오늘뭐먹지",
+  "저녁메뉴추천"
+ ],
+ "yt_lead": "월요일 저녁 메뉴 고민될 때, 비빔밥·홍합찜·파히타·텐동 넷 중에 하나만 골라요.",
+ "caption": "월요일 저녁, 아직 못 골랐어요?\n\n돌솥에 나물 듬뿍 올린 비빔밥\n레몬 곁들여 먹는 홍합찜\n지글지글 철판 소고기 파히타\n바삭한 새우튀김 텐동\n\n넷 중에 오늘은 뭐가 끌려요? 댓글로 알려 주세요.",
+ "tags": [
+  "월요일저녁메뉴",
+  "저녁메뉴추천",
+  "오늘뭐먹지",
+  "비빔밥"
+ ],
+ "sources": [],
+ "credits": [
+  "사진: Dmitry Pavlovsky / Unsplash",
+  "사진: Lisha Riabinina / Unsplash",
+  "사진: doo / Unsplash",
+  "사진: Lee Soo hyun / Unsplash"
+ ],
+ "dates": {
+  "checked": "2026-11-23"
+ },
+ "menu_pick": {
+  "menus": [
+   "비빔밥",
+   "홍합찜",
+   "파히타",
+   "텐동"
+  ],
+  "from": "dinner_pick(후보 18개 확인, 추운 날씨 기준)",
+  "again": {
+   "비빔밥": "돌솥에 나물 올린 모습이 다름, 12일 전 달걀비빔밥과 다른 돌솥 비빔밥",
+   "홍합찜": "제철 조개류, 13일 전 조개탕과 다른 찜 메뉴"
+  },
+  "why": {
+   "비빔밥": "밥 갈래, 누구나 아는 익숙한 한 그릇",
+   "홍합찜": "찜 갈래, 겨울 제철 조개류",
+   "파히타": "해외 철판 볶음, 새로운 메뉴 1개",
+   "텐동": "덮밥 갈래, 오랜만에 나오는 튀김 한 끼"
+  }
+ },
+ "lines": [
+  {
+   "say": "월요일 저녁, 아직 못 골랐어?",
+   "nosub": true,
+   "show": {
+    "thumb": true
+   }
+  },
+  {
+   "say": "퇴근길에 딱 떠오를 넷이에요.",
+   "show": {
+    "dir": "2x2",
+    "own": true,
+    "grid": [
+     {
+      "photo": {
+       "url": "https://images.unsplash.com/photo-1741295017668-c8132acd6fc0?w=1600&q=85&fm=jpg",
+       "shows": "검은 돌솥에 나물·소고기·달걀 노른자를 둘러 담은 돌솥 비빔밥",
+       "match": "정확",
+       "credit": "사진: Dmitry Pavlovsky / Unsplash",
+       "rights": "Unsplash 라이선스(무료)",
+       "page": "https://unsplash.com/s/photos/bibimbap?license=free"
+      }
+     },
+     {
+      "photo": {
+       "url": "https://images.unsplash.com/photo-1710775694428-5f6e66ae6a4c?w=1600&q=85&fm=jpg",
+       "shows": "흰 접시에 레몬 한 조각과 구운 빵을 곁들인 홍합찜",
+       "match": "정확",
+       "credit": "사진: Lisha Riabinina / Unsplash",
+       "rights": "Unsplash 라이선스(무료)",
+       "page": "https://unsplash.com/photos/A55vhZCfPsI"
+      }
+     },
+     {
+      "photo": {
+       "url": "https://images.unsplash.com/photo-1636552550485-d18a8ca38daf?w=1600&q=85&fm=jpg",
+       "shows": "철판 위에 볶은 소고기와 파프리카·양파를 올린 소고기 파히타",
+       "match": "정확",
+       "credit": "사진: doo / Unsplash",
+       "rights": "Unsplash 라이선스(무료)",
+       "page": "https://unsplash.com/photos/a-plate-of-meat-and-vegetables-on-a-table-oOycVoXILX0"
+      }
+     },
+     {
+      "photo": {
+       "url": "https://images.unsplash.com/photo-1570078362689-c57c33cca104?w=1600&q=85&fm=jpg",
+       "shows": "큰 새우튀김과 채소튀김, 김이 올라간 텐동 한 그릇",
+       "match": "정확",
+       "credit": "사진: Lee Soo hyun / Unsplash",
+       "rights": "Unsplash 라이선스(무료)",
+       "page": "https://unsplash.com/photos/-wC0yYRdGIY"
+      }
+     }
+    ],
+    "fade": 0.45
+   }
+  },
+  {
+   "say": "뜨끈한 돌솥에 나물 듬뿍, 비빔밥 어때요?",
+   "subs": [
+    "뜨끈한 돌솥에 나물 듬뿍,",
+    "비빔밥 어때요?"
+   ],
+   "show": {
+    "dir": "2x2",
+    "own": true,
+    "grid": [
+     {
+      "photo": {
+       "url": "https://images.unsplash.com/photo-1741295017668-c8132acd6fc0?w=1600&q=85&fm=jpg",
+       "shows": "검은 돌솥에 나물·소고기·달걀 노른자를 둘러 담은 돌솥 비빔밥",
+       "match": "정확",
+       "credit": "사진: Dmitry Pavlovsky / Unsplash",
+       "rights": "Unsplash 라이선스(무료)",
+       "page": "https://unsplash.com/s/photos/bibimbap?license=free"
+      }
+     },
+     {
+      "photo": {
+       "url": "https://images.unsplash.com/photo-1710775694428-5f6e66ae6a4c?w=1600&q=85&fm=jpg",
+       "shows": "흰 접시에 레몬 한 조각과 구운 빵을 곁들인 홍합찜",
+       "match": "정확",
+       "credit": "사진: Lisha Riabinina / Unsplash",
+       "rights": "Unsplash 라이선스(무료)",
+       "page": "https://unsplash.com/photos/A55vhZCfPsI"
+      }
+     },
+     {
+      "photo": {
+       "url": "https://images.unsplash.com/photo-1636552550485-d18a8ca38daf?w=1600&q=85&fm=jpg",
+       "shows": "철판 위에 볶은 소고기와 파프리카·양파를 올린 소고기 파히타",
+       "match": "정확",
+       "credit": "사진: doo / Unsplash",
+       "rights": "Unsplash 라이선스(무료)",
+       "page": "https://unsplash.com/photos/a-plate-of-meat-and-vegetables-on-a-table-oOycVoXILX0"
+      }
+     },
+     {
+      "photo": {
+       "url": "https://images.unsplash.com/photo-1570078362689-c57c33cca104?w=1600&q=85&fm=jpg",
+       "shows": "큰 새우튀김과 채소튀김, 김이 올라간 텐동 한 그릇",
+       "match": "정확",
+       "credit": "사진: Lee Soo hyun / Unsplash",
+       "rights": "Unsplash 라이선스(무료)",
+       "page": "https://unsplash.com/photos/-wC0yYRdGIY"
+      }
+     }
+    ],
+    "hl": 0
+   }
+  },
+  {
+   "say": "빵 한 조각 곁들인 홍합찜, 레몬 짜서 한입!",
+   "subs": [
+    "빵 한 조각 곁들인 홍합찜,",
+    "레몬 짜서 한입!"
+   ],
+   "show": {
+    "dir": "2x2",
+    "own": true,
+    "grid": [
+     {
+      "photo": {
+       "url": "https://images.unsplash.com/photo-1741295017668-c8132acd6fc0?w=1600&q=85&fm=jpg",
+       "shows": "검은 돌솥에 나물·소고기·달걀 노른자를 둘러 담은 돌솥 비빔밥",
+       "match": "정확",
+       "credit": "사진: Dmitry Pavlovsky / Unsplash",
+       "rights": "Unsplash 라이선스(무료)",
+       "page": "https://unsplash.com/s/photos/bibimbap?license=free"
+      }
+     },
+     {
+      "photo": {
+       "url": "https://images.unsplash.com/photo-1710775694428-5f6e66ae6a4c?w=1600&q=85&fm=jpg",
+       "shows": "흰 접시에 레몬 한 조각과 구운 빵을 곁들인 홍합찜",
+       "match": "정확",
+       "credit": "사진: Lisha Riabinina / Unsplash",
+       "rights": "Unsplash 라이선스(무료)",
+       "page": "https://unsplash.com/photos/A55vhZCfPsI"
+      }
+     },
+     {
+      "photo": {
+       "url": "https://images.unsplash.com/photo-1636552550485-d18a8ca38daf?w=1600&q=85&fm=jpg",
+       "shows": "철판 위에 볶은 소고기와 파프리카·양파를 올린 소고기 파히타",
+       "match": "정확",
+       "credit": "사진: doo / Unsplash",
+       "rights": "Unsplash 라이선스(무료)",
+       "page": "https://unsplash.com/photos/a-plate-of-meat-and-vegetables-on-a-table-oOycVoXILX0"
+      }
+     },
+     {
+      "photo": {
+       "url": "https://images.unsplash.com/photo-1570078362689-c57c33cca104?w=1600&q=85&fm=jpg",
+       "shows": "큰 새우튀김과 채소튀김, 김이 올라간 텐동 한 그릇",
+       "match": "정확",
+       "credit": "사진: Lee Soo hyun / Unsplash",
+       "rights": "Unsplash 라이선스(무료)",
+       "page": "https://unsplash.com/photos/-wC0yYRdGIY"
+      }
+     }
+    ],
+    "hl": 1
+   }
+  },
+  {
+   "say": "지글지글 철판 위 소고기 파히타, 분위기 좀 내 볼까요?",
+   "subs": [
+    "지글지글 철판 위 소고기 파히타,",
+    "분위기 좀 내 볼까요?"
+   ],
+   "show": {
+    "dir": "2x2",
+    "own": true,
+    "grid": [
+     {
+      "photo": {
+       "url": "https://images.unsplash.com/photo-1741295017668-c8132acd6fc0?w=1600&q=85&fm=jpg",
+       "shows": "검은 돌솥에 나물·소고기·달걀 노른자를 둘러 담은 돌솥 비빔밥",
+       "match": "정확",
+       "credit": "사진: Dmitry Pavlovsky / Unsplash",
+       "rights": "Unsplash 라이선스(무료)",
+       "page": "https://unsplash.com/s/photos/bibimbap?license=free"
+      }
+     },
+     {
+      "photo": {
+       "url": "https://images.unsplash.com/photo-1710775694428-5f6e66ae6a4c?w=1600&q=85&fm=jpg",
+       "shows": "흰 접시에 레몬 한 조각과 구운 빵을 곁들인 홍합찜",
+       "match": "정확",
+       "credit": "사진: Lisha Riabinina / Unsplash",
+       "rights": "Unsplash 라이선스(무료)",
+       "page": "https://unsplash.com/photos/A55vhZCfPsI"
+      }
+     },
+     {
+      "photo": {
+       "url": "https://images.unsplash.com/photo-1636552550485-d18a8ca38daf?w=1600&q=85&fm=jpg",
+       "shows": "철판 위에 볶은 소고기와 파프리카·양파를 올린 소고기 파히타",
+       "match": "정확",
+       "credit": "사진: doo / Unsplash",
+       "rights": "Unsplash 라이선스(무료)",
+       "page": "https://unsplash.com/photos/a-plate-of-meat-and-vegetables-on-a-table-oOycVoXILX0"
+      }
+     },
+     {
+      "photo": {
+       "url": "https://images.unsplash.com/photo-1570078362689-c57c33cca104?w=1600&q=85&fm=jpg",
+       "shows": "큰 새우튀김과 채소튀김, 김이 올라간 텐동 한 그릇",
+       "match": "정확",
+       "credit": "사진: Lee Soo hyun / Unsplash",
+       "rights": "Unsplash 라이선스(무료)",
+       "page": "https://unsplash.com/photos/-wC0yYRdGIY"
+      }
+     }
+    ],
+    "hl": 2
+   }
+  },
+  {
+   "say": "바삭한 새우튀김 올린 텐동, 한 그릇이면 든든하죠!",
+   "subs": [
+    "바삭한 새우튀김 올린 텐동,",
+    "한 그릇이면 든든하죠!"
+   ],
+   "show": {
+    "dir": "2x2",
+    "own": true,
+    "grid": [
+     {
+      "photo": {
+       "url": "https://images.unsplash.com/photo-1741295017668-c8132acd6fc0?w=1600&q=85&fm=jpg",
+       "shows": "검은 돌솥에 나물·소고기·달걀 노른자를 둘러 담은 돌솥 비빔밥",
+       "match": "정확",
+       "credit": "사진: Dmitry Pavlovsky / Unsplash",
+       "rights": "Unsplash 라이선스(무료)",
+       "page": "https://unsplash.com/s/photos/bibimbap?license=free"
+      }
+     },
+     {
+      "photo": {
+       "url": "https://images.unsplash.com/photo-1710775694428-5f6e66ae6a4c?w=1600&q=85&fm=jpg",
+       "shows": "흰 접시에 레몬 한 조각과 구운 빵을 곁들인 홍합찜",
+       "match": "정확",
+       "credit": "사진: Lisha Riabinina / Unsplash",
+       "rights": "Unsplash 라이선스(무료)",
+       "page": "https://unsplash.com/photos/A55vhZCfPsI"
+      }
+     },
+     {
+      "photo": {
+       "url": "https://images.unsplash.com/photo-1636552550485-d18a8ca38daf?w=1600&q=85&fm=jpg",
+       "shows": "철판 위에 볶은 소고기와 파프리카·양파를 올린 소고기 파히타",
+       "match": "정확",
+       "credit": "사진: doo / Unsplash",
+       "rights": "Unsplash 라이선스(무료)",
+       "page": "https://unsplash.com/photos/a-plate-of-meat-and-vegetables-on-a-table-oOycVoXILX0"
+      }
+     },
+     {
+      "photo": {
+       "url": "https://images.unsplash.com/photo-1570078362689-c57c33cca104?w=1600&q=85&fm=jpg",
+       "shows": "큰 새우튀김과 채소튀김, 김이 올라간 텐동 한 그릇",
+       "match": "정확",
+       "credit": "사진: Lee Soo hyun / Unsplash",
+       "rights": "Unsplash 라이선스(무료)",
+       "page": "https://unsplash.com/photos/-wC0yYRdGIY"
+      }
+     }
+    ],
+    "hl": 3
+   }
+  },
+  {
+   "say": "넷 중에 오늘은 어느 쪽이에요? 댓글로 알려 주세요.",
+   "subs": [
+    "넷 중에 오늘은 어느 쪽이에요?",
+    "댓글로 알려 주세요."
+   ],
+   "show": {
+    "dir": "2x2",
+    "own": true,
+    "grid": [
+     {
+      "photo": {
+       "url": "https://images.unsplash.com/photo-1741295017668-c8132acd6fc0?w=1600&q=85&fm=jpg",
+       "shows": "검은 돌솥에 나물·소고기·달걀 노른자를 둘러 담은 돌솥 비빔밥",
+       "match": "정확",
+       "credit": "사진: Dmitry Pavlovsky / Unsplash",
+       "rights": "Unsplash 라이선스(무료)",
+       "page": "https://unsplash.com/s/photos/bibimbap?license=free"
+      }
+     },
+     {
+      "photo": {
+       "url": "https://images.unsplash.com/photo-1710775694428-5f6e66ae6a4c?w=1600&q=85&fm=jpg",
+       "shows": "흰 접시에 레몬 한 조각과 구운 빵을 곁들인 홍합찜",
+       "match": "정확",
+       "credit": "사진: Lisha Riabinina / Unsplash",
+       "rights": "Unsplash 라이선스(무료)",
+       "page": "https://unsplash.com/photos/A55vhZCfPsI"
+      }
+     },
+     {
+      "photo": {
+       "url": "https://images.unsplash.com/photo-1636552550485-d18a8ca38daf?w=1600&q=85&fm=jpg",
+       "shows": "철판 위에 볶은 소고기와 파프리카·양파를 올린 소고기 파히타",
+       "match": "정확",
+       "credit": "사진: doo / Unsplash",
+       "rights": "Unsplash 라이선스(무료)",
+       "page": "https://unsplash.com/photos/a-plate-of-meat-and-vegetables-on-a-table-oOycVoXILX0"
+      }
+     },
+     {
+      "photo": {
+       "url": "https://images.unsplash.com/photo-1570078362689-c57c33cca104?w=1600&q=85&fm=jpg",
+       "shows": "큰 새우튀김과 채소튀김, 김이 올라간 텐동 한 그릇",
+       "match": "정확",
+       "credit": "사진: Lee Soo hyun / Unsplash",
+       "rights": "Unsplash 라이선스(무료)",
+       "page": "https://unsplash.com/photos/-wC0yYRdGIY"
+      }
+     }
+    ]
+   }
+  }
+ ],
+ "review": {
+  "photo_sheet": "aa1b28a50bb2"
+ }
+}
