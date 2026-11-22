@@ -1089,6 +1089,115 @@
         "channels": 120,
         "thin": 5
       }
+    },
+    "2026-11-22": {
+      "picks": [
+        {
+          "id": "jpPl9NYI9oA",
+          "title": "먹천재들의 개쩌는 요리 꿀팁 ㅋㅋㅋ",
+          "channel": "김조미",
+          "subs": 6680,
+          "views": 760372,
+          "median": 57598,
+          "n": 48,
+          "multiple": 13.2,
+          "hours": 49,
+          "formulas": [
+            "방법·꿀팁"
+          ],
+          "query": "음식 꿀팁",
+          "url": "https://youtube.com/shorts/jpPl9NYI9oA"
+        },
+        {
+          "id": "9Y2qDvtJN_Q",
+          "title": "가음무 이렇게 보관하면 바람 안듭니다",
+          "channel": "순덕이네 반찬가게",
+          "subs": 64200,
+          "views": 89136,
+          "median": 8050,
+          "n": 37,
+          "multiple": 11.1,
+          "hours": 64,
+          "formulas": [
+            "방법·꿀팁"
+          ],
+          "query": "제철 음식",
+          "url": "https://youtube.com/shorts/9Y2qDvtJN_Q"
+        },
+        {
+          "id": "gdLGzdXnbiM",
+          "title": "시오콘부 간장.계란밥",
+          "channel": "찬밥",
+          "subs": 33300,
+          "views": 25869,
+          "median": 8564,
+          "n": 49,
+          "multiple": 3.0,
+          "hours": 43,
+          "formulas": [],
+          "query": "다이어트 음식",
+          "url": "https://youtube.com/shorts/gdLGzdXnbiM"
+        },
+        {
+          "id": "EvLT0uS50PY",
+          "title": "외국에서 최고의 건강식으로 유행중인 한국식 이유식",
+          "channel": "감동안테나",
+          "subs": 5590,
+          "views": 94272,
+          "median": 45982,
+          "n": 38,
+          "multiple": 2.1,
+          "hours": 18,
+          "formulas": [
+            "몰랐던 사실"
+          ],
+          "query": "해외 음식",
+          "url": "https://youtube.com/shorts/EvLT0uS50PY"
+        }
+      ],
+      "leaders": [
+        {
+          "id": "7J9ScIeQ5Cs",
+          "title": "조용히 밥 먹던 누나인데… 테이블을 봤더니 먹방 스케일이 레전드ㅋㅋ",
+          "channel": "두근두근팩토리",
+          "subs": 49500,
+          "views": 12787,
+          "median": 9425,
+          "n": 38,
+          "multiple": 1.4,
+          "hours": 46,
+          "formulas": [
+            "감탄·강조"
+          ],
+          "query": "먹방 쇼츠",
+          "url": "https://youtube.com/shorts/7J9ScIeQ5Cs"
+        },
+        {
+          "id": "NavSiqlfPFw",
+          "title": "본죽 초코케이크? 일단 사봤습니다 (신상 3가지)",
+          "channel": "모닝이 morningeee",
+          "subs": 61700,
+          "views": 68440,
+          "median": 49687,
+          "n": 48,
+          "multiple": 1.4,
+          "hours": 66,
+          "formulas": [
+            "숫자·순위",
+            "물음",
+            "신상·한정",
+            "직접 해 봄"
+          ],
+          "query": "디저트 신상",
+          "url": "https://youtube.com/shorts/NavSiqlfPFw"
+        }
+      ],
+      "stats": {
+        "searched": 208,
+        "shorts": 198,
+        "channels": 120,
+        "thin": 4
+      }
     }
   }
 }
