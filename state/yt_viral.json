@@ -1198,6 +1198,78 @@
         "channels": 120,
         "thin": 4
       }
+    },
+    "2026-11-23": {
+      "picks": [
+        {
+          "id": "arTkufDHj0M",
+          "title": "실패 없는 김치 보관법, 지금 확인하세요",
+          "channel": "시니어살림연구소",
+          "subs": 65000,
+          "views": 72207,
+          "median": 6136,
+          "n": 36,
+          "multiple": 11.8,
+          "hours": 40,
+          "formulas": [],
+          "query": "음식 꿀팁",
+          "url": "https://youtube.com/shorts/arTkufDHj0M"
+        },
+        {
+          "id": "TnHq1mvrJ2M",
+          "title": "맛잘알 까르보불닭 꿀팁!",
+          "channel": "주안상 Liquor Table (Bites & Booze)",
+          "subs": 9830,
+          "views": 12688,
+          "median": 1449,
+          "n": 45,
+          "multiple": 8.8,
+          "hours": 52,
+          "formulas": [
+            "방법·꿀팁"
+          ],
+          "query": "음식 꿀팁",
+          "url": "https://youtube.com/shorts/TnHq1mvrJ2M"
+        },
+        {
+          "id": "UiJqN2XC1I0",
+          "title": "이런 레시피는 첨봤다 .알배추 한통 순삭하는 다이어트레시피",
+          "channel": "엄마의 주방",
+          "subs": 86900,
+          "views": 113719,
+          "median": 34759,
+          "n": 47,
+          "multiple": 3.3,
+          "hours": 67,
+          "formulas": [
+            "방법·꿀팁"
+          ],
+          "query": "다이어트 음식",
+          "url": "https://youtube.com/shorts/UiJqN2XC1I0"
+        }
+      ],
+      "leaders": [
+        {
+          "id": "cheUzxfXQ-c",
+          "title": "고달픈 유학생 달래주는 따뜻한 K-제육볶음 백반 한 상",
+          "channel": "감동안테나",
+          "subs": 5640,
+          "views": 71834,
+          "median": 48333,
+          "n": 38,
+          "multiple": 1.5,
+          "hours": 51,
+          "formulas": [],
+          "query": "해외 음식",
+          "url": "https://youtube.com/shorts/cheUzxfXQ-c"
+        }
+      ],
+      "stats": {
+        "searched": 212,
+        "shorts": 199,
+        "channels": 120,
+        "thin": 3
+      }
     }
   }
 }
