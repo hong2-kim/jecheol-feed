@@ -24,7 +24,8 @@ def first_day(now=None):
 
 
 def waiting(index):
-    return [e for e in index if not e.get("used") and not e.get("deleted")]
+    """저녁 메뉴로 쓸 날을 기다리는 것. 트렌드 소재 사진(use: scrap, scripts/scraps.py)은 빼요."""
+    return [e for e in index if not e.get("used") and not e.get("deleted") and e.get("use") != "scrap"]
 
 
 def name(e):
@@ -57,7 +58,7 @@ def assign(index, now=None):
     start = first_day(now)
     today = (now or datetime.now(KST)).date().isoformat()
     taken, sides, changed = set(), set(), []
-    seen = [e for e in index if e.get("used") and not e.get("deleted")]  # 이미 쓴 것과, 앞서 날짜를 잡은 것
+    seen = [e for e in index if e.get("used") and not e.get("deleted") and e.get("use") != "scrap"]  # 이미 쓴 것과, 앞서 날짜를 잡은 것
     for e in sorted(waiting(index), key=lambda e: (e.get("at", 0), e["id"])):
         before = (e.get("plan"), e.get("side"))
         if e.get("plan") == today and today not in taken:  # 오늘 쓰기로 한 것은 오늘이 끝날 때까지 옮기지 않아요

@@ -59,7 +59,7 @@ jobs:
         run: |
           git config user.name "jecheol-feed"
           git config user.email "actions@users.noreply.github.com"
-          git add myphotos state logs videos requests blog # blog: 블로그 초안 [승인] 버튼이 적은 review (13시 발행이 읽어요)
+          git add myphotos state logs videos requests blog ideas plans # blog: 블로그 초안 [승인] 버튼이 적은 review (13시 발행이 읽어요) · ideas·plans: 사진 소재·설계도 버튼 (2026-11-23)
           REBUILD=no
           git diff --cached --name-only | grep -q "^state/videos.json$" && REBUILD=yes
           git diff --cached --quiet || git commit -m "텔레그램 대화방 확인"
@@ -73,4 +73,7 @@ jobs:
           FIX_ROUTINE_TOKEN: ${{ secrets.FIX_ROUTINE_TOKEN }}
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }} # 못 부르면 텔레그램으로 알려요
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID || secrets.TELEGRAM_CHAT_I }}
-        run: cd scripts && python tg_actions.py dispatch
+        run: |
+          cd scripts && python tg_actions.py dispatch
+          # 소재 사진 받음 알림에 버튼을 붙였으면 버튼 지킴이를 불러, 이어 보내는 사진·버튼을 바로 받아요 (2026-11-23)
+          if [ -f ../build/buttons_sent ]; then gh workflow run buttons.yml --ref main || echo "버튼 지킴이를 부르지 못했어요"; fi

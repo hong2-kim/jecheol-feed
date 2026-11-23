@@ -216,6 +216,47 @@ def strip_size(sub):
 PIC_W, PIC_H = 1080, 1110  # 사진 칸 (거의 정사각형)
 
 
+# ── 묶음 쇼츠: 흰 띠에 뒤에 나오는 주제 이름 (2026-11-23 사용자: 메인은 큰 제목·사진, 나머지 둘은 작은 보조 문구로) ──
+#   "thumb": {"head": "편의점\\n[[딸기모찌]]", "next": ["두바이 초콜릿", "군고구마빵"], "photo": …}
+#   → 흰 띠에 "뒤에 [[두바이 초콜릿]]·[[군고구마빵]]도!" (sub 대신). 휴대폰에서 읽히게 글자는 NEXT_MIN px 아래로 줄이지 않아요.
+NEXT_MAX, NEXT_MIN, NEXT_ROOM = 66, 46, 990
+NEXT_NAME = 9  # 이름 하나 글자 수(띄어쓰기 포함)
+
+
+def next_text(names):
+    return "뒤에 " + "·".join(f"[[{n.strip()}]]" for n in names) + "도!"
+
+
+def next_size(names):
+    import build as B
+    return min(NEXT_MAX, int(NEXT_ROOM / (B.units(next_text(names)) or 1) / 1.02))
+
+
+def strip_html(sub, t):
+    import build as B
+    cls = f'bstrip{" logo" if BRAND == "strip" else ""}'
+    if t.get("next"):
+        return f'<div class="{cls}"><div style="font-size:{max(NEXT_MIN, next_size(t["next"]))}px">{B.rich(next_text(t["next"]))}</div></div>'
+    return f'<div class="{cls}"><div style="font-size:{strip_size(sub)}px">{B.rich(sub)}</div></div>'
+
+
+def next_problems(t):
+    names = t.get("next")
+    if not names:
+        return []
+    out = []
+    if not isinstance(names, list) or not 1 <= len(names) <= 3:
+        return ['thumb.next 는 뒤에 나오는 주제 이름 1~3개 목록이에요. 예: ["두바이 초콜릿", "군고구마빵"]']
+    for n in names:
+        if len(n.strip()) > NEXT_NAME:
+            out.append(f"thumb.next '{n}' 가 {NEXT_NAME}자를 넘어요. 음식 이름만 짧게(예: '군고구마빵').")
+    if next_size(names) < NEXT_MIN:
+        out.append(f"thumb.next 보조 문구가 길어 글자가 {next_size(names)}px 로 작아져요({NEXT_MIN}px 이상이어야 휴대폰에서 읽혀요). 이름을 줄여 주세요.")
+    if t.get("sub"):
+        out.append("thumb.next 가 있으면 흰 띠에 보조 문구가 들어가요. thumb.sub 는 비워 주세요.")
+    return out
+
+
 def photo_share(spec):
     """사진 칸(1080x1110) 가운데 사진이 실제로 차는 몫 (0~1). 나머지는 같은 사진을 흐리게 깐 빈자리예요.
     잘리지 않게 넣으면 칸과 모양이 다를수록 작아져요: 정사각 97%, 3:4 세로 77%, 4:3 가로 73%, 2:3 세로 69%, 3:2 가로 65%, 16:9 가로 55%.
@@ -335,15 +376,15 @@ def body(spec):
     ref = ref_tag(photo)
     if t.get("list"):
         return (list_html(B, photo, t["list"], t.get("list_tag", "")) + ref
-                + f'<div class="bstrip{" logo" if BRAND == "strip" else ""}"><div style="font-size:{strip_size(sub)}px">{B.rich(sub)}</div></div>'
+                + strip_html(sub, t)
                 + brand_marks(name) + head_html(head, name, t.get("color", AC)))
     g = grid_of(spec)
     if g:
         return (grid_html(B, g)
-                + f'<div class="bstrip{" logo" if BRAND == "strip" else ""}"><div style="font-size:{strip_size(sub)}px">{B.rich(sub)}</div></div>'
+                + strip_html(sub, t)
                 + brand_marks(name) + head_html(head, name, t.get("color", AC)))
     return (f'<div class="bback"><img src="{B.backdrop(photo)}"></div>{photo_html(B, photo)}{ref}'
-            + f'<div class="bstrip{" logo" if BRAND == "strip" else ""}"><div style="font-size:{strip_size(sub)}px">{B.rich(sub)}</div></div>'
+            + strip_html(sub, t)
             + brand_marks(name) + head_html(head, name, t.get("color", AC)))
 
 
@@ -410,11 +451,11 @@ def has(spec):
 def spec_problems(spec):
     """설계도의 썸네일 칸 확인 (내레이션 쇼츠는 voice.problems 가 headline 을 봐요)."""
     if spec.get("format") == "voice":
-        return []
+        return next_problems(spec.get("thumb") or {})
     t = spec.get("thumb")
     if not t:
         return ['thumb 이 없어요. {"head": "두 줄 제목", "sub": "흰 띠 한 줄", "photo": …} 를 적어 주세요. (PROMPT.md "쇼츠 썸네일·제목·주제")']
-    out = problems(t.get("head"), "썸네일 제목")
+    out = problems(t.get("head"), "썸네일 제목") + next_problems(t)
     if not t.get("photo"):
         out.append("thumb.photo 가 없어요. 가장 먹음직스러운 사진 한 장을 적어 주세요.")
     if len((t.get("sub") or "").replace("[[", "").replace("]]", "")) > 16:

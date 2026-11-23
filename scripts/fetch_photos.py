@@ -8,6 +8,8 @@
   이 기록은 파일을 지운 뒤에도 남겨서, 같은 파일을 다시 받아도 또 쓰지 않아요.
 - TELEGRAM_CHAT_ID 로 정해 둔 사람이 보낸 것만 받아요.
 - 승인 전 시안의 버튼(승인·빼기·고쳐서 다시·뺀 장 넣기)과 그 메시지에 단 답장도 받아 scripts/tg_actions.py 로 실행해요 (2026-11-06).
+- 2026-11-23부터 사진은 기본으로 '트렌드 소재'로 받아요(scripts/scraps.py, rules/scrap.md). 글을 '저녁'으로 시작하거나
+  [저녁 메뉴 사진이에요] 버튼을 누르면 예전처럼 저녁 메뉴 영상 첫 장면에 써요(plan.py).
 - 텔레그램은 받은 것을 하루만 보관하니, 이 스크립트는 몇 시간마다 돌아야 해요.
 필요한 값(환경 변수): TELEGRAM_BOT_TOKEN, TELEGRAM_CHAT_ID
 """
@@ -22,8 +24,9 @@ from datetime import datetime
 
 import cleanup
 import plan
+import scraps
 import tg_actions
-from common import KST, ROOT, log_error, read_json, write_json
+from common import KST, ROOT, log_error, note_buttons, read_json, write_json
 
 INCOMING = ROOT / "incoming"
 INDEX = ROOT / "myphotos" / "index.json"
@@ -67,7 +70,9 @@ def status(entry):
     month, date = int(entry["date"][5:7]), int(entry["date"][8:10])
     posted = {e["id"] for e in read_json(ROOT / "state" / "posted.json", []) or []}
     used = [u.replace("/", "-", 1) for u in entry.get("used") or []]
-    if entry.get("deleted"):
+    if entry.get("use") == "scrap" and not entry.get("used"):
+        state = "트렌드 소재 사진으로 받아 뒀어요"
+    elif entry.get("deleted"):
         state = "인스타에 올린 뒤 원본은 지웠어요"
     elif any(u in posted for u in used):
         state = "인스타에 올린 영상에 썼어요"
@@ -217,6 +222,11 @@ def run():
             if thumb_data:  # 어떤 영상인지 볼 수 있게 작은 미리보기 그림도 같이 둬요
                 (INCOMING / f"{name}.thumb.jpg").write_bytes(thumb_data)
                 entry["thumb"] = BASE + f"{name}.thumb.jpg"
+        if scraps.is_dinner(note):  # '저녁 …'으로 보낸 것은 예전처럼 저녁 메뉴
+            entry["note"] = scraps.strip_dinner(note)
+        else:  # 기본은 트렌드 소재 (2026-11-23)
+            entry["use"] = "scrap"
+            scraps.add_photo(entry)
         index.append(entry)
         known |= {entry["tg_unique"], digest}
         saved.append(entry)
@@ -226,12 +236,20 @@ def run():
         if blank:
             target = min(blank, key=lambda e: abs(e.get("at", 0) - at))
             target["note"] = text[:200]
+            if target.get("use") == "scrap" and scraps.is_dinner(text):  # 나중에 '저녁 …'이라고 적으면 저녁 메뉴로 옮겨요
+                target["note"] = scraps.strip_dinner(text)[:200]
+                target.pop("use", None)
+                scraps.to_dinner(target["id"])
+            elif target.get("use") == "scrap":
+                scraps.set_note(target["id"], target["note"])
             named.append(target)
     write_json(state, {"next": offset})
     moved = plan.assign(index)  # 하루에 하나씩, 받은 순서대로 쓸 날짜를 정해요
     if saved or named or moved:
         write_json(INDEX, index)
     late = [e for e in named if all(e is not s for s in saved)]  # 전에 받은 것에 이름만 나중에 온 경우
+    scrap_saved = [e for e in saved if e.get("use") == "scrap"]
+    saved = [e for e in saved if e.get("use") != "scrap"]
     saved = [("동영상 " if e["type"] == "video" else "사진 ") + (e.get("note") or "(이름 없음)") for e in saved]
     lines = []
     if saved:
@@ -250,6 +268,18 @@ def run():
         lines.append(f"{too_big}개는 20MB가 넘어 받지 못했어요. 동영상은 10초 안쪽으로 짧게 보내 주세요.")
     if lines:
         api(token, "sendMessage", chat_id=chat, text="\n".join(lines))
+    if scrap_saved:  # 트렌드 소재 사진: 받았다는 알림 + [저녁 메뉴 사진이에요] 버튼
+        rows = [[{"text": ("🍚 저녁 메뉴 사진이에요" if len(scrap_saved) == 1 else f"🍚 {k}번째 사진은 저녁 메뉴"),
+                  "callback_data": f"j:dinner:{e['id']}"[:64]}] for k, e in enumerate(scrap_saved[:5], 1)]
+        markup = json.dumps({"inline_keyboard": rows}, ensure_ascii=False)
+        note_buttons(markup)  # photos.yml 이 버튼 지킴이를 불러 이어 보내는 사진·버튼을 바로 받아요
+        api(token, "sendMessage", chat_id=chat, text=scraps.receipt({e["id"] for e in scrap_saved}, tg_actions.routine_ready()),
+            reply_markup=markup)
+    try:  # 새 소재 사진이 다 들어왔으면(마지막 사진 뒤 몇 분) 조사 루틴을 바로 불러요. 없으면 다음 아침 매일 실행이 해요
+        if tg_actions.routine_ready() and scraps.want_research():
+            tg_actions.queue("fix", rid="scrap:" + datetime.now(KST).strftime("%Y-%m-%d"))
+    except Exception as e:
+        log_error("scraps:fire", f"{type(e).__name__}: {e}")
     for answer in answers:
         api(token, "sendMessage", chat_id=chat, text=answer[:4000])
     try:  # 올린 지 7일이 지난 것이 새로 생기면 지울 목록을 먼저 보여 줘요

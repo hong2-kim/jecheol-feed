@@ -10,6 +10,9 @@
   fix   고쳐서 다시: requests/fix-영상id.json 을 남겨요. 고치기 루틴이 있으면 바로, 없으면 다음 아침 매일 실행이 고쳐요
   rerun 그날 치를 못 만들었을 때 지금 다시 만들기(j:rerun:날짜). 고치기 루틴이 있으면 바로, 없으면 다음 아침
   ping / pingfix  연결 확인(buttons.yml 시험이 보내요). ping 은 아무것도 바꾸지 않고, pingfix 는 고치기 루틴만 불러 봐요
+  dinner  소재로 받은 사진을 저녁 메뉴 사진으로 옮겨요(j:dinner:사진id, 2026-11-23)
+  pgo / pfix / pno  소재 쇼츠 설계도(plans/): 이대로 만들기 / 고쳐서 다시(답장으로 고칠 점) / 안 만들기 (j:pgo:설계도id)
+     pgo·pfix 는 고치기 루틴을 "작업: 소재 설계도"로 바로 불러요. 없으면 다음 아침 매일 실행이 rules/scrap.md 대로 해요
 버튼은 scripts/watch_buttons.py(buttons.yml)가 알림을 보낸 뒤 3시간 동안 지켜보다가 누르면 photos 작업을 바로 불러요.
 답장: 시안·뺀 장 알림 메시지에 답장하면 그 글을 고칠 점(note)으로 fix 를 해요.
 
@@ -203,7 +206,86 @@ def ping_fix(sent):
     return "🛠 고치기 루틴을 불러 볼게요. 1~2분 안에 부른 결과가 와요."
 
 
-ACTIONS = {"ping": ping, "pingfix": ping_fix, "rerun": rerun, "ok": approve, "no": drop, "keep": keep_cards, "fix": fix, "fine": lambda rid: f"알겠어요. {name_of(rid)} 은(는) 이대로 둘게요."}
+# ── 사진으로 모은 트렌드 소재 (2026-11-23, scripts/scraps.py · rules/scrap.md) ──
+
+def to_dinner(photo_id):
+    """[저녁 메뉴 사진이에요]: 소재에서 빼고 저녁 메뉴 영상 첫 장면에 쓸 날을 잡아요."""
+    import sys
+    sys.path.insert(0, str(ROOT / "scripts"))
+    import plan
+    import scraps
+    path = ROOT / "myphotos" / "index.json"
+    index = _read(path, [])
+    e = next((e for e in index if e.get("id") == photo_id), None)
+    if not e:
+        return "그 사진을 기록에서 찾지 못했어요."
+    if e.get("use") != "scrap":
+        return "이미 저녁 메뉴 사진으로 받아 둔 거예요."
+    e.pop("use", None)
+    scraps.to_dinner(photo_id)
+    plan.assign(index)
+    _write(path, index)
+    return "🍚 저녁 메뉴 사진으로 옮겼어요.\n" + "\n".join(plan.lines(index)) + (
+        "" if e.get("note") else "\n음식 이름을 알려 주세요. 이 대화방에 이름만 보내도 돼요.")
+
+
+def _plan(pid):
+    import sys
+    sys.path.insert(0, str(ROOT / "scripts"))
+    import scraps
+    path = scraps.plan_path(pid)
+    return path, (_read(path, None) if path else None)
+
+
+def plan_go(pid):
+    path, plan = _plan(pid)
+    if not plan:
+        return f"설계도를 찾지 못했어요: {pid}"
+    if plan.get("status") in ("approved", "made"):
+        return "이미 만들기로 한 설계도예요."
+    plan.update(status="approved", approved=now())
+    _write(path, plan)
+    queue("fix", rid=f"plan:{pid}")
+    when = ("지금 영상 설계도로 옮기기 시작해요. 30~60분 뒤 '승인 전 시안'이 와요." if routine_ready()
+            else "내일 아침 매일 제작 때 먼저 만들어요. " + routine_missing())
+    return f"✅ '{plan.get('title', pid)}' 만들게요.\n{when}\n게시는 시안을 보고 직접 올려 주세요."
+
+
+def plan_fix(pid, note=""):
+    path, plan = _plan(pid)
+    if not plan:
+        return f"설계도를 찾지 못했어요: {pid}"
+    if note:
+        old = plan.get("fix_note") or ""
+        plan["fix_note"] = (old + "\n" + note if old and plan.get("status") == "fix" else note)[:800]
+        plan.update(status="fix", fix_at=now())
+        _write(path, plan)
+        queue("fix", rid=f"plan:{pid}")
+        when = ("지금 고치기 시작해요. 고친 설계도가 다시 와요." if routine_ready()
+                else "내일 아침 매일 제작 때 먼저 고쳐요. " + routine_missing())
+        return f"✏️ 설계도를 고칠게요.\n반영할 점: {note[:200]}\n{when}"
+    return "✏️ 고칠 점을 설계도 메시지에 '답장'으로 적어 주세요. (예: 메인을 두바이 초콜릿으로, 첫 5초를 가격으로)"
+
+
+def plan_drop(pid):
+    path, plan = _plan(pid)
+    if not plan:
+        return f"설계도를 찾지 못했어요: {pid}"
+    plan.update(status="dropped", dropped=now())
+    _write(path, plan)
+    import sys
+    sys.path.insert(0, str(ROOT / "scripts"))
+    import scraps
+    d = scraps.load()
+    for t in d["topics"]:  # 소재는 지우지 않고 다시 묶을 수 있게 되돌려요
+        if t["id"] in (plan.get("topics") or []) and t.get("plan") == path.relative_to(ROOT).as_posix():
+            t.pop("plan", None)
+            t["status"] = "wait"
+    scraps.save(d)
+    return "🗑 이 설계도는 만들지 않을게요. 소재는 남겨 두고 다음 묶음에 다시 쓸 수 있어요."
+
+
+ACTIONS = {"dinner": to_dinner, "pgo": plan_go, "pfix": plan_fix, "pno": plan_drop, "ping": ping, "pingfix": ping_fix, "rerun": rerun, "ok": approve, "no": drop, "keep": keep_cards, "fix": fix, "fine": lambda rid: f"알겠어요. {name_of(rid)} 은(는) 이대로 둘게요."}
 
 
 def handle_callback(data):
@@ -212,7 +294,7 @@ def handle_callback(data):
     if len(parts) != 3 or parts[0] != "j" or parts[1] not in ACTIONS:
         return None
     rid = parts[2]
-    if parts[1] in ("rerun", "ping", "pingfix"):  # 설계도가 없는 버튼
+    if parts[1] in ("rerun", "ping", "pingfix", "dinner", "pgo", "pfix", "pno"):  # 영상 설계도가 없는 버튼
         return ACTIONS[parts[1]](rid)
     if not spec_path(rid).exists():
         return f"설계도가 없어요: {rid}"
@@ -224,6 +306,12 @@ def handle_reply(msg):
     to = (msg.get("reply_to_message") or {}).get("message_id")
     if not to or not msg.get("text"):
         return None
+    import sys
+    sys.path.insert(0, str(ROOT / "scripts"))
+    import scraps
+    pid = scraps.plan_by_msg(to)
+    if pid:  # 소재 쇼츠 설계도에 단 답장 = 설계도 고칠 점 (2026-11-23)
+        return plan_fix(pid, msg["text"].strip())
     review = _read(ROOT / "state" / "review.json", {})
     rid = next((k for k, v in review.items() if v.get("ask_msg") == to), None)
     if not rid:  # 기록에 없으면 답장한 봇 메시지의 버튼이나 글 속 영상 id 에서 읽어요(시험 메시지 등).
@@ -246,6 +334,10 @@ def fire_fix(rid):
         return False
     if rid.startswith("rerun:"):
         text = f"작업: 오늘 치 만들기\n{rid[6:]} 치를 매일 실행과 똑같이 만들어 주세요."
+    elif rid.startswith("scrap:"):
+        text = "작업: 소재 조사\nideas/scraps.json 의 새 사진(status new)을 rules/scrap.md 대로 읽고 조사·기획해 주세요."
+    elif rid.startswith("plan:"):
+        text = f"작업: 소재 설계도\nplans/ 의 {rid[5:]} 설계도를 rules/scrap.md 대로 처리해 주세요(승인이면 영상 설계도로, 고칠 점이면 고쳐서 다시 보내기)."
     elif rid == "ping":
         text = "작업: 고치기\n(텔레그램 연결 확인으로 불렀어요. 열린 요청이 없으면 아무것도 바꾸지 말고 끝내요.)"
     else:
@@ -297,6 +389,7 @@ def run_dispatch():
             if job["workflow"] == "fix":
                 tell(f"⚠️ 고치기 루틴을 바로 부르지 못했어요 ({why}).\n"
                      + ("연결 시험이라 바뀐 것은 없어요." if rid == "ping" else
+                        "새 소재 사진은 내일 아침 매일 제작 때 조사해요." if rid.startswith("scrap:") else
                         "요청은 남아 있어서 내일 아침 매일 제작 때 먼저 처리해요." if not rid.startswith("rerun:") else
                         "내일 아침에는 평소대로 만들어요.")
                      + ("\n열쇠(FIX_ROUTINE_TOKEN)가 틀렸거나 만료됐을 수 있어요. claude.ai 루틴 화면에서 새로 만들어 Secrets 에 넣으면 돼요."

@@ -8,6 +8,8 @@ produce·publish 작업이 버튼을 보냈으면(build/buttons_sent) buttons.ym
 - 보기만 하는 법: photos 가 저장한 다음 번호(state/tg_offset.json 의 next, main 최신)부터 getUpdates 를 timeout=0 으로 불러요.
   그 번호 앞의 것은 photos 가 이미 처리한 것이라 확인 처리돼도 괜찮아요. 그 뒤의 것은 건드리지 않아요.
 - photos 가 돌고 있으면 기다리고, 끝난 뒤에도 새 것이 남아 있으면 다시 불러요.
+- 소재 사진(2026-11-23, scripts/scraps.py): 사진이 온 뒤 SETTLE 초가 지나면 photos 를 한 번 더 불러요. 이어 보낸 사진이
+  다 들어온 뒤에 photos 가 조사 루틴을 부르게요(fetch_photos → scraps.want_research).
 
   python scripts/watch_buttons.py --hours 3          지켜보기
   python scripts/watch_buttons.py --hours 3 --test   연결 확인 버튼을 보내고 지켜보기
@@ -29,6 +31,7 @@ from common import KST, ROOT  # noqa: E402
 STEP = 20          # 몇 초마다 볼지
 MAX_CALLS = 40     # 한 번 지키는 동안 photos 를 부르는 최대 횟수(잘못돼 계속 부르는 것을 막아요)
 PHOTOS_WAIT = 30 * 60
+SETTLE = 9 * 60    # 소재 사진이 온 뒤 이만큼 지나면 photos 를 한 번 더 불러요 (scripts/scraps.py SETTLE_SEC 보다 조금 길게)
 
 
 def api(token, method, **params):
@@ -51,6 +54,25 @@ def saved_offset():
         return int(json.loads(r.stdout).get("next", 0))
     except Exception:
         return None
+
+
+def settle_from_saved():
+    """지키기를 시작할 때: 아직 조사를 안 부른 새 소재 사진이 있으면 그 뒤 SETTLE 초에 photos 를 부를 시각."""
+    try:
+        sys.path.insert(0, str(ROOT / "scripts"))
+        import scraps
+        fresh = scraps.new_photos()
+        upto = (json.loads(scraps.FIRE.read_text(encoding="utf-8")) if scraps.FIRE.exists() else {}).get("upto", 0)
+        newest = max((p.get("at", 0) for p in fresh), default=0)
+        return newest + SETTLE if newest > upto else None
+    except Exception as e:
+        print(f"소재 사진 기록을 못 읽었어요: {type(e).__name__}")
+        return None
+
+
+def has_media(up):
+    m = up.get("message") or {}
+    return bool(m.get("photo") or m.get("document") or m.get("video"))
 
 
 def ours(up, chat):
@@ -120,7 +142,8 @@ def main():
         send_test(token, chat)
     end = time.time() + a.hours * 3600
     calls = 0
-    print(f"{datetime.now(KST):%H:%M} 부터 {a.hours}시간 지켜봐요")
+    settle_at = settle_from_saved()
+    print(f"{datetime.now(KST):%H:%M} 부터 {a.hours}시간 지켜봐요" + (" (소재 사진 조사 부르기 기다림)" if settle_at else ""))
     while time.time() < end and calls < MAX_CALLS:
         offset = saved_offset()
         if offset is not None:
@@ -130,8 +153,15 @@ def main():
                 print(f"텔레그램을 못 봤어요: {type(e).__name__}")
                 ups = []
             new = [u for u in ups if u["update_id"] >= offset and ours(u, chat)]
+            if any(has_media(u) for u in new):
+                settle_at = time.time() + SETTLE
             if new and not photos_busy():
                 print(f"새로 온 것 {len(new)}개")
+                if call_photos():
+                    calls += 1
+            elif settle_at and time.time() >= settle_at and not photos_busy():
+                print("소재 사진이 다 들어와서 조사를 부르러 photos 를 한 번 더 불러요")
+                settle_at = None
                 if call_photos():
                     calls += 1
         time.sleep(STEP)

@@ -1,0 +1,54 @@
+# 사진 소재 설계도 보내기 (2026-11-23, scripts/scraps.py · rules/scrap.md)
+# Claude 가 plans/ 에 검수용 설계도를 올리거나 ideas/scraps.json 에 소재를 등록하면
+# 썸네일 시안 그림과 설계도를 텔레그램으로 보내요([이대로 만들기]·[고쳐서 다시]·[안 만들기], 답장 = 고칠 점).
+# 영상은 만들지 않아요. 버튼을 누르면 photos 작업(tg_actions.py)이 고치기 루틴을 불러요.
+name: plans
+
+on:
+  push:
+    branches: [main]
+    paths: ["plans/**", "ideas/scraps.json"]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  actions: write # 버튼 지킴이(buttons.yml)를 불러요
+
+concurrency:
+  group: repo-write
+  cancel-in-progress: false
+
+jobs:
+  send:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: 도구 설치
+        run: |
+          pip install --quiet playwright numpy pillow requests
+          python -m playwright install --with-deps chromium
+      - name: 설계도 보내기
+        env:
+          PHOTOS_TOKEN: ${{ secrets.PHOTOS_TOKEN }} # 썸네일 제목 글꼴·보관함 사진
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID || secrets.TELEGRAM_CHAT_I }}
+        run: python scripts/scraps.py send
+      - name: 버튼 지킴이 부르기
+        if: always()
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: if [ -f build/buttons_sent ]; then gh workflow run buttons.yml --ref main || echo "버튼 지킴이를 부르지 못했어요"; else echo "보낸 버튼이 없어요"; fi
+      - name: 보낸 기록 저장
+        if: always()
+        run: |
+          git config user.name "jecheol-feed"
+          git config user.email "actions@users.noreply.github.com"
+          git add state logs
+          git diff --cached --quiet || git commit -m "소재 설계도 보낸 기록"
+          python3 scripts/safe_push.py

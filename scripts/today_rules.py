@@ -82,6 +82,15 @@ def pick(day, morning=False):
         now.append(("rules/monthly/day2.md", ("매달 2일" if day.day == 2 else "밀린 것") + ". 오늘 만들 것: 9-abroad"))
     if photos_today(day):
         now.append(("rules/when/myphotos.md", "사용자가 보낸 사진·동영상을 오늘 씀"))
+    try:  # 사진으로 모은 트렌드 소재 (2026-11-23, scripts/scraps.py)
+        import scraps
+        fresh, plans = scraps.work_waiting()
+    except Exception:
+        fresh, plans = 0, []
+    if fresh or plans:
+        now.insert(0, ("rules/scrap.md", "사진 소재: " + ", ".join(
+            ([f"새 사진 {fresh}장 읽기·조사"] if fresh else []) + ([f"버튼 누른 설계도 {', '.join(plans[:3])}"] if plans else []))
+            + " — 순서 0-1, 오늘 치보다 먼저"))
     open_fix = [f.name for f in sorted((ROOT / "requests").glob("fix-*.json"))
                 if json.loads(f.read_text(encoding="utf-8")).get("status") == "open"]
     if open_fix:  # 텔레그램 [고쳐서 다시] 요청 (2026-11-06, scripts/tg_actions.py)
@@ -150,7 +159,20 @@ def check(day):
         print("참고: 3-dinner.json 에 menu_pick 칸이 없어요. python3 scripts/dinner_pick.py 후보 18개를 견줘 고른 네 메뉴와 까닭을 적고, "
               "python3 scripts/dinner_pick.py --save 로 추천 이력을 새로 써요 (rules/daily/dinner.md \"메뉴 고르기\").")
     unchecked = blog_photo_check(day)
-    return 1 if found or missing or no_cards or unchecked or low_script else 0
+    scrap_bad = False
+    try:  # 사진 소재: 소재 기록과 보낼 설계도 검사 (2026-11-23, rules/scrap.md)
+        import scraps
+        probs = scraps.topic_problems() + [x for _, plan in scraps.plan_files(("review",)) for x in scraps.plan_problems(plan)]
+        for x in probs:
+            print("꼭 고쳐 주세요(사진 소재): " + x)
+        scrap_bad = bool(probs)
+        fresh, plans = scraps.work_waiting()
+        if fresh or plans:
+            print(f"꼭 해 주세요: 사진 소재가 남아 있어요(새 사진 {fresh}장, 버튼 누른 설계도 {len(plans)}개). rules/scrap.md 대로 끝내요.")
+            scrap_bad = True
+    except Exception as e:
+        print(f"사진 소재 검사를 못 했어요: {type(e).__name__}: {e}")
+    return 1 if found or missing or no_cards or unchecked or low_script or scrap_bad else 0
 
 
 # 사진 검수 시트·shows·match 는 매일 실행이 직접 채울 수 있어요. 나머지 '확인 필요'(이력 겹침, 이용 조건 등)는 사람 몫이라 막지 않아요.
