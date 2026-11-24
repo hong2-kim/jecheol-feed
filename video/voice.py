@@ -119,6 +119,7 @@ def spoken(line):
     text = line.get("read") or line["say"]
     text = text.replace("[[", "").replace("]]", "")
     text = re.sub(r"[ㅋㅎㅠㅜ]+", "", text)  # 'ㅋㅋ'를 글자 그대로 읽지 않게 (2026-10-19)
+    text = re.sub(r"(?<![\d.])\s*%", " 퍼센트", text)  # '몇 %가'의 %를 TTS가 빼먹어요 → 퍼센트 (2026-11-24, 숫자 뒤 %는 그대로 잘 읽어요)
     # 4~5시, 7,500~9,000원, 3~4개 → 4시에서 5시, 7,500원에서 9,000원, 3개에서 4개
     text = re.sub(r"(\d[\d,.]*)\s*[~∼-]\s*(\d[\d,.]*)\s*(시|원|개|분|명|곳|도|%|kg|g|만 원|천 원)", r"\1\3에서 \2\3", text)
     # 시각은 우리말 수로: 5시 → 다섯 시, 10시 → 열 시 (숫자로 두면 "오 시"처럼 읽을 때가 있어요)
@@ -793,6 +794,11 @@ def bad_joint(left, right):
     if re.fullmatch(r"(이|가|을|를|은|는|에|의|도|만|과|와|로|으로|에서|부터|까지|처럼|보다)", hy):
         return "조사만 따로 떨어져요"
     if re.search(r"\d$", hx) and re.match(r"(만|천|억|원|개|명|곳|kg|g|분|시간|배|년|월|일|살|번)", hy) or (re.search(r"\d$", hx) and y.startswith("%")):
+        return "숫자와 단위가 갈라져요"
+    # '15억 8,510만 / 달러', '15억 / 8,510만 달러' 처럼 큰 수 단위(만·억)로 끝나는 숫자와 돈·무게 단위, 이어지는 숫자도 한 화면에 (2026-11-24 사용자)
+    nx = re.sub(r"[^\w%.,]", "", x)
+    if re.search(r"\d[\d,.]*(백|천|만|억|조)?$", nx) and (
+            re.match(r"(달러|원|위안|엔|유로|파운드|톤|kg|g|mg|ml|리터|kcal|칼로리|퍼센트|%|개|명|곳|봉지|그릇|마리|배|만|억|천|조)", y.lstrip("[")) or re.match(r"\d", y.lstrip("["))):
         return "숫자와 단위가 갈라져요"
     if JOINT_NOUN.match(hy) and len(hy) <= 4 and re.search(r"[을를ㄹ는은던할될볼갈올질칠일릴날낼울쓸길릴]$", hx):
         return "꾸미는 말과 '수·것' 같은 말이 갈라져요"
