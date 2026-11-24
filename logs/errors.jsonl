@@ -28,3 +28,5 @@
 {"time": "2026-11-19T10:46:05+09:00", "where": "fetch:news:\"밀키트\" OR \"냉동식품\" 판매", "message": "HTTP Error 429: Too Many Requests"}
 {"time": "2026-11-19T10:46:06+09:00", "where": "fetch:news:고단백 OR 저당 식품 출시", "message": "HTTP Error 429: Too Many Requests"}
 {"time": "2026-11-21T10:09:25+09:00", "where": "fetch:weather", "message": "<urlopen error _ssl.c:994: The handshake operation timed out>"}
+{"time": "2026-11-24T13:39:13+09:00", "where": "fetch:news:먹거리 축제", "message": "HTTP Error 429: Too Many Requests"}
+{"time": "2026-11-24T13:39:20+09:00", "where": "fetch:news:라면 과자 가격 인상", "message": "HTTP Error 429: Too Many Requests"}
