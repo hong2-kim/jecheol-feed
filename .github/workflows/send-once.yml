@@ -1,6 +1,6 @@
-# 2026-11-23, 사용자가 승인한("보내") 11-23 「먹거리 뉴스 2」(빵) 수정본을 비공개 보관함에서 받아 텔레그램으로 한 번만 보내요.
-# 썸네일 '대전 빵집이 서울에?' + 대전 빵축제 참여 빵집 명단 카드 2장, 쇼츠 17.4초. videos/2026-11-23/2-news.json 은 그대로 둬요.
-# 보낸 뒤 state/sent.json 에 표시를 남겨 다시 보내지 않아요.
+# 2026-11-25, 사용자가 승인한("보내") 11-24 「불닭 내레이션 쇼츠」 3차 수정본을 비공개 보관함에서 받아 텔레그램으로 한 번만 보내요.
+# 숫자·단위 자막 안 갈리게, 쉼표 든 수(2,125억)를 이어 읽게, 끝 두 장면을 불닭 까르보·원조 사진으로 바꿈. 41.4초.
+# videos/2026-11-24/10-voice.json 은 그대로 둬요. 보낸 뒤 state/sent.json 에 표시를 남겨 다시 보내지 않아요.
 name: send-once
 
 on:
@@ -24,21 +24,18 @@ jobs:
       - name: 날짜·중복 확인
         run: |
           d="$(TZ=Asia/Seoul date +%F)"
-          [ "$d" = "2026-11-23" ] || [ "$d" = "2026-11-24" ]
-          if grep -q '"2026-11-23-2-news-v2"' state/sent.json; then echo "이미 보냈어요"; exit 1; fi
+          [ "$d" = "2026-11-25" ] || [ "$d" = "2026-11-26" ]
+          if grep -q '"2026-11-24-10-voice-v3"' state/sent.json; then echo "이미 보냈어요"; exit 1; fi
       - name: 비공개 보관함에서 받기
         env:
           PHOTOS_TOKEN: ${{ secrets.PHOTOS_TOKEN }}
         run: |
           for f in mp4 jpg html; do
             curl -fsSL -H "Authorization: Bearer $PHOTOS_TOKEN" -H "Accept: application/vnd.github.raw" \
-              -o "s.$f" "https://api.github.com/repos/hong2-kim/jecheol-photos/contents/send/2026-11-23-2-news-v2.$f"
+              -o "s.$f" "https://api.github.com/repos/hong2-kim/jecheol-photos/contents/send/2026-11-24-10-voice-v3.$f"
           done
-          for i in 1 2 3 4 5; do
-            curl -fsSL -H "Authorization: Bearer $PHOTOS_TOKEN" -H "Accept: application/vnd.github.raw"               -o "c$i.jpg" "https://api.github.com/repos/hong2-kim/jecheol-photos/contents/send/2026-11-23-2-news-v2-c$i.jpg"
-          done
-          ls -la s.* c*.jpg
-          [ "$(md5sum s.mp4 | cut -d' ' -f1)" = "a496d1cf25a544f45dea077a8f2b952d" ]
+          ls -la s.*
+          [ "$(md5sum s.mp4 | cut -d' ' -f1)" = "67080cae7ff69eac6c78067c3a81b639" ]
       - name: 텔레그램으로 보내기
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
@@ -46,14 +43,12 @@ jobs:
         run: |
           API="https://api.telegram.org/bot$TELEGRAM_BOT_TOKEN"
           curl -fsS -o v.json "$API/sendVideo" --form-string "chat_id=$TELEGRAM_CHAT_ID" \
-            --form-string "caption=[유튜브 쇼츠 · 카드 · 수정본] 대전 빵집이 서울에? 빵 페스티벌 37만 명 + 대전 빵축제 참여 빵집 명단 (오늘 아침 먹거리 뉴스 2 대신)" \
-            --form-string "supports_streaming=true" -F "width=1080" -F "height=1920" -F "duration=17" -F "video=@s.mp4;type=video/mp4"
+            --form-string "caption=[유튜브 쇼츠 · 내레이션 쇼츠 · 수정본] 불닭볶음면 수출, 삼양식품 매출 83%가 해외였다 (11-24 승인 전 시안 대신)" \
+            --form-string "supports_streaming=true" -F "width=1080" -F "height=1920" -F "duration=41" -F "video=@s.mp4;type=video/mp4"
           python3 -c "import json;r=json.load(open('v.json'));assert r['ok'];print('영상 message_id',r['result']['message_id'])"
           curl -fsS -o p.json "$API/sendPhoto" --form-string "chat_id=$TELEGRAM_CHAT_ID" \
-            --form-string "caption=먹거리 뉴스 2 썸네일 「대전 빵집이 서울에?」(맨 앞 0초 장면)" -F "photo=@s.jpg;type=image/jpeg"
+            --form-string "caption=불닭 쇼츠 썸네일(맨 앞 0초 장면)" -F "photo=@s.jpg;type=image/jpeg"
           python3 -c "import json;r=json.load(open('p.json'));assert r['ok'];print('썸네일 message_id',r['result']['message_id'])"
-          curl -fsS -o g.json "$API/sendMediaGroup" --form-string "chat_id=$TELEGRAM_CHAT_ID"             --form-string 'media=[{"type":"photo","media":"attach://c1","caption":"인스타 카드 5장(수정본)"},{"type":"photo","media":"attach://c2"},{"type":"photo","media":"attach://c3"},{"type":"photo","media":"attach://c4"},{"type":"photo","media":"attach://c5"}]'             -F "c1=@c1.jpg;type=image/jpeg" -F "c2=@c2.jpg;type=image/jpeg" -F "c3=@c3.jpg;type=image/jpeg" -F "c4=@c4.jpg;type=image/jpeg" -F "c5=@c5.jpg;type=image/jpeg"
-          python3 -c "import json;r=json.load(open('g.json'));assert r['ok'];print('카드', len(r['result']), '장')"
           curl -fsS -o m.json "$API/sendMessage" --form-string "chat_id=$TELEGRAM_CHAT_ID" \
             --form-string "parse_mode=HTML" --form-string "disable_web_page_preview=true" -F "text=<s.html"
           python3 -c "import json;r=json.load(open('m.json'));assert r['ok'];print('안내 message_id',r['result']['message_id'])"
@@ -67,13 +62,13 @@ jobs:
           import json
           p = "state/sent.json"
           d = json.load(open(p, encoding="utf-8"))
-          if "2026-11-23-2-news-v2" not in d:
-              d.append("2026-11-23-2-news-v2")
+          if "2026-11-24-10-voice-v3" not in d:
+              d.append("2026-11-24-10-voice-v3")
           json.dump(d, open(p, "w", encoding="utf-8"), ensure_ascii=False, indent=2)
           open(p, "a", encoding="utf-8").write("\n")
           PY
             git add state/sent.json
-            git commit -q -m "빵 뉴스 2 수정본 텔레그램 1회 전송 기록 [skip ci]" || true
+            git commit -q -m "불닭 쇼츠 수정본 텔레그램 1회 전송 기록 [skip ci]" || true
             git push -q origin HEAD:main && break
             sleep 5
           done
