@@ -1,5 +1,148 @@
 [
   {
+    "id": "2026-11-25-4-find",
+    "date": "2026-11-25",
+    "kind": "발견",
+    "title": "홍시가 뭔지 아세요? 떫은 감이 말랑해지는 이야기",
+    "summary": "홍시는 떫은 감을 말랑하게 익힌 것이에요. 떫은맛은 타닌 때문이고 말리거나 얼려도 사라져요. 세븐일레븐이 11월 24일 청도산 홍시스무디를 내놨어요.",
+    "caption": "홍시는 단감이 익은 걸까요? 11월 감 이야기예요\n\n산림청 국립산림과학원 자료에 따르면 감은 타닌 때문에 떫은맛이 있어서, 단감처럼 단단할 때 먹지 않고 홍시나 곶감으로 만들어 먹어요. 단감은 일본에서 도입된 품종이 많이 재배돼요. 감을 말리거나 얼리면 수용성 타닌이 불용성으로 바뀌어 떫은맛이 사라진다고 해요. 농촌진흥청은 2011년에 떫은감을 익혀 홍시를 만드는 방법을 소개하며, 떫은감 생산량의 절반쯤이 홍시로 쓰인다고 밝혔어요.\n\n요즘은 세븐일레븐이 11월 24일 청도산 홍시로 만든 '세븐셀렉트 홍시스무디'를 내놨어요. 영상 속 사진은 일반 감 사진이고 이 제품 사진이 아니에요. 협찬이나 광고가 아니에요.\n\n여러분은 홍시파예요, 단감파예요?\n\n더 자세한 이야기는 프로필 링크의 블로그에 있어요.\n\n출처: 산림청 국립산림과학원 자료, 농촌진흥청(2011년 11월 30일), BBS(11월 24일)",
+    "tags": [
+      "홍시",
+      "떫은감",
+      "곶감",
+      "11월제철음식",
+      "먹고갈지도"
+    ],
+    "sources": [
+      "https://eng-nifos.forest.go.kr/kfs/images/data/down/imsan/감.pdf",
+      "https://www.korea.kr/briefing/policyBriefingView.do?newsId=148723212",
+      "https://news.bbsi.co.kr/news/articleView.html?idxno=4120454"
+    ],
+    "credits": [
+      "사진: Eden / Unsplash",
+      "사진: Jerry Wang / Unsplash",
+      "사진: Luke Doo / Unsplash",
+      "사진: Madeline Liu / Unsplash",
+      "사진: Se. Tsuchiya / Unsplash",
+      "사진: Stas Ostrikov / Unsplash",
+      "사진: Valentin Balan / Unsplash",
+      "사진: huiyeon kim / Unsplash"
+    ],
+    "url": "https://github.com/hong2-kim/jecheol-feed/releases/download/v2026-11-25/2026-11-25-4-find.mp4",
+    "seconds": 24.5,
+    "size_mb": 5.2,
+    "yt_title": "홍시 단감 차이, 홍시는 익은 단감일까? 떫은 감 이야기",
+    "sha256": "27408599adc7278e935acb75015565ef49807693f2355006eed6200a6265beba",
+    "held": "확인 필요"
+  },
+  {
+    "id": "2026-11-25-3-dinner",
+    "date": "2026-11-25",
+    "kind": "저녁",
+    "title": "수요일 저녁 아직 못 골랐어? 마라탕·양꼬치·폴란드식피에로기·달밧",
+    "summary": "수요일 저녁 메뉴로 마라탕·양꼬치·폴란드식피에로기·달밧 넷을 추천해요.",
+    "caption": "수요일 저녁, 아직 못 골랐다면?\n\n얼얼하게 빨간 국물 마라탕\n양념 듬뿍 입힌 꼬치 양꼬치\n노릇하게 구운 폴란드식 피에로기\n밥에 반찬이 한가득 네팔식 달밧\n\n넷 중에 오늘은 뭐가 끌려요? 댓글로 알려 주세요.",
+    "tags": [
+      "수요일저녁메뉴",
+      "저녁메뉴추천",
+      "오늘뭐먹지",
+      "마라탕",
+      "먹고갈지도"
+    ],
+    "sources": [],
+    "credits": [
+      "사진: Abhishek Sanwa Limbu / Unsplash",
+      "사진: Dennis Zhang / Unsplash",
+      "사진: Zoshua Colah / Unsplash",
+      "사진: wang yan / Unsplash"
+    ],
+    "url": "https://github.com/hong2-kim/jecheol-feed/releases/download/v2026-11-25/2026-11-25-3-dinner.mp4",
+    "seconds": 22.7,
+    "size_mb": 9.5,
+    "yt_title": "수요일 저녁 메뉴 아직 못 골랐어? 마라탕·양꼬치·폴란드식피에로기·달밧 중에 골라 줄게",
+    "sha256": "eeb1c68aad9fe916aa6e543d8472d5a6c79f831562f4d6f96241317efc628bb2",
+    "held": "확인 필요"
+  },
+  {
+    "id": "2026-11-25-2-news",
+    "date": "2026-11-25",
+    "kind": "소식",
+    "title": "햅쌀이 풀렸는데 쌀값이 평년보다 13.0% 비싸요",
+    "summary": "11월 23일 쌀 20kg 소매가는 63,380원으로 평년보다 13.0% 높고, 올해 쌀 생산량은 350만 8천 톤으로 6년 만에 가장 적어요.",
+    "caption": "햅쌀 풀렸다며, 쌀값은 왜 그대로일까요?\n쌀값 · 쌀 가격 · 햅쌀, 11월 25일 먹거리 이슈\n\n11월 23일 기준 쌀 20kg 상품의 전국 평균 소매가격은 63,380원으로 평년(56,111원)보다 13.0% 높아요. 한 달 전(63,582원)보다는 0.3% 내리는 데 그쳤어요.\n\n올해 쌀 생산량은 350만 8천 톤으로 지난해보다 0.9% 줄어 6년 만에 가장 적고, 벼 재배면적도 67만 ha로 1.1% 줄었다고 국가데이터처가 밝혔어요. 20kg 산지 쌀값은 10월 5일 58,803원에서 11월 5일 57,403원으로 내렸지만 낙폭이 줄었어요. 농식품부는 시장 상황을 보며 필요하면 수급안정 대책을 보완하겠다고 했어요.\n\n값은 조사한 날 기준이라 지금과 다를 수 있어요.\n\n요즘 쌀 20kg 얼마에 사세요? 댓글로 알려 주세요.\n\n출처: 남도일보(11월 24일), 인천매거진(11월 13일), aT 농산물유통정보, 국가데이터처",
+    "tags": [
+      "쌀값",
+      "햅쌀",
+      "쌀가격",
+      "장바구니물가",
+      "먹고갈지도"
+    ],
+    "sources": [
+      "https://www.namdonews.com/news/articleViewAmp.html?idxno=930345",
+      "http://www.imaganews.com/news/articleView.html?idxno=14005"
+    ],
+    "credits": [
+      "사진: Abyss Schuring / Unsplash",
+      "사진: Deski Jayantoro / Unsplash",
+      "사진: Graphic Node / Unsplash",
+      "사진: Matt L / Unsplash",
+      "사진: Vinn Koonyosying / Unsplash"
+    ],
+    "url": "https://github.com/hong2-kim/jecheol-feed/releases/download/v2026-11-25/2026-11-25-2-news-1.jpg",
+    "seconds": null,
+    "size_mb": 1.3,
+    "yt_title": "쌀값 평년보다 13.0% 비싸요, 햅쌀 풀렸는데 왜 안 내릴까",
+    "format": "cards",
+    "files": [
+      "2026-11-25-2-news-1.jpg",
+      "2026-11-25-2-news-2.jpg",
+      "2026-11-25-2-news-3.jpg",
+      "2026-11-25-2-news-4.jpg",
+      "2026-11-25-2-news-5.jpg"
+    ],
+    "urls": [
+      "https://github.com/hong2-kim/jecheol-feed/releases/download/v2026-11-25/2026-11-25-2-news-1.jpg",
+      "https://github.com/hong2-kim/jecheol-feed/releases/download/v2026-11-25/2026-11-25-2-news-2.jpg",
+      "https://github.com/hong2-kim/jecheol-feed/releases/download/v2026-11-25/2026-11-25-2-news-3.jpg",
+      "https://github.com/hong2-kim/jecheol-feed/releases/download/v2026-11-25/2026-11-25-2-news-4.jpg",
+      "https://github.com/hong2-kim/jecheol-feed/releases/download/v2026-11-25/2026-11-25-2-news-5.jpg"
+    ],
+    "sha256": "3640d1de4b1118409aeb4879c12925d42ef1e36e6860b48d29e8ba174c22bed7"
+  },
+  {
+    "id": "2026-11-25-10-voice",
+    "date": "2026-11-25",
+    "kind": "해설",
+    "title": "김치 종주국인데 김치 무역은 5년 연속 적자예요",
+    "summary": "올해 1~10월 김치 수출은 1억 4,033만 달러로 역대 최고지만 수입이 1억 7,790만 달러라 무역적자는 3,757만 달러, 5년 연속이에요.",
+    "caption": "김치 종주국 한국, 김치 무역은 흑자일까요, 적자일까요?\n\n한국무역협회에 따르면 올해 1~10월 김치 수출은 1억 4,033만 달러로 역대 최고예요. 그런데 같은 기간 수입이 1억 7,790만 달러라 무역적자가 3,757만 달러로, 지난해 한 해 적자(3,397만 달러)를 이미 넘었어요. 수입의 대부분인 1억 7,789만 달러가 중국산이고, 적자는 5년 연속이에요.\n\n농림축산식품부와 aT의 2025 김치산업 실태조사에서 음식점이 수입 김치를 사는 이유 1위는 '값이 싸서'(49%)였고, 수입 배추김치는 국산보다 평균 35.3% 쌌어요.\n\n수치는 서울경제의 11월 20일 보도를 인용했어요.\n\n여러분은 김치 살 때 원산지 확인하세요?\n\n출처: 서울경제(11월 20일), 한국무역협회",
+    "tags": [
+      "김치",
+      "김치수출",
+      "김치무역적자",
+      "김치의날",
+      "먹고갈지도"
+    ],
+    "sources": [
+      "https://www.sedaily.com/article/20117065",
+      "https://www.sedaily.com/article/20117083"
+    ],
+    "credits": [
+      "사진: Daniel / Unsplash",
+      "사진: Frames For Your Heart / Unsplash",
+      "사진: Ivan Wong / Unsplash",
+      "사진: Jason Leung / Unsplash",
+      "사진: Portuguese Gravity / Unsplash",
+      "사진: huiyeon kim / Unsplash"
+    ],
+    "url": "https://github.com/hong2-kim/jecheol-feed/releases/download/v2026-11-25/2026-11-25-10-voice.mp4",
+    "seconds": 46.4,
+    "size_mb": 4.9,
+    "yt_title": "김치 무역적자 5년 연속, 종주국인데 중국산 수입 1억 7,790만 달러",
+    "sha256": "e7b2540bf2ff0809a4aaa87b5fa7d86552f6d939324363bac87ba2e54c4a3310",
+    "held": "확인 필요"
+  },
+  {
     "id": "2026-11-24-6-story",
     "date": "2026-11-24",
     "kind": "이야기",
