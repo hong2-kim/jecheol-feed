@@ -1,0 +1,243 @@
+{
+ "kind": "소식",
+ "format": "cards",
+ "mode": "story",
+ "pill": "이슈",
+ "subject": "2026-11-25 이슈 · 햅쌀 풀렸는데 쌀값",
+ "title": "햅쌀이 풀렸는데 쌀값이 평년보다 13.0% 비싸요",
+ "summary": "11월 23일 쌀 20kg 소매가는 63,380원으로 평년보다 13.0% 높고, 올해 쌀 생산량은 350만 8천 톤으로 6년 만에 가장 적어요.",
+ "kicker": "11월 25일 수요일",
+ "meta": {
+  "angle": "시차·왜",
+  "fallback": "",
+  "click": "장 볼 때마다 사는 쌀이 햅쌀이 나왔는데도 왜 안 싸지는지 궁금해서 누르고 가족에게 보냄",
+  "exclude": "값 소식은 우리 채널 조회가 낮았던 갈래이고 지역 신문 한 곳이 중심이라 근거가 약함",
+  "others": [
+   {
+    "name": "맥도날드 크리스마스 한정 메뉴 11월 26일",
+    "click": "신메뉴 궁금한 사람이 친구에게 보냄",
+    "exclude": "회사 사진 이용 조건 미확인이라 사진 채우기 어려움"
+   },
+   {
+    "name": "세븐일레븐 홍시스무디",
+    "click": "겨울 간식 궁금한 사람",
+    "exclude": "회사 사진 이용 조건 미확인, 홍시는 발견형에서 다룸"
+   }
+  ]
+ },
+ "thumb": {
+  "head": "햅쌀 풀렸는데\n[[쌀값은 왜?]]",
+  "sub": "평년보다 [[13.0%]] 비싸요",
+  "photo": {
+   "url": "https://images.unsplash.com/photo-1771493003867-1aa55f96df5d?w=2000&q=85&fm=jpg",
+   "shows": "흰 쌀 포대 위에서 두 손으로 쌀을 하트 모양으로 떠 올린 모습(상표 없음) (쌀값·햅쌀·쌀 생산량 소식용 일반 쌀 사진)",
+   "match": "같은 종류",
+   "about": "쌀 일반",
+   "general": true,
+   "credit": "사진: Deski Jayantoro / Unsplash",
+   "rights": "Unsplash 라이선스(무료)",
+   "page": "https://unsplash.com/photos/WIV4BRB1bv4",
+   "fit": "cover"
+  }
+ },
+ "cover": {
+  "label": "오늘의 먹거리 이슈",
+  "title": "햅쌀 풀렸다며\n[[쌀값은 왜 그대로?]]",
+  "photo": {
+   "url": "https://images.unsplash.com/photo-1516684732162-798a0062be99?w=2000&q=85&fm=jpg",
+   "shows": "검은 그릇에 담긴 갓 지은 흰쌀밥(깨 뿌림)과 옆의 국그릇, 젓가락 (쌀값·햅쌀·쌀 생산량 소식용 일반 쌀 사진)",
+   "match": "같은 종류",
+   "about": "쌀 일반",
+   "general": true,
+   "credit": "사진: Vinn Koonyosying / Unsplash",
+   "rights": "Unsplash 라이선스(무료)",
+   "page": "https://unsplash.com/photos/zXNC_lBBVGE",
+   "pos": "50% 45%"
+  }
+ },
+ "cards": [
+  {
+   "tag": "까닭",
+   "headline": "쌀 생산량이\n[[6년 만에 최저]]",
+   "big": "350만 8천 t",
+   "photo": {
+    "url": "https://images.unsplash.com/photo-1549888728-c4df900ccba7?w=2000&q=85&fm=jpg",
+    "shows": "노랗게 익어 가는 벼가 가득한 논 (쌀값·햅쌀·쌀 생산량 소식용 일반 쌀 사진)",
+    "match": "같은 종류",
+    "about": "쌀 일반",
+    "general": true,
+    "credit": "사진: Graphic Node / Unsplash",
+    "rights": "Unsplash 라이선스(무료)",
+    "page": "https://unsplash.com/photos/dm-9lIgr_K0"
+   },
+   "why": [
+    "올해 쌀 생산량 0.9% 줄었어요",
+    "벼 재배면적도 67만 ha로 1.1% 줄었어요"
+   ],
+   "basis": "작년 대비 · 전국 쌀 생산량",
+   "src": "국가데이터처 · 11월 13일",
+   "q": "왜 안 내려?"
+  },
+  {
+   "type": "chart",
+   "tag": "가격",
+   "headline": "산지 쌀값도\n[[한 달째 제자리]]",
+   "chart": {
+    "unit": "원",
+    "note": "쌀 20kg 산지 가격",
+    "bars": [
+     {
+      "label": "10월 5일",
+      "value": 58803
+     },
+     {
+      "label": "10월 15일",
+      "value": 57580
+     },
+     {
+      "label": "10월 25일",
+      "value": 57454
+     },
+     {
+      "label": "11월 5일",
+      "value": 57403
+     }
+    ],
+    "hi": 3
+   },
+   "why": [
+    "수확 초기에 내린 뒤 낙폭이 줄었어요"
+   ],
+   "src": "농림축산식품부 · 11월 5일 기준",
+   "q": "산지값은?"
+  },
+  {
+   "type": "compare",
+   "tag": "가격",
+   "headline": "소매가는\n[[평년보다 13.0% ↑]]",
+   "arrow": true,
+   "hi": 1,
+   "sides": [
+    {
+     "label": "평년",
+     "value": "56,111원",
+     "note": "20kg 상품",
+     "photo": {
+      "url": "https://images.unsplash.com/photo-1568347355280-d33fdf77d42a?w=2000&q=85&fm=jpg",
+      "shows": "투명 계량컵으로 쌀을 퍼 담는 모습 (쌀값·햅쌀·쌀 생산량 소식용 일반 쌀 사진)",
+      "match": "같은 종류",
+      "about": "쌀 일반",
+      "general": true,
+      "credit": "사진: Matt L / Unsplash",
+      "rights": "Unsplash 라이선스(무료)",
+      "page": "https://unsplash.com/photos/b-AYmZeowJQ"
+     }
+    },
+    {
+     "label": "11월 23일",
+     "value": "63,380원",
+     "note": "20kg 상품",
+     "photo": {
+      "url": "https://images.unsplash.com/photo-1516684732162-798a0062be99?w=2000&q=85&fm=jpg",
+      "shows": "검은 그릇에 담긴 갓 지은 흰쌀밥(깨 뿌림)과 옆의 국그릇, 젓가락 (쌀값·햅쌀·쌀 생산량 소식용 일반 쌀 사진)",
+      "match": "같은 종류",
+      "about": "쌀 일반",
+      "general": true,
+      "credit": "사진: Vinn Koonyosying / Unsplash",
+      "rights": "Unsplash 라이선스(무료)",
+      "page": "https://unsplash.com/photos/zXNC_lBBVGE",
+      "pos": "50% 40%"
+     }
+    }
+   ],
+   "why": [
+    "한 달 전(63,582원)보다 0.3%만 내렸어요"
+   ],
+   "src": "aT 농산물유통정보(KAMIS) · 11월 23일",
+   "q": "평년과 견주면?"
+  },
+  {
+   "type": "summary",
+   "tag": "정리",
+   "headline": "햅쌀이 나와도\n[[값은 천천히]]",
+   "photo": {
+    "url": "https://images.unsplash.com/photo-1763537351442-f377a4878d9a?w=2000&q=85&fm=jpg",
+    "shows": "푸른 하늘 아래 누렇게 익은 벼 이삭을 아래에서 올려다본 모습 (쌀값·햅쌀·쌀 생산량 소식용 일반 쌀 사진)",
+    "match": "같은 종류",
+    "about": "쌀 일반",
+    "general": true,
+    "credit": "사진: Abyss Schuring / Unsplash",
+    "rights": "Unsplash 라이선스(무료)",
+    "page": "https://unsplash.com/photos/ljC00un7xic"
+   },
+   "points": [
+    "소매 63,380원, 평년보다 13.0% ↑",
+    "생산량 350만 8천 t, 6년 만에 최저",
+    "정부는 필요하면 대책을 보완한다고 해요"
+   ],
+   "ask": "요즘 쌀 20kg 얼마에 사세요?"
+  }
+ ],
+ "caption": "햅쌀 풀렸다며, 쌀값은 왜 그대로일까요?\n쌀값 · 쌀 가격 · 햅쌀, 11월 25일 먹거리 이슈\n\n11월 23일 기준 쌀 20kg 상품의 전국 평균 소매가격은 63,380원으로 평년(56,111원)보다 13.0% 높아요. 한 달 전(63,582원)보다는 0.3% 내리는 데 그쳤어요.\n\n올해 쌀 생산량은 350만 8천 톤으로 지난해보다 0.9% 줄어 6년 만에 가장 적고, 벼 재배면적도 67만 ha로 1.1% 줄었다고 국가데이터처가 밝혔어요. 20kg 산지 쌀값은 10월 5일 58,803원에서 11월 5일 57,403원으로 내렸지만 낙폭이 줄었어요. 농식품부는 시장 상황을 보며 필요하면 수급안정 대책을 보완하겠다고 했어요.\n\n값은 조사한 날 기준이라 지금과 다를 수 있어요.\n\n요즘 쌀 20kg 얼마에 사세요? 댓글로 알려 주세요.\n\n출처: 남도일보(11월 24일), 인천매거진(11월 13일), aT 농산물유통정보, 국가데이터처",
+ "tags": [
+  "쌀값",
+  "햅쌀",
+  "쌀가격",
+  "장바구니물가"
+ ],
+ "sources": [
+  "https://www.namdonews.com/news/articleViewAmp.html?idxno=930345",
+  "http://www.imaganews.com/news/articleView.html?idxno=14005"
+ ],
+ "credits": [
+  "사진: Abyss Schuring / Unsplash",
+  "사진: Deski Jayantoro / Unsplash",
+  "사진: Graphic Node / Unsplash",
+  "사진: Matt L / Unsplash",
+  "사진: Vinn Koonyosying / Unsplash"
+ ],
+ "yt_title": "쌀값 평년보다 13.0% 비싸요, 햅쌀 풀렸는데 왜 안 내릴까",
+ "yt_keyword": "쌀값",
+ "yt_related": [
+  "햅쌀 가격",
+  "쌀 20kg 가격",
+  "쌀 생산량",
+  "장바구니 물가"
+ ],
+ "yt_tags": [
+  "쌀값",
+  "햅쌀 가격",
+  "쌀 20kg",
+  "쌀 생산량",
+  "장바구니 물가",
+  "먹거리 이슈"
+ ],
+ "yt_hashtags": [
+  "쌀값",
+  "햅쌀",
+  "장바구니물가"
+ ],
+ "yt_lead": "11월 23일 쌀 20kg 소매가는 63,380원으로 평년보다 13.0% 높아요, 쌀값이 안 내리는 까닭을 정리했어요.",
+ "dates": {
+  "checked": "2026-11-25",
+  "sources": [
+   {
+    "url": "https://www.namdonews.com/news/articleViewAmp.html?idxno=930345",
+    "published": "2026-11-24",
+    "modified": "2026-11-24"
+   },
+   {
+    "url": "http://www.imaganews.com/news/articleView.html?idxno=14005",
+    "published": "2026-11-13",
+    "modified": "2026-11-13"
+   }
+  ],
+  "stat_period": "소매가 2026-11-23, 산지가 10월 5일~11월 5일, 생산량 2026년산"
+ },
+ "unverified": [
+  "KAMIS·농식품부 원문은 직접 열지 못하고 남도일보·인천매거진 보도 수치를 인용함"
+ ],
+ "review": {
+  "photo_sheet": "92b9976901de"
+ }
+}

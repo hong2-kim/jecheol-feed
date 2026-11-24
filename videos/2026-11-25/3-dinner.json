@@ -1,0 +1,449 @@
+{
+ "format": "voice",
+ "layout": "rec",
+ "kind": "저녁",
+ "subject": "수요일 저녁 (마라탕·양꼬치·폴란드식피에로기·달밧)",
+ "title": "수요일 저녁 아직 못 골랐어? 마라탕·양꼬치·폴란드식피에로기·달밧",
+ "summary": "수요일 저녁 메뉴로 마라탕·양꼬치·폴란드식피에로기·달밧 넷을 추천해요.",
+ "headline": "수요일 저녁\n[[아직 못 골랐어?]]",
+ "small": "수요일 저녁, 오늘의 넷",
+ "intro": 7,
+ "length": [
+  20,
+  30
+ ],
+ "narrator": "puck",
+ "voice_pick": {
+  "mode": "solo",
+  "voices": [
+   "puck"
+  ],
+  "why": "낯선 세계 음식을 경쾌하게 권하는 말투라 Puck 솔로(어제 Achird 와 다르게)"
+ },
+ "thumb": {
+  "head": "수요일 저녁\n[[아직 못 골랐어?]]",
+  "sub": "오늘은 [[세계 음식]] 넷",
+  "photo": {
+   "url": "https://images.unsplash.com/photo-1788603377885-fdaa9e788707?w=1600&q=85&fm=jpg",
+   "shows": "캐러멜 양파와 쪽파를 얹어 구운 폴란드식 피에로기 접시",
+   "match": "정확",
+   "about": "폴란드식피에로기",
+   "credit": "사진: Zoshua Colah / Unsplash",
+   "rights": "Unsplash 라이선스(무료)",
+   "page": "https://unsplash.com/photos/O8RSmmnv6eg"
+  }
+ },
+ "yt_title": "수요일 저녁 메뉴 아직 못 골랐어? 마라탕·양꼬치·폴란드식피에로기·달밧 중에 골라 줄게",
+ "yt_keyword": "수요일 저녁 메뉴",
+ "yt_related": [
+  "저녁 메뉴 추천",
+  "오늘 뭐 먹지",
+  "마라탕",
+  "양꼬치",
+  "피에로기",
+  "달밧"
+ ],
+ "yt_tags": [
+  "수요일 저녁 메뉴",
+  "저녁 메뉴 추천",
+  "오늘 뭐 먹지",
+  "마라탕",
+  "양꼬치",
+  "피에로기",
+  "달밧"
+ ],
+ "yt_hashtags": [
+  "수요일저녁메뉴",
+  "오늘뭐먹지",
+  "저녁메뉴추천"
+ ],
+ "yt_lead": "수요일 저녁 메뉴 고민될 때, 마라탕·양꼬치·폴란드식피에로기·달밧 넷 중에 골라 줄게요.",
+ "caption": "수요일 저녁, 아직 못 골랐다면?\n\n얼얼하게 빨간 국물 마라탕\n양념 듬뿍 입힌 꼬치 양꼬치\n노릇하게 구운 폴란드식 피에로기\n밥에 반찬이 한가득 네팔식 달밧\n\n넷 중에 오늘은 뭐가 끌려요? 댓글로 알려 주세요.",
+ "tags": [
+  "수요일저녁메뉴",
+  "저녁메뉴추천",
+  "오늘뭐먹지",
+  "마라탕"
+ ],
+ "sources": [],
+ "credits": [
+  "사진: Abhishek Sanwa Limbu / Unsplash",
+  "사진: Dennis Zhang / Unsplash",
+  "사진: Zoshua Colah / Unsplash",
+  "사진: wang yan / Unsplash"
+ ],
+ "dates": {
+  "checked": "2026-11-25"
+ },
+ "menu_pick": {
+  "menus": [
+   "마라탕",
+   "양꼬치",
+   "폴란드식피에로기",
+   "달밧"
+  ],
+  "from": "dinner_pick(후보 18개 확인, 추운 날씨 기준)",
+  "why": {
+   "마라탕": "국물 갈래, 추운 날 얼얼한 한 냄비",
+   "양꼬치": "구이 갈래, 오랜만에 나오는 익숙한 중식 꼬치",
+   "폴란드식피에로기": "만두 갈래, 새로운 메뉴 1개",
+   "달밧": "정식 갈래, 세계 음식 한 칸"
+  }
+ },
+ "lines": [
+  {
+   "say": "수요일 저녁, 아직 못 골랐어?",
+   "nosub": true,
+   "show": {
+    "thumb": true
+   }
+  },
+  {
+   "say": "내가 골라 줄게. 오늘은 이 넷!",
+   "show": {
+    "dir": "2x2",
+    "own": true,
+    "grid": [
+     {
+      "photo": {
+       "url": "https://images.unsplash.com/photo-1551085046-09ef1353ca5f?w=1600&q=85&fm=jpg",
+       "shows": "빨간 마라 국물에 두부·청경채·꼬치가 가득 담긴 마라탕 냄비",
+       "match": "정확",
+       "about": "마라탕",
+       "credit": "사진: wang yan / Unsplash",
+       "rights": "Unsplash 라이선스(무료)",
+       "page": "https://unsplash.com/photos/CJKKAMvI4AA"
+      }
+     },
+     {
+      "photo": {
+       "url": "https://images.unsplash.com/photo-1708597521669-f7312f312b29?w=1600&q=85&fm=jpg",
+       "shows": "양꼬치로 보이는 양념을 듬뿍 얹은 중국식 꼬치구이 접시(양꼬치)",
+       "match": "정확",
+       "about": "양꼬치",
+       "credit": "사진: Dennis Zhang / Unsplash",
+       "rights": "Unsplash 라이선스(무료)",
+       "page": "https://unsplash.com/photos/MnAIXTajhgU"
+      }
+     },
+     {
+      "photo": {
+       "url": "https://images.unsplash.com/photo-1788603377885-fdaa9e788707?w=1600&q=85&fm=jpg",
+       "shows": "캐러멜 양파와 쪽파를 얹어 구운 폴란드식 피에로기 접시",
+       "match": "정확",
+       "about": "폴란드식피에로기",
+       "credit": "사진: Zoshua Colah / Unsplash",
+       "rights": "Unsplash 라이선스(무료)",
+       "page": "https://unsplash.com/photos/O8RSmmnv6eg"
+      }
+     },
+     {
+      "photo": {
+       "url": "https://images.unsplash.com/photo-1588644525273-f37b60d78512?w=1600&q=85&fm=jpg",
+       "shows": "놋쟁반에 밥·달·채소 반찬이 담긴 네팔식 정식 달밧",
+       "match": "정확",
+       "about": "달밧",
+       "credit": "사진: Abhishek Sanwa Limbu / Unsplash",
+       "rights": "Unsplash 라이선스(무료)",
+       "page": "https://unsplash.com/photos/5Q-7kgG7xbo"
+      }
+     }
+    ],
+    "fade": 0.45
+   }
+  },
+  {
+   "say": "얼얼하게 빨간 국물, 마라탕 한 냄비 어때요?",
+   "subs": [
+    "얼얼하게 빨간 국물,",
+    "마라탕 한 냄비 어때요?"
+   ],
+   "show": {
+    "dir": "2x2",
+    "own": true,
+    "grid": [
+     {
+      "photo": {
+       "url": "https://images.unsplash.com/photo-1551085046-09ef1353ca5f?w=1600&q=85&fm=jpg",
+       "shows": "빨간 마라 국물에 두부·청경채·꼬치가 가득 담긴 마라탕 냄비",
+       "match": "정확",
+       "about": "마라탕",
+       "credit": "사진: wang yan / Unsplash",
+       "rights": "Unsplash 라이선스(무료)",
+       "page": "https://unsplash.com/photos/CJKKAMvI4AA"
+      }
+     },
+     {
+      "photo": {
+       "url": "https://images.unsplash.com/photo-1708597521669-f7312f312b29?w=1600&q=85&fm=jpg",
+       "shows": "양꼬치로 보이는 양념을 듬뿍 얹은 중국식 꼬치구이 접시(양꼬치)",
+       "match": "정확",
+       "about": "양꼬치",
+       "credit": "사진: Dennis Zhang / Unsplash",
+       "rights": "Unsplash 라이선스(무료)",
+       "page": "https://unsplash.com/photos/MnAIXTajhgU"
+      }
+     },
+     {
+      "photo": {
+       "url": "https://images.unsplash.com/photo-1788603377885-fdaa9e788707?w=1600&q=85&fm=jpg",
+       "shows": "캐러멜 양파와 쪽파를 얹어 구운 폴란드식 피에로기 접시",
+       "match": "정확",
+       "about": "폴란드식피에로기",
+       "credit": "사진: Zoshua Colah / Unsplash",
+       "rights": "Unsplash 라이선스(무료)",
+       "page": "https://unsplash.com/photos/O8RSmmnv6eg"
+      }
+     },
+     {
+      "photo": {
+       "url": "https://images.unsplash.com/photo-1588644525273-f37b60d78512?w=1600&q=85&fm=jpg",
+       "shows": "놋쟁반에 밥·달·채소 반찬이 담긴 네팔식 정식 달밧",
+       "match": "정확",
+       "about": "달밧",
+       "credit": "사진: Abhishek Sanwa Limbu / Unsplash",
+       "rights": "Unsplash 라이선스(무료)",
+       "page": "https://unsplash.com/photos/5Q-7kgG7xbo"
+      }
+     }
+    ],
+    "hl": 0
+   }
+  },
+  {
+   "say": "양념 듬뿍 입힌 꼬치, 양꼬치 한 입!",
+   "subs": [
+    "양념 듬뿍 입힌 꼬치,",
+    "양꼬치 한 입!"
+   ],
+   "show": {
+    "dir": "2x2",
+    "own": true,
+    "grid": [
+     {
+      "photo": {
+       "url": "https://images.unsplash.com/photo-1551085046-09ef1353ca5f?w=1600&q=85&fm=jpg",
+       "shows": "빨간 마라 국물에 두부·청경채·꼬치가 가득 담긴 마라탕 냄비",
+       "match": "정확",
+       "about": "마라탕",
+       "credit": "사진: wang yan / Unsplash",
+       "rights": "Unsplash 라이선스(무료)",
+       "page": "https://unsplash.com/photos/CJKKAMvI4AA"
+      }
+     },
+     {
+      "photo": {
+       "url": "https://images.unsplash.com/photo-1708597521669-f7312f312b29?w=1600&q=85&fm=jpg",
+       "shows": "양꼬치로 보이는 양념을 듬뿍 얹은 중국식 꼬치구이 접시(양꼬치)",
+       "match": "정확",
+       "about": "양꼬치",
+       "credit": "사진: Dennis Zhang / Unsplash",
+       "rights": "Unsplash 라이선스(무료)",
+       "page": "https://unsplash.com/photos/MnAIXTajhgU"
+      }
+     },
+     {
+      "photo": {
+       "url": "https://images.unsplash.com/photo-1788603377885-fdaa9e788707?w=1600&q=85&fm=jpg",
+       "shows": "캐러멜 양파와 쪽파를 얹어 구운 폴란드식 피에로기 접시",
+       "match": "정확",
+       "about": "폴란드식피에로기",
+       "credit": "사진: Zoshua Colah / Unsplash",
+       "rights": "Unsplash 라이선스(무료)",
+       "page": "https://unsplash.com/photos/O8RSmmnv6eg"
+      }
+     },
+     {
+      "photo": {
+       "url": "https://images.unsplash.com/photo-1588644525273-f37b60d78512?w=1600&q=85&fm=jpg",
+       "shows": "놋쟁반에 밥·달·채소 반찬이 담긴 네팔식 정식 달밧",
+       "match": "정확",
+       "about": "달밧",
+       "credit": "사진: Abhishek Sanwa Limbu / Unsplash",
+       "rights": "Unsplash 라이선스(무료)",
+       "page": "https://unsplash.com/photos/5Q-7kgG7xbo"
+      }
+     }
+    ],
+    "hl": 1
+   }
+  },
+  {
+   "say": "노릇하게 구운 폴란드식 피에로기, 만두파라면!",
+   "subs": [
+    "노릇하게 구운",
+    "폴란드식 피에로기,",
+    "만두파라면!"
+   ],
+   "show": {
+    "dir": "2x2",
+    "own": true,
+    "grid": [
+     {
+      "photo": {
+       "url": "https://images.unsplash.com/photo-1551085046-09ef1353ca5f?w=1600&q=85&fm=jpg",
+       "shows": "빨간 마라 국물에 두부·청경채·꼬치가 가득 담긴 마라탕 냄비",
+       "match": "정확",
+       "about": "마라탕",
+       "credit": "사진: wang yan / Unsplash",
+       "rights": "Unsplash 라이선스(무료)",
+       "page": "https://unsplash.com/photos/CJKKAMvI4AA"
+      }
+     },
+     {
+      "photo": {
+       "url": "https://images.unsplash.com/photo-1708597521669-f7312f312b29?w=1600&q=85&fm=jpg",
+       "shows": "양꼬치로 보이는 양념을 듬뿍 얹은 중국식 꼬치구이 접시(양꼬치)",
+       "match": "정확",
+       "about": "양꼬치",
+       "credit": "사진: Dennis Zhang / Unsplash",
+       "rights": "Unsplash 라이선스(무료)",
+       "page": "https://unsplash.com/photos/MnAIXTajhgU"
+      }
+     },
+     {
+      "photo": {
+       "url": "https://images.unsplash.com/photo-1788603377885-fdaa9e788707?w=1600&q=85&fm=jpg",
+       "shows": "캐러멜 양파와 쪽파를 얹어 구운 폴란드식 피에로기 접시",
+       "match": "정확",
+       "about": "폴란드식피에로기",
+       "credit": "사진: Zoshua Colah / Unsplash",
+       "rights": "Unsplash 라이선스(무료)",
+       "page": "https://unsplash.com/photos/O8RSmmnv6eg"
+      }
+     },
+     {
+      "photo": {
+       "url": "https://images.unsplash.com/photo-1588644525273-f37b60d78512?w=1600&q=85&fm=jpg",
+       "shows": "놋쟁반에 밥·달·채소 반찬이 담긴 네팔식 정식 달밧",
+       "match": "정확",
+       "about": "달밧",
+       "credit": "사진: Abhishek Sanwa Limbu / Unsplash",
+       "rights": "Unsplash 라이선스(무료)",
+       "page": "https://unsplash.com/photos/5Q-7kgG7xbo"
+      }
+     }
+    ],
+    "hl": 2
+   }
+  },
+  {
+   "say": "밥에 반찬이 한가득, 네팔식 달밧 한 상!",
+   "subs": [
+    "밥에 반찬이 한가득,",
+    "네팔식 달밧 한 상!"
+   ],
+   "show": {
+    "dir": "2x2",
+    "own": true,
+    "grid": [
+     {
+      "photo": {
+       "url": "https://images.unsplash.com/photo-1551085046-09ef1353ca5f?w=1600&q=85&fm=jpg",
+       "shows": "빨간 마라 국물에 두부·청경채·꼬치가 가득 담긴 마라탕 냄비",
+       "match": "정확",
+       "about": "마라탕",
+       "credit": "사진: wang yan / Unsplash",
+       "rights": "Unsplash 라이선스(무료)",
+       "page": "https://unsplash.com/photos/CJKKAMvI4AA"
+      }
+     },
+     {
+      "photo": {
+       "url": "https://images.unsplash.com/photo-1708597521669-f7312f312b29?w=1600&q=85&fm=jpg",
+       "shows": "양꼬치로 보이는 양념을 듬뿍 얹은 중국식 꼬치구이 접시(양꼬치)",
+       "match": "정확",
+       "about": "양꼬치",
+       "credit": "사진: Dennis Zhang / Unsplash",
+       "rights": "Unsplash 라이선스(무료)",
+       "page": "https://unsplash.com/photos/MnAIXTajhgU"
+      }
+     },
+     {
+      "photo": {
+       "url": "https://images.unsplash.com/photo-1788603377885-fdaa9e788707?w=1600&q=85&fm=jpg",
+       "shows": "캐러멜 양파와 쪽파를 얹어 구운 폴란드식 피에로기 접시",
+       "match": "정확",
+       "about": "폴란드식피에로기",
+       "credit": "사진: Zoshua Colah / Unsplash",
+       "rights": "Unsplash 라이선스(무료)",
+       "page": "https://unsplash.com/photos/O8RSmmnv6eg"
+      }
+     },
+     {
+      "photo": {
+       "url": "https://images.unsplash.com/photo-1588644525273-f37b60d78512?w=1600&q=85&fm=jpg",
+       "shows": "놋쟁반에 밥·달·채소 반찬이 담긴 네팔식 정식 달밧",
+       "match": "정확",
+       "about": "달밧",
+       "credit": "사진: Abhishek Sanwa Limbu / Unsplash",
+       "rights": "Unsplash 라이선스(무료)",
+       "page": "https://unsplash.com/photos/5Q-7kgG7xbo"
+      }
+     }
+    ],
+    "hl": 3
+   }
+  },
+  {
+   "say": "넷 중에 오늘 뭐 먹을래? 댓글로 알려 줘.",
+   "subs": [
+    "넷 중에 오늘 뭐 먹을래?",
+    "댓글로 알려 줘."
+   ],
+   "show": {
+    "dir": "2x2",
+    "own": true,
+    "grid": [
+     {
+      "photo": {
+       "url": "https://images.unsplash.com/photo-1551085046-09ef1353ca5f?w=1600&q=85&fm=jpg",
+       "shows": "빨간 마라 국물에 두부·청경채·꼬치가 가득 담긴 마라탕 냄비",
+       "match": "정확",
+       "about": "마라탕",
+       "credit": "사진: wang yan / Unsplash",
+       "rights": "Unsplash 라이선스(무료)",
+       "page": "https://unsplash.com/photos/CJKKAMvI4AA"
+      }
+     },
+     {
+      "photo": {
+       "url": "https://images.unsplash.com/photo-1708597521669-f7312f312b29?w=1600&q=85&fm=jpg",
+       "shows": "양꼬치로 보이는 양념을 듬뿍 얹은 중국식 꼬치구이 접시(양꼬치)",
+       "match": "정확",
+       "about": "양꼬치",
+       "credit": "사진: Dennis Zhang / Unsplash",
+       "rights": "Unsplash 라이선스(무료)",
+       "page": "https://unsplash.com/photos/MnAIXTajhgU"
+      }
+     },
+     {
+      "photo": {
+       "url": "https://images.unsplash.com/photo-1788603377885-fdaa9e788707?w=1600&q=85&fm=jpg",
+       "shows": "캐러멜 양파와 쪽파를 얹어 구운 폴란드식 피에로기 접시",
+       "match": "정확",
+       "about": "폴란드식피에로기",
+       "credit": "사진: Zoshua Colah / Unsplash",
+       "rights": "Unsplash 라이선스(무료)",
+       "page": "https://unsplash.com/photos/O8RSmmnv6eg"
+      }
+     },
+     {
+      "photo": {
+       "url": "https://images.unsplash.com/photo-1588644525273-f37b60d78512?w=1600&q=85&fm=jpg",
+       "shows": "놋쟁반에 밥·달·채소 반찬이 담긴 네팔식 정식 달밧",
+       "match": "정확",
+       "about": "달밧",
+       "credit": "사진: Abhishek Sanwa Limbu / Unsplash",
+       "rights": "Unsplash 라이선스(무료)",
+       "page": "https://unsplash.com/photos/5Q-7kgG7xbo"
+      }
+     }
+    ]
+   }
+  }
+ ],
+ "review": {
+  "photo_sheet": "c4a08806e1dd"
+ }
+}

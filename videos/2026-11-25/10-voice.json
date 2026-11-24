@@ -1,0 +1,279 @@
+{
+ "format": "voice",
+ "kind": "해설",
+ "subject": "김치 · 종주국인데 무역적자",
+ "inspired": {
+  "from": "yt_viral 2026-11-24",
+  "id": "GcnNmXko73g",
+  "food": "김치(담그는 꿀팁 쇼츠에서 음식만, 우리 각도 한국무역협회 수출입 통계)"
+ },
+ "plan_hook": {
+  "pick": "호기심",
+  "why": "김치의 날(11월 22일) 직후 '종주국인데 무역은 적자'라는 뜻밖의 숫자로 묻고 답함. 최근 14일 김치 소재 없음",
+  "others": [
+   "가격",
+   "먹거리"
+  ]
+ },
+ "script_check": {
+  "score": 8,
+  "fix": "1번을 흑자·적자 물음으로 열고 2번 예고(중국산이 느는 까닭)를 8~9번 문장에서 공개, 숫자는 3번부터, 브랜드·업체 이름은 빼 비난으로 읽히지 않게 함"
+ },
+ "title_pick": {
+  "candidates": [
+   "김치 종주국인데 무역적자, 중국산 수입 1억 7,790만 달러",
+   "김치 수출 역대 최고인데 왜 적자일까",
+   "김치 중국산 수입 5년 연속 적자"
+  ],
+  "pick": "김치 무역적자 5년 연속, 종주국인데 중국산 수입 1억 7,790만 달러",
+  "like": "2026-11-10 한국 김 가장 많이 사 가는 나라 김 수출 11억 달러(해설 2.8배)",
+  "sure": "낮음"
+ },
+ "title": "김치 종주국인데 김치 무역은 5년 연속 적자예요",
+ "yt_title": "김치 무역적자 5년 연속, 종주국인데 중국산 수입 1억 7,790만 달러",
+ "headline": "김치 종주국\n[[무역은 적자?]]",
+ "thumb": {
+  "sub": "5년 연속 [[적자]]"
+ },
+ "narrator": "charon",
+ "voice_pick": {
+  "mode": "solo",
+  "voices": [
+   "charon"
+  ],
+  "why": "무역협회 수출입 숫자를 차분하고 정확하게 짚는 통계 해설이라 Charon 솔로"
+ },
+ "summary": "올해 1~10월 김치 수출은 1억 4,033만 달러로 역대 최고지만 수입이 1억 7,790만 달러라 무역적자는 3,757만 달러, 5년 연속이에요.",
+ "lines": [
+  {
+   "say": "김치 종주국 한국, 김치 무역은 [[흑자]]일까요, [[적자]]일까요?",
+   "photo": {
+    "url": "https://images.unsplash.com/photo-1583224964978-2257b960c3d3?w=2000&q=85&fm=jpg",
+    "shows": "검은 그릇에 담긴 포기김치 한 조각, 쪽파 얹음 (김치 수출·수입·중국산·무역적자 소식용 일반 김치 사진)",
+    "match": "같은 종류",
+    "about": "김치 일반",
+    "general": true,
+    "credit": "사진: Portuguese Gravity / Unsplash",
+    "rights": "Unsplash 라이선스(무료)",
+    "page": "https://unsplash.com/photos/M_mDgb8guhA"
+   },
+   "about": "김치 일반",
+   "general": true
+  },
+  {
+   "say": "끝까지 보면, 중국산 김치가 [[왜 느는지]]까지 알려 드려요.",
+   "chip": "끝까지 보면 중국산이 느는 까닭",
+   "about": "김치 일반",
+   "general": true
+  },
+  {
+   "say": "올해 1~10월 김치 수출은 [[1억 4,033만 달러]], 역대 최고예요.",
+   "photo": {
+    "url": "https://images.unsplash.com/photo-1698489857683-0d30f7f046f7?w=2000&q=85&fm=jpg",
+    "shows": "초록 잎 위 흰 포장 용기에 담긴 배추김치와 젓가락 (김치 수출·수입·중국산·무역적자 소식용 일반 김치 사진)",
+    "match": "같은 종류",
+    "about": "김치 일반",
+    "general": true,
+    "credit": "사진: Frames For Your Heart / Unsplash",
+    "rights": "Unsplash 라이선스(무료)",
+    "page": "https://unsplash.com/photos/Wm7gvHDgEh0"
+   },
+   "about": "김치 일반",
+   "general": true,
+   "chip": "수출 1억 4,033만 달러"
+  },
+  {
+   "say": "그런데 같은 기간 수입은 [[1억 7,790만 달러]]로 더 많아요.",
+   "about": "김치 일반",
+   "general": true,
+   "card": {
+    "type": "bars",
+    "title": "김치 [[수출·수입]]",
+    "sub": "만 달러 · 올해 1~10월",
+    "rows": [
+     {
+      "name": "수출",
+      "value": 14033,
+      "label": "14,033"
+     },
+     {
+      "name": "수입",
+      "value": 17790,
+      "label": "17,790 · [[더 많아요]]",
+      "hl": true
+     }
+    ],
+    "scale": 0.55,
+    "src": "한국무역협회(서울경제 11월 20일 보도)"
+   }
+  },
+  {
+   "say": "수입의 거의 전부, [[1억 7,789만 달러]]가 중국산이에요.",
+   "photo": {
+    "url": "https://images.unsplash.com/photo-1783254995749-e00bc71b5d21?w=2000&q=85&fm=jpg",
+    "shows": "금속 트레이에 담긴 각종 김치·반찬이 진열된 가게 (김치 수출·수입·중국산·무역적자 소식용 일반 김치 사진)",
+    "match": "같은 종류",
+    "about": "김치 일반",
+    "general": true,
+    "credit": "사진: Ivan Wong / Unsplash",
+    "rights": "Unsplash 라이선스(무료)",
+    "page": "https://unsplash.com/photos/gmLe2fuOI1I"
+   },
+   "about": "김치 일반",
+   "general": true,
+   "chip": "중국산 1억 7,789만 달러"
+  },
+  {
+   "say": "무역적자는 [[3,757만 달러]], 지난해 한 해보다 이미 커졌어요.",
+   "about": "김치 일반",
+   "general": true,
+   "card": {
+    "type": "bars",
+    "title": "김치 무역 [[적자]]",
+    "sub": "만 달러",
+    "rows": [
+     {
+      "name": "지난해",
+      "value": 3397,
+      "label": "3,397"
+     },
+     {
+      "name": "올해 1~10월",
+      "value": 3757,
+      "label": "3,757 · [[더 커요]]",
+      "hl": true
+     }
+    ],
+    "scale": 0.55,
+    "src": "한국무역협회(서울경제 11월 20일 보도)"
+   }
+  },
+  {
+   "say": "적자는 [[5년 연속]]이에요.",
+   "photo": {
+    "url": "https://images.unsplash.com/photo-1708388064278-707e85eaddc0?w=2000&q=85&fm=jpg",
+    "shows": "놋그릇 반찬들 가운데 포기김치가 놓인 밥상 (김치 수출·수입·중국산·무역적자 소식용 일반 김치 사진)",
+    "match": "같은 종류",
+    "about": "김치 일반",
+    "general": true,
+    "credit": "사진: Daniel / Unsplash",
+    "rights": "Unsplash 라이선스(무료)",
+    "page": "https://unsplash.com/photos/78jWkCp_jdM"
+   },
+   "about": "김치 일반",
+   "general": true,
+   "chip": "5년 연속 적자"
+  },
+  {
+   "say": "왜 중국산이 늘까요? 국내 음식점의 [[49%]]가 값이 싸서라고 답했어요.",
+   "photo": {
+    "url": "https://images.unsplash.com/photo-1779738192854-92a3daec9b45?w=2000&q=85&fm=jpg",
+    "shows": "여러 통의 신선한 배추가 줄지어 놓임 (김치 수출·수입·중국산·무역적자 소식용 일반 김치 사진)",
+    "match": "같은 종류",
+    "about": "김치 일반",
+    "general": true,
+    "credit": "사진: Jason Leung / Unsplash",
+    "rights": "Unsplash 라이선스(무료)",
+    "page": "https://unsplash.com/photos/BCXgdJJ5nPY"
+   },
+   "about": "김치 일반",
+   "general": true,
+   "chip": "값이 싸서 49%"
+  },
+  {
+   "say": "수입 배추김치는 국산보다 평균 [[35.3%]] 싸다고 해요.",
+   "photo": {
+    "url": "https://images.unsplash.com/photo-1703046598947-7ebb8a169bf1?w=2000&q=85&fm=jpg",
+    "shows": "빨간 고무장갑 낀 손이 절인 배추에 양념을 속에 바르는 김장 장면 (김치 수출·수입·중국산·무역적자 소식용 일반 김치 사진)",
+    "match": "같은 종류",
+    "about": "김치 일반",
+    "general": true,
+    "credit": "사진: huiyeon kim / Unsplash",
+    "rights": "Unsplash 라이선스(무료)",
+    "page": "https://unsplash.com/photos/bZ4hdQDU_Po"
+   },
+   "about": "김치 일반",
+   "general": true,
+   "chip": "국산보다 35.3% 저렴"
+  },
+  {
+   "say": "여러분은 김치 살 때, 원산지 [[확인]]하세요? 댓글로 알려 주세요.",
+   "photo": {
+    "url": "https://images.unsplash.com/photo-1703046598922-396d60875f7d?w=2000&q=85&fm=jpg",
+    "shows": "김장용 절인 배추를 갈라 늘어놓은 작업대 (김치 수출·수입·중국산·무역적자 소식용 일반 김치 사진)",
+    "match": "같은 종류",
+    "about": "김치 일반",
+    "general": true,
+    "credit": "사진: huiyeon kim / Unsplash",
+    "rights": "Unsplash 라이선스(무료)",
+    "page": "https://unsplash.com/photos/3IrDYv-malg"
+   },
+   "about": "김치 일반",
+   "general": true
+  }
+ ],
+ "caption": "김치 종주국 한국, 김치 무역은 흑자일까요, 적자일까요?\n\n한국무역협회에 따르면 올해 1~10월 김치 수출은 1억 4,033만 달러로 역대 최고예요. 그런데 같은 기간 수입이 1억 7,790만 달러라 무역적자가 3,757만 달러로, 지난해 한 해 적자(3,397만 달러)를 이미 넘었어요. 수입의 대부분인 1억 7,789만 달러가 중국산이고, 적자는 5년 연속이에요.\n\n농림축산식품부와 aT의 2025 김치산업 실태조사에서 음식점이 수입 김치를 사는 이유 1위는 '값이 싸서'(49%)였고, 수입 배추김치는 국산보다 평균 35.3% 쌌어요.\n\n수치는 서울경제의 11월 20일 보도를 인용했어요.\n\n여러분은 김치 살 때 원산지 확인하세요?\n\n출처: 서울경제(11월 20일), 한국무역협회",
+ "tags": [
+  "김치",
+  "김치수출",
+  "김치무역적자",
+  "김치의날"
+ ],
+ "sources": [
+  "https://www.sedaily.com/article/20117065",
+  "https://www.sedaily.com/article/20117083"
+ ],
+ "credits": [
+  "사진: Daniel / Unsplash",
+  "사진: Frames For Your Heart / Unsplash",
+  "사진: Ivan Wong / Unsplash",
+  "사진: Jason Leung / Unsplash",
+  "사진: Portuguese Gravity / Unsplash",
+  "사진: huiyeon kim / Unsplash"
+ ],
+ "yt_keyword": "김치 무역적자",
+ "yt_related": [
+  "김치 수출",
+  "김치 수입",
+  "중국산 김치",
+  "김치의 날",
+  "김치 종주국"
+ ],
+ "yt_tags": [
+  "김치 무역적자",
+  "김치 수출",
+  "김치 수입",
+  "중국산 김치",
+  "김치의 날",
+  "김치 종주국"
+ ],
+ "yt_hashtags": [
+  "김치",
+  "김치수출",
+  "김치의날"
+ ],
+ "yt_lead": "김치 수출은 역대 최고인데 무역은 5년 연속 적자, 올해 1~10월 숫자로 정리했어요.",
+ "dates": {
+  "checked": "2026-11-25",
+  "sources": [
+   {
+    "url": "https://www.sedaily.com/article/20117065",
+    "published": "2026-11-20",
+    "modified": "2026-11-20"
+   },
+   {
+    "url": "https://www.sedaily.com/article/20117083",
+    "published": "2026-11-20",
+    "modified": "2026-11-20"
+   }
+  ],
+  "stat_period": "2026년 1~10월(수출입), 2025년 연간"
+ },
+ "unverified": [
+  "한국무역협회·실태조사 원문은 직접 열지 못하고 서울경제 보도 수치(한 매체)를 인용함",
+  "적자 5년 연속은 2022년부터 매년 적자라는 보도 표현"
+ ],
+ "review": {
+  "photo_sheet": "6c03363fe5e0"
+ }
+}
