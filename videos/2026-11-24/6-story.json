@@ -1,0 +1,195 @@
+{
+ "kind": "이야기",
+ "subject": "황태 덕장 · 왜 한겨울에만 만들까",
+ "title": "황태는 왜 한겨울 덕장에서만 만들까?",
+ "yt_title": "황태 만드는 법, 왜 한겨울 덕장에서만 말릴까",
+ "summary": "황태는 12월 말 덕장에 걸어 4월까지 약 4개월, 영하 15도와 영하 2도 사이를 오가며 눈이 얼었다 녹는 동안 말린다고 해요.",
+ "scenes": [
+  {
+   "type": "cover",
+   "dur": 2.0,
+   "photo": {
+    "url": "https://tong.visitkorea.or.kr/cms2/website/72/1795972.jpg",
+    "shows": "강원도 인제 눈 덮인 황태덕장, 긴 덕대에 빼곡히 걸린 명태(2013년 1월 촬영)",
+    "match": "정확",
+    "credit": "ⓒ한국관광공사 포토코리아-김지호",
+    "rights": "한국관광공사 포토코리아 공공누리 1유형 · ⓒ한국관광공사 포토코리아-김지호",
+    "page": "https://api.visitkorea.or.kr/",
+    "terms": {
+     "ok": true,
+     "url": "https://kogl.or.kr/info/licenseType1.do",
+     "checked": "2026-11-24",
+     "scope": "공공누리 1유형(출처표시)"
+    }
+   },
+   "kicker": "맛의 이야기 · 황태",
+   "title": "황태는 왜\n[[한겨울]]에만?",
+   "size": 100
+  },
+  {
+   "type": "card",
+   "dur": 2.6,
+   "photo": {
+    "url": "https://tong.visitkorea.or.kr/cms2/website/64/1795964.jpg",
+    "shows": "인제 황태 덕장 눈 쌓인 덕대 통나무에 붉은 끈으로 줄줄이 엮어 건 말리는 명태(황태)",
+    "match": "정확",
+    "credit": "ⓒ한국관광공사 포토코리아-김지호",
+    "rights": "한국관광공사 포토코리아 공공누리 1유형 · ⓒ한국관광공사 포토코리아-김지호",
+    "page": "https://api.visitkorea.or.kr/",
+    "terms": {
+     "ok": true,
+     "url": "https://kogl.or.kr/info/licenseType1.do",
+     "checked": "2026-11-24",
+     "scope": "공공누리 1유형(출처표시)"
+    }
+   },
+   "chip": "덕장",
+   "headline": "12월 말 걸어서\n[[4월까지]] 말려요",
+   "line": "약 4개월이 걸려요"
+  },
+  {
+   "type": "card",
+   "dur": 2.6,
+   "photo": {
+    "url": "https://tong.visitkorea.or.kr/cms2/website/53/1795953.jpg",
+    "shows": "황태 덕장 눈 쌓인 통나무 덕대에 걸려 마르는 명태와 명태 머리 꾸러미",
+    "match": "정확",
+    "credit": "ⓒ한국관광공사 포토코리아-김지호",
+    "rights": "한국관광공사 포토코리아 공공누리 1유형 · ⓒ한국관광공사 포토코리아-김지호",
+    "page": "https://api.visitkorea.or.kr/",
+    "terms": {
+     "ok": true,
+     "url": "https://kogl.or.kr/info/licenseType1.do",
+     "checked": "2026-11-24",
+     "scope": "공공누리 1유형(출처표시)"
+    }
+   },
+   "chip": "추위",
+   "headline": "영하 15도~2도\n[[얼었다 녹았다]]",
+   "line": "쌓인 눈이 수분을 줘요"
+  },
+  {
+   "type": "card",
+   "dur": 2.6,
+   "photo": {
+    "url": "https://tong.visitkorea.or.kr/cms2/website/60/1795960.jpg",
+    "shows": "눈 덮인 덕장에 위아래 두 단으로 빼곡히 걸린 명태",
+    "match": "정확",
+    "credit": "ⓒ한국관광공사 포토코리아-김지호",
+    "rights": "한국관광공사 포토코리아 공공누리 1유형 · ⓒ한국관광공사 포토코리아-김지호",
+    "page": "https://api.visitkorea.or.kr/",
+    "terms": {
+     "ok": true,
+     "url": "https://kogl.or.kr/info/licenseType1.do",
+     "checked": "2026-11-24",
+     "scope": "공공누리 1유형(출처표시)"
+    }
+   },
+   "chip": "식감",
+   "headline": "팽창과 수축이\n[[쫄깃함]]을 만들어요",
+   "line": "바람이 없으면 상한대요"
+  },
+  {
+   "type": "card",
+   "dur": 2.6,
+   "photo": {
+    "url": "https://tong.visitkorea.or.kr/cms2/website/67/1795967.jpg",
+    "shows": "눈 쌓인 덕대 아래 줄지어 매달려 말라 가는 명태",
+    "match": "정확",
+    "credit": "ⓒ한국관광공사 포토코리아-김지호",
+    "rights": "한국관광공사 포토코리아 공공누리 1유형 · ⓒ한국관광공사 포토코리아-김지호",
+    "page": "https://api.visitkorea.or.kr/",
+    "terms": {
+     "ok": true,
+     "url": "https://kogl.or.kr/info/licenseType1.do",
+     "checked": "2026-11-24",
+     "scope": "공공누리 1유형(출처표시)"
+    }
+   },
+   "chip": "원료",
+   "headline": "요즘 원료 명태는\n[[대부분 러시아산]]",
+   "line": "동해 명태는 북쪽으로 갔어요"
+  }
+ ],
+ "caption": "황태는 왜 꼭 한겨울 덕장에서 말릴까요?\n\n강원도 인제 용대리 덕장은 12월 말쯤 명태를 덕장에 걸어 4월까지 약 4개월 동안 말린다고 해요. 영하 15도와 영하 2도 사이를 오가는 동안 명태에 쌓인 눈이 얼었다 녹으면서 수분을 주고, 이 팽창과 수축이 쫄깃한 식감을 만든다고 세계일보가 전했어요. 바람은 명태를 말려 주는 역할이고, 바람이 없으면 명태가 상한다고도 해요.\n\n원료 명태는 예전에는 동해에서 잡았지만 1980년대 이후 북쪽 바다로 옮겨 가서, 지금 용대리로 들어오는 명태는 대부분 러시아산이라고 해요. 사진은 2013년 1월 촬영한 인제 황태덕장이에요.\n\n황태 하면 해장국이 먼저 떠오르세요, 구이가 먼저 떠오르세요?\n\n출처: 세계일보(2023년 1월 15일), 서울신문(2019년 1월 11일)",
+ "tags": [
+  "황태",
+  "황태덕장",
+  "인제용대리",
+  "겨울별미"
+ ],
+ "sources": [
+  "https://www.segye.com/newsView/20230110523368",
+  "https://seoul.co.kr/news/life/2019/01/11/20190111035002"
+ ],
+ "credits": [
+  "ⓒ한국관광공사 포토코리아-김지호"
+ ],
+ "yt_keyword": "황태 만드는 법",
+ "yt_related": [
+  "황태 덕장",
+  "용대리 황태",
+  "황태 건조",
+  "황태 명태 차이"
+ ],
+ "yt_tags": [
+  "황태 만드는 법",
+  "황태 덕장",
+  "용대리 황태",
+  "황태 건조",
+  "명태 황태",
+  "인제 황태"
+ ],
+ "yt_hashtags": [
+  "황태",
+  "황태덕장",
+  "겨울별미"
+ ],
+ "yt_lead": "황태가 한겨울 덕장에서만 만들어지는 까닭을 정리했어요.",
+ "dates": {
+  "checked": "2026-11-24",
+  "sources": [
+   {
+    "url": "https://www.segye.com/newsView/20230110523368",
+    "published": "2023-01-15",
+    "modified": "2023-01-15"
+   },
+   {
+    "url": "https://seoul.co.kr/news/life/2019/01/11/20190111035002",
+    "published": "2019-01-11",
+    "modified": "2019-01-11"
+   }
+  ]
+ },
+ "thumb": {
+  "head": "황태는 왜\n[[한겨울]]에만?",
+  "sub": "눈이 [[얼었다 녹아야]]",
+  "photo": {
+   "url": "https://tong.visitkorea.or.kr/cms2/website/64/1795964.jpg",
+   "shows": "인제 황태 덕장 눈 쌓인 덕대 통나무에 붉은 끈으로 줄줄이 엮어 건 말리는 명태(황태)",
+   "match": "정확",
+   "credit": "ⓒ한국관광공사 포토코리아-김지호",
+   "rights": "한국관광공사 포토코리아 공공누리 1유형 · ⓒ한국관광공사 포토코리아-김지호",
+   "page": "https://api.visitkorea.or.kr/",
+   "terms": {
+    "ok": true,
+    "url": "https://kogl.or.kr/info/licenseType1.do",
+    "checked": "2026-11-24",
+    "scope": "공공누리 1유형(출처표시)"
+   },
+   "fit": "cover"
+  }
+ },
+ "title_pick": {
+  "candidates": [
+   "황태 만드는 법, 왜 한겨울 덕장에서만 말릴까",
+   "황태는 왜 한겨울에만? 덕장의 비밀"
+  ],
+  "pick": "황태 만드는 법, 왜 한겨울 덕장에서만 말릴까",
+  "like": "우리 채널 성적표는 열지 못함(성적표 미확인), 검색어를 앞세운 제목 규칙으로 고름",
+  "sure": "낮음"
+ },
+ "review": {
+  "photo_sheet": "8ed53083d205"
+ }
+}

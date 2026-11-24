@@ -1,0 +1,339 @@
+{
+ "format": "voice",
+ "kind": "해설",
+ "subject": "불닭볶음면 삼양식품 해외 매출 83%·라면 수출",
+ "inspired": {
+  "from": "yt_viral 2026-11-23",
+  "id": "TnHq1mvrJ2M",
+  "food": "불닭볶음면(까르보불닭 꿀팁 쇼츠에서 음식만, 우리 각도 삼양식품 3분기 해외 매출·농식품부 라면 수출 통계)"
+ },
+ "plan_hook": {
+  "pick": "호기심",
+  "why": "불닭을 만드는 회사 매출의 몇 %가 해외인지 묻고 공시 숫자(약 83%)로 답함. 라면 수출 증가 숫자(26.3%)를 뒤에 더해 끝까지 볼 까닭을 줌. 최근 14일 불닭·삼양 소재 없음",
+  "others": [
+   "가격",
+   "먹거리"
+  ]
+ },
+ "script_check": {
+  "score": 8,
+  "fix": "1번 문장을 불닭볶음면이 아니라 만드는 회사 매출 물음으로 고쳐 사실과 맞춤(해외 83%는 회사 전체 수치), 2번 예고를 7~8번 문장에서 공개, 숫자는 4번 문장부터 크게, 멕시코 93%는 기사 표현이 모호해 뺌"
+ },
+ "title_pick": {
+  "candidates": [
+   "불닭볶음면 수출, 삼양식품 매출 83%가 해외였다",
+   "불닭 만드는 삼양식품, 3분기 해외 매출 6,608억 원",
+   "불닭볶음면 한국 vs 해외, 삼양식품 매출은 어디서 더 나올까?"
+  ],
+  "pick": "불닭볶음면 수출, 삼양식품 매출 83%가 해외였다",
+  "like": "2026-11-10 한국 김 가장 많이 사 가는 나라 김 수출 11억 달러(해설 2.8배)",
+  "sure": "낮음"
+ },
+ "followup": {
+  "of": "2026-11-10/12-gim",
+  "new": "삼양식품 3분기 공시 해외 매출 6,608억 원(약 83%)과 농식품부 라면 수출 15억 8,510만 달러(26.3%↑)로 김 수출과 다른 품목·새 숫자"
+ },
+ "title": "불닭 만드는 삼양식품, 3분기 매출의 약 83%가 해외예요",
+ "yt_title": "불닭볶음면 수출, 삼양식품 매출 83%가 해외였다",
+ "headline": "불닭 만드는 삼양\n[[해외 몇 %?]]",
+ "thumb": {
+  "sub": "3분기 해외 [[6,608억 원]]"
+ },
+ "narrator": "charon",
+ "voice_pick": {
+  "mode": "solo",
+  "voices": [
+   "charon"
+  ],
+  "why": "공시·수출 통계 숫자를 차분하고 정확하게 짚는 해설이라 Charon 솔로(어제 Achird 와 다르게)"
+ },
+ "summary": "삼양식품 3분기 매출 7,918억 원 중 해외가 6,608억 원(약 83%)이고, 라면 수출은 10월 말 15억 8,510만 달러로 26.3% 늘었어요.",
+ "lines": [
+  {
+   "say": "불닭볶음면 만드는 삼양식품, 매출의 [[몇 %]]가 해외일까요?",
+   "photo": {
+    "url": "https://images.unsplash.com/photo-1762898842219-ca8136061b76?w=2000&q=85&fm=jpg",
+    "shows": "플라스틱 상자에 담긴 불닭(Buldak) 봉지 라면 여러 종류",
+    "match": "정확",
+    "about": "불닭볶음면",
+    "rights": "Unsplash 무료 라이선스",
+    "page": "https://unsplash.com/photos/ZtjI4jyUXOE",
+    "credit": "사진: Zoshua Colah / Unsplash",
+    "terms": {
+     "url": "https://unsplash.com/license",
+     "checked": "2026-11-24",
+     "scope": "Unsplash 무료 라이선스, 상업적 이용·수정 가능",
+     "ok": true
+    }
+   },
+   "about": "불닭볶음면"
+  },
+  {
+   "say": "끝까지 보면, 올해 [[라면 수출]]이, 얼마나 늘었는지까지 알려 드려요.",
+   "chip": "끝까지 보면 올해 라면 수출",
+   "about": "라면 일반",
+   "general": true
+  },
+  {
+   "say": "이 회사는 올해 3분기 매출이 [[7,918억 원]]이라고 공시했어요.",
+   "photo": {
+    "url": "https://images.unsplash.com/photo-1628610688436-e635552020fc?w=2000&q=85&fm=jpg",
+    "shows": "흰 용기에 빨간 양념을 올린 매운 라면 한 그릇",
+    "match": "같은 종류",
+    "about": "라면 일반",
+    "rights": "Unsplash 무료 라이선스",
+    "page": "https://unsplash.com/photos/klAwNfxM9-g",
+    "credit": "사진: sq lim / Unsplash",
+    "terms": {
+     "url": "https://unsplash.com/license",
+     "checked": "2026-11-24",
+     "scope": "Unsplash 무료 라이선스, 상업적 이용·수정 가능",
+     "ok": true
+    },
+    "general": true
+   },
+   "about": "라면 일반",
+   "general": true,
+   "chip": "3분기 매출 7,918억 원"
+  },
+  {
+   "say": "그중 해외 매출이 [[6,608억 원]], 전체의 약 [[83%]]예요.",
+   "about": "라면 일반",
+   "general": true,
+   "card": {
+    "type": "bars",
+    "title": "삼양식품 3분기 [[매출]]",
+    "sub": "억 원 · 나머지는 전체에서 해외를 뺀 값",
+    "rows": [
+     {
+      "name": "해외",
+      "value": 6608,
+      "label": "6,608 · [[약 83%]]",
+      "hl": true
+     },
+     {
+      "name": "나머지",
+      "value": 1310,
+      "label": "1,310"
+     }
+    ],
+    "scale": 0.55,
+    "src": "삼양식품 3분기 공시(푸드투데이 11월 6일 보도)"
+   }
+  },
+  {
+   "say": "미국 법인은 2,125억 원으로, 1년 전보다 [[36.6%]] 늘었어요.",
+   "photo": {
+    "url": "https://images.unsplash.com/photo-1788519037093-d64831f237a4?w=2000&q=85&fm=jpg",
+    "shows": "식료품점 선반에 가득 진열된 여러 종류의 봉지 라면",
+    "match": "분위기",
+    "about": "라면 매대",
+    "rights": "Unsplash 무료 라이선스",
+    "page": "https://unsplash.com/photos/MP1w4QdqTBA",
+    "credit": "사진: Zoshua Colah / Unsplash",
+    "terms": {
+     "url": "https://unsplash.com/license",
+     "checked": "2026-11-24",
+     "scope": "Unsplash 무료 라이선스, 상업적 이용·수정 가능",
+     "ok": true
+    },
+    "general": true
+   },
+   "about": "라면 매대",
+   "general": true,
+   "chip": "미국 법인 +36.6%"
+  },
+  {
+   "say": "유럽은 869억 원으로 [[65.5%]] 늘어서, 증가율이 가장 높았어요.",
+   "photo": {
+    "url": "https://images.unsplash.com/photo-1786277685670-30b388b7f08e?w=2000&q=85&fm=jpg",
+    "shows": "벽 한가득 붙은 알록달록한 인스턴트 라면 포장",
+    "match": "분위기",
+    "about": "라면 매대",
+    "rights": "Unsplash 무료 라이선스",
+    "page": "https://unsplash.com/photos/XVuCAZqiTDQ",
+    "credit": "사진: Cai Fang / Unsplash",
+    "terms": {
+     "url": "https://unsplash.com/license",
+     "checked": "2026-11-24",
+     "scope": "Unsplash 무료 라이선스, 상업적 이용·수정 가능",
+     "ok": true
+    },
+    "general": true
+   },
+   "about": "라면 매대",
+   "general": true,
+   "chip": "유럽 +65.5%"
+  },
+  {
+   "say": "라면 수출은 10월 말까지 [[15억 8,510만 달러]]라고 농식품부가 밝혔어요.",
+   "chip": "라면 수출 15억 8,510만 달러",
+   "photos": [
+    {
+     "url": "https://images.unsplash.com/photo-1605745341112-85968b19335b?w=2000&q=85&fm=jpg",
+     "shows": "바다 위 컨테이너를 가득 실은 화물선",
+     "match": "분위기",
+     "about": "수출 물류",
+     "rights": "Unsplash 무료 라이선스",
+     "page": "https://unsplash.com/photos/jOqJbvo1P9g",
+     "credit": "사진: Ian Taylor / Unsplash",
+     "terms": {
+      "url": "https://unsplash.com/license",
+      "checked": "2026-11-24",
+      "scope": "Unsplash 무료 라이선스, 상업적 이용·수정 가능",
+      "ok": true
+     },
+     "general": true
+    },
+    {
+     "url": "https://images.unsplash.com/photo-1699588999949-e25959a59550?w=2000&q=85&fm=jpg",
+     "shows": "컨테이너를 높이 실은 화물선이 항해하는 모습",
+     "match": "분위기",
+     "about": "수출 물류",
+     "rights": "Unsplash 무료 라이선스",
+     "page": "https://unsplash.com/photos/ZT3i-6XW8J8",
+     "credit": "사진: Haydn / Unsplash",
+     "terms": {
+      "url": "https://unsplash.com/license",
+      "checked": "2026-11-24",
+      "scope": "Unsplash 무료 라이선스, 상업적 이용·수정 가능",
+      "ok": true
+     },
+     "general": true
+    }
+   ],
+   "about": "수출 물류",
+   "general": true
+  },
+  {
+   "say": "지난해 같은 기간보다 [[26.3%]] 늘어난 규모예요.",
+   "photo": {
+    "url": "https://images.unsplash.com/photo-1678182451047-196f22a4143e?w=2000&q=85&fm=jpg",
+    "shows": "항구에 쌓인 컨테이너 더미",
+    "match": "분위기",
+    "about": "수출 물류",
+    "rights": "Unsplash 무료 라이선스",
+    "page": "https://unsplash.com/photos/Annl9CjEaEs",
+    "credit": "사진: Ali Mkumbwa / Unsplash",
+    "terms": {
+     "url": "https://unsplash.com/license",
+     "checked": "2026-11-24",
+     "scope": "Unsplash 무료 라이선스, 상업적 이용·수정 가능",
+     "ok": true
+    },
+    "general": true
+   },
+   "about": "수출 물류",
+   "general": true,
+   "chip": "전년 동기 +26.3%"
+  },
+  {
+   "say": "이 회사 매출은 한국보다, [[바다 건너]]가 훨씬 커요.",
+   "photo": {
+    "url": "https://images.unsplash.com/photo-1664337873053-840ea51d271d?w=2000&q=85&fm=jpg",
+    "shows": "건더기와 면이 보이는 컵라면을 위에서 본 모습",
+    "match": "같은 종류",
+    "about": "라면 일반",
+    "rights": "Unsplash 무료 라이선스",
+    "page": "https://unsplash.com/photos/DXVG6Rld_dQ",
+    "credit": "사진: Markus Winkler / Unsplash",
+    "terms": {
+     "url": "https://unsplash.com/license",
+     "checked": "2026-11-24",
+     "scope": "Unsplash 무료 라이선스, 상업적 이용·수정 가능",
+     "ok": true
+    },
+    "general": true
+   },
+   "about": "라면 일반",
+   "general": true
+  },
+  {
+   "say": "매운 라면, 여러분은 몇 봉지까지 먹어 봤어요? [[댓글]]로 알려 주세요.",
+   "photo": {
+    "url": "https://images.unsplash.com/photo-1612927601601-6638404737ce?w=2000&q=85&fm=jpg",
+    "shows": "삶은 달걀·고추·파를 올린 검은 그릇의 라면",
+    "match": "같은 종류",
+    "about": "라면 일반",
+    "rights": "Unsplash 무료 라이선스",
+    "page": "https://unsplash.com/photos/RwAXb8Hv_sU",
+    "credit": "사진: ikhsan baihaqi / Unsplash",
+    "terms": {
+     "url": "https://unsplash.com/license",
+     "checked": "2026-11-24",
+     "scope": "Unsplash 무료 라이선스, 상업적 이용·수정 가능",
+     "ok": true
+    },
+    "general": true
+   },
+   "about": "라면 일반",
+   "general": true
+  }
+ ],
+ "caption": "불닭볶음면 만드는 삼양식품, 매출의 몇 %가 해외일까요?\n\n삼양식품은 올해 3분기 매출이 7,918억 원이라고 공시했어요. 그중 해외 매출이 6,608억 원으로 약 83%예요(전체에서 해외를 뺀 나머지는 1,310억 원). 미국 법인은 2,125억 원으로 36.6%, 유럽은 869억 원으로 65.5% 늘었어요.\n\n라면 전체 수출은 농림축산식품부가 10월 말까지 15억 8,510만 달러라고 밝혔고, 지난해 같은 기간보다 26.3% 늘었어요.\n\n해외 매출 비중은 불닭볶음면만이 아니라 삼양식품 전체 매출 기준이에요.\n\n여러분은 불닭볶음면, 몇 봉지까지 먹어 봤어요?\n\n출처: 푸드투데이(11월 6일), 연합뉴스(11월 19일)",
+ "tags": [
+  "불닭볶음면",
+  "삼양식품",
+  "라면수출",
+  "K푸드"
+ ],
+ "sources": [
+  "https://www.foodtoday.or.kr/news/article.html?no=209486",
+  "https://www.yna.co.kr/view/AKR20261119119000030"
+ ],
+ "credits": [
+  "사진: Zoshua Colah / Unsplash",
+  "사진: sq lim / Unsplash",
+  "사진: Cai Fang / Unsplash",
+  "사진: Ian Taylor / Unsplash",
+  "사진: Haydn / Unsplash",
+  "사진: Ali Mkumbwa / Unsplash",
+  "사진: Markus Winkler / Unsplash",
+  "사진: ikhsan baihaqi / Unsplash"
+ ],
+ "yt_keyword": "불닭볶음면 수출",
+ "yt_related": [
+  "삼양식품 해외 매출",
+  "라면 수출",
+  "불닭볶음면 해외",
+  "삼양식품 실적",
+  "K푸드 수출"
+ ],
+ "yt_tags": [
+  "불닭볶음면 수출",
+  "삼양식품 해외 매출",
+  "라면 수출",
+  "불닭볶음면 해외",
+  "삼양식품 실적",
+  "K푸드 수출"
+ ],
+ "yt_hashtags": [
+  "불닭볶음면",
+  "삼양식품",
+  "라면수출"
+ ],
+ "yt_lead": "불닭볶음면 수출로 보는 삼양식품, 3분기 매출 7,918억 원 중 해외가 6,608억 원이에요.",
+ "dates": {
+  "checked": "2026-11-24",
+  "sources": [
+   {
+    "url": "https://www.foodtoday.or.kr/news/article.html?no=209486",
+    "published": "2026-11-06",
+    "modified": "2026-11-06"
+   },
+   {
+    "url": "https://www.yna.co.kr/view/AKR20261119119000030",
+    "published": "2026-11-19",
+    "modified": "2026-11-19"
+   }
+  ],
+  "stat_period": "삼양식품 2026년 3분기(7~9월), 라면 수출은 2026년 1~10월"
+ },
+ "unverified": [
+  "삼양식품 공시 원문과 농식품부 보도자료 원문은 직접 열지 못하고 푸드투데이·연합뉴스 보도 수치를 인용함",
+  "해외 83%·나머지 1,310억 원은 보도된 두 숫자로 직접 계산한 값"
+ ],
+ "review": {
+  "photo_sheet": "7ef47e9e98d1"
+ }
+}

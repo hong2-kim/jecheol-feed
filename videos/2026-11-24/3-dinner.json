@@ -1,0 +1,402 @@
+{
+ "format": "voice",
+ "layout": "rec",
+ "kind": "저녁",
+ "subject": "화요일 저녁 (대구탕·순대볶음·유린기·필리치즈스테이크)",
+ "title": "화요일 저녁 내가 골라 줄게, 대구탕·순대볶음·유린기·필리치즈스테이크",
+ "summary": "화요일 저녁 메뉴로 대구탕·순대볶음·유린기·필리치즈스테이크 넷을 추천해요.",
+ "headline": "화요일 저녁\n[[내가 골라 줄게]]",
+ "small": "화요일 저녁, 오늘의 넷",
+ "intro": 7,
+ "length": [
+  20,
+  30
+ ],
+ "narrator": "achird",
+ "voice_pick": {
+  "mode": "solo",
+  "voices": [
+   "achird"
+  ],
+  "why": "영하로 시작한 날 따뜻한 메뉴를 친구에게 권하는 말투라 Achird 솔로(어제 Puck 과 다르게)"
+ },
+ "thumb": {
+  "head": "화요일 저녁\n[[내가 골라 줄게]]",
+  "sub": "영하 출발 [[뜨끈·든든]] 넷",
+  "photo": {
+   "url": "https://tong.visitkorea.or.kr/cms2/website/43/1825343.jpg",
+   "shows": "스테인리스 그릇에 파를 올린 맑은 대구탕 한 그릇과 밥·밑반찬",
+   "match": "정확",
+   "credit": "ⓒ한국관광공사 포토코리아-이범수",
+   "rights": "한국관광공사 공공누리 1유형"
+  }
+ },
+ "yt_title": "화요일 저녁 메뉴 내가 골라 줄게, 대구탕·순대볶음·유린기·필리치즈스테이크",
+ "yt_keyword": "화요일 저녁 메뉴",
+ "yt_related": [
+  "저녁 메뉴 추천",
+  "오늘 뭐 먹지",
+  "대구탕",
+  "순대볶음",
+  "유린기",
+  "필리치즈스테이크"
+ ],
+ "yt_tags": [
+  "화요일 저녁 메뉴",
+  "저녁 메뉴 추천",
+  "오늘 뭐 먹지",
+  "대구탕",
+  "순대볶음",
+  "유린기",
+  "필리치즈스테이크"
+ ],
+ "yt_hashtags": [
+  "화요일저녁메뉴",
+  "오늘뭐먹지",
+  "저녁메뉴추천"
+ ],
+ "yt_lead": "화요일 저녁 메뉴 고민될 때, 대구탕·순대볶음·유린기·필리치즈스테이크 넷 중에 골라 줄게요.",
+ "caption": "화요일 저녁, 내가 골라 줄게요.\n\n맑은 국물 한 그릇 대구탕\n철판에 쫄깃한 순대볶음\n바삭한 닭튀김에 소스를 얹은 유린기\n치즈 가득 필리치즈스테이크\n\n넷 중에 오늘은 뭐가 끌려요? 댓글로 알려 주세요.",
+ "tags": [
+  "화요일저녁메뉴",
+  "저녁메뉴추천",
+  "오늘뭐먹지",
+  "대구탕"
+ ],
+ "sources": [],
+ "credits": [
+  "ⓒ한국관광공사 포토코리아-이범수, 알렉스 분도",
+  "jeffreyw (CC BY 2.0) · commons.wikimedia.org/?curid=42652875"
+ ],
+ "dates": {
+  "checked": "2026-11-24"
+ },
+ "menu_pick": {
+  "menus": [
+   "대구탕",
+   "순대볶음",
+   "유린기",
+   "필리치즈스테이크"
+  ],
+  "from": "dinner_pick(후보 18개 확인, 영하 출발 추운 날씨 기준)",
+  "why": {
+   "대구탕": "국물 갈래, 추운 날 제철 겨울 생선탕",
+   "순대볶음": "분식·볶음 갈래, 오랜만에 나오는 익숙한 한 그릇",
+   "유린기": "중식 튀김 갈래, 오랜만에 나오는 바삭한 한 끼",
+   "필리치즈스테이크": "양식 샌드위치 갈래, 새로운 메뉴 1개"
+  }
+ },
+ "lines": [
+  {
+   "say": "화요일 저녁, 내가 골라 줄게!",
+   "nosub": true,
+   "show": {
+    "thumb": true
+   }
+  },
+  {
+   "say": "영하 출발, 딱 맞는 넷이에요.",
+   "show": {
+    "dir": "2x2",
+    "own": true,
+    "fade": 0.45,
+    "grid": [
+     {
+      "photo": {
+       "url": "https://tong.visitkorea.or.kr/cms2/website/43/1825343.jpg",
+       "shows": "스테인리스 그릇에 파를 올린 맑은 대구탕 한 그릇과 밥·밑반찬",
+       "match": "정확",
+       "credit": "ⓒ한국관광공사 포토코리아-이범수",
+       "rights": "한국관광공사 공공누리 1유형"
+      }
+     },
+     {
+      "photo": {
+       "url": "https://tong.visitkorea.or.kr/cms2/website/90/2707190.jpg",
+       "shows": "철판 그릇에 순대·양배추·당면을 볶아 낸 철판순대볶음",
+       "match": "정확",
+       "credit": "ⓒ한국관광공사 포토코리아-알렉스 분도",
+       "rights": "한국관광공사 공공누리 1유형"
+      }
+     },
+     {
+      "photo": {
+       "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Youlinji%20of%20Gyouza%20no%20Ohsho%20%281%29.jpg?width=1600",
+       "shows": "접시에 담긴 파·소스를 올린 닭튀김 유린기와 샐러드",
+       "match": "정확",
+       "rights": "위키미디어 CC0",
+       "page": "https://commons.wikimedia.org/wiki/File:Youlinji_of_Gyouza_no_Ohsho_(1).jpg"
+      }
+     },
+     {
+      "photo": {
+       "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Cheesesteak%20%2819386149993%29.jpg?width=1600",
+       "shows": "접시에 담긴 구운 소고기·양파·녹은 치즈를 빵에 넣은 필리치즈스테이크 샌드위치",
+       "match": "정확",
+       "credit": "jeffreyw (CC BY 2.0) · commons.wikimedia.org/?curid=42652875",
+       "rights": "위키미디어 CC BY 2.0",
+       "page": "https://commons.wikimedia.org/wiki/File:Cheesesteak_(19386149993).jpg"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "say": "맑은 국물 한 숟갈, 대구탕으로 속부터 풀어 볼까요?",
+   "subs": [
+    "맑은 국물 한 숟갈,",
+    "대구탕으로 속부터 풀어 볼까요?"
+   ],
+   "show": {
+    "dir": "2x2",
+    "own": true,
+    "hl": 0,
+    "grid": [
+     {
+      "photo": {
+       "url": "https://tong.visitkorea.or.kr/cms2/website/43/1825343.jpg",
+       "shows": "스테인리스 그릇에 파를 올린 맑은 대구탕 한 그릇과 밥·밑반찬",
+       "match": "정확",
+       "credit": "ⓒ한국관광공사 포토코리아-이범수",
+       "rights": "한국관광공사 공공누리 1유형"
+      }
+     },
+     {
+      "photo": {
+       "url": "https://tong.visitkorea.or.kr/cms2/website/90/2707190.jpg",
+       "shows": "철판 그릇에 순대·양배추·당면을 볶아 낸 철판순대볶음",
+       "match": "정확",
+       "credit": "ⓒ한국관광공사 포토코리아-알렉스 분도",
+       "rights": "한국관광공사 공공누리 1유형"
+      }
+     },
+     {
+      "photo": {
+       "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Youlinji%20of%20Gyouza%20no%20Ohsho%20%281%29.jpg?width=1600",
+       "shows": "접시에 담긴 파·소스를 올린 닭튀김 유린기와 샐러드",
+       "match": "정확",
+       "rights": "위키미디어 CC0",
+       "page": "https://commons.wikimedia.org/wiki/File:Youlinji_of_Gyouza_no_Ohsho_(1).jpg"
+      }
+     },
+     {
+      "photo": {
+       "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Cheesesteak%20%2819386149993%29.jpg?width=1600",
+       "shows": "접시에 담긴 구운 소고기·양파·녹은 치즈를 빵에 넣은 필리치즈스테이크 샌드위치",
+       "match": "정확",
+       "credit": "jeffreyw (CC BY 2.0) · commons.wikimedia.org/?curid=42652875",
+       "rights": "위키미디어 CC BY 2.0",
+       "page": "https://commons.wikimedia.org/wiki/File:Cheesesteak_(19386149993).jpg"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "say": "철판 위 순대볶음, 쫄깃한 순대에 채소까지 한가득!",
+   "subs": [
+    "철판 위 순대볶음,",
+    "쫄깃한 순대에 채소까지 한가득!"
+   ],
+   "show": {
+    "dir": "2x2",
+    "own": true,
+    "hl": 1,
+    "grid": [
+     {
+      "photo": {
+       "url": "https://tong.visitkorea.or.kr/cms2/website/43/1825343.jpg",
+       "shows": "스테인리스 그릇에 파를 올린 맑은 대구탕 한 그릇과 밥·밑반찬",
+       "match": "정확",
+       "credit": "ⓒ한국관광공사 포토코리아-이범수",
+       "rights": "한국관광공사 공공누리 1유형"
+      }
+     },
+     {
+      "photo": {
+       "url": "https://tong.visitkorea.or.kr/cms2/website/90/2707190.jpg",
+       "shows": "철판 그릇에 순대·양배추·당면을 볶아 낸 철판순대볶음",
+       "match": "정확",
+       "credit": "ⓒ한국관광공사 포토코리아-알렉스 분도",
+       "rights": "한국관광공사 공공누리 1유형"
+      }
+     },
+     {
+      "photo": {
+       "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Youlinji%20of%20Gyouza%20no%20Ohsho%20%281%29.jpg?width=1600",
+       "shows": "접시에 담긴 파·소스를 올린 닭튀김 유린기와 샐러드",
+       "match": "정확",
+       "rights": "위키미디어 CC0",
+       "page": "https://commons.wikimedia.org/wiki/File:Youlinji_of_Gyouza_no_Ohsho_(1).jpg"
+      }
+     },
+     {
+      "photo": {
+       "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Cheesesteak%20%2819386149993%29.jpg?width=1600",
+       "shows": "접시에 담긴 구운 소고기·양파·녹은 치즈를 빵에 넣은 필리치즈스테이크 샌드위치",
+       "match": "정확",
+       "credit": "jeffreyw (CC BY 2.0) · commons.wikimedia.org/?curid=42652875",
+       "rights": "위키미디어 CC BY 2.0",
+       "page": "https://commons.wikimedia.org/wiki/File:Cheesesteak_(19386149993).jpg"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "say": "바삭한 닭튀김에 소스 듬뿍, 유린기 어때요?",
+   "subs": [
+    "바삭한 닭튀김에 소스 듬뿍,",
+    "유린기 어때요?"
+   ],
+   "show": {
+    "dir": "2x2",
+    "own": true,
+    "hl": 2,
+    "grid": [
+     {
+      "photo": {
+       "url": "https://tong.visitkorea.or.kr/cms2/website/43/1825343.jpg",
+       "shows": "스테인리스 그릇에 파를 올린 맑은 대구탕 한 그릇과 밥·밑반찬",
+       "match": "정확",
+       "credit": "ⓒ한국관광공사 포토코리아-이범수",
+       "rights": "한국관광공사 공공누리 1유형"
+      }
+     },
+     {
+      "photo": {
+       "url": "https://tong.visitkorea.or.kr/cms2/website/90/2707190.jpg",
+       "shows": "철판 그릇에 순대·양배추·당면을 볶아 낸 철판순대볶음",
+       "match": "정확",
+       "credit": "ⓒ한국관광공사 포토코리아-알렉스 분도",
+       "rights": "한국관광공사 공공누리 1유형"
+      }
+     },
+     {
+      "photo": {
+       "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Youlinji%20of%20Gyouza%20no%20Ohsho%20%281%29.jpg?width=1600",
+       "shows": "접시에 담긴 파·소스를 올린 닭튀김 유린기와 샐러드",
+       "match": "정확",
+       "rights": "위키미디어 CC0",
+       "page": "https://commons.wikimedia.org/wiki/File:Youlinji_of_Gyouza_no_Ohsho_(1).jpg"
+      }
+     },
+     {
+      "photo": {
+       "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Cheesesteak%20%2819386149993%29.jpg?width=1600",
+       "shows": "접시에 담긴 구운 소고기·양파·녹은 치즈를 빵에 넣은 필리치즈스테이크 샌드위치",
+       "match": "정확",
+       "credit": "jeffreyw (CC BY 2.0) · commons.wikimedia.org/?curid=42652875",
+       "rights": "위키미디어 CC BY 2.0",
+       "page": "https://commons.wikimedia.org/wiki/File:Cheesesteak_(19386149993).jpg"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "say": "치즈 가득 필리치즈스테이크, 든든한 한 끼가 생각날 때!",
+   "subs": [
+    "치즈 가득 필리치즈스테이크,",
+    "든든한 한 끼가 생각날 때!"
+   ],
+   "show": {
+    "dir": "2x2",
+    "own": true,
+    "hl": 3,
+    "grid": [
+     {
+      "photo": {
+       "url": "https://tong.visitkorea.or.kr/cms2/website/43/1825343.jpg",
+       "shows": "스테인리스 그릇에 파를 올린 맑은 대구탕 한 그릇과 밥·밑반찬",
+       "match": "정확",
+       "credit": "ⓒ한국관광공사 포토코리아-이범수",
+       "rights": "한국관광공사 공공누리 1유형"
+      }
+     },
+     {
+      "photo": {
+       "url": "https://tong.visitkorea.or.kr/cms2/website/90/2707190.jpg",
+       "shows": "철판 그릇에 순대·양배추·당면을 볶아 낸 철판순대볶음",
+       "match": "정확",
+       "credit": "ⓒ한국관광공사 포토코리아-알렉스 분도",
+       "rights": "한국관광공사 공공누리 1유형"
+      }
+     },
+     {
+      "photo": {
+       "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Youlinji%20of%20Gyouza%20no%20Ohsho%20%281%29.jpg?width=1600",
+       "shows": "접시에 담긴 파·소스를 올린 닭튀김 유린기와 샐러드",
+       "match": "정확",
+       "rights": "위키미디어 CC0",
+       "page": "https://commons.wikimedia.org/wiki/File:Youlinji_of_Gyouza_no_Ohsho_(1).jpg"
+      }
+     },
+     {
+      "photo": {
+       "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Cheesesteak%20%2819386149993%29.jpg?width=1600",
+       "shows": "접시에 담긴 구운 소고기·양파·녹은 치즈를 빵에 넣은 필리치즈스테이크 샌드위치",
+       "match": "정확",
+       "credit": "jeffreyw (CC BY 2.0) · commons.wikimedia.org/?curid=42652875",
+       "rights": "위키미디어 CC BY 2.0",
+       "page": "https://commons.wikimedia.org/wiki/File:Cheesesteak_(19386149993).jpg"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "say": "오늘 저녁은 뭐로 할래요? 댓글로 알려 주세요.",
+   "subs": [
+    "오늘 저녁은 뭐로 할래요?",
+    "댓글로 알려 주세요."
+   ],
+   "show": {
+    "dir": "2x2",
+    "own": true,
+    "grid": [
+     {
+      "photo": {
+       "url": "https://tong.visitkorea.or.kr/cms2/website/43/1825343.jpg",
+       "shows": "스테인리스 그릇에 파를 올린 맑은 대구탕 한 그릇과 밥·밑반찬",
+       "match": "정확",
+       "credit": "ⓒ한국관광공사 포토코리아-이범수",
+       "rights": "한국관광공사 공공누리 1유형"
+      }
+     },
+     {
+      "photo": {
+       "url": "https://tong.visitkorea.or.kr/cms2/website/90/2707190.jpg",
+       "shows": "철판 그릇에 순대·양배추·당면을 볶아 낸 철판순대볶음",
+       "match": "정확",
+       "credit": "ⓒ한국관광공사 포토코리아-알렉스 분도",
+       "rights": "한국관광공사 공공누리 1유형"
+      }
+     },
+     {
+      "photo": {
+       "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Youlinji%20of%20Gyouza%20no%20Ohsho%20%281%29.jpg?width=1600",
+       "shows": "접시에 담긴 파·소스를 올린 닭튀김 유린기와 샐러드",
+       "match": "정확",
+       "rights": "위키미디어 CC0",
+       "page": "https://commons.wikimedia.org/wiki/File:Youlinji_of_Gyouza_no_Ohsho_(1).jpg"
+      }
+     },
+     {
+      "photo": {
+       "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Cheesesteak%20%2819386149993%29.jpg?width=1600",
+       "shows": "접시에 담긴 구운 소고기·양파·녹은 치즈를 빵에 넣은 필리치즈스테이크 샌드위치",
+       "match": "정확",
+       "credit": "jeffreyw (CC BY 2.0) · commons.wikimedia.org/?curid=42652875",
+       "rights": "위키미디어 CC BY 2.0",
+       "page": "https://commons.wikimedia.org/wiki/File:Cheesesteak_(19386149993).jpg"
+      }
+     }
+    ]
+   }
+  }
+ ],
+ "review": {
+  "photo_sheet": "b4d4be3bfc71"
+ }
+}
