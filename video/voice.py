@@ -113,6 +113,25 @@ def tts(text, name=None, rate=None, markup=False, take=None, tail=0.08):
     return x
 
 
+def sino(n):
+    """2125 → 이천백이십오 (한자어 수, 만 아래 네 자리씩)."""
+    digits = "영일이삼사오육칠팔구"
+    def four(x):
+        out = ""
+        for unit, d in (("천", x // 1000 % 10), ("백", x // 100 % 10), ("십", x // 10 % 10), ("", x % 10)):
+            if d:
+                out += ("" if d == 1 and unit else digits[d]) + unit
+        return out
+    if n == 0:
+        return "영"
+    out = ""
+    for unit, big in (("조", 10**12), ("억", 10**8), ("만", 10**4), ("", 1)):
+        part = n // big % 10000
+        if part:
+            out += ("" if part == 1 and unit == "만" and not out else four(part)) + unit  # 10,000 → 만(일만 아님)
+    return out
+
+
 def spoken(line):
     """목소리로 읽을 글. 자막(say)과 읽는 말이 달라야 하면 "read" 를 적어요.
     "4~5시"를 "네 시에서 오 시"로 잘못 읽어서(2026-10-17), 범위(~)는 "4시에서 5시"처럼 풀어 읽혀요."""
@@ -122,6 +141,8 @@ def spoken(line):
     text = re.sub(r"(?<![\d.])\s*%", " 퍼센트", text)  # '몇 %가'의 %를 TTS가 빼먹어요 → 퍼센트 (2026-11-24, 숫자 뒤 %는 그대로 잘 읽어요)
     # 4~5시, 7,500~9,000원, 3~4개 → 4시에서 5시, 7,500원에서 9,000원, 3개에서 4개
     text = re.sub(r"(\d[\d,.]*)\s*[~∼-]\s*(\d[\d,.]*)\s*(시|원|개|분|명|곳|도|%|kg|g|만 원|천 원)", r"\1\3에서 \2\3", text)
+    # 천 단위 쉼표가 든 수는 우리말로 풀어요: TTS 가 '2,125억'을 "이, 백이십오억"처럼 쉼표에서 끊어 읽어요(2026-11-24 불닭 쇼츠)
+    text = re.sub(r"(?<![\d.])\d{1,3}(?:,\d{3})+(?![\d.])", lambda m: sino(int(m[0].replace(",", ""))), text)
     # 시각은 우리말 수로: 5시 → 다섯 시, 10시 → 열 시 (숫자로 두면 "오 시"처럼 읽을 때가 있어요)
     hours = ["", "한", "두", "세", "네", "다섯", "여섯", "일곱", "여덟", "아홉", "열", "열한", "열두"]
     text = re.sub(r"(?<![\d,.])(\d{1,2})\s*시(?![간작즌])", lambda m: f"{hours[int(m[1])]} 시" if 0 < int(m[1]) <= 12 else m[0], text)
