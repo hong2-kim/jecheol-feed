@@ -1270,6 +1270,83 @@
         "channels": 120,
         "thin": 3
       }
+    },
+    "2026-11-24": {
+      "picks": [
+        {
+          "id": "GcnNmXko73g",
+          "title": "김치 담글 때 이것만 기억하세요! 아삭한 김치 담그는 꿀팁",
+          "channel": "제니제리노아는 우리팀🤪jennyjerrynoah",
+          "subs": 43300,
+          "views": 51907,
+          "median": 1421,
+          "n": 44,
+          "multiple": 36.5,
+          "hours": 43,
+          "formulas": [
+            "방법·꿀팁"
+          ],
+          "query": "음식 꿀팁",
+          "url": "https://youtube.com/shorts/GcnNmXko73g"
+        },
+        {
+          "id": "UtEGAa0Hmhc",
+          "title": "콜라 레몬 조합 결과에 깜짝 놀랐어요 생활꿀팁 청소비법 꿀팁 직장생활 지식 추천",
+          "channel": "가족의 순간",
+          "subs": 58300,
+          "views": 50401,
+          "median": 6490,
+          "n": 44,
+          "multiple": 7.8,
+          "hours": 45,
+          "formulas": [
+            "방법·꿀팁"
+          ],
+          "query": "음식 꿀팁",
+          "url": "https://youtube.com/shorts/UtEGAa0Hmhc"
+        }
+      ],
+      "leaders": [
+        {
+          "id": "ZtslxNLxS1Y",
+          "title": "전세계 채식주의자들의 쏟아지는 극찬! 개운한 K-비빔국수 대유행",
+          "channel": "감동안테나",
+          "subs": 5690,
+          "views": 81762,
+          "median": 48190,
+          "n": 38,
+          "multiple": 1.7,
+          "hours": 54,
+          "formulas": [
+            "경고·실수"
+          ],
+          "query": "해외 음식",
+          "url": "https://youtube.com/shorts/ZtslxNLxS1Y"
+        },
+        {
+          "id": "yCS1cXtQ_Fk",
+          "title": "다이어트 하면 가장 땡기는 음식 TOP 1 ㄷㄷㄷ (feat. IFBB 프로 원모어 서주성)",
+          "channel": "어원준",
+          "subs": 317000,
+          "views": 30800,
+          "median": 17632,
+          "n": 31,
+          "multiple": 1.7,
+          "hours": 45,
+          "formulas": [
+            "숫자·순위",
+            "감탄·강조"
+          ],
+          "query": "다이어트 음식",
+          "url": "https://youtube.com/shorts/yCS1cXtQ_Fk"
+        }
+      ],
+      "stats": {
+        "searched": 210,
+        "shorts": 198,
+        "channels": 120,
+        "thin": 5
+      }
     }
   }
 }
