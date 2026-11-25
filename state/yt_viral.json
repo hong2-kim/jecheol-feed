@@ -1347,6 +1347,78 @@
         "channels": 120,
         "thin": 5
       }
+    },
+    "2026-11-25": {
+      "picks": [
+        {
+          "id": "aYRyyx-4rjQ",
+          "title": "김장김치 양념 이렇게 해보세요",
+          "channel": "나의 꽃🌹집밥이 건강지킴",
+          "subs": 233000,
+          "views": 143985,
+          "median": 16611,
+          "n": 38,
+          "multiple": 8.7,
+          "hours": 58,
+          "formulas": [
+            "방법·꿀팁"
+          ],
+          "query": "제철 음식",
+          "url": "https://youtube.com/shorts/aYRyyx-4rjQ"
+        },
+        {
+          "id": "F4fZBd9gP6M",
+          "title": "콜라 소금 세제 조합 결과는 충격적이에요 생활꿀팁 청소비법 꿀팁 직장생활 지식 추천",
+          "channel": "가족의 순간",
+          "subs": 58900,
+          "views": 50827,
+          "median": 6530,
+          "n": 44,
+          "multiple": 7.8,
+          "hours": 43,
+          "formulas": [
+            "방법·꿀팁",
+            "감탄·강조"
+          ],
+          "query": "음식 꿀팁",
+          "url": "https://youtube.com/shorts/F4fZBd9gP6M"
+        },
+        {
+          "id": "FFUvnmXIkt0",
+          "title": "와 이번엔 말차다!!!",
+          "channel": "냠냠까까",
+          "subs": 7580,
+          "views": 20231,
+          "median": 4245,
+          "n": 47,
+          "multiple": 4.8,
+          "hours": 26,
+          "formulas": [],
+          "query": "편의점 신상",
+          "url": "https://youtube.com/shorts/FFUvnmXIkt0"
+        },
+        {
+          "id": "2qD7L6nvQtY",
+          "title": "똥배 쏙 빼준 당근라페 샌드위치",
+          "channel": "보경 Bokyoung",
+          "subs": 4600000,
+          "views": 39066,
+          "median": 19569,
+          "n": 46,
+          "multiple": 2.0,
+          "hours": 43,
+          "formulas": [],
+          "query": "다이어트 음식",
+          "url": "https://youtube.com/shorts/2qD7L6nvQtY"
+        }
+      ],
+      "leaders": [],
+      "stats": {
+        "searched": 212,
+        "shorts": 202,
+        "channels": 120,
+        "thin": 8
+      }
     }
   }
 }
