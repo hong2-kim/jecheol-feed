@@ -1,0 +1,465 @@
+{
+ "format": "voice",
+ "layout": "rec",
+ "kind": "저녁",
+ "subject": "목요일 저녁 (꽃게탕·곱창·메밀막국수·붓카케우동)",
+ "title": "목요일 저녁 내가 골라 줄게, 꽃게탕·곱창·메밀막국수·붓카케우동",
+ "summary": "목요일 저녁 메뉴로 꽃게탕·곱창·메밀막국수·붓카케우동 넷을 추천해요.",
+ "headline": "목요일 저녁\n[[내가 골라 줄게]]",
+ "small": "목요일 저녁, 오늘의 넷",
+ "intro": 7,
+ "length": [
+  20,
+  30
+ ],
+ "narrator": "achird",
+ "voice_pick": {
+  "mode": "solo",
+  "voices": [
+   "achird"
+  ],
+  "why": "국물·구이·면을 친구에게 권하는 일상 추천이라 친근한 Achird 솔로(어제 Puck 과 다르게)"
+ },
+ "thumb": {
+  "head": "목요일 저녁\n[[내가 골라 줄게]]",
+  "sub": "국물·구이·면 [[딱 넷]]만",
+  "photo": {
+   "url": "https://tong.visitkorea.or.kr/cms2/website/36/3047036.jpg",
+   "shows": "철판 위에서 노릇하게 구워지는 곱창 한 판",
+   "match": "정확",
+   "about": "곱창",
+   "rights": "한국관광공사 포토코리아 공공누리 1유형 · 김지영",
+   "credit": "ⓒ한국관광공사 포토코리아-김지영"
+  }
+ },
+ "yt_title": "목요일 저녁 메뉴 내가 골라 줄게, 꽃게탕·곱창·메밀막국수·붓카케우동 중에 뭐 먹을래?",
+ "yt_keyword": "목요일 저녁 메뉴",
+ "yt_related": [
+  "저녁 메뉴 추천",
+  "오늘 뭐 먹지",
+  "꽃게탕",
+  "곱창",
+  "메밀막국수",
+  "붓카케우동"
+ ],
+ "yt_tags": [
+  "목요일 저녁 메뉴",
+  "저녁 메뉴 추천",
+  "오늘 뭐 먹지",
+  "꽃게탕",
+  "곱창",
+  "메밀막국수",
+  "붓카케우동"
+ ],
+ "yt_hashtags": [
+  "목요일저녁메뉴",
+  "오늘뭐먹지",
+  "저녁메뉴추천"
+ ],
+ "yt_lead": "목요일 저녁 메뉴 고민될 때, 꽃게탕·곱창·메밀막국수·붓카케우동 넷 중에 골라 줄게요.",
+ "lines": [
+  {
+   "say": "목요일 저녁, 내가 골라 줄게!",
+   "nosub": true,
+   "show": {
+    "thumb": true
+   }
+  },
+  {
+   "say": "오늘 후보는 이 넷이에요.",
+   "show": {
+    "dir": "2x2",
+    "own": true,
+    "grid": [
+     {
+      "photo": {
+       "url": "https://tong.visitkorea.or.kr/cms2/website/36/3052836.jpg",
+       "shows": "게와 팽이버섯·대파·양념을 올려 끓이는 빨간 국물 꽃게탕 냄비(관광공사 제목 '게국지')",
+       "match": "같은 종류",
+       "about": "꽃게탕",
+       "rights": "한국관광공사 포토코리아 공공누리 1유형 · 천준교",
+       "credit": "ⓒ한국관광공사 포토코리아-천준교"
+      }
+     },
+     {
+      "photo": {
+       "url": "https://tong.visitkorea.or.kr/cms2/website/36/3047036.jpg",
+       "shows": "철판 위에서 노릇하게 구워지는 곱창 한 판",
+       "match": "정확",
+       "about": "곱창",
+       "rights": "한국관광공사 포토코리아 공공누리 1유형 · 김지영",
+       "credit": "ⓒ한국관광공사 포토코리아-김지영"
+      }
+     },
+     {
+      "photo": {
+       "url": "https://tong.visitkorea.or.kr/cms2/website/63/2536163.jpg",
+       "shows": "삶은 달걀·오이·김가루·깨를 올려 비빈 강원도 메밀막국수 한 그릇",
+       "match": "정확",
+       "about": "메밀막국수",
+       "rights": "한국관광공사 포토코리아 공공누리 1유형 · IR 스튜디오",
+       "credit": "ⓒ한국관광공사 포토코리아-IR 스튜디오"
+      }
+     },
+     {
+      "photo": {
+       "url": "https://live.staticflickr.com/65535/51776355321_86de23823a_b.jpg",
+       "shows": "대파·생강·고춧가루를 올린 붓카케우동 한 그릇",
+       "match": "정확",
+       "about": "붓카케우동",
+       "rights": "CC BY 2.0 · Kanesue",
+       "credit": "Kanesue (CC BY 2.0) · www.flickr.com/photos/36749444@N06/51776355321",
+       "page": "https://www.flickr.com/photos/36749444@N06/51776355321",
+       "terms": {
+        "url": "https://creativecommons.org/licenses/by/2.0/",
+        "checked": "2026-11-26",
+        "scope": "CC BY 2.0, 상업적 이용·수정 가능",
+        "ok": true
+       }
+      }
+     }
+    ],
+    "fade": 0.45
+   }
+  },
+  {
+   "say": "따끈하게 끓는 칼칼한 국물, 꽃게탕이 생각나는 날이에요.",
+   "subs": [
+    "따끈하게 끓는 칼칼한 국물,",
+    "꽃게탕이 생각나는 날이에요."
+   ],
+   "show": {
+    "dir": "2x2",
+    "own": true,
+    "grid": [
+     {
+      "photo": {
+       "url": "https://tong.visitkorea.or.kr/cms2/website/36/3052836.jpg",
+       "shows": "게와 팽이버섯·대파·양념을 올려 끓이는 빨간 국물 꽃게탕 냄비(관광공사 제목 '게국지')",
+       "match": "같은 종류",
+       "about": "꽃게탕",
+       "rights": "한국관광공사 포토코리아 공공누리 1유형 · 천준교",
+       "credit": "ⓒ한국관광공사 포토코리아-천준교"
+      }
+     },
+     {
+      "photo": {
+       "url": "https://tong.visitkorea.or.kr/cms2/website/36/3047036.jpg",
+       "shows": "철판 위에서 노릇하게 구워지는 곱창 한 판",
+       "match": "정확",
+       "about": "곱창",
+       "rights": "한국관광공사 포토코리아 공공누리 1유형 · 김지영",
+       "credit": "ⓒ한국관광공사 포토코리아-김지영"
+      }
+     },
+     {
+      "photo": {
+       "url": "https://tong.visitkorea.or.kr/cms2/website/63/2536163.jpg",
+       "shows": "삶은 달걀·오이·김가루·깨를 올려 비빈 강원도 메밀막국수 한 그릇",
+       "match": "정확",
+       "about": "메밀막국수",
+       "rights": "한국관광공사 포토코리아 공공누리 1유형 · IR 스튜디오",
+       "credit": "ⓒ한국관광공사 포토코리아-IR 스튜디오"
+      }
+     },
+     {
+      "photo": {
+       "url": "https://live.staticflickr.com/65535/51776355321_86de23823a_b.jpg",
+       "shows": "대파·생강·고춧가루를 올린 붓카케우동 한 그릇",
+       "match": "정확",
+       "about": "붓카케우동",
+       "rights": "CC BY 2.0 · Kanesue",
+       "credit": "Kanesue (CC BY 2.0) · www.flickr.com/photos/36749444@N06/51776355321",
+       "page": "https://www.flickr.com/photos/36749444@N06/51776355321",
+       "terms": {
+        "url": "https://creativecommons.org/licenses/by/2.0/",
+        "checked": "2026-11-26",
+        "scope": "CC BY 2.0, 상업적 이용·수정 가능",
+        "ok": true
+       }
+      }
+     }
+    ],
+    "hl": 0
+   }
+  },
+  {
+   "say": "철판 위에서 지글지글, 곱창 한 판 어때요?",
+   "subs": [
+    "철판 위에서 지글지글,",
+    "곱창 한 판 어때요?"
+   ],
+   "show": {
+    "dir": "2x2",
+    "own": true,
+    "grid": [
+     {
+      "photo": {
+       "url": "https://tong.visitkorea.or.kr/cms2/website/36/3052836.jpg",
+       "shows": "게와 팽이버섯·대파·양념을 올려 끓이는 빨간 국물 꽃게탕 냄비(관광공사 제목 '게국지')",
+       "match": "같은 종류",
+       "about": "꽃게탕",
+       "rights": "한국관광공사 포토코리아 공공누리 1유형 · 천준교",
+       "credit": "ⓒ한국관광공사 포토코리아-천준교"
+      }
+     },
+     {
+      "photo": {
+       "url": "https://tong.visitkorea.or.kr/cms2/website/36/3047036.jpg",
+       "shows": "철판 위에서 노릇하게 구워지는 곱창 한 판",
+       "match": "정확",
+       "about": "곱창",
+       "rights": "한국관광공사 포토코리아 공공누리 1유형 · 김지영",
+       "credit": "ⓒ한국관광공사 포토코리아-김지영"
+      }
+     },
+     {
+      "photo": {
+       "url": "https://tong.visitkorea.or.kr/cms2/website/63/2536163.jpg",
+       "shows": "삶은 달걀·오이·김가루·깨를 올려 비빈 강원도 메밀막국수 한 그릇",
+       "match": "정확",
+       "about": "메밀막국수",
+       "rights": "한국관광공사 포토코리아 공공누리 1유형 · IR 스튜디오",
+       "credit": "ⓒ한국관광공사 포토코리아-IR 스튜디오"
+      }
+     },
+     {
+      "photo": {
+       "url": "https://live.staticflickr.com/65535/51776355321_86de23823a_b.jpg",
+       "shows": "대파·생강·고춧가루를 올린 붓카케우동 한 그릇",
+       "match": "정확",
+       "about": "붓카케우동",
+       "rights": "CC BY 2.0 · Kanesue",
+       "credit": "Kanesue (CC BY 2.0) · www.flickr.com/photos/36749444@N06/51776355321",
+       "page": "https://www.flickr.com/photos/36749444@N06/51776355321",
+       "terms": {
+        "url": "https://creativecommons.org/licenses/by/2.0/",
+        "checked": "2026-11-26",
+        "scope": "CC BY 2.0, 상업적 이용·수정 가능",
+        "ok": true
+       }
+      }
+     }
+    ],
+    "hl": 1
+   }
+  },
+  {
+   "say": "쓱쓱 비벼 먹는 메밀막국수, 입맛 없을 땐 이거죠!",
+   "subs": [
+    "쓱쓱 비벼 먹는 메밀막국수,",
+    "입맛 없을 땐 이거죠!"
+   ],
+   "show": {
+    "dir": "2x2",
+    "own": true,
+    "grid": [
+     {
+      "photo": {
+       "url": "https://tong.visitkorea.or.kr/cms2/website/36/3052836.jpg",
+       "shows": "게와 팽이버섯·대파·양념을 올려 끓이는 빨간 국물 꽃게탕 냄비(관광공사 제목 '게국지')",
+       "match": "같은 종류",
+       "about": "꽃게탕",
+       "rights": "한국관광공사 포토코리아 공공누리 1유형 · 천준교",
+       "credit": "ⓒ한국관광공사 포토코리아-천준교"
+      }
+     },
+     {
+      "photo": {
+       "url": "https://tong.visitkorea.or.kr/cms2/website/36/3047036.jpg",
+       "shows": "철판 위에서 노릇하게 구워지는 곱창 한 판",
+       "match": "정확",
+       "about": "곱창",
+       "rights": "한국관광공사 포토코리아 공공누리 1유형 · 김지영",
+       "credit": "ⓒ한국관광공사 포토코리아-김지영"
+      }
+     },
+     {
+      "photo": {
+       "url": "https://tong.visitkorea.or.kr/cms2/website/63/2536163.jpg",
+       "shows": "삶은 달걀·오이·김가루·깨를 올려 비빈 강원도 메밀막국수 한 그릇",
+       "match": "정확",
+       "about": "메밀막국수",
+       "rights": "한국관광공사 포토코리아 공공누리 1유형 · IR 스튜디오",
+       "credit": "ⓒ한국관광공사 포토코리아-IR 스튜디오"
+      }
+     },
+     {
+      "photo": {
+       "url": "https://live.staticflickr.com/65535/51776355321_86de23823a_b.jpg",
+       "shows": "대파·생강·고춧가루를 올린 붓카케우동 한 그릇",
+       "match": "정확",
+       "about": "붓카케우동",
+       "rights": "CC BY 2.0 · Kanesue",
+       "credit": "Kanesue (CC BY 2.0) · www.flickr.com/photos/36749444@N06/51776355321",
+       "page": "https://www.flickr.com/photos/36749444@N06/51776355321",
+       "terms": {
+        "url": "https://creativecommons.org/licenses/by/2.0/",
+        "checked": "2026-11-26",
+        "scope": "CC BY 2.0, 상업적 이용·수정 가능",
+        "ok": true
+       }
+      }
+     }
+    ],
+    "hl": 2
+   }
+  },
+  {
+   "say": "면 위에 국물을 끼얹은 붓카케우동. 가볍게 한 끼!",
+   "subs": [
+    "면 위에 국물을 끼얹은",
+    "붓카케우동. 가볍게 한 끼!"
+   ],
+   "show": {
+    "dir": "2x2",
+    "own": true,
+    "grid": [
+     {
+      "photo": {
+       "url": "https://tong.visitkorea.or.kr/cms2/website/36/3052836.jpg",
+       "shows": "게와 팽이버섯·대파·양념을 올려 끓이는 빨간 국물 꽃게탕 냄비(관광공사 제목 '게국지')",
+       "match": "같은 종류",
+       "about": "꽃게탕",
+       "rights": "한국관광공사 포토코리아 공공누리 1유형 · 천준교",
+       "credit": "ⓒ한국관광공사 포토코리아-천준교"
+      }
+     },
+     {
+      "photo": {
+       "url": "https://tong.visitkorea.or.kr/cms2/website/36/3047036.jpg",
+       "shows": "철판 위에서 노릇하게 구워지는 곱창 한 판",
+       "match": "정확",
+       "about": "곱창",
+       "rights": "한국관광공사 포토코리아 공공누리 1유형 · 김지영",
+       "credit": "ⓒ한국관광공사 포토코리아-김지영"
+      }
+     },
+     {
+      "photo": {
+       "url": "https://tong.visitkorea.or.kr/cms2/website/63/2536163.jpg",
+       "shows": "삶은 달걀·오이·김가루·깨를 올려 비빈 강원도 메밀막국수 한 그릇",
+       "match": "정확",
+       "about": "메밀막국수",
+       "rights": "한국관광공사 포토코리아 공공누리 1유형 · IR 스튜디오",
+       "credit": "ⓒ한국관광공사 포토코리아-IR 스튜디오"
+      }
+     },
+     {
+      "photo": {
+       "url": "https://live.staticflickr.com/65535/51776355321_86de23823a_b.jpg",
+       "shows": "대파·생강·고춧가루를 올린 붓카케우동 한 그릇",
+       "match": "정확",
+       "about": "붓카케우동",
+       "rights": "CC BY 2.0 · Kanesue",
+       "credit": "Kanesue (CC BY 2.0) · www.flickr.com/photos/36749444@N06/51776355321",
+       "page": "https://www.flickr.com/photos/36749444@N06/51776355321",
+       "terms": {
+        "url": "https://creativecommons.org/licenses/by/2.0/",
+        "checked": "2026-11-26",
+        "scope": "CC BY 2.0, 상업적 이용·수정 가능",
+        "ok": true
+       }
+      }
+     }
+    ],
+    "hl": 3
+   }
+  },
+  {
+   "say": "넷 중에 오늘은 뭐가 끌려요? 댓글로 알려 주세요.",
+   "subs": [
+    "넷 중에 오늘은 뭐가 끌려요?",
+    "댓글로 알려 주세요."
+   ],
+   "show": {
+    "dir": "2x2",
+    "own": true,
+    "grid": [
+     {
+      "photo": {
+       "url": "https://tong.visitkorea.or.kr/cms2/website/36/3052836.jpg",
+       "shows": "게와 팽이버섯·대파·양념을 올려 끓이는 빨간 국물 꽃게탕 냄비(관광공사 제목 '게국지')",
+       "match": "같은 종류",
+       "about": "꽃게탕",
+       "rights": "한국관광공사 포토코리아 공공누리 1유형 · 천준교",
+       "credit": "ⓒ한국관광공사 포토코리아-천준교"
+      }
+     },
+     {
+      "photo": {
+       "url": "https://tong.visitkorea.or.kr/cms2/website/36/3047036.jpg",
+       "shows": "철판 위에서 노릇하게 구워지는 곱창 한 판",
+       "match": "정확",
+       "about": "곱창",
+       "rights": "한국관광공사 포토코리아 공공누리 1유형 · 김지영",
+       "credit": "ⓒ한국관광공사 포토코리아-김지영"
+      }
+     },
+     {
+      "photo": {
+       "url": "https://tong.visitkorea.or.kr/cms2/website/63/2536163.jpg",
+       "shows": "삶은 달걀·오이·김가루·깨를 올려 비빈 강원도 메밀막국수 한 그릇",
+       "match": "정확",
+       "about": "메밀막국수",
+       "rights": "한국관광공사 포토코리아 공공누리 1유형 · IR 스튜디오",
+       "credit": "ⓒ한국관광공사 포토코리아-IR 스튜디오"
+      }
+     },
+     {
+      "photo": {
+       "url": "https://live.staticflickr.com/65535/51776355321_86de23823a_b.jpg",
+       "shows": "대파·생강·고춧가루를 올린 붓카케우동 한 그릇",
+       "match": "정확",
+       "about": "붓카케우동",
+       "rights": "CC BY 2.0 · Kanesue",
+       "credit": "Kanesue (CC BY 2.0) · www.flickr.com/photos/36749444@N06/51776355321",
+       "page": "https://www.flickr.com/photos/36749444@N06/51776355321",
+       "terms": {
+        "url": "https://creativecommons.org/licenses/by/2.0/",
+        "checked": "2026-11-26",
+        "scope": "CC BY 2.0, 상업적 이용·수정 가능",
+        "ok": true
+       }
+      }
+     }
+    ]
+   }
+  }
+ ],
+ "caption": "목요일 저녁, 내가 골라 줄게요!\n\n따끈하게 끓는 칼칼한 꽃게탕\n철판 위에서 지글지글 곱창\n쓱쓱 비벼 먹는 메밀막국수\n면 위에 국물을 끼얹은 붓카케우동\n\n넷 중에 오늘은 뭐가 끌려요? 댓글로 알려 주세요.",
+ "tags": [
+  "목요일저녁메뉴",
+  "저녁메뉴추천",
+  "오늘뭐먹지",
+  "꽃게탕"
+ ],
+ "sources": [],
+ "credits": [
+  "ⓒ한국관광공사 포토코리아-천준교",
+  "ⓒ한국관광공사 포토코리아-김지영",
+  "ⓒ한국관광공사 포토코리아-IR 스튜디오",
+  "Kanesue (CC BY 2.0) · www.flickr.com/photos/36749444@N06/51776355321"
+ ],
+ "dates": {
+  "checked": "2026-11-26"
+ },
+ "menu_pick": {
+  "menus": [
+   "꽃게탕",
+   "곱창",
+   "메밀막국수",
+   "붓카케우동"
+  ],
+  "from": "dinner_pick(후보 18개 확인, 날씨 mild 기준, 사이트 429 로 바깥 사진이 열리는 메뉴로 조정)",
+  "why": {
+   "꽃게탕": "국물 갈래, 가을 제철 게",
+   "곱창": "구이 갈래, 인기 메뉴가 33일 만에 나옴",
+   "메밀막국수": "면 갈래, 오랜만에 나오는 메뉴",
+   "붓카케우동": "일식 면, 새로운 메뉴 1개"
+  }
+ },
+ "review": {
+  "photo_sheet": "de72d00733f6"
+ }
+}
