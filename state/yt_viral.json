@@ -1419,6 +1419,102 @@
         "channels": 120,
         "thin": 8
       }
+    },
+    "2026-11-26": {
+      "picks": [
+        {
+          "id": "jsk27XzYGhc",
+          "title": "무우나물 기름에 볶지마세요",
+          "channel": "나의 꽃🌹집밥이 건강지킴",
+          "subs": 233000,
+          "views": 169746,
+          "median": 17630,
+          "n": 39,
+          "multiple": 9.6,
+          "hours": 47,
+          "formulas": [
+            "경고·실수"
+          ],
+          "query": "제철 음식",
+          "url": "https://youtube.com/shorts/jsk27XzYGhc"
+        },
+        {
+          "id": "Zr8fFIkR0DA",
+          "title": "이거 대박인데? 살 절대 안 찌는 안주",
+          "channel": "다이어트 레시피 택배",
+          "subs": 16900,
+          "views": 35380,
+          "median": 5733,
+          "n": 47,
+          "multiple": 6.2,
+          "hours": 43,
+          "formulas": [
+            "물음",
+            "경고·실수",
+            "감탄·강조"
+          ],
+          "query": "다이어트 음식",
+          "url": "https://youtube.com/shorts/Zr8fFIkR0DA"
+        },
+        {
+          "id": "7EroFVJiGUc",
+          "title": "콜라 소금 충격적인 결과 생활꿀팁 청소비법 꿀팁 직장생활 지식 추천",
+          "channel": "가족의 순간",
+          "subs": 59700,
+          "views": 37987,
+          "median": 7165,
+          "n": 44,
+          "multiple": 5.3,
+          "hours": 55,
+          "formulas": [
+            "방법·꿀팁",
+            "감탄·강조"
+          ],
+          "query": "음식 꿀팁",
+          "url": "https://youtube.com/shorts/7EroFVJiGUc"
+        },
+        {
+          "id": "-eeak1KRmh8",
+          "title": "의외로 해외에선 안먹는 음식들",
+          "channel": "마눈포윤",
+          "subs": 29700,
+          "views": 10061,
+          "median": 4989,
+          "n": 37,
+          "multiple": 2.0,
+          "hours": 44,
+          "formulas": [
+            "해외·여행"
+          ],
+          "query": "해외 음식",
+          "url": "https://youtube.com/shorts/-eeak1KRmh8"
+        }
+      ],
+      "leaders": [
+        {
+          "id": "MoU1V2qz-ts",
+          "title": "투썸 크리스마스케이크 신상4종",
+          "channel": "잇지니 Eatjiny",
+          "subs": 87600,
+          "views": 32458,
+          "median": 26810,
+          "n": 47,
+          "multiple": 1.2,
+          "hours": 47,
+          "formulas": [
+            "숫자·순위",
+            "신상·한정"
+          ],
+          "query": "디저트 신상",
+          "url": "https://youtube.com/shorts/MoU1V2qz-ts"
+        }
+      ],
+      "stats": {
+        "searched": 215,
+        "shorts": 203,
+        "channels": 120,
+        "thin": 8
+      }
     }
   }
 }
