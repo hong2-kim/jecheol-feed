@@ -1,0 +1,244 @@
+{
+ "format": "voice",
+ "kind": "해설",
+ "subject": "가을무 · 겨울 인삼과 작년 생산량",
+ "inspired": {
+  "from": "yt_viral 2026-11-26",
+  "id": "jsk27XzYGhc",
+  "food": "무"
+ },
+ "plan_hook": {
+  "pick": "호기심",
+  "why": "'겨울 인삼'이라는 가을 무 별명을 물음으로 걸고 끝에서 작년 생산량이 역대 최저였다는 공식 통계로 뒤집는다(값 이야기는 오늘 카드 뉴스와 겹쳐 뺌)",
+  "others": [
+   "가격",
+   "먹거리"
+  ]
+ },
+ "script_check": {
+  "score": 7,
+  "fix": "무 100g 열량 등 영양 숫자는 공식 DB를 열지 못해 뺐고, 확인한 통계(37만 4천 톤·2.7%·11.3%)와 공식 소개 문장만 씀. 2번 예고는 7~9번 문장에서 공개"
+ },
+ "title_pick": {
+  "candidates": [
+   "가을 무, 왜 '겨울 인삼'이라 불렸을까?",
+   "가을 무 겨울 인삼 별명, 작년 생산량은 1975년 이후 최저",
+   "무 생산량 1975년 이후 최저, 가을무 37만 4천 톤"
+  ],
+  "pick": "가을 무 겨울 인삼 별명, 작년 생산량은 1975년 이후 최저",
+  "like": "2026-11-10 한국 김 가장 많이 사 가는 나라, 일본일까?(2.7배)",
+  "sure": "낮음"
+ },
+ "title": "가을 무를 '겨울 인삼'이라 부르는 까닭, 작년엔 왜 역대 최저였을까요",
+ "yt_title": "가을 무 겨울 인삼 별명, 작년 생산량은 1975년 이후 최저",
+ "headline": "겨울 인삼이라\n[[불린 가을 무]]",
+ "thumb": {
+  "sub": "작년 생산량 [[역대 최저]]"
+ },
+ "narrator": "achird",
+ "voice_pick": {
+  "mode": "solo",
+  "voices": [
+   "achird"
+  ],
+  "why": "별명과 옛 이야기에서 통계로 넘어가는 일반 음식 이야기를 친구에게 들려주듯 하는 Achird 솔로"
+ },
+ "summary": "가을 무는 8~9월에 심어 가을에 거두고, 국립원예특작과학원 자료에 따르면 기온이 내려갈수록 영양소가 풍부해져 '동삼(겨울 인삼)'이라 불렸어요. 국가데이터처에 따르면 2025년 가을무 생산량은 37만 4천 톤으로 전년보다 2.7% 줄어 1975년 이후 가장 적었어요.",
+ "lines": [
+  {
+   "say": "가을 무의 별명이 [[겨울 인삼]]이라는 거, 알고 계셨어요?",
+   "photo": {
+    "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Korean%20radish%20-%20Massachusetts.jpg?width=1600",
+    "shows": "잎이 달린 흰 무와 푸른 무청 여러 개가 쌓인 가게 진열(별명 '겨울 인삼'으로 불리는 가을 무 일반 사진)",
+    "match": "같은 종류",
+    "about": "무 일반",
+    "general": true,
+    "rights": "위키미디어 공용 CC0 · Korean radish - Massachusetts.jpg"
+   },
+   "about": "무 일반",
+   "general": true
+  },
+  {
+   "say": "끝까지 보면, 작년 [[역대 최저]]였던 까닭까지 알려 드려요.",
+   "chip": "끝까지 보면 작년 생산량 최저인 까닭"
+  },
+  {
+   "say": "지금 11월이 가을 무 철이에요, [[8~9월]]에 심어 가을에 거둬요.",
+   "photo": {
+    "url": "https://images.unsplash.com/photo-1768113802385-59b5bb8e8c34?w=2000&q=85&fm=jpg",
+    "page": "https://unsplash.com/photos/GOqvT_8COTg",
+    "credit": "사진: Peggie Mishra / Unsplash",
+    "shows": "밭 흙에서 잎을 펼치고 자라는 흰 무",
+    "match": "같은 종류",
+    "about": "무 재배 일반",
+    "general": true,
+    "rights": "Unsplash 무료 라이선스(Unsplash+ 아님)"
+   },
+   "about": "무 재배 일반",
+   "general": true,
+   "chip": "8~9월 심어 가을에 수확"
+  },
+  {
+   "say": "국립원예특작과학원 자료에 따르면, 무는 [[기온이 내려갈수록]] 영양소가 풍부해져요.",
+   "photo": {
+    "url": "https://images.unsplash.com/photo-1771759539760-1b5b32bd604a?w=2000&q=85&fm=jpg",
+    "page": "https://unsplash.com/photos/8mWdt4c_VbU",
+    "credit": "사진: Wenzy Wong / Unsplash",
+    "shows": "무성한 잎 아래 흙 위로 올라온 무 뿌리 클로즈업",
+    "match": "같은 종류",
+    "about": "무 재배 일반",
+    "general": true,
+    "rights": "Unsplash 무료 라이선스(Unsplash+ 아님)"
+   },
+   "about": "무 재배 일반",
+   "general": true
+  },
+  {
+   "say": "그래서 가을 무를, [[동삼]] 겨울 인삼이라 불렀대요.",
+   "photo": {
+    "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Daikon%20for%20sale%20-%20Tokyo%20-%20April%2016%202019.jpeg?width=1600",
+    "shows": "비닐에 싸여 진열된 길쭉한 흰 무 여러 개(도쿄 가게, '동삼·겨울 인삼'으로 불린 가을 무 일반 사진)",
+    "match": "같은 종류",
+    "about": "무 일반",
+    "general": true,
+    "rights": "위키미디어 공용 CC BY 4.0 · Nesnad",
+    "credit": "Nesnad (CC BY 4.0) · commons.wikimedia.org/?curid=78080376"
+   },
+   "about": "무 일반",
+   "general": true,
+   "chip": "동삼 = 겨울 인삼"
+  },
+  {
+   "say": "농사로는, [[비타민 C]]와, 소화를 돕는 [[디아스타아제]]가 있다고 해요.",
+   "photo": {
+    "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Korean%20radishes%20at%20Asian%20supermarket%20in%20New%20Jersey.jpg?width=1600",
+    "shows": "연두빛 어깨의 굵은 한국 무가 수북이 쌓인 마트 진열(비타민 C·디아스타아제 소개용 무 일반 사진)",
+    "match": "같은 종류",
+    "about": "무 일반",
+    "general": true,
+    "rights": "위키미디어 공용 CC0 · Korean radishes at Asian supermarket in New Jersey.jpg"
+   },
+   "about": "무 일반",
+   "general": true,
+   "chip": "비타민 C · 디아스타아제"
+  },
+  {
+   "say": "그런데 작년 가을무 생산량은, [[37만 4천 톤]]이었어요.",
+   "photo": {
+    "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Korean%20radish%20field.jpg?width=1600",
+    "shows": "물방울이 맺힌 무 잎이 빽빽한 한국 무밭",
+    "match": "분위기",
+    "about": "무 재배 일반",
+    "general": true,
+    "rights": "위키미디어 공용 CC0 · Korean radish field.jpg"
+   },
+   "about": "무 재배 일반",
+   "general": true,
+   "chip": "2025년 37만 4천 톤"
+  },
+  {
+   "say": "전년보다 [[2.7%]] 줄어서, 1975년 이후 가장 적었어요.",
+   "photo": {
+    "url": "https://images.unsplash.com/photo-1762710526515-b5c1f45d69ef?w=2000&q=85&fm=jpg",
+    "page": "https://unsplash.com/photos/0BCwHPrs9hM",
+    "credit": "사진: liam matthews / Unsplash",
+    "shows": "나무 상자에 담긴 길쭉한 흰 무(옆에 여주)",
+    "match": "같은 종류",
+    "about": "무 일반",
+    "general": true,
+    "rights": "Unsplash 무료 라이선스(Unsplash+ 아님)"
+   },
+   "about": "무 일반",
+   "general": true,
+   "chip": "전년보다 2.7% 감소",
+   "read": "전년보다 이 점 칠 퍼센트 줄어서, 1975년 이후 가장 적었어요."
+  },
+  {
+   "say": "10a당 생산량이 [[11.3%]] 줄었고, 잦은 비 탓이라고 해요.",
+   "photo": {
+    "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Mucheong-siraegi.jpg?width=1600",
+    "shows": "비닐하우스 안에 줄줄이 걸어 말리는 무청 시래기",
+    "match": "분위기",
+    "about": "무청 시래기",
+    "general": true,
+    "rights": "위키미디어 공용 CC0 · Mucheong-siraegi.jpg"
+   },
+   "about": "무청 시래기",
+   "general": true,
+   "chip": "10a당 11.3% 감소",
+   "read": "십 아르당 생산량이 십일 점 삼 퍼센트 줄었고, 잦은 비 탓이라고 해요."
+  },
+  {
+   "say": "여러분은 무, 깍두기로 드세요, 국으로 드세요? [[댓글]]로 알려 주세요.",
+   "photo": {
+    "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Kkakdugi.jpg?width=1600",
+    "shows": "놋그릇에 담긴 빨간 양념 깍두기",
+    "match": "같은 종류",
+    "about": "깍두기",
+    "general": true,
+    "rights": "위키미디어 공용 CC BY 2.0 · lazy fri13th",
+    "credit": "lazy fri13th (CC BY 2.0) · commons.wikimedia.org/?curid=88407557"
+   },
+   "about": "깍두기",
+   "general": true
+  }
+ ],
+ "caption": "가을 무를 '겨울 인삼'이라고 불렀다는 거, 알고 계셨어요?\n\n8~9월에 심는 가을 무는 국립원예특작과학원 채소과 자료에 따르면 기온이 내려갈수록 영양소가 풍부해져서 예로부터 동삼(冬參), 겨울 인삼이라 불렸어요. 농촌진흥청 농사로는 무에 비타민 C가 풍부하고 소화흡수를 도와주는 디아스타아제가 들어 있다고 소개해요.\n\n그런데 국가데이터처에 따르면 2025년 가을무 생산량은 37만 4천 톤으로 전년보다 2.7% 줄어 1975년 이후 가장 적었어요. 10a당 생산량이 11.3% 줄었고, 생육기에 잦은 비가 작황에 영향을 줬다고 해요.\n\n여러분은 무, 깍두기로 드세요, 국으로 드세요?\n\n출처: 헤럴드경제(2025년 11월 28일, 12월 23일), 농촌진흥청 농사로",
+ "tags": [
+  "가을무",
+  "겨울인삼",
+  "무",
+  "제철음식"
+ ],
+ "sources": [
+  "https://www.heraldk.com/article/2025122321021660412",
+  "https://www.heraldk.com/article/2025112814500048539"
+ ],
+ "credits": [
+  "사진: Peggie Mishra / Unsplash",
+  "사진: Wenzy Wong / Unsplash",
+  "사진: liam matthews / Unsplash",
+  "Nesnad (CC BY 4.0) · commons.wikimedia.org/?curid=78080376",
+  "lazy fri13th (CC BY 2.0) · commons.wikimedia.org/?curid=88407557"
+ ],
+ "yt_keyword": "가을 무",
+ "yt_related": [
+  "겨울 인삼",
+  "동삼",
+  "무 제철",
+  "가을무 생산량",
+  "무 영양"
+ ],
+ "yt_tags": [
+  "가을 무",
+  "겨울 인삼",
+  "동삼",
+  "무 제철",
+  "가을무 생산량",
+  "무 영양",
+  "디아스타아제"
+ ],
+ "yt_hashtags": [
+  "가을무",
+  "겨울인삼",
+  "무제철"
+ ],
+ "yt_lead": "가을 무는 왜 '겨울 인삼'이라 불렸을까요, 별명의 까닭과 2025년 가을무 생산량이 1975년 이후 최저였다는 통계까지 정리했어요.",
+ "dates": {
+  "checked": "2026-11-27",
+  "sources": [
+   {
+    "url": "https://www.heraldk.com/article/2025122321021660412",
+    "published": "2025-12-23"
+   },
+   {
+    "url": "https://www.heraldk.com/article/2025112814500048539",
+    "published": "2025-11-28"
+   }
+  ],
+  "stat_period": "가을무 생산량은 2025년 확정치"
+ },
+ "review": {
+  "photo_sheet": "c9b1a0f65cdd"
+ }
+}

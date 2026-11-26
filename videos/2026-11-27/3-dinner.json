@@ -1,0 +1,598 @@
+{
+ "format": "voice",
+ "layout": "rec",
+ "kind": "저녁",
+ "subject": "금요일 저녁 (돼지국밥·똠카가이·야키소바·하와이안포케)",
+ "title": "금요일 저녁 아직 못 골랐어? 돼지국밥·똠카가이·야키소바·하와이안포케",
+ "summary": "금요일 저녁 메뉴로 돼지국밥·똠카가이·야키소바·하와이안포케 넷을 추천해요.",
+ "headline": "금요일 저녁\n[[아직 못 골랐어?]]",
+ "small": "금요일 저녁, 오늘의 넷",
+ "intro": 7,
+ "length": [
+  20,
+  30
+ ],
+ "narrator": "aoede",
+ "voice_pick": {
+  "mode": "solo",
+  "voices": [
+   "aoede"
+  ],
+  "why": "뜨끈한 국물부터 가벼운 한 그릇까지 부드럽게 권하는 금요일 저녁이라 Aoede 솔로(어제 Achird 와 다르게)"
+ },
+ "thumb": {
+  "head": "금요일 저녁\n[[아직 못 골랐어?]]",
+  "sub": "국물·면·볼 [[딱 넷]]만",
+  "photo": {
+   "url": "https://tong.visitkorea.or.kr/cms2/website/80/1840880.jpg",
+   "shows": "검은 뚝배기에 다진 양념과 파를 올린 돼지국밥 한 그릇과 반찬",
+   "match": "정확",
+   "about": "돼지국밥",
+   "rights": "한국관광공사 포토코리아 공공누리 1유형 · 박은경",
+   "credit": "ⓒ한국관광공사 포토코리아-박은경"
+  }
+ },
+ "yt_title": "금요일 저녁 메뉴 아직 못 골랐어? 돼지국밥·똠카가이·야키소바·하와이안포케 중에 골라 줄게",
+ "yt_keyword": "금요일 저녁 메뉴",
+ "yt_related": [
+  "저녁 메뉴 추천",
+  "오늘 뭐 먹지",
+  "돼지국밥",
+  "똠카가이",
+  "야끼소바",
+  "포케"
+ ],
+ "yt_tags": [
+  "금요일 저녁 메뉴",
+  "저녁 메뉴 추천",
+  "오늘 뭐 먹지",
+  "돼지국밥",
+  "똠카가이",
+  "야키소바",
+  "야끼소바",
+  "하와이안 포케"
+ ],
+ "yt_hashtags": [
+  "금요일저녁메뉴",
+  "오늘뭐먹지",
+  "저녁메뉴추천"
+ ],
+ "yt_lead": "금요일 저녁 메뉴 고민될 때, 돼지국밥·똠카가이·야키소바·하와이안포케 넷 중에 골라 줄게요.",
+ "lines": [
+  {
+   "say": "금요일 저녁, 아직 못 골랐어?",
+   "nosub": true,
+   "show": {
+    "thumb": true,
+    "grid": [
+     {
+      "photo": {
+       "url": "https://tong.visitkorea.or.kr/cms2/website/80/1840880.jpg",
+       "shows": "검은 뚝배기에 다진 양념과 파를 올린 돼지국밥 한 그릇과 반찬",
+       "match": "정확",
+       "about": "돼지국밥",
+       "rights": "한국관광공사 포토코리아 공공누리 1유형 · 박은경",
+       "credit": "ⓒ한국관광공사 포토코리아-박은경"
+      }
+     },
+     {
+      "photo": {
+       "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Tom%20Kha%20Gai.jpg?width=1600",
+       "shows": "하얀 사발에 담긴 코코넛 국물 똠카가이, 버섯·닭고기·고추·고수가 보임",
+       "match": "정확",
+       "about": "똠카가이",
+       "rights": "위키미디어 공용 CC BY 2.0",
+       "credit": "TheCulinaryGeek (CC BY 2.0) · commons.wikimedia.org/?curid=83079636",
+       "page": "https://commons.wikimedia.org/wiki/File:Tom_Kha_Gai.jpg",
+       "terms": {
+        "url": "https://creativecommons.org/licenses/by/2.0/",
+        "checked": "2026-11-27",
+        "scope": "CC BY 2.0 저작자 표시 후 이용",
+        "ok": true
+       }
+      }
+     },
+     {
+      "photo": {
+       "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Kuroishi%20Yakisoba01.JPG?width=1600",
+       "shows": "양배추·돼지고기에 붉은 생강을 올린 접시 가득 야키소바",
+       "match": "정확",
+       "about": "야키소바",
+       "rights": "위키미디어 공용 퍼블릭 도메인",
+       "page": "https://commons.wikimedia.org/wiki/File:Kuroishi_Yakisoba01.JPG",
+       "terms": {
+        "url": "https://commons.wikimedia.org/",
+        "checked": "2026-11-27",
+        "scope": "퍼블릭 도메인",
+        "ok": true
+       }
+      }
+     },
+     {
+      "photo": {
+       "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Salmon%20Poke%20Bowl%20%28S%29%20with%20Spicy%20mayo%20sauce%20-%20Kitokito.jpg?width=1600",
+       "shows": "연어·아보카도·에다마메·단무지를 올린 연어 포케 볼과 매운 마요 소스",
+       "match": "정확",
+       "about": "하와이안포케",
+       "rights": "위키미디어 공용 CC0",
+       "page": "https://commons.wikimedia.org/wiki/File:Salmon_Poke_Bowl_(S)_with_Spicy_mayo_sauce_-_Kitokito.jpg",
+       "terms": {
+        "url": "https://commons.wikimedia.org/",
+        "checked": "2026-11-27",
+        "scope": "CC0",
+        "ok": true
+       }
+      }
+     }
+    ]
+   }
+  },
+  {
+   "say": "불금 후보는 이 넷이에요.",
+   "read": "불금 후보는 이 넷이에요.",
+   "show": {
+    "dir": "2x2",
+    "own": true,
+    "fade": 0.45,
+    "grid": [
+     {
+      "photo": {
+       "url": "https://tong.visitkorea.or.kr/cms2/website/80/1840880.jpg",
+       "shows": "검은 뚝배기에 다진 양념과 파를 올린 돼지국밥 한 그릇과 반찬",
+       "match": "정확",
+       "about": "돼지국밥",
+       "rights": "한국관광공사 포토코리아 공공누리 1유형 · 박은경",
+       "credit": "ⓒ한국관광공사 포토코리아-박은경"
+      }
+     },
+     {
+      "photo": {
+       "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Tom%20Kha%20Gai.jpg?width=1600",
+       "shows": "하얀 사발에 담긴 코코넛 국물 똠카가이, 버섯·닭고기·고추·고수가 보임",
+       "match": "정확",
+       "about": "똠카가이",
+       "rights": "위키미디어 공용 CC BY 2.0",
+       "credit": "TheCulinaryGeek (CC BY 2.0) · commons.wikimedia.org/?curid=83079636",
+       "page": "https://commons.wikimedia.org/wiki/File:Tom_Kha_Gai.jpg",
+       "terms": {
+        "url": "https://creativecommons.org/licenses/by/2.0/",
+        "checked": "2026-11-27",
+        "scope": "CC BY 2.0 저작자 표시 후 이용",
+        "ok": true
+       }
+      }
+     },
+     {
+      "photo": {
+       "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Kuroishi%20Yakisoba01.JPG?width=1600",
+       "shows": "양배추·돼지고기에 붉은 생강을 올린 접시 가득 야키소바",
+       "match": "정확",
+       "about": "야키소바",
+       "rights": "위키미디어 공용 퍼블릭 도메인",
+       "page": "https://commons.wikimedia.org/wiki/File:Kuroishi_Yakisoba01.JPG",
+       "terms": {
+        "url": "https://commons.wikimedia.org/",
+        "checked": "2026-11-27",
+        "scope": "퍼블릭 도메인",
+        "ok": true
+       }
+      }
+     },
+     {
+      "photo": {
+       "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Salmon%20Poke%20Bowl%20%28S%29%20with%20Spicy%20mayo%20sauce%20-%20Kitokito.jpg?width=1600",
+       "shows": "연어·아보카도·에다마메·단무지를 올린 연어 포케 볼과 매운 마요 소스",
+       "match": "정확",
+       "about": "하와이안포케",
+       "rights": "위키미디어 공용 CC0",
+       "page": "https://commons.wikimedia.org/wiki/File:Salmon_Poke_Bowl_(S)_with_Spicy_mayo_sauce_-_Kitokito.jpg",
+       "terms": {
+        "url": "https://commons.wikimedia.org/",
+        "checked": "2026-11-27",
+        "scope": "CC0",
+        "ok": true
+       }
+      }
+     }
+    ]
+   }
+  },
+  {
+   "say": "뜨끈한 국물에 밥 말아, 돼지국밥 어때요?",
+   "subs": [
+    "뜨끈한 국물에 밥 말아,",
+    "돼지국밥 어때요?"
+   ],
+   "show": {
+    "dir": "2x2",
+    "own": true,
+    "hl": 0,
+    "grid": [
+     {
+      "photo": {
+       "url": "https://tong.visitkorea.or.kr/cms2/website/80/1840880.jpg",
+       "shows": "검은 뚝배기에 다진 양념과 파를 올린 돼지국밥 한 그릇과 반찬",
+       "match": "정확",
+       "about": "돼지국밥",
+       "rights": "한국관광공사 포토코리아 공공누리 1유형 · 박은경",
+       "credit": "ⓒ한국관광공사 포토코리아-박은경"
+      }
+     },
+     {
+      "photo": {
+       "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Tom%20Kha%20Gai.jpg?width=1600",
+       "shows": "하얀 사발에 담긴 코코넛 국물 똠카가이, 버섯·닭고기·고추·고수가 보임",
+       "match": "정확",
+       "about": "똠카가이",
+       "rights": "위키미디어 공용 CC BY 2.0",
+       "credit": "TheCulinaryGeek (CC BY 2.0) · commons.wikimedia.org/?curid=83079636",
+       "page": "https://commons.wikimedia.org/wiki/File:Tom_Kha_Gai.jpg",
+       "terms": {
+        "url": "https://creativecommons.org/licenses/by/2.0/",
+        "checked": "2026-11-27",
+        "scope": "CC BY 2.0 저작자 표시 후 이용",
+        "ok": true
+       }
+      }
+     },
+     {
+      "photo": {
+       "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Kuroishi%20Yakisoba01.JPG?width=1600",
+       "shows": "양배추·돼지고기에 붉은 생강을 올린 접시 가득 야키소바",
+       "match": "정확",
+       "about": "야키소바",
+       "rights": "위키미디어 공용 퍼블릭 도메인",
+       "page": "https://commons.wikimedia.org/wiki/File:Kuroishi_Yakisoba01.JPG",
+       "terms": {
+        "url": "https://commons.wikimedia.org/",
+        "checked": "2026-11-27",
+        "scope": "퍼블릭 도메인",
+        "ok": true
+       }
+      }
+     },
+     {
+      "photo": {
+       "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Salmon%20Poke%20Bowl%20%28S%29%20with%20Spicy%20mayo%20sauce%20-%20Kitokito.jpg?width=1600",
+       "shows": "연어·아보카도·에다마메·단무지를 올린 연어 포케 볼과 매운 마요 소스",
+       "match": "정확",
+       "about": "하와이안포케",
+       "rights": "위키미디어 공용 CC0",
+       "page": "https://commons.wikimedia.org/wiki/File:Salmon_Poke_Bowl_(S)_with_Spicy_mayo_sauce_-_Kitokito.jpg",
+       "terms": {
+        "url": "https://commons.wikimedia.org/",
+        "checked": "2026-11-27",
+        "scope": "CC0",
+        "ok": true
+       }
+      }
+     }
+    ]
+   }
+  },
+  {
+   "say": "코코넛 국물이 부드러운 똠카가이. 색다르게!",
+   "subs": [
+    "코코넛 국물이 부드러운",
+    "똠카가이. 색다르게!"
+   ],
+   "show": {
+    "dir": "2x2",
+    "own": true,
+    "hl": 1,
+    "grid": [
+     {
+      "photo": {
+       "url": "https://tong.visitkorea.or.kr/cms2/website/80/1840880.jpg",
+       "shows": "검은 뚝배기에 다진 양념과 파를 올린 돼지국밥 한 그릇과 반찬",
+       "match": "정확",
+       "about": "돼지국밥",
+       "rights": "한국관광공사 포토코리아 공공누리 1유형 · 박은경",
+       "credit": "ⓒ한국관광공사 포토코리아-박은경"
+      }
+     },
+     {
+      "photo": {
+       "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Tom%20Kha%20Gai.jpg?width=1600",
+       "shows": "하얀 사발에 담긴 코코넛 국물 똠카가이, 버섯·닭고기·고추·고수가 보임",
+       "match": "정확",
+       "about": "똠카가이",
+       "rights": "위키미디어 공용 CC BY 2.0",
+       "credit": "TheCulinaryGeek (CC BY 2.0) · commons.wikimedia.org/?curid=83079636",
+       "page": "https://commons.wikimedia.org/wiki/File:Tom_Kha_Gai.jpg",
+       "terms": {
+        "url": "https://creativecommons.org/licenses/by/2.0/",
+        "checked": "2026-11-27",
+        "scope": "CC BY 2.0 저작자 표시 후 이용",
+        "ok": true
+       }
+      }
+     },
+     {
+      "photo": {
+       "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Kuroishi%20Yakisoba01.JPG?width=1600",
+       "shows": "양배추·돼지고기에 붉은 생강을 올린 접시 가득 야키소바",
+       "match": "정확",
+       "about": "야키소바",
+       "rights": "위키미디어 공용 퍼블릭 도메인",
+       "page": "https://commons.wikimedia.org/wiki/File:Kuroishi_Yakisoba01.JPG",
+       "terms": {
+        "url": "https://commons.wikimedia.org/",
+        "checked": "2026-11-27",
+        "scope": "퍼블릭 도메인",
+        "ok": true
+       }
+      }
+     },
+     {
+      "photo": {
+       "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Salmon%20Poke%20Bowl%20%28S%29%20with%20Spicy%20mayo%20sauce%20-%20Kitokito.jpg?width=1600",
+       "shows": "연어·아보카도·에다마메·단무지를 올린 연어 포케 볼과 매운 마요 소스",
+       "match": "정확",
+       "about": "하와이안포케",
+       "rights": "위키미디어 공용 CC0",
+       "page": "https://commons.wikimedia.org/wiki/File:Salmon_Poke_Bowl_(S)_with_Spicy_mayo_sauce_-_Kitokito.jpg",
+       "terms": {
+        "url": "https://commons.wikimedia.org/",
+        "checked": "2026-11-27",
+        "scope": "CC0",
+        "ok": true
+       }
+      }
+     }
+    ]
+   }
+  },
+  {
+   "say": "철판에 달달 볶은 야키소바, 면 땡기는 날!",
+   "subs": [
+    "철판에 달달 볶은 야키소바,",
+    "면 땡기는 날!"
+   ],
+   "show": {
+    "dir": "2x2",
+    "own": true,
+    "hl": 2,
+    "grid": [
+     {
+      "photo": {
+       "url": "https://tong.visitkorea.or.kr/cms2/website/80/1840880.jpg",
+       "shows": "검은 뚝배기에 다진 양념과 파를 올린 돼지국밥 한 그릇과 반찬",
+       "match": "정확",
+       "about": "돼지국밥",
+       "rights": "한국관광공사 포토코리아 공공누리 1유형 · 박은경",
+       "credit": "ⓒ한국관광공사 포토코리아-박은경"
+      }
+     },
+     {
+      "photo": {
+       "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Tom%20Kha%20Gai.jpg?width=1600",
+       "shows": "하얀 사발에 담긴 코코넛 국물 똠카가이, 버섯·닭고기·고추·고수가 보임",
+       "match": "정확",
+       "about": "똠카가이",
+       "rights": "위키미디어 공용 CC BY 2.0",
+       "credit": "TheCulinaryGeek (CC BY 2.0) · commons.wikimedia.org/?curid=83079636",
+       "page": "https://commons.wikimedia.org/wiki/File:Tom_Kha_Gai.jpg",
+       "terms": {
+        "url": "https://creativecommons.org/licenses/by/2.0/",
+        "checked": "2026-11-27",
+        "scope": "CC BY 2.0 저작자 표시 후 이용",
+        "ok": true
+       }
+      }
+     },
+     {
+      "photo": {
+       "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Kuroishi%20Yakisoba01.JPG?width=1600",
+       "shows": "양배추·돼지고기에 붉은 생강을 올린 접시 가득 야키소바",
+       "match": "정확",
+       "about": "야키소바",
+       "rights": "위키미디어 공용 퍼블릭 도메인",
+       "page": "https://commons.wikimedia.org/wiki/File:Kuroishi_Yakisoba01.JPG",
+       "terms": {
+        "url": "https://commons.wikimedia.org/",
+        "checked": "2026-11-27",
+        "scope": "퍼블릭 도메인",
+        "ok": true
+       }
+      }
+     },
+     {
+      "photo": {
+       "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Salmon%20Poke%20Bowl%20%28S%29%20with%20Spicy%20mayo%20sauce%20-%20Kitokito.jpg?width=1600",
+       "shows": "연어·아보카도·에다마메·단무지를 올린 연어 포케 볼과 매운 마요 소스",
+       "match": "정확",
+       "about": "하와이안포케",
+       "rights": "위키미디어 공용 CC0",
+       "page": "https://commons.wikimedia.org/wiki/File:Salmon_Poke_Bowl_(S)_with_Spicy_mayo_sauce_-_Kitokito.jpg",
+       "terms": {
+        "url": "https://commons.wikimedia.org/",
+        "checked": "2026-11-27",
+        "scope": "CC0",
+        "ok": true
+       }
+      }
+     }
+    ]
+   }
+  },
+  {
+   "say": "가볍게 한 그릇, 연어 올린 하와이안 포케!",
+   "subs": [
+    "가볍게 한 그릇,",
+    "연어 올린 하와이안 포케!"
+   ],
+   "show": {
+    "dir": "2x2",
+    "own": true,
+    "hl": 3,
+    "grid": [
+     {
+      "photo": {
+       "url": "https://tong.visitkorea.or.kr/cms2/website/80/1840880.jpg",
+       "shows": "검은 뚝배기에 다진 양념과 파를 올린 돼지국밥 한 그릇과 반찬",
+       "match": "정확",
+       "about": "돼지국밥",
+       "rights": "한국관광공사 포토코리아 공공누리 1유형 · 박은경",
+       "credit": "ⓒ한국관광공사 포토코리아-박은경"
+      }
+     },
+     {
+      "photo": {
+       "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Tom%20Kha%20Gai.jpg?width=1600",
+       "shows": "하얀 사발에 담긴 코코넛 국물 똠카가이, 버섯·닭고기·고추·고수가 보임",
+       "match": "정확",
+       "about": "똠카가이",
+       "rights": "위키미디어 공용 CC BY 2.0",
+       "credit": "TheCulinaryGeek (CC BY 2.0) · commons.wikimedia.org/?curid=83079636",
+       "page": "https://commons.wikimedia.org/wiki/File:Tom_Kha_Gai.jpg",
+       "terms": {
+        "url": "https://creativecommons.org/licenses/by/2.0/",
+        "checked": "2026-11-27",
+        "scope": "CC BY 2.0 저작자 표시 후 이용",
+        "ok": true
+       }
+      }
+     },
+     {
+      "photo": {
+       "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Kuroishi%20Yakisoba01.JPG?width=1600",
+       "shows": "양배추·돼지고기에 붉은 생강을 올린 접시 가득 야키소바",
+       "match": "정확",
+       "about": "야키소바",
+       "rights": "위키미디어 공용 퍼블릭 도메인",
+       "page": "https://commons.wikimedia.org/wiki/File:Kuroishi_Yakisoba01.JPG",
+       "terms": {
+        "url": "https://commons.wikimedia.org/",
+        "checked": "2026-11-27",
+        "scope": "퍼블릭 도메인",
+        "ok": true
+       }
+      }
+     },
+     {
+      "photo": {
+       "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Salmon%20Poke%20Bowl%20%28S%29%20with%20Spicy%20mayo%20sauce%20-%20Kitokito.jpg?width=1600",
+       "shows": "연어·아보카도·에다마메·단무지를 올린 연어 포케 볼과 매운 마요 소스",
+       "match": "정확",
+       "about": "하와이안포케",
+       "rights": "위키미디어 공용 CC0",
+       "page": "https://commons.wikimedia.org/wiki/File:Salmon_Poke_Bowl_(S)_with_Spicy_mayo_sauce_-_Kitokito.jpg",
+       "terms": {
+        "url": "https://commons.wikimedia.org/",
+        "checked": "2026-11-27",
+        "scope": "CC0",
+        "ok": true
+       }
+      }
+     }
+    ]
+   }
+  },
+  {
+   "say": "오늘은 넷 중에 뭐가 끌려요? 댓글로 알려 주세요.",
+   "subs": [
+    "오늘은 넷 중에 뭐가 끌려요?",
+    "댓글로 알려 주세요."
+   ],
+   "show": {
+    "dir": "2x2",
+    "own": true,
+    "grid": [
+     {
+      "photo": {
+       "url": "https://tong.visitkorea.or.kr/cms2/website/80/1840880.jpg",
+       "shows": "검은 뚝배기에 다진 양념과 파를 올린 돼지국밥 한 그릇과 반찬",
+       "match": "정확",
+       "about": "돼지국밥",
+       "rights": "한국관광공사 포토코리아 공공누리 1유형 · 박은경",
+       "credit": "ⓒ한국관광공사 포토코리아-박은경"
+      }
+     },
+     {
+      "photo": {
+       "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Tom%20Kha%20Gai.jpg?width=1600",
+       "shows": "하얀 사발에 담긴 코코넛 국물 똠카가이, 버섯·닭고기·고추·고수가 보임",
+       "match": "정확",
+       "about": "똠카가이",
+       "rights": "위키미디어 공용 CC BY 2.0",
+       "credit": "TheCulinaryGeek (CC BY 2.0) · commons.wikimedia.org/?curid=83079636",
+       "page": "https://commons.wikimedia.org/wiki/File:Tom_Kha_Gai.jpg",
+       "terms": {
+        "url": "https://creativecommons.org/licenses/by/2.0/",
+        "checked": "2026-11-27",
+        "scope": "CC BY 2.0 저작자 표시 후 이용",
+        "ok": true
+       }
+      }
+     },
+     {
+      "photo": {
+       "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Kuroishi%20Yakisoba01.JPG?width=1600",
+       "shows": "양배추·돼지고기에 붉은 생강을 올린 접시 가득 야키소바",
+       "match": "정확",
+       "about": "야키소바",
+       "rights": "위키미디어 공용 퍼블릭 도메인",
+       "page": "https://commons.wikimedia.org/wiki/File:Kuroishi_Yakisoba01.JPG",
+       "terms": {
+        "url": "https://commons.wikimedia.org/",
+        "checked": "2026-11-27",
+        "scope": "퍼블릭 도메인",
+        "ok": true
+       }
+      }
+     },
+     {
+      "photo": {
+       "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Salmon%20Poke%20Bowl%20%28S%29%20with%20Spicy%20mayo%20sauce%20-%20Kitokito.jpg?width=1600",
+       "shows": "연어·아보카도·에다마메·단무지를 올린 연어 포케 볼과 매운 마요 소스",
+       "match": "정확",
+       "about": "하와이안포케",
+       "rights": "위키미디어 공용 CC0",
+       "page": "https://commons.wikimedia.org/wiki/File:Salmon_Poke_Bowl_(S)_with_Spicy_mayo_sauce_-_Kitokito.jpg",
+       "terms": {
+        "url": "https://commons.wikimedia.org/",
+        "checked": "2026-11-27",
+        "scope": "CC0",
+        "ok": true
+       }
+      }
+     }
+    ]
+   }
+  }
+ ],
+ "caption": "금요일 저녁, 아직 못 골랐어요?\n\n뜨끈하게 말아 먹는 돼지국밥\n코코넛 국물이 부드러운 똠카가이\n철판에 볶아 낸 야키소바\n연어를 올린 하와이안 포케\n\n넷 중에 오늘은 뭐가 끌려요? 댓글로 알려 주세요.",
+ "tags": [
+  "금요일저녁메뉴",
+  "저녁메뉴추천",
+  "오늘뭐먹지",
+  "돼지국밥"
+ ],
+ "sources": [],
+ "credits": [
+  "ⓒ한국관광공사 포토코리아-박은경",
+  "TheCulinaryGeek (CC BY 2.0) · commons.wikimedia.org/?curid=83079636"
+ ],
+ "dates": {
+  "checked": "2026-11-27"
+ },
+ "menu_pick": {
+  "menus": [
+   "돼지국밥",
+   "똠카가이",
+   "야키소바",
+   "하와이안포케"
+  ],
+  "from": "dinner_pick(후보 18개 확인, 날씨 cold 기준, 어제 꽃게탕·곱창과 겹치지 않게 조정)",
+  "why": {
+   "돼지국밥": "추운 날 국물 갈래, 익숙한 인기",
+   "똠카가이": "국물 갈래, 새로운 메뉴 1개",
+   "야키소바": "면 갈래, 오랜만에 나오는 메뉴",
+   "하와이안포케": "한 그릇 볼 갈래, 가볍게 즐기는 세계 음식"
+  }
+ },
+ "review": {
+  "photo_sheet": "67a822ce9629"
+ }
+}
