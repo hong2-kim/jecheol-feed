@@ -1150,5 +1150,41 @@
     "hash": "70dc137ba571",
     "approved": false,
     "reasons": []
+  },
+  "2026-11-27-10-voice": {
+    "verdict": "통과",
+    "hash": "8e2c7807dc71",
+    "approved": false,
+    "reasons": []
+  },
+  "2026-11-27-2-news": {
+    "verdict": "통과",
+    "hash": "6c1b268f2e55",
+    "approved": false,
+    "reasons": []
+  },
+  "2026-11-27-3-dinner": {
+    "verdict": "확인 필요",
+    "hash": "53274ed04fa0",
+    "approved": false,
+    "reasons": [
+      "[확인] 제작: 시점 검수: 4번 문장: 받아쓰기에 안 들린 낱말: 똠카가이. (들린 말: 뜨끈한 국물에 밥 말아 돼지국밥 어때요? 코코넛 국물이 부드러운 똥카가이)",
+      "[확인] 제작: 음악을 줄여도 안 들린 낱말: '불금 후보는 이 넷이에요.…' (불금, 불궁후보는)",
+      "[확인] 제작: 음악을 줄여도 안 들린 낱말: '코코넛 국물이 부드러운 똠…' (똠카가이.)"
+    ],
+    "noticed": "확인 필요:53274ed04fa0",
+    "ask_msg": 1485
+  },
+  "2026-11-27-4-find": {
+    "verdict": "통과",
+    "hash": "967fcdcb1567",
+    "approved": false,
+    "reasons": []
+  },
+  "2026-11-27-8-trend": {
+    "verdict": "통과",
+    "hash": "4ccc06300fd8",
+    "approved": false,
+    "reasons": []
   }
 }
