@@ -1186,5 +1186,23 @@
     "hash": "4ccc06300fd8",
     "approved": false,
     "reasons": []
+  },
+  "2026-11-28-2-news": {
+    "verdict": "통과",
+    "hash": "dab55e51578a",
+    "approved": false,
+    "reasons": []
+  },
+  "2026-11-28-3-dinner": {
+    "verdict": "통과",
+    "hash": "35a4b114ac68",
+    "approved": false,
+    "reasons": []
+  },
+  "2026-11-28-4-find": {
+    "verdict": "통과",
+    "hash": "03cf59df06f6",
+    "approved": false,
+    "reasons": []
   }
 }
