@@ -30,3 +30,4 @@
 {"time": "2026-11-21T10:09:25+09:00", "where": "fetch:weather", "message": "<urlopen error _ssl.c:994: The handshake operation timed out>"}
 {"time": "2026-11-24T13:39:13+09:00", "where": "fetch:news:먹거리 축제", "message": "HTTP Error 429: Too Many Requests"}
 {"time": "2026-11-24T13:39:20+09:00", "where": "fetch:news:라면 과자 가격 인상", "message": "HTTP Error 429: Too Many Requests"}
+{"time": "2026-11-27T11:42:05+09:00", "where": "fetch:news:소비자원 식품 가격 조사", "message": "HTTP Error 429: Too Many Requests"}
