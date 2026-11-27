@@ -1204,5 +1204,11 @@
     "hash": "03cf59df06f6",
     "approved": false,
     "reasons": []
+  },
+  "2026-11-28-10-voice": {
+    "verdict": "통과",
+    "hash": "df32670e1cc2",
+    "approved": false,
+    "reasons": []
   }
 }

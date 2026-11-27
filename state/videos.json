@@ -24,7 +24,7 @@
     "seconds": 17.8,
     "size_mb": 3.5,
     "yt_title": "찹쌀떡 구매액 88.7% 늘었다고? 초코·말차 찹쌀떡 한 달 36만 개",
-    "sha256": "45f2ddae6c79676ccd8b218eafe6b65f50310e1da9cd32c53b610403f94c1b4f"
+    "sha256": "4fda0664d6c9f022bd1a68c3bb5a40f7791123b713400d4716302731e3b8acba"
   },
   {
     "id": "2026-11-28-3-dinner",
@@ -46,10 +46,10 @@
       "Yuichiro Haga (CC BY 2.0) · commons.wikimedia.org/?curid=38368754"
     ],
     "url": "https://github.com/hong2-kim/jecheol-feed/releases/download/v2026-11-28/2026-11-28-3-dinner.mp4",
-    "seconds": 22.3,
-    "size_mb": 7.0,
+    "seconds": 22.0,
+    "size_mb": 6.8,
     "yt_title": "토요일 저녁 메뉴 내가 골라 줄게! 바지락칼국수·허니치킨·해물찜·연어회 중에 뭐 먹을래",
-    "sha256": "9856f127305c3a0bbb3e1f88511c1ae733b704b2e0797b8f4859353331bcb783"
+    "sha256": "abbc95e8974bdcff862d20e594db48c5313d2b053316248187e96aca85e83ba0"
   },
   {
     "id": "2026-11-28-2-news",
@@ -91,6 +91,36 @@
       "https://github.com/hong2-kim/jecheol-feed/releases/download/v2026-11-28/2026-11-28-2-news-4.jpg"
     ],
     "sha256": "e6f3a64072c451bb6620896457ee08fa6850abc924c5710a953250472b051506"
+  },
+  {
+    "id": "2026-11-28-10-voice",
+    "date": "2026-11-28",
+    "kind": "해설",
+    "title": "한국인 쌀 소비량이 30년 만에 반토막인데, 쌀을 쓰는 곳은 왜 늘었을까요",
+    "summary": "국가데이터처 2025년 양곡소비량조사에 따르면 지난해 1인당 쌀 소비량은 53.9kg으로 역대 최저예요. 반면 식품·음료 제조업이 쓴 쌀은 93만 2천 톤으로 6.7% 늘었어요.",
+    "caption": "한국인이 먹는 쌀, 30년 만에 반토막 났다는 거 알고 계셨어요?\n\n국가데이터처가 2026년 1월 22일 발표한 2025년 양곡소비량조사에 따르면 지난해 1인당 쌀 소비량은 53.9kg으로 통계 작성 이후 가장 적어요. 1995년 106.5kg의 절반 수준이고, 하루로 따지면 147.7g이에요.\n\n그런데 식품·음료 제조업에서 쓴 쌀은 93만 2천 톤으로 6.7% 늘었어요. 떡류 제조업이 쓴 쌀은 32.1% 늘어 26만 4천 톤이고, 떡류 수출은 7.6% 늘어 2만 8천 톤이었다고 해요.\n\n여러분은 오늘 쌀, 밥으로 드셨어요, 떡이나 과자로 드셨어요?\n\n출처: 조세일보(2026년 1월 22일), 농민신문(2026년 1월 23일), 조선일보(2026년 1월 22일)",
+    "tags": [
+      "쌀소비량",
+      "쌀",
+      "떡",
+      "양곡소비량",
+      "먹고갈지도"
+    ],
+    "sources": [
+      "https://m.joseilbo.com/news/view.htm?newsid=561375",
+      "https://www.nongmin.com/article/20260123500577",
+      "https://www.chosun.com/economy/economy_general/2026/01/22/KHJ3HRJSWJCYTDWSEJ2TNYCTFE/"
+    ],
+    "credits": [
+      "ⓒ한국관광공사 포토코리아-이점영",
+      "사진: Pille R. Priske / Unsplash",
+      "사진: Prahlad Inala / Unsplash"
+    ],
+    "url": "https://github.com/hong2-kim/jecheol-feed/releases/download/v2026-11-28/2026-11-28-10-voice.mp4",
+    "seconds": 44.0,
+    "size_mb": 5.2,
+    "yt_title": "1인당 쌀 소비량 53.9kg 역대 최저, 떡 만드는 쌀은 32% 늘었어요",
+    "sha256": "9d3439fed8271079dfed49ee008892e897ecf3daa75e788fb8cb03a8dd2dbf49"
   },
   {
     "id": "2026-11-27-8-trend",
