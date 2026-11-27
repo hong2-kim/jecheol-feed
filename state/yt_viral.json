@@ -1515,6 +1515,80 @@
         "channels": 120,
         "thin": 8
       }
+    },
+    "2026-11-27": {
+      "picks": [
+        {
+          "id": "4n5G01DpCSQ",
+          "title": "무나물 볶을때 이2가지만 넣으면 맛있어오",
+          "channel": "내딸 은희tv",
+          "subs": 101000,
+          "views": 16134,
+          "median": 1392,
+          "n": 29,
+          "multiple": 11.6,
+          "hours": 42,
+          "formulas": [
+            "숫자·순위"
+          ],
+          "query": "제철 음식",
+          "url": "https://youtube.com/shorts/4n5G01DpCSQ"
+        },
+        {
+          "id": "aPZFhwJrVxc",
+          "title": "평생 써먹는 살림 꿀팁 9가지 총정리 3탄",
+          "channel": "살림왕 석서방",
+          "subs": 66200,
+          "views": 54599,
+          "median": 8444,
+          "n": 42,
+          "multiple": 6.5,
+          "hours": 26,
+          "formulas": [
+            "숫자·순위",
+            "방법·꿀팁"
+          ],
+          "query": "음식 꿀팁",
+          "url": "https://youtube.com/shorts/aPZFhwJrVxc"
+        },
+        {
+          "id": "Jp6tZYgx7NI",
+          "title": "찐속세맛 다이어트 에그타르트 레시피❌밀가루 설탕 생크림❌…",
+          "channel": "빼이킹",
+          "subs": 17500,
+          "views": 10202,
+          "median": 3254,
+          "n": 33,
+          "multiple": 3.1,
+          "hours": 45,
+          "formulas": [
+            "방법·꿀팁"
+          ],
+          "query": "다이어트 음식",
+          "url": "https://youtube.com/shorts/Jp6tZYgx7NI"
+        },
+        {
+          "id": "3Z5_zIMdbas",
+          "title": "한식이 채식 천국이라며 좋아하다 자꾸만 함정에 빠지는 외국 비건들 근황ㅠㅠㅋㅋ",
+          "channel": "감동안테나",
+          "subs": 5800,
+          "views": 77913,
+          "median": 37386,
+          "n": 39,
+          "multiple": 2.1,
+          "hours": 48,
+          "formulas": [],
+          "query": "해외 음식",
+          "url": "https://youtube.com/shorts/3Z5_zIMdbas"
+        }
+      ],
+      "leaders": [],
+      "stats": {
+        "searched": 214,
+        "shorts": 205,
+        "channels": 120,
+        "thin": 5
+      }
     }
   }
 }
