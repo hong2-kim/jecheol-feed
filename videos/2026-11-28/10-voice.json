@@ -1,0 +1,289 @@
+{
+ "format": "voice",
+ "kind": "해설",
+ "subject": "쌀 · 1인당 소비량 53.9kg과 가공용 쌀 93만 톤",
+ "plan_hook": {
+  "pick": "호기심",
+  "why": "오늘 개막한 K-라이스페스타 날에, '밥은 안 먹는데 쌀은 왜 늘었나'를 물음으로 걸고 끝에서 국가데이터처 통계(밥쌀 감소, 떡·가공식품용 증가)로 답한다",
+  "others": [
+   "가격",
+   "먹거리"
+  ]
+ },
+ "script_check": {
+  "score": 8,
+  "fix": "공식 원문은 못 열어 조세일보·농민신문 두 매체가 같은 국가데이터처 숫자를 쓴 것만 사용. 밥 한 공기 환산은 근거가 달라 뺌. 2번 예고는 6~9번 문장에서 공개. 통계는 2025년 연간 확정치라 '지난해'가 지금도 맞음(다음 조사는 2027년 1월)"
+ },
+ "title_pick": {
+  "candidates": [
+   "쌀 소비 30년 만에 반토막, 그런데 쌀 쓰는 곳은 늘었다고?",
+   "1인당 쌀 소비량 53.9kg 역대 최저, 떡 만드는 쌀은 32% 늘었어요",
+   "한국인 하루 쌀 147.7g, 줄어든 쌀은 어디서 늘었을까"
+  ],
+  "pick": "1인당 쌀 소비량 53.9kg 역대 최저, 떡 만드는 쌀은 32% 늘었어요",
+  "like": "2026-11-25 김치 · 종주국인데 무역적자 / 2026-11-24 불닭볶음면 해외 매출 (통계 뒤집기 꼴)",
+  "sure": "낮음"
+ },
+ "title": "한국인 쌀 소비량이 30년 만에 반토막인데, 쌀을 쓰는 곳은 왜 늘었을까요",
+ "yt_title": "1인당 쌀 소비량 53.9kg 역대 최저, 떡 만드는 쌀은 32% 늘었어요",
+ "headline": "밥 한 공기도\n[[안 먹는다?]]",
+ "thumb": {
+  "sub": "쌀 소비 [[30년 새 반토막]]"
+ },
+ "narrator": "charon",
+ "voice_pick": {
+  "mode": "solo",
+  "voices": [
+   "charon"
+  ],
+  "why": "1인당 소비량·증감률 같은 통계를 정확하게 전하는 이야기라 차분하고 또렷한 Charon 솔로"
+ },
+ "summary": "국가데이터처 2025년 양곡소비량조사에 따르면 지난해 1인당 쌀 소비량은 53.9kg으로 역대 최저예요. 반면 식품·음료 제조업이 쓴 쌀은 93만 2천 톤으로 6.7% 늘었어요.",
+ "lines": [
+  {
+   "say": "한국인이 먹는 쌀의 양이, 30년 만에 [[반토막]] 났대요.",
+   "photo": {
+    "url": "https://tong.visitkorea.or.kr/cms2/website/49/3567249.jpg",
+    "shows": "진안 마이산 앞 누렇게 익은 벼논(벼 수확철 쌀 농사 일반 풍경)",
+    "match": "같은 종류",
+    "about": "쌀 농사 일반",
+    "general": true,
+    "rights": "한국관광공사 포토코리아 공공누리 1유형 · ⓒ이점영",
+    "credit": "ⓒ한국관광공사 포토코리아-이점영"
+   },
+   "about": "쌀 농사 일반",
+   "general": true
+  },
+  {
+   "say": "끝까지 보면, 줄어든 쌀이 [[어디서 늘었는지]]까지 알려 드려요.",
+   "photo": {
+    "url": "https://images.unsplash.com/photo-1536304993881-ff6e9eefa2a6?w=2000&q=85&fm=jpg",
+    "page": "https://unsplash.com/photos/xmuIgjuQG0M",
+    "credit": "사진: Pille R. Priske / Unsplash",
+    "shows": "흰 그릇에 담긴 하얀 쌀밥 한 그릇(주변에 다른 반찬 그릇)",
+    "match": "같은 종류",
+    "about": "쌀밥 일반",
+    "general": true,
+    "rights": "Unsplash 무료 라이선스(Unsplash+ 아님)"
+   },
+   "about": "쌀밥 일반",
+   "general": true,
+   "chip": "끝까지 보면 늘어난 쌀의 정체"
+  },
+  {
+   "say": "지난해 1인당 쌀 소비량은 [[53.9kg]], 통계 이래 가장 적었어요.",
+   "photo": {
+    "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Meshi%20001.jpg?width=1600",
+    "shows": "쌀 소비량 소개용 쌀밥 일반 사진: 도자기 밥그릇에 소복이 담긴 흰 쌀밥과 젓가락",
+    "match": "같은 종류",
+    "about": "쌀밥 일반",
+    "general": true,
+    "rights": "위키미디어 공용 CC0 · Meshi 001.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Meshi_001.jpg",
+    "license": "CC0",
+    "terms": {
+     "url": "https://creativecommons.org/publicdomain/zero/1.0/",
+     "checked": "2026-11-28",
+     "scope": "CC0, 상업적 이용·수정 가능",
+     "ok": true
+    }
+   },
+   "about": "쌀밥 일반",
+   "general": true,
+   "chip": "1인당 53.9kg",
+   "read": "지난해 일 인당 쌀 소비량은 오십삼 점 구 킬로그램, 통계 이래 가장 적었어요."
+  },
+  {
+   "say": "1995년엔 [[106.5kg]]이었으니, 딱 절반 수준이에요.",
+   "card": {
+    "type": "bars",
+    "title": "1인당 연간 [[쌀 소비량]]",
+    "sub": "가구 부문 · 국가데이터처",
+    "rows": [
+     {
+      "name": "1995년",
+      "value": 106.5,
+      "label": "106.5kg"
+     },
+     {
+      "name": "2025년",
+      "value": 53.9,
+      "label": "53.9kg · [[반토막]]",
+      "hl": true
+     }
+    ],
+    "scale": 0.55,
+    "src": "국가데이터처 양곡소비량조사 2025년 결과, 2026년 1월 22일 발표"
+   },
+   "read": "천구백구십오 년엔 백육 점 오 킬로그램이었으니, 딱 절반 수준이에요."
+  },
+  {
+   "say": "하루로 따지면, 한 사람이 쌀을 [[147.7g]] 먹는 셈이에요.",
+   "photo": {
+    "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Short-grain%20rice%20(japonica).jpg?width=1600",
+    "shows": "흰 종이 위에 쌓인 짧은 알의 백미 한 줌",
+    "match": "같은 종류",
+    "about": "쌀알 일반",
+    "general": true,
+    "rights": "위키미디어 공용 CC0 · Short-grain rice (japonica).jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Short-grain_rice_(japonica).jpg",
+    "license": "CC0",
+    "terms": {
+     "url": "https://creativecommons.org/publicdomain/zero/1.0/",
+     "checked": "2026-11-28",
+     "scope": "CC0, 상업적 이용·수정 가능",
+     "ok": true
+    }
+   },
+   "about": "쌀알 일반",
+   "general": true,
+   "chip": "하루 147.7g",
+   "read": "하루로 따지면, 한 사람이 쌀을 백사십칠 점 칠 그램 먹는 셈이에요."
+  },
+  {
+   "say": "그런데 집 밖은 달라요, 식품 만드는 곳에서 쓴 쌀은 [[93만 톤]]을 넘었어요.",
+   "card": {
+    "type": "bars",
+    "title": "식품·음료 제조업 [[쌀 사용량]]",
+    "sub": "사업체 부문 · 국가데이터처",
+    "rows": [
+     {
+      "name": "2024년",
+      "value": 87.3,
+      "label": "87만 톤"
+     },
+     {
+      "name": "2025년",
+      "value": 93.2,
+      "label": "93만 톤 · [[6.7%↑]]",
+      "hl": true
+     }
+    ],
+    "scale": 0.55,
+    "src": "국가데이터처 양곡소비량조사 2025년 결과, 2026년 1월 22일 발표"
+   }
+  },
+  {
+   "say": "떡류를 만드는 데 쓴 쌀은, [[32.1%]] 늘어서 26만 톤이 됐어요.",
+   "photo": {
+    "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Songpyeon.jpg?width=1600",
+    "shows": "떡류 소개용 떡 일반 사진: 대나무 소쿠리 상자에 줄지어 놓인 흰색·분홍·초록 송편",
+    "match": "같은 종류",
+    "about": "떡 일반",
+    "general": true,
+    "rights": "위키미디어 공용 CC0 · Songpyeon.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Songpyeon.jpg",
+    "license": "CC0",
+    "terms": {
+     "url": "https://creativecommons.org/publicdomain/zero/1.0/",
+     "checked": "2026-11-28",
+     "scope": "CC0, 상업적 이용·수정 가능",
+     "ok": true
+    }
+   },
+   "about": "떡 일반",
+   "general": true,
+   "chip": "떡류 쌀 32.1%↑",
+   "read": "떡류를 만드는 데 쓴 쌀은, 삼십이 점 일 퍼센트 늘어서 이십육만 톤이 됐어요."
+  },
+  {
+   "say": "떡류 수출도 [[7.6%]] 늘어서, 2만 8천 톤이었어요.",
+   "photo": {
+    "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Songpyeon%202.jpg?width=1600",
+    "shows": "떡류 소개용 떡 일반 사진: 붉은 상자에 소복이 담긴 흰 송편과 대나무 돗자리",
+    "match": "같은 종류",
+    "about": "떡 일반",
+    "general": true,
+    "rights": "위키미디어 공용 CC0 · Songpyeon 2.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Songpyeon_2.jpg",
+    "license": "CC0",
+    "terms": {
+     "url": "https://creativecommons.org/publicdomain/zero/1.0/",
+     "checked": "2026-11-28",
+     "scope": "CC0, 상업적 이용·수정 가능",
+     "ok": true
+    }
+   },
+   "about": "떡 일반",
+   "general": true,
+   "chip": "떡류 수출 7.6%↑",
+   "read": "떡류 수출도 칠 점 육 퍼센트 늘어서, 이만 팔천 톤이었어요."
+  },
+  {
+   "say": "여러분은 오늘 쌀, 밥으로 드셨어요, 떡이나 과자로 드셨어요? [[댓글]]로 알려 주세요.",
+   "photo": {
+    "url": "https://images.unsplash.com/photo-1595974482597-4b8da8879bc5?w=2000&q=85&fm=jpg",
+    "page": "https://unsplash.com/photos/BJlJG23ciXI",
+    "credit": "사진: Prahlad Inala / Unsplash",
+    "shows": "물 댄 논에 푸른 모가 줄지어 자라고 사람들이 모를 심는 석양 풍경(벼농사 일반)",
+    "match": "같은 종류",
+    "about": "벼농사 일반",
+    "general": true,
+    "rights": "Unsplash 무료 라이선스(Unsplash+ 아님)"
+   },
+   "about": "벼농사 일반",
+   "general": true
+  }
+ ],
+ "caption": "한국인이 먹는 쌀, 30년 만에 반토막 났다는 거 알고 계셨어요?\n\n국가데이터처가 2026년 1월 22일 발표한 2025년 양곡소비량조사에 따르면 지난해 1인당 쌀 소비량은 53.9kg으로 통계 작성 이후 가장 적어요. 1995년 106.5kg의 절반 수준이고, 하루로 따지면 147.7g이에요.\n\n그런데 식품·음료 제조업에서 쓴 쌀은 93만 2천 톤으로 6.7% 늘었어요. 떡류 제조업이 쓴 쌀은 32.1% 늘어 26만 4천 톤이고, 떡류 수출은 7.6% 늘어 2만 8천 톤이었다고 해요.\n\n여러분은 오늘 쌀, 밥으로 드셨어요, 떡이나 과자로 드셨어요?\n\n출처: 조세일보(2026년 1월 22일), 농민신문(2026년 1월 23일), 조선일보(2026년 1월 22일)",
+ "tags": [
+  "쌀소비량",
+  "쌀",
+  "떡",
+  "양곡소비량"
+ ],
+ "sources": [
+  "https://m.joseilbo.com/news/view.htm?newsid=561375",
+  "https://www.nongmin.com/article/20260123500577",
+  "https://www.chosun.com/economy/economy_general/2026/01/22/KHJ3HRJSWJCYTDWSEJ2TNYCTFE/"
+ ],
+ "credits": [
+  "ⓒ한국관광공사 포토코리아-이점영",
+  "사진: Pille R. Priske / Unsplash",
+  "사진: Prahlad Inala / Unsplash"
+ ],
+ "yt_keyword": "쌀 소비량",
+ "yt_related": [
+  "1인당 쌀 소비량",
+  "쌀 소비 감소",
+  "가공용 쌀",
+  "떡 수출",
+  "양곡소비량조사"
+ ],
+ "yt_tags": [
+  "쌀 소비량",
+  "1인당 쌀 소비량",
+  "쌀 소비 감소",
+  "가공용 쌀",
+  "떡류 수출",
+  "양곡소비량조사",
+  "국가데이터처"
+ ],
+ "yt_hashtags": [
+  "쌀소비량",
+  "쌀",
+  "떡"
+ ],
+ "yt_lead": "1인당 쌀 소비량이 30년 만에 반토막이 됐는데도 쌀을 쓰는 곳이 늘어난 까닭을, 국가데이터처 2025년 양곡소비량조사 숫자로 정리했어요.",
+ "dates": {
+  "checked": "2026-11-28",
+  "sources": [
+   {
+    "url": "https://m.joseilbo.com/news/view.htm?newsid=561375",
+    "published": "2026-01-22"
+   },
+   {
+    "url": "https://www.nongmin.com/article/20260123500577",
+    "published": "2026-01-23"
+   },
+   {
+    "url": "https://www.chosun.com/economy/economy_general/2026/01/22/KHJ3HRJSWJCYTDWSEJ2TNYCTFE/",
+    "published": "2026-01-22"
+   }
+  ],
+  "stat_period": "2025년 확정치(2026년 1월 22일 발표)"
+ },
+ "review": {
+  "photo_sheet": "0648eafaff6f"
+ }
+}
