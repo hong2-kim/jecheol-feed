@@ -1589,6 +1589,116 @@
         "channels": 120,
         "thin": 5
       }
+    },
+    "2026-11-28": {
+      "picks": [
+        {
+          "id": "XHdFzgJ38mE",
+          "title": "평생 써먹는 1년 내내 아삭한 김장 김치 보관 꿀팁 9가지",
+          "channel": "살림왕 석서방",
+          "subs": 67900,
+          "views": 133436,
+          "median": 7039,
+          "n": 42,
+          "multiple": 19.0,
+          "hours": 18,
+          "formulas": [
+            "숫자·순위",
+            "방법·꿀팁"
+          ],
+          "query": "음식 꿀팁",
+          "url": "https://youtube.com/shorts/XHdFzgJ38mE"
+        },
+        {
+          "id": "aPDOPfskX_o",
+          "title": "콜라 커피 팬이 새것처럼 변합니다 생활꿀팁 청소비법 직장생활 꿀팁 지식 추천",
+          "channel": "가족의 순간",
+          "subs": 61600,
+          "views": 144283,
+          "median": 9040,
+          "n": 44,
+          "multiple": 16.0,
+          "hours": 43,
+          "formulas": [
+            "방법·꿀팁"
+          ],
+          "query": "음식 꿀팁",
+          "url": "https://youtube.com/shorts/aPDOPfskX_o"
+        },
+        {
+          "id": "WTHjYzseV8M",
+          "title": "해외에서 화제인 한국 효도여행",
+          "channel": "칙칙풉풉",
+          "subs": 33300,
+          "views": 121363,
+          "median": 48868,
+          "n": 47,
+          "multiple": 2.5,
+          "hours": 66,
+          "formulas": [
+            "해외·여행"
+          ],
+          "query": "해외 음식",
+          "url": "https://youtube.com/shorts/WTHjYzseV8M"
+        }
+      ],
+      "leaders": [
+        {
+          "id": "E0hgpTqjBVw",
+          "title": "역대급 강아지 먹방 랭킹 TOP6",
+          "channel": "랭킹펫",
+          "subs": 7120,
+          "views": 11047,
+          "median": 8234,
+          "n": 47,
+          "multiple": 1.3,
+          "hours": 69,
+          "formulas": [
+            "숫자·순위",
+            "감탄·강조"
+          ],
+          "query": "먹방 쇼츠",
+          "url": "https://youtube.com/shorts/E0hgpTqjBVw"
+        },
+        {
+          "id": "sKXltDHn0go",
+          "title": "요즘 난리난 고능한 식재료!!필로페이스트리!!",
+          "channel": "빵터진 엄마",
+          "subs": 10300,
+          "views": 10808,
+          "median": 6363,
+          "n": 47,
+          "multiple": 1.7,
+          "hours": 69,
+          "formulas": [
+            "감탄·강조"
+          ],
+          "query": "요즘 유행 음식",
+          "url": "https://youtube.com/shorts/sKXltDHn0go"
+        },
+        {
+          "id": "046i_1n17qU",
+          "title": "피디 말에 긁힌 서인영 다이어트 비법 떡볶이 레시피 공개",
+          "channel": "바비인영",
+          "subs": 9720,
+          "views": 10049,
+          "median": 5704,
+          "n": 47,
+          "multiple": 1.8,
+          "hours": 65,
+          "formulas": [
+            "방법·꿀팁"
+          ],
+          "query": "다이어트 음식",
+          "url": "https://youtube.com/shorts/046i_1n17qU"
+        }
+      ],
+      "stats": {
+        "searched": 215,
+        "shorts": 204,
+        "channels": 120,
+        "thin": 4
+      }
     }
   }
 }
