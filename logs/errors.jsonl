@@ -31,3 +31,7 @@
 {"time": "2026-11-24T13:39:13+09:00", "where": "fetch:news:먹거리 축제", "message": "HTTP Error 429: Too Many Requests"}
 {"time": "2026-11-24T13:39:20+09:00", "where": "fetch:news:라면 과자 가격 인상", "message": "HTTP Error 429: Too Many Requests"}
 {"time": "2026-11-27T11:42:05+09:00", "where": "fetch:news:소비자원 식품 가격 조사", "message": "HTTP Error 429: Too Many Requests"}
+{"time": "2026-11-28T11:31:14+09:00", "where": "fetch:news:\"세븐일레븐\" 출시", "message": "HTTP Error 429: Too Many Requests"}
+{"time": "2026-11-28T11:31:18+09:00", "where": "fetch:news:맘스터치 OR 롯데리아 OR 맥도날드 OR 버거킹 신메뉴", "message": "HTTP Error 429: Too Many Requests"}
+{"time": "2026-11-28T11:31:20+09:00", "where": "fetch:news:흑백요리사 셰프", "message": "HTTP Error 429: Too Many Requests"}
+{"time": "2026-11-28T11:31:21+09:00", "where": "fetch:news:셰프 협업 상품 출시", "message": "HTTP Error 429: Too Many Requests"}
